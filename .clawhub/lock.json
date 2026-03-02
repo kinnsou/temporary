@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "skills": {
+    "tavily-search": {
+      "version": "1.0.0",
+      "installedAt": 1772443642465
+    },
+    "clawdbot-filesystem": {
+      "version": "1.0.2",
+      "installedAt": 1772443645803
+    },
+    "git-essentials": {
+      "version": "1.0.0",
+      "installedAt": 1772443648793
+    },
+    "clawdefender": {
+      "version": "1.0.1",
+      "installedAt": 1772443652161
+    }
+  }
+}
