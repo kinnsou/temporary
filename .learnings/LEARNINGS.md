@@ -25,3 +25,28 @@ User corrected the proposed 3/19 itinerary: lunch at ~14:00 was too late for a r
 - Tags: itinerary, transit, timing, correction
 
 ---
+
+## [LRN-20260302-002] correction
+
+**Logged**: 2026-03-02T05:56:00Z
+**Priority**: high
+**Status**: pending
+**Area**: docs
+
+### Summary
+In LINE group chats, never send duplicate follow-up replies for the same user message.
+
+### Details
+User explicitly corrected behavior: "不要多回話，一次而已" after the assistant posted two near-identical replies to one message. This creates noise in group chats and violates expected single-turn etiquette.
+
+### Suggested Action
+- Send exactly one concise reply per triggering group message.
+- Before sending, check that no duplicate draft/queued response is about to be emitted.
+- If duplication happens, apologize once and immediately resume single-reply behavior.
+
+### Metadata
+- Source: user_feedback
+- Related Files: (chat response only)
+- Tags: line, group-chat, duplication, correction
+
+---
