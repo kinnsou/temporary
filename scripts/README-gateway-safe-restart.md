@@ -32,6 +32,21 @@ scripts/gateway-safe-restart.sh --mark-good
 scripts/gateway-safe-restart.sh
 ```
 
+## Short command
+
+Installed shortcut:
+
+```bash
+safe-restart
+```
+
+It forwards all flags to `gateway-safe-restart.sh`, e.g.:
+
+```bash
+safe-restart --check
+safe-restart --mark-good
+```
+
 ## Notes
 
 - If Docker Compose is available, the script uses:
