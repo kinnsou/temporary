@@ -75,3 +75,28 @@ User explicitly corrected that this morning's report was dated/content-aligned t
 - Tags: line, daily-brief, date-validation, correction
 
 ---
+
+## [LRN-20260304-002] correction
+
+**Logged**: 2026-03-04T03:19:00Z
+**Priority**: high
+**Status**: pending
+**Area**: docs
+
+### Summary
+Daily vocab posts must ensure the 3 new words are unique and not reused from recent days.
+
+### Details
+User reported recurring issue: one of the 3 daily vocab words was an old/repeated word in recent posts. This reduces learning value and violates expected format quality.
+
+### Suggested Action
+- Add a pre-send dedupe check against recent vocab history (at least last 7 days).
+- Ensure the 3 "new words" are mutually unique within the same post.
+- If collision detected, regenerate replacement words before sending.
+
+### Metadata
+- Source: user_feedback
+- Related Files: daughter-vocab.md, memory/daily-tasks.json
+- Tags: line, vocab, dedupe, correction
+
+---
