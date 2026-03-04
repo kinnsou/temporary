@@ -31,3 +31,35 @@ Then tool wrapper error: search_lang must be 2-letter ISO code (tool-side)
 - Related Files: /home/node/.openclaw/workspace/.learnings/ERRORS.md
 
 ---
+
+## [ERR-20260304-001] git_safe_directory_block
+
+**Logged**: 2026-03-04T03:16:00Z
+**Priority**: low
+**Status**: pending
+**Area**: config
+
+### Summary
+`git status` failed in workspace due Git safe.directory ownership protection.
+
+### Error
+```
+fatal: detected dubious ownership in repository at '/home/node/.openclaw/workspace'
+To add an exception for this directory, call:
+	git config --global --add safe.directory /home/node/.openclaw/workspace
+```
+
+### Context
+- Operation: commit learning-log update per workspace rule
+- Command: `git status --short`
+- Environment: OpenClaw container workspace mount ownership differs from current user
+
+### Suggested Fix
+- Add workspace to git safe.directory before git commands:
+  `git config --global --add safe.directory /home/node/.openclaw/workspace`
+
+### Metadata
+- Reproducible: yes
+- Related Files: /home/node/.openclaw/workspace/.learnings/ERRORS.md
+
+---

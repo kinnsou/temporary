@@ -50,3 +50,28 @@ User explicitly corrected behavior: "不要多回話，一次而已" after the a
 - Tags: line, group-chat, duplication, correction
 
 ---
+
+## [LRN-20260304-001] correction
+
+**Logged**: 2026-03-04T03:14:00Z
+**Priority**: high
+**Status**: pending
+**Area**: docs
+
+### Summary
+Daily morning brief was sent with the wrong date (used 3/2 content on 3/4), causing stale report delivery.
+
+### Details
+User explicitly corrected that this morning's report was dated/content-aligned to March 2 instead of today's date. For scheduled briefs, date integrity must be validated before sending (title date, body references, and recency of source items).
+
+### Suggested Action
+- Enforce a pre-send date check: header date must equal current Taipei date.
+- Reject/refresh draft when source timestamps are older than expected window for "today's brief".
+- Include explicit generated timestamp in report header to reduce ambiguity.
+
+### Metadata
+- Source: user_feedback
+- Related Files: memory/daily-tasks.json
+- Tags: line, daily-brief, date-validation, correction
+
+---
