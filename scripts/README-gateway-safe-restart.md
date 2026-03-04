@@ -12,12 +12,12 @@ Script: `scripts/gateway-safe-restart.sh`
 4. If checks fail, restores the **last known good** snapshot and restarts once
 5. Uses a circuit breaker to avoid repeated failure loops
 
-## Snapshot files
+## Snapshot files (auto-detected)
 
-- `/home/node/.openclaw/openclaw.json`
-- `/home/node/openclaw-host/docker-compose.yml`
-- `/home/node/openclaw-host/docker-compose.override.yml`
-- `/home/node/openclaw-host/.env`
+- `~/.openclaw/openclaw.json`
+- `~/openclaw-host/docker-compose.yml` (or `~/openclaw/docker-compose.yml`)
+- `docker-compose.override.yml`
+- `.env`
 
 ## Commands
 
@@ -40,6 +40,13 @@ Installed shortcut:
 safe-restart
 ```
 
+If your shell says `command not found`, add an alias:
+
+```bash
+echo 'alias safe-restart="$HOME/.openclaw/workspace/scripts/gateway-safe-restart.sh"' >> ~/.bashrc
+source ~/.bashrc
+```
+
 It forwards all flags to `gateway-safe-restart.sh`, e.g.:
 
 ```bash
@@ -57,7 +64,7 @@ safe-restart --mark-good
 
 ## State directory
 
-- `/home/node/.openclaw/workspace/.openclaw/lkg-gateway/`
+- `~/.openclaw/workspace/.openclaw/lkg-gateway/` (or your configured workspace)
   - `snapshots/`
   - `last_known_good`
   - `events.log`

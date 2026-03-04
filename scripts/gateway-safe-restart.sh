@@ -8,9 +8,86 @@ set -euo pipefail
 # - On failure, rollback to last known good snapshot and restart once
 # - Circuit breaker to avoid endless restart loops
 
-WORKSPACE="${WORKSPACE:-/home/node/.openclaw/workspace}"
-OPENCLAW_JSON="${OPENCLAW_JSON:-/home/node/.openclaw/openclaw.json}"
-HOST_DIR="${HOST_DIR:-/home/node/openclaw-host}"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DEFAULT_HOME="${HOME:-$(getent passwd "$(id -u)" 2>/dev/null | cut -d: -f6 || echo /home/node)}"
+
+resolve_default_workspace() {
+  if [[ -n "${OPENCLAW_WORKSPACE_DIR:-}" && -d "${OPENCLAW_WORKSPACE_DIR}" ]]; then
+    echo "${OPENCLAW_WORKSPACE_DIR}"
+    return
+  fi
+
+  local script_workspace
+  script_workspace="$(cd "$SCRIPT_DIR/.." && pwd)"
+  if [[ -f "$script_workspace/AGENTS.md" ]]; then
+    echo "$script_workspace"
+    return
+  fi
+
+  if [[ -d "$DEFAULT_HOME/.openclaw/workspace" ]]; then
+    echo "$DEFAULT_HOME/.openclaw/workspace"
+    return
+  fi
+
+  if [[ -d "/home/node/.openclaw/workspace" ]]; then
+    echo "/home/node/.openclaw/workspace"
+    return
+  fi
+
+  echo "$DEFAULT_HOME/.openclaw/workspace"
+}
+
+resolve_default_openclaw_json() {
+  local workspace="$1"
+
+  if [[ -n "${OPENCLAW_CONFIG_DIR:-}" && -f "${OPENCLAW_CONFIG_DIR}/openclaw.json" ]]; then
+    echo "${OPENCLAW_CONFIG_DIR}/openclaw.json"
+    return
+  fi
+
+  local parent_cfg
+  parent_cfg="$(cd "$workspace/.." && pwd)/openclaw.json"
+  if [[ -f "$parent_cfg" ]]; then
+    echo "$parent_cfg"
+    return
+  fi
+
+  if [[ -f "$DEFAULT_HOME/.openclaw/openclaw.json" ]]; then
+    echo "$DEFAULT_HOME/.openclaw/openclaw.json"
+    return
+  fi
+
+  if [[ -f "/home/node/.openclaw/openclaw.json" ]]; then
+    echo "/home/node/.openclaw/openclaw.json"
+    return
+  fi
+
+  echo "$DEFAULT_HOME/.openclaw/openclaw.json"
+}
+
+resolve_default_host_dir() {
+  local candidates=(
+    "${OPENCLAW_HOST_DIR:-}"
+    "$DEFAULT_HOME/openclaw-host"
+    "$DEFAULT_HOME/openclaw"
+    "/home/node/openclaw-host"
+  )
+
+  local c
+  for c in "${candidates[@]}"; do
+    [[ -z "$c" ]] && continue
+    if [[ -f "$c/docker-compose.yml" ]]; then
+      echo "$c"
+      return
+    fi
+  done
+
+  echo "$DEFAULT_HOME/openclaw-host"
+}
+
+WORKSPACE="${WORKSPACE:-$(resolve_default_workspace)}"
+OPENCLAW_JSON="${OPENCLAW_JSON:-$(resolve_default_openclaw_json "$WORKSPACE")}"
+HOST_DIR="${HOST_DIR:-$(resolve_default_host_dir)}"
 STATE_DIR="${STATE_DIR:-$WORKSPACE/.openclaw/lkg-gateway}"
 SNAPSHOT_ROOT="$STATE_DIR/snapshots"
 LKG_PTR="$STATE_DIR/last_known_good"

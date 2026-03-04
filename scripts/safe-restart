@@ -1,3 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
-exec /home/node/.openclaw/workspace/scripts/gateway-safe-restart.sh "$@"
+
+for candidate in \
+  "$HOME/.openclaw/workspace/scripts/gateway-safe-restart.sh" \
+  "/home/node/.openclaw/workspace/scripts/gateway-safe-restart.sh"; do
+  if [[ -x "$candidate" ]]; then
+    exec "$candidate" "$@"
+  fi
+done
+
+echo "gateway-safe-restart.sh not found. Expected at ~/.openclaw/workspace/scripts/" >&2
+exit 1
