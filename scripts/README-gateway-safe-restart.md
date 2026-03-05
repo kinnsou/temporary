@@ -56,6 +56,11 @@ safe-restart --mark-good
 
 ## Notes
 
+- Startup can be slow after container recreate. Tunables:
+  - `CHECK_TIMEOUT_SECONDS` (default `300`)
+  - `STARTUP_GRACE_SECONDS` (default `8`)
+
+
 - If Docker Compose is available, the script uses:
   - `docker compose up -d --force-recreate openclaw-gateway`
 - For env-file discovery (used by compose restart + snapshot), order is:

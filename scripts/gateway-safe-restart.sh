@@ -120,8 +120,9 @@ COMPOSE_ENV_FILE_RESOLVED="$(resolve_compose_env_file || true)"
 GATEWAY_URL="${GATEWAY_URL:-http://127.0.0.1:18789}"
 HEALTH_PATH="${HEALTH_PATH:-/healthz}"
 LINE_WEBHOOK_FALLBACK="${LINE_WEBHOOK_FALLBACK:-/line/webhook}"
-CHECK_TIMEOUT_SECONDS="${CHECK_TIMEOUT_SECONDS:-90}"
+CHECK_TIMEOUT_SECONDS="${CHECK_TIMEOUT_SECONDS:-300}"
 CHECK_INTERVAL_SECONDS="${CHECK_INTERVAL_SECONDS:-3}"
+STARTUP_GRACE_SECONDS="${STARTUP_GRACE_SECONDS:-8}"
 FAILURE_WINDOW_SECONDS="${FAILURE_WINDOW_SECONDS:-1800}" # 30m
 FAILURE_THRESHOLD="${FAILURE_THRESHOLD:-3}"
 
@@ -203,7 +204,7 @@ line_webhook_path() {
 health_ok() {
   local tmp code
   tmp="$(mktemp)"
-  code="$(curl -sS -m 6 -o "$tmp" -w "%{http_code}" "$GATEWAY_URL$HEALTH_PATH" || true)"
+  code="$(curl -s -m 6 -o "$tmp" -w "%{http_code}" "$GATEWAY_URL$HEALTH_PATH" 2>/dev/null || true)"
   if [[ "$code" != "200" ]]; then
     rm -f "$tmp"
     return 1
@@ -223,10 +224,10 @@ line_webhook_ok() {
   local path tmp code
   path="$(line_webhook_path)"
   tmp="$(mktemp)"
-  code="$(curl -sS -m 8 -o "$tmp" -w "%{http_code}" \
+  code="$(curl -s -m 8 -o "$tmp" -w "%{http_code}" \
     -X POST "$GATEWAY_URL$path" \
     -H 'Content-Type: application/json' \
-    -d '{"events":[]}' || true)"
+    -d '{"events":[]}' 2>/dev/null || true)"
   rm -f "$tmp"
 
   [[ "$code" == "200" ]]
@@ -234,6 +235,12 @@ line_webhook_ok() {
 
 wait_healthy() {
   local elapsed=0
+
+  if (( STARTUP_GRACE_SECONDS > 0 )); then
+    sleep "$STARTUP_GRACE_SECONDS"
+    elapsed=$(( elapsed + STARTUP_GRACE_SECONDS ))
+  fi
+
   while (( elapsed <= CHECK_TIMEOUT_SECONDS )); do
     if health_ok && line_webhook_ok; then
       return 0
