@@ -60,9 +60,9 @@ safe-restart --mark-good
   - `docker compose up -d --force-recreate openclaw-gateway`
 - For env-file discovery (used by compose restart + snapshot), order is:
   1. `COMPOSE_ENV_FILE` (if set)
-  2. `<HOST_DIR>/.env`
-  3. `/mnt/c/Task/.env`
-  4. `~/task/.env`
+  2. `<HOST_DIR>/.env` (OpenClaw root env)
+
+  `task/.env` is intentionally **not** used here (separate project env).
 - Fallback restart methods:
   - `openclaw gateway restart`
   - `kill -USR1 <openclaw-gateway-pid>`

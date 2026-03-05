@@ -103,9 +103,6 @@ resolve_compose_env_file() {
 
   local candidates=(
     "$HOST_DIR/.env"
-    "/mnt/c/Task/.env"
-    "$DEFAULT_HOME/task/.env"
-    "$DEFAULT_HOME/Task/.env"
   )
 
   local c
