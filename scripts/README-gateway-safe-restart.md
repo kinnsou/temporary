@@ -58,6 +58,11 @@ safe-restart --mark-good
 
 - If Docker Compose is available, the script uses:
   - `docker compose up -d --force-recreate openclaw-gateway`
+- For env-file discovery (used by compose restart + snapshot), order is:
+  1. `COMPOSE_ENV_FILE` (if set)
+  2. `<HOST_DIR>/.env`
+  3. `/mnt/c/Task/.env`
+  4. `~/task/.env`
 - Fallback restart methods:
   - `openclaw gateway restart`
   - `kill -USR1 <openclaw-gateway-pid>`

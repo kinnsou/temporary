@@ -95,6 +95,31 @@ EVENT_LOG="$STATE_DIR/events.log"
 FAILURE_LOG="$STATE_DIR/failures.log"
 LOCK_DIR="$STATE_DIR/lock"
 
+resolve_compose_env_file() {
+  if [[ -n "${COMPOSE_ENV_FILE:-}" && -f "${COMPOSE_ENV_FILE}" ]]; then
+    echo "${COMPOSE_ENV_FILE}"
+    return
+  fi
+
+  local candidates=(
+    "$HOST_DIR/.env"
+    "/mnt/c/Task/.env"
+    "$DEFAULT_HOME/task/.env"
+    "$DEFAULT_HOME/Task/.env"
+  )
+
+  local c
+  for c in "${candidates[@]}"; do
+    [[ -z "$c" ]] && continue
+    if [[ -f "$c" ]]; then
+      echo "$c"
+      return
+    fi
+  done
+}
+
+COMPOSE_ENV_FILE_RESOLVED="$(resolve_compose_env_file || true)"
+
 GATEWAY_URL="${GATEWAY_URL:-http://127.0.0.1:18789}"
 HEALTH_PATH="${HEALTH_PATH:-/healthz}"
 LINE_WEBHOOK_FALLBACK="${LINE_WEBHOOK_FALLBACK:-/line/webhook}"
@@ -120,6 +145,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 mkdir -p "$SNAPSHOT_ROOT" "$STATE_DIR"
+chmod 700 "$STATE_DIR" "$SNAPSHOT_ROOT" 2>/dev/null || true
 
 log() {
   local msg="$*"
@@ -233,6 +259,7 @@ snapshot_now() {
     "$HOST_DIR/docker-compose.yml"
     "$HOST_DIR/docker-compose.override.yml"
     "$HOST_DIR/.env"
+    "$COMPOSE_ENV_FILE_RESOLVED"
   )
 
   local copied=0
@@ -301,8 +328,13 @@ restart_gateway() {
   # Prefer docker compose recreate when available (ensures env updates apply)
   if command -v docker >/dev/null 2>&1 && [[ -f "$HOST_DIR/docker-compose.yml" ]]; then
     if (cd "$HOST_DIR" && docker compose version >/dev/null 2>&1); then
-      log "Restart method: docker compose recreate openclaw-gateway"
-      (cd "$HOST_DIR" && docker compose up -d --force-recreate openclaw-gateway)
+      if [[ -n "$COMPOSE_ENV_FILE_RESOLVED" ]]; then
+        log "Restart method: docker compose --env-file $COMPOSE_ENV_FILE_RESOLVED recreate openclaw-gateway"
+        (cd "$HOST_DIR" && docker compose --env-file "$COMPOSE_ENV_FILE_RESOLVED" up -d --force-recreate openclaw-gateway)
+      else
+        log "Restart method: docker compose recreate openclaw-gateway"
+        (cd "$HOST_DIR" && docker compose up -d --force-recreate openclaw-gateway)
+      fi
       return 0
     fi
   fi
