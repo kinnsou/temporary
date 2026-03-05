@@ -140,7 +140,11 @@ def parse_runner_csv(csv_path: Path) -> Dict:
 
     last = rows[-1]
     exit_time = str(last.get('exit_time', '') or '').strip()
-    holding = exit_time == '' or exit_time.lower() in {'none', 'null', 'nan'}
+    reason = str(last.get('reason', '') or '').strip().upper()
+
+    # Runner may force-close the last bar as EOH (End Of History).
+    # For live reconciliation, EOH means strategy might still be in-position.
+    holding = (exit_time == '' or exit_time.lower() in {'none', 'null', 'nan'} or reason == 'EOH')
 
     return {
         "ok": True,
@@ -148,6 +152,7 @@ def parse_runner_csv(csv_path: Path) -> Dict:
         "last_trade_id": str(last.get('trade_id', '') or ''),
         "last_entry_time": str(last.get('entry_time', '') or ''),
         "last_exit_time": exit_time,
+        "last_reason": reason,
         "holding": holding,
     }
 
