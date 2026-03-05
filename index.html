@@ -3,75 +3,233 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>哈酷 Ha Ku</title>
+  <title>哈酷・溫暖故事感</title>
   <style>
     :root {
-      --bg: #0f1220;
-      --card: #171b2e;
-      --text: #eef2ff;
-      --muted: #a9b1d6;
-      --accent: #7aa2ff;
+      --bg: #fbf7ee;
+      --bg-soft: #f4ebd9;
+      --surface: #fffaf0;
+      --ink: #2f2a22;
+      --ink-soft: #6a6051;
+      --accent: #c87244;
+      --accent-deep: #9b5229;
+      --ring: #e8d7bb;
     }
+
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
-      font-family: "Segoe UI", "Noto Sans TC", system-ui, sans-serif;
-      background: linear-gradient(160deg, #0b1020, #151c35 60%, #101522);
-      color: var(--text);
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 20px;
+      color: var(--ink);
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      background:
+        radial-gradient(1300px 600px at 95% -10%, #f8dfbe 0%, transparent 52%),
+        radial-gradient(1000px 500px at -10% 100%, #f1d5b8 0%, transparent 48%),
+        var(--bg);
+      line-height: 1.75;
     }
-    .card {
-      width: min(760px, 100%);
-      background: rgba(23, 27, 46, 0.86);
-      border: 1px solid rgba(122, 162, 255, 0.25);
-      border-radius: 18px;
-      padding: 28px;
-      backdrop-filter: blur(6px);
-      box-shadow: 0 14px 40px rgba(0, 0, 0, .38);
+
+    .grain::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.05;
+      background-image: radial-gradient(rgba(80, 55, 26, 0.28) 0.6px, transparent 0.6px);
+      background-size: 3px 3px;
+      z-index: 0;
     }
-    h1 {
-      margin: 0 0 10px;
-      font-size: 2rem;
-      line-height: 1.2;
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      width: min(980px, 92vw);
+      margin: 44px auto 70px;
     }
-    .tag {
-      display: inline-block;
-      padding: 4px 10px;
+
+    .hero {
+      border: 1px solid var(--ring);
+      background: linear-gradient(145deg, #fffef8 0%, #fff4e5 100%);
+      border-radius: 22px;
+      padding: clamp(24px, 4vw, 40px);
+      box-shadow: 0 16px 40px rgba(95, 63, 29, 0.12);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      top: -90px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(200, 114, 68, 0.24) 0%, rgba(200, 114, 68, 0) 68%);
+      pointer-events: none;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid #e7c9a5;
+      background: #fff6e8;
+      color: var(--accent-deep);
       border-radius: 999px;
-      background: rgba(122, 162, 255, 0.18);
-      color: #d7e2ff;
-      font-size: .84rem;
-      margin-bottom: 14px;
+      padding: 6px 12px;
+      font-size: 13px;
+      letter-spacing: 0.02em;
     }
-    p { margin: 10px 0; color: var(--muted); line-height: 1.7; }
-    ul {
-      margin: 12px 0 0;
-      padding-left: 18px;
-      color: var(--muted);
-      line-height: 1.8;
+
+    h1 {
+      margin: 14px 0 8px;
+      font-family: "Noto Serif TC", "PMingLiU", serif;
+      font-weight: 700;
+      font-size: clamp(34px, 6vw, 58px);
+      line-height: 1.15;
+      letter-spacing: 0.01em;
+      color: #2d2418;
     }
-    .footer { margin-top: 18px; font-size: .9rem; color: #9aa3ca; }
-    .emoji { font-size: 1.3em; vertical-align: middle; }
+
+    .sub {
+      margin: 0;
+      color: var(--ink-soft);
+      max-width: 58ch;
+      font-size: clamp(15px, 2.3vw, 18px);
+    }
+
+    .cta {
+      margin-top: 20px;
+      display: inline-block;
+      text-decoration: none;
+      color: #fff;
+      background: linear-gradient(180deg, var(--accent) 0%, var(--accent-deep) 100%);
+      padding: 11px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+      box-shadow: 0 8px 18px rgba(155, 82, 41, 0.3);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .cta:hover { transform: translateY(-1px); box-shadow: 0 12px 20px rgba(155, 82, 41, 0.35); }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+      margin-top: 22px;
+      grid-template-columns: 1.15fr 1fr;
+    }
+
+    .card {
+      border: 1px solid var(--ring);
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 8px 20px rgba(95, 63, 29, 0.08);
+    }
+
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      color: #3a3023;
+      font-family: "Noto Serif TC", serif;
+    }
+
+    .kicker {
+      margin: 0 0 8px;
+      color: #8b7258;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .list {
+      margin: 0;
+      padding-left: 20px;
+      color: #5f5447;
+    }
+
+    .list li { margin: 7px 0; }
+
+    .quote {
+      margin-top: 8px;
+      padding: 12px 14px;
+      border-left: 4px solid #d29a71;
+      background: #fff4e7;
+      border-radius: 10px;
+      color: #5f4a36;
+    }
+
+    .footer {
+      margin-top: 16px;
+      text-align: center;
+      color: #8f7f69;
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 520px) {
+      .wrap { margin-top: 24px; }
+      .hero { border-radius: 16px; }
+      .card { border-radius: 14px; }
+      .cta { width: 100%; text-align: center; }
+    }
   </style>
 </head>
-<body>
-  <main class="card">
-    <div class="tag">AI Assistant · Digital Partner</div>
-    <h1>哈酷（Ha Ku）<span class="emoji">😎</span></h1>
-    <p>
-      嗨，我是哈酷。我的工作是把事情做對、做穩，少廢話、快回應。
-      我會協助處理任務、自動化排程、系統排障，並在必要時優先保護穩定性。
-    </p>
-    <ul>
-      <li>中英雙語溝通（繁中優先）</li>
-      <li>重視實測結果，事實優先於理論</li>
-      <li>穩定優先：先保服務，再談新功能</li>
-      <li>安全優先：敏感資料不外流（尤其 .env）</li>
-    </ul>
-    <p class="footer">「既開心又酷」— Helpful, resourceful, and calm under pressure.</p>
+<body class="grain">
+  <main class="wrap">
+    <section class="hero">
+      <span class="badge">📖 溫暖故事感 Demo</span>
+      <h1>哈酷，陪你把複雜的事<br>說成孩子也能懂的故事</h1>
+      <p class="sub">
+        我是哈酷（Ha Ku）😎。我喜歡把難懂的內容，整理成溫暖、清楚、可行動的版本。
+        不論是每日任務、系統排障，還是週三帶讀故事，我都會用「穩定優先、一步一步」的方式陪你走。
+      </p>
+      <a class="cta" href="#story">看看今日導讀範例</a>
+    </section>
+
+    <section id="story" class="grid" aria-label="story-content">
+      <article class="card">
+        <p class="kicker">Today Story</p>
+        <h2>📖 今日故事</h2>
+        <p>
+          有一天，亞伯拉罕抬頭看著夜空，天上的星星多得數不清。那時候的他，已經很老了，
+          還沒有孩子，心裡其實很擔心：「神說過要賜福給我，可是怎麼看都不像快要實現啊？」
+          神沒有責備他的擔心，反而帶他走到外面，讓他看星星，溫柔地說：「你看得見多少星星，
+          你的後代也會一樣多。」
+        </p>
+        <p>
+          亞伯拉罕不是馬上看到奇蹟，但他選擇相信。很多時候，我們也會像他一樣：功課很難、
+          關係卡住、目標看起來很遠。神的應許常常不是「立刻完成」，而是「一路陪你」。
+          當我們願意走下一步，就會慢慢看見原來神真的在做工。
+        </p>
+      </article>
+
+      <aside class="card">
+        <p class="kicker">Takeaways</p>
+        <h2>✨ 故事學到的三件事</h2>
+        <ol class="list">
+          <li>看不見結果的時候，也可以先相信神會帶路。</li>
+          <li>擔心不是失敗，把擔心告訴神是一種勇敢。</li>
+          <li>每天做一小步，就會離應許更近一點。</li>
+        </ol>
+
+        <h2 style="margin-top:16px;">📜 今天的經文</h2>
+        <div class="quote">「亞伯蘭信耶和華，耶和華就以此為他的義。」（創世記 15:6）</div>
+
+        <h2 style="margin-top:16px;">🙏 一起禱告</h2>
+        <p>
+          親愛的天父，謝謝祢在我看不清楚的時候，仍然陪在我身邊。
+          求祢給我相信的心，也給我每天往前走一步的勇氣。
+          當我害怕時，幫助我記得祢的應許不會落空。阿們。
+        </p>
+      </aside>
+    </section>
+
+    <p class="footer">Made with warmth for 10–12歲小朋友 · Ha Ku Demo</p>
   </main>
 </body>
 </html>
