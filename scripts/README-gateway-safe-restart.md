@@ -10,6 +10,7 @@ Script: `scripts/gateway-safe-restart.sh`
    - `GET /healthz`
    - `POST /line/webhook` (when LINE is enabled)
 4. If checks fail, restores the **last known good** snapshot and restarts once
+   - If no LKG exists yet, it uses the current pre-restart snapshot as rollback baseline
 5. Uses a circuit breaker to avoid repeated failure loops
 
 ## Snapshot files (auto-detected)
@@ -69,8 +70,10 @@ safe-restart --mark-good
 
   `task/.env` is intentionally **not** used here (separate project env).
 - Fallback restart methods:
-  - `openclaw gateway restart`
   - `kill -USR1 <openclaw-gateway-pid>`
+  - `openclaw gateway restart` (last resort)
+- Stale lock recovery:
+  - lock older than 15 minutes is auto-recovered
 
 ## State directory
 
@@ -79,4 +82,10 @@ safe-restart --mark-good
   - `last_known_good`
   - `events.log`
   - `failures.log`
+
+If state files are not writable, fix ownership once:
+
+```bash
+sudo chown -R "$USER:$USER" "$HOME/.openclaw/workspace/.openclaw/lkg-gateway"
+```
 

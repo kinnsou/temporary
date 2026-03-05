@@ -145,6 +145,17 @@ done
 mkdir -p "$SNAPSHOT_ROOT" "$STATE_DIR"
 chmod 700 "$STATE_DIR" "$SNAPSHOT_ROOT" 2>/dev/null || true
 
+touch "$EVENT_LOG" 2>/dev/null || {
+  echo "ERROR: state dir not writable: $STATE_DIR" >&2
+  echo "Fix: sudo chown -R $USER:$USER \"$STATE_DIR\"" >&2
+  exit 1
+}
+touch "$FAILURE_LOG" 2>/dev/null || {
+  echo "ERROR: failure log not writable: $FAILURE_LOG" >&2
+  echo "Fix: sudo chown -R $USER:$USER \"$STATE_DIR\"" >&2
+  exit 1
+}
+
 log() {
   local msg="$*"
   local ts
@@ -163,6 +174,23 @@ acquire_lock() {
     trap 'rm -rf "$LOCK_DIR"' EXIT
     return 0
   fi
+
+  # Try recovering stale lock (older than 15 minutes)
+  if [[ -d "$LOCK_DIR" ]]; then
+    local now lock_mtime age
+    now="$(date +%s)"
+    lock_mtime="$(stat -c %Y "$LOCK_DIR" 2>/dev/null || echo 0)"
+    age=$(( now - lock_mtime ))
+    if (( age > 900 )); then
+      rm -rf "$LOCK_DIR" 2>/dev/null || true
+      if mkdir "$LOCK_DIR" 2>/dev/null; then
+        trap 'rm -rf "$LOCK_DIR"' EXIT
+        log "Recovered stale lock (age=${age}s)"
+        return 0
+      fi
+    fi
+  fi
+
   fail "Another gateway-safe-restart is running (lock: $LOCK_DIR)"
 }
 
@@ -343,13 +371,7 @@ restart_gateway() {
     fi
   fi
 
-  if command -v openclaw >/dev/null 2>&1; then
-    log "Restart method: openclaw gateway restart"
-    if openclaw gateway restart >/dev/null 2>&1; then
-      return 0
-    fi
-  fi
-
+  # Next best: in-process reload signal
   local pid
   pid="$(pgrep -f '^openclaw-gateway$' | head -n1 || true)"
   if [[ -n "$pid" ]]; then
@@ -358,7 +380,15 @@ restart_gateway() {
     return 0
   fi
 
-  fail "No available restart method (docker/openclaw/pid not found)."
+  # Last resort: CLI restart (can be unavailable under non-systemd setups)
+  if command -v openclaw >/dev/null 2>&1; then
+    log "Restart method: openclaw gateway restart"
+    if timeout 30 openclaw gateway restart >/dev/null 2>&1; then
+      return 0
+    fi
+  fi
+
+  fail "No available restart method (docker/pid/openclaw not available)."
 }
 
 mark_good() {
@@ -383,6 +413,12 @@ run_safe_restart() {
   candidate="$(snapshot_now "pre-restart")"
   log "Created pre-restart snapshot: $candidate"
 
+  # If no valid LKG exists yet, use the pre-restart snapshot as rollback baseline.
+  if [[ -z "$previous_lkg" || ! -d "$previous_lkg/files" ]]; then
+    previous_lkg="$candidate"
+    log "No valid LKG pointer found; using pre-restart snapshot as rollback baseline"
+  fi
+
   restart_gateway
   if wait_healthy; then
     echo "$candidate" > "$LKG_PTR"
@@ -394,15 +430,12 @@ run_safe_restart() {
   log "Restart failed health checks. Attempting rollback..."
   record_failure
 
-  if [[ -z "$previous_lkg" || ! -d "$previous_lkg/files" ]]; then
-    fail "No previous LKG snapshot available for rollback."
-  fi
-
   restore_snapshot "$previous_lkg"
   restart_gateway
 
   if wait_healthy; then
-    log "Rollback success. Active LKG remains: $previous_lkg"
+    echo "$previous_lkg" > "$LKG_PTR"
+    log "Rollback success. Active LKG: $previous_lkg"
     return 0
   fi
 
