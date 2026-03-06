@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lesson12 — 神的應許</title>
+  <title>Lesson12 — 周三 神的應許</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -13,7 +13,7 @@
       color: #3a2e24;
       min-height: 100vh;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
       padding: 2rem 1rem;
     }
@@ -21,110 +21,215 @@
     .card {
       background: #fff8f0;
       border-radius: 18px;
-      box-shadow: 0 6px 32px rgba(120, 80, 30, 0.12);
+      box-shadow: 0 6px 32px rgba(120, 80, 30, 0.13);
       max-width: 680px;
       width: 100%;
       overflow: hidden;
     }
 
+    /* ── Header ── */
     .header {
       background: linear-gradient(135deg, #b85c2c 0%, #c9783a 60%, #d4924a 100%);
       padding: 2rem 2rem 1.5rem;
       text-align: center;
-      position: relative;
     }
-
-    .header::after {
-      content: '';
-      display: block;
-      height: 4px;
-      background: linear-gradient(90deg, transparent, rgba(255,235,190,0.6), transparent);
-      margin-top: 1.2rem;
-    }
-
     .lesson-label {
       font-size: 0.82rem;
       letter-spacing: 0.18em;
       color: rgba(255,240,215,0.85);
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.45rem;
     }
-
     .lesson-title {
-      font-size: 1.6rem;
+      font-size: 1.55rem;
       font-weight: 700;
       color: #fff8ee;
-      letter-spacing: 0.06em;
-      margin-bottom: 0.6rem;
-      text-shadow: 0 2px 8px rgba(80,30,0,0.35);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 8px rgba(80,30,0,0.3);
     }
-
     .lesson-subtitle {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 700;
       color: rgba(255,235,185,0.95);
       letter-spacing: 0.1em;
     }
-
-    .body {
-      padding: 2rem 2rem 1.6rem;
+    .divider-line {
+      height: 3px;
+      background: linear-gradient(90deg, transparent, rgba(255,235,190,0.55), transparent);
+      margin-top: 1.2rem;
     }
 
-    .story {
-      font-size: 1.06rem;
+    /* ── Body sections ── */
+    .body {
+      padding: 1.8rem 2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+    }
+
+    .section-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #8b4513;
+      margin-bottom: 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* 今日故事 */
+    .story-box {
+      background: #fffaf4;
+      border-radius: 12px;
+      border: 1px solid #f0dfc8;
+      padding: 1.3rem 1.4rem;
+    }
+    .story-text {
+      font-size: 1.04rem;
       line-height: 2.0;
       color: #3a2e24;
       text-align: justify;
-      margin-bottom: 1.6rem;
+    }
+    .story-text p + p { margin-top: 0.9em; }
+
+    /* 三件事 */
+    .three-things {
+      background: #fef9ef;
+      border-radius: 12px;
+      border-left: 4px solid #d4924a;
+      padding: 1.2rem 1.4rem;
+    }
+    .three-things ol {
+      padding-left: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .three-things li {
+      font-size: 1.02rem;
+      line-height: 1.75;
+      color: #4a3020;
     }
 
-    .story p + p {
-      margin-top: 1.1em;
-    }
-
-    .reflection {
+    /* 經文 */
+    .scripture-box {
       background: linear-gradient(135deg, #fdf3e3, #fae8cc);
-      border-left: 4px solid #c9783a;
-      border-radius: 0 10px 10px 0;
-      padding: 1rem 1.2rem;
-      font-size: 0.97rem;
-      line-height: 1.8;
-      color: #5c3d1e;
+      border-radius: 12px;
+      padding: 1.2rem 1.4rem;
+      text-align: center;
+    }
+    .scripture-text {
+      font-size: 1.1rem;
       font-style: italic;
+      line-height: 1.85;
+      color: #5c3d1e;
+      font-weight: 500;
+    }
+    .scripture-ref {
+      margin-top: 0.5rem;
+      font-size: 0.88rem;
+      color: #8b6040;
     }
 
+    /* 禱告 */
+    .prayer-box {
+      background: #fdf6ee;
+      border-radius: 12px;
+      border: 1px dashed #d4a070;
+      padding: 1.2rem 1.4rem;
+    }
+    .prayer-text {
+      font-size: 1.01rem;
+      line-height: 2.0;
+      color: #4a3020;
+    }
+    .prayer-text p + p { margin-top: 0.5em; }
+
+    /* ── Footer ── */
+    .footer-divider {
+      text-align: center;
+      padding: 0.7rem 2rem 0.5rem;
+      font-size: 0.82rem;
+      color: #c0a080;
+      letter-spacing: 0.12em;
+      border-top: 1px solid #f0dfc8;
+    }
     .footer {
       text-align: center;
-      padding: 1rem 2rem 1.4rem;
-      font-size: 0.8rem;
+      padding: 0.3rem 2rem 1.2rem;
+      font-size: 0.78rem;
       color: #b08060;
       letter-spacing: 0.08em;
-      border-top: 1px solid #f0dfc8;
     }
   </style>
 </head>
 <body>
   <div class="card">
+
+    <!-- Header -->
     <div class="header">
       <div class="lesson-label">Lesson 12 · 2026 三月第二週</div>
       <div class="lesson-title">亞伯拉罕在迦南</div>
       <div class="lesson-subtitle">周三 神的應許</div>
+      <div class="divider-line"></div>
     </div>
 
+    <!-- Body -->
     <div class="body">
-      <div class="story">
-        <p>亞伯拉罕在爭戰得勝後回到家，心裡卻開始畏懼。他擔憂兩件事：一是敵人可能回頭攻打他，二是自己至今仍沒有兒子，不知誰能繼承家業。這時，神在異象中對亞伯拉罕說：「亞伯蘭，你不要懼怕，我是你的盾牌，必大大地賞賜你。」神給了兩個保證：「我是你的盾牌」，意思是再也沒有人能傷害你；「我是你極大的賞賜」，意思是你所失去的一切，都能在神身上得著補足。</p>
 
-        <p>然而亞伯拉罕卻對神說：「主耶和華啊，我既無子，你還賜我什麼呢？生在我家的僕人以利以謝，難道就是我的後嗣嗎？」亞伯拉罕這樣問神，神並不不悅，反而喜歡。神喜歡我們像朋友一樣，向祂訴說心中的疑問與掛慮。神說話，我們聽；我們說話，神也聽。這是一個互相交通的關係，神渴望我們不只敬畏祂，更親近祂。</p>
-
-        <p>神其實知道亞伯拉罕的需要，但祂要把亞伯拉罕帶到一個地步，讓他自己向神開口求。這是因為神渴望我們進入祂的心意，成為祂的朋友。不只接受祂的賞賜，更明白祂更深的計畫。當我們帶著真實的心，向神說出我們的需要，神就更多地將祂的應許顯明給我們，我們就更深地認識祂了。</p>
+      <!-- 今日故事 -->
+      <div>
+        <div class="section-title">📖 今日故事</div>
+        <div class="story-box">
+          <div class="story-text">
+            <p>亞伯拉罕打了一場大戰，保護了親人，勝利回家。可是，回來以後，他心裡卻開始害怕起來。他在想兩件事：一是那些被打敗的敵人，說不定哪天會回來報仇；二是他已經年紀很大了，還沒有自己的孩子，不知道將來誰能繼承他的家業。</p>
+            <p>就在亞伯拉罕又擔心又難過的時候，神在異象中來找他，說：「亞伯蘭，你不要害怕！我是你的盾牌，一定會大大地賞賜你。」</p>
+            <p>神說這句話，是要給亞伯拉罕兩個很重要的保證。第一，「我是你的盾牌」，就是說神會像盾牌一樣保護你，沒有人能輕易傷害你；第二，「我是你極大的賞賜」，就是說你缺少什麼，在神那裡都能得著補足。</p>
+            <p>不過，亞伯拉罕還是有疑問，就直接問神說：「神啊，我現在還沒有兒子，你說要賞賜我，那可以賞我什麼呢？」你知道嗎？亞伯拉罕這樣直接問神，神不但沒有生氣，反而很開心！因為神喜歡我們像朋友一樣，把心裡的話說給祂聽。神說話，我們聽；我們說話，神也聽，這是很美的關係。</p>
+            <p>後來，神把亞伯拉罕帶到外面，指著天上滿滿的星星說：「你看這些星星，數得完嗎？你將來的後代，就會像這些星星一樣多！」亞伯拉罕聽了，真心相信神說的話。就因為他相信，神非常喜悅，把他算為義人。這告訴我們：當我們害怕的時候，可以直接跟神說；真心相信神的話，就是神最喜歡看到的事。</p>
+          </div>
+        </div>
       </div>
 
-      <div class="reflection">
-        § 學習像亞伯拉罕一樣，真實地向神說話，藉著禱告進入神的心意，成為祂親密的朋友。
+      <!-- 三件事 -->
+      <div>
+        <div class="section-title">✨ 故事學到的三件事</div>
+        <div class="three-things">
+          <ol>
+            <li>當我們害怕或擔心的時候，神會對我們說：「不要害怕，我在這裡陪著你！」</li>
+            <li>神喜歡我們像朋友一樣，把心裡的話直接說給祂聽，不用擔心祂會生氣。</li>
+            <li>真心相信神說的話，就是讓神最開心的事，這比做很多事情更重要。</li>
+          </ol>
+        </div>
       </div>
+
+      <!-- 經文 -->
+      <div>
+        <div class="section-title">📜 今天的經文</div>
+        <div class="scripture-box">
+          <div class="scripture-text">「亞伯蘭信耶和華，<br>耶和華就以此為他的義。」</div>
+          <div class="scripture-ref">創世記 十五章6節</div>
+        </div>
+      </div>
+
+      <!-- 禱告 -->
+      <div>
+        <div class="section-title">🙏 一起禱告</div>
+        <div class="prayer-box">
+          <div class="prayer-text">
+            <p>親愛的神，謝謝你告訴亞伯拉罕「不要害怕」，也謝謝你對我說同樣的話。</p>
+            <p>有時候我心裡會擔心很多事，求你幫助我把這些擔心說給你聽，就像亞伯拉罕那樣。</p>
+            <p>讓我越來越相信你說的話，知道你是我的盾牌，一直在保護我。</p>
+            <p>謝謝你喜歡聽我說話，也喜歡和我做朋友。</p>
+            <p>奉耶穌的名禱告，阿們。</p>
+          </div>
+        </div>
+      </div>
+
     </div>
 
+    <!-- Footer -->
+    <div class="footer-divider">——————END——————</div>
     <div class="footer">聖經之旅 第一冊 · 蒙揀選的族類</div>
   </div>
 </body>
