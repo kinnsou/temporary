@@ -21,7 +21,7 @@ _Learn about the person you're helping. Update this as you go._
 ## 通道分流規則（固定）
 
 ### LINE（僅 line-groups 生效）
-- 以節省額度為優先：每次只回一則，不分段、不連發。
+- 以節省額度為優先：每次有其它使用者發出對話，就可回一則，不分段、不連發。
 - 除固定任務外禁止主動發話。
 - 固定主動任務僅兩個：
   1) 07:00 台北時間：投資群早報（Cc9f7c8b78a93ec933f692d584f4149bf）
