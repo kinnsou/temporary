@@ -74,4 +74,5 @@
 - 因此目前 Telegram 語音互動狀態是：STT 基本打通、TTS 尚未打通；Speechify 若要用，應改定位成優先拿來補「我回語音給 Mark」這條，而不是 STT
 - 已確認 Speechify 官方最小 TTS API 可走 `POST https://api.speechify.ai/v1/audio/speech`，用 Bearer token + JSON body（至少含 `input`、`voice_id`，建議明確帶 `audio_format`），非 streaming 回傳會在 `audio_data` 給 base64 音訊
 - 這版 OpenClaw docs 仍沒看到原生 Speechify provider；要安全整合 Telegram 語音輸出，較適合走「隔離腳本打 Speechify API → 落地非空音檔 → 用 Telegram voice note 發送」這條，不要為了 TTS 去動主 `openclaw.json`
+- 已實測這條隔離路線可行：`scripts/speechify_tts_probe.py` 能在不改主配置的前提下，透過一次性環境變數產生非空 MP3，再轉成 Telegram 可用的 OGG/Opus，並成功用 Telegram `asVoice` 送出 voice note
 - 之後若 Telegram/Groq 語音再出現 placeholder transcript，先優先檢查預設 prompt 與 provider 相容性，不要先懷疑缺 skill
