@@ -60,4 +60,6 @@
 - 目前實測英語 prompt `Please transcribe verbatim.` 不會被 Groq 原樣吐回，已作為暫時 workaround 寫進 `openclaw.json`
 - 但 Groq `whisper-large-v3-turbo` 在這台對 Telegram 中文語音辨識仍明顯不可靠：最新測試在 placeholder 問題修掉後，實際 transcript 仍常錯成 `Thank you.` 等無關內容
 - 對最新 Telegram `.ogg` 直接打 Groq transcription endpoint 做 A/B：加 `language=zh` 也沒改善，代表主要瓶頸已變成 provider 準確率，而不是 prompt / scope / skill
+- Speechify 對目前這題比較偏 TTS（我回語音給 Mark），不是解 Telegram inbound 語音辨識的 STT；而且這版 OpenClaw docs 沒看到內建 Speechify provider，不能當成現成可切換的路線
+- 使用者若把 API key 直接貼進聊天，不要寫進記憶檔；只記「已考慮過 Speechify，但目前不走這條整合路線」即可
 - 之後若 Telegram/Groq 語音再出現 placeholder transcript，先優先檢查預設 prompt 與 provider 相容性，不要先懷疑缺 skill
