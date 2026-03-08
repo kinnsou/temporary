@@ -70,5 +70,6 @@
 - 在發現前兩段 Telegram 語音檔幾乎靜音後，Mark 合理懷疑真正問題可能是麥克風/收音而不只是 provider；若後續要快速驗證，先恢復到較簡單且已知可跑通的 Groq 路線也是合理策略
 - 重新切回 Groq (`whisper-large-v3-turbo` + `Please transcribe verbatim.`) 後，Mark 傳了一段更清楚的新 Telegram 語音，成功轉寫出 `Hello, 测试好了吗?这样可以吗?有清楚吗?`，代表 Groq 在收音正常時其實可用
 - 後續再測一段有背景噪音的中文 Telegram 語音，Groq 仍成功轉寫成 `嘿哈古,怎麼樣?現在聲音清不清楚?背景是有點吵。不過應該是可以了吧?`；唯一明顯小誤差是把「哈酷」聽成「哈古」，但不影響理解
-- Telegram 語音輸出也已實測可用：用 `tts` 工具在 Telegram 會回傳可作為 voice note 發送的音檔（工具結果帶 `[[audio_as_voice]]`）
+- Telegram inbound 語音（Groq STT）在收音正常時已可用，但內建 `tts` 工具目前在這台產出的 Telegram 音檔是 0 bytes；工具雖回 `[[audio_as_voice]]` + `MEDIA:` 路徑，實體檔案卻是空的，導致 Telegram `sendVoice` 報 `file must be non-empty`
+- 因此目前 Telegram 語音互動狀態是：STT 基本打通、TTS 尚未打通；Speechify 若要用，應改定位成優先拿來補「我回語音給 Mark」這條，而不是 STT
 - 之後若 Telegram/Groq 語音再出現 placeholder transcript，先優先檢查預設 prompt 與 provider 相容性，不要先懷疑缺 skill
