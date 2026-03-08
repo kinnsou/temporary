@@ -62,4 +62,7 @@
 - 對最新 Telegram `.ogg` 直接打 Groq transcription endpoint 做 A/B：加 `language=zh` 也沒改善，代表主要瓶頸已變成 provider 準確率，而不是 prompt / scope / skill
 - Speechify 對目前這題比較偏 TTS（我回語音給 Mark），不是解 Telegram inbound 語音辨識的 STT；而且這版 OpenClaw docs 沒看到內建 Speechify provider，不能當成現成可切換的路線
 - 使用者若把 API key 直接貼進聊天，不要寫進記憶檔；只記「已考慮過 Speechify，但目前不走這條整合路線」即可
+- Deepgram API key 已驗證可打通 API，但新的關鍵發現是：Mark 前兩段 Telegram `.ogg` 語音檔本身幾乎是靜音（volumedetect 約 `mean -91 dB / max -90 dB`），這會讓 STT provider 幾乎不可能穩定辨識
+- Deepgram 最新官方模型語系表與本機 docs 有落差：本機 docs 舉 `nova-3` 當 quick start，但官方當前語系表顯示中文（`zh`/`zh-TW`）是在 `nova-2`，不是 `nova-3`
+- 目前已把 OpenClaw audio provider 切到 `deepgram/nova-2` + `language=zh-TW`，並開 `punctuate` / `smart_format`；下一步應要求 Mark 傳一段更大聲、更清楚的新 Telegram 語音再測
 - 之後若 Telegram/Groq 語音再出現 placeholder transcript，先優先檢查預設 prompt 與 provider 相容性，不要先懷疑缺 skill
