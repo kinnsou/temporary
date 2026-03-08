@@ -41,5 +41,8 @@ Use this compact style unless the user explicitly asks for another presentation.
 - Do not write `發音：` or `意思：` in the final child-facing message
 - Use emoji-only labels for those lines
 - Keep the message visually light
+- The review examples above are illustrative only; do not mechanically reuse their wording
+- `🔍 句型觀察` must match the actual review sentence chosen that day
+- `🔍 句型觀察` should point out the sentence's real verb / be 動詞 / tense / object position in plain Chinese
 - Review hints should teach something useful without sounding like a grammar textbook
 - Do not show the English answer directly unless the user asks for an answer-key version

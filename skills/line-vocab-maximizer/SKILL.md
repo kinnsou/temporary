@@ -25,6 +25,8 @@ Use this skill for the daughter's daily LINE vocab workflow.
 - New words: **never repeat** until the pool is exhausted
 - Review questions: **guided fill-in**, not “Do you remember this word?”
 - Grammar teaching focus: **verb positioning first**
+- `🔍 句型觀察` must be written fresh from that day's actual review sentence, not copied from the prompt examples
+- `🔍 句型觀察` should explicitly point out the real verb / be-verb / tense or object position in that sentence, using child-friendly Chinese
 - Avoid abstract grammar labels like `S+V`, `S+V+O`, `S+V+C` in child-facing output
 - Use simple Chinese hints such as:
   - `（發現）這裡要用過去式，發現了。`
