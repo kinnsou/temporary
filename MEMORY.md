@@ -49,3 +49,11 @@
 - 若 `/model <provider/model>` 報 `is not allowed`，常見真正原因是 `openclaw.json` 的 allowlist（`agents.defaults.models`）沒有放行新模型
 - 實際修復順序通常是：source patch → build → gateway restart → 檢查 config allowlist / default model → 再驗證 `/model`
 - 目前已完成 `openai-codex/gpt-5.4` 啟用，並設為預設 primary
+
+## Telegram 語音互動導入經驗
+- Mark 想把 Telegram 當成語音互動 MVP，主要場景是開車中只方便用聽的、不方便看字或打字
+- `tools.media.audio.scope` 若只 allow `line`，Telegram 語音就算收到了也不會進轉寫；已確認要把 `telegram` 也加入 allow 規則
+- OpenClaw 內建音訊轉寫不是靠 skill；Telegram 語音收進來後走的是核心 `tools.media.audio` pipeline
+- 目前 Groq `whisper-large-v3-turbo` 在這台的關鍵坑：若 OpenClaw 傳 `prompt=Transcribe the audio.`，Groq 可能直接把這句 prompt 原樣回傳，導致 agent 看到假 transcript（例如 `Transcribe the audio.`）
+- 用同一段 Telegram `.ogg` 語音直接打 Groq transcription endpoint 驗證過：不帶 prompt 會回辨識文字；帶 `Transcribe the audio.` prompt 會回 prompt 本身
+- 之後若 Telegram/Groq 語音再出現 placeholder transcript，先優先檢查預設 prompt 與 provider 相容性，不要先懷疑缺 skill
