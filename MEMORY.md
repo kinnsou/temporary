@@ -67,4 +67,5 @@
 - 目前已把 OpenClaw audio provider 切到 `deepgram/nova-2` + `language=zh-TW`，並開 `punctuate` / `smart_format`；下一步應要求 Mark 傳一段更大聲、更清楚的新 Telegram 語音再測
 - 這版 OpenClaw 若把 Deepgram key 直接塞進 `openclaw.json` 的 `models.providers.deepgram.apiKey`，config schema 會報 `baseUrl` / `models` 缺失，造成 gateway 一直因 invalid config 重載；較正確的做法是用 `DEEPGRAM_API_KEY` 環境變數，不要硬塞那個 config 位置
 - Mark 曾手動把錯誤的 `models.providers.deepgram` 區塊刪掉，gateway 就恢復穩定；之後遇到 provider key 時要優先走 env 方式，特別是依 USER.md 規則寫進 `/home/node/openclaw-host/docker-compose.override.yml`
+- 在發現前兩段 Telegram 語音檔幾乎靜音後，Mark 合理懷疑真正問題可能是麥克風/收音而不只是 provider；若後續要快速驗證，先恢復到較簡單且已知可跑通的 Groq 路線也是合理策略
 - 之後若 Telegram/Groq 語音再出現 placeholder transcript，先優先檢查預設 prompt 與 provider 相容性，不要先懷疑缺 skill
