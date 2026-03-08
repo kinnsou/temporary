@@ -72,4 +72,6 @@
 - 後續再測一段有背景噪音的中文 Telegram 語音，Groq 仍成功轉寫成 `嘿哈古,怎麼樣?現在聲音清不清楚?背景是有點吵。不過應該是可以了吧?`；唯一明顯小誤差是把「哈酷」聽成「哈古」，但不影響理解
 - Telegram inbound 語音（Groq STT）在收音正常時已可用，但內建 `tts` 工具目前在這台產出的 Telegram 音檔是 0 bytes；工具雖回 `[[audio_as_voice]]` + `MEDIA:` 路徑，實體檔案卻是空的，導致 Telegram `sendVoice` 報 `file must be non-empty`
 - 因此目前 Telegram 語音互動狀態是：STT 基本打通、TTS 尚未打通；Speechify 若要用，應改定位成優先拿來補「我回語音給 Mark」這條，而不是 STT
+- 已確認 Speechify 官方最小 TTS API 可走 `POST https://api.speechify.ai/v1/audio/speech`，用 Bearer token + JSON body（至少含 `input`、`voice_id`，建議明確帶 `audio_format`），非 streaming 回傳會在 `audio_data` 給 base64 音訊
+- 這版 OpenClaw docs 仍沒看到原生 Speechify provider；要安全整合 Telegram 語音輸出，較適合走「隔離腳本打 Speechify API → 落地非空音檔 → 用 Telegram voice note 發送」這條，不要為了 TTS 去動主 `openclaw.json`
 - 之後若 Telegram/Groq 語音再出現 placeholder transcript，先優先檢查預設 prompt 與 provider 相容性，不要先懷疑缺 skill
