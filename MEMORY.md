@@ -56,4 +56,6 @@
 - OpenClaw 內建音訊轉寫不是靠 skill；Telegram 語音收進來後走的是核心 `tools.media.audio` pipeline
 - 目前 Groq `whisper-large-v3-turbo` 在這台的關鍵坑：若 OpenClaw 傳 `prompt=Transcribe the audio.`，Groq 可能直接把這句 prompt 原樣回傳，導致 agent 看到假 transcript（例如 `Transcribe the audio.`）
 - 用同一段 Telegram `.ogg` 語音直接打 Groq transcription endpoint 驗證過：不帶 prompt 會回辨識文字；帶 `Transcribe the audio.` prompt 會回 prompt 本身
+- OpenClaw 這版 `tools.media.audio.prompt` 可覆蓋預設 audio prompt；可用它繞過 Groq 對 `Transcribe the audio.` 的回聲問題
+- 目前實測英語 prompt `Please transcribe verbatim.` 不會被 Groq 原樣吐回，已作為暫時 workaround 寫進 `openclaw.json`
 - 之後若 Telegram/Groq 語音再出現 placeholder transcript，先優先檢查預設 prompt 與 provider 相容性，不要先懷疑缺 skill
