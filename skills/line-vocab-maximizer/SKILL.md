@@ -27,6 +27,7 @@ Use this skill for the daughter's daily LINE vocab workflow.
 - Grammar teaching focus: **verb positioning first**
 - `🔍 句型觀察` must be written fresh from that day's actual review sentence, not copied from the prompt examples
 - `🔍 句型觀察` should explicitly point out the real verb / be-verb / tense or object position in that sentence, using child-friendly Chinese
+- When the blank answer is **not a verb** (for example an adjective or noun), `🔍 句型觀察` should also name the tested word's part of speech in plain Chinese, and separately point out the sentence's real verb and tense
 - Avoid abstract grammar labels like `S+V`, `S+V+O`, `S+V+C` in child-facing output
 - Use simple Chinese hints such as:
   - `（發現）這裡要用過去式，發現了。`

@@ -44,5 +44,6 @@ Use this compact style unless the user explicitly asks for another presentation.
 - The review examples above are illustrative only; do not mechanically reuse their wording
 - `🔍 句型觀察` must match the actual review sentence chosen that day
 - `🔍 句型觀察` should point out the sentence's real verb / be 動詞 / tense / object position in plain Chinese
+- If the blank is not a verb, also say what part of speech the answer is (for example 形容詞 / 名詞), and separately mention the real verb in the sentence
 - Review hints should teach something useful without sounding like a grammar textbook
 - Do not show the English answer directly unless the user asks for an answer-key version
