@@ -1,0 +1,37 @@
+services:
+  openclaw-gateway:
+    user: root
+    environment:
+      GROQ_API_KEY: ${GROQ_API_KEY}
+      SPEECHIFY_API_KEY: ${SPEECHIFY_API_KEY}
+      LINE_CHANNEL_SECRET: ${LINE_CHANNEL_SECRET}
+      LINE_CHANNEL_ACCESS_TOKEN: ${LINE_CHANNEL_ACCESS_TOKEN}
+      LINE_SHOULD_REPLY: ${LINE_SHOULD_REPLY:-true}
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - /mnt/c/Task:/home/node/task
+      - /home/kurohime/openclaw:/home/node/openclaw-host
+      - ${OPENCLAW_TEMP_BOX_DIR:-/mnt/c/temp}:/home/node/temp
+    ports:
+      - "127.0.0.1:${OPENCLAW_GATEWAY_PORT:-18789}:18789"
+      - "127.0.0.1:${OPENCLAW_BRIDGE_PORT:-18790}:18790"
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get install -y chromium chromium-sandbox python3-pip python3.11-venv python3-dev build-essential ffmpeg 2>/dev/null
+        exec node dist/index.js gateway --bind ${OPENCLAW_GATEWAY_BIND:-lan} --port 18789
+
+  openclaw-cli:
+    profiles: ["manual"]
+    user: root
+    environment:
+      GROQ_API_KEY: ${GROQ_API_KEY}
+      SPEECHIFY_API_KEY: ${SPEECHIFY_API_KEY}
+      LINE_CHANNEL_SECRET: ${LINE_CHANNEL_SECRET}
+      LINE_CHANNEL_ACCESS_TOKEN: ${LINE_CHANNEL_ACCESS_TOKEN}
+      LINE_SHOULD_REPLY: ${LINE_SHOULD_REPLY:-true}
+    build:
+      context: .
+      dockerfile: Dockerfile
