@@ -66,21 +66,30 @@ def find_wtxp_tab_id() -> Optional[str]:
 def get_wtxp_text() -> str:
     tab_id = find_wtxp_tab_id()
     if not tab_id:
-        run_cmd(["openclaw", "browser", "--browser-profile", "chrome", "open", WTXP_URL], timeout=25)
-        tab_id = find_wtxp_tab_id()
-        if not tab_id:
-            raise RuntimeError("WTXP tab not found after open")
+        raise RuntimeError("WTXP tab not found (no auto-open to avoid foreground popup)")
 
-    run_cmd(["openclaw", "browser", "--browser-profile", "chrome", "focus", tab_id], timeout=20)
-    # 強制刷新一次，避免抓到停在舊畫面的數值
-    run_cmd(["openclaw", "browser", "--browser-profile", "chrome", "navigate", WTXP_URL], timeout=30)
+    # 不切換到前景分頁，直接對目標 tab 背景刷新
+    run_cmd([
+        "openclaw",
+        "browser",
+        "--browser-profile",
+        "chrome",
+        "evaluate",
+        "--target-id",
+        tab_id,
+        "--fn",
+        "() => { location.reload(); return 'reloading'; }",
+    ], timeout=20)
     time.sleep(1.8)
+
     out = run_cmd([
         "openclaw",
         "browser",
         "--browser-profile",
         "chrome",
         "evaluate",
+        "--target-id",
+        tab_id,
         "--fn",
         "() => document.body.innerText",
     ], timeout=30)
