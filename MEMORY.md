@@ -1,3 +1,13 @@
+## 工作區 / 主機遷移原則
+- 目前主路徑以 `/home/kurohime/.openclaw/...` 為準，不再把 `/home/node/.openclaw/...` 當正式位置
+- 目標是使用本機持久化環境與本機權限管理，不再把 Docker 重建當成預設修復流程
+- 若文件、skill、腳本、範例指令仍殘留舊路徑，要優先修正，避免之後排錯時走錯地方
+- 這次遷移檢查已確認：`MEMORY.md`、`memory/vocab-history.json`、`memory/daily-tasks.json`、`daughter-vocab.md` 已在新工作區；但 `memory/2026-03-09.md` 與 `memory/2026-03-10.md` 原本缺失，需從新環境重新累積
+- 在確認 CLI/安裝流程穩定前，先不要輕易讓 wizard 或 backup 流程覆寫現有狀態；近期已有 config 寫入、`.bak` 備份與 workspace 覆寫風險的案例
+- 真的 secrets 優先放 `~/.openclaw/.env` 或系統環境變數，不放進 workspace；也要把 `openclaw.json.bak` 與其他 `.bak` 視為敏感檔
+- OpenClaw 環境變數優先序要記住：process env > 專案 `.env` > `~/.openclaw/.env` > `openclaw.json` 的 env block
+- 若 Ollama 跑在 Windows、OpenClaw 跑在 WSL Ubuntu，連線方式要看 WSL 網路模式：NAT 通常要先找 Windows 主機 IP，mirrored mode 才比較能直接用 `localhost`
+
 ## 安全性設定（來自官方文件）
 - 定期執行安全審計：`openclaw security audit`
 - 重要檢查項目：
@@ -29,6 +39,7 @@
 - 實作原則：這套人格只限這個指定群組使用，不外溢到其他 LINE 群或主對話。
 
 ## Telegram 主 DM 使用原則
+- Mark 想優先把 Telegram 當成可聽型介面；工作中不一定能一直看畫面，所以語音播報型任務有實際需求
 - 長期在同一個 Telegram 私聊視窗工作，context 很容易膨脹
 - 主題完成、切換專案、或 status 顯示 context 偏高時，應主動提醒 Mark 可用 `/new`
 - 在建議 `/new` 前，先把長期規則整理到 `MEMORY.md`，把當前專案摘要整理到 `memory/YYYY-MM-DD.md`
@@ -66,7 +77,7 @@
 - Deepgram 最新官方模型語系表與本機 docs 有落差：本機 docs 舉 `nova-3` 當 quick start，但官方當前語系表顯示中文（`zh`/`zh-TW`）是在 `nova-2`，不是 `nova-3`
 - 目前已把 OpenClaw audio provider 切到 `deepgram/nova-2` + `language=zh-TW`，並開 `punctuate` / `smart_format`；下一步應要求 Mark 傳一段更大聲、更清楚的新 Telegram 語音再測
 - 這版 OpenClaw 若把 Deepgram key 直接塞進 `openclaw.json` 的 `models.providers.deepgram.apiKey`，config schema 會報 `baseUrl` / `models` 缺失，造成 gateway 一直因 invalid config 重載；較正確的做法是用 `DEEPGRAM_API_KEY` 環境變數，不要硬塞那個 config 位置
-- Mark 曾手動把錯誤的 `models.providers.deepgram` 區塊刪掉，gateway 就恢復穩定；之後遇到 provider key 時要優先走 env 方式，特別是依 USER.md 規則寫進 `/home/node/openclaw-host/docker-compose.override.yml`
+- Mark 曾手動把錯誤的 `models.providers.deepgram` 區塊刪掉，gateway 就恢復穩定；之後遇到 provider key 時要優先走 env 方式，並寫進目前主機上的可持久化服務環境設定，不要再依賴 Docker override 檔
 - 在發現前兩段 Telegram 語音檔幾乎靜音後，Mark 合理懷疑真正問題可能是麥克風/收音而不只是 provider；若後續要快速驗證，先恢復到較簡單且已知可跑通的 Groq 路線也是合理策略
 - 重新切回 Groq (`whisper-large-v3-turbo` + `Please transcribe verbatim.`) 後，Mark 傳了一段更清楚的新 Telegram 語音，成功轉寫出 `Hello, 测试好了吗?这样可以吗?有清楚吗?`，代表 Groq 在收音正常時其實可用
 - 後續再測一段有背景噪音的中文 Telegram 語音，Groq 仍成功轉寫成 `嘿哈古,怎麼樣?現在聲音清不清楚?背景是有點吵。不過應該是可以了吧?`；唯一明顯小誤差是把「哈酷」聽成「哈古」，但不影響理解
@@ -80,3 +91,11 @@
 - 使用 `model=simba-multilingual` + `voice_id=sun-hee` 的隔離測試已成功產生非空音檔並送到 Telegram，表示多語模型 + 亞洲 voice 的技術路線可行；但實際口音自然度仍需靠耳朵驗收
 - 2026-03-08 晚上 7 點女兒單字任務出現一個新教訓：cron prompt 裡的複習示例太完整，模型容易把 `🔍 句型觀察` 也當固定模板硬套，而不是依當天實際句子現場分析；之後這類教學 prompt 要明寫「示例只是版型，不可照抄 wording」
 - 之後若 Telegram/Groq 語音再出現 placeholder transcript，先優先檢查預設 prompt 與 provider 相容性，不要先懷疑缺 skill
+
+## 版本回退與穩定性教訓（2026-03-10）
+- Mark 的主需求是「少操作、少等待、可遠端代管」；若版本造成高摩擦（反覆 approval、長等待、跨通道副作用），應優先停損回穩定版，不要硬撐新版本。
+- 這次已從 2026.3.8 回退到 2026.3.2 作為主運行版本；`root` 與 `kurohime` 可能存在不同 OpenClaw 版本/安裝路徑，維護時以 `kurohime` 服務為準。
+- 回退後需立刻檢查模型相容：3.2 對 `openai-codex/gpt-5.4` 會報 `Unknown model`，需改用 3.2 支援模型（如 `gpt-5.3-codex`）避免診斷 lane 持續報錯。
+- `openclaw status` / `gateway probe` 在某些場景會出現「service running 但 unreachable」的誤導訊號；判斷真實狀態要以 `journalctl --user -u openclaw-gateway.service` 的 `listening on ws://127.0.0.1:18789` 與實際通道送達紀錄（如 telegram sendMessage ok）為準。
+- 遇到 OpenClaw 升級或路徑/env/profile 變更時，不能只 `openclaw gateway restart`；若有 RPC 1006 或 UI 假死，優先執行 `openclaw gateway install --force` 重寫 systemd unit，再做 `gateway status` 驗證。
+- Mark 已明確要求回覆短版；預設採短答，必要時再展開。
