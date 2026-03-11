@@ -98,4 +98,5 @@
 - 回退後需立刻檢查模型相容：3.2 對 `openai-codex/gpt-5.4` 會報 `Unknown model`，需改用 3.2 支援模型（如 `gpt-5.3-codex`）避免診斷 lane 持續報錯。
 - `openclaw status` / `gateway probe` 在某些場景會出現「service running 但 unreachable」的誤導訊號；判斷真實狀態要以 `journalctl --user -u openclaw-gateway.service` 的 `listening on ws://127.0.0.1:18789` 與實際通道送達紀錄（如 telegram sendMessage ok）為準。
 - 遇到 OpenClaw 升級或路徑/env/profile 變更時，不能只 `openclaw gateway restart`；若有 RPC 1006 或 UI 假死，優先執行 `openclaw gateway install --force` 重寫 systemd unit，再做 `gateway status` 驗證。
+- `memory-lancedb-pro` 在非 Docker 常駐環境下若 embedding 用 `host.docker.internal` 容易失敗；目前這台改成 `http://127.0.0.1:11434/v1` 後已恢復 `embedding: OK, retrieval: OK`。
 - Mark 已明確要求回覆短版；預設採短答，必要時再展開。
