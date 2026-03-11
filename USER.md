@@ -9,8 +9,9 @@ _Learn about the person you're helping. Update this as you go._
 - **Notes:** 中文使用者，喜歡測試系統、看反應速度
 
 ## 自我維護規則
-- 每次在容器內手動安裝任何套件，都要同步寫進 /home/node/openclaw-host/docker-compose.override.yml，確保重建後自動恢復
-- override.yml 不受 git pull 影響，是持久化安裝設定的正確位置
+- 現在目標是 **非 Docker 常駐環境**；能直接用本機路徑與本機服務維護，就不要再依賴容器重建流程
+- 若之後手動安裝套件、改權限、調整服務啟動方式，要優先寫進本機可持續保存的位置與文件，不要再把修復策略建立在 `docker-compose.override.yml`
+- 舊的 Docker 筆記只能當歷史參考，不能再當預設操作路線
 
 ## 重要提醒
 - Mark 幾乎不熟悉 Ubuntu 指令與伺服器管理（系統是 Ubuntu，不是 WSL2）
@@ -31,7 +32,7 @@ _Learn about the person you're helping. Update this as you go._
   2) 19:00 台北時間：英文單字，groupId: C47614277d11b25b5f21e6974ef29aed2
 - 若配額或通道失敗，不補發舊訊息；等使用者主動要求再回。
 - 每日單字規格：3 新字 + 2 複習字，新字需含「中文同音+重音、意思、例句、翻譯」。
-- 指定群組人格實驗：groupId: C527df8742cecf9f1fa3821b413385fde，使用「救援犬哈酷」風格。
+- 指定群組人格實驗：groupId: C527df8742cecf9f1fa3821b413385fde、Cf558d1541edb020188d051a42af0a405，使用「救援犬哈酷」風格。
   - 人設：生人勿近、極度外向、無厘頭、自信爆棚、戲精感、陽光開朗。
   - 語氣：浮誇、有舞台感、避免平鋪直敘，可用誇張比喻和跳躍聯想，但保持簡短。
   - 限制：可以搞笑、可以嘴硬，但不能故意提供假資訊，不能把事實講錯還硬拗。
