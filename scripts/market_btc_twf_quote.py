@@ -3,6 +3,7 @@ import json
 import re
 import subprocess
 import sys
+import time
 from pathlib import Path
 from typing import Optional
 
@@ -71,6 +72,9 @@ def get_wtxp_text() -> str:
             raise RuntimeError("WTXP tab not found after open")
 
     run_cmd(["openclaw", "browser", "--browser-profile", "chrome", "focus", tab_id], timeout=20)
+    # 強制刷新一次，避免抓到停在舊畫面的數值
+    run_cmd(["openclaw", "browser", "--browser-profile", "chrome", "navigate", WTXP_URL], timeout=30)
+    time.sleep(1.8)
     out = run_cmd([
         "openclaw",
         "browser",
