@@ -18,7 +18,7 @@ What it does:
 Notes:
 - Reads the API key from SPEECHIFY_API_KEY by default.
 - Never prints the API key.
-- Does not read or modify /home/node/.openclaw/openclaw.json.
+- Does not read or modify /home/kurohime/.openclaw/openclaw.json.
 """
 
 from __future__ import annotations
@@ -42,10 +42,47 @@ EXT_BY_FORMAT = {
     "pcm": ".pcm",
 }
 
+DEFAULT_ENV_PATHS = [
+    pathlib.Path("/home/kurohime/.openclaw/.env"),
+    pathlib.Path("/home/kurohime/openclaw/.env"),
+]
+
 
 def fail(message: str, code: int = 1) -> None:
     print(f"ERROR: {message}", file=sys.stderr)
     raise SystemExit(code)
+
+
+def load_key_from_env_file(path: pathlib.Path, key_name: str) -> str:
+    if not path.exists():
+        return ""
+    try:
+        for raw in path.read_text(encoding="utf-8").splitlines():
+            line = raw.strip()
+            if not line or line.startswith("#"):
+                continue
+            if not line.startswith(f"{key_name}="):
+                continue
+            value = line.split("=", 1)[1].strip()
+            if (value.startswith('"') and value.endswith('"')) or (
+                value.startswith("'") and value.endswith("'")
+            ):
+                value = value[1:-1]
+            return value
+    except Exception:
+        return ""
+    return ""
+
+
+def resolve_api_key(env_name: str) -> str:
+    key = os.environ.get(env_name, "").strip()
+    if key:
+        return key
+    for env_path in DEFAULT_ENV_PATHS:
+        key = load_key_from_env_file(env_path, env_name).strip()
+        if key:
+            return key
+    return ""
 
 
 def safe_json_dumps(obj: object) -> str:
@@ -118,7 +155,7 @@ def main() -> None:
     parser.add_argument("--model", help="Optional model, e.g. simba-english")
     parser.add_argument(
         "--out-dir",
-        default="/home/node/.openclaw/workspace/tmp/speechify-tts",
+        default="/home/kurohime/.openclaw/workspace/tmp/speechify-tts",
         help="Directory for probe outputs",
     )
     parser.add_argument(
@@ -143,10 +180,11 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    api_key = os.environ.get(args.api_key_env, "")
+    api_key = resolve_api_key(args.api_key_env)
     if not api_key:
+        fallback_paths = ", ".join(str(p) for p in DEFAULT_ENV_PATHS)
         fail(
-            f"missing {args.api_key_env}. Example: export {args.api_key_env}=... then rerun."
+            f"missing {args.api_key_env}. Checked process env and {fallback_paths}."
         )
 
     out_dir = pathlib.Path(args.out_dir)
