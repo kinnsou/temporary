@@ -100,4 +100,5 @@
 - 遇到 OpenClaw 升級或路徑/env/profile 變更時，不能只 `openclaw gateway restart`；若有 RPC 1006 或 UI 假死，優先執行 `openclaw gateway install --force` 重寫 systemd unit，再做 `gateway status` 驗證。
 - `memory-lancedb-pro` 在非 Docker 常駐環境下若 embedding 用 `host.docker.internal` 容易失敗；目前這台改成 `http://127.0.0.1:11434/v1` 後已恢復 `embedding: OK, retrieval: OK`。
 - Cron 任務不要手改 `~/.openclaw/cron/jobs.json`；在 gateway 運行時可能被記憶態覆寫。維運一律使用 `openclaw cron add/edit/enable/disable/rm/run`。
+- 升級/回退後固定復活順序：先修路徑與模型相容（避免 `/home/node` 舊路徑與 `Unknown model`），再 `openclaw gateway install --force`，最後做通道與排程 smoke test（LINE 私聊/群組、BTC 任務實際送達）全綠才算完成。
 - Mark 已明確要求回覆短版；預設採短答，必要時再展開。
