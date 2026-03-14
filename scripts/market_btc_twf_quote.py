@@ -3,12 +3,15 @@ import json
 import re
 import subprocess
 import sys
+from datetime import datetime
 from typing import Any
+from zoneinfo import ZoneInfo
 
 import requests
 
 BTC_SCRIPT = "/home/kurohime/.openclaw/workspace/scripts/binance_btc_futures_quote.py"
 YAHOO_WTX_URL = "https://tw.stock.yahoo.com/future/WTX&"
+TAIPEI_TZ = ZoneInfo("Asia/Taipei")
 
 
 def run_cmd(args: list[str], timeout: int = 30) -> str:
@@ -64,6 +67,11 @@ def get_twf_int() -> int:
     return int(round(float(m.group(1))))
 
 
+def is_weekend_taipei() -> bool:
+    # Monday=0 ... Sunday=6
+    return datetime.now(TAIPEI_TZ).weekday() >= 5
+
+
 def main() -> int:
     btc = None
     twf = None
@@ -72,6 +80,15 @@ def main() -> int:
         btc = get_btc_int()
     except Exception:
         pass
+
+    weekend = is_weekend_taipei()
+
+    if weekend:
+        if btc is not None:
+            print(f"BTC {btc}")
+            return 0
+        print("BTC 取值失敗")
+        return 0
 
     try:
         twf = get_twf_int()
@@ -83,11 +100,11 @@ def main() -> int:
         return 0
 
     if btc is not None:
-        print(f"BTC {btc}，台指期 取值失敗")
+        print(f"BTC {btc}")
         return 0
 
     if twf is not None:
-        print(f"BTC 取值失敗，台指期 {twf}")
+        print(f"台指期 {twf}")
         return 0
 
     print("BTC/台指期 報價失敗")
