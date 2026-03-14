@@ -92,6 +92,16 @@
 - 2026-03-08 晚上 7 點女兒單字任務出現一個新教訓：cron prompt 裡的複習示例太完整，模型容易把 `🔍 句型觀察` 也當固定模板硬套，而不是依當天實際句子現場分析；之後這類教學 prompt 要明寫「示例只是版型，不可照抄 wording」
 - 之後若 Telegram/Groq 語音再出現 placeholder transcript，先優先檢查預設 prompt 與 provider 相容性，不要先懷疑缺 skill
 
+## 群組小秘書任務（2026-03-13）
+- 群組 C0532caddb5f42551417bddfe610d4465 指派哈酷擔任小秘書
+- 任務：只要群組中有人提到日期相關活動，就記下：活動日期、活動名稱、由誰提出
+- 有效範圍：半年內的活動
+- 記錄檔：`memory/group-C0532caddb5f42551417bddfe610d4465-events.md`
+- 目前已記錄：
+  1. 2026/4/3～4/4 阿公阿嬤下雲林掃墓（阿如提出）
+  2. 2026/4/5 今寶山祭祖（阿如提出）
+- 群組成員 ID 對照：Uce65419687914b69ecaed8eed7e54cb0 = 阿如
+
 ## 版本回退與穩定性教訓（2026-03-10）
 - Mark 的主需求是「少操作、少等待、可遠端代管」；若版本造成高摩擦（反覆 approval、長等待、跨通道副作用），應優先停損回穩定版，不要硬撐新版本。
 - 這次已從 2026.3.8 回退到 2026.3.2 作為主運行版本；`root` 與 `kurohime` 可能存在不同 OpenClaw 版本/安裝路徑，維護時以 `kurohime` 服務為準。
@@ -99,6 +109,12 @@
 - `openclaw status` / `gateway probe` 在某些場景會出現「service running 但 unreachable」的誤導訊號；判斷真實狀態要以 `journalctl --user -u openclaw-gateway.service` 的 `listening on ws://127.0.0.1:18789` 與實際通道送達紀錄（如 telegram sendMessage ok）為準。
 - 遇到 OpenClaw 升級或路徑/env/profile 變更時，不能只 `openclaw gateway restart`；若有 RPC 1006 或 UI 假死，優先執行 `openclaw gateway install --force` 重寫 systemd unit，再做 `gateway status` 驗證。
 - `memory-lancedb-pro` 在非 Docker 常駐環境下若 embedding 用 `host.docker.internal` 容易失敗；目前這台改成 `http://127.0.0.1:11434/v1` 後已恢復 `embedding: OK, retrieval: OK`。
+- 2026-03-13 新坑：`memory-lancedb-pro@1.0.32` 的 config schema 有 `additionalProperties: false`，未列入 schema 的鍵會直接讓 gateway 啟動失敗。實測會炸的鍵包含 `autoRecallTopK`、`autoRecallMaxAgeDays`、`autoRecallMaxEntriesPerKey`（報 `must NOT have additional properties`）。調整 memory 設定前要先對照該版本 schema；不要把其他版本/文件的欄位直接貼進 `openclaw.json`。
 - Cron 任務不要手改 `~/.openclaw/cron/jobs.json`；在 gateway 運行時可能被記憶態覆寫。維運一律使用 `openclaw cron add/edit/enable/disable/rm/run`。
 - 升級/回退後固定復活順序：先修路徑與模型相容（避免 `/home/node` 舊路徑與 `Unknown model`），再 `openclaw gateway install --force`，最後做通道與排程 smoke test（LINE 私聊/群組、BTC 任務實際送達）全綠才算完成。
 - Mark 已明確要求回覆短版；預設採短答，必要時再展開。
+
+## 周三帶讀內容規範（2026-03-14 更新）
+- 內容難度可以設定為兒童易懂，但故事內文禁止明確提及年齡/年級。
+- 禁止示例：`國中生`、`六年級`、`這個年紀`、`像你們這年齡` 等。
+- 可保留方式：用中性描述（如「孩子們」、「小朋友」、「大家」）來維持包容性。
