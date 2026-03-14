@@ -4,81 +4,227 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lesson12 — 周三 更改名字並受割禮</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            warmbg: '#f9f4ec',
-            card: '#fff8f0',
-            title1: '#b85c2c',
-            title2: '#d4924a',
-            ink: '#3a2e24'
-          },
-          fontFamily: {
-            serif: ['Noto Serif TC', 'Georgia', 'serif']
-          },
-          boxShadow: {
-            warm: '0 8px 28px rgba(120,80,30,0.14)'
-          }
-        }
-      }
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', 'Noto Serif TC', '思源宋體', serif;
+      background: #f9f4ec;
+      color: #3a2e24;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 2rem 1rem;
     }
-  </script>
+
+    .card {
+      background: #fff8f0;
+      border-radius: 18px;
+      box-shadow: 0 6px 32px rgba(120, 80, 30, 0.13);
+      max-width: 680px;
+      width: 100%;
+      overflow: hidden;
+      border: 1px solid #f0dfc8;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #a75a30 0%, #b86d3b 62%, #c8844c 100%);
+      padding: 2rem 2rem 1.5rem;
+      text-align: center;
+    }
+
+    .lesson-label {
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      color: rgba(255, 240, 215, 0.85);
+      margin-bottom: 0.45rem;
+    }
+
+    .lesson-title {
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: #fff8ee;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 8px rgba(80, 30, 0, 0.28);
+    }
+
+    .lesson-subtitle {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: rgba(255, 235, 185, 0.96);
+      letter-spacing: 0.1em;
+    }
+
+    .divider-line {
+      height: 3px;
+      background: linear-gradient(90deg, transparent, rgba(255, 235, 190, 0.55), transparent);
+      margin-top: 1.2rem;
+    }
+
+    .body {
+      padding: 1.8rem 2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+    }
+
+    .section-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #8b4513;
+      margin-bottom: 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .story-box {
+      background: #fffaf4;
+      border-radius: 12px;
+      border: 1px solid #f0dfc8;
+      padding: 1.3rem 1.4rem;
+    }
+
+    .story-text {
+      font-size: 1.04rem;
+      line-height: 2;
+      color: #3a2e24;
+      text-align: justify;
+    }
+
+    .story-text p + p { margin-top: 0.9em; }
+
+    .three-things {
+      background: #fef9ef;
+      border-radius: 12px;
+      border-left: 4px solid #d4924a;
+      padding: 1.2rem 1.4rem;
+    }
+
+    .three-things ol {
+      padding-left: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .three-things li {
+      font-size: 1.02rem;
+      line-height: 1.75;
+      color: #4a3020;
+    }
+
+    .scripture-box {
+      background: linear-gradient(135deg, #fdf3e3, #fae8cc);
+      border-radius: 12px;
+      padding: 1.2rem 1.4rem;
+      text-align: center;
+    }
+
+    .scripture-text {
+      font-size: 1.1rem;
+      font-style: italic;
+      line-height: 1.85;
+      color: #5c3d1e;
+      font-weight: 500;
+    }
+
+    .scripture-ref {
+      margin-top: 0.5rem;
+      font-size: 0.88rem;
+      color: #8b6040;
+    }
+
+    .prayer-box {
+      background: #fdf6ee;
+      border-radius: 12px;
+      border: 1px dashed #d4a070;
+      padding: 1.2rem 1.4rem;
+    }
+
+    .prayer-text {
+      font-size: 1.01rem;
+      line-height: 2;
+      color: #4a3020;
+    }
+
+    .prayer-text p + p { margin-top: 0.5em; }
+
+    .footer-divider {
+      text-align: center;
+      padding: 0.7rem 2rem 0.5rem;
+      font-size: 0.82rem;
+      color: #c0a080;
+      letter-spacing: 0.12em;
+      border-top: 1px solid #f0dfc8;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 0.3rem 2rem 1.2rem;
+      font-size: 0.78rem;
+      color: #b08060;
+      letter-spacing: 0.08em;
+    }
+  </style>
 </head>
-<body class="bg-warmbg min-h-screen text-ink font-serif py-8 px-4">
-  <main class="max-w-3xl mx-auto rounded-3xl overflow-hidden bg-card shadow-warm border border-amber-100">
-    <header class="bg-gradient-to-br from-title1 via-orange-500 to-title2 text-center px-6 py-8">
-      <p class="text-xs tracking-[0.22em] text-amber-100/80 mb-2">Lesson 12 · 2026 三月第三週</p>
-      <h1 class="text-3xl md:text-4xl text-amber-50 font-bold tracking-wider drop-shadow">亞伯拉罕在迦南</h1>
-      <p class="mt-3 text-xl font-bold tracking-widest text-amber-100">周三 更改名字並受割禮</p>
-      <div class="h-[3px] max-w-md mx-auto mt-5 bg-gradient-to-r from-transparent via-amber-100/60 to-transparent"></div>
-    </header>
+<body>
+  <div class="card">
+    <div class="header">
+      <div class="lesson-label">Lesson 12 · 2026 三月第三週</div>
+      <div class="lesson-title">亞伯拉罕在迦南</div>
+      <div class="lesson-subtitle">周三 更改名字並受割禮</div>
+      <div class="divider-line"></div>
+    </div>
 
-    <section class="px-6 md:px-8 py-7 space-y-7">
-      <article>
-        <h2 class="text-lg font-bold text-amber-800 mb-3">📖 今日故事</h2>
-        <div class="rounded-2xl border border-amber-100 bg-amber-50/40 p-5 leading-9 text-[17px] text-justify space-y-4">
-          <p>亞伯拉罕九十九歲那年，神再次向他顯現，並且鄭重地與他立約。神先提醒他：「我是全足的神，你要行在我面前，並且要完全。」這句話像是在說：你不用靠自己撐住人生，因為真正能供應你、帶領你的，是神自己。接著，神做了兩件很特別的事：第一，祂把亞伯蘭這個名字改成亞伯拉罕，意思從「崇高的父」變成「多國的父」；第二，祂把撒萊改成撒拉，讓她不再只是「我的公主」，而是要成為祝福許多人的母親。</p>
-          <p>改名字不是換個稱呼而已，而是神宣告一個新的身分和新的方向。亞伯拉罕本來只想到自己家庭的需要，但神要把他的眼光打開，讓他看見更大的託付。神也再次應許：撒拉必定要生一個兒子，並且要給他起名叫以撒。雖然亞伯拉罕一開始心裡有點不敢相信，甚至暗自發笑，但神沒有收回應許，反而更清楚、更堅定地說明祂要成就的事。</p>
-          <p>之後，神要亞伯拉罕和全家男子都受割禮，作為立約的記號。受割禮在屬靈上提醒人：要把舊的自己、肉體的驕傲與天然的倚靠切除，不再憑脾氣、憑本事硬闖，而是學會倚靠神。亞伯拉罕聽完就立刻順服去做，沒有拖延。從這段故事我們看見，神不只給人新名字，也給人新生命；當人願意放下舊我、相信神的應許，就能一步步活出神要我們成為的樣子。</p>
+    <div class="body">
+      <div>
+        <div class="section-title">📖 今日故事</div>
+        <div class="story-box">
+          <div class="story-text">
+            <p>亞伯拉罕九十九歲那年，神再次向他顯現，並且鄭重地與他立約。神先提醒他：「我是全足的神，你要行在我面前，並且要完全。」這句話像是在說：你不用靠自己撐住人生，因為真正能供應你、帶領你的，是神自己。接著，神做了兩件很特別的事：第一，祂把亞伯蘭這個名字改成亞伯拉罕，意思從「崇高的父」變成「多國的父」；第二，祂把撒萊改成撒拉，讓她不再只是「我的公主」，而是要成為祝福許多人的母親。</p>
+            <p>改名字不是換個稱呼而已，而是神宣告一個新的身分和新的方向。亞伯拉罕本來只想到自己家庭的需要，但神要把他的眼光打開，讓他看見更大的託付。神也再次應許：撒拉必定要生一個兒子，並且要給他起名叫以撒。雖然亞伯拉罕一開始心裡有點不敢相信，甚至暗自發笑，但神沒有收回應許，反而更清楚、更堅定地說明祂要成就的事。</p>
+            <p>之後，神要亞伯拉罕和全家男子都受割禮，作為立約的記號。受割禮在屬靈上提醒人：要把舊的自己、肉體的驕傲與天然的倚靠切除，不再憑脾氣、憑本事硬闖，而是學會倚靠神。亞伯拉罕聽完就立刻順服去做，沒有拖延。從這段故事我們看見，神不只給人新名字，也給人新生命；當人願意放下舊我、相信神的應許，就能一步步活出神要我們成為的樣子。</p>
+          </div>
         </div>
-      </article>
+      </div>
 
-      <article>
-        <h2 class="text-lg font-bold text-amber-800 mb-3">✨ 故事學到的三件事</h2>
-        <div class="rounded-2xl border-l-4 border-amber-500 bg-amber-50 p-5">
-          <ol class="list-decimal pl-5 space-y-2 leading-8 text-[16px]">
+      <div>
+        <div class="section-title">✨ 故事學到的三件事</div>
+        <div class="three-things">
+          <ol>
             <li>神改變名字，代表祂也在改變我們的眼光與身分，讓我們不只為自己活。</li>
             <li>受割禮提醒我們要對付舊脾氣和天然的驕傲，學習凡事先倚靠神。</li>
             <li>即使我們一開始覺得不可能，神的應許仍然可靠，順服就會看見祂動工。</li>
           </ol>
         </div>
-      </article>
+      </div>
 
-      <article>
-        <h2 class="text-lg font-bold text-amber-800 mb-3">📜 今天的經文</h2>
-        <div class="rounded-2xl bg-gradient-to-br from-amber-100 to-orange-100 p-6 text-center">
-          <p class="text-xl leading-9 italic text-amber-900 font-medium">「我是全足的神，<br>你要行在我面前，並且要完全。」</p>
-          <p class="text-sm text-amber-700 mt-3 tracking-widest">創世記 17:1</p>
+      <div>
+        <div class="section-title">📜 今天的經文</div>
+        <div class="scripture-box">
+          <div class="scripture-text">「我是全足的神，<br>你要行在我面前，並且要完全。」</div>
+          <div class="scripture-ref">創世記 17:1</div>
         </div>
-      </article>
+      </div>
 
-      <article>
-        <h2 class="text-lg font-bold text-amber-800 mb-3">🙏 一起禱告</h2>
-        <div class="rounded-2xl border border-amber-200 border-dashed bg-amber-50/60 p-5 leading-8 text-[16px] space-y-1">
-          <p>親愛的天父，謝謝你不只看我現在的樣子，還看見你要我成為的樣子。</p>
-          <p>求你幫助我願意放下驕傲和固執，不再只靠自己的力量。</p>
-          <p>當我覺得你的應許太難相信時，請加給我信心，讓我仍然願意順服。</p>
-          <p>願你天天更新我，叫我的生命成為別人的祝福。奉主耶穌的名禱告，阿們。</p>
+      <div>
+        <div class="section-title">🙏 一起禱告</div>
+        <div class="prayer-box">
+          <div class="prayer-text">
+            <p>親愛的天父，謝謝你不只看我現在的樣子，還看見你要我成為的樣子。</p>
+            <p>求你幫助我願意放下驕傲和固執，不再只靠自己的力量。</p>
+            <p>當我覺得你的應許太難相信時，請加給我信心，讓我仍然願意順服。</p>
+            <p>願你天天更新我，叫我的生命成為別人的祝福。奉主耶穌的名禱告，阿們。</p>
+          </div>
         </div>
-      </article>
-    </section>
+      </div>
+    </div>
 
-    <footer class="text-center border-t border-amber-100 py-4 text-[12px] tracking-[0.18em] text-amber-700">
-      聖經之旅 第一冊 · 蒙揀選的族類
-    </footer>
-  </main>
+    <div class="footer-divider">——————END——————</div>
+    <div class="footer">聖經之旅 第一冊 · 蒙揀選的族類</div>
+  </div>
 </body>
 </html>
