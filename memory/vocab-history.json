@@ -3,7 +3,7 @@
     "sourceScope": "台灣普遍認定國中必會1000單",
     "newWordsMustBeUniqueUntilExhausted": true,
     "reviewFormat": "guided_cloze_with_grammar_chunking",
-    "updatedAt": "2026-03-07T03:01:29Z"
+    "updatedAt": "2026-03-08T11:00:00Z"
   },
   "words": {
     "adventure": {
@@ -251,6 +251,87 @@
       ],
       "example_sentence": "Reading every day helps improve your English.",
       "translation": "重音在第二音節"
+    },
+    "mirror": {
+      "first_seen": "2026-03-07",
+      "last_seen": "2026-03-07",
+      "meanings": [
+        "鏡子"
+      ],
+      "example_sentence": "I looked at myself in the mirror.",
+      "translation": "我在鏡子裡看著自己。"
+    },
+    "invite": {
+      "first_seen": "2026-03-07",
+      "last_seen": "2026-03-07",
+      "meanings": [
+        "邀請"
+      ],
+      "example_sentence": "I want to invite my friend to the party.",
+      "translation": "我想邀請我的朋友來參加派對。"
+    },
+    "quiet": {
+      "first_seen": "2026-03-07",
+      "last_seen": "2026-03-07",
+      "meanings": [
+        "安靜的"
+      ],
+      "example_sentence": "Please be quiet in the library.",
+      "translation": "在圖書館請安靜。"
+    },
+    "forest": {
+      "first_seen": "2026-03-08",
+      "last_seen": "2026-03-08",
+      "meanings": [
+        "森林"
+      ],
+      "example_sentence": "We walked through the forest after lunch.",
+      "translation": "午餐後我們穿過森林散步。"
+    },
+    "arrive": {
+      "first_seen": "2026-03-08",
+      "last_seen": "2026-03-08",
+      "meanings": [
+        "到達"
+      ],
+      "example_sentence": "We will arrive at school before eight.",
+      "translation": "我們會在八點前到達學校。"
+    },
+    "noisy": {
+      "first_seen": "2026-03-08",
+      "last_seen": "2026-03-08",
+      "meanings": [
+        "吵鬧的"
+      ],
+      "example_sentence": "The classroom is noisy during break time.",
+      "translation": "下課時間教室很吵鬧。"
+    },
+    "cloud": {
+      "first_seen": "2026-03-22",
+      "last_seen": "2026-03-22",
+      "meanings": [
+        "雲"
+      ],
+      "example_sentence": "That cloud looks like a rabbit.",
+      "translation": "那朵雲看起來像一隻兔子。"
+    },
+    "return": {
+      "first_seen": "2026-03-22",
+      "last_seen": "2026-03-22",
+      "meanings": [
+        "回來；歸還"
+      ],
+      "example_sentence": "Please return the book to the library tomorrow.",
+      "translation": "請明天把這本書還到圖書館。"
+    },
+    "ready": {
+      "first_seen": "2026-03-22",
+      "last_seen": "2026-03-22",
+      "meanings": [
+        "準備好的"
+      ],
+      "example_sentence": "I am ready for the test.",
+      "translation": "我已經準備好考試了。"
     }
   }
 }
