@@ -10,10 +10,10 @@ Use this skill for the daughter's daily LINE vocab workflow.
 ## Core workflow
 
 1. Read these files first when changing task logic or diagnosing repeats:
-   - `/home/node/.openclaw/workspace/memory/vocab-history.json`
-   - `/home/node/.openclaw/workspace/memory/daily-tasks.json`
-   - `/home/node/.openclaw/workspace/daughter-vocab.md`
-2. If the work touches the scheduled task, also read `/home/node/.openclaw/cron/jobs.json` and inspect the `每日英文單字（晚上7點）` payload.
+   - `/home/kurohime/.openclaw/workspace/memory/vocab-history.json`
+   - `/home/kurohime/.openclaw/workspace/memory/daily-tasks.json`
+   - `/home/kurohime/.openclaw/workspace/daughter-vocab.md`
+2. If the work touches the scheduled task, also read `/home/kurohime/.openclaw/cron/jobs.json` and inspect the `每日英文單字（晚上7點）` payload.
 3. Keep new words and review words separate:
    - **3 new words**: must be unseen in `vocab-history.json`
    - **2 review words**: may repeat, but should come from previously taught words with usable example sentences
@@ -22,6 +22,8 @@ Use this skill for the daughter's daily LINE vocab workflow.
 ## Required teaching rules
 
 - New-word scope: **Taiwan junior-high core 1000 words** level
+- Chinese wording should prefer **Taiwan school usage + Traditional Chinese**; avoid Mainland phrasing, Simplified-Chinese sources, and awkward direct-translation wording
+- If a Chinese gloss sounds unnatural in Taiwan (for example `早地`), rewrite it into natural Taiwan classroom wording before sending
 - New words: **never repeat** until the pool is exhausted
 - Review questions: **guided fill-in**, not “Do you remember this word?”
 - Grammar teaching focus: **verb positioning first**
@@ -57,8 +59,20 @@ Default child-facing structure:
 Read `references/data-sources.md` before editing cron prompts or storage.
 
 When the user asks to improve the scheduled LINE vocab task:
-- update the cron prompt in `/home/node/.openclaw/cron/jobs.json`
+- update the cron prompt in `/home/kurohime/.openclaw/cron/jobs.json`
 - keep LINE output as **one single message**
 - keep `vocab-history.json` as the hard source for uniqueness
 - preserve `daughter-vocab.md` as the readable teaching log
 - preserve `daily-tasks.json` as the daily send ledger
+
+## When LINE delivery fails
+
+Read `references/delivery-troubleshooting.md` when:
+- cron runs show `status: "ok"` but messages never arrive in LINE group
+- agent says "message 工具在這個 runtime 不可用"
+- `deliveryStatus` is consistently `"not-delivered"`
+
+Key facts:
+- **`delivery.mode: "none"` + isolated session = broken** — the `message` tool is not available in isolated cron sessions
+- **`delivery.mode: "announce"` is the correct mode** — cron system handles LINE push, agent just outputs the message text
+- **`channels.line.allowFrom: ["*"]` is required** when `dmPolicy: "open"`
