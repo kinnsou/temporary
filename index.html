@@ -3,12 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>周三聖經帶讀｜羅得：被動的跟隨者與分開的抉擇</title>
-  <meta name="description" content="整理《聖經之旅 第一冊》第十三課中〈周一 羅得─被動的跟隨者〉與〈周二 羅得與亞伯拉罕分開〉兩段內容，製作成適合周三帶讀的單頁網頁。" />
+  <title>周三聖經帶讀｜羅得：跟著走，卻沒有自己看見</title>
+  <meta name="description" content="整理《聖經之旅 第一冊》第十三課中〈周一 羅得─被動的跟隨者〉與〈周二 羅得與亞伯拉罕分開〉兩段內容，改寫成較好懂的周三帶讀單頁。" />
   <style>
     :root {
       --bg: #f6f1e8;
-      --bg-soft: #efe5d3;
       --paper: #fffaf2;
       --ink: #2f2a25;
       --muted: #6f6559;
@@ -21,14 +20,13 @@
     }
 
     * { box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
       color: var(--ink);
       font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
-      line-height: 1.8;
+      line-height: 1.9;
       background:
         radial-gradient(1000px 480px at 110% -10%, rgba(194, 144, 69, 0.16), transparent 55%),
         radial-gradient(900px 420px at -10% 100%, rgba(111, 125, 85, 0.16), transparent 55%),
@@ -49,8 +47,8 @@
     .wrap {
       position: relative;
       z-index: 1;
-      width: min(1100px, 92vw);
-      margin: 32px auto 64px;
+      width: min(1020px, 92vw);
+      margin: 28px auto 56px;
     }
 
     .hero {
@@ -58,7 +56,7 @@
       overflow: hidden;
       border: 1px solid var(--line);
       border-radius: 28px;
-      padding: clamp(28px, 5vw, 52px);
+      padding: clamp(26px, 5vw, 48px);
       background: linear-gradient(140deg, #fffdf8 0%, #fff5e7 100%);
       box-shadow: var(--shadow);
     }
@@ -98,20 +96,20 @@
     h1 {
       margin: 0 0 12px;
       font-family: "Noto Serif TC", "PMingLiU", serif;
-      font-size: clamp(34px, 6vw, 60px);
-      line-height: 1.12;
+      font-size: clamp(34px, 6vw, 58px);
+      line-height: 1.15;
       color: #2d2419;
     }
 
     .lead {
       margin: 0;
-      max-width: 68ch;
+      max-width: 66ch;
       color: var(--muted);
-      font-size: clamp(16px, 2.2vw, 19px);
+      font-size: clamp(16px, 2.1vw, 19px);
     }
 
     .hero-actions {
-      margin-top: 24px;
+      margin-top: 22px;
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
@@ -123,7 +121,7 @@
       border-radius: 14px;
       text-decoration: none;
       font-weight: 700;
-      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+      transition: transform .18s ease, box-shadow .18s ease;
     }
 
     .button.primary {
@@ -134,35 +132,23 @@
 
     .button.secondary {
       color: var(--ink);
-      background: rgba(255,255,255,0.72);
+      background: rgba(255,255,255,0.74);
       border: 1px solid var(--line);
     }
 
-    .button:hover {
-      transform: translateY(-1px);
-    }
+    .button:hover { transform: translateY(-1px); }
 
     .intro-grid,
     .content-grid,
     .summary-grid {
       display: grid;
       gap: 18px;
-      margin-top: 20px;
+      margin-top: 22px;
     }
 
-    .intro-grid {
-      grid-template-columns: 1.2fr 0.9fr;
-    }
-
-    .content-grid {
-      grid-template-columns: 1fr 1fr;
-      margin-top: 24px;
-    }
-
-    .summary-grid {
-      grid-template-columns: 1fr 1fr;
-      margin-top: 24px;
-    }
+    .intro-grid { grid-template-columns: 1.15fr 0.95fr; }
+    .content-grid { grid-template-columns: 1fr 1fr; }
+    .summary-grid { grid-template-columns: 1fr 1fr; }
 
     .card {
       border: 1px solid var(--line);
@@ -177,6 +163,7 @@
       margin: 0 0 12px;
       font-family: "Noto Serif TC", serif;
       color: #352a1e;
+      line-height: 1.45;
     }
 
     .eyebrow {
@@ -186,15 +173,6 @@
       text-transform: uppercase;
       letter-spacing: .09em;
       font-weight: 700;
-    }
-
-    .scripture {
-      border-left: 4px solid var(--gold);
-      background: #fff3df;
-      border-radius: 12px;
-      padding: 14px 16px;
-      color: #5f4b31;
-      margin-top: 14px;
     }
 
     .section-tag {
@@ -213,18 +191,25 @@
     .tuesday { background: linear-gradient(180deg, #b56a59 0%, #8f4d40 100%); }
 
     p { margin: 0 0 14px; }
-
-    ul, ol {
-      margin: 0;
-      padding-left: 22px;
-    }
-
+    ul, ol { margin: 0; padding-left: 22px; }
     li + li { margin-top: 8px; }
 
-    .highlight-list li::marker { color: var(--gold-deep); }
+    .focus-box { background: linear-gradient(180deg, #fffdf9 0%, #f7efe2 100%); }
 
-    .focus-box {
-      background: linear-gradient(180deg, #fffdf9 0%, #f7efe2 100%);
+    .scripture {
+      border-left: 4px solid var(--gold);
+      background: #fff3df;
+      border-radius: 12px;
+      padding: 14px 16px;
+      color: #5f4b31;
+      margin-top: 14px;
+    }
+
+    .prayer {
+      background: #fdf6ee;
+      border: 1px dashed #d4a070;
+      border-radius: 14px;
+      padding: 16px;
     }
 
     .footer-note {
@@ -242,15 +227,12 @@
     @media (max-width: 920px) {
       .intro-grid,
       .content-grid,
-      .summary-grid {
-        grid-template-columns: 1fr;
-      }
+      .summary-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 560px) {
       .wrap { margin-top: 18px; }
-      .hero,
-      .card { border-radius: 18px; }
+      .hero, .card { border-radius: 18px; }
       .button { width: 100%; text-align: center; }
     }
   </style>
@@ -260,14 +242,14 @@
     <section class="hero">
       <div class="badge-row">
         <span class="badge">📖 周三聖經帶讀</span>
-        <span class="badge">創世記 12–13 章背景整理</span>
-        <span class="badge">主題：羅得的起頭與分開</span>
+        <span class="badge">創世記 12–13 章</span>
+        <span class="badge">主題：羅得的起頭與選擇</span>
       </div>
-      <h1>羅得：被動的跟隨者<br>與分開的抉擇</h1>
+      <h1>羅得：跟著走，<br>卻沒有自己看見</h1>
       <p class="lead">
-        這一頁整理自《聖經之旅 第一冊》第十三課，選用〈周一 羅得─被動的跟隨者〉與〈周二 羅得與亞伯拉罕分開〉兩段內容，
-        改寫成適合帶讀與投影的單頁閱讀版。核心不是只看羅得「做了什麼」，而是看見：一個人若沒有主動尋求神，
-        又在利益面前離開屬靈保護，生命會怎樣慢慢偏離。
+        這一頁把原文裡的〈周一 羅得─被動的跟隨者〉和〈周二 羅得與亞伯拉罕分開〉，
+        整理成比較好讀的版本。前半段講羅得一開始怎麼跟著亞伯拉罕走，後半段講他為什麼和亞伯拉罕分開。
+        讀完會發現：一個人如果只是跟著別人信，沒有自己去尋求神，到了要做選擇的時候，就很容易先挑對自己有利的那一邊。
       </p>
       <div class="hero-actions">
         <a class="button primary" href="#reading">開始閱讀</a>
@@ -278,24 +260,24 @@
     <section class="intro-grid" aria-label="overview">
       <article class="card">
         <p class="eyebrow">Overview</p>
-        <h2>這頁在講什麼？</h2>
+        <h2>先抓住這個重點</h2>
         <p>
-          羅得外面看起來和亞伯拉罕一起走在神的路上，但裡面卻有很大的差別。
-          亞伯拉罕是因著主的顯現與呼召而前行；羅得則是因著家人帶領、環境推動而同行。
-          到了利益衝突出現時，這個差別就暴露出來：亞伯拉罕重看和睦與屬靈道路，羅得卻先看眼前的草場、牛羊與好處。
+          羅得不是沒有走在神的路上，而是他走上這條路，主要是因為家人帶著他走。
+          亞伯拉罕不一樣。亞伯拉罕是因為自己遇見神、聽見神，所以願意往前走。
         </p>
         <p>
-          所以這不是一個單純的家庭故事，而是一個屬靈提醒：<strong>沒有主動尋求主的生命，常常會在選擇來到時，向著眼前利益傾斜。</strong>
+          一開始看起來，兩個人都在同行；可是等到牛羊變多、草地不夠、需要做選擇的時候，
+          兩個人的心就顯出差別來了。亞伯拉罕重看和睦，也重看神的帶領；羅得卻先看哪裡對自己比較有利。
         </p>
       </article>
 
       <aside class="card focus-box">
         <p class="eyebrow">Wednesday Focus</p>
-        <h2>周三帶讀可先抓住三個焦點</h2>
-        <ul class="highlight-list">
-          <li><strong>信仰不能只靠別人帶。</strong> 被帶進來是恩典，但仍要自己尋求神。</li>
-          <li><strong>選擇會暴露內在光景。</strong> 當利益與屬靈關係衝突時，人會顯出真正重看的是什麼。</li>
-          <li><strong>保護常藏在屬靈關係裡。</strong> 離開屬靈源頭，看似自由，實際上常是失去遮蓋的開始。</li>
+        <h2>周三帶讀可先記三句話</h2>
+        <ul>
+          <li><strong>被人帶來信主是恩典，</strong> 但不能永遠只靠別人帶。</li>
+          <li><strong>人怎麼選，</strong> 常常會把心裡最在意的東西顯出來。</li>
+          <li><strong>離開對的人，</strong> 有時看起來像自由，其實是在失去保護。</li>
         </ul>
       </aside>
     </section>
@@ -303,22 +285,21 @@
     <section id="reading" class="content-grid" aria-label="reading-content">
       <article class="card">
         <span class="section-tag monday">周一｜羅得─被動的跟隨者</span>
-        <h2>他走上神的路，卻不是因為自己看見主</h2>
+        <h2>他有跟著走，卻不是自己先想走</h2>
         <p>
-          羅得是亞伯拉罕哥哥哈蘭的兒子。當神呼召亞伯拉罕時，哈蘭已經過世，羅得便在祖父他拉與叔叔亞伯拉罕的照顧下，
-          一同離開迦勒底的吾珥。從外面看，羅得似乎也踏上了離開偶像、走向神的道路；但他和亞伯拉罕最大的不同，
-          不在於「有沒有一起出發」，而在於「裡面有沒有看見主」。亞伯拉罕是因著主的顯現與呼召而回應，
-          羅得卻只是跟著家人一起往前走，沒有自己的異象，也缺少憑信與主交通的經歷。
+          羅得是亞伯拉罕哥哥哈蘭的兒子。羅得的爸爸很早就過世了，所以他是在祖父和叔叔的照顧下長大的。
+          後來，神呼召亞伯拉罕離開原來住的地方，亞伯拉罕一家人就往前走，羅得也跟著一起走。
+          從外面看，羅得也離開了偶像之地，也走上了神的路。
         </p>
         <p>
-          這使羅得的屬靈起頭顯得很軟弱。他和神的關係，多半建立在別人的影響上，而不是自己主動的尋求。
-          被長輩帶到神面前，當然是一件美事；但若人只是被動跟隨，沒有把心真正轉向主，將來遇到選擇、困難或誘惑時，
-          很容易就跟著環境起伏。羅得後來的漂流，不是突然發生的，而是從一個沒有主動尋求神的起頭開始。
+          可是，羅得和亞伯拉罕有一個很大的不同：亞伯拉罕是自己看見神、聽見神，所以願意答應神的呼召；
+          羅得卻不是這樣。羅得比較像是「家人往前走，我也跟著走」。他不是完全沒有走在對的路上，
+          只是這條路還沒有真的變成他自己裡面的選擇。
         </p>
         <p>
-          這段信息也在問我們：我們跟隨主，是因為自己聽見了神的呼召，還是只是因為家人、教會、環境把我們帶進來？
-          神樂意向人顯現，但祂也要人有心、有渴慕地來尋求。若只是站在屬靈環境裡，卻沒有親自來到主面前，
-          人就很難在裡面長出穩固、清楚的跟隨。
+          這也是羅得後來容易出問題的原因。當一個人只是跟著環境、跟著家人、跟著大家一起走，
+          一旦碰到困難、好處或誘惑，他就很容易被外面的東西拉走。神很喜歡人主動來尋求祂，
+          不只是站在人群裡一起做一樣的事，而是真的從心裡說：「神啊，我也要認識你，我也要跟從你。」
         </p>
         <div class="scripture">
           <strong>禱讀經文</strong><br />
@@ -328,27 +309,25 @@
 
       <article class="card">
         <span class="section-tag tuesday">周二｜羅得與亞伯拉罕分開</span>
-        <h2>當利益變大，裡面的選擇也顯明了</h2>
+        <h2>到了要選的時候，他先看眼前的好處</h2>
         <p>
-          亞伯拉罕與羅得一路同行，後來因著神的祝福，牛群、羊群和財物都漸漸增多，兩邊的牧人也因此起了爭執。
-          為了不讓彼此相爭，亞伯拉罕主動把選擇權讓給羅得。按常理說，羅得既受亞伯拉罕照顧，又因跟著他而蒙福，
-          理當存著感謝的心，不該容讓僕人相爭，更不該因著好處與叔叔分開；但羅得沒有在這件事上學功課。
-          他先想到的是草場、牛羊與眼前的利益，而不是與亞伯拉罕的交通、關係與屬靈保護。
+          後來，亞伯拉罕和羅得的牛羊、僕人、財物都越來越多。東西一多，問題也跟著來了。
+          兩邊的牧人開始爭草地、爭地方住。亞伯拉罕不想讓大家一直吵下去，就主動對羅得說：
+          「你先選吧，你往左，我就往右；你往右，我就往左。」
         </p>
         <p>
-          這裡最值得警醒的，不只是「分開」這個結果，而是分開背後的價值排序：
-          寧可失去屬靈交通，也不能失去財物；寧可遠離亞伯拉罕，也不能少掉自己看重的利益。
-          當人開始這樣衡量時，心其實已經離開了神要給人的祝福之路。很多人的偏離，不是一下子跌進大錯，
-          而是從「不能和弟兄姊妹同住」、「不願靠近屬靈長輩」、「想脫離保護自己的人」開始。
+          其實，羅得是受亞伯拉罕照顧的人，而且他能有今天這些牛羊和財物，也是因為一路跟著亞伯拉罕蒙福。
+          照理說，他應該更看重和叔叔的關係，不該只想著哪一塊地比較肥、哪裡對自己比較好。
+          可是羅得沒有這樣想。他一看見眼前的好地方，就先挑了自己喜歡的那一邊。
         </p>
         <p>
-          這段也提醒我們，離開屬靈源頭看起來像是得到自由，實際上卻常是失去標的與保護。
-          神的保守，很多時候不是抽象地從天掉下來，而是藉著祂放在我們身邊的屬靈關係、長輩、同伴與遮蓋臨到我們。
-          羅得的選擇，正是後來一步步漂向所多瑪的起點。
+          這個選擇看起來只是在挑地方，其實是在說出他心裡最看重的是什麼。
+          他比較在意牛羊有沒有草吃、財物會不會變少，卻沒有那麼在意自己是不是離開了帶領他的人。
+          也就是從這一步開始，羅得慢慢往危險的方向走去。
         </p>
         <div class="scripture">
-          <strong>禱讀經文</strong><br />
-          「記得你裡面無偽的信心，就是先在你外祖母羅以，和你母親友尼基裡面的，我深信也在你裡面。」（提摩太後書 1:5）
+          <strong>可帶的一句提醒</strong><br />
+          有些選擇表面上是在挑地方，實際上是在顯出：我們心裡到底最捨不得放下的是什麼。
         </div>
       </article>
     </section>
@@ -356,11 +335,11 @@
     <section id="discussion" class="summary-grid" aria-label="discussion-guide">
       <article class="card focus-box">
         <p class="eyebrow">Lead the Group</p>
-        <h3>周三帶讀重點</h3>
+        <h3>這篇可以帶出的三件事</h3>
         <ol>
-          <li><strong>起頭對不對，會影響後面很遠。</strong> 羅得的問題不是只有後來愛世界，而是起初就缺少主動尋求神的心。</li>
-          <li><strong>關係與利益衝突時，選擇會說話。</strong> 羅得選了眼前的好處，也同時失去了屬靈的近處。</li>
-          <li><strong>很多漂流都不是突然。</strong> 先是被動，接著分開，之後才一步步走向更危險的地方。</li>
+          <li><strong>信仰不能只靠借來。</strong> 家人能帶我們起步，但我們還是要自己去親近神。</li>
+          <li><strong>選擇會說真話。</strong> 平常嘴巴怎麼說，不一定最準；真正到了要選的時候，心裡重看什麼就會跑出來。</li>
+          <li><strong>別太快離開保護你的人。</strong> 有些人、一些提醒、一些屬靈陪伴，看起來像限制，其實是在保護我們。</li>
         </ol>
       </article>
 
@@ -368,10 +347,33 @@
         <p class="eyebrow">Discussion</p>
         <h3>可直接帶的三個問題</h3>
         <ul>
-          <li>我平常的信仰生活，比較像「自己在尋求主」，還是「跟著別人一起走」？</li>
-          <li>如果有一天「眼前利益」和「屬靈關係」衝突，我最容易先抓住哪一個？</li>
-          <li>神現在放在我生命裡的屬靈保護、提醒與陪伴，是哪些人？我有沒有珍惜？</li>
+          <li>我平常比較像亞伯拉罕，還是比較像羅得？我是自己在尋求神，還是只是跟著大家一起做？</li>
+          <li>如果今天要我在「眼前的好處」和「對的帶領」中間選一個，我最容易被哪一邊吸走？</li>
+          <li>神放在我身邊、能提醒我、保護我的人是誰？我有沒有珍惜他們？</li>
         </ul>
+      </article>
+    </section>
+
+    <section class="summary-grid" aria-label="verse-prayer">
+      <article class="card">
+        <p class="eyebrow">Verse</p>
+        <h3>今天的經文</h3>
+        <div class="scripture">
+          「你說，你們當尋求我的面；那時我心向你說，耶和華啊，你的面我正要尋求。」<br />
+          詩篇 27:8
+        </div>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Prayer</p>
+        <h3>一起禱告</h3>
+        <div class="prayer">
+          親愛的天父，謝謝你不只是要我跟著別人走，
+          你也盼望我自己來認識你、尋求你。<br /><br />
+          求你幫助我，不只看眼前的好處，
+          也看重你給我的提醒、帶領和保護。<br /><br />
+          讓我學會作對的選擇，走在你喜歡的路上。阿們。
+        </div>
       </article>
     </section>
 
@@ -381,14 +383,14 @@
       <p>
         本頁整理自《2264-1 聖經之旅 第一冊｜蒙揀選的族類｜第十三課》中的
         <strong>〈周一 羅得─被動的跟隨者〉</strong>與<strong>〈周二 羅得與亞伯拉罕分開〉</strong>，
-        為網頁閱讀與帶讀使用而重整排版與文字節奏；原始內容請以原站為準。
+        以較好讀的帶讀語氣重新整理；原始內容請以原站為準。
       </p>
       <p>
         原文連結：<a class="link" href="https://ezoe.work/books/2/2264-1-13.html" target="_blank" rel="noreferrer">https://ezoe.work/books/2/2264-1-13.html</a>
       </p>
     </section>
 
-    <p class="footer-note">Made for Wednesday Bible reading · responsive single-page HTML</p>
+    <p class="footer-note">Made for Wednesday Bible reading · simplified wording edition</p>
   </main>
 </body>
 </html>
