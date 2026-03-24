@@ -1,230 +1,372 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lesson13 — 主日 羅得的選擇與漂流</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>主日聖經帶讀｜羅得：先選舒服，再慢慢走近危險</title>
+  <meta name="description" content="第十三課主日版：整理周三〈羅得的拣選〉與周四〈羅得的迁移〉，改寫成適合主日聚會使用的單頁。" />
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f6f1e8;
+      --paper: #fffaf2;
+      --ink: #2f2a25;
+      --muted: #6f6559;
+      --line: #e6d7bf;
+      --gold: #c29045;
+      --gold-deep: #966b2f;
+      --olive: #6f7d55;
+      --rose: #b56a59;
+      --shadow: 0 16px 40px rgba(88, 63, 30, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Georgia', 'Noto Serif TC', '思源宋體', serif;
-      background: #f9f4ec;
-      color: #3a2e24;
-      min-height: 100vh;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      padding: 2rem 1rem;
+      margin: 0;
+      color: var(--ink);
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.9;
+      background:
+        radial-gradient(1000px 480px at 110% -10%, rgba(194, 144, 69, 0.16), transparent 55%),
+        radial-gradient(900px 420px at -10% 100%, rgba(111, 125, 85, 0.16), transparent 55%),
+        var(--bg);
     }
+
+    .grain::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.05;
+      background-image: radial-gradient(rgba(68, 48, 24, 0.28) 0.7px, transparent 0.7px);
+      background-size: 4px 4px;
+      z-index: 0;
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      width: min(1020px, 92vw);
+      margin: 28px auto 56px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: clamp(26px, 5vw, 48px);
+      background: linear-gradient(140deg, #fffdf8 0%, #fff5e7 100%);
+      box-shadow: var(--shadow);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      top: -120px;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(194, 144, 69, 0.28) 0%, rgba(194, 144, 69, 0) 70%);
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid #ebd6b0;
+      background: #fff7e8;
+      color: var(--gold-deep);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-family: "Noto Serif TC", "PMingLiU", serif;
+      font-size: clamp(34px, 6vw, 58px);
+      line-height: 1.15;
+      color: #2d2419;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 66ch;
+      color: var(--muted);
+      font-size: clamp(16px, 2.1vw, 19px);
+    }
+
+    .hero-actions {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+    .button.primary {
+      color: white;
+      background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%);
+      box-shadow: 0 10px 20px rgba(150, 107, 47, 0.28);
+    }
+
+    .button.secondary {
+      color: var(--ink);
+      background: rgba(255,255,255,0.74);
+      border: 1px solid var(--line);
+    }
+
+    .button:hover { transform: translateY(-1px); }
+
+    .intro-grid,
+    .content-grid,
+    .summary-grid {
+      display: grid;
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .intro-grid { grid-template-columns: 1.15fr 0.95fr; }
+    .content-grid { grid-template-columns: 1fr 1fr; }
+    .summary-grid { grid-template-columns: 1fr 1fr; }
 
     .card {
-      background: #fff8f0;
-      border-radius: 18px;
-      box-shadow: 0 6px 32px rgba(120, 80, 30, 0.13);
-      max-width: 680px;
-      width: 100%;
-      overflow: hidden;
-      border: 1px solid #f0dfc8;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--paper);
+      padding: 22px;
+      box-shadow: 0 10px 24px rgba(88, 63, 30, 0.08);
     }
 
-    .header {
-      background: linear-gradient(135deg, #a75a30 0%, #b86d3b 62%, #c8844c 100%);
-      padding: 2rem 2rem 1.5rem;
-      text-align: center;
+    .card h2,
+    .card h3 {
+      margin: 0 0 12px;
+      font-family: "Noto Serif TC", serif;
+      color: #352a1e;
+      line-height: 1.45;
     }
 
-    .lesson-label {
-      font-size: 0.82rem;
-      letter-spacing: 0.18em;
-      color: rgba(255, 240, 215, 0.85);
-      margin-bottom: 0.45rem;
-    }
-
-    .lesson-title {
-      font-size: 1.55rem;
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--gold-deep);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .09em;
       font-weight: 700;
-      color: #fff8ee;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.5rem;
-      text-shadow: 0 2px 8px rgba(80, 30, 0, 0.28);
     }
 
-    .lesson-subtitle {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: rgba(255, 235, 185, 0.96);
-      letter-spacing: 0.1em;
-    }
-
-    .divider-line {
-      height: 3px;
-      background: linear-gradient(90deg, transparent, rgba(255, 235, 190, 0.55), transparent);
-      margin-top: 1.2rem;
-    }
-
-    .body {
-      padding: 1.8rem 2rem 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.6rem;
-    }
-
-    .section-title {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: #8b4513;
-      margin-bottom: 0.7rem;
-      display: flex;
+    .section-tag {
+      display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 8px;
+      margin-bottom: 12px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
     }
 
-    .story-box {
-      background: #fffaf4;
+    .wednesday { background: linear-gradient(180deg, #6f7d55 0%, #53613e 100%); }
+    .thursday { background: linear-gradient(180deg, #b56a59 0%, #8f4d40 100%); }
+
+    p { margin: 0 0 14px; }
+    ul, ol { margin: 0; padding-left: 22px; }
+    li + li { margin-top: 8px; }
+
+    .focus-box { background: linear-gradient(180deg, #fffdf9 0%, #f7efe2 100%); }
+
+    .scripture {
+      border-left: 4px solid var(--gold);
+      background: #fff3df;
       border-radius: 12px;
-      border: 1px solid #f0dfc8;
-      padding: 1.3rem 1.4rem;
+      padding: 14px 16px;
+      color: #5f4b31;
+      margin-top: 14px;
     }
 
-    .story-text {
-      font-size: 1.04rem;
-      line-height: 2;
-      color: #3a2e24;
-      text-align: justify;
-    }
-
-    .story-text p + p { margin-top: 0.9em; }
-
-    .three-things {
-      background: #fef9ef;
-      border-radius: 12px;
-      border-left: 4px solid #d4924a;
-      padding: 1.2rem 1.4rem;
-    }
-
-    .three-things ol {
-      padding-left: 1.4rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-    }
-
-    .three-things li {
-      font-size: 1.02rem;
-      line-height: 1.75;
-      color: #4a3020;
-    }
-
-    .scripture-box {
-      background: linear-gradient(135deg, #fdf3e3, #fae8cc);
-      border-radius: 12px;
-      padding: 1.2rem 1.4rem;
-      text-align: center;
-    }
-
-    .scripture-text {
-      font-size: 1.1rem;
-      font-style: italic;
-      line-height: 1.85;
-      color: #5c3d1e;
-      font-weight: 500;
-    }
-
-    .scripture-ref {
-      margin-top: 0.5rem;
-      font-size: 0.88rem;
-      color: #8b6040;
-    }
-
-    .prayer-box {
+    .prayer {
       background: #fdf6ee;
-      border-radius: 12px;
       border: 1px dashed #d4a070;
-      padding: 1.2rem 1.4rem;
+      border-radius: 14px;
+      padding: 16px;
     }
 
-    .prayer-text {
-      font-size: 1.01rem;
-      line-height: 2;
-      color: #4a3020;
-    }
-
-    .prayer-text p + p { margin-top: 0.5em; }
-
-    .footer-divider {
+    .footer-note {
+      margin-top: 22px;
       text-align: center;
-      padding: 0.7rem 2rem 0.5rem;
-      font-size: 0.82rem;
-      color: #c0a080;
-      letter-spacing: 0.12em;
-      border-top: 1px solid #f0dfc8;
+      color: #8a7a66;
+      font-size: 13px;
     }
 
-    .footer {
-      text-align: center;
-      padding: 0.3rem 2rem 1.2rem;
-      font-size: 0.78rem;
-      color: #b08060;
-      letter-spacing: 0.08em;
+    @media (max-width: 920px) {
+      .intro-grid,
+      .content-grid,
+      .summary-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .wrap { margin-top: 18px; }
+      .hero, .card { border-radius: 18px; }
+      .button { width: 100%; text-align: center; }
     }
   </style>
 </head>
-<body>
-  <div class="card">
-    <div class="header">
-      <div class="lesson-label">Lesson 13 · 2026 三月第四週</div>
-      <div class="lesson-title">羅得─失敗的義人</div>
-      <div class="lesson-subtitle">主日 羅得的選擇與漂流</div>
-      <div class="divider-line"></div>
-    </div>
-
-    <div class="body">
-      <div>
-        <div class="section-title">📖 今日故事</div>
-        <div class="story-box">
-          <div class="story-text">
-            <p>有一天，亞伯拉罕和羅得的牛羊越來越多，兩邊的牧人也開始為草地和住的地方起爭執。亞伯拉罕不想大家一直吵下去，就很大方地讓羅得先選地方。羅得抬頭一看，看見約但河平原又大又漂亮，水很多、草很多，看起來很適合放羊，也像一個舒服又輕鬆的地方。於是，他很快就挑了那一邊。</p>
-            <p>可是，那片地方雖然看起來很好，卻不是最安全的地方。聖經告訴我們，那裡靠近所多瑪。羅得一開始沒有直接搬進那座城，他只是慢慢把帳棚越移越近。他心裡可能想：「只是靠近一點，應該沒關係吧。」可是人一旦一直往錯的方向靠近，就很容易越走越遠，最後連自己都回不來。</p>
-            <p>羅得的問題，不只是選錯地方而已，更是他在選擇的時候，只看眼前的方便和好處，沒有好好想這是不是神喜歡的路。後來，他真的搬進了所多瑪。這提醒我們：很多偏掉，不是一瞬間突然變壞，而是先被好看、舒服、方便的東西吸引，再一步一步離神越來越遠。所以我們要學會，不只看眼前喜不喜歡，也要想這條路會把我帶到哪裡去。</p>
-          </div>
-        </div>
+<body class="grain">
+  <main class="wrap">
+    <section class="hero">
+      <div class="badge-row">
+        <span class="badge">📖 主日帶讀</span>
+        <span class="badge">創世記 13 章</span>
+        <span class="badge">主題：羅得的選擇與漂流</span>
       </div>
-
-      <div>
-        <div class="section-title">✨ 故事學到的三件事</div>
-        <div class="three-things">
-          <ol>
-            <li>不是所有看起來很好的選擇，都是神要我們走的路。</li>
-            <li>人若一直靠近錯的地方，久了就很容易真的走進去。</li>
-            <li>做選擇時，不只要看眼前方不方便，也要看這條路是不是會帶我們更靠近神。</li>
-          </ol>
-        </div>
+      <h1>羅得：先選舒服，<br>再慢慢走近危險</h1>
+      <p class="lead">
+        前半段講羅得怎麼挑了看起來最好的地方，後半段講他怎麼把帳棚越移越近所多瑪。
+        讀完會發現：人不是一下子掉進錯誤裡，很多時候，是先被方便、好看、舒服吸引，然後一步一步走遠。
+      </p>
+      <div class="hero-actions">
+        <a class="button primary" href="#reading">開始閱讀</a>
+        <a class="button secondary" href="#discussion">看主日重點</a>
       </div>
+    </section>
 
-      <div>
-        <div class="section-title">📜 今天的經文</div>
-        <div class="scripture-box">
-          <div class="scripture-text">「不要模仿這世代，<br>反要藉著心思的更新而變化，<br>叫你們驗證何為神那美好、可喜悅、並純全的旨意。」</div>
-          <div class="scripture-ref">羅馬書 12:2</div>
+    <section class="intro-grid" aria-label="overview">
+      <article class="card">
+        <p class="eyebrow">Overview</p>
+        <h2>這一篇在提醒什麼？</h2>
+        <p>
+          羅得的問題，不只是他後來住進了所多瑪，更早是在於：他做選擇時，先看哪裡舒服、哪裡有好處，
+          卻沒有先想這條路會把自己帶到哪裡去。
+        </p>
+        <p>
+          所以這篇不是只在講一個古老故事，而是在提醒我們：有些事情一開始看起來沒什麼，
+          只是「靠近一點點」，可是一旦方向不對，越走就會越偏。
+        </p>
+      </article>
+
+      <aside class="card focus-box">
+        <p class="eyebrow">Sunday Focus</p>
+        <h2>主日可以先抓三句話</h2>
+        <ul>
+          <li><strong>看起來最好的，</strong> 不一定真的是最好的。</li>
+          <li><strong>很多偏掉，</strong> 都不是一下子，而是慢慢靠近。</li>
+          <li><strong>做選擇時，</strong> 不只要問喜不喜歡，也要問這是不是神喜歡的路。</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="reading" class="content-grid" aria-label="reading-content">
+      <article class="card">
+        <span class="section-tag wednesday">周三｜羅得的拣選</span>
+        <h2>看起來最好，不一定真的最好</h2>
+        <p>
+          當亞伯拉罕和羅得的牛羊、僕人都越來越多時，雙方的牧人開始起爭執。亞伯拉罕不願意讓大家一直吵下去，
+          就很大方地讓羅得先選地方。羅得一抬頭，看見約但河平原又寬又美，草很多、水很多，
+          感覺放羊很方便，生活也會很舒服，於是他很快就選了那裡。
+        </p>
+        <p>
+          這個選擇表面上只是挑地方，其實也把他的心顯出來了。羅得先看見的是眼前的方便，
+          是自己能得到什麼，卻沒有先想：這是不是一條安全的路？是不是一條會讓我更靠近神的路？
+        </p>
+        <p>
+          有時候我們也會這樣。看見一件事很吸引人、很輕鬆、很有趣，就很想先抓住。
+          可是神不只是要我們選「喜歡的」，祂更要我們學會選「對的」。
+        </p>
+        <div class="scripture">
+          <strong>可帶的一句提醒</strong><br />
+          有些選擇看起來像在挑舒服，其實是在決定：我接下來要往哪個方向走。
         </div>
-      </div>
+      </article>
 
-      <div>
-        <div class="section-title">🙏 一起禱告</div>
-        <div class="prayer-box">
-          <div class="prayer-text">
-            <p>親愛的天父，求你幫助我做選擇的時候，不只看眼前舒服不舒服、喜不喜歡。</p>
-            <p>也求你給我清楚的心，讓我知道什麼是對的路，什麼是會把我越帶越遠的路。</p>
-            <p>當我想靠近不該靠近的東西時，求你提醒我、拉住我，讓我願意回到你面前。</p>
-            <p>願你保守我的心，叫我天天更靠近你。奉主耶穌的名禱告，阿們。</p>
-          </div>
+      <article class="card">
+        <span class="section-tag thursday">周四｜羅得的迁移</span>
+        <h2>不是一下進去，而是慢慢靠過去</h2>
+        <p>
+          羅得選了平原之後，並不是立刻搬進所多瑪城。他是先把帳棚慢慢往那邊移，一點一點靠近。
+          他心裡可能想：「只是靠近而已，應該沒關係。」可是人若一直往錯的方向移，最後常常就真的走進去了。
+        </p>
+        <p>
+          這也是很真實的提醒。很多人不是突然變壞，也不是一夜之間離神很遠，
+          而是先讓自己常常靠近不該靠近的事，久了就覺得沒什麼，再久了就真的陷進去。
+        </p>
+        <p>
+          所以要小心的，不只是「我現在有沒有做錯」，還有「我現在是不是正往錯的地方靠近」。
+          方向如果不對，就算只是小小一步，走久了也會差很遠。
+        </p>
+        <div class="scripture">
+          <strong>可帶的一句提醒</strong><br />
+          真正要小心的，不只是跌倒的那一刻，而是那些把人慢慢帶向跌倒的小步伐。
         </div>
-      </div>
-    </div>
+      </article>
+    </section>
 
-    <div class="footer-divider">——————END——————</div>
-    <div class="footer">聖經之旅 第一冊 · 蒙揀選的族類</div>
-  </div>
+    <section id="discussion" class="summary-grid" aria-label="discussion-guide">
+      <article class="card focus-box">
+        <p class="eyebrow">Lead the Group</p>
+        <h3>這篇可以帶出的三件事</h3>
+        <ol>
+          <li><strong>不要只看眼前。</strong> 方便、舒服、好看，不等於真正有益。</li>
+          <li><strong>要注意方向。</strong> 有些事現在看起來還沒出事，但方向錯了，後面就會越走越偏。</li>
+          <li><strong>學會問神。</strong> 做選擇前，不只問我喜不喜歡，也要問神喜不喜歡。</li>
+        </ol>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Discussion</p>
+        <h3>可直接帶的三個問題</h3>
+        <ul>
+          <li>我最近有沒有哪一個選擇，是只看方便，卻沒有想更遠的結果？</li>
+          <li>有哪些事情看起來好像只是「靠近一點」，其實很可能把人越帶越遠？</li>
+          <li>下次做選擇時，我可以怎麼先停一下，問問神、也想想方向？</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="summary-grid" aria-label="verse-prayer">
+      <article class="card">
+        <p class="eyebrow">Verse</p>
+        <h3>今天的經文</h3>
+        <div class="scripture">
+          「不要模仿這世代，反要藉著心思的更新而變化，叫你們驗證何為神那美好、可喜悅、並純全的旨意。」<br />
+          羅馬書 12:2
+        </div>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Prayer</p>
+        <h3>一起禱告</h3>
+        <div class="prayer">
+          親愛的天父，求你幫助我做選擇時，不只看眼前舒服不舒服，
+          也學會去想：這條路是不是會讓我更靠近你。<br /><br />
+          當我想靠近不該靠近的事時，求你提醒我、拉住我，
+          讓我願意回到對的方向。<br /><br />
+          求你保守我的心，叫我天天學會選擇你喜歡的路。阿們。
+        </div>
+      </article>
+    </section>
+
+    <p class="footer-note">Made for Sunday gathering · vivid discussion edition</p>
+  </main>
 </body>
 </html>
