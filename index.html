@@ -3,30 +3,36 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>哈酷・溫暖故事感</title>
+  <title>周三聖經帶讀｜羅得：被動的跟隨者與分開的抉擇</title>
+  <meta name="description" content="整理《聖經之旅 第一冊》第十三課中〈周一 羅得─被動的跟隨者〉與〈周二 羅得與亞伯拉罕分開〉兩段內容，製作成適合周三帶讀的單頁網頁。" />
   <style>
     :root {
-      --bg: #fbf7ee;
-      --bg-soft: #f4ebd9;
-      --surface: #fffaf0;
-      --ink: #2f2a22;
-      --ink-soft: #6a6051;
-      --accent: #c87244;
-      --accent-deep: #9b5229;
-      --ring: #e8d7bb;
+      --bg: #f6f1e8;
+      --bg-soft: #efe5d3;
+      --paper: #fffaf2;
+      --ink: #2f2a25;
+      --muted: #6f6559;
+      --line: #e6d7bf;
+      --gold: #c29045;
+      --gold-deep: #966b2f;
+      --olive: #6f7d55;
+      --rose: #b56a59;
+      --shadow: 0 16px 40px rgba(88, 63, 30, 0.12);
     }
 
     * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
       color: var(--ink);
       font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.8;
       background:
-        radial-gradient(1300px 600px at 95% -10%, #f8dfbe 0%, transparent 52%),
-        radial-gradient(1000px 500px at -10% 100%, #f1d5b8 0%, transparent 48%),
+        radial-gradient(1000px 480px at 110% -10%, rgba(194, 144, 69, 0.16), transparent 55%),
+        radial-gradient(900px 420px at -10% 100%, rgba(111, 125, 85, 0.16), transparent 55%),
         var(--bg);
-      line-height: 1.75;
     }
 
     .grain::before {
@@ -35,201 +41,354 @@
       inset: 0;
       pointer-events: none;
       opacity: 0.05;
-      background-image: radial-gradient(rgba(80, 55, 26, 0.28) 0.6px, transparent 0.6px);
-      background-size: 3px 3px;
+      background-image: radial-gradient(rgba(68, 48, 24, 0.28) 0.7px, transparent 0.7px);
+      background-size: 4px 4px;
       z-index: 0;
     }
 
     .wrap {
       position: relative;
       z-index: 1;
-      width: min(980px, 92vw);
-      margin: 44px auto 70px;
+      width: min(1100px, 92vw);
+      margin: 32px auto 64px;
     }
 
     .hero {
-      border: 1px solid var(--ring);
-      background: linear-gradient(145deg, #fffef8 0%, #fff4e5 100%);
-      border-radius: 22px;
-      padding: clamp(24px, 4vw, 40px);
-      box-shadow: 0 16px 40px rgba(95, 63, 29, 0.12);
-      overflow: hidden;
       position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: clamp(28px, 5vw, 52px);
+      background: linear-gradient(140deg, #fffdf8 0%, #fff5e7 100%);
+      box-shadow: var(--shadow);
     }
 
     .hero::after {
       content: "";
       position: absolute;
       right: -120px;
-      top: -90px;
-      width: 300px;
-      height: 300px;
+      top: -120px;
+      width: 320px;
+      height: 320px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(200, 114, 68, 0.24) 0%, rgba(200, 114, 68, 0) 68%);
-      pointer-events: none;
+      background: radial-gradient(circle, rgba(194, 144, 69, 0.28) 0%, rgba(194, 144, 69, 0) 70%);
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
     }
 
     .badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      border: 1px solid #e7c9a5;
-      background: #fff6e8;
-      color: var(--accent-deep);
-      border-radius: 999px;
       padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid #ebd6b0;
+      background: #fff7e8;
+      color: var(--gold-deep);
       font-size: 13px;
+      font-weight: 700;
       letter-spacing: 0.02em;
     }
 
     h1 {
-      margin: 14px 0 8px;
+      margin: 0 0 12px;
       font-family: "Noto Serif TC", "PMingLiU", serif;
-      font-weight: 700;
-      font-size: clamp(34px, 6vw, 58px);
-      line-height: 1.15;
-      letter-spacing: 0.01em;
-      color: #2d2418;
+      font-size: clamp(34px, 6vw, 60px);
+      line-height: 1.12;
+      color: #2d2419;
     }
 
-    .sub {
+    .lead {
       margin: 0;
-      color: var(--ink-soft);
-      max-width: 58ch;
-      font-size: clamp(15px, 2.3vw, 18px);
+      max-width: 68ch;
+      color: var(--muted);
+      font-size: clamp(16px, 2.2vw, 19px);
     }
 
-    .cta {
-      margin-top: 20px;
+    .hero-actions {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
       display: inline-block;
+      padding: 12px 18px;
+      border-radius: 14px;
       text-decoration: none;
-      color: #fff;
-      background: linear-gradient(180deg, var(--accent) 0%, var(--accent-deep) 100%);
-      padding: 11px 18px;
-      border-radius: 12px;
       font-weight: 700;
-      box-shadow: 0 8px 18px rgba(155, 82, 41, 0.3);
-      transition: transform .2s ease, box-shadow .2s ease;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
     }
-    .cta:hover { transform: translateY(-1px); box-shadow: 0 12px 20px rgba(155, 82, 41, 0.35); }
 
-    .grid {
+    .button.primary {
+      color: white;
+      background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%);
+      box-shadow: 0 10px 20px rgba(150, 107, 47, 0.28);
+    }
+
+    .button.secondary {
+      color: var(--ink);
+      background: rgba(255,255,255,0.72);
+      border: 1px solid var(--line);
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .intro-grid,
+    .content-grid,
+    .summary-grid {
       display: grid;
-      gap: 16px;
-      margin-top: 22px;
-      grid-template-columns: 1.15fr 1fr;
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .intro-grid {
+      grid-template-columns: 1.2fr 0.9fr;
+    }
+
+    .content-grid {
+      grid-template-columns: 1fr 1fr;
+      margin-top: 24px;
+    }
+
+    .summary-grid {
+      grid-template-columns: 1fr 1fr;
+      margin-top: 24px;
     }
 
     .card {
-      border: 1px solid var(--ring);
-      background: var(--surface);
-      border-radius: 16px;
-      padding: 18px;
-      box-shadow: 0 8px 20px rgba(95, 63, 29, 0.08);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--paper);
+      padding: 22px;
+      box-shadow: 0 10px 24px rgba(88, 63, 30, 0.08);
     }
 
-    .card h2 {
-      margin: 0 0 10px;
-      font-size: 18px;
-      color: #3a3023;
+    .card h2,
+    .card h3 {
+      margin: 0 0 12px;
       font-family: "Noto Serif TC", serif;
+      color: #352a1e;
     }
 
-    .kicker {
+    .eyebrow {
       margin: 0 0 8px;
-      color: #8b7258;
+      color: var(--gold-deep);
       font-size: 13px;
       text-transform: uppercase;
-      letter-spacing: .08em;
+      letter-spacing: .09em;
+      font-weight: 700;
     }
 
-    .list {
+    .scripture {
+      border-left: 4px solid var(--gold);
+      background: #fff3df;
+      border-radius: 12px;
+      padding: 14px 16px;
+      color: #5f4b31;
+      margin-top: 14px;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .monday { background: linear-gradient(180deg, #6f7d55 0%, #53613e 100%); }
+    .tuesday { background: linear-gradient(180deg, #b56a59 0%, #8f4d40 100%); }
+
+    p { margin: 0 0 14px; }
+
+    ul, ol {
       margin: 0;
-      padding-left: 20px;
-      color: #5f5447;
+      padding-left: 22px;
     }
 
-    .list li { margin: 7px 0; }
+    li + li { margin-top: 8px; }
 
-    .quote {
-      margin-top: 8px;
-      padding: 12px 14px;
-      border-left: 4px solid #d29a71;
-      background: #fff4e7;
-      border-radius: 10px;
-      color: #5f4a36;
+    .highlight-list li::marker { color: var(--gold-deep); }
+
+    .focus-box {
+      background: linear-gradient(180deg, #fffdf9 0%, #f7efe2 100%);
     }
 
-    .footer {
-      margin-top: 16px;
+    .footer-note {
+      margin-top: 22px;
       text-align: center;
-      color: #8f7f69;
+      color: #8a7a66;
       font-size: 13px;
     }
 
-    @media (max-width: 900px) {
-      .grid { grid-template-columns: 1fr; }
+    a.link {
+      color: var(--gold-deep);
+      text-underline-offset: 3px;
     }
 
-    @media (max-width: 520px) {
-      .wrap { margin-top: 24px; }
-      .hero { border-radius: 16px; }
-      .card { border-radius: 14px; }
-      .cta { width: 100%; text-align: center; }
+    @media (max-width: 920px) {
+      .intro-grid,
+      .content-grid,
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .wrap { margin-top: 18px; }
+      .hero,
+      .card { border-radius: 18px; }
+      .button { width: 100%; text-align: center; }
     }
   </style>
 </head>
 <body class="grain">
   <main class="wrap">
     <section class="hero">
-      <span class="badge">📖 溫暖故事感 Demo</span>
-      <h1>哈酷，陪你把複雜的事<br>說成孩子也能懂的故事</h1>
-      <p class="sub">
-        我是哈酷（Ha Ku）😎。我喜歡把難懂的內容，整理成溫暖、清楚、可行動的版本。
-        不論是每日任務、系統排障，還是週三帶讀故事，我都會用「穩定優先、一步一步」的方式陪你走。
+      <div class="badge-row">
+        <span class="badge">📖 周三聖經帶讀</span>
+        <span class="badge">創世記 12–13 章背景整理</span>
+        <span class="badge">主題：羅得的起頭與分開</span>
+      </div>
+      <h1>羅得：被動的跟隨者<br>與分開的抉擇</h1>
+      <p class="lead">
+        這一頁整理自《聖經之旅 第一冊》第十三課，選用〈周一 羅得─被動的跟隨者〉與〈周二 羅得與亞伯拉罕分開〉兩段內容，
+        改寫成適合帶讀與投影的單頁閱讀版。核心不是只看羅得「做了什麼」，而是看見：一個人若沒有主動尋求神，
+        又在利益面前離開屬靈保護，生命會怎樣慢慢偏離。
       </p>
-      <a class="cta" href="#story">看看今日導讀範例</a>
+      <div class="hero-actions">
+        <a class="button primary" href="#reading">開始閱讀</a>
+        <a class="button secondary" href="#discussion">看帶讀重點</a>
+      </div>
     </section>
 
-    <section id="story" class="grid" aria-label="story-content">
+    <section class="intro-grid" aria-label="overview">
       <article class="card">
-        <p class="kicker">Today Story</p>
-        <h2>📖 今日故事</h2>
+        <p class="eyebrow">Overview</p>
+        <h2>這頁在講什麼？</h2>
         <p>
-          有一天，亞伯拉罕抬頭看著夜空，天上的星星多得數不清。那時候的他，已經很老了，
-          還沒有孩子，心裡其實很擔心：「神說過要賜福給我，可是怎麼看都不像快要實現啊？」
-          神沒有責備他的擔心，反而帶他走到外面，讓他看星星，溫柔地說：「你看得見多少星星，
-          你的後代也會一樣多。」
+          羅得外面看起來和亞伯拉罕一起走在神的路上，但裡面卻有很大的差別。
+          亞伯拉罕是因著主的顯現與呼召而前行；羅得則是因著家人帶領、環境推動而同行。
+          到了利益衝突出現時，這個差別就暴露出來：亞伯拉罕重看和睦與屬靈道路，羅得卻先看眼前的草場、牛羊與好處。
         </p>
         <p>
-          亞伯拉罕不是馬上看到奇蹟，但他選擇相信。很多時候，我們也會像他一樣：功課很難、
-          關係卡住、目標看起來很遠。神的應許常常不是「立刻完成」，而是「一路陪你」。
-          當我們願意走下一步，就會慢慢看見原來神真的在做工。
+          所以這不是一個單純的家庭故事，而是一個屬靈提醒：<strong>沒有主動尋求主的生命，常常會在選擇來到時，向著眼前利益傾斜。</strong>
         </p>
       </article>
 
-      <aside class="card">
-        <p class="kicker">Takeaways</p>
-        <h2>✨ 故事學到的三件事</h2>
-        <ol class="list">
-          <li>看不見結果的時候，也可以先相信神會帶路。</li>
-          <li>擔心不是失敗，把擔心告訴神是一種勇敢。</li>
-          <li>每天做一小步，就會離應許更近一點。</li>
-        </ol>
-
-        <h2 style="margin-top:16px;">📜 今天的經文</h2>
-        <div class="quote">「亞伯蘭信耶和華，耶和華就以此為他的義。」（創世記 15:6）</div>
-
-        <h2 style="margin-top:16px;">🙏 一起禱告</h2>
-        <p>
-          親愛的天父，謝謝祢在我看不清楚的時候，仍然陪在我身邊。
-          求祢給我相信的心，也給我每天往前走一步的勇氣。
-          當我害怕時，幫助我記得祢的應許不會落空。阿們。
-        </p>
+      <aside class="card focus-box">
+        <p class="eyebrow">Wednesday Focus</p>
+        <h2>周三帶讀可先抓住三個焦點</h2>
+        <ul class="highlight-list">
+          <li><strong>信仰不能只靠別人帶。</strong> 被帶進來是恩典，但仍要自己尋求神。</li>
+          <li><strong>選擇會暴露內在光景。</strong> 當利益與屬靈關係衝突時，人會顯出真正重看的是什麼。</li>
+          <li><strong>保護常藏在屬靈關係裡。</strong> 離開屬靈源頭，看似自由，實際上常是失去遮蓋的開始。</li>
+        </ul>
       </aside>
     </section>
 
-    <p class="footer">Made with warmth for 10–12歲小朋友 · Ha Ku Demo</p>
+    <section id="reading" class="content-grid" aria-label="reading-content">
+      <article class="card">
+        <span class="section-tag monday">周一｜羅得─被動的跟隨者</span>
+        <h2>他走上神的路，卻不是因為自己看見主</h2>
+        <p>
+          羅得是亞伯拉罕哥哥哈蘭的兒子。當神呼召亞伯拉罕時，哈蘭已經過世，羅得便在祖父他拉與叔叔亞伯拉罕的照顧下，
+          一同離開迦勒底的吾珥。從外面看，羅得似乎也踏上了離開偶像、走向神的道路；但他和亞伯拉罕最大的不同，
+          不在於「有沒有一起出發」，而在於「裡面有沒有看見主」。亞伯拉罕是因著主的顯現與呼召而回應，
+          羅得卻只是跟著家人一起往前走，沒有自己的異象，也缺少憑信與主交通的經歷。
+        </p>
+        <p>
+          這使羅得的屬靈起頭顯得很軟弱。他和神的關係，多半建立在別人的影響上，而不是自己主動的尋求。
+          被長輩帶到神面前，當然是一件美事；但若人只是被動跟隨，沒有把心真正轉向主，將來遇到選擇、困難或誘惑時，
+          很容易就跟著環境起伏。羅得後來的漂流，不是突然發生的，而是從一個沒有主動尋求神的起頭開始。
+        </p>
+        <p>
+          這段信息也在問我們：我們跟隨主，是因為自己聽見了神的呼召，還是只是因為家人、教會、環境把我們帶進來？
+          神樂意向人顯現，但祂也要人有心、有渴慕地來尋求。若只是站在屬靈環境裡，卻沒有親自來到主面前，
+          人就很難在裡面長出穩固、清楚的跟隨。
+        </p>
+        <div class="scripture">
+          <strong>禱讀經文</strong><br />
+          「你說，你們當尋求我的面；那時我心向你說，耶和華啊，你的面我正要尋求。」（詩篇 27:8）
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="section-tag tuesday">周二｜羅得與亞伯拉罕分開</span>
+        <h2>當利益變大，裡面的選擇也顯明了</h2>
+        <p>
+          亞伯拉罕與羅得一路同行，後來因著神的祝福，牛群、羊群和財物都漸漸增多，兩邊的牧人也因此起了爭執。
+          為了不讓彼此相爭，亞伯拉罕主動把選擇權讓給羅得。按常理說，羅得既受亞伯拉罕照顧，又因跟著他而蒙福，
+          理當存著感謝的心，不該容讓僕人相爭，更不該因著好處與叔叔分開；但羅得沒有在這件事上學功課。
+          他先想到的是草場、牛羊與眼前的利益，而不是與亞伯拉罕的交通、關係與屬靈保護。
+        </p>
+        <p>
+          這裡最值得警醒的，不只是「分開」這個結果，而是分開背後的價值排序：
+          寧可失去屬靈交通，也不能失去財物；寧可遠離亞伯拉罕，也不能少掉自己看重的利益。
+          當人開始這樣衡量時，心其實已經離開了神要給人的祝福之路。很多人的偏離，不是一下子跌進大錯，
+          而是從「不能和弟兄姊妹同住」、「不願靠近屬靈長輩」、「想脫離保護自己的人」開始。
+        </p>
+        <p>
+          這段也提醒我們，離開屬靈源頭看起來像是得到自由，實際上卻常是失去標的與保護。
+          神的保守，很多時候不是抽象地從天掉下來，而是藉著祂放在我們身邊的屬靈關係、長輩、同伴與遮蓋臨到我們。
+          羅得的選擇，正是後來一步步漂向所多瑪的起點。
+        </p>
+        <div class="scripture">
+          <strong>禱讀經文</strong><br />
+          「記得你裡面無偽的信心，就是先在你外祖母羅以，和你母親友尼基裡面的，我深信也在你裡面。」（提摩太後書 1:5）
+        </div>
+      </article>
+    </section>
+
+    <section id="discussion" class="summary-grid" aria-label="discussion-guide">
+      <article class="card focus-box">
+        <p class="eyebrow">Lead the Group</p>
+        <h3>周三帶讀重點</h3>
+        <ol>
+          <li><strong>起頭對不對，會影響後面很遠。</strong> 羅得的問題不是只有後來愛世界，而是起初就缺少主動尋求神的心。</li>
+          <li><strong>關係與利益衝突時，選擇會說話。</strong> 羅得選了眼前的好處，也同時失去了屬靈的近處。</li>
+          <li><strong>很多漂流都不是突然。</strong> 先是被動，接著分開，之後才一步步走向更危險的地方。</li>
+        </ol>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Discussion</p>
+        <h3>可直接帶的三個問題</h3>
+        <ul>
+          <li>我平常的信仰生活，比較像「自己在尋求主」，還是「跟著別人一起走」？</li>
+          <li>如果有一天「眼前利益」和「屬靈關係」衝突，我最容易先抓住哪一個？</li>
+          <li>神現在放在我生命裡的屬靈保護、提醒與陪伴，是哪些人？我有沒有珍惜？</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="card" style="margin-top: 24px;">
+      <p class="eyebrow">Source</p>
+      <h3>來源說明</h3>
+      <p>
+        本頁整理自《2264-1 聖經之旅 第一冊｜蒙揀選的族類｜第十三課》中的
+        <strong>〈周一 羅得─被動的跟隨者〉</strong>與<strong>〈周二 羅得與亞伯拉罕分開〉</strong>，
+        為網頁閱讀與帶讀使用而重整排版與文字節奏；原始內容請以原站為準。
+      </p>
+      <p>
+        原文連結：<a class="link" href="https://ezoe.work/books/2/2264-1-13.html" target="_blank" rel="noreferrer">https://ezoe.work/books/2/2264-1-13.html</a>
+      </p>
+    </section>
+
+    <p class="footer-note">Made for Wednesday Bible reading · responsive single-page HTML</p>
   </main>
 </body>
 </html>
