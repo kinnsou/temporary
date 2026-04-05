@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>單字複習小教室</title>
+  <style>
+    :root {
+      --bg: #f9f4ec;
+      --paper: #fff8f0;
+      --ink: #3a2e24;
+      --muted: #6f6559;
+      --line: #f0dfc8;
+      --gold: #c29045;
+      --gold-deep: #966b2f;
+      --gold-light: #ebd6b0;
+      --olive: #6f7d55;
+      --olive-deep: #53613e;
+      --rose: #b56a59;
+      --rose-deep: #8f4d40;
+      --shadow: 0 6px 32px rgba(120, 80, 30, 0.13);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+      line-height: 1.7;
+    }
+
+    .wrap {
+      max-width: 720px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 1rem 3rem;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, #8f5a2f 0%, #b27442 62%, #d19859 100%);
+      padding: 2rem 1.5rem 1.5rem;
+      text-align: center;
+      border-radius: 0 0 24px 24px;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 4px 20px rgba(120, 80, 30, 0.18);
+    }
+
+    .header-label {
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      color: rgba(255, 240, 215, 0.85);
+      margin-bottom: 0.3rem;
+    }
+
+    .header-title {
+      font-family: "Noto Serif TC", "PMingLiU", serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #fff8ee;
+      letter-spacing: 0.05em;
+      text-shadow: 0 2px 8px rgba(80, 30, 0, 0.28);
+      margin-bottom: 0.3rem;
+    }
+
+    .header-sub {
+      font-size: 0.95rem;
+      color: rgba(255, 235, 185, 0.92);
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      gap: 6px;
+      margin: 1rem 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .tab-btn {
+      flex: 1;
+      min-width: 0;
+      padding: 10px 8px;
+      border: 2px solid var(--line);
+      border-radius: 14px;
+      background: var(--paper);
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%);
+      color: #fff;
+      border-color: var(--gold);
+      box-shadow: 0 4px 12px rgba(150, 107, 47, 0.3);
+    }
+
+    .tab-btn:not(.active):hover {
+      border-color: var(--gold-light);
+      color: var(--gold-deep);
+    }
+
+    /* Panels */
+    .panel { display: none; }
+    .panel.active { display: block; }
+
+    /* Card view */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .vocab-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 1.2rem 1.4rem;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .vocab-card:hover { transform: translateY(-2px); }
+
+    .vocab-word {
+      font-family: "Noto Serif TC", serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--gold-deep);
+      margin-bottom: 0.2rem;
+    }
+
+    .vocab-meaning {
+      font-size: 1.05rem;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
+      font-weight: 600;
+    }
+
+    .vocab-example {
+      background: #fffdf7;
+      border-left: 3px solid var(--gold-light);
+      border-radius: 8px;
+      padding: 0.7rem 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .vocab-example .en {
+      font-size: 0.95rem;
+      color: var(--ink);
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    .vocab-example .zh {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+    }
+
+    .vocab-date {
+      font-size: 0.75rem;
+      color: #b0a090;
+      margin-top: 0.5rem;
+      text-align: right;
+    }
+
+    /* Quiz shared */
+    .quiz-area {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .quiz-progress {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .progress-bar-bg {
+      flex: 1;
+      height: 8px;
+      background: #ede4d6;
+      border-radius: 99px;
+      margin: 0 12px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold), var(--olive));
+      border-radius: 99px;
+      transition: width 0.4s ease;
+    }
+
+    .quiz-question-label {
+      font-size: 0.82rem;
+      color: var(--gold-deep);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    .quiz-prompt {
+      font-family: "Noto Serif TC", serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 1.2rem;
+      line-height: 1.5;
+      text-align: center;
+      padding: 0.8rem;
+      background: linear-gradient(135deg, #fdf3e3, #fae8cc);
+      border-radius: 14px;
+    }
+
+    .quiz-prompt .blank {
+      display: inline-block;
+      min-width: 80px;
+      border-bottom: 3px dashed var(--gold);
+      color: transparent;
+      margin: 0 4px;
+    }
+
+    .quiz-prompt .hint-zh {
+      display: block;
+      font-size: 0.88rem;
+      color: var(--muted);
+      font-weight: 400;
+      margin-top: 0.4rem;
+      font-family: "Noto Sans TC", sans-serif;
+    }
+
+    .choices {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .choice-btn {
+      padding: 14px 12px;
+      border: 2px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    .choice-btn:hover:not(.disabled) {
+      border-color: var(--gold);
+      background: #fff7e8;
+      transform: translateY(-1px);
+    }
+
+    .choice-btn.correct {
+      border-color: var(--olive);
+      background: #eef5e0;
+      color: var(--olive-deep);
+    }
+
+    .choice-btn.wrong {
+      border-color: var(--rose);
+      background: #fce8e4;
+      color: var(--rose-deep);
+    }
+
+    .choice-btn.disabled {
+      cursor: default;
+      opacity: 0.7;
+    }
+
+    .choice-btn.disabled.show-correct {
+      border-color: var(--olive);
+      background: #eef5e0;
+      color: var(--olive-deep);
+      opacity: 1;
+    }
+
+    .feedback-msg {
+      text-align: center;
+      padding: 0.8rem;
+      margin-top: 1rem;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      display: none;
+    }
+
+    .feedback-msg.correct {
+      display: block;
+      background: #eef5e0;
+      color: var(--olive-deep);
+      border: 1px solid #c5d9a4;
+    }
+
+    .feedback-msg.wrong {
+      display: block;
+      background: #fce8e4;
+      color: var(--rose-deep);
+      border: 1px solid #e8b5ab;
+    }
+
+    .next-btn {
+      display: block;
+      width: 100%;
+      margin-top: 1rem;
+      padding: 14px;
+      border: none;
+      border-radius: 14px;
+      background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%);
+      color: #fff;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(150, 107, 47, 0.25);
+      transition: transform 0.15s;
+    }
+
+    .next-btn:hover { transform: translateY(-1px); }
+
+    /* Result */
+    .result-area {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    .result-score {
+      font-family: "Noto Serif TC", serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--gold-deep);
+      margin-bottom: 0.3rem;
+    }
+
+    .result-label {
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .result-msg {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .result-stars {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      letter-spacing: 4px;
+    }
+
+    .result-details {
+      background: #fffdf7;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    .result-details .detail-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.4rem 0;
+      font-size: 0.95rem;
+      border-bottom: 1px solid #f0e8d8;
+    }
+
+    .result-details .detail-row:last-child { border-bottom: none; }
+
+    .restart-btn {
+      display: inline-block;
+      padding: 14px 32px;
+      border: none;
+      border-radius: 14px;
+      background: linear-gradient(180deg, var(--olive) 0%, var(--olive-deep) 100%);
+      color: #fff;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(111, 125, 85, 0.3);
+      transition: transform 0.15s;
+      margin: 0 6px;
+    }
+
+    .restart-btn:hover { transform: translateY(-1px); }
+
+    .restart-btn.secondary {
+      background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%);
+      box-shadow: 0 6px 16px rgba(150, 107, 47, 0.25);
+    }
+
+    /* Footer */
+    .page-footer {
+      text-align: center;
+      padding: 1.5rem 1rem 0.5rem;
+      font-size: 0.78rem;
+      color: #b0a090;
+      letter-spacing: 0.06em;
+    }
+
+    /* Mobile */
+    @media (max-width: 560px) {
+      .header { padding: 1.5rem 1rem 1.2rem; border-radius: 0 0 18px 18px; }
+      .header-title { font-size: 1.4rem; }
+      .choices { grid-template-columns: 1fr; }
+      .quiz-prompt { font-size: 1.2rem; }
+      .vocab-card { padding: 1rem 1.1rem; }
+      .wrap { padding: 0 0.8rem 2rem; }
+    }
+
+    /* Animations */
+    @keyframes pop {
+      0% { transform: scale(0.95); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .animate-in { animation: pop 0.3s ease-out; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-label">VOCAB REVIEW</div>
+    <div class="header-title">單字複習小教室</div>
+    <div class="header-sub">最近學過的單字，一起來練習吧！</div>
+  </div>
+
+  <div class="wrap">
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('cards')">單字卡</button>
+      <button class="tab-btn" onclick="switchTab('quiz1')">中翻英選擇</button>
+      <button class="tab-btn" onclick="switchTab('quiz2')">例句填空</button>
+    </div>
+
+    <!-- Panel: Word Cards -->
+    <div id="panel-cards" class="panel active">
+      <div class="card-grid" id="card-grid"></div>
+    </div>
+
+    <!-- Panel: Quiz 1 - Chinese to English -->
+    <div id="panel-quiz1" class="panel">
+      <div class="quiz-area" id="quiz1-area"></div>
+    </div>
+
+    <!-- Panel: Quiz 2 - Cloze -->
+    <div id="panel-quiz2" class="panel">
+      <div class="quiz-area" id="quiz2-area"></div>
+    </div>
+
+    <div class="page-footer">單字複習小教室 · 資料來自每日學習紀錄</div>
+  </div>
+
+<script>
+// === Vocab Data (recent words from vocab-history.json) ===
+const VOCAB = [
+  { word:"balcony", meaning:"陽台", example:"She is standing on the balcony.", translation:"她正站在陽台上。", date:"2026-04-05" },
+  { word:"spider", meaning:"蜘蛛", example:"There is a spider on the wall.", translation:"牆上有一隻蜘蛛。", date:"2026-04-05" },
+  { word:"nose", meaning:"鼻子", example:"My nose is cold.", translation:"我的鼻子冰冰的。", date:"2026-04-05" },
+  { word:"child", meaning:"小孩；孩子", example:"The child is playing in the park.", translation:"那個孩子正在公園玩。", date:"2026-04-04" },
+  { word:"forward", meaning:"向前；前方的", example:"Please move forward.", translation:"請往前移一點。", date:"2026-04-04" },
+  { word:"ride", meaning:"騎（車/馬）；搭乘", example:"I ride my bike to school.", translation:"我騎腳踏車去上學。", date:"2026-04-04" },
+  { word:"leave", meaning:"離開；離去", example:"I have to leave now.", translation:"我現在得離開了。", date:"2026-04-03" },
+  { word:"wait", meaning:"等；等待", example:"Please wait for me.", translation:"請等我一下。", date:"2026-04-03" },
+  { word:"hippo", meaning:"河馬", example:"I saw a hippo at the zoo.", translation:"我在動物園看到一隻河馬。", date:"2026-04-03" },
+  { word:"clearly", meaning:"清楚地；明確地", example:"Please speak clearly.", translation:"請講清楚一點。", date:"2026-04-02" },
+  { word:"hide", meaning:"躲起來；藏起來", example:"Don't hide your feelings.", translation:"不要把你的感覺藏起來。", date:"2026-04-02" },
+  { word:"tomorrow", meaning:"明天", example:"We will have a test tomorrow.", translation:"我們明天要考試。", date:"2026-04-02" },
+  { word:"kick", meaning:"踢；踢一下", example:"Don't kick the ball inside the classroom.", translation:"不要在教室裡踢球。", date:"2026-03-31" },
+  { word:"weekend", meaning:"週末", example:"I visit my grandma on the weekend.", translation:"我週末會去看外婆。", date:"2026-03-31" },
+  { word:"yellow", meaning:"黃色（的）", example:"I have a yellow raincoat.", translation:"我有一件黃色的雨衣。", date:"2026-03-31" },
+  { word:"divide", meaning:"分開；除以", example:"Divide 12 by 3.", translation:"把 12 除以 3。", date:"2026-03-29" },
+  { word:"paint", meaning:"畫；塗；油漆", example:"I like to paint pictures.", translation:"我喜歡畫畫。", date:"2026-03-29" },
+  { word:"woman", meaning:"女人；女性", example:"The woman is a teacher.", translation:"那位女士是老師。", date:"2026-03-29" },
+  { word:"joke", meaning:"笑話；開玩笑", example:"That joke is funny.", translation:"那個笑話很好笑。", date:"2026-03-28" },
+  { word:"sorry", meaning:"對不起；抱歉", example:"I'm sorry I'm late.", translation:"對不起，我遲到了。", date:"2026-03-28" },
+  { word:"vegetable", meaning:"蔬菜", example:"I eat vegetables every day.", translation:"我每天吃蔬菜。", date:"2026-03-28" },
+  { word:"moon", meaning:"月亮", example:"The moon is bright tonight.", translation:"今晚月亮很亮。", date:"2026-03-27" },
+  { word:"onion", meaning:"洋蔥", example:"I cut an onion for dinner.", translation:"我為晚餐切了一顆洋蔥。", date:"2026-03-27" },
+  { word:"son", meaning:"兒子", example:"My son plays basketball after school.", translation:"我兒子放學後打籃球。", date:"2026-03-27" },
+  { word:"feel", meaning:"感覺；覺得", example:"I feel tired after school.", translation:"放學後我覺得很累。", date:"2026-03-26" },
+  { word:"happy", meaning:"開心的；快樂的", example:"I am happy today.", translation:"我今天很開心。", date:"2026-03-26" },
+  { word:"party", meaning:"派對；聚會", example:"We will have a party on Saturday.", translation:"我們星期六要辦一個派對。", date:"2026-03-26" },
+];
+
+// === Helpers ===
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function pick(arr, n, exclude) {
+  const pool = arr.filter(x => x !== exclude);
+  return shuffle(pool).slice(0, n);
+}
+
+function formatDate(d) {
+  const [y, m, day] = d.split('-');
+  return `${parseInt(m)}/${parseInt(day)}`;
+}
+
+function escapeHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// === Tab switching ===
+function switchTab(id) {
+  document.querySelectorAll('.tab-btn').forEach((b, i) => {
+    b.classList.toggle('active', ['cards','quiz1','quiz2'][i] === id);
+  });
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+
+  if (id === 'quiz1') initQuiz1();
+  if (id === 'quiz2') initQuiz2();
+}
+
+// === Word Cards ===
+function renderCards() {
+  const grid = document.getElementById('card-grid');
+  grid.innerHTML = VOCAB.map(v => `
+    <div class="vocab-card">
+      <div class="vocab-word">${escapeHtml(v.word)}</div>
+      <div class="vocab-meaning">${escapeHtml(v.meaning)}</div>
+      <div class="vocab-example">
+        <div class="en">${escapeHtml(v.example)}</div>
+        <div class="zh">${escapeHtml(v.translation)}</div>
+      </div>
+      <div class="vocab-date">${formatDate(v.date)} 學過</div>
+    </div>
+  `).join('');
+}
+
+// === Quiz 1: Chinese → English (multiple choice) ===
+let q1State = {};
+
+function initQuiz1() {
+  const items = shuffle([...VOCAB]);
+  q1State = { items, idx: 0, score: 0, total: Math.min(10, items.length) };
+  renderQ1();
+}
+
+function renderQ1() {
+  const s = q1State;
+  const area = document.getElementById('quiz1-area');
+
+  if (s.idx >= s.total) {
+    renderResult(area, s.score, s.total, 'quiz1');
+    return;
+  }
+
+  const current = s.items[s.idx];
+  const distractors = pick(VOCAB, 3, current);
+  const options = shuffle([current, ...distractors]);
+  const pct = Math.round((s.idx / s.total) * 100);
+
+  area.innerHTML = `
+    <div class="quiz-progress">
+      <span>${s.idx + 1} / ${s.total}</span>
+      <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:${pct}%"></div></div>
+      <span>${s.score} 分</span>
+    </div>
+    <div class="quiz-question-label">請選出正確的英文單字</div>
+    <div class="quiz-prompt animate-in">
+      ${escapeHtml(current.meaning)}
+    </div>
+    <div class="choices" id="q1-choices">
+      ${options.map((o, i) => `
+        <button class="choice-btn" data-idx="${i}" data-word="${escapeHtml(o.word)}"
+          onclick="answerQ1(this, '${o.word}', '${current.word}')">${escapeHtml(o.word)}</button>
+      `).join('')}
+    </div>
+    <div class="feedback-msg" id="q1-feedback"></div>
+    <button class="next-btn" id="q1-next" style="display:none" onclick="nextQ1()">下一題</button>
+  `;
+  area.classList.add('animate-in');
+}
+
+function answerQ1(btn, chosen, correct) {
+  const btns = document.querySelectorAll('#q1-choices .choice-btn');
+  if (btn.classList.contains('disabled')) return;
+
+  btns.forEach(b => {
+    b.classList.add('disabled');
+    if (b.dataset.word === correct) b.classList.add('show-correct');
+  });
+
+  const fb = document.getElementById('q1-feedback');
+  if (chosen === correct) {
+    btn.classList.add('correct');
+    fb.className = 'feedback-msg correct';
+    fb.textContent = '答對了！太棒了！';
+    q1State.score++;
+  } else {
+    btn.classList.add('wrong');
+    fb.className = 'feedback-msg wrong';
+    fb.textContent = `答錯了～正確答案是 ${correct}`;
+  }
+  document.getElementById('q1-next').style.display = 'block';
+}
+
+function nextQ1() {
+  q1State.idx++;
+  renderQ1();
+}
+
+// === Quiz 2: Cloze (fill the blank in sentence) ===
+let q2State = {};
+
+function initQuiz2() {
+  const items = shuffle([...VOCAB]);
+  q2State = { items, idx: 0, score: 0, total: Math.min(10, items.length) };
+  renderQ2();
+}
+
+function renderQ2() {
+  const s = q2State;
+  const area = document.getElementById('quiz2-area');
+
+  if (s.idx >= s.total) {
+    renderResult(area, s.score, s.total, 'quiz2');
+    return;
+  }
+
+  const current = s.items[s.idx];
+  const distractors = pick(VOCAB, 3, current);
+  const options = shuffle([current, ...distractors]);
+  const pct = Math.round((s.idx / s.total) * 100);
+
+  // Create cloze sentence - replace the word (case insensitive) with blank
+  const re = new RegExp(current.word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+  const cloze = current.example.replace(re, '<span class="blank">' + '_'.repeat(current.word.length) + '</span>');
+
+  area.innerHTML = `
+    <div class="quiz-progress">
+      <span>${s.idx + 1} / ${s.total}</span>
+      <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:${pct}%"></div></div>
+      <span>${s.score} 分</span>
+    </div>
+    <div class="quiz-question-label">請選出正確的單字填入空格</div>
+    <div class="quiz-prompt animate-in">
+      ${cloze}
+      <span class="hint-zh">${escapeHtml(current.translation)}</span>
+    </div>
+    <div class="choices" id="q2-choices">
+      ${options.map((o, i) => `
+        <button class="choice-btn" data-idx="${i}" data-word="${escapeHtml(o.word)}"
+          onclick="answerQ2(this, '${o.word}', '${current.word}')">${escapeHtml(o.word)}</button>
+      `).join('')}
+    </div>
+    <div class="feedback-msg" id="q2-feedback"></div>
+    <button class="next-btn" id="q2-next" style="display:none" onclick="nextQ2()">下一題</button>
+  `;
+  area.classList.add('animate-in');
+}
+
+function answerQ2(btn, chosen, correct) {
+  const btns = document.querySelectorAll('#q2-choices .choice-btn');
+  if (btn.classList.contains('disabled')) return;
+
+  btns.forEach(b => {
+    b.classList.add('disabled');
+    if (b.dataset.word === correct) b.classList.add('show-correct');
+  });
+
+  const fb = document.getElementById('q2-feedback');
+  if (chosen === correct) {
+    btn.classList.add('correct');
+    fb.className = 'feedback-msg correct';
+    fb.textContent = '太厲害了，答對了！';
+    q2State.score++;
+  } else {
+    btn.classList.add('wrong');
+    fb.className = 'feedback-msg wrong';
+    fb.textContent = `可惜～正確答案是 ${correct}`;
+  }
+  document.getElementById('q2-next').style.display = 'block';
+}
+
+function nextQ2() {
+  q2State.idx++;
+  renderQ2();
+}
+
+// === Result screen ===
+function renderResult(area, score, total, quizId) {
+  const pct = Math.round((score / total) * 100);
+  let msg, stars;
+  if (pct === 100) { msg = '滿分！你真的好厲害！'; stars = '&#11088;&#11088;&#11088;'; }
+  else if (pct >= 80) { msg = '非常棒！繼續加油！'; stars = '&#11088;&#11088;&#9734;'; }
+  else if (pct >= 60) { msg = '不錯喔！再練習會更好！'; stars = '&#11088;&#9734;&#9734;'; }
+  else { msg = '沒關係，多複習幾次就會了！'; stars = '&#9734;&#9734;&#9734;'; }
+
+  area.innerHTML = `
+    <div class="result-area animate-in">
+      <div class="result-stars">${stars}</div>
+      <div class="result-score">${score} / ${total}</div>
+      <div class="result-label">答對 ${score} 題（${pct}%）</div>
+      <div class="result-msg">${msg}</div>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;">
+        <button class="restart-btn" onclick="init${quizId === 'quiz1' ? 'Quiz1' : 'Quiz2'}()">再玩一次</button>
+        <button class="restart-btn secondary" onclick="switchTab('cards')">回去看單字卡</button>
+      </div>
+    </div>
+  `;
+}
+
+// === Init ===
+renderCards();
+</script>
+</body>
+</html>
