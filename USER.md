@@ -13,6 +13,8 @@ _Learn about the person you're helping. Update this as you go._
 - 如果真的需要 Mark 操作，給簡單的指令，並說明是做什麼的
 - Mark 平日通常週一到週五 08:45 上班、17:45 下班；上班外出時常無法進 UI 按 approve，若必須 approve 要先在 Telegram 通知
 - 經文／lesson 任務若週次、命名或格式有疑點，要先直接提出疑問確認；此類任務完成後預設要 git push 到 Mark 的遠端倉庫，不只停在本地 commit
+- 三尖新版程式：偏好 PyCharm「按 Play」執行，參數直接寫在程式內改，不要依賴 CLI 參數（不熟指令與順序）
+- 三尖專案結構：新版本與舊 runner 要嚴格分離，舊檔集中丟 `archive/`，避免混在主目錄造成選檔困惑
 
 ## 通道分流規則（固定）
 
