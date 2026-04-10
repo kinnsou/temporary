@@ -81,6 +81,8 @@ description: Long-term working memory and workflow for Mark's 三尖理論 / 三
 
 - OpenClaw 這邊：理論整理、法源校正、技能檔維護、審計與反作弊把關
 - Claude Code：實作、重構局部模組、測試、回測
+  - **協作方式固定用本機 Claude Code CLI**
+  - **ACPX / ACP runtime 路線目前棄用**（backend 未配置，短期不修）
 - 每次有新共識，要優先回寫到本 skill 的 references，而不是只留在聊天裡
 
 ## 禁忌

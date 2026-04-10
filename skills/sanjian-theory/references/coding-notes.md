@@ -104,6 +104,8 @@
 
 - OpenClaw：理論整理、規格校正、技能檔維護、審計與反作弊把關
 - Claude Code：模組實作、局部重構、測試與回測
+- **固定走本機 Claude Code CLI，暫不走 ACPX / ACP runtime。**
+- ACPX 路線目前視為**棄用**：backend 未配置，短期不修，不再把它當作可依賴協作管道。
 - 任何新共識，最後都要回寫到 skill references，不能只留在聊天或 commit 訊息裡
 
 ## 10. 最後提醒
