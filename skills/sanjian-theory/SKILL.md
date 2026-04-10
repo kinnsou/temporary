@@ -24,6 +24,9 @@ description: Long-term working memory and workflow for Mark's 三尖理論 / 三
 - `references/core-rules.md`
 - `references/worldview-sovereignty.md`
 
+### 當前準備開工的 baseline（優先）
+- `references/baseline-v1-8h-2h-30m.md`
+
 ### 視任務再讀
 - 討論 **燕返 / 彈切 / 見切成功 / 三尖點 / Double Mikiri** → `references/double-mikiri.md`
 - 討論 **幾鍊、斷鍊、3鍊/6鍊、mixed handoff、Campaign/Sortie、BattleState** → `references/chain-and-campaign.md`
@@ -66,6 +69,12 @@ description: Long-term working memory and workflow for Mark's 三尖理論 / 三
 3. 鍊數計算機接入 BattleState
 4. Campaign / Sortie 狀態與三層止損
 5. 最後才寫 entry / exit engine
+
+## 目前先做哪一版
+
+- **先做 Baseline V1：8H / 2H / 30m，5m 只做斷鍊標註**
+- 先不要一開始就追求通吃所有週期的無敵版
+- 先把這版做成最可信、最容易人工驗證的 runner，再延伸到其他 profile
 
 ## 既有程式的定位
 
