@@ -15,6 +15,7 @@ _Learn about the person you're helping. Update this as you go._
 - 經文／lesson 任務若週次、命名或格式有疑點，要先直接提出疑問確認；此類任務完成後預設要 git push 到 Mark 的遠端倉庫，不只停在本地 commit
 - 三尖新版程式：偏好 PyCharm「按 Play」執行，參數直接寫在程式內改，不要依賴 CLI 參數（不熟指令與順序）
 - 三尖專案結構：新版本與舊 runner 要嚴格分離，舊檔集中丟 `archive/`，避免混在主目錄造成選檔困惑
+- 若 Mark 提到 Claude Code、Codex、Gemini、Cursor 等代理協作，**預設走本機 CLI**，不要走 ACP / ACPX runtime；除非 Mark 明確要求測 ACP backend、thread 或 session 路線
 
 ## 通道分流規則（固定）
 
