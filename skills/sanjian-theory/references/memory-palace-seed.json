@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "exportedAt": "2026-04-12T12:20:00+08:00",
-  "count": 14,
+  "exportedAt": "2026-04-12T19:30:00+08:00",
+  "count": 15,
   "filters": {
     "scope": "global",
     "category": null
@@ -158,6 +158,17 @@
       "metadata": {
         "kind": "episodic",
         "room": "sync-break",
+        "source": "skills/sanjian-theory/references/field-observations.md"
+      }
+    },
+    {
+      "id": "trispike-shrinking-timeframe-plus2-relay-2026-04-12",
+      "text": "Palace[Trispike] Hall[evolution] Wing[observations] Room[exhaustion-cascade] Drawer[shrinking-timeframe-plus2-relay]: Kind: episodic. Date: 2026-04-12. Observation: after an 8H pullback, the market may complete a 2H 燕返→彈切→見切→+2 recovery, then relay the same sequence down through 30m, 15m, and 5m; as the relay descends, t2 validation becomes shallower and the final 5m +2 can be a rushed terminal push before a sharp drop. Cross-check this with 30m/2H/8H second-leg sync-break overlap to judge exhaustion risk. Status: active.",
+      "category": "fact",
+      "importance": 0.8,
+      "metadata": {
+        "kind": "episodic",
+        "room": "exhaustion-cascade",
         "source": "skills/sanjian-theory/references/field-observations.md"
       }
     },

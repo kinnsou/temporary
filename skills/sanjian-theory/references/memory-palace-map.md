@@ -42,7 +42,8 @@ Palace[Trispike]
 │       └── Room[v10b-gap-map]
 └── Hall[evolution]
     ├── Wing[observations]
-    │   └── Room[sync-break]
+    │   ├── Room[sync-break]
+    │   └── Room[exhaustion-cascade]
     └── Wing[open-questions]
         └── Room[final-leg-qualification]
 ```
@@ -82,6 +83,8 @@ Palace[Trispike] Hall[evolution]: Kind: map. Coarse corridor: new observations, 
 
 Palace[Trispike] Hall[evolution] Wing[observations] Room[sync-break] Drawer[second-leg-shakeout-review]: Kind: episodic. Date: 2026-04-12. Observation: Mark observed that multi-timeframe sync breaks often overlap on the second leg or core chain, where the market may shake holders out before the final leg; the event is a re-core-chain review point, not an automatic reversal verdict. Status: active.
 
+Palace[Trispike] Hall[evolution] Wing[observations] Room[exhaustion-cascade] Drawer[shrinking-timeframe-plus2-relay]: Kind: episodic. Date: 2026-04-12. Observation: after an 8H pullback, the market may complete a 2H 燕返→彈切→見切→+2 recovery, then relay the same sequence down through 30m, 15m, and 5m; as the relay descends, t2 validation becomes shallower and the final 5m +2 can be a rushed terminal push before a sharp drop. Cross-check this with 30m/2H/8H second-leg sync-break overlap to judge exhaustion risk. Status: active.
+
 Palace[Trispike] Hall[evolution] Wing[open-questions] Room[final-leg-qualification] Drawer[how-to-separate-shakeout-from-cancelled-final-leg]: Kind: open_question. Question: when the second leg is damaged, how do we distinguish a shakeout from a true cancellation of the final leg qualification? Why unresolved: current evidence is observational and still needs case statistics. Status: tentative.
 ```
 
@@ -95,11 +98,13 @@ Palace[Trispike] Hall[evolution] Wing[open-questions] Room[final-leg-qualificati
 - `source-order`
 - `core-chain`
 - `sync-break`
+- `exhaustion-cascade`
 
 ### Natural language
 - `現在三尖哪份文件算 working canon？`
 - `三尖的 core chain 到底在審什麼？`
 - `同步斷鍊在第二鍊時要拿來檢查什麼？`
+- `為什麼最後的 5m +2 反而可能是衰竭終點？`
 
 ## Maintenance rule
 
