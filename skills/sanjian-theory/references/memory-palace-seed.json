@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "exportedAt": "2026-04-12T19:30:00+08:00",
-  "count": 15,
+  "exportedAt": "2026-04-12T19:53:00+08:00",
+  "count": 16,
   "filters": {
     "scope": "global",
     "category": null
@@ -169,6 +169,17 @@
       "metadata": {
         "kind": "episodic",
         "room": "exhaustion-cascade",
+        "source": "skills/sanjian-theory/references/field-observations.md"
+      }
+    },
+    {
+      "id": "trispike-second-break-enters-t2-test-2026-04-12",
+      "text": "Palace[Trispike] Hall[evolution] Wing[observations] Room[phase-semantics] Drawer[second-break-enters-t2-test]: Kind: episodic. Date: 2026-04-12. Observation: a second chain break may be the prelude to upper/lower t2 testing rather than an immediate end verdict; 燕返 stabilizes the structure, 彈切 performs the t2 test, and 見切 becomes the ignition point for the third major leg if the test passes. The same role split may recurse inside smaller three-leg structures. Status: active.",
+      "category": "fact",
+      "importance": 0.82,
+      "metadata": {
+        "kind": "episodic",
+        "room": "phase-semantics",
         "source": "skills/sanjian-theory/references/field-observations.md"
       }
     },
