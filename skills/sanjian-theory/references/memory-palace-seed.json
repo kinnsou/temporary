@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "exportedAt": "2026-04-12T19:53:00+08:00",
-  "count": 16,
+  "exportedAt": "2026-04-12T20:10:00+08:00",
+  "count": 17,
   "filters": {
     "scope": "global",
     "category": null
@@ -136,6 +136,17 @@
       "metadata": {
         "kind": "canonical",
         "room": "timeframe-roles",
+        "source": "skills/sanjian-theory/references/memory-palace-map.md"
+      }
+    },
+    {
+      "id": "trispike-single-semantic-short-on-overlap-break-v1",
+      "text": "Palace[Trispike] Hall[operations] Wing[baseline-v1] Room[execution-flow] Drawer[single-semantic-short-on-overlap-break]: Kind: canonical. Rule: Baseline V1 keeps one strategy language centered on 燕返→彈切→見切; shorts are not a separate mirrored doctrine and are only considered when multi-timeframe overlap-break or 補斷鍊重疊 signals defensive failure or exhaustion. Aliases: one semantics, no separate short version, overlap-break short. Status: active.",
+      "category": "decision",
+      "importance": 0.9,
+      "metadata": {
+        "kind": "canonical",
+        "room": "execution-flow",
         "source": "skills/sanjian-theory/references/memory-palace-map.md"
       }
     },

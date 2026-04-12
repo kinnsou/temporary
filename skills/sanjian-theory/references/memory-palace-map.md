@@ -78,6 +78,8 @@ Palace[Trispike] Hall[operations]: Kind: map. Coarse corridor: baseline timefram
 
 Palace[Trispike] Hall[operations] Wing[baseline-v1] Room[timeframe-roles] Drawer[8h-2h-30m-5m-roles]: Kind: canonical. Rule: 8H provides world credit, 2H runs the main campaign, 30m bridges execution, and 5m only verifies micro triggers or break points in Baseline V1. Aliases: timeframe roles, baseline V1. Status: active.
 
+Palace[Trispike] Hall[operations] Wing[baseline-v1] Room[execution-flow] Drawer[single-semantic-short-on-overlap-break]: Kind: canonical. Rule: Baseline V1 keeps one strategy language centered on 燕返→彈切→見切; shorts are not a separate mirrored doctrine and are only considered when multi-timeframe overlap-break or 補斷鍊重疊 signals defensive failure or exhaustion. Aliases: one semantics, no separate short version, overlap-break short. Status: active.
+
 Palace[Trispike] Hall[operations] Wing[engineering] Room[coding-order] Drawer[battle-state-first]: Kind: canonical. Rule: implement BattleState and hard auditors before chain counter integration, campaign management, or entry-exit engines. Aliases: coding order, BattleState first. Status: active.
 
 Palace[Trispike] Hall[evolution]: Kind: map. Coarse corridor: new observations, tentative patterns, and unresolved questions. Wings: observations, open-questions. Retrieval anchors: observation, tentative, unresolved. Status: active.
