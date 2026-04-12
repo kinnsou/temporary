@@ -1,0 +1,176 @@
+{
+  "version": "1.0",
+  "exportedAt": "2026-04-12T12:20:00+08:00",
+  "count": 14,
+  "filters": {
+    "scope": "global",
+    "category": null
+  },
+  "memories": [
+    {
+      "id": "trispike-palace-map-v1",
+      "text": "Palace[Trispike]: Kind: map. Domain: working canon, legacy lineage, baseline operations, and evolving observations for 三尖理論. Halls: law-source, theory, operations, evolution. Retrieval anchors: 三尖, Trispike, source of truth, memory palace. Status: active.",
+      "category": "fact",
+      "importance": 0.82,
+      "metadata": {
+        "kind": "map",
+        "palace": "Trispike",
+        "source": "skills/sanjian-theory/references/memory-palace-map.md"
+      }
+    },
+    {
+      "id": "trispike-law-source-hall-map-v1",
+      "text": "Palace[Trispike] Hall[law-source]: Kind: map. Coarse corridor: source precedence, canonical references, and legacy documents. Wings: canon, lineage. Retrieval anchors: law source, canon, lineage. Status: active.",
+      "category": "fact",
+      "importance": 0.78,
+      "metadata": {
+        "kind": "map",
+        "hall": "law-source",
+        "source": "skills/sanjian-theory/references/memory-palace-map.md"
+      }
+    },
+    {
+      "id": "trispike-current-skill-working-canon-v1",
+      "text": "Palace[Trispike] Hall[law-source] Wing[canon] Room[source-order] Drawer[current-skill-is-working-canon]: Kind: canonical. Rule: skills/sanjian-theory/references/*.md is the working canon for daily use; C:/TASK/MD legacy docs are lineage sources unless newer consensus promotes them. Aliases: working canon, source precedence. Status: active.",
+      "category": "decision",
+      "importance": 0.91,
+      "metadata": {
+        "kind": "canonical",
+        "room": "source-order",
+        "source": "skills/sanjian-theory/references/memory-palace-map.md"
+      }
+    },
+    {
+      "id": "trispike-double-write-rule-v1",
+      "text": "Palace[Trispike] Hall[law-source] Wing[canon] Room[update-rules] Drawer[double-write-rule]: Kind: canonical. Rule: stable sanjian consensus must update both the current skill references and the memory-palace scaffold or seed; tentative observations go to evolution first. Aliases: update discipline, dual write. Status: active.",
+      "category": "decision",
+      "importance": 0.9,
+      "metadata": {
+        "kind": "canonical",
+        "room": "update-rules",
+        "source": "skills/sanjian-theory/references/memory-palace-map.md"
+      }
+    },
+    {
+      "id": "trispike-theory-hall-map-v1",
+      "text": "Palace[Trispike] Hall[theory]: Kind: map. Coarse corridor: worldview, structure, sovereignty, and chain logic. Wings: worldview, structure. Retrieval anchors: theory, worldview, chain, sovereignty. Status: active.",
+      "category": "fact",
+      "importance": 0.79,
+      "metadata": {
+        "kind": "map",
+        "hall": "theory",
+        "source": "skills/sanjian-theory/references/memory-palace-map.md"
+      }
+    },
+    {
+      "id": "trispike-event-lineage-split-v1",
+      "text": "Palace[Trispike] Hall[theory] Wing[worldview] Room[event-and-lineage] Drawer[event-lineage-split]: Kind: canonical. Rule: event layer records what the market did now, while lineage layer records how that event is later absorbed, promoted, or reclassified by a larger structure. Aliases: event layer, lineage layer, bloodline split. Status: active.",
+      "category": "fact",
+      "importance": 0.9,
+      "metadata": {
+        "kind": "canonical",
+        "room": "event-and-lineage",
+        "source": "skills/sanjian-theory/references/memory-palace-map.md"
+      }
+    },
+    {
+      "id": "trispike-sovereignty-decides-death-v1",
+      "text": "Palace[Trispike] Hall[theory] Wing[worldview] Room[roles-and-sovereignty] Drawer[sovereignty-decides-death]: Kind: canonical. Rule: t2_root decides world survival, t2_work or t2′ decides campaign or promotion survival, and lower frames cannot overrule the sovereign frame. Aliases: sovereignty, emperor-general split. Status: active.",
+      "category": "fact",
+      "importance": 0.92,
+      "metadata": {
+        "kind": "canonical",
+        "room": "roles-and-sovereignty",
+        "source": "skills/sanjian-theory/references/memory-palace-map.md"
+      }
+    },
+    {
+      "id": "trispike-task-semantics-v1",
+      "text": "Palace[Trispike] Hall[theory] Wing[structure] Room[3-plus-1b-plus-2] Drawer[task-semantics]: Kind: canonical. Definition: 3 means world birth, +1b means qualification review or core-chain test, and +2 means the formal push after passing review. Aliases: 3+1b+2, task semantics. Status: active.",
+      "category": "fact",
+      "importance": 0.9,
+      "metadata": {
+        "kind": "canonical",
+        "room": "3-plus-1b-plus-2",
+        "source": "skills/sanjian-theory/references/memory-palace-map.md"
+      }
+    },
+    {
+      "id": "trispike-core-chain-legal-center-v1",
+      "text": "Palace[Trispike] Hall[theory] Wing[structure] Room[core-chain] Drawer[core-chain-is-legal-center]: Kind: canonical. Rule: +1b is the legal center of continuation; the question is not whether the chart still looks strong, but whether the core chain still has qualification to carry the final leg. Aliases: core chain, legal center, qualification review. Status: active.",
+      "category": "fact",
+      "importance": 0.91,
+      "metadata": {
+        "kind": "canonical",
+        "room": "core-chain",
+        "source": "skills/sanjian-theory/references/memory-palace-map.md"
+      }
+    },
+    {
+      "id": "trispike-break-before-naming-v1",
+      "text": "Palace[Trispike] Hall[theory] Wing[structure] Room[chain-engine] Drawer[break-before-naming]: Kind: canonical. Rule: chain-break must appear before naming completion, counting, or promotion; without a valid break event, do not seal the segment too early. Aliases: break first, no early naming. Status: active.",
+      "category": "fact",
+      "importance": 0.89,
+      "metadata": {
+        "kind": "canonical",
+        "room": "chain-engine",
+        "source": "skills/sanjian-theory/references/memory-palace-map.md"
+      }
+    },
+    {
+      "id": "trispike-operations-hall-map-v1",
+      "text": "Palace[Trispike] Hall[operations]: Kind: map. Coarse corridor: baseline timeframe roles, execution flow, exits, and engineering notes. Wings: baseline-v1, engineering. Retrieval anchors: baseline, execution, coding. Status: active.",
+      "category": "fact",
+      "importance": 0.78,
+      "metadata": {
+        "kind": "map",
+        "hall": "operations",
+        "source": "skills/sanjian-theory/references/memory-palace-map.md"
+      }
+    },
+    {
+      "id": "trispike-baseline-timeframe-roles-v1",
+      "text": "Palace[Trispike] Hall[operations] Wing[baseline-v1] Room[timeframe-roles] Drawer[8h-2h-30m-5m-roles]: Kind: canonical. Rule: 8H provides world credit, 2H runs the main campaign, 30m bridges execution, and 5m only verifies micro triggers or break points in Baseline V1. Aliases: timeframe roles, baseline V1. Status: active.",
+      "category": "fact",
+      "importance": 0.89,
+      "metadata": {
+        "kind": "canonical",
+        "room": "timeframe-roles",
+        "source": "skills/sanjian-theory/references/memory-palace-map.md"
+      }
+    },
+    {
+      "id": "trispike-battle-state-first-v1",
+      "text": "Palace[Trispike] Hall[operations] Wing[engineering] Room[coding-order] Drawer[battle-state-first]: Kind: canonical. Rule: implement BattleState and hard auditors before chain counter integration, campaign management, or entry-exit engines. Aliases: coding order, BattleState first. Status: active.",
+      "category": "decision",
+      "importance": 0.9,
+      "metadata": {
+        "kind": "canonical",
+        "room": "coding-order",
+        "source": "skills/sanjian-theory/references/memory-palace-map.md"
+      }
+    },
+    {
+      "id": "trispike-sync-break-second-leg-review-2026-04-12",
+      "text": "Palace[Trispike] Hall[evolution] Wing[observations] Room[sync-break] Drawer[second-leg-shakeout-review]: Kind: episodic. Date: 2026-04-12. Observation: Mark observed that multi-timeframe sync breaks often overlap on the second leg or core chain, where the market may shake holders out before the final leg; the event is a re-core-chain review point, not an automatic reversal verdict. Status: active.",
+      "category": "fact",
+      "importance": 0.76,
+      "metadata": {
+        "kind": "episodic",
+        "room": "sync-break",
+        "source": "skills/sanjian-theory/references/field-observations.md"
+      }
+    },
+    {
+      "id": "trispike-final-leg-qualification-open-question-v1",
+      "text": "Palace[Trispike] Hall[evolution] Wing[open-questions] Room[final-leg-qualification] Drawer[how-to-separate-shakeout-from-cancelled-final-leg]: Kind: open_question. Question: when the second leg is damaged, how do we distinguish a shakeout from a true cancellation of the final leg qualification? Why unresolved: current evidence is observational and still needs case statistics. Status: tentative.",
+      "category": "decision",
+      "importance": 0.66,
+      "metadata": {
+        "kind": "open_question",
+        "room": "final-leg-qualification",
+        "source": "skills/sanjian-theory/references/memory-palace-map.md"
+      }
+    }
+  ]
+}

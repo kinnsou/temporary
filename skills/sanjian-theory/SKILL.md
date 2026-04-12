@@ -36,6 +36,8 @@ description: Long-term working memory and workflow for Mark's 三尖理論 / 三
 - 寫 **runner / detector / backtest / 狀態機 / 審計欄位** → `references/coding-notes.md`
 - 比對 **v10b 舊 runner 的已做/未做** → `references/v10b-status-and-gaps.md`
 - 用 **頭肩底 / 旗型** 當教材翻譯結構 → `references/pattern-mapping.md`
+- 整理 **舊文件法源、working canon、血統來源對照** → `references/source-lineage-map.md`
+- 用 **memory-palace / domain map** 整理三尖長期記憶 → `references/memory-palace-map.md`
 
 ## 硬規則
 
@@ -93,6 +95,7 @@ description: Long-term working memory and workflow for Mark's 三尖理論 / 三
   - **協作方式固定用本機 Claude Code CLI**
   - **ACPX / ACP runtime 路線目前棄用**（backend 未配置，短期不修）
 - 每次有新共識，要優先回寫到本 skill 的 references，而不是只留在聊天裡
+- 若共識已穩定到可當 working canon，應同步更新 `references/memory-palace-map.md` 與 `references/memory-palace-seed.json`
 
 ## 禁忌
 
