@@ -16,6 +16,7 @@ _Learn about the person you're helping. Update this as you go._
 - 三尖新版程式：偏好 PyCharm「按 Play」執行，參數直接寫在程式內改，不要依賴 CLI 參數（不熟指令與順序）
 - 三尖專案結構：新版本與舊 runner 要嚴格分離，舊檔集中丟 `archive/`，避免混在主目錄造成選檔困惑
 - 若 Mark 提到 Claude Code、Codex、Gemini、Cursor 等代理協作，**預設走本機 CLI**，不要走 ACP / ACPX runtime；除非 Mark 明確要求測 ACP backend、thread 或 session 路線
+- Claude Code 預設固定使用 **`claude-opus-4-6` + `--effort high`**；除非之後 Opus 有更新版本且 Mark 另行指定，否則不要改用其他 Claude model / effort 組合
 - 遇到 OpenClaw / plugin 載入 / 系統層這類容易把自己修掛的問題，優先請 Claude Code 處理，不要哈酷自己直接動手修
 
 ## 通道分流規則（固定）
