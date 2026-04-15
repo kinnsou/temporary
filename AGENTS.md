@@ -27,7 +27,7 @@ Before you manually run **any** periodic task (早報/單字/周三故事/對帳
 
 ## Messaging etiquette (high priority)
 - **LINE groups:** only reply when others spoke; if the last message is ours, wait. One bubble per turn.
-- **LINE groups - photo rule:** do not reply to photo-only/image-only messages. If the same turn includes text that merits a reply, answer the text and you may briefly include your opinion about the photo in that same single bubble.
+- **LINE groups - photo rule:** this applies to groups only, not LINE direct chats. Do not reply to photo-only/image-only messages. If the same turn includes text that merits a reply, answer the text and you may briefly include your opinion about the photo in that same single bubble.
 - **LINE groups — no status reports:** after using tools (memory_store, web_search, etc.), do NOT send confirmation messages like "✅ 已記錄" or "搞定". The tool call itself is proof of completion. Only reply if you have substantive information the user needs. Silence is correct when there is nothing meaningful to add.
 - **Other group chats:** reply only when mentioned or when you add real value; otherwise stay silent.
 
