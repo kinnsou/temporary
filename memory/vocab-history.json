@@ -3,7 +3,7 @@
     "newWordsMustBeUniqueUntilExhausted": true,
     "reviewFormat": "guided_cloze_with_grammar_chunking",
     "sourceScope": "台灣普遍認定國中必會1000單",
-    "updatedAt": "2026-04-05T12:35:29Z"
+    "updatedAt": "2026-04-17T11:00:00Z"
   },
   "words": {
     "adventure": {
@@ -13,6 +13,15 @@
         "冒險"
       ]
     },
+    "afraid": {
+      "example_sentence": "I am afraid of the dark.",
+      "first_seen": "2026-04-15",
+      "last_seen": "2026-04-15",
+      "meanings": [
+        "害怕的；擔心的"
+      ],
+      "translation": "我怕黑。"
+    },
     "arrive": {
       "example_sentence": "We will arrive at school before eight.",
       "first_seen": "2026-03-08",
@@ -21,6 +30,33 @@
         "到達"
       ],
       "translation": "我們會在八點前到達學校。"
+    },
+    "balcony": {
+      "example_sentence": "She is standing on the balcony.",
+      "first_seen": "2026-04-05",
+      "last_seen": "2026-04-05",
+      "meanings": [
+        "陽台"
+      ],
+      "translation": "她正站在陽台上。"
+    },
+    "belong": {
+      "example_sentence": "This pencil belongs to you.",
+      "first_seen": "2026-04-09",
+      "last_seen": "2026-04-09",
+      "meanings": [
+        "屬於"
+      ],
+      "translation": "這枝鉛筆是你的。"
+    },
+    "blow": {
+      "example_sentence": "Please blow on the soup. It is hot.",
+      "first_seen": "2026-04-14",
+      "last_seen": "2026-04-14",
+      "meanings": [
+        "吹；吹氣；吹風"
+      ],
+      "translation": "請對湯吹一吹，它很燙。"
     },
     "borrow": {
       "example_sentence": "Can I borrow your pencil?",
@@ -41,6 +77,15 @@
       ],
       "translation": "那位勇敢的女孩在全班前面發言。"
     },
+    "camera": {
+      "example_sentence": "I took a photo with my camera.",
+      "first_seen": "2026-04-07",
+      "last_seen": "2026-04-07",
+      "meanings": [
+        "相機；攝影機"
+      ],
+      "translation": "我用我的相機拍了一張照片。"
+    },
     "careful": {
       "example_sentence": "Be careful when you cross the street.",
       "first_seen": "2026-03-03",
@@ -59,14 +104,23 @@
       ],
       "translation": "那個孩子正在公園玩。"
     },
-    "clever": {
-      "example_sentence": "The clever boy solved the puzzle quickly.",
-      "first_seen": "2026-03-06",
-      "last_seen": "2026-03-06",
+    "choose": {
+      "example_sentence": "Please choose one book.",
+      "first_seen": "2026-04-06",
+      "last_seen": "2026-04-06",
       "meanings": [
-        "聰明的"
+        "選擇；挑選"
       ],
-      "translation": "那個聰明的男孩很快解開了謎題。"
+      "translation": "請選一本書。"
+    },
+    "classmate": {
+      "example_sentence": "My classmate sits next to me.",
+      "first_seen": "2026-04-09",
+      "last_seen": "2026-04-09",
+      "meanings": [
+        "同學；同班同學"
+      ],
+      "translation": "我的同學坐在我旁邊。"
     },
     "clearly": {
       "example_sentence": "Please speak clearly.",
@@ -76,6 +130,24 @@
         "清楚地；明確地"
       ],
       "translation": "請講清楚一點。"
+    },
+    "clever": {
+      "example_sentence": "The clever boy solved the puzzle quickly.",
+      "first_seen": "2026-03-06",
+      "last_seen": "2026-03-06",
+      "meanings": [
+        "聰明的"
+      ],
+      "translation": "那個聰明的男孩很快解開了謎題。"
+    },
+    "close": {
+      "example_sentence": "Please close the door.",
+      "first_seen": "2026-04-07",
+      "last_seen": "2026-04-07",
+      "meanings": [
+        "關上；關閉"
+      ],
+      "translation": "請把門關上。"
     },
     "cloud": {
       "example_sentence": "That cloud looks like a rabbit.",
@@ -95,6 +167,15 @@
       ],
       "translation": "她贏得了歌唱比賽。"
     },
+    "conversation": {
+      "example_sentence": "We had a long conversation after class.",
+      "first_seen": "2026-04-14",
+      "last_seen": "2026-04-14",
+      "meanings": [
+        "對話；談話"
+      ],
+      "translation": "下課後我們聊了很久。"
+    },
     "curious": {
       "first_seen": "2025-02-23",
       "last_seen": "2025-02-23",
@@ -108,6 +189,15 @@
       "meanings": [
         "危險的"
       ]
+    },
+    "dark": {
+      "example_sentence": "It is dark outside.",
+      "first_seen": "2026-04-06",
+      "last_seen": "2026-04-06",
+      "meanings": [
+        "黑暗的；暗的"
+      ],
+      "translation": "外面很暗。"
     },
     "discover": {
       "first_seen": "2026-02-24",
@@ -134,6 +224,24 @@
       ],
       "translation": "她每天早上都很早起床。"
     },
+    "enemy": {
+      "example_sentence": "He is not my enemy.",
+      "first_seen": "2026-04-15",
+      "last_seen": "2026-04-15",
+      "meanings": [
+        "敵人"
+      ],
+      "translation": "他不是我的敵人。"
+    },
+    "everywhere": {
+      "example_sentence": "I looked everywhere for my pencil.",
+      "first_seen": "2026-04-08",
+      "last_seen": "2026-04-08",
+      "meanings": [
+        "到處；各處"
+      ],
+      "translation": "我到處找我的鉛筆。"
+    },
     "excellent": {
       "first_seen": "2026-02-24",
       "last_seen": "2026-02-24",
@@ -149,6 +257,15 @@
         "興奮的"
       ],
       "translation": "她對學校旅行感到很興奮。"
+    },
+    "fan": {
+      "example_sentence": "Please turn on the fan.",
+      "first_seen": "2026-04-11",
+      "last_seen": "2026-04-11",
+      "meanings": [
+        "風扇；電風扇"
+      ],
+      "translation": "請把電風扇打開。"
     },
     "feel": {
       "example_sentence": "I feel tired after school.",
@@ -185,6 +302,15 @@
         "友善的；親切的"
       ],
       "translation": "我們的新同學非常友善。"
+    },
+    "fun": {
+      "example_sentence": "The game is fun.",
+      "first_seen": "2026-04-14",
+      "last_seen": "2026-04-14",
+      "meanings": [
+        "樂趣；好玩"
+      ],
+      "translation": "這個遊戲很好玩。"
     },
     "gentle": {
       "example_sentence": "Be gentle with the baby.",
@@ -249,6 +375,24 @@
       ],
       "translation": "我在動物園看到一隻河馬。"
     },
+    "homework": {
+      "example_sentence": "I finished my homework after dinner.",
+      "first_seen": "2026-04-13",
+      "last_seen": "2026-04-13",
+      "meanings": [
+        "作業；功課"
+      ],
+      "translation": "我晚餐後把作業寫完了。"
+    },
+    "hospital": {
+      "example_sentence": "He is in the hospital.",
+      "first_seen": "2026-04-12",
+      "last_seen": "2026-04-12",
+      "meanings": [
+        "醫院"
+      ],
+      "translation": "他在醫院裡。"
+    },
     "hungry": {
       "example_sentence": "I am hungry. Can I have a sandwich?",
       "first_seen": "2026-03-01",
@@ -257,6 +401,15 @@
         "肚子餓的"
       ],
       "translation": "我肚子餓了。我可以吃一個三明治嗎？"
+    },
+    "idea": {
+      "example_sentence": "That's a great idea!",
+      "first_seen": "2026-04-07",
+      "last_seen": "2026-04-07",
+      "meanings": [
+        "點子；想法"
+      ],
+      "translation": "那是個好主意！"
     },
     "important": {
       "first_seen": "2025-02-23",
@@ -302,14 +455,14 @@
       ],
       "translation": "我們去博物館的旅程很有趣。"
     },
-    "kitchen": {
-      "example_sentence": "My mother is cooking in the kitchen.",
-      "first_seen": "2026-03-23",
-      "last_seen": "2026-03-23",
+    "jump": {
+      "example_sentence": "The cat can jump very high.",
+      "first_seen": "2026-04-17",
+      "last_seen": "2026-04-17",
       "meanings": [
-        "廚房"
+        "跳；跳躍"
       ],
-      "translation": "我媽媽正在廚房煮飯。"
+      "translation": "那隻貓可以跳得很高。"
     },
     "kick": {
       "example_sentence": "Don't kick the ball inside the classroom.",
@@ -320,6 +473,33 @@
       ],
       "translation": "不要在教室裡踢球。"
     },
+    "kill": {
+      "example_sentence": "This soap can kill germs.",
+      "first_seen": "2026-04-06",
+      "last_seen": "2026-04-06",
+      "meanings": [
+        "殺死；消滅（細菌等）"
+      ],
+      "translation": "這種肥皂可以殺死細菌。"
+    },
+    "kiss": {
+      "example_sentence": "Give Mom a kiss.",
+      "first_seen": "2026-04-11",
+      "last_seen": "2026-04-11",
+      "meanings": [
+        "親吻；吻"
+      ],
+      "translation": "給媽媽一個吻。"
+    },
+    "kitchen": {
+      "example_sentence": "My mother is cooking in the kitchen.",
+      "first_seen": "2026-03-23",
+      "last_seen": "2026-03-23",
+      "meanings": [
+        "廚房"
+      ],
+      "translation": "我媽媽正在廚房煮飯。"
+    },
     "lake": {
       "example_sentence": "We saw ducks on the lake.",
       "first_seen": "2026-03-24",
@@ -329,6 +509,15 @@
       ],
       "translation": "我們看到湖上有鴨子。"
     },
+    "land": {
+      "example_sentence": "The plane will land soon.",
+      "first_seen": "2026-04-09",
+      "last_seen": "2026-04-09",
+      "meanings": [
+        "降落；著陸"
+      ],
+      "translation": "飛機很快就會降落。"
+    },
     "leave": {
       "example_sentence": "I have to leave now.",
       "first_seen": "2026-04-03",
@@ -337,6 +526,33 @@
         "離開；離去"
       ],
       "translation": "我現在得離開了。"
+    },
+    "lend": {
+      "example_sentence": "Can you lend your ruler to me?",
+      "first_seen": "2026-04-17",
+      "last_seen": "2026-04-17",
+      "meanings": [
+        "借出；借給"
+      ],
+      "translation": "你可以把你的尺借給我嗎？"
+    },
+    "luck": {
+      "example_sentence": "Good luck on your test!",
+      "first_seen": "2026-04-12",
+      "last_seen": "2026-04-12",
+      "meanings": [
+        "運氣；好運"
+      ],
+      "translation": "考試加油，祝你好運！"
+    },
+    "mean": {
+      "example_sentence": "What does this word mean?",
+      "first_seen": "2026-04-12",
+      "last_seen": "2026-04-12",
+      "meanings": [
+        "意思是；表示"
+      ],
+      "translation": "這個字是什麼意思？"
     },
     "mirror": {
       "example_sentence": "I looked at myself in the mirror.",
@@ -356,6 +572,15 @@
       ],
       "translation": "今晚月亮很亮。"
     },
+    "news": {
+      "example_sentence": "I watched the news with my dad.",
+      "first_seen": "2026-04-08",
+      "last_seen": "2026-04-08",
+      "meanings": [
+        "新聞；消息"
+      ],
+      "translation": "我跟爸爸一起看新聞。"
+    },
     "noisy": {
       "example_sentence": "The classroom is noisy during break time.",
       "first_seen": "2026-03-08",
@@ -364,6 +589,24 @@
         "吵鬧的"
       ],
       "translation": "下課時間教室很吵鬧。"
+    },
+    "nose": {
+      "example_sentence": "My nose is cold.",
+      "first_seen": "2026-04-05",
+      "last_seen": "2026-04-05",
+      "meanings": [
+        "鼻子"
+      ],
+      "translation": "我的鼻子冰冰的。"
+    },
+    "now": {
+      "example_sentence": "I have to go now.",
+      "first_seen": "2026-04-13",
+      "last_seen": "2026-04-13",
+      "meanings": [
+        "現在"
+      ],
+      "translation": "我現在得走了。"
     },
     "onion": {
       "example_sentence": "I cut an onion for dinner.",
@@ -408,6 +651,24 @@
       ],
       "translation": "我們要在公園野餐。"
     },
+    "popular": {
+      "example_sentence": "This song is popular with students.",
+      "first_seen": "2026-04-13",
+      "last_seen": "2026-04-13",
+      "meanings": [
+        "受歡迎的；流行的"
+      ],
+      "translation": "這首歌很受學生歡迎。"
+    },
+    "possible": {
+      "example_sentence": "Is it possible to finish it today?",
+      "first_seen": "2026-04-10",
+      "last_seen": "2026-04-10",
+      "meanings": [
+        "可能的"
+      ],
+      "translation": "今天有可能把它完成嗎？"
+    },
     "practice": {
       "example_sentence": "I practice English every day.",
       "first_seen": "2026-03-03",
@@ -425,6 +686,24 @@
         "準備"
       ],
       "translation": "重音在第二音節"
+    },
+    "pretty": {
+      "example_sentence": "That dress is pretty.",
+      "first_seen": "2026-04-17",
+      "last_seen": "2026-04-17",
+      "meanings": [
+        "漂亮的；可愛的"
+      ],
+      "translation": "那件洋裝很漂亮。"
+    },
+    "princess": {
+      "example_sentence": "The princess lives in a castle.",
+      "first_seen": "2026-04-08",
+      "last_seen": "2026-04-08",
+      "meanings": [
+        "公主"
+      ],
+      "translation": "公主住在城堡裡。"
     },
     "promise": {
       "example_sentence": "I promise to finish my homework tonight.",
@@ -489,6 +768,15 @@
       ],
       "translation": "我騎腳踏車去上學。"
     },
+    "sand": {
+      "example_sentence": "There is sand on the beach.",
+      "first_seen": "2026-04-10",
+      "last_seen": "2026-04-10",
+      "meanings": [
+        "沙子；沙"
+      ],
+      "translation": "海灘上有沙子。"
+    },
     "side": {
       "example_sentence": "The ball rolled to the side of the road.",
       "first_seen": "2026-03-25",
@@ -525,6 +813,24 @@
       ],
       "translation": "對不起，我遲到了。"
     },
+    "spider": {
+      "example_sentence": "There is a spider on the wall.",
+      "first_seen": "2026-04-05",
+      "last_seen": "2026-04-05",
+      "meanings": [
+        "蜘蛛"
+      ],
+      "translation": "牆上有一隻蜘蛛。"
+    },
+    "spring": {
+      "example_sentence": "Spring is my favorite season.",
+      "first_seen": "2026-04-10",
+      "last_seen": "2026-04-10",
+      "meanings": [
+        "春天"
+      ],
+      "translation": "春天是我最喜歡的季節。"
+    },
     "sunlight": {
       "example_sentence": "Plants need sunlight to grow.",
       "first_seen": "2026-03-05",
@@ -533,6 +839,15 @@
         "陽光"
       ],
       "translation": "植物需要陽光才能長大。"
+    },
+    "sweet": {
+      "example_sentence": "This cake is sweet.",
+      "first_seen": "2026-04-15",
+      "last_seen": "2026-04-15",
+      "meanings": [
+        "甜的；甜甜的"
+      ],
+      "translation": "這個蛋糕很甜。"
     },
     "teacher": {
       "example_sentence": "My teacher is kind and funny.",
@@ -576,6 +891,15 @@
       "meanings": [
         "寶藏"
       ]
+    },
+    "typhoon": {
+      "example_sentence": "A typhoon is coming.",
+      "first_seen": "2026-04-11",
+      "last_seen": "2026-04-11",
+      "meanings": [
+        "颱風"
+      ],
+      "translation": "颱風要來了。"
     },
     "vegetable": {
       "example_sentence": "I eat vegetables every day.",
@@ -631,32 +955,32 @@
       ],
       "translation": "我有一件黃色的雨衣。"
     },
-    "balcony": {
-      "example_sentence": "She is standing on the balcony.",
-      "first_seen": "2026-04-05",
-      "last_seen": "2026-04-05",
+    "hole": {
+      "first_seen": "2026-04-19",
+      "last_seen": "2026-04-19",
       "meanings": [
-        "陽台"
+        "洞；孔洞"
       ],
-      "translation": "她正站在陽台上。"
+      "example_sentence": "There is a big hole in the ground.",
+      "translation": "地上有一個大洞。"
     },
-    "spider": {
-      "example_sentence": "There is a spider on the wall.",
-      "first_seen": "2026-04-05",
-      "last_seen": "2026-04-05",
+    "hotel": {
+      "first_seen": "2026-04-19",
+      "last_seen": "2026-04-19",
       "meanings": [
-        "蜘蛛"
+        "旅館；飯店"
       ],
-      "translation": "牆上有一隻蜘蛛。"
+      "example_sentence": "We stayed in a nice hotel last night.",
+      "translation": "我們昨晚住在一間不錯的飯店。"
     },
-    "nose": {
-      "example_sentence": "My nose is cold.",
-      "first_seen": "2026-04-05",
-      "last_seen": "2026-04-05",
+    "desk": {
+      "first_seen": "2026-04-19",
+      "last_seen": "2026-04-19",
       "meanings": [
-        "鼻子"
+        "書桌；桌子"
       ],
-      "translation": "我的鼻子冰冰的。"
+      "example_sentence": "Please put your books on the desk.",
+      "translation": "請把你的書放在桌上。"
     }
   }
 }
