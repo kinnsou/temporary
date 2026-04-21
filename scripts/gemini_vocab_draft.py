@@ -15,6 +15,7 @@ from pathlib import Path
 
 WORKSPACE = Path("/home/kurohime/.openclaw/workspace")
 PICKER = WORKSPACE / "scripts" / "vocab_picker.py"
+DEFAULT_MODEL = "gemini-3-flash-preview"
 
 
 def run_picker() -> dict:
@@ -117,7 +118,11 @@ def validate_message(message: str, selection: dict) -> None:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model", help="Gemini model override")
+    parser.add_argument(
+        "--model",
+        default=DEFAULT_MODEL,
+        help=f"Gemini model name (default: {DEFAULT_MODEL})",
+    )
     parser.add_argument("--text", action="store_true", help="Print only the drafted message")
     args = parser.parse_args()
 
