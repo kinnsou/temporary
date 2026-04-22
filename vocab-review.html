@@ -1620,15 +1620,11 @@ function renderQuizHome(player) {
       <button class="dl-btn wide" ${canPlay?'':'disabled'} onclick="startQuiz()">開始測驗</button>
     </div>
     <div class="dl-btn-row" style="margin-top:10px">
-      <div class="dl-btn-row" style="margin-top:10px">
-        <div style="display:flex;gap:10px;">
-          <button class="dl-btn gray" style="flex:1;" onclick="renderProfileSelect()">切換 / 新增玩家</button>
-          <button class="dl-btn blue" style="flex:1;" onclick="renderAvatarChange()">更換角色</button>
-        </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <button class="dl-btn gray" style="flex:1;min-width:160px;" onclick="renderProfileSelect()">切換 / 新增玩家</button>
+        <button class="dl-btn blue" style="flex:1;min-width:160px;" onclick="renderAvatarChange()">更換角色</button>
+        <button class="dl-btn red" style="flex:1;min-width:160px;" onclick="onDeleteCurrentPlayer()">刪除本機玩家</button>
       </div>
-    </div>
-    <div class="dl-btn-row" style="margin-top:10px">
-      <button class="dl-btn red wide" onclick="onDeleteCurrentPlayer()">刪除本機玩家</button>
     </div>
     ${renderLeaderboardHtml(player.id)}
   `;
