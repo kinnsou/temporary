@@ -1,10 +1,31 @@
 {
   "meta": {
-    "updatedAt": "2026-04-22T08:21:16Z",
-    "sourceCount": 116,
-    "includedCount": 108
+    "updatedAt": "2026-04-22T11:10:21Z",
+    "sourceCount": 119,
+    "includedCount": 111
   },
   "words": [
+    {
+      "word": "meet",
+      "meaning": "遇見；見面",
+      "example": "I will meet my friend after school.",
+      "translation": "我放學後要去見我的朋友。",
+      "firstSeen": "2026-04-22"
+    },
+    {
+      "word": "red",
+      "meaning": "紅色（的）",
+      "example": "The apple is red.",
+      "translation": "這顆蘋果是紅色的。",
+      "firstSeen": "2026-04-22"
+    },
+    {
+      "word": "nice",
+      "meaning": "不錯的；親切的",
+      "example": "She is a nice teacher.",
+      "translation": "她是一位很親切的老師。",
+      "firstSeen": "2026-04-22"
+    },
     {
       "word": "real",
       "meaning": "真的；真實的",
