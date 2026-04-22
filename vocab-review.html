@@ -1592,10 +1592,116 @@ function renderQuizHome(player) {
       <button class="dl-btn wide" ${canPlay?'':'disabled'} onclick="startQuiz()">開始測驗</button>
     </div>
     <div class="dl-btn-row" style="margin-top:10px">
-      <button class="dl-btn gray" onclick="renderProfileSelect()">切換 / 新增玩家</button>
+      <div class="dl-btn-row" style="margin-top:10px">
+        <div style="display:flex;gap:10px;">
+          <button class="dl-btn gray" style="flex:1;" onclick="renderProfileSelect()">切換 / 新增玩家</button>
+          <button class="dl-btn blue" style="flex:1;" onclick="renderAvatarChange()">更換角色</button>
+        </div>
+      </div>
     </div>
     ${renderLeaderboardHtml(player.id)}
   `;
+}
+
+function updateLocalAvatar(playerId, avatarId) {
+  const players = loadPlayers();
+  const p = players.find(x => x.id === playerId);
+  if (!p) return null;
+  p.avatarId = normalizeAvatarId(avatarId);
+  savePlayers(players);
+  return p;
+}
+
+async function cloudUpdateAvatarOnly(name, avatarId) {
+  const id = cloudDocId(name);
+  if (!id || id === '_') return false;
+  const now = new Date().toISOString();
+
+  // Try patch first (updateMask), fallback to create.
+  try {
+    const url = `${FS_BASE}/leaderboard/${encodeURIComponent(id)}?key=${firebaseConfig.apiKey}`
+      + `&updateMask.fieldPaths=avatarId&updateMask.fieldPaths=updatedAt`;
+    const res = await fetch(url, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        fields: {
+          avatarId: { stringValue: normalizeAvatarId(avatarId) },
+          updatedAt: { stringValue: now },
+        }
+      }),
+    });
+    if (res.ok) { CLOUD.status = 'ok'; return true; }
+    if (res.status !== 404) throw new Error('HTTP ' + res.status);
+  } catch (_) {
+    // continue to create
+  }
+
+  try {
+    const createUrl = `${FS_BASE}/leaderboard?documentId=${encodeURIComponent(id)}&key=${firebaseConfig.apiKey}`;
+    const entry = {
+      name: String(name || '').trim().slice(0, 40),
+      avatarId: normalizeAvatarId(avatarId),
+      plays: 0,
+      bestScore: 0,
+      recentScores: [],
+      updatedAt: now,
+    };
+    const res2 = await fetch(createUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ fields: entryToFsFields(entry) }),
+    });
+    if (!res2.ok) throw new Error('HTTP ' + res2.status);
+    CLOUD.status = 'ok';
+    return true;
+  } catch (_) {
+    CLOUD.status = 'offline';
+    return false;
+  }
+}
+
+function renderAvatarChange() {
+  const player = findPlayer(getCurrentPlayerId());
+  if (!player) { renderProfileSelect(); return; }
+  pendingAvatar = normalizeAvatarId(player.avatarId);
+  const box = document.getElementById('quiz-box');
+  box.innerHTML = `
+    <div style="text-align:center;">
+      ${renderAvatar(pendingAvatar, { size: 'lg' })}
+    </div>
+    <div class="profile-title">更換角色</div>
+    <div style="text-align:center;color:var(--muted);font-size:.92rem;margin-bottom:.6rem;">
+      目前玩家：<b>${escapeHtml(player.name)}</b>
+    </div>
+    <div class="avatar-picker" id="avatar-picker">
+      ${AVATAR_ORDER.map(id => `
+        <button class="avatar-opt ${id === pendingAvatar ? 'picked' : ''}" data-aid="${id}" onclick="pickAvatar('${id}')" title="${escapeHtml(AVATARS[id].name)}"><img src="${escapeHtml(AVATARS[id].src)}" alt="" /></button>
+      `).join('')}
+    </div>
+    <div class="dl-btn-row" style="margin-top:10px">
+      <div style="display:flex;gap:10px;">
+        <button class="dl-btn gray" style="flex:1;" onclick="renderQuizHome(findPlayer(getCurrentPlayerId()))">取消</button>
+        <button class="dl-btn blue" style="flex:1;" onclick="confirmAvatarChange()">套用</button>
+      </div>
+    </div>
+    ${renderLeaderboardHtml(player.id)}
+  `;
+}
+
+async function confirmAvatarChange() {
+  const player = findPlayer(getCurrentPlayerId());
+  if (!player) { renderProfileSelect(); return; }
+  const updated = updateLocalAvatar(player.id, pendingAvatar);
+  // Try cloud update (non-blocking). If it fails, local still works.
+  if (updated) {
+    cloudUpdateAvatarOnly(updated.name, updated.avatarId)
+      .then(() => cloudFetchLeaderboard())
+      .then(() => refreshLeaderboardUI(updated.id))
+      .catch(() => {});
+  }
+  const p2 = findPlayer(player.id) || player;
+  renderQuizHome(p2);
 }
 
 /* ---------- Leaderboard ---------- */
