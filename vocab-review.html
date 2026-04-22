@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- vocab-review.html v1.4.1 — Cloud leaderboard + PNG avatars (no crop). -->
+<!-- vocab-review.html v1.4.2 — Cloud leaderboard + 7 PNG avatars (chara01~07). -->
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
@@ -749,30 +749,39 @@ const LS_PLAYERS = 'vocabReview.v1.players';
 const LS_CURRENT = 'vocabReview.v1.currentPlayerId';
 const QUIZ_LEN   = 20;
 const MAX_CLOZE  = 5;       // cap: at most 5 cloze-input questions per quiz
-const DEFAULT_AVATAR = 'chiika';
+const DEFAULT_AVATAR = 'chara01';
 
 let VOCAB = [];
 let VOCAB_META = null;
 
 /* ---------- Avatars (static images provided by Mark) ---------- */
 
+// Avatar ids follow Chiikawa official numbering.
+// Keep legacy ids compatible: chiika/hachi/usagi -> chara01/02/03.
 const AVATARS = {
-  chiika: {
-    name: 'ちいかわ',
-    src: 'assets/avatars/chiika.png'
-  },
-  hachi: {
-    name: 'ハチワレ',
-    src: 'assets/avatars/hachi.png'
-  },
-  usagi: {
-    name: 'うさぎ',
-    src: 'assets/avatars/usagi.png'
-  },
+  chara01: { name: 'ちいかわ', src: 'assets/avatars/chara01.png' },
+  chara02: { name: 'ハチワレ', src: 'assets/avatars/chara02.png' },
+  chara03: { name: 'うさぎ',   src: 'assets/avatars/chara03.png' },
+  chara04: { name: '角色4',    src: 'assets/avatars/chara04.png' },
+  chara05: { name: '角色5',    src: 'assets/avatars/chara05.png' },
+  chara06: { name: '角色6',    src: 'assets/avatars/chara06.png' },
+  chara07: { name: '角色7',    src: 'assets/avatars/chara07.png' },
 };
 
+const AVATAR_ORDER = ['chara01','chara02','chara03','chara04','chara05','chara06','chara07'];
+
+function normalizeAvatarId(id) {
+  const s = String(id || '').trim();
+  if (AVATARS[s]) return s;
+  // legacy
+  if (s === 'chiika') return 'chara01';
+  if (s === 'hachi') return 'chara02';
+  if (s === 'usagi') return 'chara03';
+  return DEFAULT_AVATAR;
+}
+
 function avatarSrc(id) {
-  const a = AVATARS[id] || AVATARS[DEFAULT_AVATAR];
+  const a = AVATARS[normalizeAvatarId(id)] || AVATARS[DEFAULT_AVATAR];
   return a.src;
 }
 
@@ -1091,7 +1100,7 @@ function loadPlayers() {
     return arr.map(p => ({
       id: p.id || uid(),
       name: String(p.name || '未命名').slice(0, 20),
-      avatarId: AVATARS[p.avatarId] ? p.avatarId : DEFAULT_AVATAR,
+      avatarId: normalizeAvatarId(p.avatarId),
       createdAt: p.createdAt || new Date().toISOString(),
       plays: Number.isFinite(p.plays) ? p.plays : 0,
       bestScore: Number.isFinite(p.bestScore) ? p.bestScore : 0,
@@ -1123,7 +1132,7 @@ function addPlayer(name, avatarId) {
   const players = loadPlayers();
   const existing = players.find(p => p.name === name);
   if (existing) {
-    existing.avatarId = AVATARS[avatarId] ? avatarId : existing.avatarId;
+    existing.avatarId = normalizeAvatarId(avatarId || existing.avatarId);
     savePlayers(players);
     setCurrentPlayerId(existing.id);
     return existing;
@@ -1131,7 +1140,7 @@ function addPlayer(name, avatarId) {
   const p = {
     id: uid(),
     name,
-    avatarId: AVATARS[avatarId] ? avatarId : DEFAULT_AVATAR,
+    avatarId: normalizeAvatarId(avatarId),
     createdAt: new Date().toISOString(),
     plays: 0,
     bestScore: 0,
@@ -1195,7 +1204,7 @@ function fsDocToEntry(doc) {
   const f = (doc && doc.fields) || {};
   return {
     name: fsStr(f.name),
-    avatarId: fsStr(f.avatarId) || DEFAULT_AVATAR,
+    avatarId: normalizeAvatarId(fsStr(f.avatarId) || DEFAULT_AVATAR),
     plays: fsNum(f.plays),
     bestScore: fsNum(f.bestScore),
     recentScores: fsArrInt(f.recentScores),
@@ -1276,7 +1285,7 @@ async function cloudUpsertScore(name, avatarId, score) {
   const base = prev || { plays: 0, bestScore: 0, recentScores: [], avatarId: DEFAULT_AVATAR };
   const entry = {
     name: String(name || '').trim().slice(0, 40),
-    avatarId: AVATARS[avatarId] ? avatarId : (base.avatarId || DEFAULT_AVATAR),
+    avatarId: normalizeAvatarId(avatarId || base.avatarId || DEFAULT_AVATAR),
     plays: (base.plays || 0) + 1,
     bestScore: Math.max(base.bestScore || 0, score | 0),
     recentScores: [score | 0, ...(base.recentScores || [])].slice(0, 10),
@@ -1391,7 +1400,7 @@ function renderProfileSelect() {
 
     <div style="font-size:.85rem;font-weight:700;color:var(--ink);margin:0.6rem 0 0.3rem;text-align:center;">選一隻小角色當你的頭像</div>
     <div class="avatar-picker" id="avatar-picker">
-      ${Object.keys(AVATARS).map(id => `
+      ${AVATAR_ORDER.map(id => `
         <button class="avatar-opt ${id === pendingAvatar ? 'picked' : ''}" data-aid="${id}" onclick="pickAvatar('${id}')" title="${escapeHtml(AVATARS[id].name)}"><img src="${escapeHtml(AVATARS[id].src)}" alt="" /></button>
       `).join('')}
     </div>
