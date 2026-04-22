@@ -1286,6 +1286,9 @@ const FS_COMMIT = `https://firestore.googleapis.com/v1/projects/${firebaseConfig
 const CLOUD = {
   status: 'idle',  // 'idle' | 'loading' | 'ok' | 'offline'
   entries: [],     // array of { name, avatarId, plays, bestScore, recentScores, updatedAt }
+  lastError: '',
+  lastWriteOk: null,
+  lastWriteAt: '',
 };
 
 function cloudDocId(name) {
@@ -1351,6 +1354,7 @@ function entryToFsFields(e) {
 
 async function cloudFetchLeaderboard() {
   CLOUD.status = 'loading';
+  CLOUD.lastError = '';
   try {
     const res = await fetch(`${FS_BASE}:runQuery?key=${firebaseConfig.apiKey}`, {
       method: 'POST',
@@ -1367,7 +1371,11 @@ async function cloudFetchLeaderboard() {
         },
       }),
     });
-    if (!res.ok) throw new Error('HTTP ' + res.status);
+    if (!res.ok) {
+      const t = await res.text().catch(() => '');
+      CLOUD.lastError = `runQuery ${res.status} ${t}`.slice(0, 500);
+      throw new Error('HTTP ' + res.status);
+    }
     const rows = await res.json();
     const entries = [];
     for (const row of rows) {
@@ -1383,6 +1391,7 @@ async function cloudFetchLeaderboard() {
     return entries;
   } catch (e) {
     CLOUD.status = 'offline';
+    if (!CLOUD.lastError) CLOUD.lastError = String(e && e.message ? e.message : e);
     return null;
   }
 }
@@ -1414,6 +1423,7 @@ async function cloudUpsertScore(name, avatarId, score) {
     updatedAt: new Date().toISOString(),
   };
   try {
+    CLOUD.lastError = '';
     // Use commit (POST) instead of PATCH to avoid browser CORS issues on some platforms.
     const docName = `projects/${firebaseConfig.projectId}/databases/(default)/documents/leaderboard/${id}`;
     const res = await fetch(`${FS_COMMIT}?key=${firebaseConfig.apiKey}`, {
@@ -1428,11 +1438,20 @@ async function cloudUpsertScore(name, avatarId, score) {
         }]
       }),
     });
-    if (!res.ok) throw new Error('HTTP ' + res.status);
+    if (!res.ok) {
+      const t = await res.text().catch(() => '');
+      CLOUD.lastError = `commit ${res.status} ${t}`.slice(0, 500);
+      throw new Error('HTTP ' + res.status);
+    }
     CLOUD.status = 'ok';
+    CLOUD.lastWriteOk = true;
+    CLOUD.lastWriteAt = new Date().toISOString();
     return true;
   } catch (e) {
     CLOUD.status = 'offline';
+    CLOUD.lastWriteOk = false;
+    CLOUD.lastWriteAt = new Date().toISOString();
+    if (!CLOUD.lastError) CLOUD.lastError = String(e && e.message ? e.message : e);
     return false;
   }
 }
@@ -1707,8 +1726,12 @@ function renderLeaderboardHtml(highlightId) {
   let rows = '';
   let badge = '';
 
+  const cloudNote = (CLOUD.lastWriteOk === false && CLOUD.lastError)
+    ? `<div style="font-size:.78rem;color:var(--red-dark);padding:6px 10px;">雲端寫入失敗：${escapeHtml(CLOUD.lastError)}</div>`
+    : '';
+
   if (CLOUD.status === 'ok') {
-    const entries = CLOUD.entries;
+    const entries = CLOUD.entries || [];
     badge = `<span style="font-size:.7rem;font-weight:700;color:var(--ok-dark);margin-left:6px;letter-spacing:.05em;">雲端</span>`;
     if (!entries.length) {
       rows = `<div style="font-size:.85rem;color:var(--muted);padding:6px 10px;">雲端上還沒有任何玩家，快來搶第一！</div>`;
@@ -1734,7 +1757,7 @@ function renderLeaderboardHtml(highlightId) {
     rows = players.map((p, i) => `
       <div class="lb-row ${p.id === highlightId ? 'me' : ''}">
         <div class="lb-rank ${i < 3 ? 'top' : ''}">${i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : (i+1)}</div>
-        <div>${renderAvatar(p.avatarId, { size: 'sm', animated: p.id === highlightId })}</div>
+        <div>${renderAvatar(p.avatarId, { size: 'sm' })}</div>
         <div class="lb-name">${escapeHtml(p.name)}</div>
         <div class="lb-best">${p.bestScore||0}</div>
         <div class="lb-plays">${p.plays||0} 次</div>
@@ -1748,6 +1771,7 @@ function renderLeaderboardHtml(highlightId) {
   return `
     <div id="lb-container" class="leaderboard">
       <h3>🏆 排行榜 ${badge}</h3>
+      ${cloudNote}
       ${rows}
     </div>
   `;
