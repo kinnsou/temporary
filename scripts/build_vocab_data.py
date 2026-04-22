@@ -21,12 +21,85 @@ Rules:
 from __future__ import annotations
 
 import json
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 HISTORY = REPO_ROOT / "memory" / "vocab-history.json"
 OUTPUT = REPO_ROOT / "vocab-data.json"
+
+
+_POS_MAP = {
+    "n": "n",
+    "noun": "n",
+    "v": "v",
+    "verb": "v",
+    "adj": "adj",
+    "adjective": "adj",
+    "adv": "adv",
+    "adverb": "adv",
+    "prep": "prep",
+    "preposition": "prep",
+    "pron": "pron",
+    "pronoun": "pron",
+    "conj": "conj",
+    "conjunction": "conj",
+    "interj": "interj",
+    "interjection": "interj",
+    "det": "det",
+    "determiner": "det",
+    "num": "num",
+    "number": "num",
+}
+
+
+def normalize_pos(pos: str | None) -> str:
+    if not pos:
+        return ""
+    key = str(pos).strip().lower().rstrip(".")
+    return _POS_MAP.get(key, "")
+
+
+def infer_pos(word: str, example: str, meaning_zh: str) -> str:
+    """Best-effort POS inference. This is only a starter; Mark may later add explicit pos in vocab-history."""
+    w = word.strip().lower()
+    ex = example.strip().lower()
+    zh = (meaning_zh or "").strip()
+
+    # quick lexical heuristics
+    if w.endswith("ly"):
+        return "adv"
+    if w in {"red", "yellow", "blue", "green", "black", "white", "pink", "brown", "gray", "grey", "purple", "orange"}:
+        return "adj"
+
+    # score-based pattern match
+    score = {"n": 0, "v": 0, "adj": 0, "adv": 0}
+
+    # English example patterns
+    if re.match(rf"^(please\s+)?{re.escape(w)}\b", ex):
+        score["v"] += 3
+    if re.match(rf"^(i|you|we|they)\s+{re.escape(w)}\b", ex):
+        score["v"] += 3
+    if re.search(rf"\bto\s+{re.escape(w)}\b", ex):
+        score["v"] += 2
+    if re.search(rf"\b(am|is|are|was|were|become|seem|feel|look)\s+{re.escape(w)}\b", ex):
+        score["adj"] += 3
+    if re.search(rf"\b(a|an|the)\s+{re.escape(w)}\b", ex):
+        score["n"] += 3
+    if re.search(rf"\b(my|your|his|her|our|their)\s+{re.escape(w)}\b", ex):
+        score["n"] += 2
+
+    # Chinese meaning hints (very rough)
+    if "地" in zh and "的" not in zh:
+        score["adv"] += 1
+    if "的" in zh:
+        score["adj"] += 1
+
+    best = max(score.items(), key=lambda kv: kv[1])
+    if best[1] <= 0:
+        return "n"  # default (more forgiving for kids)
+    return best[0]
 
 
 def main() -> None:
@@ -44,12 +117,18 @@ def main() -> None:
         if not meaning:
             continue
         first_seen = rec.get("first_seen") or ""
+
+        pos = normalize_pos(rec.get("pos") or rec.get("part_of_speech"))
+        if not pos:
+            pos = infer_pos(word, example, meaning)
+
         words.append({
             "word": word,
             "meaning": meaning,
             "example": example,
             "translation": translation,
             "firstSeen": first_seen,
+            "pos": pos,
         })
 
     words.sort(key=lambda w: w["firstSeen"], reverse=True)

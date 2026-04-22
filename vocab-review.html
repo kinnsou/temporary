@@ -181,9 +181,44 @@
     .card-head {
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
+      align-items: center;
       gap: 10px;
     }
+
+    .card-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .pos-dot {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 0.9rem;
+      color: #2b2b2b;
+      border: 2px solid rgba(0,0,0,0.08);
+      flex-shrink: 0;
+      box-shadow: 0 2px 0 rgba(0,0,0,0.06);
+      letter-spacing: .02em;
+    }
+
+    .pos-n { background: #ffeaa8; }
+    .pos-v { background: #ffb4d8; }
+    .pos-adj { background: #b7f5b7; }
+    .pos-adv { background: #d9c2ff; }
+    .pos-prep { background: #bde9ff; }
+    .pos-pron { background: #c8fff2; }
+    .pos-conj { background: #ffd2a6; }
+    .pos-interj { background: #ffb0b0; }
+    .pos-det { background: #e7e7e7; }
+    .pos-num { background: #e0e0ff; }
+    .pos-unk { background: #f3f3f3; }
 
     .vocab-word {
       font-size: 1.3rem;
@@ -1013,6 +1048,8 @@ async function loadVocab() {
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const data = await res.json();
     VOCAB = Array.isArray(data.words) ? data.words : [];
+    // back-compat: if vocab-data.json doesn't include pos yet, infer lightly on the client.
+    VOCAB = VOCAB.map(w => ({ ...w, pos: w.pos || inferPosClient(w) }));
     VOCAB_META = data.meta || null;
     renderFooterMeta();
     renderCards();
@@ -1021,6 +1058,51 @@ async function loadVocab() {
       `<div class="err-state">單字資料載入失敗：${escapeHtml(e.message)}<br>
        <span style="font-size:.85rem;color:var(--muted)">請確認 vocab-data.json 已產生並與本頁同目錄。</span></div>`;
   }
+}
+
+function posLabel(pos) {
+  const p = String(pos || '').toLowerCase();
+  if (p === 'n' || p === 'noun') return 'n';
+  if (p === 'v' || p === 'verb') return 'v';
+  if (p === 'adj' || p === 'adjective') return 'adj';
+  if (p === 'adv' || p === 'adverb') return 'adv';
+  if (p === 'prep' || p === 'preposition') return 'prep';
+  if (p === 'pron' || p === 'pronoun') return 'pron';
+  if (p === 'conj' || p === 'conjunction') return 'conj';
+  if (p === 'interj' || p === 'interjection') return 'int';
+  if (p === 'det' || p === 'determiner') return 'det';
+  if (p === 'num' || p === 'number') return 'num';
+  return '?';
+}
+
+function posClass(pos) {
+  const p = String(pos || '').toLowerCase();
+  if (p === 'n' || p === 'noun') return 'pos-n';
+  if (p === 'v' || p === 'verb') return 'pos-v';
+  if (p === 'adj' || p === 'adjective') return 'pos-adj';
+  if (p === 'adv' || p === 'adverb') return 'pos-adv';
+  if (p === 'prep' || p === 'preposition') return 'pos-prep';
+  if (p === 'pron' || p === 'pronoun') return 'pos-pron';
+  if (p === 'conj' || p === 'conjunction') return 'pos-conj';
+  if (p === 'interj' || p === 'interjection') return 'pos-interj';
+  if (p === 'det' || p === 'determiner') return 'pos-det';
+  if (p === 'num' || p === 'number') return 'pos-num';
+  return 'pos-unk';
+}
+
+function inferPosClient(w) {
+  const word = String(w.word || '').toLowerCase();
+  const ex = String(w.example || '').toLowerCase();
+  const zh = String(w.meaning || '');
+  if (word.endsWith('ly')) return 'adv';
+  if (['red','yellow','blue','green','black','white','pink','brown','gray','grey','purple','orange'].includes(word)) return 'adj';
+  if (new RegExp(`^(please\\s+)?${word}\\b`).test(ex)) return 'v';
+  if (new RegExp(`^(i|you|we|they)\\s+${word}\\b`).test(ex)) return 'v';
+  if (new RegExp(`\\bto\\s+${word}\\b`).test(ex)) return 'v';
+  if (new RegExp(`\\b(am|is|are|was|were|become|seem|feel|look)\\s+${word}\\b`).test(ex)) return 'adj';
+  if (new RegExp(`\\b(a|an|the)\\s+${word}\\b`).test(ex)) return 'n';
+  if (/的/.test(zh)) return 'adj';
+  return 'n';
 }
 
 function renderFooterMeta() {
@@ -1078,7 +1160,10 @@ function renderCards() {
   grid.innerHTML = list.map((v) => `
     <div class="vocab-card" onclick="this.classList.toggle('open')">
       <div class="card-head">
-        <div class="vocab-word">${escapeHtml(v.word)}</div>
+        <div class="card-left">
+          <span class="pos-dot ${posClass(v.pos)}">${escapeHtml(posLabel(v.pos))}</span>
+          <div class="vocab-word">${escapeHtml(v.word)}</div>
+        </div>
         <div class="vocab-date">${formatDate(v.firstSeen)} 學過</div>
       </div>
       <div class="vocab-meaning">${escapeHtml(v.meaning)}</div>
