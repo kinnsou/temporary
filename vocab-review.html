@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- vocab-review.html v1.3 — Shared-ready roadmap (still local-only), static official-style avatars + blue-sky/green-ground theme. -->
+<!-- vocab-review.html v1.4 — Cloud leaderboard via Firebase Firestore REST (shared across devices). -->
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
@@ -1011,7 +1011,7 @@ async function loadVocab() {
 
 function renderFooterMeta() {
   const f = document.getElementById('page-footer');
-  const tag = 'v1.2';
+  const tag = 'v1.4';
   if (VOCAB_META && VOCAB_META.updatedAt) {
     const d = VOCAB_META.updatedAt.replace('T',' ').replace('Z',' UTC');
     f.textContent = `單字複習小教室 ${tag} · 共 ${VOCAB.length} 個單字 · 更新於 ${d}`;
@@ -1148,6 +1148,155 @@ function recordScore(playerId, score) {
   savePlayers(players);
 }
 
+/* ---------- Cloud leaderboard (Firebase Firestore REST) ----------
+   Shared leaderboard across all users/devices. No SDK — just REST.
+   If disabled or blocked by rules, UI falls back to local mode. */
+
+const firebaseConfig = {
+  apiKey: "AIzaSyB1c6yopEMzDxbYBrgkqr_3Rsr9KqKwNbA",
+  authDomain: "vocab-eng2026.firebaseapp.com",
+  projectId: "vocab-eng2026",
+  storageBucket: "vocab-eng2026.firebasestorage.app",
+  messagingSenderId: "414665820941",
+  appId: "1:414665820941:web:41437ce9f75952b382be44"
+};
+
+const FS_BASE = `https://firestore.googleapis.com/v1/projects/${firebaseConfig.projectId}/databases/(default)/documents`;
+
+const CLOUD = {
+  status: 'idle',  // 'idle' | 'loading' | 'ok' | 'offline'
+  entries: [],     // array of { name, avatarId, plays, bestScore, recentScores, updatedAt }
+};
+
+function cloudDocId(name) {
+  const s = String(name || '').trim().toLowerCase();
+  const id = s.replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '');
+  return id || '_';
+}
+
+function fsNum(v) {
+  if (!v) return 0;
+  if (v.integerValue != null) return parseInt(v.integerValue, 10) || 0;
+  if (v.doubleValue != null) return Number(v.doubleValue) || 0;
+  return 0;
+}
+function fsStr(v) { return (v && v.stringValue) || ''; }
+function fsArrInt(v) {
+  const values = v && v.arrayValue && v.arrayValue.values;
+  return Array.isArray(values) ? values.map(fsNum) : [];
+}
+
+function fsDocToEntry(doc) {
+  const f = (doc && doc.fields) || {};
+  return {
+    name: fsStr(f.name),
+    avatarId: fsStr(f.avatarId) || DEFAULT_AVATAR,
+    plays: fsNum(f.plays),
+    bestScore: fsNum(f.bestScore),
+    recentScores: fsArrInt(f.recentScores),
+    updatedAt: fsStr(f.updatedAt),
+  };
+}
+
+function entryToFsFields(e) {
+  return {
+    name: { stringValue: String(e.name || '') },
+    avatarId: { stringValue: e.avatarId || DEFAULT_AVATAR },
+    plays: { integerValue: String(e.plays | 0) },
+    bestScore: { integerValue: String(e.bestScore | 0) },
+    recentScores: {
+      arrayValue: {
+        values: (e.recentScores || []).map(n => ({ integerValue: String(n | 0) }))
+      }
+    },
+    updatedAt: { stringValue: e.updatedAt || new Date().toISOString() },
+  };
+}
+
+async function cloudFetchLeaderboard() {
+  CLOUD.status = 'loading';
+  try {
+    const res = await fetch(`${FS_BASE}:runQuery?key=${firebaseConfig.apiKey}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        structuredQuery: {
+          from: [{ collectionId: 'leaderboard' }],
+          orderBy: [
+            { field: { fieldPath: 'bestScore' }, direction: 'DESCENDING' },
+            { field: { fieldPath: 'updatedAt' }, direction: 'DESCENDING' },
+          ],
+          limit: 50,
+        },
+      }),
+    });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const rows = await res.json();
+    const entries = [];
+    for (const row of rows) {
+      if (row && row.document) entries.push(fsDocToEntry(row.document));
+    }
+    CLOUD.entries = entries;
+    CLOUD.status = 'ok';
+    return entries;
+  } catch (e) {
+    CLOUD.status = 'offline';
+    return null;
+  }
+}
+
+async function cloudGetEntry(name) {
+  const id = cloudDocId(name);
+  try {
+    const res = await fetch(`${FS_BASE}/leaderboard/${encodeURIComponent(id)}?key=${firebaseConfig.apiKey}`);
+    if (res.status === 404) return null;
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const doc = await res.json();
+    return fsDocToEntry(doc);
+  } catch (e) {
+    return null;
+  }
+}
+
+async function cloudUpsertScore(name, avatarId, score) {
+  const id = cloudDocId(name);
+  if (!id || id === '_') return false;
+  const prev = await cloudGetEntry(name);
+  const base = prev || { plays: 0, bestScore: 0, recentScores: [], avatarId: DEFAULT_AVATAR };
+  const entry = {
+    name: String(name || '').trim().slice(0, 40),
+    avatarId: AVATARS[avatarId] ? avatarId : (base.avatarId || DEFAULT_AVATAR),
+    plays: (base.plays || 0) + 1,
+    bestScore: Math.max(base.bestScore || 0, score | 0),
+    recentScores: [score | 0, ...(base.recentScores || [])].slice(0, 10),
+    updatedAt: new Date().toISOString(),
+  };
+  try {
+    const url = `${FS_BASE}/leaderboard/${encodeURIComponent(id)}?key=${firebaseConfig.apiKey}`;
+    const res = await fetch(url, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ fields: entryToFsFields(entry) }),
+    });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    CLOUD.status = 'ok';
+    return true;
+  } catch (e) {
+    CLOUD.status = 'offline';
+    return false;
+  }
+}
+
+function refreshLeaderboardUI(highlightId) {
+  const el = document.getElementById('lb-container');
+  if (!el) return;
+  const wrap = document.createElement('div');
+  wrap.innerHTML = renderLeaderboardHtml(highlightId);
+  const fresh = wrap.firstElementChild;
+  if (fresh) el.replaceWith(fresh);
+  else el.remove();
+}
+
 /* ---------- Quiz state ---------- */
 
 let quiz = null;
@@ -1171,17 +1320,59 @@ function renderProfileSelect() {
   const box = document.getElementById('quiz-box');
   const players = loadPlayers();
   const curId = getCurrentPlayerId();
-  const sorted = players.slice().sort((a,b) => (b.bestScore||0) - (a.bestScore||0));
+  const curPlayer = curId ? findPlayer(curId) : null;
+  const curName = curPlayer ? curPlayer.name : '';
+
+  // Merge cloud + local players. Cloud names are authoritative (shown first).
+  const chips = [];
+  const seenIds = new Set();
+  if (CLOUD.status === 'ok') {
+    const sortedCloud = CLOUD.entries.slice().sort((a,b) =>
+      (b.bestScore||0) - (a.bestScore||0) || (b.plays||0) - (a.plays||0)
+    );
+    for (const e of sortedCloud) {
+      const id = cloudDocId(e.name);
+      if (seenIds.has(id)) continue;
+      seenIds.add(id);
+      chips.push({
+        name: e.name,
+        avatarId: AVATARS[e.avatarId] ? e.avatarId : DEFAULT_AVATAR,
+        bestScore: e.bestScore || 0,
+        plays: e.plays || 0,
+      });
+    }
+  }
+  // Add local-only players (not already in cloud list).
+  const sortedLocal = players.slice().sort((a,b) => (b.bestScore||0) - (a.bestScore||0));
+  for (const p of sortedLocal) {
+    const id = cloudDocId(p.name);
+    if (seenIds.has(id)) continue;
+    seenIds.add(id);
+    chips.push({
+      name: p.name,
+      avatarId: p.avatarId,
+      bestScore: p.bestScore || 0,
+      plays: p.plays || 0,
+    });
+  }
+  window.__profileChips = chips;
+
+  const statusLine = CLOUD.status === 'offline'
+    ? `<div style="text-align:center;font-size:.8rem;color:var(--red-dark);margin-bottom:.6rem;">⚠️ 雲端未連線，先用本機模式</div>`
+    : CLOUD.status === 'loading' || CLOUD.status === 'idle'
+      ? `<div style="text-align:center;font-size:.8rem;color:var(--muted);margin-bottom:.6rem;">連線雲端中…</div>`
+      : '';
 
   box.innerHTML = `
     <div class="profile-title">👋 請選擇玩家</div>
-    ${sorted.length ? `
+    ${statusLine}
+    ${chips.length ? `
       <div class="profile-list">
-        ${sorted.map(p => `
-          <button class="profile-chip ${p.id === curId ? 'current' : ''}" onclick="pickPlayer('${p.id}')">
-            ${renderAvatar(p.avatarId, { animated: p.id === curId })}
-            <span>${escapeHtml(p.name)}</span>
-            <span class="chip-stat">最佳 ${p.bestScore||0} · 共 ${p.plays||0} 次</span>
+        ${chips.map((c, i) => `
+          <button class="profile-chip ${c.name === curName ? 'current' : ''}" onclick="pickProfileChip(${i})">
+            ${renderAvatar(c.avatarId, { animated: c.name === curName })}
+            <span>${escapeHtml(c.name)}</span>
+            <span class="chip-stat">最佳 ${c.bestScore} · 共 ${c.plays} 次</span>
           </button>
         `).join('')}
       </div>
@@ -1201,6 +1392,15 @@ function renderProfileSelect() {
   `;
   const inp = document.getElementById('new-name-input');
   inp.addEventListener('keydown', e => { if (e.key === 'Enter') onAddPlayer(); });
+}
+
+function pickProfileChip(idx) {
+  const c = (window.__profileChips || [])[idx];
+  if (!c) return;
+  // Reuse addPlayer — it merges by name, so picking an existing (cloud or local) name
+  // will map to the same local player record.
+  const p = addPlayer(c.name, c.avatarId);
+  if (p) renderQuizHome(p);
 }
 
 function pickAvatar(id) {
@@ -1260,22 +1460,53 @@ function renderQuizHome(player) {
 /* ---------- Leaderboard ---------- */
 
 function renderLeaderboardHtml(highlightId) {
-  const players = loadPlayers().slice().sort((a,b) =>
-    (b.bestScore||0) - (a.bestScore||0) || (b.plays||0) - (a.plays||0)
-  );
-  if (!players.length) return '';
-  const rows = players.map((p, i) => `
-    <div class="lb-row ${p.id === highlightId ? 'me' : ''}">
-      <div class="lb-rank ${i < 3 ? 'top' : ''}">${i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : (i+1)}</div>
-      <div>${renderAvatar(p.avatarId, { size: 'sm', animated: p.id === highlightId })}</div>
-      <div class="lb-name">${escapeHtml(p.name)}</div>
-      <div class="lb-best">${p.bestScore||0}</div>
-      <div class="lb-plays">${p.plays||0} 次</div>
-    </div>
-  `).join('');
+  const curPlayer = highlightId ? findPlayer(highlightId) : null;
+  const curName = curPlayer ? curPlayer.name : '';
+
+  let rows = '';
+  let badge = '';
+
+  if (CLOUD.status === 'ok') {
+    const entries = CLOUD.entries;
+    badge = `<span style="font-size:.7rem;font-weight:700;color:var(--ok-dark);margin-left:6px;letter-spacing:.05em;">雲端</span>`;
+    if (!entries.length) {
+      rows = `<div style="font-size:.85rem;color:var(--muted);padding:6px 10px;">雲端上還沒有任何玩家，快來搶第一！</div>`;
+    } else {
+      rows = entries.map((p, i) => `
+        <div class="lb-row ${p.name === curName ? 'me' : ''}">
+          <div class="lb-rank ${i < 3 ? 'top' : ''}">${i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : (i+1)}</div>
+          <div>${renderAvatar(p.avatarId, { size: 'sm' })}</div>
+          <div class="lb-name">${escapeHtml(p.name)}</div>
+          <div class="lb-best">${p.bestScore||0}</div>
+          <div class="lb-plays">${p.plays||0} 次</div>
+        </div>
+      `).join('');
+    }
+  } else {
+    const players = loadPlayers().slice().sort((a,b) =>
+      (b.bestScore||0) - (a.bestScore||0) || (b.plays||0) - (a.plays||0)
+    );
+    if (!players.length && CLOUD.status !== 'offline') return `<div id="lb-container"></div>`;
+    badge = CLOUD.status === 'offline'
+      ? `<span style="font-size:.7rem;font-weight:700;color:var(--red-dark);margin-left:6px;letter-spacing:.05em;">雲端未連線，顯示本機</span>`
+      : `<span style="font-size:.7rem;font-weight:700;color:var(--muted);margin-left:6px;letter-spacing:.05em;">本機</span>`;
+    rows = players.map((p, i) => `
+      <div class="lb-row ${p.id === highlightId ? 'me' : ''}">
+        <div class="lb-rank ${i < 3 ? 'top' : ''}">${i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : (i+1)}</div>
+        <div>${renderAvatar(p.avatarId, { size: 'sm', animated: p.id === highlightId })}</div>
+        <div class="lb-name">${escapeHtml(p.name)}</div>
+        <div class="lb-best">${p.bestScore||0}</div>
+        <div class="lb-plays">${p.plays||0} 次</div>
+      </div>
+    `).join('');
+    if (!players.length) {
+      rows = `<div style="font-size:.85rem;color:var(--muted);padding:6px 10px;">還沒有紀錄。</div>`;
+    }
+  }
+
   return `
-    <div class="leaderboard">
-      <h3>🏆 排行榜</h3>
+    <div id="lb-container" class="leaderboard">
+      <h3>🏆 排行榜 ${badge}</h3>
       ${rows}
     </div>
   `;
@@ -1592,6 +1823,15 @@ function finishQuiz() {
 
   recordScore(s.playerId, score);
 
+  // Fire cloud upsert in the background; refresh leaderboard UI when it returns.
+  const playerForCloud = findPlayer(s.playerId);
+  if (playerForCloud) {
+    cloudUpsertScore(playerForCloud.name, playerForCloud.avatarId, score)
+      .then(ok => ok ? cloudFetchLeaderboard() : null)
+      .then(() => refreshLeaderboardUI(s.playerId))
+      .catch(() => {});
+  }
+
   const stars = pct === 100 ? '⭐⭐⭐' : pct >= 75 ? '⭐⭐☆' : pct >= 50 ? '⭐☆☆' : '☆☆☆';
 
   const wrongHtml = s.wrong.length ? `
@@ -1627,6 +1867,23 @@ function finishQuiz() {
 
 document.getElementById('search-input').addEventListener('input', renderCards);
 loadVocab();
+
+// Kick off cloud leaderboard fetch. When it resolves, re-render any visible
+// profile/home/result screen so the cloud leaderboard appears.
+cloudFetchLeaderboard().then(() => {
+  const panel = document.getElementById('panel-quiz');
+  if (!panel || !panel.classList.contains('active')) return;
+  const cur = getCurrentPlayerId();
+  const p = cur ? findPlayer(cur) : null;
+  if (!p) { renderProfileSelect(); return; }
+  if (quiz && quiz.playerId === p.id && !quiz.finished) return; // don't disturb live quiz
+  // If on finish screen (has result-area), just refresh the lb container.
+  if (document.querySelector('#quiz-box .result-area')) {
+    refreshLeaderboardUI(p.id);
+  } else {
+    renderQuizHome(p);
+  }
+});
 </script>
 </body>
 </html>
