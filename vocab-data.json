@@ -1,10 +1,52 @@
 {
   "meta": {
-    "updatedAt": "2026-04-22T08:13:11Z",
-    "sourceCount": 110,
-    "includedCount": 102
+    "updatedAt": "2026-04-22T08:21:16Z",
+    "sourceCount": 116,
+    "includedCount": 108
   },
   "words": [
+    {
+      "word": "real",
+      "meaning": "真的；真實的",
+      "example": "Is this story real?",
+      "translation": "這個故事是真的嗎？",
+      "firstSeen": "2026-04-21"
+    },
+    {
+      "word": "storm",
+      "meaning": "暴風雨；風暴",
+      "example": "The storm is coming.",
+      "translation": "暴風雨要來了。",
+      "firstSeen": "2026-04-21"
+    },
+    {
+      "word": "believe",
+      "meaning": "相信；信任",
+      "example": "I believe you can do it.",
+      "translation": "我相信你做得到。",
+      "firstSeen": "2026-04-21"
+    },
+    {
+      "word": "pizza",
+      "meaning": "披薩",
+      "example": "I want to eat pizza for dinner.",
+      "translation": "我晚餐想吃披薩。",
+      "firstSeen": "2026-04-20"
+    },
+    {
+      "word": "sugar",
+      "meaning": "糖",
+      "example": "Don't put too much sugar in your tea.",
+      "translation": "你的茶不要加太多糖。",
+      "firstSeen": "2026-04-20"
+    },
+    {
+      "word": "dragon",
+      "meaning": "龍",
+      "example": "The dragon in the story is very strong.",
+      "translation": "故事裡的龍很強。",
+      "firstSeen": "2026-04-20"
+    },
     {
       "word": "hole",
       "meaning": "洞；孔洞",
