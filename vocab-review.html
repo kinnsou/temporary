@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- vocab-review.html v1.1 — 20Q quiz + 3 question types (cloze / mc zh→en / mc tense) + Chiikawa-style avatars + animated leaderboard. -->
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
@@ -46,7 +47,6 @@
       padding: 0 1rem 3rem;
     }
 
-    /* Header */
     .header {
       background: #fff;
       border-bottom: 2px solid var(--line);
@@ -67,7 +67,6 @@
       margin-top: 0.15rem;
     }
 
-    /* Tabs */
     .tabs {
       display: flex;
       gap: 10px;
@@ -100,7 +99,6 @@
       border-color: var(--green-dark);
     }
 
-    /* Panels */
     .panel { display: none; animation: fadeIn 0.2s ease; }
     .panel.active { display: block; }
 
@@ -211,7 +209,7 @@
       font-size: 0.95rem;
     }
 
-    /* === Quiz tab - shared === */
+    /* === Quiz shared === */
     .quiz-box {
       background: #fff;
       border: 2px solid var(--line);
@@ -219,7 +217,6 @@
       padding: 1.3rem;
     }
 
-    /* Player select */
     .profile-title {
       font-size: 1.1rem;
       font-weight: 800;
@@ -236,7 +233,7 @@
     }
 
     .profile-chip {
-      padding: 14px 10px;
+      padding: 12px 10px;
       border: 2px solid var(--line);
       border-bottom-width: 4px;
       border-radius: 14px;
@@ -248,6 +245,10 @@
       cursor: pointer;
       transition: all 0.1s;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
     }
 
     .profile-chip:hover { background: var(--paper); }
@@ -271,7 +272,7 @@
     .add-row {
       display: flex;
       gap: 8px;
-      margin-bottom: 1rem;
+      margin-bottom: 0.6rem;
     }
 
     .add-row input {
@@ -285,7 +286,51 @@
     }
     .add-row input:focus { border-color: var(--blue); }
 
-    /* Duolingo-ish primary button */
+    /* Avatar */
+    .avatar {
+      width: 48px;
+      height: 48px;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+    .avatar svg { width: 100%; height: 100%; display: block; }
+    .avatar-sm { width: 32px; height: 32px; }
+    .avatar-lg { width: 72px; height: 72px; }
+
+    @keyframes bob {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      25% { transform: translateY(-3px) rotate(-3deg); }
+      50% { transform: translateY(-5px) rotate(0deg); }
+      75% { transform: translateY(-3px) rotate(3deg); }
+    }
+    .avatar.animated { animation: bob 1.6s ease-in-out infinite; transform-origin: center bottom; }
+
+    .avatar-picker {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 0.4rem 0 0.8rem;
+    }
+    .avatar-opt {
+      width: 52px;
+      height: 52px;
+      padding: 4px;
+      border: 2px solid var(--line);
+      border-bottom-width: 4px;
+      border-radius: 12px;
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.1s;
+    }
+    .avatar-opt:hover { background: var(--paper); }
+    .avatar-opt.picked {
+      border-color: var(--green);
+      background: var(--green-bg);
+    }
+    .avatar-opt svg { width: 100%; height: 100%; }
+
+    /* Duo-ish primary button */
     .dl-btn {
       padding: 12px 18px;
       border: none;
@@ -334,10 +379,10 @@
 
     .lb-row {
       display: grid;
-      grid-template-columns: 32px 1fr auto auto;
+      grid-template-columns: 28px 40px 1fr auto auto;
       gap: 10px;
       align-items: center;
-      padding: 8px 10px;
+      padding: 6px 10px;
       border-radius: 10px;
       font-size: 0.92rem;
     }
@@ -440,6 +485,20 @@
       user-select: none;
     }
 
+    .q-time {
+      display: inline-block;
+      background: var(--paper);
+      border: 2px solid var(--line);
+      border-radius: 10px;
+      padding: 4px 10px;
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin: 0.1rem 0 0.8rem;
+      letter-spacing: 0.02em;
+    }
+    .q-time b { color: var(--blue-dark); }
+
     .answer-input {
       width: 100%;
       padding: 14px 16px;
@@ -456,6 +515,47 @@
     }
     .answer-input:focus { border-color: var(--blue); }
     .answer-input.locked { background: var(--paper); }
+
+    /* Choice options */
+    .choices {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 0.4rem 0 0.8rem;
+    }
+    .choice-btn {
+      padding: 14px 10px;
+      border: 2px solid var(--line);
+      border-bottom-width: 4px;
+      border-radius: 14px;
+      background: #fff;
+      color: var(--ink);
+      font-family: inherit;
+      font-size: 1.05rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.08s;
+      text-align: center;
+      word-break: break-word;
+    }
+    .choice-btn:hover:not(:disabled) { background: var(--paper); border-color: var(--line-2); }
+    .choice-btn:active:not(:disabled) { transform: translateY(1px); border-bottom-width: 3px; }
+    .choice-btn.picked-right {
+      background: var(--green-bg);
+      border-color: var(--green);
+      color: var(--green-dark);
+    }
+    .choice-btn.picked-wrong {
+      background: var(--red-bg);
+      border-color: var(--red);
+      color: var(--red-dark);
+    }
+    .choice-btn.reveal-right {
+      background: #f5fff0;
+      border-color: var(--green);
+      color: var(--green-dark);
+    }
+    .choice-btn:disabled { cursor: default; }
 
     .feedback {
       display: none;
@@ -533,6 +633,20 @@
       font-size: 0.88rem;
     }
     .wrong-row:last-child { border-bottom: none; }
+    .wrong-row .wr-type {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: #fff;
+      background: var(--blue);
+      padding: 1px 6px;
+      border-radius: 6px;
+      margin-right: 6px;
+      letter-spacing: 0.04em;
+    }
+    .wrong-row .wr-type.t-cloze { background: var(--green); }
+    .wrong-row .wr-type.t-zh { background: var(--blue); }
+    .wrong-row .wr-type.t-tense { background: #b266ff; }
     .wrong-row .wr-q { color: var(--ink-soft); margin-bottom: 2px; }
     .wrong-row .wr-your { color: var(--red-dark); }
     .wrong-row .wr-correct { color: var(--green-dark); font-weight: 800; }
@@ -559,6 +673,7 @@
       .result-big { font-size: 2.6rem; }
       .wrap { padding: 0 0.8rem 2rem; }
       .profile-list { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+      .choices { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -574,7 +689,6 @@
       <button class="tab-btn" data-tab="quiz" onclick="switchTab('quiz')">複習測驗</button>
     </div>
 
-    <!-- Panel: Cards -->
     <div id="panel-cards" class="panel active">
       <div class="search-bar">
         <input type="text" class="search-input" id="search-input" placeholder="搜尋單字或中文意思…" autocomplete="off" />
@@ -585,7 +699,6 @@
       </div>
     </div>
 
-    <!-- Panel: Quiz -->
     <div id="panel-quiz" class="panel">
       <div class="quiz-box" id="quiz-box">
         <div class="loading">載入中…</div>
@@ -597,21 +710,69 @@
 
 <script>
 /* =========================================================================
-   Vocab Review — Duolingo-ish UI
-   Data: vocab-data.json (built by scripts/build_vocab_data.py)
+   Vocab Review — v1.1
+   Data: vocab-data.json
    localStorage keys:
      vocabReview.v1.players         — array of player objects
      vocabReview.v1.currentPlayerId — string (selected player id)
-   Player schema:
-     { id, name, createdAt, plays, bestScore, recentScores: number[] (<=10, newest first) }
+   Player schema (backwards-compatible; new field: avatarId):
+     { id, name, avatarId, createdAt, plays, bestScore, recentScores:number[] (<=10, newest first) }
+   Question types:
+     'cloze'  — English sentence with blank + zh hint → type the word
+     'zh2en'  — Chinese meaning → pick correct English word (4 options)
+     'tense'  — English sentence with blank + time hint → pick correct tense (4 options)
    ========================================================================= */
 
 const LS_PLAYERS = 'vocabReview.v1.players';
 const LS_CURRENT = 'vocabReview.v1.currentPlayerId';
-const QUIZ_LEN   = 25;
+const QUIZ_LEN   = 20;
+const MAX_CLOZE  = 5;       // cap: at most 5 cloze-input questions per quiz
+const DEFAULT_AVATAR = 'chiika';
 
 let VOCAB = [];
 let VOCAB_META = null;
+
+/* ---------- Avatars (small inline SVG, Chiikawa-ish) ---------- */
+
+const AVATARS = {
+  chiika: {
+    name: 'ちい',
+    svg: `<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><ellipse cx="32" cy="38" rx="22" ry="20" fill="#fff4e0" stroke="#3c3c3c" stroke-width="1.6"/><ellipse cx="19" cy="16" rx="5" ry="7" fill="#fff4e0" stroke="#3c3c3c" stroke-width="1.6"/><ellipse cx="45" cy="16" rx="5" ry="7" fill="#fff4e0" stroke="#3c3c3c" stroke-width="1.6"/><circle cx="24" cy="35" r="2.2" fill="#3c3c3c"/><circle cx="40" cy="35" r="2.2" fill="#3c3c3c"/><ellipse cx="17" cy="43" rx="3" ry="2" fill="#ffb3b3"/><ellipse cx="47" cy="43" rx="3" ry="2" fill="#ffb3b3"/><path d="M28 41 Q32 45 36 41" stroke="#3c3c3c" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>`
+  },
+  hachi: {
+    name: 'はち',
+    svg: `<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path d="M32 16 Q10 18 10 38 Q10 58 32 58 Q54 58 54 38 Q54 18 32 16 Z" fill="#fff4e0" stroke="#3c3c3c" stroke-width="1.6"/><path d="M10 38 Q10 58 32 58 L32 38 Z" fill="#3c3c3c"/><polygon points="15,16 12,6 25,13" fill="#fff4e0" stroke="#3c3c3c" stroke-width="1.5"/><polygon points="49,16 52,6 39,13" fill="#3c3c3c" stroke="#3c3c3c" stroke-width="1.5"/><circle cx="24" cy="35" r="2.2" fill="#3c3c3c"/><circle cx="40" cy="35" r="2.2" fill="#fff"/><path d="M30 42 Q32 44 34 42" stroke="#3c3c3c" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>`
+  },
+  usagi: {
+    name: 'うさ',
+    svg: `<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><ellipse cx="20" cy="14" rx="4" ry="12" fill="#fff" stroke="#3c3c3c" stroke-width="1.6"/><ellipse cx="44" cy="14" rx="4" ry="12" fill="#fff" stroke="#3c3c3c" stroke-width="1.6"/><ellipse cx="20" cy="14" rx="1.8" ry="8" fill="#ffb3d1"/><ellipse cx="44" cy="14" rx="1.8" ry="8" fill="#ffb3d1"/><ellipse cx="32" cy="40" rx="22" ry="18" fill="#fff" stroke="#3c3c3c" stroke-width="1.6"/><circle cx="24" cy="38" r="2.2" fill="#3c3c3c"/><circle cx="40" cy="38" r="2.2" fill="#3c3c3c"/><ellipse cx="32" cy="44" rx="3" ry="2" fill="#ff8fb1"/><path d="M29 48 Q32 50 35 48" stroke="#3c3c3c" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>`
+  },
+  kuri: {
+    name: 'くり',
+    svg: `<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><ellipse cx="32" cy="38" rx="22" ry="20" fill="#ffe680" stroke="#3c3c3c" stroke-width="1.6"/><path d="M18 22 Q32 8 46 22" fill="#ffcf40" stroke="#3c3c3c" stroke-width="1.6"/><circle cx="25" cy="37" r="2.2" fill="#3c3c3c"/><circle cx="39" cy="37" r="2.2" fill="#3c3c3c"/><ellipse cx="20" cy="44" rx="3" ry="2" fill="#ff9966"/><ellipse cx="44" cy="44" rx="3" ry="2" fill="#ff9966"/><path d="M28 42 L32 46 L36 42" stroke="#3c3c3c" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+  },
+  momo: {
+    name: 'もも',
+    svg: `<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path d="M32 10 Q22 10 22 20 L22 24 Q10 28 10 42 Q10 58 32 58 Q54 58 54 42 Q54 28 42 24 L42 20 Q42 10 32 10 Z" fill="#ffc1d9" stroke="#3c3c3c" stroke-width="1.6"/><path d="M30 10 Q32 4 38 6 Q36 10 32 12" fill="#7bc96f" stroke="#3c3c3c" stroke-width="1.3"/><circle cx="24" cy="38" r="2.2" fill="#3c3c3c"/><circle cx="40" cy="38" r="2.2" fill="#3c3c3c"/><ellipse cx="19" cy="44" rx="3" ry="2" fill="#ff6fa1"/><ellipse cx="45" cy="44" rx="3" ry="2" fill="#ff6fa1"/><path d="M28 44 Q32 48 36 44" stroke="#3c3c3c" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>`
+  },
+  mofu: {
+    name: 'もふ',
+    svg: `<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path d="M14 40 Q8 40 8 34 Q8 26 16 26 Q18 18 28 18 Q34 12 42 18 Q52 18 54 28 Q60 30 58 38 Q56 44 48 44 L18 44 Q14 44 14 40 Z" fill="#d4c4ff" stroke="#3c3c3c" stroke-width="1.6"/><circle cx="26" cy="32" r="2.2" fill="#3c3c3c"/><circle cx="40" cy="32" r="2.2" fill="#3c3c3c"/><ellipse cx="22" cy="38" rx="3" ry="2" fill="#ffb3b3"/><ellipse cx="44" cy="38" rx="3" ry="2" fill="#ffb3b3"/><path d="M30 37 Q33 40 36 37" stroke="#3c3c3c" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>`
+  },
+};
+
+function avatarSvg(id) {
+  const a = AVATARS[id] || AVATARS[DEFAULT_AVATAR];
+  return a.svg;
+}
+
+function renderAvatar(id, { size = '', animated = false } = {}) {
+  const cls = ['avatar'];
+  if (size === 'sm') cls.push('avatar-sm');
+  if (size === 'lg') cls.push('avatar-lg');
+  if (animated) cls.push('animated');
+  return `<span class="${cls.join(' ')}" aria-hidden="true">${avatarSvg(id)}</span>`;
+}
 
 /* ---------- Utilities ---------- */
 
@@ -623,6 +784,8 @@ function shuffle(arr) {
   }
   return a;
 }
+
+function sample(arr, n) { return shuffle(arr).slice(0, n); }
 
 function escapeHtml(s) {
   return String(s == null ? '' : s)
@@ -645,6 +808,184 @@ function uid() {
   return 'p_' + Date.now().toString(36) + Math.random().toString(36).slice(2,7);
 }
 
+/* ---------- Verb / tense helpers ---------- */
+
+/* Irregular verb table: base -> { thirds, past, ing }. Covers the required set and a bit more. */
+const IRREGULAR = {
+  ride:  { thirds: 'rides',      past: 'rode',       ing: 'riding' },
+  leave: { thirds: 'leaves',     past: 'left',       ing: 'leaving' },
+  go:    { thirds: 'goes',       past: 'went',       ing: 'going' },
+  come:  { thirds: 'comes',      past: 'came',       ing: 'coming' },
+  have:  { thirds: 'has',        past: 'had',        ing: 'having' },
+  do:    { thirds: 'does',       past: 'did',        ing: 'doing' },
+  make:  { thirds: 'makes',      past: 'made',       ing: 'making' },
+  say:   { thirds: 'says',       past: 'said',       ing: 'saying' },
+  get:   { thirds: 'gets',       past: 'got',        ing: 'getting' },
+  see:   { thirds: 'sees',       past: 'saw',        ing: 'seeing' },
+  eat:   { thirds: 'eats',       past: 'ate',        ing: 'eating' },
+  run:   { thirds: 'runs',       past: 'ran',        ing: 'running' },
+  take:  { thirds: 'takes',      past: 'took',       ing: 'taking' },
+  give:  { thirds: 'gives',      past: 'gave',       ing: 'giving' },
+  know:  { thirds: 'knows',      past: 'knew',       ing: 'knowing' },
+  think: { thirds: 'thinks',     past: 'thought',    ing: 'thinking' },
+  feel:  { thirds: 'feels',      past: 'felt',       ing: 'feeling' },
+  buy:   { thirds: 'buys',       past: 'bought',     ing: 'buying' },
+  bring: { thirds: 'brings',     past: 'brought',    ing: 'bringing' },
+  catch: { thirds: 'catches',    past: 'caught',     ing: 'catching' },
+  hear:  { thirds: 'hears',      past: 'heard',      ing: 'hearing' },
+  hold:  { thirds: 'holds',      past: 'held',       ing: 'holding' },
+  read:  { thirds: 'reads',      past: 'read',       ing: 'reading' },
+  send:  { thirds: 'sends',      past: 'sent',       ing: 'sending' },
+  sit:   { thirds: 'sits',       past: 'sat',        ing: 'sitting' },
+  stand: { thirds: 'stands',     past: 'stood',      ing: 'standing' },
+  win:   { thirds: 'wins',       past: 'won',        ing: 'winning' },
+  write: { thirds: 'writes',     past: 'wrote',      ing: 'writing' },
+  meet:  { thirds: 'meets',      past: 'met',        ing: 'meeting' },
+  keep:  { thirds: 'keeps',      past: 'kept',       ing: 'keeping' },
+  put:   { thirds: 'puts',       past: 'put',        ing: 'putting' },
+  cut:   { thirds: 'cuts',       past: 'cut',        ing: 'cutting' },
+  let:   { thirds: 'lets',       past: 'let',        ing: 'letting' },
+  break: { thirds: 'breaks',     past: 'broke',      ing: 'breaking' },
+  fall:  { thirds: 'falls',      past: 'fell',       ing: 'falling' },
+  fly:   { thirds: 'flies',      past: 'flew',       ing: 'flying' },
+  speak: { thirds: 'speaks',     past: 'spoke',      ing: 'speaking' },
+  sleep: { thirds: 'sleeps',     past: 'slept',      ing: 'sleeping' },
+  forget:{ thirds: 'forgets',    past: 'forgot',     ing: 'forgetting' },
+  lose:  { thirds: 'loses',      past: 'lost',       ing: 'losing' },
+  tell:  { thirds: 'tells',      past: 'told',       ing: 'telling' },
+  wear:  { thirds: 'wears',      past: 'wore',       ing: 'wearing' },
+  sing:  { thirds: 'sings',      past: 'sang',       ing: 'singing' },
+  swim:  { thirds: 'swims',      past: 'swam',       ing: 'swimming' },
+  drink: { thirds: 'drinks',     past: 'drank',      ing: 'drinking' },
+  begin: { thirds: 'begins',     past: 'began',      ing: 'beginning' },
+  understand: { thirds: 'understands', past: 'understood', ing: 'understanding' },
+  teach: { thirds: 'teaches',    past: 'taught',     ing: 'teaching' },
+  build: { thirds: 'builds',     past: 'built',      ing: 'building' },
+  lend:  { thirds: 'lends',      past: 'lent',       ing: 'lending' },
+  find:  { thirds: 'finds',      past: 'found',      ing: 'finding' },
+  feed:  { thirds: 'feeds',      past: 'fed',        ing: 'feeding' },
+  pay:   { thirds: 'pays',       past: 'paid',       ing: 'paying' },
+  is:    { thirds: 'is',         past: 'was',        ing: 'being' },
+  are:   { thirds: 'is',         past: 'were',       ing: 'being' },
+  be:    { thirds: 'is',         past: 'was',        ing: 'being' },
+  can:   { thirds: 'can',        past: 'could',      ing: 'being able to' },
+};
+
+function toPast(verb) {
+  const v = verb.toLowerCase();
+  if (IRREGULAR[v]) return IRREGULAR[v].past;
+  if (/[^aeiou]e$/.test(v)) return v + 'd';
+  if (/e$/.test(v)) return v + 'd';
+  if (/[^aeiou]y$/.test(v)) return v.slice(0, -1) + 'ied';
+  if (/[^aeiou][aeiou][^aeiouwxy]$/.test(v) && v.length <= 5) return v + v.slice(-1) + 'ed';
+  return v + 'ed';
+}
+
+function toIng(verb) {
+  const v = verb.toLowerCase();
+  if (IRREGULAR[v]) return IRREGULAR[v].ing;
+  if (/ie$/.test(v)) return v.slice(0, -2) + 'ying';
+  if (/[^aeiou]e$/.test(v)) return v.slice(0, -1) + 'ing';
+  if (/[^aeiou][aeiou][^aeiouwxy]$/.test(v) && v.length <= 5) return v + v.slice(-1) + 'ing';
+  return v + 'ing';
+}
+
+function toThirdS(verb) {
+  const v = verb.toLowerCase();
+  if (IRREGULAR[v]) return IRREGULAR[v].thirds;
+  if (/(s|x|z|o)$/.test(v)) return v + 'es';
+  if (/(ch|sh)$/.test(v)) return v + 'es';
+  if (/[^aeiou]y$/.test(v)) return v.slice(0, -1) + 'ies';
+  return v + 's';
+}
+
+/* Detect whether a word looks like a verb based on its example sentence.
+   Only patterns that let us swap base→past form without breaking grammar:
+   "I/We/They/You + base form" (simple present with plural/1st-person subject). */
+const VERB_PREFIX_PATTERNS = [
+  /(?:^|[.!?,]\s+)(?:I|We|They|You)\s+WORD\b/,
+];
+
+function looksLikeVerb(word, example) {
+  if (!word || !example) return false;
+  const safe = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  for (const pat of VERB_PREFIX_PATTERNS) {
+    const src = pat.source.replace('WORD', safe);
+    if (new RegExp(src).test(example)) return true;
+  }
+  return false;
+}
+
+/* Build a tense question: returns { sentenceHtml, timeHint, correct, options[], tenseLabel } or null on failure. */
+function buildTenseQuestion(targetWord, otherVerbWords) {
+  const base = targetWord.word.toLowerCase();
+  const example = targetWord.example;
+  const safe = base.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+  // Find base form occurrence in example (word-boundary, case-insensitive).
+  const re = new RegExp('\\b' + safe + '\\b', 'i');
+  const m = example.match(re);
+  if (!m) return null;
+
+  // We always target PAST tense — safest, least grammar-dependency on the surrounding sentence.
+  const correct = toPast(base);
+  if (!correct || correct === base) return null; // refuse if past form is identical & we'd confuse the kid
+
+  // Build sentence HTML with the verb blanked out.
+  const idx = m.index;
+  const before = example.slice(0, idx);
+  const after = example.slice(idx + m[0].length);
+  const sentenceHtml =
+    escapeHtml(before) +
+    `<span class="blank">${'_'.repeat(Math.max(4, base.length))}</span>` +
+    escapeHtml(after);
+
+  // Build the 4 options: 3 forms of target + 1 distractor form from another verb.
+  const targetForms = [base, toThirdS(base), toPast(base), toIng(base)];
+  const uniqTargetForms = [...new Set(targetForms)];
+
+  // Pick 2 target wrong forms (not equal to correct).
+  const targetWrongs = uniqTargetForms.filter(f => f !== correct);
+  const pickedTargetWrongs = sample(targetWrongs, Math.min(2, targetWrongs.length));
+
+  // Pick 1 distractor from another verb.
+  let distractor = null;
+  for (const w of shuffle(otherVerbWords)) {
+    const b = w.word.toLowerCase();
+    if (b === base) continue;
+    const forms = [toThirdS(b), toPast(b), toIng(b)];
+    const pick = forms[Math.floor(Math.random() * forms.length)];
+    if (pick && pick !== correct && !pickedTargetWrongs.includes(pick) && pick !== base) {
+      distractor = pick;
+      break;
+    }
+  }
+
+  // If we couldn't find a distractor, fall back to another target form.
+  let options;
+  if (distractor) {
+    options = shuffle([correct, ...pickedTargetWrongs, distractor]);
+  } else {
+    // Fall back to full 4-form set if no other verb available.
+    options = shuffle(uniqTargetForms.length >= 4 ? uniqTargetForms.slice(0, 4) : [correct, ...pickedTargetWrongs, base + 'ed']);
+    // de-dup & ensure length 4
+    options = [...new Set(options)];
+    while (options.length < 4) options.push(base + 'X' + options.length);
+  }
+
+  // Safety: ensure correct is in options (it should be).
+  if (!options.includes(correct)) options[0] = correct;
+
+  return {
+    sentenceHtml,
+    timeHint: 'Yesterday',
+    timeHintZh: '昨天（過去式）',
+    correct,
+    options,
+    tenseLabel: '過去式',
+  };
+}
+
 /* ---------- Data fetch ---------- */
 
 async function loadVocab() {
@@ -665,11 +1006,12 @@ async function loadVocab() {
 
 function renderFooterMeta() {
   const f = document.getElementById('page-footer');
+  const tag = 'v1.1';
   if (VOCAB_META && VOCAB_META.updatedAt) {
     const d = VOCAB_META.updatedAt.replace('T',' ').replace('Z',' UTC');
-    f.textContent = `單字複習小教室 · 共 ${VOCAB.length} 個單字 · 更新於 ${d}`;
+    f.textContent = `單字複習小教室 ${tag} · 共 ${VOCAB.length} 個單字 · 更新於 ${d}`;
   } else {
-    f.textContent = `單字複習小教室 · 共 ${VOCAB.length} 個單字`;
+    f.textContent = `單字複習小教室 ${tag} · 共 ${VOCAB.length} 個單字`;
   }
 }
 
@@ -705,7 +1047,6 @@ function renderCards() {
       (v.meaning || '').includes(q.trim())
     );
   }
-  // Already sorted newest-first in JSON, but be defensive:
   list = list.slice().sort((a, b) => (b.firstSeen || '').localeCompare(a.firstSeen || ''));
 
   meta.textContent = `共 ${list.length} 張單字卡（共收錄 ${VOCAB.length} 個）`;
@@ -715,7 +1056,7 @@ function renderCards() {
     return;
   }
 
-  grid.innerHTML = list.map((v, i) => `
+  grid.innerHTML = list.map((v) => `
     <div class="vocab-card" onclick="this.classList.toggle('open')">
       <div class="card-head">
         <div class="vocab-word">${escapeHtml(v.word)}</div>
@@ -737,10 +1078,10 @@ function loadPlayers() {
     const raw = localStorage.getItem(LS_PLAYERS);
     const arr = raw ? JSON.parse(raw) : [];
     if (!Array.isArray(arr)) return [];
-    // Back-compat: ensure every player has the expected shape.
     return arr.map(p => ({
       id: p.id || uid(),
       name: String(p.name || '未命名').slice(0, 20),
+      avatarId: AVATARS[p.avatarId] ? p.avatarId : DEFAULT_AVATAR,
       createdAt: p.createdAt || new Date().toISOString(),
       plays: Number.isFinite(p.plays) ? p.plays : 0,
       bestScore: Number.isFinite(p.bestScore) ? p.bestScore : 0,
@@ -766,16 +1107,26 @@ function findPlayer(id) {
   return loadPlayers().find(p => p.id === id) || null;
 }
 
-function addPlayer(name) {
+function addPlayer(name, avatarId) {
   name = String(name || '').trim().slice(0, 20);
   if (!name) return null;
   const players = loadPlayers();
-  if (players.some(p => p.name === name)) {
-    const existing = players.find(p => p.name === name);
+  const existing = players.find(p => p.name === name);
+  if (existing) {
+    existing.avatarId = AVATARS[avatarId] ? avatarId : existing.avatarId;
+    savePlayers(players);
     setCurrentPlayerId(existing.id);
     return existing;
   }
-  const p = { id: uid(), name, createdAt: new Date().toISOString(), plays: 0, bestScore: 0, recentScores: [] };
+  const p = {
+    id: uid(),
+    name,
+    avatarId: AVATARS[avatarId] ? avatarId : DEFAULT_AVATAR,
+    createdAt: new Date().toISOString(),
+    plays: 0,
+    bestScore: 0,
+    recentScores: [],
+  };
   players.push(p);
   savePlayers(players);
   setCurrentPlayerId(p.id);
@@ -792,15 +1143,10 @@ function recordScore(playerId, score) {
   savePlayers(players);
 }
 
-function deletePlayer(id) {
-  const players = loadPlayers().filter(p => p.id !== id);
-  savePlayers(players);
-  if (getCurrentPlayerId() === id) setCurrentPlayerId('');
-}
-
 /* ---------- Quiz state ---------- */
 
-let quiz = null; // { items: [{type, word, prompt...}], idx, score, wrong, playerId }
+let quiz = null;
+let pendingAvatar = DEFAULT_AVATAR;
 
 function enterQuizTab() {
   const cur = getCurrentPlayerId();
@@ -828,12 +1174,20 @@ function renderProfileSelect() {
       <div class="profile-list">
         ${sorted.map(p => `
           <button class="profile-chip ${p.id === curId ? 'current' : ''}" onclick="pickPlayer('${p.id}')">
-            ${escapeHtml(p.name)}
+            ${renderAvatar(p.avatarId, { animated: p.id === curId })}
+            <span>${escapeHtml(p.name)}</span>
             <span class="chip-stat">最佳 ${p.bestScore||0} · 共 ${p.plays||0} 次</span>
           </button>
         `).join('')}
       </div>
     ` : `<div class="empty-state">還沒有玩家，先新增一個吧！</div>`}
+
+    <div style="font-size:.85rem;font-weight:700;color:var(--ink);margin:0.6rem 0 0.3rem;text-align:center;">選一隻小角色當你的頭像</div>
+    <div class="avatar-picker" id="avatar-picker">
+      ${Object.keys(AVATARS).map(id => `
+        <button class="avatar-opt ${id === pendingAvatar ? 'picked' : ''}" data-aid="${id}" onclick="pickAvatar('${id}')" title="${escapeHtml(AVATARS[id].name)}">${avatarSvg(id)}</button>
+      `).join('')}
+    </div>
     <div class="add-row">
       <input id="new-name-input" type="text" placeholder="新增名字…" maxlength="20" />
       <button class="dl-btn" onclick="onAddPlayer()">新增</button>
@@ -842,6 +1196,14 @@ function renderProfileSelect() {
   `;
   const inp = document.getElementById('new-name-input');
   inp.addEventListener('keydown', e => { if (e.key === 'Enter') onAddPlayer(); });
+}
+
+function pickAvatar(id) {
+  if (!AVATARS[id]) return;
+  pendingAvatar = id;
+  document.querySelectorAll('#avatar-picker .avatar-opt').forEach(btn => {
+    btn.classList.toggle('picked', btn.dataset.aid === id);
+  });
 }
 
 function pickPlayer(id) {
@@ -854,21 +1216,24 @@ function onAddPlayer() {
   const inp = document.getElementById('new-name-input');
   const name = (inp.value || '').trim();
   if (!name) { inp.focus(); return; }
-  const p = addPlayer(name);
+  const p = addPlayer(name, pendingAvatar);
   if (p) renderQuizHome(p);
 }
 
-/* ---------- Quiz home (ready screen) ---------- */
+/* ---------- Quiz home ---------- */
 
 function renderQuizHome(player) {
   const box = document.getElementById('quiz-box');
   const total = VOCAB.length;
   const canPlay = total >= 4;
   box.innerHTML = `
+    <div style="text-align:center;">
+      ${renderAvatar(player.avatarId, { size: 'lg', animated: true })}
+    </div>
     <div class="profile-title">Hi, ${escapeHtml(player.name)}！</div>
     <div style="text-align:center;color:var(--muted);font-size:.92rem;margin-bottom:1rem;">
-      這次會從 ${total} 個單字裡隨機抽 ${Math.min(QUIZ_LEN, total)} 題<br>
-      題型會交替出現：<b>中翻英</b> 與 <b>句子填空</b>
+      這次會從 ${total} 個單字裡隨機出 ${Math.min(QUIZ_LEN, total)} 題<br>
+      題型：<b>中翻英 (4選1)</b>、<b>句子填空 (輸入)</b>、<b>時態變化 (4選1)</b>
     </div>
     <div style="text-align:center;font-size:.9rem;color:var(--ink-soft);margin-bottom:1rem;">
       最佳分數：<b style="color:var(--green-dark)">${player.bestScore||0}</b> ·
@@ -890,11 +1255,14 @@ function renderQuizHome(player) {
 /* ---------- Leaderboard ---------- */
 
 function renderLeaderboardHtml(highlightId) {
-  const players = loadPlayers().slice().sort((a,b) => (b.bestScore||0) - (a.bestScore||0) || (b.plays||0) - (a.plays||0));
+  const players = loadPlayers().slice().sort((a,b) =>
+    (b.bestScore||0) - (a.bestScore||0) || (b.plays||0) - (a.plays||0)
+  );
   if (!players.length) return '';
   const rows = players.map((p, i) => `
     <div class="lb-row ${p.id === highlightId ? 'me' : ''}">
       <div class="lb-rank ${i < 3 ? 'top' : ''}">${i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : (i+1)}</div>
+      <div>${renderAvatar(p.avatarId, { size: 'sm', animated: p.id === highlightId })}</div>
       <div class="lb-name">${escapeHtml(p.name)}</div>
       <div class="lb-best">${p.bestScore||0}</div>
       <div class="lb-plays">${p.plays||0} 次</div>
@@ -911,13 +1279,47 @@ function renderLeaderboardHtml(highlightId) {
 /* ---------- Quiz: build & play ---------- */
 
 function buildQuizItems(words, n) {
+  const verbs = words.filter(w => looksLikeVerb(w.word, w.example));
   const pool = shuffle(words).slice(0, Math.min(n, words.length));
-  // Half zh2en, half cloze — shuffled so both types mix throughout the quiz.
-  const half = Math.ceil(pool.length / 2);
-  const types = shuffle(
-    pool.map((_, i) => i < half ? 'zh2en' : 'cloze')
-  );
-  return pool.map((word, i) => ({ type: types[i], word }));
+
+  // Decide per-slot types.
+  // We want up to MAX_CLOZE cloze items, and sprinkle tense items when possible.
+  // Remaining slots go to zh2en.
+  let clozeBudget = Math.min(MAX_CLOZE, Math.floor(pool.length / 4)); // ~1/4 of quiz, capped
+  if (clozeBudget < 2 && pool.length >= 8) clozeBudget = 2;           // at least a little variety
+
+  const items = [];
+  for (let i = 0; i < pool.length; i++) {
+    const word = pool[i];
+    let type;
+    const isVerb = verbs.includes(word);
+    if (isVerb && Math.random() < 0.6) {
+      type = 'tense';
+    } else if (clozeBudget > 0 && Math.random() < 0.4) {
+      type = 'cloze';
+      clozeBudget--;
+    } else {
+      type = 'zh2en';
+    }
+    items.push({ type, word });
+  }
+
+  // Enrich tense items — if buildTenseQuestion fails, downgrade to zh2en.
+  const otherVerbs = verbs;
+  const enriched = items.map(it => {
+    if (it.type !== 'tense') return it;
+    const q = buildTenseQuestion(it.word, otherVerbs.filter(v => v.word !== it.word.word));
+    if (!q) return { type: 'zh2en', word: it.word };
+    return { ...it, tenseData: q };
+  });
+
+  // Enrich zh2en items with 4 options.
+  return enriched.map(it => {
+    if (it.type !== 'zh2en') return it;
+    const wrong = shuffle(words.filter(w => w.word !== it.word.word)).slice(0, 3).map(w => w.word);
+    const options = shuffle([it.word.word, ...wrong]);
+    return { ...it, mcOptions: options };
+  });
 }
 
 function startQuiz() {
@@ -941,7 +1343,6 @@ function makeClozeHtml(example, word) {
   const re = new RegExp('\\b' + safeWord + '\\b', 'i');
   const m = example.match(re);
   if (!m) {
-    // Fallback: case-insensitive first match, no word boundary
     const re2 = new RegExp(safeWord, 'i');
     const m2 = example.match(re2);
     if (!m2) return escapeHtml(example) + ' <span class="blank">____</span>';
@@ -962,51 +1363,86 @@ function renderQuizQuestion() {
 
   const s = quiz;
   const cur = s.items[s.idx];
-  const w = cur.word;
   const pct = Math.round(((s.idx) / s.items.length) * 100);
   const box = document.getElementById('quiz-box');
 
-  let promptHtml, label, hintHtml = '';
-  if (cur.type === 'zh2en') {
-    label = '中翻英：請輸入英文單字';
-    promptHtml = `<div class="q-prompt">${escapeHtml(w.meaning)}</div>`;
-  } else {
-    label = '句子填空：填入空格裡的英文單字';
-    promptHtml = `<div class="q-cloze">${makeClozeHtml(w.example, w.word)}</div>`;
-    hintHtml = `<div class="q-hint">提示：${escapeHtml(w.translation)}</div>`;
-  }
-
-  box.innerHTML = `
+  const topbar = `
     <div class="quiz-topbar">
       <button class="close-x" title="結束測驗" onclick="abortQuiz()">✕</button>
       <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:${pct}%"></div></div>
       <div class="progress-count">${s.idx+1}/${s.items.length}</div>
     </div>
-    <div class="q-label">${label}</div>
-    ${promptHtml}
-    ${hintHtml}
-    <input id="q-ans" class="answer-input" type="text" autocomplete="off"
-           autocapitalize="none" autocorrect="off" spellcheck="false"
-           placeholder="輸入英文單字…" />
-    <div id="q-fb" class="feedback"></div>
-    <button id="q-submit" class="dl-btn wide" onclick="submitAnswer()">送出</button>
   `;
 
-  quiz.answered = false;
-  const inp = document.getElementById('q-ans');
-  inp.focus();
-  inp.addEventListener('keydown', onAnswerKey);
+  if (cur.type === 'cloze') {
+    const w = cur.word;
+    box.innerHTML = `
+      ${topbar}
+      <div class="q-label">句子填空 · 輸入英文單字</div>
+      <div class="q-cloze">${makeClozeHtml(w.example, w.word)}</div>
+      <div class="q-hint">提示：${escapeHtml(w.translation)}</div>
+      <input id="q-ans" class="answer-input" type="text" autocomplete="off"
+             autocapitalize="none" autocorrect="off" spellcheck="false"
+             placeholder="輸入英文單字…" />
+      <div id="q-fb" class="feedback"></div>
+      <button id="q-submit" class="dl-btn wide" onclick="submitClozeAnswer()">送出</button>
+    `;
+    quiz.answered = false;
+    const inp = document.getElementById('q-ans');
+    inp.focus();
+    inp.addEventListener('keydown', onClozeKey);
+    return;
+  }
+
+  if (cur.type === 'zh2en') {
+    const w = cur.word;
+    box.innerHTML = `
+      ${topbar}
+      <div class="q-label">中翻英 · 選出正確的單字</div>
+      <div class="q-prompt">${escapeHtml(w.meaning)}</div>
+      <div class="choices" id="q-choices">
+        ${cur.mcOptions.map((opt, i) => `
+          <button class="choice-btn" data-i="${i}" data-opt="${escapeHtml(opt)}" onclick="submitChoice(this)">${escapeHtml(opt)}</button>
+        `).join('')}
+      </div>
+      <div id="q-fb" class="feedback"></div>
+      <button id="q-submit" class="dl-btn wide" style="display:none" onclick="nextQuestion()">下一題</button>
+    `;
+    quiz.answered = false;
+    return;
+  }
+
+  if (cur.type === 'tense') {
+    const w = cur.word;
+    const td = cur.tenseData;
+    box.innerHTML = `
+      ${topbar}
+      <div class="q-label">時態變化 · 選出正確的時態</div>
+      <div class="q-cloze">${td.sentenceHtml}</div>
+      <div class="q-time">時間提示：<b>${escapeHtml(td.timeHint)}</b>（${escapeHtml(td.timeHintZh)}）</div>
+      <div class="q-hint">原句中文：${escapeHtml(w.translation)}</div>
+      <div class="choices" id="q-choices">
+        ${td.options.map((opt, i) => `
+          <button class="choice-btn" data-i="${i}" data-opt="${escapeHtml(opt)}" onclick="submitChoice(this)">${escapeHtml(opt)}</button>
+        `).join('')}
+      </div>
+      <div id="q-fb" class="feedback"></div>
+      <button id="q-submit" class="dl-btn wide" style="display:none" onclick="nextQuestion()">下一題</button>
+    `;
+    quiz.answered = false;
+    return;
+  }
 }
 
-function onAnswerKey(e) {
+function onClozeKey(e) {
   if (e.key === 'Enter') {
     e.preventDefault();
-    if (!quiz.answered) submitAnswer();
+    if (!quiz.answered) submitClozeAnswer();
     else nextQuestion();
   }
 }
 
-function submitAnswer() {
+function submitClozeAnswer() {
   if (!quiz || quiz.answered) return;
   const cur = quiz.items[quiz.idx];
   const w = cur.word;
@@ -1016,7 +1452,7 @@ function submitAnswer() {
   const userRaw = inp.value;
   const user = normalizeAnswer(userRaw);
   const target = normalizeAnswer(w.word);
-  const isCorrect = user && user === target;
+  const isCorrect = !!user && user === target;
 
   inp.classList.add('locked');
   inp.setAttribute('readonly', 'readonly');
@@ -1030,11 +1466,12 @@ function submitAnswer() {
     fb.className = 'feedback bad';
     fb.innerHTML = `<span class="fb-title">再加油！正確答案是</span><span class="fb-answer">${escapeHtml(w.word)}</span>`;
     quiz.wrong.push({
-      type: cur.type,
+      type: 'cloze',
       word: w.word,
       meaning: w.meaning,
       example: w.example,
       translation: w.translation,
+      correctAnswer: w.word,
       userAnswer: userRaw || '(空白)',
     });
   }
@@ -1042,6 +1479,56 @@ function submitAnswer() {
   btn.textContent = quiz.idx + 1 >= quiz.items.length ? '看結果' : '下一題';
   btn.className = 'dl-btn wide ' + (isCorrect ? '' : 'blue');
   btn.onclick = nextQuestion;
+}
+
+function submitChoice(btnEl) {
+  if (!quiz || quiz.answered) return;
+  const cur = quiz.items[quiz.idx];
+  const w = cur.word;
+  const chosen = btnEl.dataset.opt || btnEl.textContent;
+  let correct;
+  if (cur.type === 'zh2en') correct = w.word;
+  else if (cur.type === 'tense') correct = cur.tenseData.correct;
+  else return;
+
+  const normUser = normalizeAnswer(chosen);
+  const normCorrect = normalizeAnswer(correct);
+  const isCorrect = normUser === normCorrect;
+
+  quiz.answered = true;
+  const fb = document.getElementById('q-fb');
+  const container = document.getElementById('q-choices');
+  container.querySelectorAll('.choice-btn').forEach(b => {
+    b.disabled = true;
+    const label = b.textContent;
+    if (normalizeAnswer(label) === normCorrect) b.classList.add('reveal-right');
+  });
+  if (isCorrect) {
+    btnEl.classList.remove('reveal-right');
+    btnEl.classList.add('picked-right');
+    quiz.score++;
+    fb.className = 'feedback good';
+    fb.innerHTML = `<span class="fb-title">答對了！</span><span class="fb-answer">${escapeHtml(correct)}</span>`;
+  } else {
+    btnEl.classList.add('picked-wrong');
+    fb.className = 'feedback bad';
+    fb.innerHTML = `<span class="fb-title">再加油！正確答案是</span><span class="fb-answer">${escapeHtml(correct)}</span>`;
+    quiz.wrong.push({
+      type: cur.type,
+      word: w.word,
+      meaning: w.meaning,
+      example: w.example,
+      translation: w.translation,
+      correctAnswer: correct,
+      userAnswer: chosen || '(未作答)',
+      tenseSentence: cur.type === 'tense' ? (w.example + '  [提示: Yesterday / 過去式]') : null,
+    });
+  }
+
+  const next = document.getElementById('q-submit');
+  next.style.display = 'block';
+  next.textContent = quiz.idx + 1 >= quiz.items.length ? '看結果' : '下一題';
+  next.className = 'dl-btn wide ' + (isCorrect ? '' : 'blue');
 }
 
 function nextQuestion() {
@@ -1066,6 +1553,31 @@ function encouragement(pct) {
   return '沒關係，先回去看單字卡，再回來挑戰！🌱';
 }
 
+function typeBadge(t) {
+  if (t === 'cloze') return '<span class="wr-type t-cloze">句子填空</span>';
+  if (t === 'zh2en') return '<span class="wr-type t-zh">中翻英</span>';
+  if (t === 'tense') return '<span class="wr-type t-tense">時態變化</span>';
+  return '<span class="wr-type">題目</span>';
+}
+
+function renderWrongRow(w) {
+  let qHtml = '';
+  if (w.type === 'zh2en') {
+    qHtml = `中文：<b>${escapeHtml(w.meaning)}</b>`;
+  } else if (w.type === 'cloze') {
+    qHtml = `<i>${escapeHtml(w.example)}</i><br><span style="color:var(--muted)">(${escapeHtml(w.translation)})</span>`;
+  } else if (w.type === 'tense') {
+    qHtml = `<i>${escapeHtml(w.example)}</i><br><span style="color:var(--muted)">時間提示：Yesterday（過去式）</span>`;
+  }
+  return `
+    <div class="wrong-row">
+      <div class="wr-q">${typeBadge(w.type)}${qHtml}</div>
+      <div><span class="wr-your">你的答案：${escapeHtml(w.userAnswer)}</span> →
+           <span class="wr-correct">${escapeHtml(w.correctAnswer || w.word)}</span></div>
+    </div>
+  `;
+}
+
 function finishQuiz() {
   const s = quiz;
   s.finished = true;
@@ -1080,23 +1592,17 @@ function finishQuiz() {
   const wrongHtml = s.wrong.length ? `
     <div class="wrong-list">
       <h4>需要再複習 (${s.wrong.length})</h4>
-      ${s.wrong.map(w => `
-        <div class="wrong-row">
-          <div class="wr-q">
-            ${w.type === 'zh2en'
-              ? `中翻英：<b>${escapeHtml(w.meaning)}</b>`
-              : `句子填空：<i>${escapeHtml(w.example)}</i><br><span style="color:var(--muted)">(${escapeHtml(w.translation)})</span>`}
-          </div>
-          <div><span class="wr-your">你的答案：${escapeHtml(w.userAnswer)}</span> →
-               <span class="wr-correct">${escapeHtml(w.word)}</span></div>
-        </div>
-      `).join('')}
+      ${s.wrong.map(renderWrongRow).join('')}
     </div>
   ` : `<div style="color:var(--green-dark);font-weight:800;margin:1rem 0;">全部答對，零失誤！🎉</div>`;
+
+  const player = findPlayer(s.playerId);
+  const avatarHtml = player ? `<div style="text-align:center;">${renderAvatar(player.avatarId, { size: 'lg', animated: true })}</div>` : '';
 
   const box = document.getElementById('quiz-box');
   box.innerHTML = `
     <div class="result-area">
+      ${avatarHtml}
       <div class="result-stars">${stars}</div>
       <div class="result-big">${score} / ${total}</div>
       <div class="result-label">答對 ${score} 題（${pct}%）</div>
