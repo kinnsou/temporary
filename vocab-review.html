@@ -1227,9 +1227,10 @@ async function cloudFetchLeaderboard() {
       body: JSON.stringify({
         structuredQuery: {
           from: [{ collectionId: 'leaderboard' }],
+          // IMPORTANT: avoid composite-index requirement by ordering on a single field.
+          // We sort by updatedAt client-side after fetch.
           orderBy: [
             { field: { fieldPath: 'bestScore' }, direction: 'DESCENDING' },
-            { field: { fieldPath: 'updatedAt' }, direction: 'DESCENDING' },
           ],
           limit: 50,
         },
@@ -1241,6 +1242,11 @@ async function cloudFetchLeaderboard() {
     for (const row of rows) {
       if (row && row.document) entries.push(fsDocToEntry(row.document));
     }
+    // Secondary sort (stable-ish): updatedAt desc
+    entries.sort((a,b) => (
+      (b.bestScore||0) - (a.bestScore||0) ||
+      String(b.updatedAt||'').localeCompare(String(a.updatedAt||''))
+    ));
     CLOUD.entries = entries;
     CLOUD.status = 'ok';
     return entries;
