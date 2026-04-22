@@ -1627,6 +1627,9 @@ function renderQuizHome(player) {
         </div>
       </div>
     </div>
+    <div class="dl-btn-row" style="margin-top:10px">
+      <button class="dl-btn red wide" onclick="onDeleteCurrentPlayer()">刪除本機玩家</button>
+    </div>
     ${renderLeaderboardHtml(player.id)}
   `;
 }
@@ -1638,6 +1641,30 @@ function updateLocalAvatar(playerId, avatarId) {
   p.avatarId = normalizeAvatarId(avatarId);
   savePlayers(players);
   return p;
+}
+
+function deleteLocalPlayer(playerId) {
+  const players = loadPlayers();
+  const idx = players.findIndex(x => x.id === playerId);
+  if (idx < 0) return false;
+  players.splice(idx, 1);
+  savePlayers(players);
+  if (getCurrentPlayerId() === playerId) setCurrentPlayerId('');
+  return true;
+}
+
+function onDeleteCurrentPlayer() {
+  const p = findPlayer(getCurrentPlayerId());
+  if (!p) { renderProfileSelect(); return; }
+  const ok = confirm(
+    `要刪除「${p.name}」這個本機玩家嗎？\n\n` +
+    `- 只會刪這台裝置/這個瀏覽器的名單\n` +
+    `- 雲端排行榜不會刪\n` +
+    `- 之後仍可用同名字重新加入`
+  );
+  if (!ok) return;
+  deleteLocalPlayer(p.id);
+  renderProfileSelect();
 }
 
 async function cloudUpdateAvatarOnly(name, avatarId) {
