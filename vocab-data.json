@@ -1,6 +1,6 @@
 {
   "meta": {
-    "updatedAt": "2026-04-22T13:44:57Z",
+    "updatedAt": "2026-04-22T14:01:07Z",
     "sourceCount": 119,
     "includedCount": 111
   },
@@ -11,7 +11,9 @@
       "example": "I will meet my friend after school.",
       "translation": "我放學後要去見我的朋友。",
       "firstSeen": "2026-04-22",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "red",
@@ -19,7 +21,9 @@
       "example": "The apple is red.",
       "translation": "這顆蘋果是紅色的。",
       "firstSeen": "2026-04-22",
-      "pos": "adj"
+      "pos": [
+        "adj"
+      ]
     },
     {
       "word": "nice",
@@ -27,7 +31,9 @@
       "example": "She is a nice teacher.",
       "translation": "她是一位很親切的老師。",
       "firstSeen": "2026-04-22",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "real",
@@ -35,7 +41,9 @@
       "example": "Is this story real?",
       "translation": "這個故事是真的嗎？",
       "firstSeen": "2026-04-21",
-      "pos": "adj"
+      "pos": [
+        "adj"
+      ]
     },
     {
       "word": "storm",
@@ -43,7 +51,9 @@
       "example": "The storm is coming.",
       "translation": "暴風雨要來了。",
       "firstSeen": "2026-04-21",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "believe",
@@ -51,7 +61,9 @@
       "example": "I believe you can do it.",
       "translation": "我相信你做得到。",
       "firstSeen": "2026-04-21",
-      "pos": "v"
+      "pos": [
+        "v"
+      ]
     },
     {
       "word": "pizza",
@@ -59,7 +71,9 @@
       "example": "I want to eat pizza for dinner.",
       "translation": "我晚餐想吃披薩。",
       "firstSeen": "2026-04-20",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "sugar",
@@ -67,7 +81,9 @@
       "example": "Don't put too much sugar in your tea.",
       "translation": "你的茶不要加太多糖。",
       "firstSeen": "2026-04-20",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "dragon",
@@ -75,7 +91,9 @@
       "example": "The dragon in the story is very strong.",
       "translation": "故事裡的龍很強。",
       "firstSeen": "2026-04-20",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "hole",
@@ -83,7 +101,9 @@
       "example": "There is a big hole in the ground.",
       "translation": "地上有一個大洞。",
       "firstSeen": "2026-04-19",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "hotel",
@@ -91,7 +111,9 @@
       "example": "We stayed in a nice hotel last night.",
       "translation": "我們昨晚住在一間不錯的飯店。",
       "firstSeen": "2026-04-19",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "desk",
@@ -99,7 +121,9 @@
       "example": "Please put your books on the desk.",
       "translation": "請把你的書放在桌上。",
       "firstSeen": "2026-04-19",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "jump",
@@ -107,7 +131,9 @@
       "example": "The cat can jump very high.",
       "translation": "那隻貓可以跳得很高。",
       "firstSeen": "2026-04-17",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "lend",
@@ -115,7 +141,9 @@
       "example": "Can you lend your ruler to me?",
       "translation": "你可以把你的尺借給我嗎？",
       "firstSeen": "2026-04-17",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "pretty",
@@ -123,7 +151,9 @@
       "example": "That dress is pretty.",
       "translation": "那件洋裝很漂亮。",
       "firstSeen": "2026-04-17",
-      "pos": "adj"
+      "pos": [
+        "adj"
+      ]
     },
     {
       "word": "afraid",
@@ -131,7 +161,9 @@
       "example": "I am afraid of the dark.",
       "translation": "我怕黑。",
       "firstSeen": "2026-04-15",
-      "pos": "adj"
+      "pos": [
+        "adj"
+      ]
     },
     {
       "word": "enemy",
@@ -139,7 +171,9 @@
       "example": "He is not my enemy.",
       "translation": "他不是我的敵人。",
       "firstSeen": "2026-04-15",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "sweet",
@@ -147,7 +181,9 @@
       "example": "This cake is sweet.",
       "translation": "這個蛋糕很甜。",
       "firstSeen": "2026-04-15",
-      "pos": "adj"
+      "pos": [
+        "adj"
+      ]
     },
     {
       "word": "blow",
@@ -155,7 +191,9 @@
       "example": "Please blow on the soup. It is hot.",
       "translation": "請對湯吹一吹，它很燙。",
       "firstSeen": "2026-04-14",
-      "pos": "v"
+      "pos": [
+        "v"
+      ]
     },
     {
       "word": "conversation",
@@ -163,7 +201,9 @@
       "example": "We had a long conversation after class.",
       "translation": "下課後我們聊了很久。",
       "firstSeen": "2026-04-14",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "fun",
@@ -171,7 +211,9 @@
       "example": "The game is fun.",
       "translation": "這個遊戲很好玩。",
       "firstSeen": "2026-04-14",
-      "pos": "adj"
+      "pos": [
+        "adj"
+      ]
     },
     {
       "word": "homework",
@@ -179,7 +221,9 @@
       "example": "I finished my homework after dinner.",
       "translation": "我晚餐後把作業寫完了。",
       "firstSeen": "2026-04-13",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "now",
@@ -187,7 +231,9 @@
       "example": "I have to go now.",
       "translation": "我現在得走了。",
       "firstSeen": "2026-04-13",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "popular",
@@ -195,7 +241,9 @@
       "example": "This song is popular with students.",
       "translation": "這首歌很受學生歡迎。",
       "firstSeen": "2026-04-13",
-      "pos": "adj"
+      "pos": [
+        "adj"
+      ]
     },
     {
       "word": "hospital",
@@ -203,7 +251,9 @@
       "example": "He is in the hospital.",
       "translation": "他在醫院裡。",
       "firstSeen": "2026-04-12",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "luck",
@@ -211,7 +261,9 @@
       "example": "Good luck on your test!",
       "translation": "考試加油，祝你好運！",
       "firstSeen": "2026-04-12",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "mean",
@@ -219,7 +271,9 @@
       "example": "What does this word mean?",
       "translation": "這個字是什麼意思？",
       "firstSeen": "2026-04-12",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "fan",
@@ -227,7 +281,9 @@
       "example": "Please turn on the fan.",
       "translation": "請把電風扇打開。",
       "firstSeen": "2026-04-11",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "kiss",
@@ -235,7 +291,9 @@
       "example": "Give Mom a kiss.",
       "translation": "給媽媽一個吻。",
       "firstSeen": "2026-04-11",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "typhoon",
@@ -243,7 +301,9 @@
       "example": "A typhoon is coming.",
       "translation": "颱風要來了。",
       "firstSeen": "2026-04-11",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "possible",
@@ -251,7 +311,9 @@
       "example": "Is it possible to finish it today?",
       "translation": "今天有可能把它完成嗎？",
       "firstSeen": "2026-04-10",
-      "pos": "adj"
+      "pos": [
+        "adj"
+      ]
     },
     {
       "word": "sand",
@@ -259,7 +321,9 @@
       "example": "There is sand on the beach.",
       "translation": "海灘上有沙子。",
       "firstSeen": "2026-04-10",
-      "pos": "adj"
+      "pos": [
+        "adj"
+      ]
     },
     {
       "word": "spring",
@@ -267,7 +331,9 @@
       "example": "Spring is my favorite season.",
       "translation": "春天是我最喜歡的季節。",
       "firstSeen": "2026-04-10",
-      "pos": "v"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "belong",
@@ -275,7 +341,9 @@
       "example": "This pencil belongs to you.",
       "translation": "這枝鉛筆是你的。",
       "firstSeen": "2026-04-09",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "classmate",
@@ -283,7 +351,9 @@
       "example": "My classmate sits next to me.",
       "translation": "我的同學坐在我旁邊。",
       "firstSeen": "2026-04-09",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "land",
@@ -291,7 +361,9 @@
       "example": "The plane will land soon.",
       "translation": "飛機很快就會降落。",
       "firstSeen": "2026-04-09",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "everywhere",
@@ -299,7 +371,9 @@
       "example": "I looked everywhere for my pencil.",
       "translation": "我到處找我的鉛筆。",
       "firstSeen": "2026-04-08",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "news",
@@ -307,7 +381,9 @@
       "example": "I watched the news with my dad.",
       "translation": "我跟爸爸一起看新聞。",
       "firstSeen": "2026-04-08",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "princess",
@@ -315,7 +391,9 @@
       "example": "The princess lives in a castle.",
       "translation": "公主住在城堡裡。",
       "firstSeen": "2026-04-08",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "camera",
@@ -323,7 +401,9 @@
       "example": "I took a photo with my camera.",
       "translation": "我用我的相機拍了一張照片。",
       "firstSeen": "2026-04-07",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "close",
@@ -331,7 +411,9 @@
       "example": "Please close the door.",
       "translation": "請把門關上。",
       "firstSeen": "2026-04-07",
-      "pos": "v"
+      "pos": [
+        "v"
+      ]
     },
     {
       "word": "idea",
@@ -339,7 +421,9 @@
       "example": "That's a great idea!",
       "translation": "那是個好主意！",
       "firstSeen": "2026-04-07",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "choose",
@@ -347,7 +431,9 @@
       "example": "Please choose one book.",
       "translation": "請選一本書。",
       "firstSeen": "2026-04-06",
-      "pos": "v"
+      "pos": [
+        "v"
+      ]
     },
     {
       "word": "dark",
@@ -355,7 +441,9 @@
       "example": "It is dark outside.",
       "translation": "外面很暗。",
       "firstSeen": "2026-04-06",
-      "pos": "adj"
+      "pos": [
+        "adj"
+      ]
     },
     {
       "word": "kill",
@@ -363,7 +451,9 @@
       "example": "This soap can kill germs.",
       "translation": "這種肥皂可以殺死細菌。",
       "firstSeen": "2026-04-06",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "balcony",
@@ -371,7 +461,9 @@
       "example": "She is standing on the balcony.",
       "translation": "她正站在陽台上。",
       "firstSeen": "2026-04-05",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "nose",
@@ -379,7 +471,9 @@
       "example": "My nose is cold.",
       "translation": "我的鼻子冰冰的。",
       "firstSeen": "2026-04-05",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "spider",
@@ -387,7 +481,9 @@
       "example": "There is a spider on the wall.",
       "translation": "牆上有一隻蜘蛛。",
       "firstSeen": "2026-04-05",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "child",
@@ -395,7 +491,9 @@
       "example": "The child is playing in the park.",
       "translation": "那個孩子正在公園玩。",
       "firstSeen": "2026-04-04",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "forward",
@@ -403,7 +501,9 @@
       "example": "Please move forward.",
       "translation": "請往前移一點。",
       "firstSeen": "2026-04-04",
-      "pos": "adj"
+      "pos": [
+        "adj"
+      ]
     },
     {
       "word": "ride",
@@ -411,7 +511,9 @@
       "example": "I ride my bike to school.",
       "translation": "我騎腳踏車去上學。",
       "firstSeen": "2026-04-04",
-      "pos": "v"
+      "pos": [
+        "v"
+      ]
     },
     {
       "word": "hippo",
@@ -419,7 +521,9 @@
       "example": "I saw a hippo at the zoo.",
       "translation": "我在動物園看到一隻河馬。",
       "firstSeen": "2026-04-03",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "leave",
@@ -427,7 +531,9 @@
       "example": "I have to leave now.",
       "translation": "我現在得離開了。",
       "firstSeen": "2026-04-03",
-      "pos": "v"
+      "pos": [
+        "v"
+      ]
     },
     {
       "word": "wait",
@@ -435,7 +541,9 @@
       "example": "Please wait for me.",
       "translation": "請等我一下。",
       "firstSeen": "2026-04-03",
-      "pos": "v"
+      "pos": [
+        "v"
+      ]
     },
     {
       "word": "clearly",
@@ -443,7 +551,9 @@
       "example": "Please speak clearly.",
       "translation": "請講清楚一點。",
       "firstSeen": "2026-04-02",
-      "pos": "adv"
+      "pos": [
+        "adv"
+      ]
     },
     {
       "word": "hide",
@@ -451,7 +561,9 @@
       "example": "Don't hide your feelings.",
       "translation": "不要把你的感覺藏起來。",
       "firstSeen": "2026-04-02",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "tomorrow",
@@ -459,7 +571,9 @@
       "example": "We will have a test tomorrow.",
       "translation": "我們明天要考試。",
       "firstSeen": "2026-04-02",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "kick",
@@ -467,7 +581,9 @@
       "example": "Don't kick the ball inside the classroom.",
       "translation": "不要在教室裡踢球。",
       "firstSeen": "2026-03-31",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "weekend",
@@ -475,7 +591,9 @@
       "example": "I visit my grandma on the weekend.",
       "translation": "我週末會去看外婆。",
       "firstSeen": "2026-03-31",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "yellow",
@@ -483,7 +601,9 @@
       "example": "I have a yellow raincoat.",
       "translation": "我有一件黃色的雨衣。",
       "firstSeen": "2026-03-31",
-      "pos": "adj"
+      "pos": [
+        "adj"
+      ]
     },
     {
       "word": "divide",
@@ -491,7 +611,9 @@
       "example": "Divide 12 by 3.",
       "translation": "把 12 除以 3。",
       "firstSeen": "2026-03-29",
-      "pos": "v"
+      "pos": [
+        "v"
+      ]
     },
     {
       "word": "paint",
@@ -499,7 +621,9 @@
       "example": "I like to paint pictures.",
       "translation": "我喜歡畫畫。",
       "firstSeen": "2026-03-29",
-      "pos": "v"
+      "pos": [
+        "v"
+      ]
     },
     {
       "word": "woman",
@@ -507,7 +631,9 @@
       "example": "The woman is a teacher.",
       "translation": "那位女士是老師。",
       "firstSeen": "2026-03-29",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "joke",
@@ -515,7 +641,9 @@
       "example": "That joke is funny.",
       "translation": "那個笑話很好笑。",
       "firstSeen": "2026-03-28",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "sorry",
@@ -523,7 +651,9 @@
       "example": "I'm sorry I'm late.",
       "translation": "對不起，我遲到了。",
       "firstSeen": "2026-03-28",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "vegetable",
@@ -531,7 +661,9 @@
       "example": "I eat vegetables every day.",
       "translation": "我每天吃蔬菜。",
       "firstSeen": "2026-03-28",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "moon",
@@ -539,7 +671,9 @@
       "example": "The moon is bright tonight.",
       "translation": "今晚月亮很亮。",
       "firstSeen": "2026-03-27",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "onion",
@@ -547,7 +681,9 @@
       "example": "I cut an onion for dinner.",
       "translation": "我為晚餐切了一顆洋蔥。",
       "firstSeen": "2026-03-27",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "son",
@@ -555,7 +691,9 @@
       "example": "My son plays basketball after school.",
       "translation": "我兒子放學後打籃球。",
       "firstSeen": "2026-03-27",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "feel",
@@ -563,7 +701,9 @@
       "example": "I feel tired after school.",
       "translation": "放學後我覺得很累。",
       "firstSeen": "2026-03-26",
-      "pos": "v"
+      "pos": [
+        "v"
+      ]
     },
     {
       "word": "happy",
@@ -571,7 +711,9 @@
       "example": "I am happy today.",
       "translation": "我今天很開心。",
       "firstSeen": "2026-03-26",
-      "pos": "adj"
+      "pos": [
+        "adj"
+      ]
     },
     {
       "word": "party",
@@ -579,7 +721,9 @@
       "example": "We will have a party on Saturday.",
       "translation": "我們星期六要辦一個派對。",
       "firstSeen": "2026-03-26",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "glass",
@@ -587,7 +731,9 @@
       "example": "There is a glass of milk on the table.",
       "translation": "桌上有一杯牛奶。",
       "firstSeen": "2026-03-25",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "glove",
@@ -595,7 +741,9 @@
       "example": "This glove is too big for my hand.",
       "translation": "這隻手套對我的手來說太大了。",
       "firstSeen": "2026-03-25",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "side",
@@ -603,7 +751,9 @@
       "example": "The ball rolled to the side of the road.",
       "translation": "球滾到了路邊。",
       "firstSeen": "2026-03-25",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "contest",
@@ -611,7 +761,9 @@
       "example": "She won the singing contest.",
       "translation": "她贏得了歌唱比賽。",
       "firstSeen": "2026-03-24",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "lake",
@@ -619,7 +771,9 @@
       "example": "We saw ducks on the lake.",
       "translation": "我們看到湖上有鴨子。",
       "firstSeen": "2026-03-24",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "silly",
@@ -627,7 +781,9 @@
       "example": "Don't be silly.",
       "translation": "別傻傻的啦。",
       "firstSeen": "2026-03-24",
-      "pos": "adv"
+      "pos": [
+        "adv"
+      ]
     },
     {
       "word": "early",
@@ -635,7 +791,9 @@
       "example": "She gets up early every morning.",
       "translation": "她每天早上都很早起床。",
       "firstSeen": "2026-03-23",
-      "pos": "adv"
+      "pos": [
+        "adv"
+      ]
     },
     {
       "word": "kitchen",
@@ -643,7 +801,9 @@
       "example": "My mother is cooking in the kitchen.",
       "translation": "我媽媽正在廚房煮飯。",
       "firstSeen": "2026-03-23",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "ticket",
@@ -651,7 +811,9 @@
       "example": "I bought a ticket for the train.",
       "translation": "我買了一張火車票。",
       "firstSeen": "2026-03-23",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "cloud",
@@ -659,7 +821,9 @@
       "example": "That cloud looks like a rabbit.",
       "translation": "那朵雲看起來像一隻兔子。",
       "firstSeen": "2026-03-22",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "ready",
@@ -667,7 +831,9 @@
       "example": "I am ready for the test.",
       "translation": "我已經準備好考試了。",
       "firstSeen": "2026-03-22",
-      "pos": "adj"
+      "pos": [
+        "adj"
+      ]
     },
     {
       "word": "return",
@@ -675,7 +841,9 @@
       "example": "Please return the book to the library tomorrow.",
       "translation": "請明天把這本書還到圖書館。",
       "firstSeen": "2026-03-22",
-      "pos": "v"
+      "pos": [
+        "v"
+      ]
     },
     {
       "word": "arrive",
@@ -683,7 +851,9 @@
       "example": "We will arrive at school before eight.",
       "translation": "我們會在八點前到達學校。",
       "firstSeen": "2026-03-08",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "forest",
@@ -691,7 +861,9 @@
       "example": "We walked through the forest after lunch.",
       "translation": "午餐後我們穿過森林散步。",
       "firstSeen": "2026-03-08",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "noisy",
@@ -699,7 +871,9 @@
       "example": "The classroom is noisy during break time.",
       "translation": "下課時間教室很吵鬧。",
       "firstSeen": "2026-03-08",
-      "pos": "adj"
+      "pos": [
+        "adj"
+      ]
     },
     {
       "word": "invite",
@@ -707,7 +881,9 @@
       "example": "I want to invite my friend to the party.",
       "translation": "我想邀請我的朋友來參加派對。",
       "firstSeen": "2026-03-07",
-      "pos": "v"
+      "pos": [
+        "v"
+      ]
     },
     {
       "word": "mirror",
@@ -715,7 +891,9 @@
       "example": "I looked at myself in the mirror.",
       "translation": "我在鏡子裡看著自己。",
       "firstSeen": "2026-03-07",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "quiet",
@@ -723,7 +901,9 @@
       "example": "Please be quiet in the library.",
       "translation": "在圖書館請安靜。",
       "firstSeen": "2026-03-07",
-      "pos": "adj"
+      "pos": [
+        "adj"
+      ]
     },
     {
       "word": "clever",
@@ -731,7 +911,9 @@
       "example": "The clever boy solved the puzzle quickly.",
       "translation": "那個聰明的男孩很快解開了謎題。",
       "firstSeen": "2026-03-06",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "picnic",
@@ -739,7 +921,9 @@
       "example": "We will have a picnic in the park.",
       "translation": "我們要在公園野餐。",
       "firstSeen": "2026-03-06",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "promise",
@@ -747,7 +931,9 @@
       "example": "I promise to finish my homework tonight.",
       "translation": "我答應今晚完成作業。",
       "firstSeen": "2026-03-06",
-      "pos": "v"
+      "pos": [
+        "v"
+      ]
     },
     {
       "word": "giggle",
@@ -755,7 +941,9 @@
       "example": "The kids giggle when they hear a funny joke.",
       "translation": "孩子們聽到好笑的笑話會咯咯笑。",
       "firstSeen": "2026-03-05",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "journey",
@@ -763,7 +951,9 @@
       "example": "Our journey to the museum was fun.",
       "translation": "我們去博物館的旅程很有趣。",
       "firstSeen": "2026-03-05",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "sunlight",
@@ -771,7 +961,9 @@
       "example": "Plants need sunlight to grow.",
       "translation": "植物需要陽光才能長大。",
       "firstSeen": "2026-03-05",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "borrow",
@@ -779,7 +971,9 @@
       "example": "Can I borrow your pencil?",
       "translation": "我可以借你的鉛筆嗎？",
       "firstSeen": "2026-03-04",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "brave",
@@ -787,7 +981,9 @@
       "example": "The brave girl spoke in front of the class.",
       "translation": "那位勇敢的女孩在全班前面發言。",
       "firstSeen": "2026-03-04",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "whisper",
@@ -795,7 +991,9 @@
       "example": "Please whisper in the library.",
       "translation": "在圖書館請小聲說話。",
       "firstSeen": "2026-03-04",
-      "pos": "v"
+      "pos": [
+        "v"
+      ]
     },
     {
       "word": "careful",
@@ -803,7 +1001,9 @@
       "example": "Be careful when you cross the street.",
       "translation": "過馬路時要小心。",
       "firstSeen": "2026-03-03",
-      "pos": "adj"
+      "pos": [
+        "adj"
+      ]
     },
     {
       "word": "excited",
@@ -811,7 +1011,9 @@
       "example": "She is excited about the school trip.",
       "translation": "她對學校旅行感到很興奮。",
       "firstSeen": "2026-03-03",
-      "pos": "adj"
+      "pos": [
+        "adj"
+      ]
     },
     {
       "word": "practice",
@@ -819,7 +1021,9 @@
       "example": "I practice English every day.",
       "translation": "我每天練習英文。",
       "firstSeen": "2026-03-03",
-      "pos": "v"
+      "pos": [
+        "v"
+      ]
     },
     {
       "word": "friendly",
@@ -827,7 +1031,9 @@
       "example": "Our new classmate is very friendly.",
       "translation": "我們的新同學非常友善。",
       "firstSeen": "2026-03-02",
-      "pos": "adv"
+      "pos": [
+        "adv"
+      ]
     },
     {
       "word": "protect",
@@ -835,7 +1041,9 @@
       "example": "Trees help protect the earth.",
       "translation": "樹木有助於保護地球。",
       "firstSeen": "2026-03-02",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "together",
@@ -843,7 +1051,9 @@
       "example": "We can learn together after dinner.",
       "translation": "晚餐後我們可以一起學習。",
       "firstSeen": "2026-03-02",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "hungry",
@@ -851,7 +1061,9 @@
       "example": "I am hungry. Can I have a sandwich?",
       "translation": "我肚子餓了。我可以吃一個三明治嗎？",
       "firstSeen": "2026-03-01",
-      "pos": "adj"
+      "pos": [
+        "adj"
+      ]
     },
     {
       "word": "rainbow",
@@ -859,7 +1071,9 @@
       "example": "I can see a rainbow after the rain.",
       "translation": "下雨後我看見彩虹。",
       "firstSeen": "2026-03-01",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "teacher",
@@ -867,7 +1081,9 @@
       "example": "My teacher is kind and funny.",
       "translation": "我的老師很親切又有趣。",
       "firstSeen": "2026-03-01",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "gentle",
@@ -875,7 +1091,9 @@
       "example": "Be gentle with the baby.",
       "translation": "對寶寶要溫柔一點。",
       "firstSeen": "2026-02-28",
-      "pos": "adj"
+      "pos": [
+        "adj"
+      ]
     },
     {
       "word": "improve",
@@ -883,7 +1101,9 @@
       "example": "Reading every day helps improve your English.",
       "translation": "每天閱讀有助於提升你的英文。",
       "firstSeen": "2026-02-28",
-      "pos": "n"
+      "pos": [
+        "n"
+      ]
     },
     {
       "word": "prepare",
@@ -891,7 +1111,9 @@
       "example": "I need to prepare for tomorrow's test.",
       "translation": "我需要為明天的考試做準備。",
       "firstSeen": "2026-02-28",
-      "pos": "v"
+      "pos": [
+        "v"
+      ]
     }
   ]
 }

@@ -73,6 +73,11 @@ def infer_pos(word: str, example: str, meaning_zh: str) -> str:
     if w in {"red", "yellow", "blue", "green", "black", "white", "pink", "brown", "gray", "grey", "purple", "orange"}:
         return "adj"
 
+    # If sentence starts with the word and immediately uses a be-verb, it's almost certainly a noun/adjective subject.
+    # Example: "Spring is my favorite season." → noun
+    if re.match(rf"^{re.escape(w)}\s+(is|are|was|were)\b", ex):
+        return "n"
+
     # score-based pattern match
     score = {"n": 0, "v": 0, "adj": 0, "adv": 0}
 
@@ -102,6 +107,25 @@ def infer_pos(word: str, example: str, meaning_zh: str) -> str:
     return best[0]
 
 
+def normalize_pos_list(pos) -> list[str]:
+    """Accept string or list; return de-duplicated normalized POS list."""
+    if not pos:
+        return []
+    items: list[str] = []
+    if isinstance(pos, list):
+        items = [str(x) for x in pos]
+    else:
+        s = str(pos)
+        # split on common separators
+        items = re.split(r"[\s,;/；|]+", s)
+    out: list[str] = []
+    for it in items:
+        n = normalize_pos(it)
+        if n and n not in out:
+            out.append(n)
+    return out
+
+
 def main() -> None:
     history = json.loads(HISTORY.read_text(encoding="utf-8"))
     raw_words: dict = history.get("words", {})
@@ -118,9 +142,9 @@ def main() -> None:
             continue
         first_seen = rec.get("first_seen") or ""
 
-        pos = normalize_pos(rec.get("pos") or rec.get("part_of_speech"))
-        if not pos:
-            pos = infer_pos(word, example, meaning)
+        pos_list = normalize_pos_list(rec.get("pos") or rec.get("part_of_speech"))
+        if not pos_list:
+            pos_list = [infer_pos(word, example, meaning)]
 
         words.append({
             "word": word,
@@ -128,7 +152,7 @@ def main() -> None:
             "example": example,
             "translation": translation,
             "firstSeen": first_seen,
-            "pos": pos,
+            "pos": pos_list,
         })
 
     words.sort(key=lambda w: w["firstSeen"], reverse=True)

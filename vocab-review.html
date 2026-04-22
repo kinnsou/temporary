@@ -173,6 +173,7 @@
       padding: 0.9rem 1.1rem;
       cursor: pointer;
       transition: background 0.15s, border-color 0.15s;
+      position: relative;
     }
 
     .vocab-card:hover { background: var(--paper); border-color: var(--line-2); }
@@ -201,24 +202,35 @@
       justify-content: center;
       font-weight: 900;
       font-size: 0.9rem;
-      color: #2b2b2b;
-      border: 2px solid rgba(0,0,0,0.08);
+      border: none;
       flex-shrink: 0;
       box-shadow: 0 2px 0 rgba(0,0,0,0.06);
       letter-spacing: .02em;
     }
 
-    .pos-n { background: #ffeaa8; }
-    .pos-v { background: #ffb4d8; }
-    .pos-adj { background: #b7f5b7; }
-    .pos-adv { background: #d9c2ff; }
-    .pos-prep { background: #bde9ff; }
-    .pos-pron { background: #c8fff2; }
-    .pos-conj { background: #ffd2a6; }
-    .pos-interj { background: #ffb0b0; }
-    .pos-det { background: #e7e7e7; }
-    .pos-num { background: #e0e0ff; }
-    .pos-unk { background: #f3f3f3; }
+    .pos-stack {
+      position: absolute;
+      right: 14px;
+      bottom: 12px;
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      pointer-events: none;
+    }
+
+    .pos-n { background: #ffeaa8; color: #b07a00; }
+    .pos-v { background: #ffb4d8; color: #b23a78; }
+    .pos-adj { background: #b7f5b7; color: #2e7a2e; }
+    .pos-adv { background: #d9c2ff; color: #5a2ea6; }
+    .pos-prep { background: #bde9ff; color: #1a6aa6; }
+    .pos-pron { background: #c8fff2; color: #137a6a; }
+    .pos-conj { background: #ffd2a6; color: #a85a12; }
+    .pos-interj { background: #ffb0b0; color: #a62a2a; }
+    .pos-det { background: #e7e7e7; color: #555; }
+    .pos-num { background: #e0e0ff; color: #3a3aa6; }
+    .pos-unk { background: #f3f3f3; color: #666; }
 
     .vocab-word {
       font-size: 1.3rem;
@@ -1060,6 +1072,12 @@ async function loadVocab() {
   }
 }
 
+function posList(pos) {
+  if (!pos) return [];
+  if (Array.isArray(pos)) return pos.map(x => String(x||'')).filter(Boolean);
+  return String(pos).split(/[\s,;/；|]+/).map(s => s.trim()).filter(Boolean);
+}
+
 function posLabel(pos) {
   const p = String(pos || '').toLowerCase();
   if (p === 'n' || p === 'noun') return 'n';
@@ -1161,7 +1179,6 @@ function renderCards() {
     <div class="vocab-card" onclick="this.classList.toggle('open')">
       <div class="card-head">
         <div class="card-left">
-          <span class="pos-dot ${posClass(v.pos)}">${escapeHtml(posLabel(v.pos))}</span>
           <div class="vocab-word">${escapeHtml(v.word)}</div>
         </div>
         <div class="vocab-date">${formatDate(v.firstSeen)} 學過</div>
@@ -1170,6 +1187,9 @@ function renderCards() {
       <div class="vocab-detail">
         <div class="vocab-example-en">${escapeHtml(v.example)}</div>
         <div class="vocab-example-zh">${escapeHtml(v.translation)}</div>
+      </div>
+      <div class="pos-stack">
+        ${posList(v.pos).map(p => `<span class="pos-dot ${posClass(p)}">${escapeHtml(posLabel(p))}</span>`).join('')}
       </div>
     </div>
   `).join('');
