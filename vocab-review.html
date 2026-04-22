@@ -1281,6 +1281,7 @@ const firebaseConfig = {
 };
 
 const FS_BASE = `https://firestore.googleapis.com/v1/projects/${firebaseConfig.projectId}/databases/(default)/documents`;
+const FS_COMMIT = `https://firestore.googleapis.com/v1/projects/${firebaseConfig.projectId}/databases/(default)/documents:commit`;
 
 const CLOUD = {
   status: 'idle',  // 'idle' | 'loading' | 'ok' | 'offline'
@@ -1413,11 +1414,19 @@ async function cloudUpsertScore(name, avatarId, score) {
     updatedAt: new Date().toISOString(),
   };
   try {
-    const url = `${FS_BASE}/leaderboard/${encodeURIComponent(id)}?key=${firebaseConfig.apiKey}`;
-    const res = await fetch(url, {
-      method: 'PATCH',
+    // Use commit (POST) instead of PATCH to avoid browser CORS issues on some platforms.
+    const docName = `projects/${firebaseConfig.projectId}/databases/(default)/documents/leaderboard/${id}`;
+    const res = await fetch(`${FS_COMMIT}?key=${firebaseConfig.apiKey}`, {
+      method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ fields: entryToFsFields(entry) }),
+      body: JSON.stringify({
+        writes: [{
+          update: {
+            name: docName,
+            fields: entryToFsFields(entry),
+          }
+        }]
+      }),
     });
     if (!res.ok) throw new Error('HTTP ' + res.status);
     CLOUD.status = 'ok';
@@ -1617,42 +1626,27 @@ async function cloudUpdateAvatarOnly(name, avatarId) {
   if (!id || id === '_') return false;
   const now = new Date().toISOString();
 
-  // Try patch first (updateMask), fallback to create.
+  // Use commit (POST) to avoid PATCH CORS issues.
   try {
-    const url = `${FS_BASE}/leaderboard/${encodeURIComponent(id)}?key=${firebaseConfig.apiKey}`
-      + `&updateMask.fieldPaths=avatarId&updateMask.fieldPaths=updatedAt`;
-    const res = await fetch(url, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        fields: {
-          avatarId: { stringValue: normalizeAvatarId(avatarId) },
-          updatedAt: { stringValue: now },
-        }
-      }),
-    });
-    if (res.ok) { CLOUD.status = 'ok'; return true; }
-    if (res.status !== 404) throw new Error('HTTP ' + res.status);
-  } catch (_) {
-    // continue to create
-  }
-
-  try {
-    const createUrl = `${FS_BASE}/leaderboard?documentId=${encodeURIComponent(id)}&key=${firebaseConfig.apiKey}`;
-    const entry = {
-      name: String(name || '').trim().slice(0, 40),
-      avatarId: normalizeAvatarId(avatarId),
-      plays: 0,
-      bestScore: 0,
-      recentScores: [],
-      updatedAt: now,
-    };
-    const res2 = await fetch(createUrl, {
+    const docName = `projects/${firebaseConfig.projectId}/databases/(default)/documents/leaderboard/${id}`;
+    const res = await fetch(`${FS_COMMIT}?key=${firebaseConfig.apiKey}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ fields: entryToFsFields(entry) }),
+      body: JSON.stringify({
+        writes: [{
+          update: {
+            name: docName,
+            fields: {
+              name: { stringValue: String(name || '').trim().slice(0, 40) },
+              avatarId: { stringValue: normalizeAvatarId(avatarId) },
+              updatedAt: { stringValue: now },
+            }
+          },
+          updateMask: { fieldPaths: ['name','avatarId','updatedAt'] }
+        }]
+      }),
     });
-    if (!res2.ok) throw new Error('HTTP ' + res2.status);
+    if (!res.ok) throw new Error('HTTP ' + res.status);
     CLOUD.status = 'ok';
     return true;
   } catch (_) {
