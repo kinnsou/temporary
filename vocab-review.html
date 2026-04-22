@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- vocab-review.html v1.1 — 20Q quiz + 3 question types (cloze / mc zh→en / mc tense) + Chiikawa-style avatars + animated leaderboard. -->
+<!-- vocab-review.html v1.2 — Chiikawa pink/yellow theme + 3 corrected avatars (chiika / hachi / usagi). -->
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
@@ -7,24 +7,33 @@
   <title>單字複習小教室</title>
   <style>
     :root {
-      --green: #58cc02;
-      --green-dark: #58a700;
-      --green-light: #d7ffb8;
-      --green-bg: #e8fcd0;
-      --blue: #1cb0f6;
-      --blue-dark: #1899d6;
-      --red: #ff4b4b;
-      --red-dark: #ea2b2b;
-      --red-bg: #ffdfe0;
-      --gold: #ffc800;
-      --ink: #3c3c3c;
-      --ink-soft: #4b4b4b;
-      --muted: #777;
-      --line: #e5e5e5;
-      --line-2: #d0d0d0;
-      --bg: #ffffff;
-      --paper: #fafafa;
-      --shadow: 0 2px 0 rgba(0,0,0,0.06);
+      /* Chiikawa-ish pastel palette */
+      --pink: #ff82d2;
+      --pink-dark: #e85eb9;
+      --pink-light: #ffd9ee;
+      --pink-bg: #ffe7f5;
+      --yellow: #fff578;
+      --yellow-dark: #ffe040;
+      --yellow-bg: #fffbe0;
+      /* Semantic "correct" (kept so right/wrong still read clearly) */
+      --ok: #7fcf7a;
+      --ok-dark: #4fa84f;
+      --ok-bg: #e5f5e0;
+      /* Secondary blue — muted sky, matches hachiware */
+      --blue: #88c4e8;
+      --blue-dark: #5ea9d1;
+      --red: #ff6f91;
+      --red-dark: #e34e74;
+      --red-bg: #ffe0e9;
+      --gold: #ffc84a;
+      --ink: #462e31;
+      --ink-soft: #6a4d50;
+      --muted: #a08489;
+      --line: #ffd9ee;
+      --line-2: #f0b8d8;
+      --bg: #fff0f7;
+      --paper: #fff8fb;
+      --shadow: 0 2px 0 rgba(70,46,49,0.08);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
@@ -33,7 +42,12 @@
     body {
       font-family: "Nunito", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei",
                    -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
+      background:
+        radial-gradient(circle at 18% 18%, rgba(255,245,120,0.55), transparent 42%),
+        radial-gradient(circle at 82% 78%, rgba(255,130,210,0.30), transparent 48%),
+        radial-gradient(rgba(255,130,210,0.18) 1.2px, transparent 1.6px) 0 0 / 22px 22px,
+        linear-gradient(135deg, #fff5fb 0%, #fff9dc 100%);
+      background-attachment: fixed;
       color: var(--ink);
       min-height: 100vh;
       line-height: 1.5;
@@ -48,8 +62,11 @@
     }
 
     .header {
-      background: #fff;
-      border-bottom: 2px solid var(--line);
+      background: rgba(255,255,255,0.78);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border-bottom: 3px solid var(--pink);
+      box-shadow: 0 2px 0 var(--yellow);
       padding: 1.2rem 1rem 1rem;
       text-align: center;
     }
@@ -57,7 +74,7 @@
     .header-title {
       font-size: 1.35rem;
       font-weight: 800;
-      color: var(--green-dark);
+      color: var(--pink-dark);
       letter-spacing: 0.02em;
     }
 
@@ -94,9 +111,9 @@
     .tab-btn:active:not(.active) { transform: translateY(1px); border-bottom-width: 3px; }
 
     .tab-btn.active {
-      background: var(--green);
+      background: var(--pink);
       color: #fff;
-      border-color: var(--green-dark);
+      border-color: var(--pink-dark);
     }
 
     .panel { display: none; animation: fadeIn 0.2s ease; }
@@ -125,7 +142,7 @@
       transition: border-color 0.15s;
     }
 
-    .search-input:focus { border-color: var(--blue); }
+    .search-input:focus { border-color: var(--pink); }
 
     .meta-line {
       font-size: 0.78rem;
@@ -151,7 +168,7 @@
     }
 
     .vocab-card:hover { background: var(--paper); border-color: var(--line-2); }
-    .vocab-card.open { border-color: var(--green); background: #f5fff0; }
+    .vocab-card.open { border-color: var(--pink); background: var(--pink-bg); }
 
     .card-head {
       display: flex;
@@ -163,7 +180,7 @@
     .vocab-word {
       font-size: 1.3rem;
       font-weight: 800;
-      color: var(--green-dark);
+      color: var(--pink-dark);
       letter-spacing: 0.01em;
     }
 
@@ -255,9 +272,9 @@
     .profile-chip:active { transform: translateY(1px); border-bottom-width: 3px; }
 
     .profile-chip.current {
-      background: var(--green-bg);
-      border-color: var(--green);
-      color: var(--green-dark);
+      background: var(--pink-bg);
+      border-color: var(--pink);
+      color: var(--pink-dark);
     }
 
     .profile-chip .chip-stat {
@@ -284,7 +301,7 @@
       font-family: inherit;
       outline: none;
     }
-    .add-row input:focus { border-color: var(--blue); }
+    .add-row input:focus { border-color: var(--pink); }
 
     /* Avatar */
     .avatar {
@@ -325,8 +342,8 @@
     }
     .avatar-opt:hover { background: var(--paper); }
     .avatar-opt.picked {
-      border-color: var(--green);
-      background: var(--green-bg);
+      border-color: var(--pink);
+      background: var(--pink-bg);
     }
     .avatar-opt svg { width: 100%; height: 100%; }
 
@@ -334,9 +351,9 @@
     .dl-btn {
       padding: 12px 18px;
       border: none;
-      border-bottom: 4px solid var(--green-dark);
+      border-bottom: 4px solid var(--pink-dark);
       border-radius: 14px;
-      background: var(--green);
+      background: var(--pink);
       color: #fff;
       font-size: 0.95rem;
       font-weight: 800;
@@ -387,11 +404,11 @@
       font-size: 0.92rem;
     }
     .lb-row + .lb-row { margin-top: 4px; }
-    .lb-row.me { background: var(--green-bg); font-weight: 800; }
+    .lb-row.me { background: var(--pink-bg); font-weight: 800; }
     .lb-rank { font-weight: 800; color: var(--muted); text-align: center; }
     .lb-rank.top { color: var(--gold); }
     .lb-name { font-weight: 700; color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .lb-best { font-weight: 800; color: var(--green-dark); }
+    .lb-best { font-weight: 800; color: var(--pink-dark); }
     .lb-plays { font-size: 0.78rem; color: var(--muted); }
 
     /* Quiz body */
@@ -422,7 +439,7 @@
     }
     .progress-bar-fill {
       height: 100%;
-      background: var(--green);
+      background: var(--pink);
       border-radius: 99px;
       transition: width 0.35s ease;
       position: relative;
@@ -513,7 +530,7 @@
       margin-bottom: 0.8rem;
       transition: border-color 0.12s;
     }
-    .answer-input:focus { border-color: var(--blue); }
+    .answer-input:focus { border-color: var(--pink); }
     .answer-input.locked { background: var(--paper); }
 
     /* Choice options */
@@ -541,9 +558,9 @@
     .choice-btn:hover:not(:disabled) { background: var(--paper); border-color: var(--line-2); }
     .choice-btn:active:not(:disabled) { transform: translateY(1px); border-bottom-width: 3px; }
     .choice-btn.picked-right {
-      background: var(--green-bg);
-      border-color: var(--green);
-      color: var(--green-dark);
+      background: var(--ok-bg);
+      border-color: var(--ok);
+      color: var(--ok-dark);
     }
     .choice-btn.picked-wrong {
       background: var(--red-bg);
@@ -551,9 +568,9 @@
       color: var(--red-dark);
     }
     .choice-btn.reveal-right {
-      background: #f5fff0;
-      border-color: var(--green);
-      color: var(--green-dark);
+      background: var(--ok-bg);
+      border-color: var(--ok);
+      color: var(--ok-dark);
     }
     .choice-btn:disabled { cursor: default; }
 
@@ -568,9 +585,9 @@
     }
     .feedback.good {
       display: block;
-      background: var(--green-bg);
-      color: var(--green-dark);
-      border: 2px solid var(--green);
+      background: var(--ok-bg);
+      color: var(--ok-dark);
+      border: 2px solid var(--ok);
     }
     .feedback.bad {
       display: block;
@@ -589,7 +606,7 @@
     .result-big {
       font-size: 3.2rem;
       font-weight: 800;
-      color: var(--green-dark);
+      color: var(--pink-dark);
       margin: 0.4rem 0 0.2rem;
       line-height: 1;
     }
@@ -644,12 +661,12 @@
       margin-right: 6px;
       letter-spacing: 0.04em;
     }
-    .wrong-row .wr-type.t-cloze { background: var(--green); }
-    .wrong-row .wr-type.t-zh { background: var(--blue); }
+    .wrong-row .wr-type.t-cloze { background: var(--ok); }
+    .wrong-row .wr-type.t-zh { background: var(--blue-dark); }
     .wrong-row .wr-type.t-tense { background: #b266ff; }
     .wrong-row .wr-q { color: var(--ink-soft); margin-bottom: 2px; }
     .wrong-row .wr-your { color: var(--red-dark); }
-    .wrong-row .wr-correct { color: var(--green-dark); font-weight: 800; }
+    .wrong-row .wr-correct { color: var(--ok-dark); font-weight: 800; }
 
     .page-footer {
       text-align: center;
@@ -736,28 +753,16 @@ let VOCAB_META = null;
 
 const AVATARS = {
   chiika: {
-    name: 'ちい',
-    svg: `<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><ellipse cx="32" cy="38" rx="22" ry="20" fill="#fff4e0" stroke="#3c3c3c" stroke-width="1.6"/><ellipse cx="19" cy="16" rx="5" ry="7" fill="#fff4e0" stroke="#3c3c3c" stroke-width="1.6"/><ellipse cx="45" cy="16" rx="5" ry="7" fill="#fff4e0" stroke="#3c3c3c" stroke-width="1.6"/><circle cx="24" cy="35" r="2.2" fill="#3c3c3c"/><circle cx="40" cy="35" r="2.2" fill="#3c3c3c"/><ellipse cx="17" cy="43" rx="3" ry="2" fill="#ffb3b3"/><ellipse cx="47" cy="43" rx="3" ry="2" fill="#ffb3b3"/><path d="M28 41 Q32 45 36 41" stroke="#3c3c3c" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>`
+    name: 'ちいかわ',
+    svg: `<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><ellipse cx="22" cy="14" rx="4" ry="6" fill="#ffffff" stroke="#462e31" stroke-width="1.6"/><ellipse cx="42" cy="14" rx="4" ry="6" fill="#ffffff" stroke="#462e31" stroke-width="1.6"/><ellipse cx="22" cy="15" rx="1.6" ry="3" fill="#ffc4dc"/><ellipse cx="42" cy="15" rx="1.6" ry="3" fill="#ffc4dc"/><ellipse cx="32" cy="36" rx="22" ry="22" fill="#ffffff" stroke="#462e31" stroke-width="1.6"/><circle cx="25" cy="34" r="2.4" fill="#462e31"/><circle cx="39" cy="34" r="2.4" fill="#462e31"/><ellipse cx="18" cy="40" rx="3.6" ry="2.2" fill="#ffb3cf"/><ellipse cx="46" cy="40" rx="3.6" ry="2.2" fill="#ffb3cf"/><path d="M28 40 Q30 42 32 40 Q34 42 36 40" stroke="#462e31" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>`
   },
   hachi: {
-    name: 'はち',
-    svg: `<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path d="M32 16 Q10 18 10 38 Q10 58 32 58 Q54 58 54 38 Q54 18 32 16 Z" fill="#fff4e0" stroke="#3c3c3c" stroke-width="1.6"/><path d="M10 38 Q10 58 32 58 L32 38 Z" fill="#3c3c3c"/><polygon points="15,16 12,6 25,13" fill="#fff4e0" stroke="#3c3c3c" stroke-width="1.5"/><polygon points="49,16 52,6 39,13" fill="#3c3c3c" stroke="#3c3c3c" stroke-width="1.5"/><circle cx="24" cy="35" r="2.2" fill="#3c3c3c"/><circle cx="40" cy="35" r="2.2" fill="#fff"/><path d="M30 42 Q32 44 34 42" stroke="#3c3c3c" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>`
+    name: 'ハチワレ',
+    svg: `<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><ellipse cx="32" cy="36" rx="22" ry="22" fill="#ffffff" stroke="#462e31" stroke-width="1.6"/><path d="M10 30 Q10 14 32 14 Q54 14 54 30 Q54 34 52 36 L12 36 Q10 34 10 30 Z" fill="#8fc8ea" stroke="#462e31" stroke-width="1.6"/><path d="M16 18 L10 6 L24 14 Z" fill="#8fc8ea" stroke="#462e31" stroke-width="1.5" stroke-linejoin="round"/><path d="M48 18 L54 6 L40 14 Z" fill="#8fc8ea" stroke="#462e31" stroke-width="1.5" stroke-linejoin="round"/><path d="M17 16 L13 9 L21 14 Z" fill="#ffc4dc"/><path d="M47 16 L51 9 L43 14 Z" fill="#ffc4dc"/><circle cx="25" cy="32" r="2.6" fill="#462e31"/><circle cx="39" cy="32" r="2.6" fill="#462e31"/><circle cx="25.8" cy="31.2" r="0.7" fill="#ffffff"/><circle cx="39.8" cy="31.2" r="0.7" fill="#ffffff"/><path d="M30 40 Q32 42 34 40" stroke="#462e31" stroke-width="1.4" fill="none" stroke-linecap="round"/><ellipse cx="19" cy="40" rx="3" ry="2" fill="#ffb3cf"/><ellipse cx="45" cy="40" rx="3" ry="2" fill="#ffb3cf"/></svg>`
   },
   usagi: {
-    name: 'うさ',
-    svg: `<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><ellipse cx="20" cy="14" rx="4" ry="12" fill="#fff" stroke="#3c3c3c" stroke-width="1.6"/><ellipse cx="44" cy="14" rx="4" ry="12" fill="#fff" stroke="#3c3c3c" stroke-width="1.6"/><ellipse cx="20" cy="14" rx="1.8" ry="8" fill="#ffb3d1"/><ellipse cx="44" cy="14" rx="1.8" ry="8" fill="#ffb3d1"/><ellipse cx="32" cy="40" rx="22" ry="18" fill="#fff" stroke="#3c3c3c" stroke-width="1.6"/><circle cx="24" cy="38" r="2.2" fill="#3c3c3c"/><circle cx="40" cy="38" r="2.2" fill="#3c3c3c"/><ellipse cx="32" cy="44" rx="3" ry="2" fill="#ff8fb1"/><path d="M29 48 Q32 50 35 48" stroke="#3c3c3c" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>`
-  },
-  kuri: {
-    name: 'くり',
-    svg: `<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><ellipse cx="32" cy="38" rx="22" ry="20" fill="#ffe680" stroke="#3c3c3c" stroke-width="1.6"/><path d="M18 22 Q32 8 46 22" fill="#ffcf40" stroke="#3c3c3c" stroke-width="1.6"/><circle cx="25" cy="37" r="2.2" fill="#3c3c3c"/><circle cx="39" cy="37" r="2.2" fill="#3c3c3c"/><ellipse cx="20" cy="44" rx="3" ry="2" fill="#ff9966"/><ellipse cx="44" cy="44" rx="3" ry="2" fill="#ff9966"/><path d="M28 42 L32 46 L36 42" stroke="#3c3c3c" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`
-  },
-  momo: {
-    name: 'もも',
-    svg: `<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path d="M32 10 Q22 10 22 20 L22 24 Q10 28 10 42 Q10 58 32 58 Q54 58 54 42 Q54 28 42 24 L42 20 Q42 10 32 10 Z" fill="#ffc1d9" stroke="#3c3c3c" stroke-width="1.6"/><path d="M30 10 Q32 4 38 6 Q36 10 32 12" fill="#7bc96f" stroke="#3c3c3c" stroke-width="1.3"/><circle cx="24" cy="38" r="2.2" fill="#3c3c3c"/><circle cx="40" cy="38" r="2.2" fill="#3c3c3c"/><ellipse cx="19" cy="44" rx="3" ry="2" fill="#ff6fa1"/><ellipse cx="45" cy="44" rx="3" ry="2" fill="#ff6fa1"/><path d="M28 44 Q32 48 36 44" stroke="#3c3c3c" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>`
-  },
-  mofu: {
-    name: 'もふ',
-    svg: `<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path d="M14 40 Q8 40 8 34 Q8 26 16 26 Q18 18 28 18 Q34 12 42 18 Q52 18 54 28 Q60 30 58 38 Q56 44 48 44 L18 44 Q14 44 14 40 Z" fill="#d4c4ff" stroke="#3c3c3c" stroke-width="1.6"/><circle cx="26" cy="32" r="2.2" fill="#3c3c3c"/><circle cx="40" cy="32" r="2.2" fill="#3c3c3c"/><ellipse cx="22" cy="38" rx="3" ry="2" fill="#ffb3b3"/><ellipse cx="44" cy="38" rx="3" ry="2" fill="#ffb3b3"/><path d="M30 37 Q33 40 36 37" stroke="#3c3c3c" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>`
+    name: 'うさぎ',
+    svg: `<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><ellipse cx="22" cy="12" rx="4" ry="11" fill="#fff2b8" stroke="#462e31" stroke-width="1.6"/><ellipse cx="42" cy="12" rx="4" ry="11" fill="#fff2b8" stroke="#462e31" stroke-width="1.6"/><ellipse cx="22" cy="12" rx="1.6" ry="8" fill="#ffc4dc"/><ellipse cx="42" cy="12" rx="1.6" ry="8" fill="#ffc4dc"/><ellipse cx="32" cy="38" rx="22" ry="20" fill="#fff2b8" stroke="#462e31" stroke-width="1.6"/><path d="M26 32 Q28 28 30 32" stroke="#462e31" stroke-width="1.6" fill="none" stroke-linecap="round"/><path d="M34 32 Q36 28 38 32" stroke="#462e31" stroke-width="1.6" fill="none" stroke-linecap="round"/><ellipse cx="19" cy="42" rx="3" ry="2" fill="#ffb3cf"/><ellipse cx="45" cy="42" rx="3" ry="2" fill="#ffb3cf"/><path d="M30 40 Q32 42 34 40" stroke="#462e31" stroke-width="1.4" fill="none" stroke-linecap="round"/><rect x="30.4" y="42" width="3.2" height="3.6" rx="0.6" fill="#ffffff" stroke="#462e31" stroke-width="0.8"/><line x1="32" y1="42.4" x2="32" y2="45.2" stroke="#462e31" stroke-width="0.6"/></svg>`
   },
 };
 
@@ -1006,7 +1011,7 @@ async function loadVocab() {
 
 function renderFooterMeta() {
   const f = document.getElementById('page-footer');
-  const tag = 'v1.1';
+  const tag = 'v1.2';
   if (VOCAB_META && VOCAB_META.updatedAt) {
     const d = VOCAB_META.updatedAt.replace('T',' ').replace('Z',' UTC');
     f.textContent = `單字複習小教室 ${tag} · 共 ${VOCAB.length} 個單字 · 更新於 ${d}`;
@@ -1236,7 +1241,7 @@ function renderQuizHome(player) {
       題型：<b>中翻英 (4選1)</b>、<b>句子填空 (輸入)</b>、<b>時態變化 (4選1)</b>
     </div>
     <div style="text-align:center;font-size:.9rem;color:var(--ink-soft);margin-bottom:1rem;">
-      最佳分數：<b style="color:var(--green-dark)">${player.bestScore||0}</b> ·
+      最佳分數：<b style="color:var(--pink-dark)">${player.bestScore||0}</b> ·
       玩過次數：<b>${player.plays||0}</b>
       ${player.recentScores && player.recentScores.length
         ? `<br>最近分數：${player.recentScores.map(s=>`<span style="display:inline-block;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:1px 7px;margin:2px 3px 0;font-weight:700;">${s}</span>`).join('')}`
@@ -1594,7 +1599,7 @@ function finishQuiz() {
       <h4>需要再複習 (${s.wrong.length})</h4>
       ${s.wrong.map(renderWrongRow).join('')}
     </div>
-  ` : `<div style="color:var(--green-dark);font-weight:800;margin:1rem 0;">全部答對，零失誤！🎉</div>`;
+  ` : `<div style="color:var(--ok-dark);font-weight:800;margin:1rem 0;">全部答對，零失誤！🎉</div>`;
 
   const player = findPlayer(s.playerId);
   const avatarHtml = player ? `<div style="text-align:center;">${renderAvatar(player.avatarId, { size: 'lg', animated: true })}</div>` : '';
