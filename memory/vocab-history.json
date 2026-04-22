@@ -3,7 +3,7 @@
     "newWordsMustBeUniqueUntilExhausted": true,
     "reviewFormat": "guided_cloze_with_grammar_chunking",
     "sourceScope": "台灣普遍認定國中必會1000單",
-    "updatedAt": "2026-04-17T11:00:00Z"
+    "updatedAt": "2026-04-22T11:00:00Z"
   },
   "words": {
     "adventure": {
@@ -63,10 +63,9 @@
       "first_seen": "2026-03-04",
       "last_seen": "2026-03-04",
       "meanings": [
-        "借",
-        "借（入）"
+        "借"
       ],
-      "translation": "入"
+      "translation": "我可以借你的鉛筆嗎？"
     },
     "brave": {
       "example_sentence": "The brave girl spoke in front of the class.",
@@ -319,7 +318,7 @@
       "meanings": [
         "溫柔的；輕柔的"
       ],
-      "translation": "重音在第一音節"
+      "translation": "對寶寶要溫柔一點。"
     },
     "giggle": {
       "example_sentence": "The kids giggle when they hear a funny joke.",
@@ -425,7 +424,7 @@
       "meanings": [
         "改善；進步"
       ],
-      "translation": "重音在第二音節"
+      "translation": "每天閱讀有助於提升你的英文。"
     },
     "invite": {
       "example_sentence": "I want to invite my friend to the party.",
@@ -685,7 +684,7 @@
       "meanings": [
         "準備"
       ],
-      "translation": "重音在第二音節"
+      "translation": "我需要為明天的考試做準備。"
     },
     "pretty": {
       "example_sentence": "That dress is pretty.",
@@ -981,6 +980,87 @@
       ],
       "example_sentence": "Please put your books on the desk.",
       "translation": "請把你的書放在桌上。"
+    },
+    "pizza": {
+      "first_seen": "2026-04-20",
+      "last_seen": "2026-04-20",
+      "meanings": [
+        "披薩"
+      ],
+      "example_sentence": "I want to eat pizza for dinner.",
+      "translation": "我晚餐想吃披薩。"
+    },
+    "sugar": {
+      "first_seen": "2026-04-20",
+      "last_seen": "2026-04-20",
+      "meanings": [
+        "糖"
+      ],
+      "example_sentence": "Don't put too much sugar in your tea.",
+      "translation": "你的茶不要加太多糖。"
+    },
+    "dragon": {
+      "first_seen": "2026-04-20",
+      "last_seen": "2026-04-20",
+      "meanings": [
+        "龍"
+      ],
+      "example_sentence": "The dragon in the story is very strong.",
+      "translation": "故事裡的龍很強。"
+    },
+    "real": {
+      "first_seen": "2026-04-21",
+      "last_seen": "2026-04-21",
+      "meanings": [
+        "真的；真實的"
+      ],
+      "example_sentence": "Is this story real?",
+      "translation": "這個故事是真的嗎？"
+    },
+    "storm": {
+      "first_seen": "2026-04-21",
+      "last_seen": "2026-04-21",
+      "meanings": [
+        "暴風雨；風暴"
+      ],
+      "example_sentence": "The storm is coming.",
+      "translation": "暴風雨要來了。"
+    },
+    "believe": {
+      "first_seen": "2026-04-21",
+      "last_seen": "2026-04-21",
+      "meanings": [
+        "相信；信任"
+      ],
+      "example_sentence": "I believe you can do it.",
+      "translation": "我相信你做得到。"
+    },
+    "meet": {
+      "first_seen": "2026-04-22",
+      "last_seen": "2026-04-22",
+      "meanings": [
+        "遇見；見面"
+      ],
+      "example_sentence": "I will meet my friend after school.",
+      "translation": "我放學後要去見我的朋友。"
+    },
+    "red": {
+      "first_seen": "2026-04-22",
+      "last_seen": "2026-04-22",
+      "meanings": [
+        "紅色（的）"
+      ],
+      "example_sentence": "The apple is red.",
+      "translation": "這顆蘋果是紅色的。"
+    },
+    "nice": {
+      "first_seen": "2026-04-22",
+      "last_seen": "2026-04-22",
+      "meanings": [
+        "不錯的；親切的"
+      ],
+      "example_sentence": "She is a nice teacher.",
+      "translation": "她是一位很親切的老師。"
     }
   }
 }

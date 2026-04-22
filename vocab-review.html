@@ -311,14 +311,27 @@
     }
     .add-row input:focus { border-color: var(--pink); }
 
-    /* Avatar */
+    /* Avatar (frame it so non-transparent JPG/PNG never shows ugly edges) */
     .avatar {
       width: 48px;
       height: 48px;
       display: inline-block;
       flex-shrink: 0;
+      padding: 3px;
+      background: #fff;
+      border: 2px solid var(--line);
+      border-bottom-width: 4px;
+      border-radius: 999px;
+      overflow: hidden;
     }
-    .avatar img { width: 100%; height: 100%; display: block; object-fit: contain; }
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      border-radius: 999px;
+      background: #fff;
+    }
     .avatar-sm { width: 32px; height: 32px; }
     .avatar-lg { width: 72px; height: 72px; }
 
@@ -345,7 +358,7 @@
       border-color: var(--pink);
       background: var(--pink-bg);
     }
-    .avatar-opt img { width: 100%; height: 100%; display: block; object-fit: contain; }
+    .avatar-opt img { width: 100%; height: 100%; display: block; object-fit: cover; border-radius: 10px; background:#fff; }
 
     /* Duo-ish primary button */
     .dl-btn {
@@ -1574,6 +1587,13 @@ function startQuiz() {
   renderQuizQuestion();
 }
 
+function clozeBlank(word) {
+  const w = String(word || '').trim();
+  const first = (w[0] || '_');
+  const total = Math.max(4, w.length || 0);
+  return escapeHtml(first) + '_'.repeat(Math.max(3, total - 1));
+}
+
 function makeClozeHtml(example, word) {
   const safeWord = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const re = new RegExp('\\b' + safeWord + '\\b', 'i');
@@ -1581,15 +1601,15 @@ function makeClozeHtml(example, word) {
   if (!m) {
     const re2 = new RegExp(safeWord, 'i');
     const m2 = example.match(re2);
-    if (!m2) return escapeHtml(example) + ' <span class="blank">____</span>';
+    if (!m2) return escapeHtml(example) + ' <span class="blank">' + clozeBlank(word) + '</span>';
     const idx = m2.index;
     return escapeHtml(example.slice(0, idx)) +
-      `<span class="blank">${'_'.repeat(Math.max(4, word.length))}</span>` +
+      `<span class="blank">${clozeBlank(word)}</span>` +
       escapeHtml(example.slice(idx + m2[0].length));
   }
   const idx = m.index;
   return escapeHtml(example.slice(0, idx)) +
-    `<span class="blank">${'_'.repeat(Math.max(4, word.length))}</span>` +
+    `<span class="blank">${clozeBlank(word)}</span>` +
     escapeHtml(example.slice(idx + m[0].length));
 }
 
@@ -1616,7 +1636,7 @@ function renderQuizQuestion() {
       ${topbar}
       <div class="q-label">句子填空 · 輸入英文單字</div>
       <div class="q-cloze">${makeClozeHtml(w.example, w.word)}</div>
-      <div class="q-hint">提示：${escapeHtml(w.translation)}</div>
+      <div class="q-hint">提示：首字母 <b>${escapeHtml(String(w.word || '').trim().slice(0,1) || '_')}</b> · ${escapeHtml(w.translation)}</div>
       <input id="q-ans" class="answer-input" type="text" autocomplete="off"
              autocapitalize="none" autocorrect="off" spellcheck="false"
              placeholder="輸入英文單字…" />

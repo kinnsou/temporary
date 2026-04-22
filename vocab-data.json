@@ -1,6 +1,6 @@
 {
   "meta": {
-    "updatedAt": "2026-04-22T11:10:21Z",
+    "updatedAt": "2026-04-22T12:14:50Z",
     "sourceCount": 119,
     "includedCount": 111
   },
@@ -679,9 +679,9 @@
     },
     {
       "word": "borrow",
-      "meaning": "借；借（入）",
+      "meaning": "借",
       "example": "Can I borrow your pencil?",
-      "translation": "入",
+      "translation": "我可以借你的鉛筆嗎？",
       "firstSeen": "2026-03-04"
     },
     {
@@ -765,21 +765,21 @@
       "word": "gentle",
       "meaning": "溫柔的；輕柔的",
       "example": "Be gentle with the baby.",
-      "translation": "重音在第一音節",
+      "translation": "對寶寶要溫柔一點。",
       "firstSeen": "2026-02-28"
     },
     {
       "word": "improve",
       "meaning": "改善；進步",
       "example": "Reading every day helps improve your English.",
-      "translation": "重音在第二音節",
+      "translation": "每天閱讀有助於提升你的英文。",
       "firstSeen": "2026-02-28"
     },
     {
       "word": "prepare",
       "meaning": "準備",
       "example": "I need to prepare for tomorrow's test.",
-      "translation": "重音在第二音節",
+      "translation": "我需要為明天的考試做準備。",
       "firstSeen": "2026-02-28"
     }
   ]
