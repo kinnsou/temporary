@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- vocab-review.html v1.4 — Cloud leaderboard via Firebase Firestore REST (shared across devices). -->
+<!-- vocab-review.html v1.4.1 — Cloud leaderboard + PNG avatars (no crop). -->
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
@@ -311,26 +311,18 @@
     }
     .add-row input:focus { border-color: var(--pink); }
 
-    /* Avatar (frame it so non-transparent JPG/PNG never shows ugly edges) */
+    /* Avatar (PNG, no crop) */
     .avatar {
       width: 48px;
       height: 48px;
       display: inline-block;
       flex-shrink: 0;
-      padding: 3px;
-      background: #fff;
-      border: 2px solid var(--line);
-      border-bottom-width: 4px;
-      border-radius: 999px;
-      overflow: hidden;
     }
     .avatar img {
       width: 100%;
       height: 100%;
       display: block;
-      object-fit: cover;
-      border-radius: 999px;
-      background: #fff;
+      object-fit: contain;
     }
     .avatar-sm { width: 32px; height: 32px; }
     .avatar-lg { width: 72px; height: 72px; }
@@ -358,7 +350,7 @@
       border-color: var(--pink);
       background: var(--pink-bg);
     }
-    .avatar-opt img { width: 100%; height: 100%; display: block; object-fit: cover; border-radius: 10px; background:#fff; }
+    .avatar-opt img { width: 100%; height: 100%; display: block; object-fit: contain; }
 
     /* Duo-ish primary button */
     .dl-btn {
@@ -767,15 +759,15 @@ let VOCAB_META = null;
 const AVATARS = {
   chiika: {
     name: 'ちいかわ',
-    src: 'assets/avatars/chiika.jpg'
+    src: 'assets/avatars/chiika.png'
   },
   hachi: {
     name: 'ハチワレ',
-    src: 'assets/avatars/hachi.jpg'
+    src: 'assets/avatars/hachi.png'
   },
   usagi: {
     name: 'うさぎ',
-    src: 'assets/avatars/usagi.jpg'
+    src: 'assets/avatars/usagi.png'
   },
 };
 
