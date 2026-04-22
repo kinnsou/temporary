@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesson13 — 周三 神的警告與遲鈍的反應</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', 'Noto Serif TC', '思源宋體', serif;
+      background: #f9f4ec;
+      color: #3a2e24;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .card {
+      background: #fff8f0;
+      border-radius: 18px;
+      box-shadow: 0 6px 32px rgba(120, 80, 30, 0.13);
+      max-width: 720px;
+      width: 100%;
+      overflow: hidden;
+      border: 1px solid #f0dfc8;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #8f5a2f 0%, #b27442 62%, #d19859 100%);
+      padding: 2rem 2rem 1.5rem;
+      text-align: center;
+    }
+
+    .lesson-label {
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      color: rgba(255, 240, 215, 0.85);
+      margin-bottom: 0.45rem;
+    }
+
+    .lesson-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #fff8ee;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 8px rgba(80, 30, 0, 0.28);
+    }
+
+    .lesson-subtitle {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: rgba(255, 235, 185, 0.96);
+      letter-spacing: 0.08em;
+    }
+
+    .divider-line {
+      height: 3px;
+      background: linear-gradient(90deg, transparent, rgba(255, 235, 190, 0.55), transparent);
+      margin-top: 1.2rem;
+    }
+
+    .body {
+      padding: 1.8rem 2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+    }
+
+    .section-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #8b4513;
+      margin-bottom: 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .story-box,
+    .three-things,
+    .scripture-box,
+    .summary-box,
+    .prayer-box {
+      border-radius: 12px;
+      padding: 1.25rem 1.4rem;
+    }
+
+    .story-box {
+      background: #fffaf4;
+      border: 1px solid #f0dfc8;
+    }
+
+    .story-text {
+      font-size: 1.03rem;
+      line-height: 2;
+      color: #3a2e24;
+      text-align: justify;
+    }
+
+    .story-text p + p { margin-top: 0.9em; }
+
+    .three-things {
+      background: #fef9ef;
+      border-left: 4px solid #d4924a;
+    }
+
+    .three-things ol {
+      padding-left: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .three-things li {
+      font-size: 1.02rem;
+      line-height: 1.75;
+      color: #4a3020;
+    }
+
+    .scripture-box {
+      background: linear-gradient(135deg, #fdf3e3, #fae8cc);
+      text-align: center;
+    }
+
+    .scripture-text {
+      font-size: 1.08rem;
+      font-style: italic;
+      line-height: 1.9;
+      color: #5c3d1e;
+      font-weight: 500;
+    }
+
+    .scripture-text p + p { margin-top: 0.8em; }
+
+    .scripture-ref {
+      margin-top: 0.6rem;
+      font-size: 0.88rem;
+      color: #8b6040;
+    }
+
+    .summary-box {
+      background: #fffdf7;
+      border: 1px dashed #d9b17a;
+    }
+
+    .summary-text {
+      font-size: 1.03rem;
+      line-height: 1.9;
+      color: #4a3020;
+    }
+
+    .prayer-box {
+      background: #fdf6ee;
+      border: 1px dashed #d4a070;
+    }
+
+    .prayer-text {
+      font-size: 1.01rem;
+      line-height: 2;
+      color: #4a3020;
+    }
+
+    .prayer-text p + p { margin-top: 0.5em; }
+
+    .footer-divider {
+      text-align: center;
+      padding: 0.7rem 2rem 0.5rem;
+      font-size: 0.82rem;
+      color: #c0a080;
+      letter-spacing: 0.12em;
+      border-top: 1px solid #f0dfc8;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 0.3rem 2rem 1.2rem;
+      font-size: 0.78rem;
+      color: #b08060;
+      letter-spacing: 0.08em;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <div class="lesson-label">Lesson 13 · 2026 四月第四週</div>
+      <div class="lesson-title">羅得 — 失敗的義人</div>
+      <div class="lesson-subtitle">周三 神的警告與遲鈍的反應</div>
+      <div class="divider-line"></div>
+    </div>
+
+    <div class="body">
+      <div>
+        <div class="section-title">📖 今日故事</div>
+        <div class="story-box">
+          <div class="story-text">
+                        <p>羅得住在所多瑪後不久，城裡發生了一場大戰。敵人把人和財物都擄走了，羅得也被帶走。這其實像是一個很清楚的提醒：這個地方不安全，不是神要人久住的地方。</p>
+            <p>亞伯拉罕聽見消息後，沒有記恨羅得之前的選擇，反而立刻出手去救他，把羅得帶回來。羅得被救回來，本來可以趁機回到神的路上，但他卻又回到所多瑪，好像在心裡說：「我再住一下下，應該沒關係吧。」</p>
+            <p>後來，天使來到所多瑪時，羅得甚至坐在城門口。城門口是處理事情、作決定的地方，表示他不只是住在那裡，還越來越習慣那裡的生活。</p>
+            <p>有時候我們也像這樣：明明知道不太對，心裡的良心有提醒，卻還是想再拖一下、再玩一下、再看一下。神的警告不是要嚇我們，而是要把我們拉回來，回到祂的保護裡。</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">✨ 故事學到的三件事</div>
+        <div class="three-things">
+          <ol>
+                        <li>神有時會用環境提醒我們「這條路不對」，我們要學會聽見，別裝沒聽到。</li>
+            <li>良心小小的提醒很重要，拖拖拉拉的「再一下」常常會把人帶得更遠。</li>
+            <li>有人把我們拉回來時（像亞伯拉罕救羅得），我們要珍惜機會，快快回到神的保護和召會生活裡。</li>
+          </ol>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">📜 禱讀經文</div>
+        <div class="scripture-box">
+          <div class="scripture-text">
+                        <p>「你們要謹慎，不可棄絕那說話的。」</p>
+          </div>
+          <div class="scripture-ref">希伯來書十二章25節</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">📝 每日信息總結</div>
+        <div class="summary-box">
+          <div class="summary-text">神用提醒把我們拉回來時，我們要快快回應，不要遲鈍，也不要一直拖延。</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">🙏 一起禱告</div>
+        <div class="prayer-box">
+          <div class="prayer-text">
+                        <p>親愛的主耶穌，謝謝祢愛我，常常用各種方式提醒我，保護我不要走錯路。</p>
+            <p>主啊，當我心裡有不安、良心在提醒時，求祢讓我不裝沒聽到，也不一直拖延。</p>
+            <p>求祢給我勇氣，願意快快回轉，離開會讓我變得不好的地方，回到祢的同在和保護裡。</p>
+            <p>謝謝祢一直拉著我的手，奉主耶穌的名禱告，阿們。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-divider">——————END——————</div>
+    <div class="footer">聖經之旅 第一冊 · 蒙揀選的族類</div>
+  </div>
+</body>
+</html>

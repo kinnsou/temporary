@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>所多瑪的警戒：快快聽見神的提醒</title>
+  <meta name="description" content="從神要毀滅所多瑪的故事，學習神的提醒是出於愛，並且操練不拖延、不回頭，快快順服回到神的保護裡。" />
+  <style>
+    :root {
+      --bg: #f6f1e8;
+      --paper: #fffaf2;
+      --ink: #2f2a25;
+      --muted: #6f6559;
+      --line: #e6d7bf;
+      --gold: #c29045;
+      --gold-deep: #966b2f;
+      --olive: #6f7d55;
+      --rose: #b56a59;
+      --shadow: 0 16px 40px rgba(88, 63, 30, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.9;
+      background:
+        radial-gradient(1000px 480px at 110% -10%, rgba(194, 144, 69, 0.16), transparent 55%),
+        radial-gradient(900px 420px at -10% 100%, rgba(111, 125, 85, 0.16), transparent 55%),
+        var(--bg);
+    }
+
+    .grain::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.05;
+      background-image: radial-gradient(rgba(68, 48, 24, 0.28) 0.7px, transparent 0.7px);
+      background-size: 4px 4px;
+      z-index: 0;
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      width: min(1020px, 92vw);
+      margin: 28px auto 56px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: clamp(26px, 5vw, 48px);
+      background: linear-gradient(140deg, #fffdf8 0%, #fff5e7 100%);
+      box-shadow: var(--shadow);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      top: -120px;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(194, 144, 69, 0.28) 0%, rgba(194, 144, 69, 0) 70%);
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid #ebd6b0;
+      background: #fff7e8;
+      color: var(--gold-deep);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-family: "Noto Serif TC", "PMingLiU", serif;
+      font-size: clamp(34px, 6vw, 58px);
+      line-height: 1.15;
+      color: #2d2419;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 66ch;
+      color: var(--muted);
+      font-size: clamp(16px, 2.1vw, 19px);
+    }
+
+    .hero-actions {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+    .button.primary {
+      color: white;
+      background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%);
+      box-shadow: 0 10px 20px rgba(150, 107, 47, 0.28);
+    }
+
+    .button.secondary {
+      color: var(--ink);
+      background: rgba(255,255,255,0.74);
+      border: 1px solid var(--line);
+    }
+
+    .button:hover { transform: translateY(-1px); }
+
+    .intro-grid,
+    .content-grid,
+    .summary-grid {
+      display: grid;
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .intro-grid { grid-template-columns: 1.15fr 0.95fr; }
+    .content-grid { grid-template-columns: 1fr 1fr; }
+    .summary-grid { grid-template-columns: 1fr 1fr; }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--paper);
+      padding: 22px;
+      box-shadow: 0 10px 24px rgba(88, 63, 30, 0.08);
+    }
+
+    .card h2,
+    .card h3 {
+      margin: 0 0 12px;
+      font-family: "Noto Serif TC", serif;
+      color: #352a1e;
+      line-height: 1.45;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--gold-deep);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      font-weight: 700;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .wednesday { background: linear-gradient(180deg, #6f7d55 0%, #53613e 100%); }
+    .thursday { background: linear-gradient(180deg, #b56a59 0%, #8f4d40 100%); }
+
+    p { margin: 0 0 14px; }
+    ul, ol { margin: 0; padding-left: 22px; }
+    li + li { margin-top: 8px; }
+
+    .focus-box { background: linear-gradient(180deg, #fffdf9 0%, #f7efe2 100%); }
+
+    .scripture {
+      border-left: 4px solid var(--gold);
+      background: #fff3df;
+      border-radius: 12px;
+      padding: 14px 16px;
+      color: #5f4b31;
+      margin-top: 14px;
+    }
+
+    .prayer {
+      background: #fdf6ee;
+      border: 1px dashed #d4a070;
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .footer-note {
+      margin-top: 22px;
+      text-align: center;
+      color: #8a7a66;
+      font-size: 13px;
+    }
+
+    @media (max-width: 920px) {
+      .intro-grid,
+      .content-grid,
+      .summary-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .wrap { margin-top: 18px; }
+      .hero, .card { border-radius: 18px; }
+      .button { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body class="grain">
+  <main class="wrap">
+    <section class="hero">
+      <div class="badge-row">
+        <span class="badge">📖 主日帶讀</span>
+        <span class="badge">第十三課 · 2026 四月第四週</span>
+        <span class="badge">創世記 19 章</span>
+        <span class="badge">主題：神的毀滅</span>
+      </div>
+      <h1>快快聽見神的提醒<br>不要留戀世界</h1>
+      <p class="lead">
+        神的提醒不是要嚇人，而是要拯救。讓我們一起學習：不拖延、不回頭，快快順服。
+      </p>
+      <div class="hero-actions">
+        <a class="button primary" href="#reading">開始閱讀</a>
+        <a class="button secondary" href="#discussion">看主日重點</a>
+      </div>
+    </section>
+
+    <section class="intro-grid" aria-label="overview">
+      <article class="card">
+        <p class="eyebrow">Overview</p>
+        <h2>這一篇在提醒什麼？</h2>
+                <p>
+          所多瑪和蛾摩拉的罪惡很大，神要審判那城。但神也垂聽亞伯拉罕的代求，在審判臨到之前，先差天使去救羅得一家出來。
+        </p>
+        <p>
+          當天使提醒「這城快要被毀」時，羅得卻捨不得、拖拖拉拉。神仍然憐憫他，拉著他們的手把他們領到城外，並且叮嚀他們不要回頭看，要快快逃離危險。這給我們看見：神的提醒是愛，也是保護；我們的回應要快。
+        </p>
+      </article>
+
+      <aside class="card focus-box">
+        <p class="eyebrow">Sunday Focus</p>
+        <h2>主日可以先抓三句話</h2>
+        <ul>
+                    <li>神的提醒是愛的保護，叫我們離開危險。</li>
+          <li>順服要果斷，不拖延，也不一直回頭想世界。</li>
+          <li>跟隨主、回到召會生活裡，是最穩妥的安全路。</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="reading" class="content-grid" aria-label="reading-content">
+      <article class="card">
+        <span class="section-tag wednesday">周六｜神的毀滅</span>
+        <h2>天使的提醒與羅得的遲延</h2>
+                <p>
+          神看見所多瑪滿了邪惡，就要除去那樣的罪。祂先差天使到羅得家，告訴他：這城很快要被毀，你們要趕快離開。
+        </p>
+        <p>
+          城裡的人做了很可怕的壞事，天使也保護羅得一家，讓他們知道神的警告是真的，不能再拖下去。
+        </p>
+        <p>
+          可是羅得捨不得離開，他遲延不走。天使因著神的憐憫，拉著他們的手把他們領出城外，並且叮嚀：「不要回頭看，也不要停下來，要往安全的地方逃。」
+        </p>
+        <div class="scripture">
+          <strong>可帶的一句提醒</strong><br />
+          不要回頭看，也不要停在平原。
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="section-tag thursday">主日｜補充提醒與操練</span>
+        <h2>把心轉向神，快快順服</h2>
+                <p>
+          我們也可能像羅得一樣，對某些東西很捨不得，例如某個習慣、某個娛樂、或某個讓我們變得不好的脾氣。神提醒我們，不是要奪走快樂，而是要救我們。
+        </p>
+        <p>
+          當神提醒我們「停下來、離開」時，最好的回應就是立刻順服。把不該做的停下來，把不該看的關掉，把不該去的地方離開，然後回到禱告和召會生活裡。
+        </p>
+        <p>
+          我們領受的是「不能震動的國」，這比世界任何東西都更穩、更可靠。願主使我們的心更專一愛祂，快快跟隨祂的提醒。
+        </p>
+        <div class="scripture">
+          <strong>可帶的一句提醒</strong><br />
+          神的提醒要快快聽見，順服要快快跟上。
+        </div>
+      </article>
+    </section>
+
+    <section id="discussion" class="summary-grid" aria-label="discussion-guide">
+      <article class="card focus-box">
+        <p class="eyebrow">Lead the Group</p>
+        <h3>這篇可以帶出的三件事</h3>
+        <ol>
+                    <li>神的警告是為了拯救：祂在審判前先差天使提醒並帶人離開。</li>
+          <li>拖延會讓人更難走：捨不得、拖一下，常常就變成走不出來。</li>
+          <li>順服就安全：不回頭、不停留，快快跟隨主的帶領。</li>
+        </ol>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Discussion</p>
+        <h3>可直接帶的三個問題</h3>
+        <ul>
+                    <li>羅得為什麼會拖延？你覺得他最捨不得的是什麼？</li>
+          <li>如果你心裡知道一件事「不太對」，你通常會怎麼回應良心的提醒？</li>
+          <li>你今天可以做哪一個小決定，讓你更靠近主，也更安全？</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="summary-grid" aria-label="verse-prayer">
+      <article class="card">
+        <p class="eyebrow">Verse</p>
+        <h3>今天的經文</h3>
+        <div class="scripture">
+          「所以我們既領受了不能震動的國，就當接受恩典，藉此得以照神所喜悅的，以虔誠和畏懼事奉神；因為我們的神乃是烈火。」<br />
+          希伯來書 12:28-29
+        </div>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Prayer</p>
+        <h3>一起禱告</h3>
+        <div class="prayer">
+          親愛的主耶穌，謝謝祢用愛提醒我，保護我離開危險。<br /><br />
+          主啊，當我捨不得、想拖延時，求祢給我力量，讓我快快順服，不回頭，也不一直想著世界。<br /><br />
+          求祢使我的心更專一愛祢，願意回到祢的同在和召會生活裡，走在最安全、最穩妥的路上。奉主耶穌的名禱告，阿們。
+        </div>
+      </article>
+    </section>
+
+    <p class="footer-note">lesson13-202604w4-sun · made for Sunday gathering (two-column edition)</p>
+  </main>
+</body>
+</html>
