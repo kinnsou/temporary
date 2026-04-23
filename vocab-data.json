@@ -1,15 +1,55 @@
 {
   "meta": {
-    "updatedAt": "2026-04-22T14:01:07Z",
-    "sourceCount": 119,
-    "includedCount": 111
+    "updatedAt": "2026-04-23T11:10:15Z",
+    "sourceCount": 122,
+    "includedCount": 114
   },
   "words": [
+    {
+      "word": "bottle",
+      "meaning": "瓶子",
+      "example": "Please put some water in the bottle.",
+      "translation": "請把一些水裝進瓶子裡。",
+      "firstSeen": "2026-04-23",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "probably",
+      "meaning": "大概；可能",
+      "example": "It will probably rain tomorrow.",
+      "translation": "明天大概會下雨。",
+      "firstSeen": "2026-04-23",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "street",
+      "meaning": "街道；馬路",
+      "example": "Don't play on the street.",
+      "translation": "不要在馬路上玩。",
+      "firstSeen": "2026-04-23",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "meet",
       "meaning": "遇見；見面",
       "example": "I will meet my friend after school.",
       "translation": "我放學後要去見我的朋友。",
+      "firstSeen": "2026-04-22",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "nice",
+      "meaning": "不錯的；親切的",
+      "example": "She is a nice teacher.",
+      "translation": "她是一位很親切的老師。",
       "firstSeen": "2026-04-22",
       "pos": [
         "n"
@@ -26,13 +66,13 @@
       ]
     },
     {
-      "word": "nice",
-      "meaning": "不錯的；親切的",
-      "example": "She is a nice teacher.",
-      "translation": "她是一位很親切的老師。",
-      "firstSeen": "2026-04-22",
+      "word": "believe",
+      "meaning": "相信；信任",
+      "example": "I believe you can do it.",
+      "translation": "我相信你做得到。",
+      "firstSeen": "2026-04-21",
       "pos": [
-        "n"
+        "v"
       ]
     },
     {
@@ -56,13 +96,13 @@
       ]
     },
     {
-      "word": "believe",
-      "meaning": "相信；信任",
-      "example": "I believe you can do it.",
-      "translation": "我相信你做得到。",
-      "firstSeen": "2026-04-21",
+      "word": "dragon",
+      "meaning": "龍",
+      "example": "The dragon in the story is very strong.",
+      "translation": "故事裡的龍很強。",
+      "firstSeen": "2026-04-20",
       "pos": [
-        "v"
+        "n"
       ]
     },
     {
@@ -86,11 +126,11 @@
       ]
     },
     {
-      "word": "dragon",
-      "meaning": "龍",
-      "example": "The dragon in the story is very strong.",
-      "translation": "故事裡的龍很強。",
-      "firstSeen": "2026-04-20",
+      "word": "desk",
+      "meaning": "書桌；桌子",
+      "example": "Please put your books on the desk.",
+      "translation": "請把你的書放在桌上。",
+      "firstSeen": "2026-04-19",
       "pos": [
         "n"
       ]
@@ -110,16 +150,6 @@
       "meaning": "旅館；飯店",
       "example": "We stayed in a nice hotel last night.",
       "translation": "我們昨晚住在一間不錯的飯店。",
-      "firstSeen": "2026-04-19",
-      "pos": [
-        "n"
-      ]
-    },
-    {
-      "word": "desk",
-      "meaning": "書桌；桌子",
-      "example": "Please put your books on the desk.",
-      "translation": "請把你的書放在桌上。",
       "firstSeen": "2026-04-19",
       "pos": [
         "n"
