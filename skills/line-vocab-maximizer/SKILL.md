@@ -65,6 +65,13 @@ When the user asks to improve the scheduled LINE vocab task:
 - preserve `daughter-vocab.md` as the readable teaching log
 - preserve `daily-tasks.json` as the daily send ledger
 
+## Sync to the vocab web game (vocab-review.html)
+
+- The web game reads `vocab-data.json`, which is generated from `memory/vocab-history.json`.
+- After the 19:00 vocab send updates `vocab-history.json`, a separate cron job updates the game data:
+  - Job name: `每日更新單字遊戲詞庫` (Asia/Taipei 19:10)
+  - Script: `scripts/update_vocab_game_weekly.sh` (legacy filename)
+
 ## When LINE delivery fails
 
 Read `references/delivery-troubleshooting.md` when:
