@@ -14,7 +14,7 @@ fi
 
 git add vocab-data.json
 
-git commit -m "Update vocab-data.json (auto weekly)" || {
+git commit -m "Update vocab-data.json (auto update)" || {
   echo "Nothing to commit"
   exit 0
 }

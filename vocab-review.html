@@ -165,6 +165,39 @@
       gap: 10px;
     }
 
+    .group-head {
+      background: rgba(255,255,255,0.85);
+      border: 2px solid var(--line);
+      border-bottom-width: 4px;
+      border-radius: 14px;
+      padding: 0.75rem 1rem;
+      box-shadow: var(--shadow);
+    }
+    .group-head.focus {
+      border-color: var(--yellow);
+      background: var(--yellow-bg);
+    }
+    .group-title {
+      font-size: 0.92rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+    }
+    .group-sub {
+      margin-top: 2px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    .group-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.6);
+      border-top: 2px dashed var(--line);
+      border-bottom: 1px solid rgba(255,255,255,0.7);
+      border-radius: 99px;
+      margin: 2px 6px;
+    }
+
     .vocab-card {
       background: #fff;
       border: 2px solid var(--line);
@@ -178,6 +211,29 @@
 
     .vocab-card:hover { background: var(--paper); border-color: var(--line-2); }
     .vocab-card.open { border-color: var(--pink); background: var(--pink-bg); }
+
+    .vocab-card.focus {
+      border-color: var(--yellow);
+      background: var(--yellow-bg);
+    }
+    .vocab-card.focus:hover { border-color: var(--yellow-dark); }
+    .vocab-card.focus.open { border-color: var(--yellow-dark); background: #dcf8dc; }
+
+    .new-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #fff;
+      border: 2px solid var(--yellow);
+      border-bottom-width: 4px;
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 0.75rem;
+      font-weight: 900;
+      color: var(--yellow-dark);
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
 
     .card-head {
       display: flex;
@@ -461,6 +517,7 @@
     .lb-rank.top { color: var(--gold); }
     .lb-name { font-weight: 700; color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .lb-best { font-weight: 800; color: var(--pink-dark); }
+    .lb-streak { font-weight: 900; color: var(--yellow-dark); }
     .lb-plays { font-size: 0.78rem; color: var(--muted); }
 
     /* Quiz body */
@@ -1116,11 +1173,25 @@ function inferPosClient(w) {
   if (['red','yellow','blue','green','black','white','pink','brown','gray','grey','purple','orange'].includes(word)) return 'adj';
   if (new RegExp(`^(please\\s+)?${word}\\b`).test(ex)) return 'v';
   if (new RegExp(`^(i|you|we|they)\\s+${word}\\b`).test(ex)) return 'v';
+  if (new RegExp(`\\b(will|can|could|should|must|may|might)\\s+${word}\\b`).test(ex)) return 'v';
   if (new RegExp(`\\bto\\s+${word}\\b`).test(ex)) return 'v';
   if (new RegExp(`\\b(am|is|are|was|were|become|seem|feel|look)\\s+${word}\\b`).test(ex)) return 'adj';
   if (new RegExp(`\\b(a|an|the)\\s+${word}\\b`).test(ex)) return 'n';
   if (/的/.test(zh)) return 'adj';
   return 'n';
+}
+
+function focusDateOf(words) {
+  const dates = (words || []).map(w => String(w.firstSeen || '')).filter(Boolean);
+  if (!dates.length) return '';
+  dates.sort();
+  return dates[dates.length - 1];
+}
+
+function focusWordsOf(words) {
+  const d = focusDateOf(words);
+  if (!d) return [];
+  return (words || []).filter(w => String(w.firstSeen || '') === d).slice(0, 3);
 }
 
 function renderFooterMeta() {
@@ -1168,20 +1239,29 @@ function renderCards() {
   }
   list = list.slice().sort((a, b) => (b.firstSeen || '').localeCompare(a.firstSeen || ''));
 
-  meta.textContent = `共 ${list.length} 張單字卡（共收錄 ${VOCAB.length} 個）`;
+  const focusDate = q ? '' : focusDateOf(list);
+  const focusWords = (focusDate && !q) ? list.filter(w => String(w.firstSeen || '') === focusDate).slice(0, 3) : [];
+  const focusSet = new Set(focusWords.map(w => String(w.word || '').toLowerCase()));
+  const rest = focusWords.length ? list.filter(w => !focusSet.has(String(w.word || '').toLowerCase())) : list;
+
+  meta.textContent = focusWords.length
+    ? `今日新字 ${focusWords.length} 個 · 其他 ${rest.length} 個（共收錄 ${VOCAB.length} 個）`
+    : `共 ${list.length} 張單字卡（共收錄 ${VOCAB.length} 個）`;
 
   if (!list.length) {
     grid.innerHTML = `<div class="empty-state">找不到符合「${escapeHtml(q)}」的單字。</div>`;
     return;
   }
 
-  grid.innerHTML = list.map((v) => `
-    <div class="vocab-card" onclick="this.classList.toggle('open')">
+  function renderCard(v, isFocus) {
+    const badge = isFocus ? `<span class="new-badge">NEW</span>` : '';
+    return `
+    <div class="vocab-card ${isFocus ? 'focus' : ''}" onclick="this.classList.toggle('open')">
       <div class="card-head">
         <div class="card-left">
           <div class="vocab-word">${escapeHtml(v.word)}</div>
         </div>
-        <div class="vocab-date">${formatDate(v.firstSeen)} 學過</div>
+        <div class="vocab-date">${badge} ${formatDate(v.firstSeen)} 學過</div>
       </div>
       <div class="vocab-meaning">${escapeHtml(v.meaning)}</div>
       <div class="vocab-detail">
@@ -1192,7 +1272,33 @@ function renderCards() {
         ${posList(v.pos).map(p => `<span class="pos-dot ${posClass(p)}">${escapeHtml(posLabel(p))}</span>`).join('')}
       </div>
     </div>
-  `).join('');
+    `;
+  }
+
+  if (focusWords.length) {
+    const head = `
+      <div class="group-head focus">
+        <div class="group-title">今日 3 個新單字</div>
+        <div class="group-sub">${formatDate(focusDate)}（隔天有新字就會自動下放）</div>
+      </div>
+    `;
+    const div = `<div class="group-divider"></div>`;
+    const tailHead = rest.length ? `
+      <div class="group-head">
+        <div class="group-title">其他單字</div>
+        <div class="group-sub">往下是之前學過的</div>
+      </div>
+    ` : '';
+    grid.innerHTML = [
+      head,
+      ...focusWords.map(v => renderCard(v, true)),
+      div,
+      tailHead,
+      ...rest.map(v => renderCard(v, false)),
+    ].join('');
+  } else {
+    grid.innerHTML = list.map(v => renderCard(v, false)).join('');
+  }
 }
 
 /* ---------- Player store ---------- */
@@ -1210,6 +1316,9 @@ function loadPlayers() {
       plays: Number.isFinite(p.plays) ? p.plays : 0,
       bestScore: Number.isFinite(p.bestScore) ? p.bestScore : 0,
       recentScores: Array.isArray(p.recentScores) ? p.recentScores.slice(0, 10) : [],
+      streakCur: Number.isFinite(p.streakCur) ? p.streakCur : 0,
+      streakBest: Number.isFinite(p.streakBest) ? p.streakBest : 0,
+      lastPlayDate: String(p.lastPlayDate || ''),
     }));
   } catch (_) { return []; }
 }
@@ -1250,11 +1359,69 @@ function addPlayer(name, avatarId) {
     plays: 0,
     bestScore: 0,
     recentScores: [],
+    streakCur: 0,
+    streakBest: 0,
+    lastPlayDate: '',
   };
   players.push(p);
   savePlayers(players);
   setCurrentPlayerId(p.id);
   return p;
+}
+
+function taipeiDateKey(d = new Date()) {
+  try {
+    return new Intl.DateTimeFormat('sv-SE', {
+      timeZone: 'Asia/Taipei',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    }).format(d);
+  } catch (_) {
+    // Fallback: local date. Not perfect, but keeps the game usable.
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const dd = String(d.getDate()).padStart(2, '0');
+    return `${y}-${m}-${dd}`;
+  }
+}
+
+function dateKeyToUtcMs(k) {
+  const m = String(k || '').match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!m) return NaN;
+  return Date.UTC(parseInt(m[1], 10), parseInt(m[2], 10) - 1, parseInt(m[3], 10));
+}
+
+function applyStreak(p) {
+  const today = taipeiDateKey();
+  const last = String(p.lastPlayDate || '');
+
+  if (!last) {
+    p.streakCur = 1;
+    p.lastPlayDate = today;
+    p.streakBest = Math.max(p.streakBest || 0, p.streakCur || 0);
+    return;
+  }
+
+  const a = dateKeyToUtcMs(today);
+  const b = dateKeyToUtcMs(last);
+  if (!Number.isFinite(a) || !Number.isFinite(b)) {
+    p.streakCur = Math.max(p.streakCur || 0, 1);
+    p.lastPlayDate = today;
+    p.streakBest = Math.max(p.streakBest || 0, p.streakCur || 0);
+    return;
+  }
+
+  const diffDays = Math.round((a - b) / 86400000);
+  if (diffDays === 0) {
+    p.streakCur = Math.max(p.streakCur || 0, 1);
+  } else if (diffDays === 1) {
+    p.streakCur = (p.streakCur || 0) + 1;
+  } else {
+    p.streakCur = 1;
+  }
+  p.lastPlayDate = today;
+  p.streakBest = Math.max(p.streakBest || 0, p.streakCur || 0);
 }
 
 function recordScore(playerId, score) {
@@ -1264,6 +1431,7 @@ function recordScore(playerId, score) {
   p.plays = (p.plays || 0) + 1;
   p.bestScore = Math.max(p.bestScore || 0, score);
   p.recentScores = [score, ...(p.recentScores || [])].slice(0, 10);
+  applyStreak(p);
   savePlayers(players);
 }
 
@@ -1286,6 +1454,7 @@ const FS_COMMIT = `https://firestore.googleapis.com/v1/projects/${firebaseConfig
 const CLOUD = {
   status: 'idle',  // 'idle' | 'loading' | 'ok' | 'offline'
   entries: [],     // array of { name, avatarId, plays, bestScore, recentScores, updatedAt }
+  streakEntries: [],
   lastError: '',
   lastWriteOk: null,
   lastWriteAt: '',
@@ -1333,6 +1502,9 @@ function fsDocToEntry(doc) {
     plays: fsNum(f.plays),
     bestScore: fsNum(f.bestScore),
     recentScores: fsArrInt(f.recentScores),
+    streakCur: fsNum(f.streakCur),
+    streakBest: fsNum(f.streakBest),
+    lastPlayDate: fsStr(f.lastPlayDate),
     updatedAt: fsStr(f.updatedAt),
   };
 }
@@ -1348,47 +1520,67 @@ function entryToFsFields(e) {
         values: (e.recentScores || []).map(n => ({ integerValue: String(n | 0) }))
       }
     },
+    streakCur: { integerValue: String((e.streakCur || 0) | 0) },
+    streakBest: { integerValue: String((e.streakBest || 0) | 0) },
+    lastPlayDate: { stringValue: String(e.lastPlayDate || '') },
     updatedAt: { stringValue: e.updatedAt || new Date().toISOString() },
   };
+}
+
+async function cloudRunQuery(orderField, limit = 50) {
+  const res = await fetch(`${FS_BASE}:runQuery?key=${firebaseConfig.apiKey}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      structuredQuery: {
+        from: [{ collectionId: 'leaderboard' }],
+        orderBy: [
+          { field: { fieldPath: String(orderField) }, direction: 'DESCENDING' },
+        ],
+        limit,
+      },
+    }),
+  });
+  if (!res.ok) {
+    const t = await res.text().catch(() => '');
+    throw new Error(`runQuery(${orderField}) ${res.status} ${t}`.slice(0, 500));
+  }
+  const rows = await res.json();
+  const entries = [];
+  for (const row of rows) {
+    if (row && row.document) entries.push(fsDocToEntry(row.document));
+  }
+  return entries;
 }
 
 async function cloudFetchLeaderboard() {
   CLOUD.status = 'loading';
   CLOUD.lastError = '';
   try {
-    const res = await fetch(`${FS_BASE}:runQuery?key=${firebaseConfig.apiKey}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        structuredQuery: {
-          from: [{ collectionId: 'leaderboard' }],
-          // IMPORTANT: avoid composite-index requirement by ordering on a single field.
-          // We sort by updatedAt client-side after fetch.
-          orderBy: [
-            { field: { fieldPath: 'bestScore' }, direction: 'DESCENDING' },
-          ],
-          limit: 50,
-        },
-      }),
-    });
-    if (!res.ok) {
-      const t = await res.text().catch(() => '');
-      CLOUD.lastError = `runQuery ${res.status} ${t}`.slice(0, 500);
-      throw new Error('HTTP ' + res.status);
-    }
-    const rows = await res.json();
-    const entries = [];
-    for (const row of rows) {
-      if (row && row.document) entries.push(fsDocToEntry(row.document));
-    }
-    // Secondary sort (stable-ish): updatedAt desc
-    entries.sort((a,b) => (
+    // Best-score leaderboard (primary)
+    const best = await cloudRunQuery('bestScore', 80);
+    best.sort((a,b) => (
       (b.bestScore||0) - (a.bestScore||0) ||
       String(b.updatedAt||'').localeCompare(String(a.updatedAt||''))
     ));
-    CLOUD.entries = entries;
+    CLOUD.entries = best;
+
+    // Streak leaderboard (optional). If this fails, keep the game playable.
+    try {
+      const streak = await cloudRunQuery('streakCur', 80);
+      streak.sort((a,b) => (
+        (b.streakCur||0) - (a.streakCur||0) ||
+        (b.bestScore||0) - (a.bestScore||0) ||
+        String(b.updatedAt||'').localeCompare(String(a.updatedAt||''))
+      ));
+      CLOUD.streakEntries = streak;
+    } catch (e2) {
+      CLOUD.streakEntries = [];
+      // Keep lastError empty here (we don't want scary UI if best works).
+    }
+
     CLOUD.status = 'ok';
-    return entries;
+    return best;
   } catch (e) {
     CLOUD.status = 'offline';
     if (!CLOUD.lastError) CLOUD.lastError = String(e && e.message ? e.message : e);
@@ -1413,13 +1605,42 @@ async function cloudUpsertScore(name, avatarId, score) {
   const id = cloudDocId(name);
   if (!id || id === '_') return false;
   const prev = await cloudGetEntry(name);
-  const base = prev || { plays: 0, bestScore: 0, recentScores: [], avatarId: DEFAULT_AVATAR };
+  const base = prev || { plays: 0, bestScore: 0, recentScores: [], avatarId: DEFAULT_AVATAR, streakCur: 0, streakBest: 0, lastPlayDate: '' };
+
+  // Streak is based on Taipei date to match the daily vocab cadence.
+  const today = taipeiDateKey();
+  const last = String(base.lastPlayDate || '');
+  let streakCur = base.streakCur || 0;
+  let streakBest = base.streakBest || 0;
+  let lastPlayDate = last;
+  if (!last) {
+    streakCur = 1;
+    lastPlayDate = today;
+  } else {
+    const a = dateKeyToUtcMs(today);
+    const b = dateKeyToUtcMs(last);
+    const diffDays = (Number.isFinite(a) && Number.isFinite(b)) ? Math.round((a - b) / 86400000) : NaN;
+    if (diffDays === 0) {
+      streakCur = Math.max(streakCur, 1);
+    } else if (diffDays === 1) {
+      streakCur = (streakCur || 0) + 1;
+      lastPlayDate = today;
+    } else {
+      streakCur = 1;
+      lastPlayDate = today;
+    }
+  }
+  streakBest = Math.max(streakBest || 0, streakCur || 0);
+
   const entry = {
     name: String(name || '').trim().slice(0, 40),
     avatarId: normalizeAvatarId(avatarId || base.avatarId || DEFAULT_AVATAR),
     plays: (base.plays || 0) + 1,
     bestScore: Math.max(base.bestScore || 0, score | 0),
     recentScores: [score | 0, ...(base.recentScores || [])].slice(0, 10),
+    streakCur,
+    streakBest,
+    lastPlayDate,
     updatedAt: new Date().toISOString(),
   };
   try {
@@ -1611,7 +1832,8 @@ function renderQuizHome(player) {
     </div>
     <div style="text-align:center;font-size:.9rem;color:var(--ink-soft);margin-bottom:1rem;">
       最佳分數：<b style="color:var(--pink-dark)">${player.bestScore||0}</b> ·
-      玩過次數：<b>${player.plays||0}</b>
+      玩過次數：<b>${player.plays||0}</b> ·
+      連續練習：<b>${player.streakCur||0}</b> 天
       ${player.recentScores && player.recentScores.length
         ? `<br>最近分數：${player.recentScores.map(s=>`<span style="display:inline-block;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:1px 7px;margin:2px 3px 0;font-weight:700;">${s}</span>`).join('')}`
         : ''}
@@ -1746,7 +1968,8 @@ function renderLeaderboardHtml(highlightId) {
   const curPlayer = highlightId ? findPlayer(highlightId) : null;
   const curName = curPlayer ? curPlayer.name : '';
 
-  let rows = '';
+  let rowsBest = '';
+  let rowsStreak = '';
   let badge = '';
 
   const cloudNote = (CLOUD.lastWriteOk === false && CLOUD.lastError)
@@ -1755,17 +1978,28 @@ function renderLeaderboardHtml(highlightId) {
 
   if (CLOUD.status === 'ok') {
     const entries = CLOUD.entries || [];
+    const sEntries = (CLOUD.streakEntries && CLOUD.streakEntries.length) ? CLOUD.streakEntries : entries;
     badge = `<span style="font-size:.7rem;font-weight:700;color:var(--ok-dark);margin-left:6px;letter-spacing:.05em;">雲端</span>`;
     if (!entries.length) {
-      rows = `<div style="font-size:.85rem;color:var(--muted);padding:6px 10px;">雲端上還沒有任何玩家，快來搶第一！</div>`;
+      rowsBest = `<div style="font-size:.85rem;color:var(--muted);padding:6px 10px;">雲端上還沒有任何玩家，快來搶第一！</div>`;
+      rowsStreak = `<div style="font-size:.85rem;color:var(--muted);padding:6px 10px;">先玩一次，連續練習就會開始計算。</div>`;
     } else {
-      rows = entries.map((p, i) => `
+      rowsBest = entries.map((p, i) => `
         <div class="lb-row ${p.name === curName ? 'me' : ''}">
           <div class="lb-rank ${i < 3 ? 'top' : ''}">${i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : (i+1)}</div>
           <div>${renderAvatar(p.avatarId, { size: 'sm' })}</div>
           <div class="lb-name">${escapeHtml(p.name)}</div>
           <div class="lb-best">${p.bestScore||0}</div>
           <div class="lb-plays">${p.plays||0} 次</div>
+        </div>
+      `).join('');
+      rowsStreak = sEntries.map((p, i) => `
+        <div class="lb-row ${p.name === curName ? 'me' : ''}">
+          <div class="lb-rank ${i < 3 ? 'top' : ''}">${i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : (i+1)}</div>
+          <div>${renderAvatar(p.avatarId, { size: 'sm' })}</div>
+          <div class="lb-name">${escapeHtml(p.name)}</div>
+          <div class="lb-streak">${p.streakCur||0} 天</div>
+          <div class="lb-plays">最高 ${p.bestScore||0}</div>
         </div>
       `).join('');
     }
@@ -1777,7 +2011,7 @@ function renderLeaderboardHtml(highlightId) {
     badge = CLOUD.status === 'offline'
       ? `<span style="font-size:.7rem;font-weight:700;color:var(--red-dark);margin-left:6px;letter-spacing:.05em;">雲端未連線，顯示本機</span>`
       : `<span style="font-size:.7rem;font-weight:700;color:var(--muted);margin-left:6px;letter-spacing:.05em;">本機</span>`;
-    rows = players.map((p, i) => `
+    rowsBest = players.map((p, i) => `
       <div class="lb-row ${p.id === highlightId ? 'me' : ''}">
         <div class="lb-rank ${i < 3 ? 'top' : ''}">${i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : (i+1)}</div>
         <div>${renderAvatar(p.avatarId, { size: 'sm' })}</div>
@@ -1786,16 +2020,31 @@ function renderLeaderboardHtml(highlightId) {
         <div class="lb-plays">${p.plays||0} 次</div>
       </div>
     `).join('');
-    if (!players.length) {
-      rows = `<div style="font-size:.85rem;color:var(--muted);padding:6px 10px;">還沒有紀錄。</div>`;
-    }
+    const playersByStreak = loadPlayers().slice().sort((a,b) =>
+      (b.streakCur||0) - (a.streakCur||0) || (b.bestScore||0) - (a.bestScore||0) || (b.plays||0) - (a.plays||0)
+    );
+    rowsStreak = playersByStreak.map((p, i) => `
+      <div class="lb-row ${p.id === highlightId ? 'me' : ''}">
+        <div class="lb-rank ${i < 3 ? 'top' : ''}">${i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : (i+1)}</div>
+        <div>${renderAvatar(p.avatarId, { size: 'sm' })}</div>
+        <div class="lb-name">${escapeHtml(p.name)}</div>
+        <div class="lb-streak">${p.streakCur||0} 天</div>
+        <div class="lb-plays">最高 ${p.bestScore||0}</div>
+      </div>
+    `).join('');
+
+    if (!players.length) rowsBest = `<div style="font-size:.85rem;color:var(--muted);padding:6px 10px;">還沒有紀錄。</div>`;
+    if (!playersByStreak.length) rowsStreak = `<div style="font-size:.85rem;color:var(--muted);padding:6px 10px;">還沒有紀錄。</div>`;
   }
 
   return `
     <div id="lb-container" class="leaderboard">
-      <h3>🏆 排行榜 ${badge}</h3>
+      <h3>🏆 最高分排行榜 ${badge}</h3>
       ${cloudNote}
-      ${rows}
+      ${rowsBest}
+      <div style="height:10px"></div>
+      <h3>🔥 連續練習排行榜 ${badge}</h3>
+      ${rowsStreak}
     </div>
   `;
 }
@@ -1804,7 +2053,10 @@ function renderLeaderboardHtml(highlightId) {
 
 function buildQuizItems(words, n) {
   const verbs = words.filter(w => looksLikeVerb(w.word, w.example));
-  const pool = shuffle(words).slice(0, Math.min(n, words.length));
+  const focus = focusWordsOf(words);
+  const focusSet = new Set(focus.map(w => String(w.word || '').toLowerCase()));
+  const rest = shuffle(words.filter(w => !focusSet.has(String(w.word || '').toLowerCase())));
+  const pool = [...focus, ...rest].slice(0, Math.min(n, words.length));
 
   // Decide per-slot types.
   // We want up to MAX_CLOZE cloze items, and sprinkle tense items when possible.
