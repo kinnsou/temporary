@@ -1,39 +1,36 @@
 <!DOCTYPE html>
-<!-- vocab-review.html v1.4.2 — Cloud leaderboard + 7 PNG avatars (chara01~07). -->
+<!-- vocab-review.html v2.0 — CLAW ENG rebrand with onboarding + pet claim flow. 8 pet characters (newcha1~08). -->
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>單字複習小教室</title>
+  <title>CLAW ENG 單字複習小教室</title>
   <style>
     :root {
-      /* Sky / grass (Chiikawa vibe: blue sky + green ground) */
-      --pink: #5dbcf3;        /* primary (sky) */
-      --pink-dark: #2a86c8;
-      --pink-light: #cfeeff;
-      --pink-bg: #eaf7ff;
-      --yellow: #67d667;      /* accent (grass) */
-      --yellow-dark: #2faa44;
-      --yellow-bg: #e9fce9;
-      /* Semantic "correct" (kept so right/wrong still read clearly) */
-      --ok: #7fcf7a;
-      --ok-dark: #4fa84f;
+      --pink: #b87de8;
+      --pink-dark: #9a5cd0;
+      --pink-light: #e8d5f8;
+      --pink-bg: #fdf6ff;
+      --yellow: #4CAF82;
+      --yellow-dark: #3a9a6c;
+      --yellow-bg: #e5f5e0;
+      --ok: #4CAF82;
+      --ok-dark: #3a9a6c;
       --ok-bg: #e5f5e0;
-      /* Secondary blue — muted sky, matches hachiware */
-      --blue: #88c4e8;
-      --blue-dark: #5ea9d1;
-      --red: #ff6f91;
+      --blue: #a78bfa;
+      --blue-dark: #7c5cc8;
+      --red: #FF4D6D;
       --red-dark: #e34e74;
       --red-bg: #ffe0e9;
-      --gold: #ffc84a;
-      --ink: #462e31;
-      --ink-soft: #6a4d50;
-      --muted: #a08489;
-      --line: #cfeeff;
-      --line-2: #a9ddff;
-      --bg: #eef9ff;
-      --paper: #f8fdff;
-      --shadow: 0 2px 0 rgba(70,46,49,0.08);
+      --gold: #FFB800;
+      --ink: #1a1a2e;
+      --ink-soft: #555;
+      --muted: #aaa;
+      --line: #f0eaea;
+      --line-2: #e0d5f0;
+      --bg: #fdf6ff;
+      --paper: #fff;
+      --shadow: 0 2px 0 rgba(0,0,0,0.06);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
@@ -42,19 +39,7 @@
     body {
       font-family: "Nunito", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei",
                    -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at 18% 22%, rgba(255,255,255,0.95) 0 28px, transparent 30px),
-        radial-gradient(circle at 30% 18%, rgba(255,255,255,0.9) 0 36px, transparent 38px),
-        radial-gradient(circle at 42% 22%, rgba(255,255,255,0.95) 0 26px, transparent 28px),
-        radial-gradient(circle at 76% 20%, rgba(255,255,255,0.9) 0 34px, transparent 36px),
-        radial-gradient(circle at 86% 24%, rgba(255,255,255,0.95) 0 24px, transparent 26px),
-        radial-gradient(rgba(93,188,243,0.10) 1.2px, transparent 1.6px) 0 0 / 22px 22px,
-        linear-gradient(180deg,
-          #bfe9ff 0%,
-          #bfe9ff 62%,
-          #c8f6c2 62%,
-          #c8f6c2 100%
-        );
+      background: linear-gradient(170deg, #fdf6ff 0%, #f0fdf4 100%);
       background-attachment: fixed;
       color: var(--ink);
       min-height: 100vh;
@@ -128,6 +113,21 @@
     .panel.active { display: block; }
 
     @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
+    @keyframes pop { from{transform:scale(0.93)} to{transform:scale(1)} }
+    @keyframes confettiFall { 0%{transform:translateY(-10px) rotate(0);opacity:1} 100%{transform:translateY(160px) rotate(600deg);opacity:0} }
+
+    #onboarding-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: linear-gradient(170deg, #fdf6ff 0%, #f0fdf4 100%);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    #onboarding-overlay::-webkit-scrollbar { display: none; }
 
     /* === Cards tab === */
     .search-bar {
@@ -804,8 +804,9 @@
   </style>
 </head>
 <body>
+  <div id="onboarding-overlay" style="display:none;"></div>
   <div class="header">
-    <div class="header-title">🦉 單字複習小教室</div>
+    <div class="header-title">🐾 CLAW ENG 單字複習小教室</div>
     <div class="header-sub">學過的單字 · 每週自動更新</div>
   </div>
 
@@ -831,69 +832,70 @@
       </div>
     </div>
 
-    <div class="page-footer" id="page-footer">單字複習小教室</div>
+    <div class="page-footer" id="page-footer">CLAW ENG 單字複習小教室</div>
   </div>
 
 <script>
 /* =========================================================================
-   Vocab Review — v1.1
+   CLAW ENG Vocab Review — v2.0
    Data: vocab-data.json
-   localStorage keys:
+   localStorage keys (preserved):
      vocabReview.v1.players         — array of player objects
      vocabReview.v1.currentPlayerId — string (selected player id)
-   Player schema (backwards-compatible; new field: avatarId):
-     { id, name, avatarId, createdAt, plays, bestScore, recentScores:number[] (<=10, newest first) }
-   Question types:
-     'cloze'  — English sentence with blank + zh hint → type the word
-     'zh2en'  — Chinese meaning → pick correct English word (4 options)
-     'tense'  — English sentence with blank + time hint → pick correct tense (4 options)
+   New localStorage key:
+     vocabReview.v1.petClaims       — { [petId]: { ownerPlayerId, ownerName, password, claimedAt, updatedAt } }
+   Player schema: { id, name, avatarId, createdAt, plays, bestScore, recentScores[] }
+   Question types: 'cloze', 'zh2en', 'tense'
    ========================================================================= */
 
 const LS_PLAYERS = 'vocabReview.v1.players';
 const LS_CURRENT = 'vocabReview.v1.currentPlayerId';
+const LS_CLAIMS  = 'vocabReview.v1.petClaims';
 const QUIZ_LEN   = 20;
 const MAX_CLOZE  = 5;       // cap: at most 5 cloze-input questions per quiz
-const DEFAULT_AVATAR = 'chara01';
+const DEFAULT_AVATAR = 'newcha1';
 
 let VOCAB = [];
 let VOCAB_META = null;
 
-/* ---------- Avatars (static images provided by Mark) ---------- */
+/* ---------- Characters (8 CLAW ENG pets) ---------- */
 
-// Avatar ids follow Chiikawa official numbering.
-// Keep legacy ids compatible: chiika/hachi/usagi -> chara01/02/03.
-const AVATARS = {
-  chara01: { name: 'ちいかわ', src: 'assets/avatars/chara01.png' },
-  chara02: { name: 'ハチワレ', src: 'assets/avatars/chara02.png' },
-  chara03: { name: 'うさぎ',   src: 'assets/avatars/chara03.png' },
-  chara04: { name: '角色4',    src: 'assets/avatars/chara04.png' },
-  chara05: { name: '角色5',    src: 'assets/avatars/chara05.png' },
-  chara06: { name: '角色6',    src: 'assets/avatars/chara06.png' },
-  chara07: { name: '角色7',    src: 'assets/avatars/chara07.png' },
+const CHARACTERS = [
+  { id: 'newcha1', name: '奶油貓', desc: '愛撒嬌的貓咪', src: 'Claw_ENG/design_handoff/assets/newcha1.png' },
+  { id: 'newcha2', name: '布丁狗', desc: '忠心的好夥伴', src: 'Claw_ENG/design_handoff/assets/newcha2.png' },
+  { id: 'newcha3', name: '胖河馬', desc: '萌萌的大塊頭', src: 'Claw_ENG/design_handoff/assets/newcha3.png' },
+  { id: 'newcha4', name: '泡泡魚', desc: '藍藍的海洋寶', src: 'Claw_ENG/design_handoff/assets/newcha4.png' },
+  { id: 'newcha5', name: '點點獸', desc: '斑點小可愛',   src: 'Claw_ENG/design_handoff/assets/newcha5.png' },
+  { id: 'newcha6', name: '圓滾雞', desc: '圓圓愛學習',   src: 'Claw_ENG/design_handoff/assets/newcha6.png' },
+  { id: 'newcha7', name: '六角龍', desc: '粉紅小精靈',   src: 'Claw_ENG/design_handoff/assets/newcha7.png' },
+  { id: 'newcha8', name: '豹豹',   desc: '威風的小獵豹', src: 'Claw_ENG/design_handoff/assets/newcha8.png' },
+];
+
+const CHAR_MAP = Object.fromEntries(CHARACTERS.map(c => [c.id, c]));
+const CHAR_ORDER = CHARACTERS.map(c => c.id);
+
+const AVATAR_COMPAT = {
+  chara01:'newcha1', chara02:'newcha2', chara03:'newcha3', chara04:'newcha4',
+  chara05:'newcha5', chara06:'newcha6', chara07:'newcha7',
+  chiika:'newcha1', hachi:'newcha2', usagi:'newcha3',
 };
-
-const AVATAR_ORDER = ['chara01','chara02','chara03','chara04','chara05','chara06','chara07'];
 
 function normalizeAvatarId(id) {
   const s = String(id || '').trim();
-  if (AVATARS[s]) return s;
-  // legacy
-  if (s === 'chiika') return 'chara01';
-  if (s === 'hachi') return 'chara02';
-  if (s === 'usagi') return 'chara03';
+  if (CHAR_MAP[s]) return s;
+  if (AVATAR_COMPAT[s]) return AVATAR_COMPAT[s];
   return DEFAULT_AVATAR;
 }
 
 function avatarSrc(id) {
-  const a = AVATARS[normalizeAvatarId(id)] || AVATARS[DEFAULT_AVATAR];
-  return a.src;
+  const c = CHAR_MAP[normalizeAvatarId(id)];
+  return c ? c.src : CHARACTERS[0].src;
 }
 
 function renderAvatar(id, { size = '', animated = false } = {}) {
   const cls = ['avatar'];
   if (size === 'sm') cls.push('avatar-sm');
   if (size === 'lg') cls.push('avatar-lg');
-  // Mark requested static (no animation). Keep the param for compatibility, but do not animate.
   return `<span class="${cls.join(' ')}" aria-hidden="true"><img src="${escapeHtml(avatarSrc(id))}" alt="" /></span>`;
 }
 
@@ -1196,12 +1198,12 @@ function focusWordsOf(words) {
 
 function renderFooterMeta() {
   const f = document.getElementById('page-footer');
-  const tag = 'v1.4';
+  const tag = 'v2.0';
   if (VOCAB_META && VOCAB_META.updatedAt) {
     const d = VOCAB_META.updatedAt.replace('T',' ').replace('Z',' UTC');
-    f.textContent = `單字複習小教室 ${tag} · 共 ${VOCAB.length} 個單字 · 更新於 ${d}`;
+    f.textContent = `CLAW ENG ${tag} · 共 ${VOCAB.length} 個單字 · 更新於 ${d}`;
   } else {
-    f.textContent = `單字複習小教室 ${tag} · 共 ${VOCAB.length} 個單字`;
+    f.textContent = `CLAW ENG ${tag} · 共 ${VOCAB.length} 個單字`;
   }
 }
 
@@ -1687,16 +1689,380 @@ function refreshLeaderboardUI(highlightId) {
   else el.remove();
 }
 
+/* ---------- Pet claim system ---------- */
+
+function loadClaims() {
+  try { return JSON.parse(localStorage.getItem(LS_CLAIMS) || '{}'); } catch { return {}; }
+}
+
+function saveClaims(c) {
+  try { localStorage.setItem(LS_CLAIMS, JSON.stringify(c)); } catch {}
+}
+
+function getClaimOwner(petId) {
+  return loadClaims()[petId] || null;
+}
+
+function genPassword() {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  return Array.from({length: 6}, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+}
+
+function claimPet(player, petId) {
+  const claims = loadClaims();
+  for (const id of Object.keys(claims)) {
+    if (claims[id].ownerPlayerId === player.id && id !== petId) delete claims[id];
+  }
+  const now = new Date().toISOString();
+  const pw = genPassword();
+  claims[petId] = {
+    ownerPlayerId: player.id,
+    ownerName: player.name,
+    password: pw,
+    claimedAt: now,
+    updatedAt: now,
+  };
+  saveClaims(claims);
+  return pw;
+}
+
+function transferPet(player, petId, password) {
+  const claims = loadClaims();
+  const claim = claims[petId];
+  if (!claim) return { ok: false, error: 'not_claimed' };
+  if (claim.password !== String(password || '').toUpperCase()) return { ok: false, error: 'wrong_password' };
+  for (const id of Object.keys(claims)) {
+    if (claims[id].ownerPlayerId === player.id && id !== petId) delete claims[id];
+  }
+  const now = new Date().toISOString();
+  const newPw = genPassword();
+  claims[petId] = {
+    ownerPlayerId: player.id,
+    ownerName: player.name,
+    password: newPw,
+    claimedAt: now,
+    updatedAt: now,
+  };
+  saveClaims(claims);
+  return { ok: true, password: newPw };
+}
+
+function releaseClaimsForPlayer(playerId) {
+  const claims = loadClaims();
+  let changed = false;
+  for (const petId of Object.keys(claims)) {
+    if (claims[petId].ownerPlayerId === playerId) {
+      delete claims[petId];
+      changed = true;
+    }
+  }
+  if (changed) saveClaims(claims);
+}
+
+function playerHasValidClaim(playerOrId) {
+  const player = typeof playerOrId === 'string' ? findPlayer(playerOrId) : playerOrId;
+  if (!player) return false;
+  const claim = getClaimOwner(normalizeAvatarId(player.avatarId));
+  if (!claim) return false;
+  if (claim.ownerPlayerId) return claim.ownerPlayerId === player.id;
+  return claim.ownerName === player.name;
+}
+
+/* ---------- Onboarding ---------- */
+
+let obState = { step: 1, name: '', selectedPet: null, password: '', verifiedPassword: '' };
+
+function needsOnboarding() {
+  const curId = getCurrentPlayerId();
+  if (!curId) return true;
+  const player = findPlayer(curId);
+  if (!player) return true;
+  return !playerHasValidClaim(curId);
+}
+
+function showOnboarding(prefillName) {
+  obState = { step: 1, name: prefillName || '', selectedPet: null, password: '', verifiedPassword: '' };
+  const el = document.getElementById('onboarding-overlay');
+  el.style.display = 'flex';
+  if (prefillName && findPlayer(getCurrentPlayerId())) {
+    obState.step = 2;
+    renderOnboardingPet();
+  } else {
+    renderOnboardingName();
+  }
+}
+
+function hideOnboarding() {
+  document.getElementById('onboarding-overlay').style.display = 'none';
+}
+
+function renderOnboardingName() {
+  const el = document.getElementById('onboarding-overlay');
+  const pc = getComputedStyle(document.documentElement).getPropertyValue('--pink').trim() || '#b87de8';
+  el.innerHTML = `
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 28px;gap:24px;">
+      <div style="animation:float 3s ease-in-out infinite;">
+        <img src="${CHARACTERS[0].src}" alt="" style="width:100px;height:100px;object-fit:contain;" />
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:26px;font-weight:900;color:#1a1a2e;">歡迎來到</div>
+        <div style="font-size:28px;font-weight:900;color:${pc};">CLAW ENG！</div>
+        <div style="font-size:13px;color:#aaa;margin-top:6px;">先告訴我你的名字吧 😊</div>
+      </div>
+      <div style="width:100%;">
+        <input type="text" id="ob-name" placeholder="輸入你的名字…" maxlength="10"
+          value="${escapeHtml(obState.name)}"
+          style="width:100%;padding:16px 20px;border-radius:18px;border:2px solid #e8e0f8;
+            font-size:18px;font-weight:800;color:#1a1a2e;outline:none;
+            font-family:Nunito,sans-serif;background:#fff;
+            box-shadow:0 2px 12px ${pc}22;" />
+        <div id="ob-name-err" style="font-size:12px;color:#FF4D6D;font-weight:700;margin-top:6px;padding-left:4px;display:none;"></div>
+      </div>
+      <button onclick="obGoStep2()" style="width:100%;padding:17px;border-radius:20px;border:none;cursor:pointer;
+        background:linear-gradient(135deg,${pc},${pc}bb);font-size:17px;font-weight:900;color:#fff;
+        box-shadow:0 5px 18px ${pc}44;font-family:Nunito,sans-serif;">下一步 →</button>
+    </div>
+  `;
+  const inp = document.getElementById('ob-name');
+  inp.focus();
+  inp.addEventListener('keydown', e => { if (e.key === 'Enter') obGoStep2(); });
+}
+
+function obGoStep2() {
+  const inp = document.getElementById('ob-name');
+  const name = (inp.value || '').trim();
+  if (!name) {
+    const err = document.getElementById('ob-name-err');
+    err.textContent = '請輸入你的名字！';
+    err.style.display = 'block';
+    return;
+  }
+  if (name.length > 10) {
+    const err = document.getElementById('ob-name-err');
+    err.textContent = '名字最多10個字喔！';
+    err.style.display = 'block';
+    return;
+  }
+  obState.name = name;
+  obState.step = 2;
+  renderOnboardingPet();
+}
+
+function renderOnboardingPet() {
+  const el = document.getElementById('onboarding-overlay');
+  const pc = getComputedStyle(document.documentElement).getPropertyValue('--pink').trim() || '#b87de8';
+  const claims = loadClaims();
+  const name = obState.name;
+  const existingPlayer = loadPlayers().find(p => p.name === name);
+  const myPlayerId = existingPlayer ? existingPlayer.id : null;
+
+  const gridHtml = CHARACTERS.map((c, i) => {
+    const claim = claims[c.id];
+    const isMine = claim && (
+      (myPlayerId && claim.ownerPlayerId === myPlayerId) ||
+      (!myPlayerId && claim.ownerName === name)
+    );
+    const isClaimed = !!claim && !isMine;
+    const isSel = obState.selectedPet === i;
+    const border = isSel ? `border-color:${pc};background:${pc}12;box-shadow:0 4px 14px ${pc}33;` : '';
+    const filter = isClaimed ? 'filter:grayscale(0.3);' : '';
+    let badge = '';
+    if (isSel) badge = `<div style="position:absolute;top:5px;right:5px;width:16px;height:16px;border-radius:50%;background:${pc};display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;font-weight:900;">✓</div>`;
+    else if (isClaimed) badge = '<div style="position:absolute;top:5px;right:5px;font-size:14px;">🔒</div>';
+    else if (isMine) badge = '<div style="position:absolute;top:5px;right:5px;width:16px;height:16px;border-radius:50%;background:#4CAF82;display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;">✓</div>';
+    const ownerLine = isClaimed ? `<div style="font-size:9px;color:#bbb;font-weight:700;">${escapeHtml(claim.ownerName)} 的</div>` : '';
+    return `
+      <button onclick="obTrySelectPet(${i})" style="padding:12px 6px 10px;border-radius:18px;
+        border:2.5px solid #f0eaea;background:#fff;cursor:pointer;transition:all 0.18s;
+        display:flex;flex-direction:column;align-items:center;gap:3;
+        position:relative;font-family:Nunito,sans-serif;${isClaimed?'opacity:0.7;':''}${border}">
+        ${badge}
+        <img src="${escapeHtml(c.src)}" alt="${escapeHtml(c.name)}" style="width:56px;height:56px;object-fit:contain;${filter}" />
+        <div style="font-size:11px;font-weight:900;color:${isSel ? pc : '#1a1a2e'};">${escapeHtml(c.name)}</div>
+        ${ownerLine}
+      </button>`;
+  }).join('');
+
+  el.innerHTML = `
+    <div style="padding:48px 20px 8px;display:flex;align-items:center;gap:12px;flex-shrink:0;">
+      <button onclick="obState.step=1;renderOnboardingName();" style="width:38px;height:38px;border-radius:12px;border:none;background:rgba(0,0,0,0.06);cursor:pointer;font-size:17px;font-family:Nunito,sans-serif;">←</button>
+      <div style="flex:1;">
+        <div style="font-size:17px;font-weight:900;color:#1a1a2e;">選一隻寵物，${escapeHtml(name)}！</div>
+        <div style="font-size:12px;color:#aaa;">🔒 已被其他同學認養的需要密碼</div>
+      </div>
+    </div>
+    <div style="flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:8px 16px 16px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">${gridHtml}</div>
+    </div>
+    <div style="padding:0 16px 28px;flex-shrink:0;">
+      <button onclick="obConfirmPet()" style="width:100%;padding:17px;border-radius:20px;border:none;cursor:pointer;
+        background:linear-gradient(135deg,${pc},${pc}bb);font-size:16px;font-weight:900;color:#fff;
+        box-shadow:0 5px 18px ${pc}44;font-family:Nunito,sans-serif;
+        opacity:${obState.selectedPet !== null ? '1' : '0.4'};transition:opacity 0.2s;">
+        確認，這是我的寵物！🐾</button>
+    </div>
+    <div id="ob-modal"></div>
+  `;
+}
+
+function obTrySelectPet(i) {
+  const c = CHARACTERS[i];
+  const claims = loadClaims();
+  const claim = claims[c.id];
+  const existingPlayer = loadPlayers().find(p => p.name === obState.name);
+  const myId = existingPlayer ? existingPlayer.id : null;
+  const isMine = claim && (
+    (myId && claim.ownerPlayerId === myId) ||
+    (!myId && claim.ownerName === obState.name)
+  );
+  if (!claim || isMine) {
+    obState.selectedPet = i;
+    renderOnboardingPet();
+  } else {
+    renderClaimPasswordModal(i, c, claim);
+  }
+}
+
+function renderClaimPasswordModal(charIdx, char, claim) {
+  const pc = getComputedStyle(document.documentElement).getPropertyValue('--pink').trim() || '#b87de8';
+  const modal = document.getElementById('ob-modal');
+  modal.innerHTML = `
+    <div style="position:fixed;inset:0;background:rgba(0,0,0,0.45);display:flex;align-items:center;justify-content:center;z-index:200;padding:24px;" onclick="if(event.target===this)document.getElementById('ob-modal').innerHTML='';">
+      <div style="background:#fff;border-radius:24px;padding:26px;width:100%;max-width:340px;animation:pop 0.2s ease-out;" onclick="event.stopPropagation();">
+        <div style="text-align:center;margin-bottom:16px;">
+          <img src="${escapeHtml(char.src)}" alt="" style="width:72px;height:72px;object-fit:contain;" />
+          <div style="font-size:16px;font-weight:900;color:#1a1a2e;margin-top:8px;">🔒 ${escapeHtml(char.name)} 已被 ${escapeHtml(claim.ownerName)} 認養</div>
+          <div style="font-size:12px;color:#aaa;margin-top:4px;">請輸入密碼來認領這隻寵物</div>
+        </div>
+        <input type="text" id="ob-pw-input" placeholder="輸入密碼…" maxlength="6"
+          style="width:100%;padding:14px 16px;border-radius:14px;border:2px solid #e8e0f8;
+            font-size:22px;font-weight:900;letter-spacing:4px;text-align:center;
+            font-family:monospace;outline:none;color:#1a1a2e;margin-bottom:8px;" />
+        <div id="ob-pw-err" style="font-size:12px;color:#FF4D6D;font-weight:700;text-align:center;margin-bottom:8px;display:none;"></div>
+        <div style="display:flex;gap:10px;margin-top:4px;">
+          <button onclick="document.getElementById('ob-modal').innerHTML='';" style="flex:1;padding:13px;border-radius:14px;border:2px solid #f0eaea;background:#fff;font-size:14px;font-weight:800;color:#aaa;cursor:pointer;font-family:Nunito,sans-serif;">取消</button>
+          <button onclick="obVerifyPassword(${charIdx})" style="flex:2;padding:13px;border-radius:14px;border:none;background:linear-gradient(135deg,${pc},${pc}bb);font-size:14px;font-weight:900;color:#fff;cursor:pointer;font-family:Nunito,sans-serif;">確認密碼</button>
+        </div>
+      </div>
+    </div>
+  `;
+  const inp = document.getElementById('ob-pw-input');
+  inp.focus();
+  inp.addEventListener('input', function() { this.value = this.value.toUpperCase(); });
+  inp.addEventListener('keydown', e => { if (e.key === 'Enter') obVerifyPassword(charIdx); });
+}
+
+function obVerifyPassword(charIdx) {
+  const claims = loadClaims();
+  const char = CHARACTERS[charIdx];
+  const claim = claims[char.id];
+  const inp = document.getElementById('ob-pw-input');
+  const err = document.getElementById('ob-pw-err');
+  if (inp.value.toUpperCase() === claim.password) {
+    obState.verifiedPassword = inp.value.toUpperCase();
+    document.getElementById('ob-modal').innerHTML = '';
+    obState.selectedPet = charIdx;
+    renderOnboardingPet();
+  } else {
+    err.textContent = '密碼錯誤，請再試一次！';
+    err.style.display = 'block';
+  }
+}
+
+function obConfirmPet() {
+  if (obState.selectedPet === null) return;
+  const char = CHARACTERS[obState.selectedPet];
+  const player = addPlayer(obState.name, char.id);
+  if (!player) return;
+
+  const claims = loadClaims();
+  const existing = claims[char.id];
+  const isMine = existing && (
+    existing.ownerPlayerId === player.id ||
+    (!existing.ownerPlayerId && existing.ownerName === player.name)
+  );
+
+  if (existing && isMine) {
+    obState.password = existing.password;
+    existing.ownerPlayerId = player.id;
+    existing.updatedAt = new Date().toISOString();
+    saveClaims(claims);
+  } else if (existing) {
+    const result = transferPet(player, char.id, obState.verifiedPassword || '');
+    if (!result.ok) {
+      alert('認養失敗，請重新選擇寵物！');
+      obState.selectedPet = null;
+      obState.verifiedPassword = '';
+      renderOnboardingPet();
+      return;
+    }
+    obState.password = result.password;
+  } else {
+    obState.password = claimPet(player, char.id);
+  }
+
+  obState.verifiedPassword = '';
+  obState.step = 3;
+  renderOnboardingPassword();
+}
+
+function renderOnboardingPassword() {
+  const el = document.getElementById('onboarding-overlay');
+  const pc = getComputedStyle(document.documentElement).getPropertyValue('--pink').trim() || '#b87de8';
+  const char = CHARACTERS[obState.selectedPet];
+  const confettiHtml = Array.from({length: 16}, (_, i) => {
+    const x = 5 + Math.random() * 90;
+    const colors = ['#FFD700','#4CAF82','#bd2bbf','#38bdf8','#fb7185','#FF6B47'];
+    const sz = 6 + Math.random() * 8;
+    return `<div style="position:absolute;top:-10px;left:${x}%;width:${sz}px;height:${sz}px;border-radius:${sz*0.25}px;background:${colors[i%6]};animation:confettiFall 1.1s ${i*0.05}s ease-in both;"></div>`;
+  }).join('');
+
+  el.innerHTML = `
+    <div style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden;z-index:99;">${confettiHtml}</div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 28px;gap:20px;position:relative;z-index:1;">
+      <div style="animation:float 3s ease-in-out infinite;">
+        <img src="${escapeHtml(char.src)}" alt="" style="width:100px;height:100px;object-fit:contain;" />
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:24px;font-weight:900;color:#1a1a2e;">${escapeHtml(obState.name)}，你的寵物是</div>
+        <div style="font-size:28px;font-weight:900;color:${pc};margin-top:2px;">${escapeHtml(char.name)} 🎉</div>
+      </div>
+      <div style="width:100%;background:#fff;border-radius:24px;padding:22px 24px;box-shadow:0 6px 24px rgba(0,0,0,0.08);text-align:center;">
+        <div style="font-size:12px;font-weight:800;color:#aaa;letter-spacing:1px;margin-bottom:10px;">📋 你的專屬密碼（請抄下來！）</div>
+        <div style="font-size:34px;font-weight:900;letter-spacing:6px;color:${pc};background:${pc}12;border-radius:16px;padding:14px 20px;font-family:monospace;">${escapeHtml(obState.password)}</div>
+        <div style="font-size:11px;color:#bbb;margin-top:10px;line-height:1.6;">
+          這隻寵物屬於你了！<br/>如果別人想認養同一隻，<br/>需要輸入這組密碼才行 🔒
+        </div>
+      </div>
+      <button onclick="finishOnboarding()" style="width:100%;padding:17px;border-radius:20px;border:none;cursor:pointer;
+        background:linear-gradient(135deg,${pc},${pc}bb);font-size:17px;font-weight:900;color:#fff;
+        box-shadow:0 5px 18px ${pc}44;font-family:Nunito,sans-serif;">我記住了，開始學習！→</button>
+    </div>
+  `;
+}
+
+function finishOnboarding() {
+  hideOnboarding();
+  const player = findPlayer(getCurrentPlayerId());
+  if (player) renderQuizHome(player);
+  else renderProfileSelect();
+}
+
 /* ---------- Quiz state ---------- */
 
 let quiz = null;
 let pendingAvatar = DEFAULT_AVATAR;
+let pendingAvatarPassword = null;
+let _pwRevealCallback = null;
 
 function enterQuizTab() {
   const cur = getCurrentPlayerId();
   const p = cur ? findPlayer(cur) : null;
   if (!p) {
     renderProfileSelect();
+  } else if (needsOnboarding()) {
+    showOnboarding(p.name);
+    return;
   } else if (quiz && quiz.playerId === p.id && !quiz.finished) {
     renderQuizQuestion();
   } else {
@@ -1726,7 +2092,7 @@ function renderProfileSelect() {
       seenIds.add(id);
       chips.push({
         name: e.name,
-        avatarId: AVATARS[e.avatarId] ? e.avatarId : DEFAULT_AVATAR,
+        avatarId: CHAR_MAP[e.avatarId] ? e.avatarId : DEFAULT_AVATAR,
         bestScore: e.bestScore || 0,
         plays: e.plays || 0,
       });
@@ -1768,12 +2134,6 @@ function renderProfileSelect() {
       </div>
     ` : `<div class="empty-state">還沒有玩家，先新增一個吧！</div>`}
 
-    <div style="font-size:.85rem;font-weight:700;color:var(--ink);margin:0.6rem 0 0.3rem;text-align:center;">選一隻小角色當你的頭像</div>
-    <div class="avatar-picker" id="avatar-picker">
-      ${AVATAR_ORDER.map(id => `
-        <button class="avatar-opt ${id === pendingAvatar ? 'picked' : ''}" data-aid="${id}" onclick="pickAvatar('${id}')" title="${escapeHtml(AVATARS[id].name)}"><img src="${escapeHtml(AVATARS[id].src)}" alt="" /></button>
-      `).join('')}
-    </div>
     <div class="add-row">
       <input id="new-name-input" type="text" placeholder="新增名字…" maxlength="20" />
       <button class="dl-btn" onclick="onAddPlayer()">新增</button>
@@ -1787,32 +2147,39 @@ function renderProfileSelect() {
 function pickProfileChip(idx) {
   const c = (window.__profileChips || [])[idx];
   if (!c) return;
-  // Reuse addPlayer — it merges by name, so picking an existing (cloud or local) name
-  // will map to the same local player record.
   const p = addPlayer(c.name, c.avatarId);
-  if (p) renderQuizHome(p);
-}
-
-function pickAvatar(id) {
-  if (!AVATARS[id]) return;
-  pendingAvatar = id;
-  document.querySelectorAll('#avatar-picker .avatar-opt').forEach(btn => {
-    btn.classList.toggle('picked', btn.dataset.aid === id);
-  });
+  if (!p) return;
+  if (!playerHasValidClaim(p.id)) {
+    showOnboarding(p.name);
+  } else {
+    renderQuizHome(p);
+  }
 }
 
 function pickPlayer(id) {
   setCurrentPlayerId(id);
   const p = findPlayer(id);
-  if (p) renderQuizHome(p);
+  if (!p) return;
+  if (!playerHasValidClaim(p.id)) {
+    showOnboarding(p.name);
+  } else {
+    renderQuizHome(p);
+  }
 }
 
 function onAddPlayer() {
   const inp = document.getElementById('new-name-input');
   const name = (inp.value || '').trim();
   if (!name) { inp.focus(); return; }
-  const p = addPlayer(name, pendingAvatar);
-  if (p) renderQuizHome(p);
+  const players = loadPlayers();
+  const existing = players.find(p => p.name === name);
+  if (existing) {
+    setCurrentPlayerId(existing.id);
+    if (!playerHasValidClaim(existing)) showOnboarding(existing.name);
+    else renderQuizHome(existing);
+    return;
+  }
+  showOnboarding(name);
 }
 
 /* ---------- Quiz home ---------- */
@@ -1844,7 +2211,7 @@ function renderQuizHome(player) {
     <div class="dl-btn-row" style="margin-top:10px">
       <div style="display:flex;gap:10px;flex-wrap:wrap;">
         <button class="dl-btn gray" style="flex:1;min-width:160px;" onclick="renderProfileSelect()">切換 / 新增玩家</button>
-        <button class="dl-btn blue" style="flex:1;min-width:160px;" onclick="renderAvatarChange()">更換角色</button>
+        <button class="dl-btn blue" style="flex:1;min-width:160px;" onclick="renderAvatarChange()">更換寵物</button>
         <button class="dl-btn red" style="flex:1;min-width:160px;" onclick="onDeleteCurrentPlayer()">刪除本機玩家</button>
       </div>
     </div>
@@ -1881,6 +2248,7 @@ function onDeleteCurrentPlayer() {
     `- 之後仍可用同名字重新加入`
   );
   if (!ok) return;
+  releaseClaimsForPlayer(p.id);
   deleteLocalPlayer(p.id);
   renderProfileSelect();
 }
@@ -1924,19 +2292,39 @@ function renderAvatarChange() {
   if (!player) { renderProfileSelect(); return; }
   pendingAvatar = normalizeAvatarId(player.avatarId);
   const box = document.getElementById('quiz-box');
+  const claims = loadClaims();
+
+  const pickerHtml = CHAR_ORDER.map(id => {
+    const c = CHAR_MAP[id];
+    const claim = claims[id];
+    const isMine = claim && claim.ownerPlayerId === player.id;
+    const isClaimed = !!claim && !isMine;
+    const picked = id === pendingAvatar;
+    let badge = '';
+    if (isClaimed) badge = '<div style="position:absolute;top:2px;right:2px;font-size:10px;">🔒</div>';
+    else if (isMine) badge = '<div style="position:absolute;top:2px;right:2px;width:12px;height:12px;border-radius:50%;background:#4CAF82;display:flex;align-items:center;justify-content:center;font-size:7px;color:#fff;">✓</div>';
+    const ownerLine = isClaimed ? `<div style="font-size:8px;color:#bbb;font-weight:700;margin-top:1px;">${escapeHtml(claim.ownerName)} 的</div>` : '';
+    return `
+      <button class="avatar-opt ${picked ? 'picked' : ''}" data-aid="${id}"
+        onclick="onAvatarChangePick('${id}')" title="${escapeHtml(c.name)}"
+        style="position:relative;${isClaimed ? 'opacity:0.7;' : ''}">
+        ${badge}
+        <img src="${escapeHtml(c.src)}" alt="" />
+        ${ownerLine}
+      </button>`;
+  }).join('');
+
   box.innerHTML = `
     <div style="text-align:center;">
       ${renderAvatar(pendingAvatar, { size: 'lg' })}
     </div>
-    <div class="profile-title">更換角色</div>
+    <div class="profile-title">更換寵物</div>
     <div style="text-align:center;color:var(--muted);font-size:.92rem;margin-bottom:.6rem;">
-      目前玩家：<b>${escapeHtml(player.name)}</b>
+      目前玩家：<b>${escapeHtml(player.name)}</b><br>
+      <span style="font-size:.8rem;">🔒 有鎖的角色需要密碼才能認養</span>
     </div>
-    <div class="avatar-picker" id="avatar-picker">
-      ${AVATAR_ORDER.map(id => `
-        <button class="avatar-opt ${id === pendingAvatar ? 'picked' : ''}" data-aid="${id}" onclick="pickAvatar('${id}')" title="${escapeHtml(AVATARS[id].name)}"><img src="${escapeHtml(AVATARS[id].src)}" alt="" /></button>
-      `).join('')}
-    </div>
+    <div class="avatar-picker" id="avatar-picker">${pickerHtml}</div>
+    <div id="avatar-change-modal"></div>
     <div class="dl-btn-row" style="margin-top:10px">
       <div style="display:flex;gap:10px;">
         <button class="dl-btn gray" style="flex:1;" onclick="renderQuizHome(findPlayer(getCurrentPlayerId()))">取消</button>
@@ -1947,19 +2335,128 @@ function renderAvatarChange() {
   `;
 }
 
+function onAvatarChangePick(id) {
+  if (!CHAR_MAP[id]) return;
+  const player = findPlayer(getCurrentPlayerId());
+  if (!player) return;
+  const claim = getClaimOwner(id);
+  const isMine = claim && claim.ownerPlayerId === player.id;
+  if (claim && !isMine) {
+    renderAvatarChangePasswordModal(id, claim);
+    return;
+  }
+  pendingAvatar = id;
+  pendingAvatarPassword = null;
+  renderAvatarChange();
+}
+
+function renderAvatarChangePasswordModal(petId, claim) {
+  const pc = getComputedStyle(document.documentElement).getPropertyValue('--pink').trim() || '#b87de8';
+  const c = CHAR_MAP[petId];
+  const modal = document.getElementById('avatar-change-modal');
+  modal.innerHTML = `
+    <div style="position:fixed;inset:0;background:rgba(0,0,0,0.45);display:flex;align-items:center;justify-content:center;z-index:200;padding:24px;" onclick="if(event.target===this)document.getElementById('avatar-change-modal').innerHTML='';">
+      <div style="background:#fff;border-radius:24px;padding:26px;width:100%;max-width:340px;animation:pop 0.2s ease-out;" onclick="event.stopPropagation();">
+        <div style="text-align:center;margin-bottom:16px;">
+          <img src="${escapeHtml(c.src)}" alt="" style="width:72px;height:72px;object-fit:contain;" />
+          <div style="font-size:16px;font-weight:900;color:#1a1a2e;margin-top:8px;">🔒 ${escapeHtml(c.name)} 已被 ${escapeHtml(claim.ownerName)} 認養</div>
+          <div style="font-size:12px;color:#aaa;margin-top:4px;">請輸入密碼來認領這隻寵物</div>
+        </div>
+        <input type="text" id="ac-pw-input" placeholder="輸入密碼…" maxlength="6"
+          style="width:100%;padding:14px 16px;border-radius:14px;border:2px solid #e8e0f8;
+            font-size:22px;font-weight:900;letter-spacing:4px;text-align:center;
+            font-family:monospace;outline:none;color:#1a1a2e;margin-bottom:8px;" />
+        <div id="ac-pw-err" style="font-size:12px;color:#FF4D6D;font-weight:700;text-align:center;margin-bottom:8px;display:none;"></div>
+        <div style="display:flex;gap:10px;margin-top:4px;">
+          <button onclick="document.getElementById('avatar-change-modal').innerHTML='';" style="flex:1;padding:13px;border-radius:14px;border:2px solid #f0eaea;background:#fff;font-size:14px;font-weight:800;color:#aaa;cursor:pointer;font-family:Nunito,sans-serif;">取消</button>
+          <button onclick="verifyAvatarChangePassword('${petId}')" style="flex:2;padding:13px;border-radius:14px;border:none;background:linear-gradient(135deg,${pc},${pc}bb);font-size:14px;font-weight:900;color:#fff;cursor:pointer;font-family:Nunito,sans-serif;">確認密碼</button>
+        </div>
+      </div>
+    </div>
+  `;
+  const inp = document.getElementById('ac-pw-input');
+  inp.focus();
+  inp.addEventListener('input', function() { this.value = this.value.toUpperCase(); });
+  inp.addEventListener('keydown', e => { if (e.key === 'Enter') verifyAvatarChangePassword(petId); });
+}
+
+function verifyAvatarChangePassword(petId) {
+  const player = findPlayer(getCurrentPlayerId());
+  if (!player) return;
+  const inp = document.getElementById('ac-pw-input');
+  const err = document.getElementById('ac-pw-err');
+  const result = transferPet(player, petId, inp.value);
+  if (result.ok) {
+    document.getElementById('avatar-change-modal').innerHTML = '';
+    pendingAvatar = petId;
+    pendingAvatarPassword = result.password;
+    renderAvatarChange();
+  } else {
+    err.textContent = '密碼錯誤，請再試一次！';
+    err.style.display = 'block';
+  }
+}
+
 async function confirmAvatarChange() {
   const player = findPlayer(getCurrentPlayerId());
   if (!player) { renderProfileSelect(); return; }
+  const claim = getClaimOwner(pendingAvatar);
+  const isMine = claim && claim.ownerPlayerId === player.id;
+  if (claim && !isMine) return;
+
+  let passwordToShow = pendingAvatarPassword;
+  pendingAvatarPassword = null;
+  if (!claim) {
+    passwordToShow = claimPet(player, pendingAvatar);
+  }
+
   const updated = updateLocalAvatar(player.id, pendingAvatar);
-  // Try cloud update (non-blocking). If it fails, local still works.
   if (updated) {
     cloudUpdateAvatarOnly(updated.name, updated.avatarId)
       .then(() => cloudFetchLeaderboard())
       .then(() => refreshLeaderboardUI(updated.id))
       .catch(() => {});
   }
-  const p2 = findPlayer(player.id) || player;
-  renderQuizHome(p2);
+
+  if (passwordToShow) {
+    showPasswordReveal(CHAR_MAP[pendingAvatar], passwordToShow, () => {
+      const p2 = findPlayer(player.id) || player;
+      renderQuizHome(p2);
+    });
+  } else {
+    const p2 = findPlayer(player.id) || player;
+    renderQuizHome(p2);
+  }
+}
+
+function showPasswordReveal(char, password, onDone) {
+  _pwRevealCallback = onDone;
+  const pc = getComputedStyle(document.documentElement).getPropertyValue('--pink').trim() || '#b87de8';
+  const box = document.getElementById('quiz-box');
+  box.innerHTML = `
+    <div style="text-align:center;padding:20px 0;">
+      <div style="animation:float 3s ease-in-out infinite;">
+        <img src="${escapeHtml(char.src)}" alt="" style="width:80px;height:80px;object-fit:contain;" />
+      </div>
+      <div style="font-size:20px;font-weight:900;color:#1a1a2e;margin-top:12px;">
+        ${escapeHtml(char.name)} 是你的了！🎉
+      </div>
+      <div style="background:${pc}12;border-radius:16px;padding:16px 20px;margin:16px 0;">
+        <div style="font-size:12px;font-weight:800;color:#aaa;letter-spacing:1px;margin-bottom:8px;">你的專屬密碼（請抄下來！）</div>
+        <div style="font-size:30px;font-weight:900;letter-spacing:6px;color:${pc};font-family:monospace;">${escapeHtml(password)}</div>
+        <div style="font-size:11px;color:#bbb;margin-top:10px;line-height:1.6;">
+          如果別人想認養同一隻，需要輸入這組密碼才行 🔒
+        </div>
+      </div>
+      <button class="dl-btn wide" onclick="onPwRevealDone()">我記住了！→</button>
+    </div>
+  `;
+}
+
+function onPwRevealDone() {
+  const cb = _pwRevealCallback;
+  _pwRevealCallback = null;
+  if (cb) cb();
 }
 
 /* ---------- Leaderboard ---------- */
@@ -2415,8 +2912,6 @@ function finishQuiz() {
 document.getElementById('search-input').addEventListener('input', renderCards);
 loadVocab();
 
-// Kick off cloud leaderboard fetch. When it resolves, re-render any visible
-// profile/home/result screen so the cloud leaderboard appears.
 cloudFetchLeaderboard().then(() => {
   const panel = document.getElementById('panel-quiz');
   if (!panel || !panel.classList.contains('active')) return;
