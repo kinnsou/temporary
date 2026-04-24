@@ -1,0 +1,3389 @@
+<!DOCTYPE html>
+<!-- vocab-review.html v2.0 — CLAW ENG rebrand with onboarding + pet claim flow. 8 pet characters (newcha1~08). -->
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CLAW ENG 單字複習小教室</title>
+  <style>
+    :root {
+      --pink: #b87de8;
+      --pink-dark: #9a5cd0;
+      --pink-light: #e8d5f8;
+      --pink-bg: #fdf6ff;
+      --yellow: #4CAF82;
+      --yellow-dark: #3a9a6c;
+      --yellow-bg: #e5f5e0;
+      --ok: #4CAF82;
+      --ok-dark: #3a9a6c;
+      --ok-bg: #e5f5e0;
+      --blue: #a78bfa;
+      --blue-dark: #7c5cc8;
+      --red: #FF4D6D;
+      --red-dark: #e34e74;
+      --red-bg: #ffe0e9;
+      --gold: #FFB800;
+      --ink: #1a1a2e;
+      --ink-soft: #555;
+      --muted: #aaa;
+      --line: #f0eaea;
+      --line-2: #e0d5f0;
+      --bg: #fdf6ff;
+      --paper: #fff;
+      --shadow: 0 2px 0 rgba(0,0,0,0.06);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Nunito", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei",
+                   -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(170deg, #fdf6ff 0%, #f0fdf4 100%);
+      background-attachment: fixed;
+      color: var(--ink);
+      min-height: 100vh;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap {
+      max-width: 720px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 1rem 5.5rem;
+    }
+
+    .header {
+      background: rgba(255,255,255,0.78);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border-bottom: 3px solid var(--pink);
+      box-shadow: 0 2px 0 var(--yellow);
+      padding: 1.2rem 1rem 1rem;
+      text-align: center;
+    }
+
+    .header-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--pink-dark);
+      letter-spacing: 0.02em;
+    }
+
+    .header-sub {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 0.15rem;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin: 1.1rem 0 1.2rem;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 14px 10px;
+      border: 2px solid var(--line);
+      border-bottom-width: 4px;
+      border-radius: 14px;
+      background: #fff;
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+      font-weight: 800;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.08s;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+
+    .tab-btn:hover:not(.active) { background: var(--paper); }
+    .tab-btn:active:not(.active) { transform: translateY(1px); border-bottom-width: 3px; }
+
+    .tab-btn.active {
+      background: var(--pink);
+      color: #fff;
+      border-color: var(--pink-dark);
+    }
+
+    .panel { display: none; animation: fadeIn 0.2s ease; }
+    .panel.active { display: block; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
+    @keyframes pop { from{transform:scale(0.93)} to{transform:scale(1)} }
+    @keyframes confettiFall { 0%{transform:translateY(-10px) rotate(0);opacity:1} 100%{transform:translateY(160px) rotate(600deg);opacity:0} }
+
+    #onboarding-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: linear-gradient(170deg, #fdf6ff 0%, #f0fdf4 100%);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    #onboarding-overlay::-webkit-scrollbar { display: none; }
+
+    /* === Cards tab === */
+    .search-bar {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .search-input {
+      flex: 1;
+      padding: 12px 14px;
+      border: 2px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      font-size: 1rem;
+      font-family: inherit;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    .search-input:focus { border-color: var(--pink); }
+
+    .meta-line {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+      letter-spacing: 0.02em;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .group-head {
+      background: rgba(255,255,255,0.85);
+      border: 2px solid var(--line);
+      border-bottom-width: 4px;
+      border-radius: 14px;
+      padding: 0.75rem 1rem;
+      box-shadow: var(--shadow);
+    }
+    .group-head.focus {
+      border-color: var(--yellow);
+      background: var(--yellow-bg);
+    }
+    .group-title {
+      font-size: 0.92rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+    }
+    .group-sub {
+      margin-top: 2px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    .group-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.6);
+      border-top: 2px dashed var(--line);
+      border-bottom: 1px solid rgba(255,255,255,0.7);
+      border-radius: 99px;
+      margin: 2px 6px;
+    }
+
+    .vocab-card {
+      background: #fff;
+      border: 2px solid var(--line);
+      border-bottom-width: 4px;
+      border-radius: 14px;
+      padding: 0.9rem 1.1rem;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+      position: relative;
+    }
+
+    .vocab-card:hover { background: var(--paper); border-color: var(--line-2); }
+    .vocab-card.open { border-color: var(--pink); background: var(--pink-bg); }
+
+    .vocab-card.focus {
+      border-color: var(--yellow);
+      background: var(--yellow-bg);
+    }
+    .vocab-card.focus:hover { border-color: var(--yellow-dark); }
+    .vocab-card.focus.open { border-color: var(--yellow-dark); background: #dcf8dc; }
+
+    .new-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #fff;
+      border: 2px solid var(--yellow);
+      border-bottom-width: 4px;
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 0.75rem;
+      font-weight: 900;
+      color: var(--yellow-dark);
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    .card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .pos-dot {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 0.9rem;
+      border: none;
+      flex-shrink: 0;
+      box-shadow: 0 2px 0 rgba(0,0,0,0.06);
+      letter-spacing: .02em;
+    }
+
+    .pos-stack {
+      position: absolute;
+      right: 14px;
+      bottom: 12px;
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      pointer-events: none;
+    }
+
+    .pos-n { background: #ffeaa8; color: #b07a00; }
+    .pos-v { background: #ffb4d8; color: #b23a78; }
+    .pos-adj { background: #b7f5b7; color: #2e7a2e; }
+    .pos-adv { background: #d9c2ff; color: #5a2ea6; }
+    .pos-prep { background: #bde9ff; color: #1a6aa6; }
+    .pos-pron { background: #c8fff2; color: #137a6a; }
+    .pos-conj { background: #ffd2a6; color: #a85a12; }
+    .pos-interj { background: #ffb0b0; color: #a62a2a; }
+    .pos-det { background: #e7e7e7; color: #555; }
+    .pos-num { background: #e0e0ff; color: #3a3aa6; }
+    .pos-unk { background: #f3f3f3; color: #666; }
+
+    .vocab-word {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--pink-dark);
+      letter-spacing: 0.01em;
+    }
+
+    .vocab-date {
+      font-size: 0.74rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .vocab-meaning {
+      font-size: 0.98rem;
+      color: var(--ink-soft);
+      margin-top: 0.15rem;
+      font-weight: 600;
+    }
+
+    .vocab-detail {
+      display: none;
+      margin-top: 0.7rem;
+      padding-top: 0.7rem;
+      border-top: 1px dashed var(--line);
+    }
+
+    .vocab-card.open .vocab-detail { display: block; }
+
+    .vocab-example-en {
+      font-size: 0.98rem;
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    .vocab-example-zh {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-top: 0.3rem;
+      line-height: 1.55;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* === Quiz shared === */
+    .quiz-box {
+      background: #fff;
+      border: 2px solid var(--line);
+      border-radius: 16px;
+      padding: 1.3rem;
+    }
+
+    .profile-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 0.9rem;
+      text-align: center;
+    }
+
+    .profile-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .profile-chip {
+      padding: 12px 10px;
+      border: 2px solid var(--line);
+      border-bottom-width: 4px;
+      border-radius: 14px;
+      background: #fff;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--ink);
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.1s;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .profile-chip:hover { background: var(--paper); }
+    .profile-chip:active { transform: translateY(1px); border-bottom-width: 3px; }
+
+    .profile-chip.current {
+      background: var(--pink-bg);
+      border-color: var(--pink);
+      color: var(--pink-dark);
+    }
+
+    .profile-chip .chip-stat {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-top: 3px;
+      letter-spacing: 0.02em;
+    }
+
+    .add-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 0.6rem;
+    }
+
+    .add-row input {
+      flex: 1;
+      padding: 12px 14px;
+      border: 2px solid var(--line);
+      border-radius: 12px;
+      font-size: 1rem;
+      font-family: inherit;
+      outline: none;
+    }
+    .add-row input:focus { border-color: var(--pink); }
+
+    /* Avatar (PNG, no crop) */
+    .avatar {
+      width: 48px;
+      height: 48px;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+    }
+    .avatar-sm { width: 32px; height: 32px; }
+    .avatar-lg { width: 72px; height: 72px; }
+
+    .avatar-picker {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 0.4rem 0 0.8rem;
+    }
+    .avatar-opt {
+      width: 52px;
+      height: 52px;
+      padding: 4px;
+      border: 2px solid var(--line);
+      border-bottom-width: 4px;
+      border-radius: 12px;
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.1s;
+    }
+    .avatar-opt:hover { background: var(--paper); }
+    .avatar-opt.picked {
+      border-color: var(--pink);
+      background: var(--pink-bg);
+    }
+    .avatar-opt img { width: 100%; height: 100%; display: block; object-fit: contain; }
+
+    /* Duo-ish primary button */
+    .dl-btn {
+      padding: 12px 18px;
+      border: none;
+      border-bottom: 4px solid var(--pink-dark);
+      border-radius: 14px;
+      background: var(--pink);
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 800;
+      font-family: inherit;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: filter 0.12s, transform 0.08s;
+    }
+    .dl-btn:hover { filter: brightness(1.04); }
+    .dl-btn:active { transform: translateY(2px); border-bottom-width: 2px; }
+    .dl-btn[disabled] { opacity: 0.45; cursor: not-allowed; }
+
+    .dl-btn.blue { background: var(--blue); border-bottom-color: var(--blue-dark); }
+    .dl-btn.gray { background: #e5e5e5; border-bottom-color: #c8c8c8; color: var(--ink-soft); }
+    .dl-btn.red { background: var(--red); border-bottom-color: var(--red-dark); }
+    .dl-btn.wide { display: block; width: 100%; }
+
+    .dl-btn-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* Leaderboard */
+    .leaderboard {
+      margin-top: 1.1rem;
+      border-top: 1px solid var(--line);
+      padding-top: 1rem;
+    }
+
+    .leaderboard h3 {
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.03em;
+    }
+
+    .lb-row {
+      display: grid;
+      grid-template-columns: 28px 40px 1fr auto auto;
+      gap: 10px;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: 10px;
+      font-size: 0.92rem;
+    }
+    .lb-row + .lb-row { margin-top: 4px; }
+    .lb-row.me { background: var(--pink-bg); font-weight: 800; }
+    .lb-rank { font-weight: 800; color: var(--muted); text-align: center; }
+    .lb-rank.top { color: var(--gold); }
+    .lb-name { font-weight: 700; color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .lb-best { font-weight: 800; color: var(--pink-dark); }
+    .lb-streak { font-weight: 900; color: var(--yellow-dark); }
+    .lb-plays { font-size: 0.78rem; color: var(--muted); }
+
+    /* Quiz body */
+    .quiz-topbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1.2rem;
+    }
+
+    .close-x {
+      border: none;
+      background: transparent;
+      font-size: 1.4rem;
+      color: var(--muted);
+      cursor: pointer;
+      padding: 4px 8px;
+      font-weight: 700;
+    }
+    .close-x:hover { color: var(--red); }
+
+    .progress-bar-bg {
+      flex: 1;
+      height: 12px;
+      background: #e5e5e5;
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--pink);
+      border-radius: 99px;
+      transition: width 0.35s ease;
+      position: relative;
+    }
+    .progress-bar-fill::after {
+      content: '';
+      position: absolute; inset: 2px auto 50% 6px; height: 3px; right: 8px;
+      background: rgba(255,255,255,0.5);
+      border-radius: 99px;
+    }
+
+    .progress-count {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--muted);
+      min-width: 44px;
+      text-align: right;
+    }
+
+    .q-label {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .q-prompt {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.45;
+      margin-bottom: 0.4rem;
+      word-break: break-word;
+    }
+
+    .q-hint {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .q-cloze {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.6;
+      margin-bottom: 0.5rem;
+      word-break: break-word;
+    }
+
+    .q-cloze .blank {
+      display: inline-block;
+      min-width: 60px;
+      padding: 0 8px;
+      border-bottom: 3px solid var(--ink);
+      color: transparent;
+      margin: 0 2px;
+      user-select: none;
+    }
+
+    .q-time {
+      display: inline-block;
+      background: var(--paper);
+      border: 2px solid var(--line);
+      border-radius: 10px;
+      padding: 4px 10px;
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin: 0.1rem 0 0.8rem;
+      letter-spacing: 0.02em;
+    }
+    .q-time b { color: var(--blue-dark); }
+
+    .answer-input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid var(--line);
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-family: inherit;
+      font-weight: 600;
+      color: var(--ink);
+      outline: none;
+      margin-top: 0.6rem;
+      margin-bottom: 0.8rem;
+      transition: border-color 0.12s;
+    }
+    .answer-input:focus { border-color: var(--pink); }
+    .answer-input.locked { background: var(--paper); }
+
+    /* Choice options */
+    .choices {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 0.4rem 0 0.8rem;
+    }
+    .choice-btn {
+      padding: 14px 10px;
+      border: 2px solid var(--line);
+      border-bottom-width: 4px;
+      border-radius: 14px;
+      background: #fff;
+      color: var(--ink);
+      font-family: inherit;
+      font-size: 1.05rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.08s;
+      text-align: center;
+      word-break: break-word;
+    }
+    .choice-btn:hover:not(:disabled) { background: var(--paper); border-color: var(--line-2); }
+    .choice-btn:active:not(:disabled) { transform: translateY(1px); border-bottom-width: 3px; }
+    .choice-btn.picked-right {
+      background: var(--ok-bg);
+      border-color: var(--ok);
+      color: var(--ok-dark);
+    }
+    .choice-btn.picked-wrong {
+      background: var(--red-bg);
+      border-color: var(--red);
+      color: var(--red-dark);
+    }
+    .choice-btn.reveal-right {
+      background: var(--ok-bg);
+      border-color: var(--ok);
+      color: var(--ok-dark);
+    }
+    .choice-btn:disabled { cursor: default; }
+
+    .feedback {
+      display: none;
+      margin-top: 0.4rem;
+      margin-bottom: 0.8rem;
+      padding: 12px 14px;
+      border-radius: 12px;
+      font-size: 0.98rem;
+      font-weight: 700;
+    }
+    .feedback.good {
+      display: block;
+      background: var(--ok-bg);
+      color: var(--ok-dark);
+      border: 2px solid var(--ok);
+    }
+    .feedback.bad {
+      display: block;
+      background: var(--red-bg);
+      color: var(--red-dark);
+      border: 2px solid var(--red);
+    }
+    .feedback .fb-title { display: block; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 3px; }
+    .feedback .fb-answer { display: block; font-size: 1.1rem; font-weight: 800; }
+
+    /* Result */
+    .result-area {
+      text-align: center;
+      padding: 0.6rem 0 0;
+    }
+    .result-big {
+      font-size: 3.2rem;
+      font-weight: 800;
+      color: var(--pink-dark);
+      margin: 0.4rem 0 0.2rem;
+      line-height: 1;
+    }
+    .result-label {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .result-msg {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 1.1rem;
+      line-height: 1.55;
+    }
+    .result-stars {
+      font-size: 1.8rem;
+      letter-spacing: 6px;
+      margin-bottom: 0.6rem;
+    }
+
+    .wrong-list {
+      text-align: left;
+      background: var(--paper);
+      border: 2px solid var(--line);
+      border-radius: 12px;
+      padding: 0.8rem 1rem;
+      margin: 1rem 0;
+      max-height: 320px;
+      overflow-y: auto;
+    }
+    .wrong-list h4 {
+      font-size: 0.9rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      color: var(--ink);
+    }
+    .wrong-row {
+      padding: 0.5rem 0;
+      border-bottom: 1px dashed var(--line);
+      font-size: 0.88rem;
+    }
+    .wrong-row:last-child { border-bottom: none; }
+    .wrong-row .wr-type {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: #fff;
+      background: var(--blue);
+      padding: 1px 6px;
+      border-radius: 6px;
+      margin-right: 6px;
+      letter-spacing: 0.04em;
+    }
+    .wrong-row .wr-type.t-cloze { background: var(--ok); }
+    .wrong-row .wr-type.t-zh { background: var(--blue-dark); }
+    .wrong-row .wr-type.t-tense { background: #b266ff; }
+    .wrong-row .wr-q { color: var(--ink-soft); margin-bottom: 2px; }
+    .wrong-row .wr-your { color: var(--red-dark); }
+    .wrong-row .wr-correct { color: var(--ok-dark); font-weight: 800; }
+
+    .page-footer {
+      text-align: center;
+      padding: 1.2rem 1rem 0.4rem;
+      font-size: 0.75rem;
+      color: #a0a0a0;
+      letter-spacing: 0.04em;
+    }
+
+    .loading, .err-state {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--muted);
+    }
+    .err-state { color: var(--red-dark); font-weight: 700; }
+
+    @media (max-width: 560px) {
+      .header-title { font-size: 1.2rem; }
+      .q-prompt { font-size: 1.3rem; }
+      .q-cloze { font-size: 1.1rem; }
+      .result-big { font-size: 2.6rem; }
+      .wrap { padding: 0 0.8rem 5.5rem; }
+      .profile-list { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+      .choices { grid-template-columns: 1fr; }
+    }
+
+    /* === Bottom Navigation === */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-around;
+      padding: 4px 0 max(8px, env(safe-area-inset-bottom));
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+    }
+
+    .nav-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      padding: 6px 0 2px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--muted);
+      transition: color 0.15s;
+    }
+
+    .nav-item.active { color: var(--pink-dark); }
+
+    .nav-item svg {
+      width: 22px;
+      height: 22px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* === Home Screen === */
+    .home-greeting {
+      text-align: center;
+      padding: 1.5rem 0 0.5rem;
+    }
+
+    .home-greeting-name {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--ink);
+      margin-top: 0.5rem;
+    }
+
+    .home-greeting-sub {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    .stat-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+      margin: 1rem 0;
+    }
+
+    .stat-card {
+      background: #fff;
+      border: 2px solid var(--line);
+      border-bottom-width: 4px;
+      border-radius: 16px;
+      padding: 16px 8px;
+      text-align: center;
+    }
+
+    .stat-card-icon { font-size: 1.1rem; margin-bottom: 2px; }
+
+    .stat-card-value {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--pink-dark);
+      line-height: 1.2;
+    }
+
+    .stat-card-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-top: 4px;
+      letter-spacing: 0.02em;
+    }
+
+    .stat-card.streak .stat-card-value { color: var(--yellow-dark); }
+    .stat-card.best .stat-card-value { color: var(--blue-dark); }
+
+    .companion-card {
+      background: #fff;
+      border: 2px solid var(--line);
+      border-bottom-width: 4px;
+      border-radius: 18px;
+      padding: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 1rem 0;
+    }
+
+    .companion-info { flex: 1; }
+
+    .companion-name {
+      font-size: 1.05rem;
+      font-weight: 900;
+      color: var(--ink);
+    }
+
+    .companion-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .companion-img {
+      width: 72px;
+      height: 72px;
+      flex-shrink: 0;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .companion-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .weekly-section { margin: 1.2rem 0; }
+
+    .weekly-title {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
+    }
+
+    .weekly-dots {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+    }
+
+    .weekly-dot {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .weekly-dot-circle {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 2.5px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--muted);
+      background: #fff;
+    }
+
+    .weekly-dot.done .weekly-dot-circle {
+      background: var(--pink);
+      border-color: var(--pink-dark);
+      color: #fff;
+    }
+
+    .weekly-dot.today .weekly-dot-circle {
+      border-color: var(--pink);
+      box-shadow: 0 0 0 3px rgba(184,125,232,0.2);
+    }
+
+    .weekly-dot-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    /* === Flashcard Redesign === */
+    .flash-card {
+      background: #fff;
+      border: 2px solid var(--line);
+      border-bottom-width: 4px;
+      border-radius: 18px;
+      padding: 1.1rem 1.2rem;
+      cursor: pointer;
+      transition: all 0.15s;
+      position: relative;
+    }
+
+    .flash-card:hover { border-color: var(--line-2); }
+
+    .flash-card.open {
+      border-color: var(--pink);
+      background: var(--pink-bg);
+    }
+
+    .flash-card.focus {
+      border-color: var(--yellow);
+      background: var(--yellow-bg);
+    }
+
+    .flash-card.focus.open {
+      border-color: var(--yellow-dark);
+      background: #dcf8dc;
+    }
+
+    .flash-card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .flash-card-word {
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--pink-dark);
+    }
+
+    .flash-card-right {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+
+    .flash-card-tap {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 600;
+      margin-top: 3px;
+    }
+
+    .flash-card.open .flash-card-tap { display: none; }
+
+    .flash-card-reveal {
+      display: none;
+      margin-top: 0.9rem;
+      padding-top: 0.9rem;
+      border-top: 1.5px dashed var(--line-2);
+    }
+
+    .flash-card.open .flash-card-reveal {
+      display: block;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .flash-reveal-row { margin-bottom: 0.55rem; }
+
+    .flash-reveal-label {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .flash-reveal-value {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    .flash-reveal-value.meaning {
+      font-size: 1.15rem;
+      font-weight: 800;
+    }
+
+    .flash-reveal-value.example {
+      font-style: italic;
+      color: var(--ink-soft);
+    }
+
+    .flash-reveal-value.translation {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    #rank-content .leaderboard {
+      margin-top: 0;
+      border-top: none;
+      padding-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="onboarding-overlay" style="display:none;"></div>
+  <div class="header">
+    <div class="header-title">🐾 CLAW ENG</div>
+    <div class="header-sub">單字複習小教室</div>
+  </div>
+
+  <div class="wrap">
+    <div id="panel-home" class="panel active">
+      <div class="loading">載入中…</div>
+    </div>
+
+    <div id="panel-flash" class="panel">
+      <div class="search-bar">
+        <input type="text" class="search-input" id="search-input" placeholder="搜尋單字或中文意思…" autocomplete="off" />
+      </div>
+      <div class="meta-line" id="cards-meta"></div>
+      <div class="card-grid" id="card-grid">
+        <div class="loading">載入中…</div>
+      </div>
+    </div>
+
+    <div id="panel-quiz" class="panel">
+      <div class="quiz-box" id="quiz-box">
+        <div class="loading">載入中…</div>
+      </div>
+    </div>
+
+    <div id="panel-rank" class="panel">
+      <div id="rank-content"></div>
+    </div>
+
+    <div class="page-footer" id="page-footer">CLAW ENG 單字複習小教室</div>
+  </div>
+
+  <nav class="bottom-nav" id="bottom-nav">
+    <button class="nav-item active" data-tab="home" onclick="switchTab('home')">
+      <svg viewBox="0 0 24 24"><path d="M3 12l9-9 9 9"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>
+      <span>首頁</span>
+    </button>
+    <button class="nav-item" data-tab="flash" onclick="switchTab('flash')">
+      <svg viewBox="0 0 24 24"><rect x="3" y="7" width="14" height="14" rx="2"/><path d="M7 7V5a2 2 0 012-2h10a2 2 0 012 2v10a2 2 0 01-2 2h-2"/></svg>
+      <span>單字卡</span>
+    </button>
+    <button class="nav-item" data-tab="quiz" onclick="switchTab('quiz')">
+      <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+      <span>測驗</span>
+    </button>
+    <button class="nav-item" data-tab="rank" onclick="switchTab('rank')">
+      <svg viewBox="0 0 24 24"><rect x="4" y="12" width="4" height="8" rx="1"/><rect x="10" y="4" width="4" height="16" rx="1"/><rect x="16" y="8" width="4" height="12" rx="1"/></svg>
+      <span>排行榜</span>
+    </button>
+  </nav>
+
+<script>
+/* =========================================================================
+   CLAW ENG Vocab Review — v2.0
+   Data: vocab-data.json
+   localStorage keys (preserved):
+     vocabReview.v1.players         — array of player objects
+     vocabReview.v1.currentPlayerId — string (selected player id)
+   New localStorage key:
+     vocabReview.v1.petClaims       — { [petId]: { ownerPlayerId, ownerName, password, claimedAt, updatedAt } }
+   Player schema: { id, name, avatarId, createdAt, plays, bestScore, recentScores[] }
+   Question types: 'cloze', 'zh2en', 'tense'
+   ========================================================================= */
+
+const LS_PLAYERS = 'vocabReview.v1.players';
+const LS_CURRENT = 'vocabReview.v1.currentPlayerId';
+const LS_CLAIMS  = 'vocabReview.v1.petClaims';
+const QUIZ_LEN   = 20;
+const MAX_CLOZE  = 5;       // cap: at most 5 cloze-input questions per quiz
+const DEFAULT_AVATAR = 'newcha1';
+
+let VOCAB = [];
+let VOCAB_META = null;
+
+/* ---------- Characters (8 CLAW ENG pets) ---------- */
+
+const CHARACTERS = [
+  { id: 'newcha1', name: '奶油貓', desc: '愛撒嬌的貓咪', src: 'Claw_ENG/design_handoff/assets/newcha1.png' },
+  { id: 'newcha2', name: '布丁狗', desc: '忠心的好夥伴', src: 'Claw_ENG/design_handoff/assets/newcha2.png' },
+  { id: 'newcha3', name: '胖河馬', desc: '萌萌的大塊頭', src: 'Claw_ENG/design_handoff/assets/newcha3.png' },
+  { id: 'newcha4', name: '泡泡魚', desc: '藍藍的海洋寶', src: 'Claw_ENG/design_handoff/assets/newcha4.png' },
+  { id: 'newcha5', name: '點點獸', desc: '斑點小可愛',   src: 'Claw_ENG/design_handoff/assets/newcha5.png' },
+  { id: 'newcha6', name: '圓滾雞', desc: '圓圓愛學習',   src: 'Claw_ENG/design_handoff/assets/newcha6.png' },
+  { id: 'newcha7', name: '六角龍', desc: '粉紅小精靈',   src: 'Claw_ENG/design_handoff/assets/newcha7.png' },
+  { id: 'newcha8', name: '豹豹',   desc: '威風的小獵豹', src: 'Claw_ENG/design_handoff/assets/newcha8.png' },
+];
+
+const CHAR_MAP = Object.fromEntries(CHARACTERS.map(c => [c.id, c]));
+const CHAR_ORDER = CHARACTERS.map(c => c.id);
+
+const AVATAR_COMPAT = {
+  chara01:'newcha1', chara02:'newcha2', chara03:'newcha3', chara04:'newcha4',
+  chara05:'newcha5', chara06:'newcha6', chara07:'newcha7',
+  chiika:'newcha1', hachi:'newcha2', usagi:'newcha3',
+};
+
+function normalizeAvatarId(id) {
+  const s = String(id || '').trim();
+  if (CHAR_MAP[s]) return s;
+  if (AVATAR_COMPAT[s]) return AVATAR_COMPAT[s];
+  return DEFAULT_AVATAR;
+}
+
+function avatarSrc(id) {
+  const c = CHAR_MAP[normalizeAvatarId(id)];
+  return c ? c.src : CHARACTERS[0].src;
+}
+
+function renderAvatar(id, { size = '', animated = false } = {}) {
+  const cls = ['avatar'];
+  if (size === 'sm') cls.push('avatar-sm');
+  if (size === 'lg') cls.push('avatar-lg');
+  return `<span class="${cls.join(' ')}" aria-hidden="true"><img src="${escapeHtml(avatarSrc(id))}" alt="" /></span>`;
+}
+
+/* ---------- Utilities ---------- */
+
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function sample(arr, n) { return shuffle(arr).slice(0, n); }
+
+function escapeHtml(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+function formatDate(d) {
+  if (!d) return '';
+  const m = String(d).match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (!m) return d;
+  return `${parseInt(m[2],10)}/${parseInt(m[3],10)}`;
+}
+
+function normalizeAnswer(s) {
+  return String(s || '').trim().toLowerCase().replace(/[.,!?;:'"`]/g, '').replace(/\s+/g,' ');
+}
+
+function uid() {
+  return 'p_' + Date.now().toString(36) + Math.random().toString(36).slice(2,7);
+}
+
+/* ---------- Verb / tense helpers ---------- */
+
+/* Irregular verb table: base -> { thirds, past, ing }. Covers the required set and a bit more. */
+const IRREGULAR = {
+  ride:  { thirds: 'rides',      past: 'rode',       ing: 'riding' },
+  leave: { thirds: 'leaves',     past: 'left',       ing: 'leaving' },
+  go:    { thirds: 'goes',       past: 'went',       ing: 'going' },
+  come:  { thirds: 'comes',      past: 'came',       ing: 'coming' },
+  have:  { thirds: 'has',        past: 'had',        ing: 'having' },
+  do:    { thirds: 'does',       past: 'did',        ing: 'doing' },
+  make:  { thirds: 'makes',      past: 'made',       ing: 'making' },
+  say:   { thirds: 'says',       past: 'said',       ing: 'saying' },
+  get:   { thirds: 'gets',       past: 'got',        ing: 'getting' },
+  see:   { thirds: 'sees',       past: 'saw',        ing: 'seeing' },
+  eat:   { thirds: 'eats',       past: 'ate',        ing: 'eating' },
+  run:   { thirds: 'runs',       past: 'ran',        ing: 'running' },
+  take:  { thirds: 'takes',      past: 'took',       ing: 'taking' },
+  give:  { thirds: 'gives',      past: 'gave',       ing: 'giving' },
+  know:  { thirds: 'knows',      past: 'knew',       ing: 'knowing' },
+  think: { thirds: 'thinks',     past: 'thought',    ing: 'thinking' },
+  feel:  { thirds: 'feels',      past: 'felt',       ing: 'feeling' },
+  buy:   { thirds: 'buys',       past: 'bought',     ing: 'buying' },
+  bring: { thirds: 'brings',     past: 'brought',    ing: 'bringing' },
+  catch: { thirds: 'catches',    past: 'caught',     ing: 'catching' },
+  hear:  { thirds: 'hears',      past: 'heard',      ing: 'hearing' },
+  hold:  { thirds: 'holds',      past: 'held',       ing: 'holding' },
+  read:  { thirds: 'reads',      past: 'read',       ing: 'reading' },
+  send:  { thirds: 'sends',      past: 'sent',       ing: 'sending' },
+  sit:   { thirds: 'sits',       past: 'sat',        ing: 'sitting' },
+  stand: { thirds: 'stands',     past: 'stood',      ing: 'standing' },
+  win:   { thirds: 'wins',       past: 'won',        ing: 'winning' },
+  write: { thirds: 'writes',     past: 'wrote',      ing: 'writing' },
+  meet:  { thirds: 'meets',      past: 'met',        ing: 'meeting' },
+  keep:  { thirds: 'keeps',      past: 'kept',       ing: 'keeping' },
+  put:   { thirds: 'puts',       past: 'put',        ing: 'putting' },
+  cut:   { thirds: 'cuts',       past: 'cut',        ing: 'cutting' },
+  let:   { thirds: 'lets',       past: 'let',        ing: 'letting' },
+  break: { thirds: 'breaks',     past: 'broke',      ing: 'breaking' },
+  fall:  { thirds: 'falls',      past: 'fell',       ing: 'falling' },
+  fly:   { thirds: 'flies',      past: 'flew',       ing: 'flying' },
+  speak: { thirds: 'speaks',     past: 'spoke',      ing: 'speaking' },
+  sleep: { thirds: 'sleeps',     past: 'slept',      ing: 'sleeping' },
+  forget:{ thirds: 'forgets',    past: 'forgot',     ing: 'forgetting' },
+  lose:  { thirds: 'loses',      past: 'lost',       ing: 'losing' },
+  tell:  { thirds: 'tells',      past: 'told',       ing: 'telling' },
+  wear:  { thirds: 'wears',      past: 'wore',       ing: 'wearing' },
+  sing:  { thirds: 'sings',      past: 'sang',       ing: 'singing' },
+  swim:  { thirds: 'swims',      past: 'swam',       ing: 'swimming' },
+  drink: { thirds: 'drinks',     past: 'drank',      ing: 'drinking' },
+  begin: { thirds: 'begins',     past: 'began',      ing: 'beginning' },
+  understand: { thirds: 'understands', past: 'understood', ing: 'understanding' },
+  teach: { thirds: 'teaches',    past: 'taught',     ing: 'teaching' },
+  build: { thirds: 'builds',     past: 'built',      ing: 'building' },
+  lend:  { thirds: 'lends',      past: 'lent',       ing: 'lending' },
+  find:  { thirds: 'finds',      past: 'found',      ing: 'finding' },
+  feed:  { thirds: 'feeds',      past: 'fed',        ing: 'feeding' },
+  pay:   { thirds: 'pays',       past: 'paid',       ing: 'paying' },
+  is:    { thirds: 'is',         past: 'was',        ing: 'being' },
+  are:   { thirds: 'is',         past: 'were',       ing: 'being' },
+  be:    { thirds: 'is',         past: 'was',        ing: 'being' },
+  can:   { thirds: 'can',        past: 'could',      ing: 'being able to' },
+};
+
+function toPast(verb) {
+  const v = verb.toLowerCase();
+  if (IRREGULAR[v]) return IRREGULAR[v].past;
+  if (/[^aeiou]e$/.test(v)) return v + 'd';
+  if (/e$/.test(v)) return v + 'd';
+  if (/[^aeiou]y$/.test(v)) return v.slice(0, -1) + 'ied';
+  if (/[^aeiou][aeiou][^aeiouwxy]$/.test(v) && v.length <= 5) return v + v.slice(-1) + 'ed';
+  return v + 'ed';
+}
+
+function toIng(verb) {
+  const v = verb.toLowerCase();
+  if (IRREGULAR[v]) return IRREGULAR[v].ing;
+  if (/ie$/.test(v)) return v.slice(0, -2) + 'ying';
+  if (/[^aeiou]e$/.test(v)) return v.slice(0, -1) + 'ing';
+  if (/[^aeiou][aeiou][^aeiouwxy]$/.test(v) && v.length <= 5) return v + v.slice(-1) + 'ing';
+  return v + 'ing';
+}
+
+function toThirdS(verb) {
+  const v = verb.toLowerCase();
+  if (IRREGULAR[v]) return IRREGULAR[v].thirds;
+  if (/(s|x|z|o)$/.test(v)) return v + 'es';
+  if (/(ch|sh)$/.test(v)) return v + 'es';
+  if (/[^aeiou]y$/.test(v)) return v.slice(0, -1) + 'ies';
+  return v + 's';
+}
+
+/* Detect whether a word looks like a verb based on its example sentence.
+   Only patterns that let us swap base→past form without breaking grammar:
+   "I/We/They/You + base form" (simple present with plural/1st-person subject). */
+const VERB_PREFIX_PATTERNS = [
+  /(?:^|[.!?,]\s+)(?:I|We|They|You)\s+WORD\b/,
+];
+
+function looksLikeVerb(word, example) {
+  if (!word || !example) return false;
+  const safe = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  for (const pat of VERB_PREFIX_PATTERNS) {
+    const src = pat.source.replace('WORD', safe);
+    if (new RegExp(src).test(example)) return true;
+  }
+  return false;
+}
+
+/* Build a tense question: returns { sentenceHtml, timeHint, correct, options[], tenseLabel } or null on failure. */
+function buildTenseQuestion(targetWord, otherVerbWords) {
+  const base = targetWord.word.toLowerCase();
+  const example = targetWord.example;
+  const safe = base.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+  // Find base form occurrence in example (word-boundary, case-insensitive).
+  const re = new RegExp('\\b' + safe + '\\b', 'i');
+  const m = example.match(re);
+  if (!m) return null;
+
+  // We always target PAST tense — safest, least grammar-dependency on the surrounding sentence.
+  const correct = toPast(base);
+  if (!correct || correct === base) return null; // refuse if past form is identical & we'd confuse the kid
+
+  // Build sentence HTML with the verb blanked out.
+  const idx = m.index;
+  const before = example.slice(0, idx);
+  const after = example.slice(idx + m[0].length);
+  const sentenceHtml =
+    escapeHtml(before) +
+    `<span class="blank">${'_'.repeat(Math.max(4, base.length))}</span>` +
+    escapeHtml(after);
+
+  // Build the 4 options: 3 forms of target + 1 distractor form from another verb.
+  const targetForms = [base, toThirdS(base), toPast(base), toIng(base)];
+  const uniqTargetForms = [...new Set(targetForms)];
+
+  // Pick 2 target wrong forms (not equal to correct).
+  const targetWrongs = uniqTargetForms.filter(f => f !== correct);
+  const pickedTargetWrongs = sample(targetWrongs, Math.min(2, targetWrongs.length));
+
+  // Pick 1 distractor from another verb.
+  let distractor = null;
+  for (const w of shuffle(otherVerbWords)) {
+    const b = w.word.toLowerCase();
+    if (b === base) continue;
+    const forms = [toThirdS(b), toPast(b), toIng(b)];
+    const pick = forms[Math.floor(Math.random() * forms.length)];
+    if (pick && pick !== correct && !pickedTargetWrongs.includes(pick) && pick !== base) {
+      distractor = pick;
+      break;
+    }
+  }
+
+  // If we couldn't find a distractor, fall back to another target form.
+  let options;
+  if (distractor) {
+    options = shuffle([correct, ...pickedTargetWrongs, distractor]);
+  } else {
+    // Fall back to full 4-form set if no other verb available.
+    options = shuffle(uniqTargetForms.length >= 4 ? uniqTargetForms.slice(0, 4) : [correct, ...pickedTargetWrongs, base + 'ed']);
+    // de-dup & ensure length 4
+    options = [...new Set(options)];
+    while (options.length < 4) options.push(base + 'X' + options.length);
+  }
+
+  // Safety: ensure correct is in options (it should be).
+  if (!options.includes(correct)) options[0] = correct;
+
+  return {
+    sentenceHtml,
+    timeHint: 'Yesterday',
+    timeHintZh: '昨天（過去式）',
+    correct,
+    options,
+    tenseLabel: '過去式',
+  };
+}
+
+/* ---------- Data fetch ---------- */
+
+async function loadVocab() {
+  try {
+    const res = await fetch('vocab-data.json?t=' + Date.now(), { cache: 'no-store' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    VOCAB = Array.isArray(data.words) ? data.words : [];
+    // back-compat: if vocab-data.json doesn't include pos yet, infer lightly on the client.
+    VOCAB = VOCAB.map(w => ({ ...w, pos: w.pos || inferPosClient(w) }));
+    VOCAB_META = data.meta || null;
+    renderFooterMeta();
+    renderCards();
+  } catch (e) {
+    document.getElementById('card-grid').innerHTML =
+      `<div class="err-state">單字資料載入失敗：${escapeHtml(e.message)}<br>
+       <span style="font-size:.85rem;color:var(--muted)">請確認 vocab-data.json 已產生並與本頁同目錄。</span></div>`;
+  }
+}
+
+function posList(pos) {
+  if (!pos) return [];
+  if (Array.isArray(pos)) return pos.map(x => String(x||'')).filter(Boolean);
+  return String(pos).split(/[\s,;/；|]+/).map(s => s.trim()).filter(Boolean);
+}
+
+function posLabel(pos) {
+  const p = String(pos || '').toLowerCase();
+  if (p === 'n' || p === 'noun') return 'n';
+  if (p === 'v' || p === 'verb') return 'v';
+  if (p === 'adj' || p === 'adjective') return 'adj';
+  if (p === 'adv' || p === 'adverb') return 'adv';
+  if (p === 'prep' || p === 'preposition') return 'prep';
+  if (p === 'pron' || p === 'pronoun') return 'pron';
+  if (p === 'conj' || p === 'conjunction') return 'conj';
+  if (p === 'interj' || p === 'interjection') return 'int';
+  if (p === 'det' || p === 'determiner') return 'det';
+  if (p === 'num' || p === 'number') return 'num';
+  return '?';
+}
+
+function posClass(pos) {
+  const p = String(pos || '').toLowerCase();
+  if (p === 'n' || p === 'noun') return 'pos-n';
+  if (p === 'v' || p === 'verb') return 'pos-v';
+  if (p === 'adj' || p === 'adjective') return 'pos-adj';
+  if (p === 'adv' || p === 'adverb') return 'pos-adv';
+  if (p === 'prep' || p === 'preposition') return 'pos-prep';
+  if (p === 'pron' || p === 'pronoun') return 'pos-pron';
+  if (p === 'conj' || p === 'conjunction') return 'pos-conj';
+  if (p === 'interj' || p === 'interjection') return 'pos-interj';
+  if (p === 'det' || p === 'determiner') return 'pos-det';
+  if (p === 'num' || p === 'number') return 'pos-num';
+  return 'pos-unk';
+}
+
+function inferPosClient(w) {
+  const word = String(w.word || '').toLowerCase();
+  const ex = String(w.example || '').toLowerCase();
+  const zh = String(w.meaning || '');
+  if (word.endsWith('ly')) return 'adv';
+  if (['red','yellow','blue','green','black','white','pink','brown','gray','grey','purple','orange'].includes(word)) return 'adj';
+  if (new RegExp(`^(please\\s+)?${word}\\b`).test(ex)) return 'v';
+  if (new RegExp(`^(i|you|we|they)\\s+${word}\\b`).test(ex)) return 'v';
+  if (new RegExp(`\\b(will|can|could|should|must|may|might)\\s+${word}\\b`).test(ex)) return 'v';
+  if (new RegExp(`\\bto\\s+${word}\\b`).test(ex)) return 'v';
+  if (new RegExp(`\\b(am|is|are|was|were|become|seem|feel|look)\\s+${word}\\b`).test(ex)) return 'adj';
+  if (new RegExp(`\\b(a|an|the)\\s+${word}\\b`).test(ex)) return 'n';
+  if (/的/.test(zh)) return 'adj';
+  return 'n';
+}
+
+function focusDateOf(words) {
+  const dates = (words || []).map(w => String(w.firstSeen || '')).filter(Boolean);
+  if (!dates.length) return '';
+  dates.sort();
+  return dates[dates.length - 1];
+}
+
+function focusWordsOf(words) {
+  const d = focusDateOf(words);
+  if (!d) return [];
+  return (words || []).filter(w => String(w.firstSeen || '') === d).slice(0, 3);
+}
+
+function renderFooterMeta() {
+  const f = document.getElementById('page-footer');
+  const tag = 'v2.0';
+  if (VOCAB_META && VOCAB_META.updatedAt) {
+    const d = VOCAB_META.updatedAt.replace('T',' ').replace('Z',' UTC');
+    f.textContent = `CLAW ENG ${tag} · 共 ${VOCAB.length} 個單字 · 更新於 ${d}`;
+  } else {
+    f.textContent = `CLAW ENG ${tag} · 共 ${VOCAB.length} 個單字`;
+  }
+}
+
+/* ---------- Tabs ---------- */
+
+function switchTab(id) {
+  document.querySelectorAll('.nav-item').forEach(b =>
+    b.classList.toggle('active', b.dataset.tab === id)
+  );
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  const panel = document.getElementById('panel-' + id);
+  if (panel) panel.classList.add('active');
+  if (id === 'home') renderHome();
+  else if (id === 'quiz') enterQuizTab();
+  else if (id === 'rank') renderRank();
+}
+
+function getWeekDays() {
+  const today = new Date();
+  const days = [];
+  for (let i = 6; i >= 0; i--) {
+    const d = new Date(today);
+    d.setDate(d.getDate() - i);
+    days.push(taipeiDateKey(d));
+  }
+  return days;
+}
+
+function renderHome() {
+  const panel = document.getElementById('panel-home');
+  const curId = getCurrentPlayerId();
+  const player = curId ? findPlayer(curId) : null;
+  if (!player) {
+    panel.innerHTML = '<div class="empty-state">請先完成設定！</div>';
+    return;
+  }
+  const char = CHAR_MAP[normalizeAvatarId(player.avatarId)];
+  const streakVal = player.streakCur || 0;
+  const answeredVal = player.answeredCount || ((player.plays || 0) * QUIZ_LEN);
+  const bestVal = player.bestScore || 0;
+
+  const days = getWeekDays();
+  const playedSet = new Set(player.playedDates || []);
+  const today = taipeiDateKey();
+  const dayLabels = ['日','一','二','三','四','五','六'];
+
+  const weeklyHtml = days.map(dateKey => {
+    const parts = dateKey.split('-');
+    const d = new Date(parseInt(parts[0],10), parseInt(parts[1],10)-1, parseInt(parts[2],10));
+    const dayOfWeek = d.getDay();
+    const isToday = dateKey === today;
+    const isDone = playedSet.has(dateKey);
+    const dayNum = parseInt(parts[2], 10);
+    return `
+      <div class="weekly-dot ${isDone ? 'done' : ''} ${isToday ? 'today' : ''}">
+        <div class="weekly-dot-circle">${isDone ? '✓' : dayNum}</div>
+        <div class="weekly-dot-label">${dayLabels[dayOfWeek]}</div>
+      </div>`;
+  }).join('');
+
+  panel.innerHTML = `
+    <div class="home-greeting">
+      <div style="display:inline-block;animation:float 3s ease-in-out infinite;">
+        ${renderAvatar(player.avatarId, { size: 'lg' })}
+      </div>
+      <div class="home-greeting-name">Hi, ${escapeHtml(player.name)}!</div>
+      <div class="home-greeting-sub">今天也要好好學英文喔</div>
+    </div>
+
+    <div class="stat-cards">
+      <div class="stat-card streak">
+        <div class="stat-card-icon">🔥</div>
+        <div class="stat-card-value">${streakVal}</div>
+        <div class="stat-card-label">連續天數</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-icon">✅</div>
+        <div class="stat-card-value">${answeredVal}</div>
+        <div class="stat-card-label">已完成的答題數</div>
+      </div>
+      <div class="stat-card best">
+        <div class="stat-card-icon">⭐</div>
+        <div class="stat-card-value">${bestVal}</div>
+        <div class="stat-card-label">最高分</div>
+      </div>
+    </div>
+
+    <div class="companion-card">
+      <div class="companion-info">
+        <div class="companion-name">我的學習夥伴</div>
+        <div class="companion-desc">${escapeHtml(char ? char.name : '')} — ${escapeHtml(char ? char.desc : '')}</div>
+      </div>
+      <div class="companion-img">
+        <img src="${escapeHtml(char ? char.src : '')}" alt="" />
+      </div>
+    </div>
+
+    <div class="weekly-section">
+      <div class="weekly-title">📅 每週進度</div>
+      <div class="weekly-dots">${weeklyHtml}</div>
+    </div>
+
+    <div style="margin-top:1.2rem;">
+      <button class="dl-btn wide" onclick="switchTab('quiz')">開始今天的測驗 →</button>
+    </div>
+  `;
+}
+
+function renderRank() {
+  const el = document.getElementById('rank-content');
+  const curId = getCurrentPlayerId();
+  el.innerHTML = `
+    <div style="text-align:center;padding:1.2rem 0 0.5rem;">
+      <div style="font-size:1.2rem;font-weight:900;color:var(--ink);">🏆 排行榜</div>
+      <div style="font-size:0.82rem;color:var(--muted);margin-top:0.2rem;">所有玩家的戰績</div>
+    </div>
+    ${renderLeaderboardHtml(curId)}
+  `;
+}
+
+/* ---------- Cards tab ---------- */
+
+function renderCards() {
+  const grid = document.getElementById('card-grid');
+  const meta = document.getElementById('cards-meta');
+  const q = normalizeAnswer(document.getElementById('search-input').value);
+
+  if (!VOCAB.length) {
+    meta.textContent = '';
+    grid.innerHTML = `<div class="empty-state">還沒有單字資料。</div>`;
+    return;
+  }
+
+  let list = VOCAB;
+  if (q) {
+    list = VOCAB.filter(v =>
+      normalizeAnswer(v.word).includes(q) ||
+      (v.meaning || '').toLowerCase().includes(q) ||
+      (v.meaning || '').includes(q.trim())
+    );
+  }
+  list = list.slice().sort((a, b) => (b.firstSeen || '').localeCompare(a.firstSeen || ''));
+
+  const focusDate = q ? '' : focusDateOf(list);
+  const focusWords = (focusDate && !q) ? list.filter(w => String(w.firstSeen || '') === focusDate).slice(0, 3) : [];
+  const focusSet = new Set(focusWords.map(w => String(w.word || '').toLowerCase()));
+  const rest = focusWords.length ? list.filter(w => !focusSet.has(String(w.word || '').toLowerCase())) : list;
+
+  meta.textContent = focusWords.length
+    ? `今日新字 ${focusWords.length} 個 · 其他 ${rest.length} 個（共收錄 ${VOCAB.length} 個）`
+    : `共 ${list.length} 張單字卡（共收錄 ${VOCAB.length} 個）`;
+
+  if (!list.length) {
+    grid.innerHTML = `<div class="empty-state">找不到符合「${escapeHtml(q)}」的單字。</div>`;
+    return;
+  }
+
+  function renderCard(v, isFocus) {
+    const posHtml = posList(v.pos).map(p =>
+      `<span class="pos-dot ${posClass(p)}">${escapeHtml(posLabel(p))}</span>`
+    ).join('');
+    return `
+    <div class="flash-card ${isFocus ? 'focus' : ''}" onclick="this.classList.toggle('open')">
+      <div class="flash-card-head">
+        <div class="flash-card-word">${escapeHtml(v.word)}</div>
+        <div class="flash-card-right">
+          ${isFocus ? '<span class="new-badge">NEW</span>' : ''}
+          ${posHtml}
+        </div>
+      </div>
+      <div class="flash-card-tap">點擊看中文 ▼</div>
+      <div class="flash-card-reveal">
+        <div class="flash-reveal-row">
+          <span class="flash-reveal-label">中文</span>
+          <span class="flash-reveal-value meaning">${escapeHtml(v.meaning)}</span>
+        </div>
+        <div class="flash-reveal-row">
+          <span class="flash-reveal-label">詞性</span>
+          <span class="flash-reveal-value">${posList(v.pos).map(p => escapeHtml(posLabel(p))).join(' / ') || '?'}</span>
+        </div>
+        <div class="flash-reveal-row">
+          <span class="flash-reveal-label">例句</span>
+          <span class="flash-reveal-value example">${escapeHtml(v.example)}</span>
+        </div>
+        ${v.translation ? `<div class="flash-reveal-row">
+          <span class="flash-reveal-label">翻譯</span>
+          <span class="flash-reveal-value translation">${escapeHtml(v.translation)}</span>
+        </div>` : ''}
+      </div>
+    </div>
+    `;
+  }
+
+  if (focusWords.length) {
+    const head = `
+      <div class="group-head focus">
+        <div class="group-title">今日 3 個新單字</div>
+        <div class="group-sub">${formatDate(focusDate)}（隔天有新字就會自動下放）</div>
+      </div>
+    `;
+    const div = `<div class="group-divider"></div>`;
+    const tailHead = rest.length ? `
+      <div class="group-head">
+        <div class="group-title">其他單字</div>
+        <div class="group-sub">往下是之前學過的</div>
+      </div>
+    ` : '';
+    grid.innerHTML = [
+      head,
+      ...focusWords.map(v => renderCard(v, true)),
+      div,
+      tailHead,
+      ...rest.map(v => renderCard(v, false)),
+    ].join('');
+  } else {
+    grid.innerHTML = list.map(v => renderCard(v, false)).join('');
+  }
+}
+
+/* ---------- Player store ---------- */
+
+function loadPlayers() {
+  try {
+    const raw = localStorage.getItem(LS_PLAYERS);
+    const arr = raw ? JSON.parse(raw) : [];
+    if (!Array.isArray(arr)) return [];
+    return arr.map(p => ({
+      id: p.id || uid(),
+      name: String(p.name || '未命名').slice(0, 20),
+      avatarId: normalizeAvatarId(p.avatarId),
+      createdAt: p.createdAt || new Date().toISOString(),
+      plays: Number.isFinite(p.plays) ? p.plays : 0,
+      bestScore: Number.isFinite(p.bestScore) ? p.bestScore : 0,
+      recentScores: Array.isArray(p.recentScores) ? p.recentScores.slice(0, 10) : [],
+      streakCur: Number.isFinite(p.streakCur) ? p.streakCur : 0,
+      streakBest: Number.isFinite(p.streakBest) ? p.streakBest : 0,
+      lastPlayDate: String(p.lastPlayDate || ''),
+      answeredCount: Number.isFinite(p.answeredCount) ? p.answeredCount : 0,
+      playedDates: Array.isArray(p.playedDates) ? p.playedDates : [],
+    }));
+  } catch (_) { return []; }
+}
+
+function savePlayers(players) {
+  localStorage.setItem(LS_PLAYERS, JSON.stringify(players));
+}
+
+function getCurrentPlayerId() {
+  return localStorage.getItem(LS_CURRENT) || '';
+}
+
+function setCurrentPlayerId(id) {
+  if (id) localStorage.setItem(LS_CURRENT, id);
+  else localStorage.removeItem(LS_CURRENT);
+}
+
+function findPlayer(id) {
+  return loadPlayers().find(p => p.id === id) || null;
+}
+
+function addPlayer(name, avatarId) {
+  name = String(name || '').trim().slice(0, 20);
+  if (!name) return null;
+  const players = loadPlayers();
+  const existing = players.find(p => p.name === name);
+  if (existing) {
+    existing.avatarId = normalizeAvatarId(avatarId || existing.avatarId);
+    savePlayers(players);
+    setCurrentPlayerId(existing.id);
+    return existing;
+  }
+  const p = {
+    id: uid(),
+    name,
+    avatarId: normalizeAvatarId(avatarId),
+    createdAt: new Date().toISOString(),
+    plays: 0,
+    bestScore: 0,
+    recentScores: [],
+    streakCur: 0,
+    streakBest: 0,
+    lastPlayDate: '',
+    answeredCount: 0,
+    playedDates: [],
+  };
+  players.push(p);
+  savePlayers(players);
+  setCurrentPlayerId(p.id);
+  return p;
+}
+
+function taipeiDateKey(d = new Date()) {
+  try {
+    return new Intl.DateTimeFormat('sv-SE', {
+      timeZone: 'Asia/Taipei',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    }).format(d);
+  } catch (_) {
+    // Fallback: local date. Not perfect, but keeps the game usable.
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const dd = String(d.getDate()).padStart(2, '0');
+    return `${y}-${m}-${dd}`;
+  }
+}
+
+function dateKeyToUtcMs(k) {
+  const m = String(k || '').match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!m) return NaN;
+  return Date.UTC(parseInt(m[1], 10), parseInt(m[2], 10) - 1, parseInt(m[3], 10));
+}
+
+function applyStreak(p) {
+  const today = taipeiDateKey();
+  const last = String(p.lastPlayDate || '');
+
+  if (!last) {
+    p.streakCur = 1;
+    p.lastPlayDate = today;
+    p.streakBest = Math.max(p.streakBest || 0, p.streakCur || 0);
+    return;
+  }
+
+  const a = dateKeyToUtcMs(today);
+  const b = dateKeyToUtcMs(last);
+  if (!Number.isFinite(a) || !Number.isFinite(b)) {
+    p.streakCur = Math.max(p.streakCur || 0, 1);
+    p.lastPlayDate = today;
+    p.streakBest = Math.max(p.streakBest || 0, p.streakCur || 0);
+    return;
+  }
+
+  const diffDays = Math.round((a - b) / 86400000);
+  if (diffDays === 0) {
+    p.streakCur = Math.max(p.streakCur || 0, 1);
+  } else if (diffDays === 1) {
+    p.streakCur = (p.streakCur || 0) + 1;
+  } else {
+    p.streakCur = 1;
+  }
+  p.lastPlayDate = today;
+  p.streakBest = Math.max(p.streakBest || 0, p.streakCur || 0);
+}
+
+function recordScore(playerId, score, questionsCount) {
+  const players = loadPlayers();
+  const p = players.find(x => x.id === playerId);
+  if (!p) return;
+  p.plays = (p.plays || 0) + 1;
+  p.bestScore = Math.max(p.bestScore || 0, score);
+  p.recentScores = [score, ...(p.recentScores || [])].slice(0, 10);
+  if (questionsCount) p.answeredCount = (p.answeredCount || 0) + questionsCount;
+  const today = taipeiDateKey();
+  if (!p.playedDates) p.playedDates = [];
+  if (!p.playedDates.includes(today)) p.playedDates.push(today);
+  p.playedDates = p.playedDates.slice(-60);
+  applyStreak(p);
+  savePlayers(players);
+}
+
+/* ---------- Cloud leaderboard (Firebase Firestore REST) ----------
+   Shared leaderboard across all users/devices. No SDK — just REST.
+   If disabled or blocked by rules, UI falls back to local mode. */
+
+const firebaseConfig = {
+  apiKey: "AIzaSyB1c6yopEMzDxbYBrgkqr_3Rsr9KqKwNbA",
+  authDomain: "vocab-eng2026.firebaseapp.com",
+  projectId: "vocab-eng2026",
+  storageBucket: "vocab-eng2026.firebasestorage.app",
+  messagingSenderId: "414665820941",
+  appId: "1:414665820941:web:41437ce9f75952b382be44"
+};
+
+const FS_BASE = `https://firestore.googleapis.com/v1/projects/${firebaseConfig.projectId}/databases/(default)/documents`;
+const FS_COMMIT = `https://firestore.googleapis.com/v1/projects/${firebaseConfig.projectId}/databases/(default)/documents:commit`;
+
+const CLOUD = {
+  status: 'idle',  // 'idle' | 'loading' | 'ok' | 'offline'
+  entries: [],     // array of { name, avatarId, plays, bestScore, recentScores, updatedAt }
+  streakEntries: [],
+  lastError: '',
+  lastWriteOk: null,
+  lastWriteAt: '',
+};
+
+function cloudDocId(name) {
+  const raw = String(name || '').trim();
+  if (!raw) return '_';
+
+  // Keep legacy ASCII id scheme for back-compat.
+  const s = raw.toLowerCase();
+  const ascii = s.replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '');
+  if (ascii && ascii !== '_') return ascii.slice(0, 80);
+
+  // Non-ASCII names (e.g. 中文) would collapse to '_' and never write.
+  // Use base64url(utf8(name)) with a prefix.
+  try {
+    const bytes = new TextEncoder().encode(raw);
+    let bin = '';
+    for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+    const b64 = btoa(bin).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/g, '');
+    return ('u_' + b64).slice(0, 120);
+  } catch (_) {
+    return '_';
+  }
+}
+
+function fsNum(v) {
+  if (!v) return 0;
+  if (v.integerValue != null) return parseInt(v.integerValue, 10) || 0;
+  if (v.doubleValue != null) return Number(v.doubleValue) || 0;
+  return 0;
+}
+function fsStr(v) { return (v && v.stringValue) || ''; }
+function fsArrInt(v) {
+  const values = v && v.arrayValue && v.arrayValue.values;
+  return Array.isArray(values) ? values.map(fsNum) : [];
+}
+
+function fsDocToEntry(doc) {
+  const f = (doc && doc.fields) || {};
+  return {
+    name: fsStr(f.name),
+    avatarId: normalizeAvatarId(fsStr(f.avatarId) || DEFAULT_AVATAR),
+    plays: fsNum(f.plays),
+    bestScore: fsNum(f.bestScore),
+    recentScores: fsArrInt(f.recentScores),
+    streakCur: fsNum(f.streakCur),
+    streakBest: fsNum(f.streakBest),
+    lastPlayDate: fsStr(f.lastPlayDate),
+    updatedAt: fsStr(f.updatedAt),
+  };
+}
+
+function entryToFsFields(e) {
+  return {
+    name: { stringValue: String(e.name || '') },
+    avatarId: { stringValue: e.avatarId || DEFAULT_AVATAR },
+    plays: { integerValue: String(e.plays | 0) },
+    bestScore: { integerValue: String(e.bestScore | 0) },
+    recentScores: {
+      arrayValue: {
+        values: (e.recentScores || []).map(n => ({ integerValue: String(n | 0) }))
+      }
+    },
+    streakCur: { integerValue: String((e.streakCur || 0) | 0) },
+    streakBest: { integerValue: String((e.streakBest || 0) | 0) },
+    lastPlayDate: { stringValue: String(e.lastPlayDate || '') },
+    updatedAt: { stringValue: e.updatedAt || new Date().toISOString() },
+  };
+}
+
+async function cloudRunQuery(orderField, limit = 50) {
+  const res = await fetch(`${FS_BASE}:runQuery?key=${firebaseConfig.apiKey}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      structuredQuery: {
+        from: [{ collectionId: 'leaderboard' }],
+        orderBy: [
+          { field: { fieldPath: String(orderField) }, direction: 'DESCENDING' },
+        ],
+        limit,
+      },
+    }),
+  });
+  if (!res.ok) {
+    const t = await res.text().catch(() => '');
+    throw new Error(`runQuery(${orderField}) ${res.status} ${t}`.slice(0, 500));
+  }
+  const rows = await res.json();
+  const entries = [];
+  for (const row of rows) {
+    if (row && row.document) entries.push(fsDocToEntry(row.document));
+  }
+  return entries;
+}
+
+async function cloudFetchLeaderboard() {
+  CLOUD.status = 'loading';
+  CLOUD.lastError = '';
+  try {
+    // Best-score leaderboard (primary)
+    const best = await cloudRunQuery('bestScore', 80);
+    best.sort((a,b) => (
+      (b.bestScore||0) - (a.bestScore||0) ||
+      String(b.updatedAt||'').localeCompare(String(a.updatedAt||''))
+    ));
+    CLOUD.entries = best;
+
+    // Streak leaderboard (optional). If this fails, keep the game playable.
+    try {
+      const streak = await cloudRunQuery('streakCur', 80);
+      streak.sort((a,b) => (
+        (b.streakCur||0) - (a.streakCur||0) ||
+        (b.bestScore||0) - (a.bestScore||0) ||
+        String(b.updatedAt||'').localeCompare(String(a.updatedAt||''))
+      ));
+      CLOUD.streakEntries = streak;
+    } catch (e2) {
+      CLOUD.streakEntries = [];
+      // Keep lastError empty here (we don't want scary UI if best works).
+    }
+
+    CLOUD.status = 'ok';
+    return best;
+  } catch (e) {
+    CLOUD.status = 'offline';
+    if (!CLOUD.lastError) CLOUD.lastError = String(e && e.message ? e.message : e);
+    return null;
+  }
+}
+
+async function cloudGetEntry(name) {
+  const id = cloudDocId(name);
+  try {
+    const res = await fetch(`${FS_BASE}/leaderboard/${encodeURIComponent(id)}?key=${firebaseConfig.apiKey}`);
+    if (res.status === 404) return null;
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const doc = await res.json();
+    return fsDocToEntry(doc);
+  } catch (e) {
+    return null;
+  }
+}
+
+async function cloudUpsertScore(name, avatarId, score) {
+  const id = cloudDocId(name);
+  if (!id || id === '_') return false;
+  const prev = await cloudGetEntry(name);
+  const base = prev || { plays: 0, bestScore: 0, recentScores: [], avatarId: DEFAULT_AVATAR, streakCur: 0, streakBest: 0, lastPlayDate: '' };
+
+  // Streak is based on Taipei date to match the daily vocab cadence.
+  const today = taipeiDateKey();
+  const last = String(base.lastPlayDate || '');
+  let streakCur = base.streakCur || 0;
+  let streakBest = base.streakBest || 0;
+  let lastPlayDate = last;
+  if (!last) {
+    streakCur = 1;
+    lastPlayDate = today;
+  } else {
+    const a = dateKeyToUtcMs(today);
+    const b = dateKeyToUtcMs(last);
+    const diffDays = (Number.isFinite(a) && Number.isFinite(b)) ? Math.round((a - b) / 86400000) : NaN;
+    if (diffDays === 0) {
+      streakCur = Math.max(streakCur, 1);
+    } else if (diffDays === 1) {
+      streakCur = (streakCur || 0) + 1;
+      lastPlayDate = today;
+    } else {
+      streakCur = 1;
+      lastPlayDate = today;
+    }
+  }
+  streakBest = Math.max(streakBest || 0, streakCur || 0);
+
+  const entry = {
+    name: String(name || '').trim().slice(0, 40),
+    avatarId: normalizeAvatarId(avatarId || base.avatarId || DEFAULT_AVATAR),
+    plays: (base.plays || 0) + 1,
+    bestScore: Math.max(base.bestScore || 0, score | 0),
+    recentScores: [score | 0, ...(base.recentScores || [])].slice(0, 10),
+    streakCur,
+    streakBest,
+    lastPlayDate,
+    updatedAt: new Date().toISOString(),
+  };
+  try {
+    CLOUD.lastError = '';
+    // Use commit (POST) instead of PATCH to avoid browser CORS issues on some platforms.
+    const docName = `projects/${firebaseConfig.projectId}/databases/(default)/documents/leaderboard/${id}`;
+    const res = await fetch(`${FS_COMMIT}?key=${firebaseConfig.apiKey}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        writes: [{
+          update: {
+            name: docName,
+            fields: entryToFsFields(entry),
+          }
+        }]
+      }),
+    });
+    if (!res.ok) {
+      const t = await res.text().catch(() => '');
+      CLOUD.lastError = `commit ${res.status} ${t}`.slice(0, 500);
+      throw new Error('HTTP ' + res.status);
+    }
+    CLOUD.status = 'ok';
+    CLOUD.lastWriteOk = true;
+    CLOUD.lastWriteAt = new Date().toISOString();
+    return true;
+  } catch (e) {
+    CLOUD.status = 'offline';
+    CLOUD.lastWriteOk = false;
+    CLOUD.lastWriteAt = new Date().toISOString();
+    if (!CLOUD.lastError) CLOUD.lastError = String(e && e.message ? e.message : e);
+    return false;
+  }
+}
+
+function refreshLeaderboardUI(highlightId) {
+  const el = document.getElementById('lb-container');
+  if (!el) return;
+  const wrap = document.createElement('div');
+  wrap.innerHTML = renderLeaderboardHtml(highlightId);
+  const fresh = wrap.firstElementChild;
+  if (fresh) el.replaceWith(fresh);
+  else el.remove();
+}
+
+/* ---------- Pet claim system ---------- */
+
+function loadClaims() {
+  try { return JSON.parse(localStorage.getItem(LS_CLAIMS) || '{}'); } catch { return {}; }
+}
+
+function saveClaims(c) {
+  try { localStorage.setItem(LS_CLAIMS, JSON.stringify(c)); } catch {}
+}
+
+function getClaimOwner(petId) {
+  return loadClaims()[petId] || null;
+}
+
+function genPassword() {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  return Array.from({length: 6}, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+}
+
+function claimPet(player, petId) {
+  const claims = loadClaims();
+  for (const id of Object.keys(claims)) {
+    if (claims[id].ownerPlayerId === player.id && id !== petId) delete claims[id];
+  }
+  const now = new Date().toISOString();
+  const pw = genPassword();
+  claims[petId] = {
+    ownerPlayerId: player.id,
+    ownerName: player.name,
+    password: pw,
+    claimedAt: now,
+    updatedAt: now,
+  };
+  saveClaims(claims);
+  return pw;
+}
+
+function transferPet(player, petId, password) {
+  const claims = loadClaims();
+  const claim = claims[petId];
+  if (!claim) return { ok: false, error: 'not_claimed' };
+  if (claim.password !== String(password || '').toUpperCase()) return { ok: false, error: 'wrong_password' };
+  for (const id of Object.keys(claims)) {
+    if (claims[id].ownerPlayerId === player.id && id !== petId) delete claims[id];
+  }
+  const now = new Date().toISOString();
+  const newPw = genPassword();
+  claims[petId] = {
+    ownerPlayerId: player.id,
+    ownerName: player.name,
+    password: newPw,
+    claimedAt: now,
+    updatedAt: now,
+  };
+  saveClaims(claims);
+  return { ok: true, password: newPw };
+}
+
+function releaseClaimsForPlayer(playerId) {
+  const claims = loadClaims();
+  let changed = false;
+  for (const petId of Object.keys(claims)) {
+    if (claims[petId].ownerPlayerId === playerId) {
+      delete claims[petId];
+      changed = true;
+    }
+  }
+  if (changed) saveClaims(claims);
+}
+
+function playerHasValidClaim(playerOrId) {
+  const player = typeof playerOrId === 'string' ? findPlayer(playerOrId) : playerOrId;
+  if (!player) return false;
+  const claim = getClaimOwner(normalizeAvatarId(player.avatarId));
+  if (!claim) return false;
+  if (claim.ownerPlayerId) return claim.ownerPlayerId === player.id;
+  return claim.ownerName === player.name;
+}
+
+/* ---------- Onboarding ---------- */
+
+let obState = { step: 1, name: '', selectedPet: null, password: '', verifiedPassword: '' };
+
+function needsOnboarding() {
+  const curId = getCurrentPlayerId();
+  if (!curId) return true;
+  const player = findPlayer(curId);
+  if (!player) return true;
+  return !playerHasValidClaim(curId);
+}
+
+function showOnboarding(prefillName) {
+  obState = { step: 1, name: prefillName || '', selectedPet: null, password: '', verifiedPassword: '' };
+  const el = document.getElementById('onboarding-overlay');
+  el.style.display = 'flex';
+  if (prefillName && findPlayer(getCurrentPlayerId())) {
+    obState.step = 2;
+    renderOnboardingPet();
+  } else {
+    renderOnboardingName();
+  }
+}
+
+function hideOnboarding() {
+  document.getElementById('onboarding-overlay').style.display = 'none';
+}
+
+function renderOnboardingName() {
+  const el = document.getElementById('onboarding-overlay');
+  const pc = getComputedStyle(document.documentElement).getPropertyValue('--pink').trim() || '#b87de8';
+  el.innerHTML = `
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 28px;gap:24px;">
+      <div style="animation:float 3s ease-in-out infinite;">
+        <img src="${CHARACTERS[0].src}" alt="" style="width:100px;height:100px;object-fit:contain;" />
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:26px;font-weight:900;color:#1a1a2e;">歡迎來到</div>
+        <div style="font-size:28px;font-weight:900;color:${pc};">CLAW ENG！</div>
+        <div style="font-size:13px;color:#aaa;margin-top:6px;">先告訴我你的名字吧 😊</div>
+      </div>
+      <div style="width:100%;">
+        <input type="text" id="ob-name" placeholder="輸入你的名字…" maxlength="10"
+          value="${escapeHtml(obState.name)}"
+          style="width:100%;padding:16px 20px;border-radius:18px;border:2px solid #e8e0f8;
+            font-size:18px;font-weight:800;color:#1a1a2e;outline:none;
+            font-family:Nunito,sans-serif;background:#fff;
+            box-shadow:0 2px 12px ${pc}22;" />
+        <div id="ob-name-err" style="font-size:12px;color:#FF4D6D;font-weight:700;margin-top:6px;padding-left:4px;display:none;"></div>
+      </div>
+      <button onclick="obGoStep2()" style="width:100%;padding:17px;border-radius:20px;border:none;cursor:pointer;
+        background:linear-gradient(135deg,${pc},${pc}bb);font-size:17px;font-weight:900;color:#fff;
+        box-shadow:0 5px 18px ${pc}44;font-family:Nunito,sans-serif;">下一步 →</button>
+    </div>
+  `;
+  const inp = document.getElementById('ob-name');
+  inp.focus();
+  inp.addEventListener('keydown', e => { if (e.key === 'Enter') obGoStep2(); });
+}
+
+function obGoStep2() {
+  const inp = document.getElementById('ob-name');
+  const name = (inp.value || '').trim();
+  if (!name) {
+    const err = document.getElementById('ob-name-err');
+    err.textContent = '請輸入你的名字！';
+    err.style.display = 'block';
+    return;
+  }
+  if (name.length > 10) {
+    const err = document.getElementById('ob-name-err');
+    err.textContent = '名字最多10個字喔！';
+    err.style.display = 'block';
+    return;
+  }
+  obState.name = name;
+  obState.step = 2;
+  renderOnboardingPet();
+}
+
+function renderOnboardingPet() {
+  const el = document.getElementById('onboarding-overlay');
+  const pc = getComputedStyle(document.documentElement).getPropertyValue('--pink').trim() || '#b87de8';
+  const claims = loadClaims();
+  const name = obState.name;
+  const existingPlayer = loadPlayers().find(p => p.name === name);
+  const myPlayerId = existingPlayer ? existingPlayer.id : null;
+
+  const gridHtml = CHARACTERS.map((c, i) => {
+    const claim = claims[c.id];
+    const isMine = claim && (
+      (myPlayerId && claim.ownerPlayerId === myPlayerId) ||
+      (!myPlayerId && claim.ownerName === name)
+    );
+    const isClaimed = !!claim && !isMine;
+    const isSel = obState.selectedPet === i;
+    const border = isSel ? `border-color:${pc};background:${pc}12;box-shadow:0 4px 14px ${pc}33;` : '';
+    const filter = isClaimed ? 'filter:grayscale(0.3);' : '';
+    let badge = '';
+    if (isSel) badge = `<div style="position:absolute;top:5px;right:5px;width:16px;height:16px;border-radius:50%;background:${pc};display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;font-weight:900;">✓</div>`;
+    else if (isClaimed) badge = '<div style="position:absolute;top:5px;right:5px;font-size:14px;">🔒</div>';
+    else if (isMine) badge = '<div style="position:absolute;top:5px;right:5px;width:16px;height:16px;border-radius:50%;background:#4CAF82;display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;">✓</div>';
+    const ownerLine = isClaimed ? `<div style="font-size:9px;color:#bbb;font-weight:700;">${escapeHtml(claim.ownerName)} 的</div>` : '';
+    return `
+      <button onclick="obTrySelectPet(${i})" style="padding:12px 6px 10px;border-radius:18px;
+        border:2.5px solid #f0eaea;background:#fff;cursor:pointer;transition:all 0.18s;
+        display:flex;flex-direction:column;align-items:center;gap:3;
+        position:relative;font-family:Nunito,sans-serif;${isClaimed?'opacity:0.7;':''}${border}">
+        ${badge}
+        <img src="${escapeHtml(c.src)}" alt="${escapeHtml(c.name)}" style="width:56px;height:56px;object-fit:contain;${filter}" />
+        <div style="font-size:11px;font-weight:900;color:${isSel ? pc : '#1a1a2e'};">${escapeHtml(c.name)}</div>
+        ${ownerLine}
+      </button>`;
+  }).join('');
+
+  el.innerHTML = `
+    <div style="padding:48px 20px 8px;display:flex;align-items:center;gap:12px;flex-shrink:0;">
+      <button onclick="obState.step=1;renderOnboardingName();" style="width:38px;height:38px;border-radius:12px;border:none;background:rgba(0,0,0,0.06);cursor:pointer;font-size:17px;font-family:Nunito,sans-serif;">←</button>
+      <div style="flex:1;">
+        <div style="font-size:17px;font-weight:900;color:#1a1a2e;">選一隻寵物，${escapeHtml(name)}！</div>
+        <div style="font-size:12px;color:#aaa;">🔒 已被其他同學認養的需要密碼</div>
+      </div>
+    </div>
+    <div style="flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:8px 16px 16px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">${gridHtml}</div>
+    </div>
+    <div style="padding:0 16px 28px;flex-shrink:0;">
+      <button onclick="obConfirmPet()" style="width:100%;padding:17px;border-radius:20px;border:none;cursor:pointer;
+        background:linear-gradient(135deg,${pc},${pc}bb);font-size:16px;font-weight:900;color:#fff;
+        box-shadow:0 5px 18px ${pc}44;font-family:Nunito,sans-serif;
+        opacity:${obState.selectedPet !== null ? '1' : '0.4'};transition:opacity 0.2s;">
+        確認，這是我的寵物！🐾</button>
+    </div>
+    <div id="ob-modal"></div>
+  `;
+}
+
+function obTrySelectPet(i) {
+  const c = CHARACTERS[i];
+  const claims = loadClaims();
+  const claim = claims[c.id];
+  const existingPlayer = loadPlayers().find(p => p.name === obState.name);
+  const myId = existingPlayer ? existingPlayer.id : null;
+  const isMine = claim && (
+    (myId && claim.ownerPlayerId === myId) ||
+    (!myId && claim.ownerName === obState.name)
+  );
+  if (!claim || isMine) {
+    obState.selectedPet = i;
+    renderOnboardingPet();
+  } else {
+    renderClaimPasswordModal(i, c, claim);
+  }
+}
+
+function renderClaimPasswordModal(charIdx, char, claim) {
+  const pc = getComputedStyle(document.documentElement).getPropertyValue('--pink').trim() || '#b87de8';
+  const modal = document.getElementById('ob-modal');
+  modal.innerHTML = `
+    <div style="position:fixed;inset:0;background:rgba(0,0,0,0.45);display:flex;align-items:center;justify-content:center;z-index:200;padding:24px;" onclick="if(event.target===this)document.getElementById('ob-modal').innerHTML='';">
+      <div style="background:#fff;border-radius:24px;padding:26px;width:100%;max-width:340px;animation:pop 0.2s ease-out;" onclick="event.stopPropagation();">
+        <div style="text-align:center;margin-bottom:16px;">
+          <img src="${escapeHtml(char.src)}" alt="" style="width:72px;height:72px;object-fit:contain;" />
+          <div style="font-size:16px;font-weight:900;color:#1a1a2e;margin-top:8px;">🔒 ${escapeHtml(char.name)} 已被 ${escapeHtml(claim.ownerName)} 認養</div>
+          <div style="font-size:12px;color:#aaa;margin-top:4px;">請輸入密碼來認領這隻寵物</div>
+        </div>
+        <input type="text" id="ob-pw-input" placeholder="輸入密碼…" maxlength="6"
+          style="width:100%;padding:14px 16px;border-radius:14px;border:2px solid #e8e0f8;
+            font-size:22px;font-weight:900;letter-spacing:4px;text-align:center;
+            font-family:monospace;outline:none;color:#1a1a2e;margin-bottom:8px;" />
+        <div id="ob-pw-err" style="font-size:12px;color:#FF4D6D;font-weight:700;text-align:center;margin-bottom:8px;display:none;"></div>
+        <div style="display:flex;gap:10px;margin-top:4px;">
+          <button onclick="document.getElementById('ob-modal').innerHTML='';" style="flex:1;padding:13px;border-radius:14px;border:2px solid #f0eaea;background:#fff;font-size:14px;font-weight:800;color:#aaa;cursor:pointer;font-family:Nunito,sans-serif;">取消</button>
+          <button onclick="obVerifyPassword(${charIdx})" style="flex:2;padding:13px;border-radius:14px;border:none;background:linear-gradient(135deg,${pc},${pc}bb);font-size:14px;font-weight:900;color:#fff;cursor:pointer;font-family:Nunito,sans-serif;">確認密碼</button>
+        </div>
+      </div>
+    </div>
+  `;
+  const inp = document.getElementById('ob-pw-input');
+  inp.focus();
+  inp.addEventListener('input', function() { this.value = this.value.toUpperCase(); });
+  inp.addEventListener('keydown', e => { if (e.key === 'Enter') obVerifyPassword(charIdx); });
+}
+
+function obVerifyPassword(charIdx) {
+  const claims = loadClaims();
+  const char = CHARACTERS[charIdx];
+  const claim = claims[char.id];
+  const inp = document.getElementById('ob-pw-input');
+  const err = document.getElementById('ob-pw-err');
+  if (inp.value.toUpperCase() === claim.password) {
+    obState.verifiedPassword = inp.value.toUpperCase();
+    document.getElementById('ob-modal').innerHTML = '';
+    obState.selectedPet = charIdx;
+    renderOnboardingPet();
+  } else {
+    err.textContent = '密碼錯誤，請再試一次！';
+    err.style.display = 'block';
+  }
+}
+
+function obConfirmPet() {
+  if (obState.selectedPet === null) return;
+  const char = CHARACTERS[obState.selectedPet];
+  const player = addPlayer(obState.name, char.id);
+  if (!player) return;
+
+  const claims = loadClaims();
+  const existing = claims[char.id];
+  const isMine = existing && (
+    existing.ownerPlayerId === player.id ||
+    (!existing.ownerPlayerId && existing.ownerName === player.name)
+  );
+
+  if (existing && isMine) {
+    obState.password = existing.password;
+    existing.ownerPlayerId = player.id;
+    existing.updatedAt = new Date().toISOString();
+    saveClaims(claims);
+  } else if (existing) {
+    const result = transferPet(player, char.id, obState.verifiedPassword || '');
+    if (!result.ok) {
+      alert('認養失敗，請重新選擇寵物！');
+      obState.selectedPet = null;
+      obState.verifiedPassword = '';
+      renderOnboardingPet();
+      return;
+    }
+    obState.password = result.password;
+  } else {
+    obState.password = claimPet(player, char.id);
+  }
+
+  obState.verifiedPassword = '';
+  obState.step = 3;
+  renderOnboardingPassword();
+}
+
+function renderOnboardingPassword() {
+  const el = document.getElementById('onboarding-overlay');
+  const pc = getComputedStyle(document.documentElement).getPropertyValue('--pink').trim() || '#b87de8';
+  const char = CHARACTERS[obState.selectedPet];
+  const confettiHtml = Array.from({length: 16}, (_, i) => {
+    const x = 5 + Math.random() * 90;
+    const colors = ['#FFD700','#4CAF82','#bd2bbf','#38bdf8','#fb7185','#FF6B47'];
+    const sz = 6 + Math.random() * 8;
+    return `<div style="position:absolute;top:-10px;left:${x}%;width:${sz}px;height:${sz}px;border-radius:${sz*0.25}px;background:${colors[i%6]};animation:confettiFall 1.1s ${i*0.05}s ease-in both;"></div>`;
+  }).join('');
+
+  el.innerHTML = `
+    <div style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden;z-index:99;">${confettiHtml}</div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 28px;gap:20px;position:relative;z-index:1;">
+      <div style="animation:float 3s ease-in-out infinite;">
+        <img src="${escapeHtml(char.src)}" alt="" style="width:100px;height:100px;object-fit:contain;" />
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:24px;font-weight:900;color:#1a1a2e;">${escapeHtml(obState.name)}，你的寵物是</div>
+        <div style="font-size:28px;font-weight:900;color:${pc};margin-top:2px;">${escapeHtml(char.name)} 🎉</div>
+      </div>
+      <div style="width:100%;background:#fff;border-radius:24px;padding:22px 24px;box-shadow:0 6px 24px rgba(0,0,0,0.08);text-align:center;">
+        <div style="font-size:12px;font-weight:800;color:#aaa;letter-spacing:1px;margin-bottom:10px;">📋 你的專屬密碼（請抄下來！）</div>
+        <div style="font-size:34px;font-weight:900;letter-spacing:6px;color:${pc};background:${pc}12;border-radius:16px;padding:14px 20px;font-family:monospace;">${escapeHtml(obState.password)}</div>
+        <div style="font-size:11px;color:#bbb;margin-top:10px;line-height:1.6;">
+          這隻寵物屬於你了！<br/>如果別人想認養同一隻，<br/>需要輸入這組密碼才行 🔒
+        </div>
+      </div>
+      <button onclick="finishOnboarding()" style="width:100%;padding:17px;border-radius:20px;border:none;cursor:pointer;
+        background:linear-gradient(135deg,${pc},${pc}bb);font-size:17px;font-weight:900;color:#fff;
+        box-shadow:0 5px 18px ${pc}44;font-family:Nunito,sans-serif;">我記住了，開始學習！→</button>
+    </div>
+  `;
+}
+
+function finishOnboarding() {
+  hideOnboarding();
+  switchTab('home');
+}
+
+/* ---------- Quiz state ---------- */
+
+let quiz = null;
+let pendingAvatar = DEFAULT_AVATAR;
+let pendingAvatarPassword = null;
+let _pwRevealCallback = null;
+
+function enterQuizTab() {
+  const cur = getCurrentPlayerId();
+  const p = cur ? findPlayer(cur) : null;
+  if (!p) {
+    renderProfileSelect();
+  } else if (needsOnboarding()) {
+    showOnboarding(p.name);
+    return;
+  } else if (quiz && quiz.playerId === p.id && !quiz.finished) {
+    renderQuizQuestion();
+  } else {
+    renderQuizHome(p);
+  }
+}
+
+/* ---------- Profile select screen ---------- */
+
+function renderProfileSelect() {
+  const box = document.getElementById('quiz-box');
+  const players = loadPlayers();
+  const curId = getCurrentPlayerId();
+  const curPlayer = curId ? findPlayer(curId) : null;
+  const curName = curPlayer ? curPlayer.name : '';
+
+  // Merge cloud + local players. Cloud names are authoritative (shown first).
+  const chips = [];
+  const seenIds = new Set();
+  if (CLOUD.status === 'ok') {
+    const sortedCloud = CLOUD.entries.slice().sort((a,b) =>
+      (b.bestScore||0) - (a.bestScore||0) || (b.plays||0) - (a.plays||0)
+    );
+    for (const e of sortedCloud) {
+      const id = cloudDocId(e.name);
+      if (seenIds.has(id)) continue;
+      seenIds.add(id);
+      chips.push({
+        name: e.name,
+        avatarId: CHAR_MAP[e.avatarId] ? e.avatarId : DEFAULT_AVATAR,
+        bestScore: e.bestScore || 0,
+        plays: e.plays || 0,
+      });
+    }
+  }
+  // Add local-only players (not already in cloud list).
+  const sortedLocal = players.slice().sort((a,b) => (b.bestScore||0) - (a.bestScore||0));
+  for (const p of sortedLocal) {
+    const id = cloudDocId(p.name);
+    if (seenIds.has(id)) continue;
+    seenIds.add(id);
+    chips.push({
+      name: p.name,
+      avatarId: p.avatarId,
+      bestScore: p.bestScore || 0,
+      plays: p.plays || 0,
+    });
+  }
+  window.__profileChips = chips;
+
+  const statusLine = CLOUD.status === 'offline'
+    ? `<div style="text-align:center;font-size:.8rem;color:var(--red-dark);margin-bottom:.6rem;">⚠️ 雲端未連線，先用本機模式</div>`
+    : CLOUD.status === 'loading' || CLOUD.status === 'idle'
+      ? `<div style="text-align:center;font-size:.8rem;color:var(--muted);margin-bottom:.6rem;">連線雲端中…</div>`
+      : '';
+
+  box.innerHTML = `
+    <div class="profile-title">👋 請選擇玩家</div>
+    ${statusLine}
+    ${chips.length ? `
+      <div class="profile-list">
+        ${chips.map((c, i) => `
+          <button class="profile-chip ${c.name === curName ? 'current' : ''}" onclick="pickProfileChip(${i})">
+            ${renderAvatar(c.avatarId, { animated: c.name === curName })}
+            <span>${escapeHtml(c.name)}</span>
+            <span class="chip-stat">最佳 ${c.bestScore} · 共 ${c.plays} 次</span>
+          </button>
+        `).join('')}
+      </div>
+    ` : `<div class="empty-state">還沒有玩家，先新增一個吧！</div>`}
+
+    <div class="add-row">
+      <input id="new-name-input" type="text" placeholder="新增名字…" maxlength="20" />
+      <button class="dl-btn" onclick="onAddPlayer()">新增</button>
+    </div>
+    ${renderLeaderboardHtml(curId)}
+  `;
+  const inp = document.getElementById('new-name-input');
+  inp.addEventListener('keydown', e => { if (e.key === 'Enter') onAddPlayer(); });
+}
+
+function pickProfileChip(idx) {
+  const c = (window.__profileChips || [])[idx];
+  if (!c) return;
+  const p = addPlayer(c.name, c.avatarId);
+  if (!p) return;
+  if (!playerHasValidClaim(p.id)) {
+    showOnboarding(p.name);
+  } else {
+    renderQuizHome(p);
+  }
+}
+
+function pickPlayer(id) {
+  setCurrentPlayerId(id);
+  const p = findPlayer(id);
+  if (!p) return;
+  if (!playerHasValidClaim(p.id)) {
+    showOnboarding(p.name);
+  } else {
+    renderQuizHome(p);
+  }
+}
+
+function onAddPlayer() {
+  const inp = document.getElementById('new-name-input');
+  const name = (inp.value || '').trim();
+  if (!name) { inp.focus(); return; }
+  const players = loadPlayers();
+  const existing = players.find(p => p.name === name);
+  if (existing) {
+    setCurrentPlayerId(existing.id);
+    if (!playerHasValidClaim(existing)) showOnboarding(existing.name);
+    else renderQuizHome(existing);
+    return;
+  }
+  showOnboarding(name);
+}
+
+/* ---------- Quiz home ---------- */
+
+function renderQuizHome(player) {
+  const box = document.getElementById('quiz-box');
+  const total = VOCAB.length;
+  const canPlay = total >= 4;
+  box.innerHTML = `
+    <div style="text-align:center;">
+      ${renderAvatar(player.avatarId, { size: 'lg', animated: true })}
+    </div>
+    <div class="profile-title">Hi, ${escapeHtml(player.name)}！</div>
+    <div style="text-align:center;color:var(--muted);font-size:.92rem;margin-bottom:1rem;">
+      這次會從 ${total} 個單字裡隨機出 ${Math.min(QUIZ_LEN, total)} 題<br>
+      題型：<b>中翻英 (4選1)</b>、<b>句子填空 (輸入)</b>、<b>時態變化 (4選1)</b>
+    </div>
+    <div style="text-align:center;font-size:.9rem;color:var(--ink-soft);margin-bottom:1rem;">
+      最佳分數：<b style="color:var(--pink-dark)">${player.bestScore||0}</b> ·
+      玩過次數：<b>${player.plays||0}</b> ·
+      連續練習：<b>${player.streakCur||0}</b> 天
+      ${player.recentScores && player.recentScores.length
+        ? `<br>最近分數：${player.recentScores.map(s=>`<span style="display:inline-block;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:1px 7px;margin:2px 3px 0;font-weight:700;">${s}</span>`).join('')}`
+        : ''}
+    </div>
+    <div class="dl-btn-row">
+      <button class="dl-btn wide" ${canPlay?'':'disabled'} onclick="startQuiz()">開始測驗</button>
+    </div>
+    <div class="dl-btn-row" style="margin-top:10px">
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <button class="dl-btn gray" style="flex:1;min-width:160px;" onclick="renderProfileSelect()">切換 / 新增玩家</button>
+        <button class="dl-btn blue" style="flex:1;min-width:160px;" onclick="renderAvatarChange()">更換寵物</button>
+        <button class="dl-btn red" style="flex:1;min-width:160px;" onclick="onDeleteCurrentPlayer()">刪除本機玩家</button>
+      </div>
+    </div>
+    ${renderLeaderboardHtml(player.id)}
+  `;
+}
+
+function updateLocalAvatar(playerId, avatarId) {
+  const players = loadPlayers();
+  const p = players.find(x => x.id === playerId);
+  if (!p) return null;
+  p.avatarId = normalizeAvatarId(avatarId);
+  savePlayers(players);
+  return p;
+}
+
+function deleteLocalPlayer(playerId) {
+  const players = loadPlayers();
+  const idx = players.findIndex(x => x.id === playerId);
+  if (idx < 0) return false;
+  players.splice(idx, 1);
+  savePlayers(players);
+  if (getCurrentPlayerId() === playerId) setCurrentPlayerId('');
+  return true;
+}
+
+function onDeleteCurrentPlayer() {
+  const p = findPlayer(getCurrentPlayerId());
+  if (!p) { renderProfileSelect(); return; }
+  const ok = confirm(
+    `要刪除「${p.name}」這個本機玩家嗎？\n\n` +
+    `- 只會刪這台裝置/這個瀏覽器的名單\n` +
+    `- 雲端排行榜不會刪\n` +
+    `- 之後仍可用同名字重新加入`
+  );
+  if (!ok) return;
+  releaseClaimsForPlayer(p.id);
+  deleteLocalPlayer(p.id);
+  renderProfileSelect();
+}
+
+async function cloudUpdateAvatarOnly(name, avatarId) {
+  const id = cloudDocId(name);
+  if (!id || id === '_') return false;
+  const now = new Date().toISOString();
+
+  // Use commit (POST) to avoid PATCH CORS issues.
+  try {
+    const docName = `projects/${firebaseConfig.projectId}/databases/(default)/documents/leaderboard/${id}`;
+    const res = await fetch(`${FS_COMMIT}?key=${firebaseConfig.apiKey}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        writes: [{
+          update: {
+            name: docName,
+            fields: {
+              name: { stringValue: String(name || '').trim().slice(0, 40) },
+              avatarId: { stringValue: normalizeAvatarId(avatarId) },
+              updatedAt: { stringValue: now },
+            }
+          },
+          updateMask: { fieldPaths: ['name','avatarId','updatedAt'] }
+        }]
+      }),
+    });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    CLOUD.status = 'ok';
+    return true;
+  } catch (_) {
+    CLOUD.status = 'offline';
+    return false;
+  }
+}
+
+function renderAvatarChange() {
+  const player = findPlayer(getCurrentPlayerId());
+  if (!player) { renderProfileSelect(); return; }
+  pendingAvatar = normalizeAvatarId(player.avatarId);
+  const box = document.getElementById('quiz-box');
+  const claims = loadClaims();
+
+  const pickerHtml = CHAR_ORDER.map(id => {
+    const c = CHAR_MAP[id];
+    const claim = claims[id];
+    const isMine = claim && claim.ownerPlayerId === player.id;
+    const isClaimed = !!claim && !isMine;
+    const picked = id === pendingAvatar;
+    let badge = '';
+    if (isClaimed) badge = '<div style="position:absolute;top:2px;right:2px;font-size:10px;">🔒</div>';
+    else if (isMine) badge = '<div style="position:absolute;top:2px;right:2px;width:12px;height:12px;border-radius:50%;background:#4CAF82;display:flex;align-items:center;justify-content:center;font-size:7px;color:#fff;">✓</div>';
+    const ownerLine = isClaimed ? `<div style="font-size:8px;color:#bbb;font-weight:700;margin-top:1px;">${escapeHtml(claim.ownerName)} 的</div>` : '';
+    return `
+      <button class="avatar-opt ${picked ? 'picked' : ''}" data-aid="${id}"
+        onclick="onAvatarChangePick('${id}')" title="${escapeHtml(c.name)}"
+        style="position:relative;${isClaimed ? 'opacity:0.7;' : ''}">
+        ${badge}
+        <img src="${escapeHtml(c.src)}" alt="" />
+        ${ownerLine}
+      </button>`;
+  }).join('');
+
+  box.innerHTML = `
+    <div style="text-align:center;">
+      ${renderAvatar(pendingAvatar, { size: 'lg' })}
+    </div>
+    <div class="profile-title">更換寵物</div>
+    <div style="text-align:center;color:var(--muted);font-size:.92rem;margin-bottom:.6rem;">
+      目前玩家：<b>${escapeHtml(player.name)}</b><br>
+      <span style="font-size:.8rem;">🔒 有鎖的角色需要密碼才能認養</span>
+    </div>
+    <div class="avatar-picker" id="avatar-picker">${pickerHtml}</div>
+    <div id="avatar-change-modal"></div>
+    <div class="dl-btn-row" style="margin-top:10px">
+      <div style="display:flex;gap:10px;">
+        <button class="dl-btn gray" style="flex:1;" onclick="renderQuizHome(findPlayer(getCurrentPlayerId()))">取消</button>
+        <button class="dl-btn blue" style="flex:1;" onclick="confirmAvatarChange()">套用</button>
+      </div>
+    </div>
+    ${renderLeaderboardHtml(player.id)}
+  `;
+}
+
+function onAvatarChangePick(id) {
+  if (!CHAR_MAP[id]) return;
+  const player = findPlayer(getCurrentPlayerId());
+  if (!player) return;
+  const claim = getClaimOwner(id);
+  const isMine = claim && claim.ownerPlayerId === player.id;
+  if (claim && !isMine) {
+    renderAvatarChangePasswordModal(id, claim);
+    return;
+  }
+  pendingAvatar = id;
+  pendingAvatarPassword = null;
+  renderAvatarChange();
+}
+
+function renderAvatarChangePasswordModal(petId, claim) {
+  const pc = getComputedStyle(document.documentElement).getPropertyValue('--pink').trim() || '#b87de8';
+  const c = CHAR_MAP[petId];
+  const modal = document.getElementById('avatar-change-modal');
+  modal.innerHTML = `
+    <div style="position:fixed;inset:0;background:rgba(0,0,0,0.45);display:flex;align-items:center;justify-content:center;z-index:200;padding:24px;" onclick="if(event.target===this)document.getElementById('avatar-change-modal').innerHTML='';">
+      <div style="background:#fff;border-radius:24px;padding:26px;width:100%;max-width:340px;animation:pop 0.2s ease-out;" onclick="event.stopPropagation();">
+        <div style="text-align:center;margin-bottom:16px;">
+          <img src="${escapeHtml(c.src)}" alt="" style="width:72px;height:72px;object-fit:contain;" />
+          <div style="font-size:16px;font-weight:900;color:#1a1a2e;margin-top:8px;">🔒 ${escapeHtml(c.name)} 已被 ${escapeHtml(claim.ownerName)} 認養</div>
+          <div style="font-size:12px;color:#aaa;margin-top:4px;">請輸入密碼來認領這隻寵物</div>
+        </div>
+        <input type="text" id="ac-pw-input" placeholder="輸入密碼…" maxlength="6"
+          style="width:100%;padding:14px 16px;border-radius:14px;border:2px solid #e8e0f8;
+            font-size:22px;font-weight:900;letter-spacing:4px;text-align:center;
+            font-family:monospace;outline:none;color:#1a1a2e;margin-bottom:8px;" />
+        <div id="ac-pw-err" style="font-size:12px;color:#FF4D6D;font-weight:700;text-align:center;margin-bottom:8px;display:none;"></div>
+        <div style="display:flex;gap:10px;margin-top:4px;">
+          <button onclick="document.getElementById('avatar-change-modal').innerHTML='';" style="flex:1;padding:13px;border-radius:14px;border:2px solid #f0eaea;background:#fff;font-size:14px;font-weight:800;color:#aaa;cursor:pointer;font-family:Nunito,sans-serif;">取消</button>
+          <button onclick="verifyAvatarChangePassword('${petId}')" style="flex:2;padding:13px;border-radius:14px;border:none;background:linear-gradient(135deg,${pc},${pc}bb);font-size:14px;font-weight:900;color:#fff;cursor:pointer;font-family:Nunito,sans-serif;">確認密碼</button>
+        </div>
+      </div>
+    </div>
+  `;
+  const inp = document.getElementById('ac-pw-input');
+  inp.focus();
+  inp.addEventListener('input', function() { this.value = this.value.toUpperCase(); });
+  inp.addEventListener('keydown', e => { if (e.key === 'Enter') verifyAvatarChangePassword(petId); });
+}
+
+function verifyAvatarChangePassword(petId) {
+  const player = findPlayer(getCurrentPlayerId());
+  if (!player) return;
+  const inp = document.getElementById('ac-pw-input');
+  const err = document.getElementById('ac-pw-err');
+  const result = transferPet(player, petId, inp.value);
+  if (result.ok) {
+    document.getElementById('avatar-change-modal').innerHTML = '';
+    pendingAvatar = petId;
+    pendingAvatarPassword = result.password;
+    renderAvatarChange();
+  } else {
+    err.textContent = '密碼錯誤，請再試一次！';
+    err.style.display = 'block';
+  }
+}
+
+async function confirmAvatarChange() {
+  const player = findPlayer(getCurrentPlayerId());
+  if (!player) { renderProfileSelect(); return; }
+  const claim = getClaimOwner(pendingAvatar);
+  const isMine = claim && claim.ownerPlayerId === player.id;
+  if (claim && !isMine) return;
+
+  let passwordToShow = pendingAvatarPassword;
+  pendingAvatarPassword = null;
+  if (!claim) {
+    passwordToShow = claimPet(player, pendingAvatar);
+  }
+
+  const updated = updateLocalAvatar(player.id, pendingAvatar);
+  if (updated) {
+    cloudUpdateAvatarOnly(updated.name, updated.avatarId)
+      .then(() => cloudFetchLeaderboard())
+      .then(() => refreshLeaderboardUI(updated.id))
+      .catch(() => {});
+  }
+
+  if (passwordToShow) {
+    showPasswordReveal(CHAR_MAP[pendingAvatar], passwordToShow, () => {
+      const p2 = findPlayer(player.id) || player;
+      renderQuizHome(p2);
+    });
+  } else {
+    const p2 = findPlayer(player.id) || player;
+    renderQuizHome(p2);
+  }
+}
+
+function showPasswordReveal(char, password, onDone) {
+  _pwRevealCallback = onDone;
+  const pc = getComputedStyle(document.documentElement).getPropertyValue('--pink').trim() || '#b87de8';
+  const box = document.getElementById('quiz-box');
+  box.innerHTML = `
+    <div style="text-align:center;padding:20px 0;">
+      <div style="animation:float 3s ease-in-out infinite;">
+        <img src="${escapeHtml(char.src)}" alt="" style="width:80px;height:80px;object-fit:contain;" />
+      </div>
+      <div style="font-size:20px;font-weight:900;color:#1a1a2e;margin-top:12px;">
+        ${escapeHtml(char.name)} 是你的了！🎉
+      </div>
+      <div style="background:${pc}12;border-radius:16px;padding:16px 20px;margin:16px 0;">
+        <div style="font-size:12px;font-weight:800;color:#aaa;letter-spacing:1px;margin-bottom:8px;">你的專屬密碼（請抄下來！）</div>
+        <div style="font-size:30px;font-weight:900;letter-spacing:6px;color:${pc};font-family:monospace;">${escapeHtml(password)}</div>
+        <div style="font-size:11px;color:#bbb;margin-top:10px;line-height:1.6;">
+          如果別人想認養同一隻，需要輸入這組密碼才行 🔒
+        </div>
+      </div>
+      <button class="dl-btn wide" onclick="onPwRevealDone()">我記住了！→</button>
+    </div>
+  `;
+}
+
+function onPwRevealDone() {
+  const cb = _pwRevealCallback;
+  _pwRevealCallback = null;
+  if (cb) cb();
+}
+
+/* ---------- Leaderboard ---------- */
+
+function renderLeaderboardHtml(highlightId) {
+  const curPlayer = highlightId ? findPlayer(highlightId) : null;
+  const curName = curPlayer ? curPlayer.name : '';
+
+  let rowsBest = '';
+  let rowsStreak = '';
+  let badge = '';
+
+  const cloudNote = (CLOUD.lastWriteOk === false && CLOUD.lastError)
+    ? `<div style="font-size:.78rem;color:var(--red-dark);padding:6px 10px;">雲端寫入失敗：${escapeHtml(CLOUD.lastError)}</div>`
+    : '';
+
+  if (CLOUD.status === 'ok') {
+    const entries = CLOUD.entries || [];
+    const sEntries = (CLOUD.streakEntries && CLOUD.streakEntries.length) ? CLOUD.streakEntries : entries;
+    badge = `<span style="font-size:.7rem;font-weight:700;color:var(--ok-dark);margin-left:6px;letter-spacing:.05em;">雲端</span>`;
+    if (!entries.length) {
+      rowsBest = `<div style="font-size:.85rem;color:var(--muted);padding:6px 10px;">雲端上還沒有任何玩家，快來搶第一！</div>`;
+      rowsStreak = `<div style="font-size:.85rem;color:var(--muted);padding:6px 10px;">先玩一次，連續練習就會開始計算。</div>`;
+    } else {
+      rowsBest = entries.map((p, i) => `
+        <div class="lb-row ${p.name === curName ? 'me' : ''}">
+          <div class="lb-rank ${i < 3 ? 'top' : ''}">${i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : (i+1)}</div>
+          <div>${renderAvatar(p.avatarId, { size: 'sm' })}</div>
+          <div class="lb-name">${escapeHtml(p.name)}</div>
+          <div class="lb-best">${p.bestScore||0}</div>
+          <div class="lb-plays">${p.plays||0} 次</div>
+        </div>
+      `).join('');
+      rowsStreak = sEntries.map((p, i) => `
+        <div class="lb-row ${p.name === curName ? 'me' : ''}">
+          <div class="lb-rank ${i < 3 ? 'top' : ''}">${i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : (i+1)}</div>
+          <div>${renderAvatar(p.avatarId, { size: 'sm' })}</div>
+          <div class="lb-name">${escapeHtml(p.name)}</div>
+          <div class="lb-streak">${p.streakCur||0} 天</div>
+          <div class="lb-plays">最高 ${p.bestScore||0}</div>
+        </div>
+      `).join('');
+    }
+  } else {
+    const players = loadPlayers().slice().sort((a,b) =>
+      (b.bestScore||0) - (a.bestScore||0) || (b.plays||0) - (a.plays||0)
+    );
+    if (!players.length && CLOUD.status !== 'offline') return `<div id="lb-container"></div>`;
+    badge = CLOUD.status === 'offline'
+      ? `<span style="font-size:.7rem;font-weight:700;color:var(--red-dark);margin-left:6px;letter-spacing:.05em;">雲端未連線，顯示本機</span>`
+      : `<span style="font-size:.7rem;font-weight:700;color:var(--muted);margin-left:6px;letter-spacing:.05em;">本機</span>`;
+    rowsBest = players.map((p, i) => `
+      <div class="lb-row ${p.id === highlightId ? 'me' : ''}">
+        <div class="lb-rank ${i < 3 ? 'top' : ''}">${i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : (i+1)}</div>
+        <div>${renderAvatar(p.avatarId, { size: 'sm' })}</div>
+        <div class="lb-name">${escapeHtml(p.name)}</div>
+        <div class="lb-best">${p.bestScore||0}</div>
+        <div class="lb-plays">${p.plays||0} 次</div>
+      </div>
+    `).join('');
+    const playersByStreak = loadPlayers().slice().sort((a,b) =>
+      (b.streakCur||0) - (a.streakCur||0) || (b.bestScore||0) - (a.bestScore||0) || (b.plays||0) - (a.plays||0)
+    );
+    rowsStreak = playersByStreak.map((p, i) => `
+      <div class="lb-row ${p.id === highlightId ? 'me' : ''}">
+        <div class="lb-rank ${i < 3 ? 'top' : ''}">${i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : (i+1)}</div>
+        <div>${renderAvatar(p.avatarId, { size: 'sm' })}</div>
+        <div class="lb-name">${escapeHtml(p.name)}</div>
+        <div class="lb-streak">${p.streakCur||0} 天</div>
+        <div class="lb-plays">最高 ${p.bestScore||0}</div>
+      </div>
+    `).join('');
+
+    if (!players.length) rowsBest = `<div style="font-size:.85rem;color:var(--muted);padding:6px 10px;">還沒有紀錄。</div>`;
+    if (!playersByStreak.length) rowsStreak = `<div style="font-size:.85rem;color:var(--muted);padding:6px 10px;">還沒有紀錄。</div>`;
+  }
+
+  return `
+    <div id="lb-container" class="leaderboard">
+      <h3>🏆 最高分排行榜 ${badge}</h3>
+      ${cloudNote}
+      ${rowsBest}
+      <div style="height:10px"></div>
+      <h3>🔥 連續練習排行榜 ${badge}</h3>
+      ${rowsStreak}
+    </div>
+  `;
+}
+
+/* ---------- Quiz: build & play ---------- */
+
+function buildQuizItems(words, n) {
+  const verbs = words.filter(w => looksLikeVerb(w.word, w.example));
+  const focus = focusWordsOf(words);
+  const focusSet = new Set(focus.map(w => String(w.word || '').toLowerCase()));
+  const rest = shuffle(words.filter(w => !focusSet.has(String(w.word || '').toLowerCase())));
+  const pool = [...focus, ...rest].slice(0, Math.min(n, words.length));
+
+  // Decide per-slot types.
+  // We want up to MAX_CLOZE cloze items, and sprinkle tense items when possible.
+  // Remaining slots go to zh2en.
+  let clozeBudget = Math.min(MAX_CLOZE, Math.floor(pool.length / 4)); // ~1/4 of quiz, capped
+  if (clozeBudget < 2 && pool.length >= 8) clozeBudget = 2;           // at least a little variety
+
+  const items = [];
+  for (let i = 0; i < pool.length; i++) {
+    const word = pool[i];
+    let type;
+    const isVerb = verbs.includes(word);
+    if (isVerb && Math.random() < 0.6) {
+      type = 'tense';
+    } else if (clozeBudget > 0 && Math.random() < 0.4) {
+      type = 'cloze';
+      clozeBudget--;
+    } else {
+      type = 'zh2en';
+    }
+    items.push({ type, word });
+  }
+
+  // Enrich tense items — if buildTenseQuestion fails, downgrade to zh2en.
+  const otherVerbs = verbs;
+  const enriched = items.map(it => {
+    if (it.type !== 'tense') return it;
+    const q = buildTenseQuestion(it.word, otherVerbs.filter(v => v.word !== it.word.word));
+    if (!q) return { type: 'zh2en', word: it.word };
+    return { ...it, tenseData: q };
+  });
+
+  // Enrich zh2en items with 4 options.
+  return enriched.map(it => {
+    if (it.type !== 'zh2en') return it;
+    const wrong = shuffle(words.filter(w => w.word !== it.word.word)).slice(0, 3).map(w => w.word);
+    const options = shuffle([it.word.word, ...wrong]);
+    return { ...it, mcOptions: options };
+  });
+}
+
+function startQuiz() {
+  const player = findPlayer(getCurrentPlayerId());
+  if (!player) { renderProfileSelect(); return; }
+  if (!VOCAB.length) return;
+  quiz = {
+    items: buildQuizItems(VOCAB, QUIZ_LEN),
+    idx: 0,
+    score: 0,
+    wrong: [],
+    playerId: player.id,
+    finished: false,
+    answered: false,
+  };
+  renderQuizQuestion();
+}
+
+function clozeBlank(word) {
+  const w = String(word || '').trim();
+  const first = (w[0] || '_');
+  const total = Math.max(4, w.length || 0);
+  return escapeHtml(first) + '_'.repeat(Math.max(3, total - 1));
+}
+
+function makeClozeHtml(example, word) {
+  const safeWord = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const re = new RegExp('\\b' + safeWord + '\\b', 'i');
+  const m = example.match(re);
+  if (!m) {
+    const re2 = new RegExp(safeWord, 'i');
+    const m2 = example.match(re2);
+    if (!m2) return escapeHtml(example) + ' <span class="blank">' + clozeBlank(word) + '</span>';
+    const idx = m2.index;
+    return escapeHtml(example.slice(0, idx)) +
+      `<span class="blank">${clozeBlank(word)}</span>` +
+      escapeHtml(example.slice(idx + m2[0].length));
+  }
+  const idx = m.index;
+  return escapeHtml(example.slice(0, idx)) +
+    `<span class="blank">${clozeBlank(word)}</span>` +
+    escapeHtml(example.slice(idx + m[0].length));
+}
+
+function renderQuizQuestion() {
+  if (!quiz) return;
+  if (quiz.idx >= quiz.items.length) { finishQuiz(); return; }
+
+  const s = quiz;
+  const cur = s.items[s.idx];
+  const pct = Math.round(((s.idx) / s.items.length) * 100);
+  const box = document.getElementById('quiz-box');
+
+  const topbar = `
+    <div class="quiz-topbar">
+      <button class="close-x" title="結束測驗" onclick="abortQuiz()">✕</button>
+      <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:${pct}%"></div></div>
+      <div class="progress-count">${s.idx+1}/${s.items.length}</div>
+    </div>
+  `;
+
+  if (cur.type === 'cloze') {
+    const w = cur.word;
+    box.innerHTML = `
+      ${topbar}
+      <div class="q-label">句子填空 · 輸入英文單字</div>
+      <div class="q-cloze">${makeClozeHtml(w.example, w.word)}</div>
+      <div class="q-hint">提示：首字母 <b>${escapeHtml(String(w.word || '').trim().slice(0,1) || '_')}</b> · ${escapeHtml(w.translation)}</div>
+      <input id="q-ans" class="answer-input" type="text" autocomplete="off"
+             autocapitalize="none" autocorrect="off" spellcheck="false"
+             placeholder="輸入英文單字…" />
+      <div id="q-fb" class="feedback"></div>
+      <button id="q-submit" class="dl-btn wide" onclick="submitClozeAnswer()">送出</button>
+    `;
+    quiz.answered = false;
+    const inp = document.getElementById('q-ans');
+    inp.focus();
+    inp.addEventListener('keydown', onClozeKey);
+    return;
+  }
+
+  if (cur.type === 'zh2en') {
+    const w = cur.word;
+    box.innerHTML = `
+      ${topbar}
+      <div class="q-label">中翻英 · 選出正確的單字</div>
+      <div class="q-prompt">${escapeHtml(w.meaning)}</div>
+      <div class="choices" id="q-choices">
+        ${cur.mcOptions.map((opt, i) => `
+          <button class="choice-btn" data-i="${i}" data-opt="${escapeHtml(opt)}" onclick="submitChoice(this)">${escapeHtml(opt)}</button>
+        `).join('')}
+      </div>
+      <div id="q-fb" class="feedback"></div>
+      <button id="q-submit" class="dl-btn wide" style="display:none" onclick="nextQuestion()">下一題</button>
+    `;
+    quiz.answered = false;
+    return;
+  }
+
+  if (cur.type === 'tense') {
+    const w = cur.word;
+    const td = cur.tenseData;
+    box.innerHTML = `
+      ${topbar}
+      <div class="q-label">時態變化 · 選出正確的時態</div>
+      <div class="q-cloze">${td.sentenceHtml}</div>
+      <div class="q-time">時間提示：<b>${escapeHtml(td.timeHint)}</b>（${escapeHtml(td.timeHintZh)}）</div>
+      <div class="q-hint">原句中文：${escapeHtml(w.translation)}</div>
+      <div class="choices" id="q-choices">
+        ${td.options.map((opt, i) => `
+          <button class="choice-btn" data-i="${i}" data-opt="${escapeHtml(opt)}" onclick="submitChoice(this)">${escapeHtml(opt)}</button>
+        `).join('')}
+      </div>
+      <div id="q-fb" class="feedback"></div>
+      <button id="q-submit" class="dl-btn wide" style="display:none" onclick="nextQuestion()">下一題</button>
+    `;
+    quiz.answered = false;
+    return;
+  }
+}
+
+function onClozeKey(e) {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    if (!quiz.answered) submitClozeAnswer();
+    else nextQuestion();
+  }
+}
+
+function submitClozeAnswer() {
+  if (!quiz || quiz.answered) return;
+  const cur = quiz.items[quiz.idx];
+  const w = cur.word;
+  const inp = document.getElementById('q-ans');
+  const btn = document.getElementById('q-submit');
+  const fb = document.getElementById('q-fb');
+  const userRaw = inp.value;
+  const user = normalizeAnswer(userRaw);
+  const target = normalizeAnswer(w.word);
+  const isCorrect = !!user && user === target;
+
+  inp.classList.add('locked');
+  inp.setAttribute('readonly', 'readonly');
+  quiz.answered = true;
+
+  if (isCorrect) {
+    quiz.score++;
+    fb.className = 'feedback good';
+    fb.innerHTML = `<span class="fb-title">答對了！</span><span class="fb-answer">${escapeHtml(w.word)}</span>`;
+  } else {
+    fb.className = 'feedback bad';
+    fb.innerHTML = `<span class="fb-title">再加油！正確答案是</span><span class="fb-answer">${escapeHtml(w.word)}</span>`;
+    quiz.wrong.push({
+      type: 'cloze',
+      word: w.word,
+      meaning: w.meaning,
+      example: w.example,
+      translation: w.translation,
+      correctAnswer: w.word,
+      userAnswer: userRaw || '(空白)',
+    });
+  }
+
+  btn.textContent = quiz.idx + 1 >= quiz.items.length ? '看結果' : '下一題';
+  btn.className = 'dl-btn wide ' + (isCorrect ? '' : 'blue');
+  btn.onclick = nextQuestion;
+}
+
+function submitChoice(btnEl) {
+  if (!quiz || quiz.answered) return;
+  const cur = quiz.items[quiz.idx];
+  const w = cur.word;
+  const chosen = btnEl.dataset.opt || btnEl.textContent;
+  let correct;
+  if (cur.type === 'zh2en') correct = w.word;
+  else if (cur.type === 'tense') correct = cur.tenseData.correct;
+  else return;
+
+  const normUser = normalizeAnswer(chosen);
+  const normCorrect = normalizeAnswer(correct);
+  const isCorrect = normUser === normCorrect;
+
+  quiz.answered = true;
+  const fb = document.getElementById('q-fb');
+  const container = document.getElementById('q-choices');
+  container.querySelectorAll('.choice-btn').forEach(b => {
+    b.disabled = true;
+    const label = b.textContent;
+    if (normalizeAnswer(label) === normCorrect) b.classList.add('reveal-right');
+  });
+  if (isCorrect) {
+    btnEl.classList.remove('reveal-right');
+    btnEl.classList.add('picked-right');
+    quiz.score++;
+    fb.className = 'feedback good';
+    fb.innerHTML = `<span class="fb-title">答對了！</span><span class="fb-answer">${escapeHtml(correct)}</span>`;
+  } else {
+    btnEl.classList.add('picked-wrong');
+    fb.className = 'feedback bad';
+    fb.innerHTML = `<span class="fb-title">再加油！正確答案是</span><span class="fb-answer">${escapeHtml(correct)}</span>`;
+    quiz.wrong.push({
+      type: cur.type,
+      word: w.word,
+      meaning: w.meaning,
+      example: w.example,
+      translation: w.translation,
+      correctAnswer: correct,
+      userAnswer: chosen || '(未作答)',
+      tenseSentence: cur.type === 'tense' ? (w.example + '  [提示: Yesterday / 過去式]') : null,
+    });
+  }
+
+  const next = document.getElementById('q-submit');
+  next.style.display = 'block';
+  next.textContent = quiz.idx + 1 >= quiz.items.length ? '看結果' : '下一題';
+  next.className = 'dl-btn wide ' + (isCorrect ? '' : 'blue');
+}
+
+function nextQuestion() {
+  quiz.idx++;
+  if (quiz.idx >= quiz.items.length) finishQuiz();
+  else renderQuizQuestion();
+}
+
+function abortQuiz() {
+  if (!confirm('確定要結束這次測驗嗎？（分數不會計入）')) return;
+  quiz = null;
+  const p = findPlayer(getCurrentPlayerId());
+  if (p) renderQuizHome(p); else renderProfileSelect();
+}
+
+function encouragement(pct) {
+  if (pct === 100) return '完美全對！🌟 你根本是單字小天才！';
+  if (pct >= 90)  return '太厲害了！再一點點就滿分啦！💪';
+  if (pct >= 75)  return '很棒的表現！繼續保持！✨';
+  if (pct >= 60)  return '不錯！多練幾次就能衝到 90 分！📚';
+  if (pct >= 40)  return '有進步的空間，別放棄！再試一次吧！🔥';
+  return '沒關係，先回去看單字卡，再回來挑戰！🌱';
+}
+
+function typeBadge(t) {
+  if (t === 'cloze') return '<span class="wr-type t-cloze">句子填空</span>';
+  if (t === 'zh2en') return '<span class="wr-type t-zh">中翻英</span>';
+  if (t === 'tense') return '<span class="wr-type t-tense">時態變化</span>';
+  return '<span class="wr-type">題目</span>';
+}
+
+function renderWrongRow(w) {
+  let qHtml = '';
+  if (w.type === 'zh2en') {
+    qHtml = `中文：<b>${escapeHtml(w.meaning)}</b>`;
+  } else if (w.type === 'cloze') {
+    qHtml = `<i>${escapeHtml(w.example)}</i><br><span style="color:var(--muted)">(${escapeHtml(w.translation)})</span>`;
+  } else if (w.type === 'tense') {
+    qHtml = `<i>${escapeHtml(w.example)}</i><br><span style="color:var(--muted)">時間提示：Yesterday（過去式）</span>`;
+  }
+  return `
+    <div class="wrong-row">
+      <div class="wr-q">${typeBadge(w.type)}${qHtml}</div>
+      <div><span class="wr-your">你的答案：${escapeHtml(w.userAnswer)}</span> →
+           <span class="wr-correct">${escapeHtml(w.correctAnswer || w.word)}</span></div>
+    </div>
+  `;
+}
+
+function finishQuiz() {
+  const s = quiz;
+  s.finished = true;
+  const total = s.items.length;
+  const score = s.score;
+  const pct = Math.round((score / total) * 100);
+
+  recordScore(s.playerId, score, total);
+
+  // Fire cloud upsert in the background; refresh leaderboard UI when it returns.
+  const playerForCloud = findPlayer(s.playerId);
+  if (playerForCloud) {
+    cloudUpsertScore(playerForCloud.name, playerForCloud.avatarId, score)
+      .then(ok => ok ? cloudFetchLeaderboard() : null)
+      .then(() => refreshLeaderboardUI(s.playerId))
+      .catch(() => {});
+  }
+
+  const stars = pct === 100 ? '⭐⭐⭐' : pct >= 75 ? '⭐⭐☆' : pct >= 50 ? '⭐☆☆' : '☆☆☆';
+
+  const wrongHtml = s.wrong.length ? `
+    <div class="wrong-list">
+      <h4>需要再複習 (${s.wrong.length})</h4>
+      ${s.wrong.map(renderWrongRow).join('')}
+    </div>
+  ` : `<div style="color:var(--ok-dark);font-weight:800;margin:1rem 0;">全部答對，零失誤！🎉</div>`;
+
+  const player = findPlayer(s.playerId);
+  const avatarHtml = player ? `<div style="text-align:center;">${renderAvatar(player.avatarId, { size: 'lg', animated: true })}</div>` : '';
+
+  const box = document.getElementById('quiz-box');
+  box.innerHTML = `
+    <div class="result-area">
+      ${avatarHtml}
+      <div class="result-stars">${stars}</div>
+      <div class="result-big">${score} / ${total}</div>
+      <div class="result-label">答對 ${score} 題（${pct}%）</div>
+      <div class="result-msg">${encouragement(pct)}</div>
+      ${wrongHtml}
+      <div class="dl-btn-row">
+        <button class="dl-btn" onclick="startQuiz()">再玩一次</button>
+        <button class="dl-btn blue" onclick="switchTab('flash')">去看單字卡</button>
+        <button class="dl-btn gray" onclick="renderProfileSelect()">換玩家</button>
+      </div>
+      ${renderLeaderboardHtml(s.playerId)}
+    </div>
+  `;
+}
+
+/* ---------- Init ---------- */
+
+document.getElementById('search-input').addEventListener('input', renderCards);
+loadVocab();
+
+if (needsOnboarding()) {
+  const curId = getCurrentPlayerId();
+  const player = curId ? findPlayer(curId) : null;
+  showOnboarding(player ? player.name : '');
+} else {
+  switchTab('home');
+}
+
+cloudFetchLeaderboard().then(() => {
+  const rankPanel = document.getElementById('panel-rank');
+  if (rankPanel && rankPanel.classList.contains('active')) renderRank();
+  const cur = getCurrentPlayerId();
+  const p = cur ? findPlayer(cur) : null;
+  if (!p) return;
+  refreshLeaderboardUI(p.id);
+  const quizPanel = document.getElementById('panel-quiz');
+  if (quizPanel && quizPanel.classList.contains('active')) {
+    if (quiz && !quiz.finished) return;
+    if (document.querySelector('#quiz-box .result-area')) return;
+    renderQuizHome(p);
+  }
+});
+</script>
+</body>
+</html>
