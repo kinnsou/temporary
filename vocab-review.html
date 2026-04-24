@@ -51,7 +51,7 @@
       max-width: 720px;
       width: 100%;
       margin: 0 auto;
-      padding: 0 1rem 3rem;
+      padding: 0 1rem 5.5rem;
     }
 
     .header {
@@ -797,26 +797,326 @@
       .q-prompt { font-size: 1.3rem; }
       .q-cloze { font-size: 1.1rem; }
       .result-big { font-size: 2.6rem; }
-      .wrap { padding: 0 0.8rem 2rem; }
+      .wrap { padding: 0 0.8rem 5.5rem; }
       .profile-list { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
       .choices { grid-template-columns: 1fr; }
+    }
+
+    /* === Bottom Navigation === */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-around;
+      padding: 4px 0 max(8px, env(safe-area-inset-bottom));
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+    }
+
+    .nav-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      padding: 6px 0 2px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--muted);
+      transition: color 0.15s;
+    }
+
+    .nav-item.active { color: var(--pink-dark); }
+
+    .nav-item svg {
+      width: 22px;
+      height: 22px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* === Home Screen === */
+    .home-greeting {
+      text-align: center;
+      padding: 1.5rem 0 0.5rem;
+    }
+
+    .home-greeting-name {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--ink);
+      margin-top: 0.5rem;
+    }
+
+    .home-greeting-sub {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    .stat-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+      margin: 1rem 0;
+    }
+
+    .stat-card {
+      background: #fff;
+      border: 2px solid var(--line);
+      border-bottom-width: 4px;
+      border-radius: 16px;
+      padding: 16px 8px;
+      text-align: center;
+    }
+
+    .stat-card-icon { font-size: 1.1rem; margin-bottom: 2px; }
+
+    .stat-card-value {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--pink-dark);
+      line-height: 1.2;
+    }
+
+    .stat-card-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-top: 4px;
+      letter-spacing: 0.02em;
+    }
+
+    .stat-card.streak .stat-card-value { color: var(--yellow-dark); }
+    .stat-card.best .stat-card-value { color: var(--blue-dark); }
+
+    .companion-card {
+      background: #fff;
+      border: 2px solid var(--line);
+      border-bottom-width: 4px;
+      border-radius: 18px;
+      padding: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 1rem 0;
+    }
+
+    .companion-info { flex: 1; }
+
+    .companion-name {
+      font-size: 1.05rem;
+      font-weight: 900;
+      color: var(--ink);
+    }
+
+    .companion-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .companion-img {
+      width: 72px;
+      height: 72px;
+      flex-shrink: 0;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .companion-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .weekly-section { margin: 1.2rem 0; }
+
+    .weekly-title {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
+    }
+
+    .weekly-dots {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+    }
+
+    .weekly-dot {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .weekly-dot-circle {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 2.5px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--muted);
+      background: #fff;
+    }
+
+    .weekly-dot.done .weekly-dot-circle {
+      background: var(--pink);
+      border-color: var(--pink-dark);
+      color: #fff;
+    }
+
+    .weekly-dot.today .weekly-dot-circle {
+      border-color: var(--pink);
+      box-shadow: 0 0 0 3px rgba(184,125,232,0.2);
+    }
+
+    .weekly-dot-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    /* === Flashcard Redesign === */
+    .flash-card {
+      background: #fff;
+      border: 2px solid var(--line);
+      border-bottom-width: 4px;
+      border-radius: 18px;
+      padding: 1.1rem 1.2rem;
+      cursor: pointer;
+      transition: all 0.15s;
+      position: relative;
+    }
+
+    .flash-card:hover { border-color: var(--line-2); }
+
+    .flash-card.open {
+      border-color: var(--pink);
+      background: var(--pink-bg);
+    }
+
+    .flash-card.focus {
+      border-color: var(--yellow);
+      background: var(--yellow-bg);
+    }
+
+    .flash-card.focus.open {
+      border-color: var(--yellow-dark);
+      background: #dcf8dc;
+    }
+
+    .flash-card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .flash-card-word {
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--pink-dark);
+    }
+
+    .flash-card-right {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+
+    .flash-card-tap {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 600;
+      margin-top: 3px;
+    }
+
+    .flash-card.open .flash-card-tap { display: none; }
+
+    .flash-card-reveal {
+      display: none;
+      margin-top: 0.9rem;
+      padding-top: 0.9rem;
+      border-top: 1.5px dashed var(--line-2);
+    }
+
+    .flash-card.open .flash-card-reveal {
+      display: block;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .flash-reveal-row { margin-bottom: 0.55rem; }
+
+    .flash-reveal-label {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .flash-reveal-value {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    .flash-reveal-value.meaning {
+      font-size: 1.15rem;
+      font-weight: 800;
+    }
+
+    .flash-reveal-value.example {
+      font-style: italic;
+      color: var(--ink-soft);
+    }
+
+    .flash-reveal-value.translation {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    #rank-content .leaderboard {
+      margin-top: 0;
+      border-top: none;
+      padding-top: 0;
     }
   </style>
 </head>
 <body>
   <div id="onboarding-overlay" style="display:none;"></div>
   <div class="header">
-    <div class="header-title">🐾 CLAW ENG 單字複習小教室</div>
-    <div class="header-sub">學過的單字 · 每週自動更新</div>
+    <div class="header-title">🐾 CLAW ENG</div>
+    <div class="header-sub">單字複習小教室</div>
   </div>
 
   <div class="wrap">
-    <div class="tabs">
-      <button class="tab-btn active" data-tab="cards" onclick="switchTab('cards')">學習過的單字卡</button>
-      <button class="tab-btn" data-tab="quiz" onclick="switchTab('quiz')">複習測驗</button>
+    <div id="panel-home" class="panel active">
+      <div class="loading">載入中…</div>
     </div>
 
-    <div id="panel-cards" class="panel active">
+    <div id="panel-flash" class="panel">
       <div class="search-bar">
         <input type="text" class="search-input" id="search-input" placeholder="搜尋單字或中文意思…" autocomplete="off" />
       </div>
@@ -832,8 +1132,31 @@
       </div>
     </div>
 
+    <div id="panel-rank" class="panel">
+      <div id="rank-content"></div>
+    </div>
+
     <div class="page-footer" id="page-footer">CLAW ENG 單字複習小教室</div>
   </div>
+
+  <nav class="bottom-nav" id="bottom-nav">
+    <button class="nav-item active" data-tab="home" onclick="switchTab('home')">
+      <svg viewBox="0 0 24 24"><path d="M3 12l9-9 9 9"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>
+      <span>首頁</span>
+    </button>
+    <button class="nav-item" data-tab="flash" onclick="switchTab('flash')">
+      <svg viewBox="0 0 24 24"><rect x="3" y="7" width="14" height="14" rx="2"/><path d="M7 7V5a2 2 0 012-2h10a2 2 0 012 2v10a2 2 0 01-2 2h-2"/></svg>
+      <span>單字卡</span>
+    </button>
+    <button class="nav-item" data-tab="quiz" onclick="switchTab('quiz')">
+      <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+      <span>測驗</span>
+    </button>
+    <button class="nav-item" data-tab="rank" onclick="switchTab('rank')">
+      <svg viewBox="0 0 24 24"><rect x="4" y="12" width="4" height="8" rx="1"/><rect x="10" y="4" width="4" height="16" rx="1"/><rect x="16" y="8" width="4" height="12" rx="1"/></svg>
+      <span>排行榜</span>
+    </button>
+  </nav>
 
 <script>
 /* =========================================================================
@@ -1210,12 +1533,118 @@ function renderFooterMeta() {
 /* ---------- Tabs ---------- */
 
 function switchTab(id) {
-  document.querySelectorAll('.tab-btn').forEach(b =>
+  document.querySelectorAll('.nav-item').forEach(b =>
     b.classList.toggle('active', b.dataset.tab === id)
   );
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  document.getElementById('panel-' + id).classList.add('active');
-  if (id === 'quiz') enterQuizTab();
+  const panel = document.getElementById('panel-' + id);
+  if (panel) panel.classList.add('active');
+  if (id === 'home') renderHome();
+  else if (id === 'quiz') enterQuizTab();
+  else if (id === 'rank') renderRank();
+}
+
+function getWeekDays() {
+  const today = new Date();
+  const days = [];
+  for (let i = 6; i >= 0; i--) {
+    const d = new Date(today);
+    d.setDate(d.getDate() - i);
+    days.push(taipeiDateKey(d));
+  }
+  return days;
+}
+
+function renderHome() {
+  const panel = document.getElementById('panel-home');
+  const curId = getCurrentPlayerId();
+  const player = curId ? findPlayer(curId) : null;
+  if (!player) {
+    panel.innerHTML = '<div class="empty-state">請先完成設定！</div>';
+    return;
+  }
+  const char = CHAR_MAP[normalizeAvatarId(player.avatarId)];
+  const streakVal = player.streakCur || 0;
+  const answeredVal = player.answeredCount || ((player.plays || 0) * QUIZ_LEN);
+  const bestVal = player.bestScore || 0;
+
+  const days = getWeekDays();
+  const playedSet = new Set(player.playedDates || []);
+  const today = taipeiDateKey();
+  const dayLabels = ['日','一','二','三','四','五','六'];
+
+  const weeklyHtml = days.map(dateKey => {
+    const parts = dateKey.split('-');
+    const d = new Date(parseInt(parts[0],10), parseInt(parts[1],10)-1, parseInt(parts[2],10));
+    const dayOfWeek = d.getDay();
+    const isToday = dateKey === today;
+    const isDone = playedSet.has(dateKey);
+    const dayNum = parseInt(parts[2], 10);
+    return `
+      <div class="weekly-dot ${isDone ? 'done' : ''} ${isToday ? 'today' : ''}">
+        <div class="weekly-dot-circle">${isDone ? '✓' : dayNum}</div>
+        <div class="weekly-dot-label">${dayLabels[dayOfWeek]}</div>
+      </div>`;
+  }).join('');
+
+  panel.innerHTML = `
+    <div class="home-greeting">
+      <div style="display:inline-block;animation:float 3s ease-in-out infinite;">
+        ${renderAvatar(player.avatarId, { size: 'lg' })}
+      </div>
+      <div class="home-greeting-name">Hi, ${escapeHtml(player.name)}!</div>
+      <div class="home-greeting-sub">今天也要好好學英文喔</div>
+    </div>
+
+    <div class="stat-cards">
+      <div class="stat-card streak">
+        <div class="stat-card-icon">🔥</div>
+        <div class="stat-card-value">${streakVal}</div>
+        <div class="stat-card-label">連續天數</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-icon">✅</div>
+        <div class="stat-card-value">${answeredVal}</div>
+        <div class="stat-card-label">已完成的答題數</div>
+      </div>
+      <div class="stat-card best">
+        <div class="stat-card-icon">⭐</div>
+        <div class="stat-card-value">${bestVal}</div>
+        <div class="stat-card-label">最高分</div>
+      </div>
+    </div>
+
+    <div class="companion-card">
+      <div class="companion-info">
+        <div class="companion-name">我的學習夥伴</div>
+        <div class="companion-desc">${escapeHtml(char ? char.name : '')} — ${escapeHtml(char ? char.desc : '')}</div>
+      </div>
+      <div class="companion-img">
+        <img src="${escapeHtml(char ? char.src : '')}" alt="" />
+      </div>
+    </div>
+
+    <div class="weekly-section">
+      <div class="weekly-title">📅 每週進度</div>
+      <div class="weekly-dots">${weeklyHtml}</div>
+    </div>
+
+    <div style="margin-top:1.2rem;">
+      <button class="dl-btn wide" onclick="switchTab('quiz')">開始今天的測驗 →</button>
+    </div>
+  `;
+}
+
+function renderRank() {
+  const el = document.getElementById('rank-content');
+  const curId = getCurrentPlayerId();
+  el.innerHTML = `
+    <div style="text-align:center;padding:1.2rem 0 0.5rem;">
+      <div style="font-size:1.2rem;font-weight:900;color:var(--ink);">🏆 排行榜</div>
+      <div style="font-size:0.82rem;color:var(--muted);margin-top:0.2rem;">所有玩家的戰績</div>
+    </div>
+    ${renderLeaderboardHtml(curId)}
+  `;
 }
 
 /* ---------- Cards tab ---------- */
@@ -1256,22 +1685,36 @@ function renderCards() {
   }
 
   function renderCard(v, isFocus) {
-    const badge = isFocus ? `<span class="new-badge">NEW</span>` : '';
+    const posHtml = posList(v.pos).map(p =>
+      `<span class="pos-dot ${posClass(p)}">${escapeHtml(posLabel(p))}</span>`
+    ).join('');
     return `
-    <div class="vocab-card ${isFocus ? 'focus' : ''}" onclick="this.classList.toggle('open')">
-      <div class="card-head">
-        <div class="card-left">
-          <div class="vocab-word">${escapeHtml(v.word)}</div>
+    <div class="flash-card ${isFocus ? 'focus' : ''}" onclick="this.classList.toggle('open')">
+      <div class="flash-card-head">
+        <div class="flash-card-word">${escapeHtml(v.word)}</div>
+        <div class="flash-card-right">
+          ${isFocus ? '<span class="new-badge">NEW</span>' : ''}
+          ${posHtml}
         </div>
-        <div class="vocab-date">${badge} ${formatDate(v.firstSeen)} 學過</div>
       </div>
-      <div class="vocab-meaning">${escapeHtml(v.meaning)}</div>
-      <div class="vocab-detail">
-        <div class="vocab-example-en">${escapeHtml(v.example)}</div>
-        <div class="vocab-example-zh">${escapeHtml(v.translation)}</div>
-      </div>
-      <div class="pos-stack">
-        ${posList(v.pos).map(p => `<span class="pos-dot ${posClass(p)}">${escapeHtml(posLabel(p))}</span>`).join('')}
+      <div class="flash-card-tap">點擊看中文 ▼</div>
+      <div class="flash-card-reveal">
+        <div class="flash-reveal-row">
+          <span class="flash-reveal-label">中文</span>
+          <span class="flash-reveal-value meaning">${escapeHtml(v.meaning)}</span>
+        </div>
+        <div class="flash-reveal-row">
+          <span class="flash-reveal-label">詞性</span>
+          <span class="flash-reveal-value">${posList(v.pos).map(p => escapeHtml(posLabel(p))).join(' / ') || '?'}</span>
+        </div>
+        <div class="flash-reveal-row">
+          <span class="flash-reveal-label">例句</span>
+          <span class="flash-reveal-value example">${escapeHtml(v.example)}</span>
+        </div>
+        ${v.translation ? `<div class="flash-reveal-row">
+          <span class="flash-reveal-label">翻譯</span>
+          <span class="flash-reveal-value translation">${escapeHtml(v.translation)}</span>
+        </div>` : ''}
       </div>
     </div>
     `;
@@ -1321,6 +1764,8 @@ function loadPlayers() {
       streakCur: Number.isFinite(p.streakCur) ? p.streakCur : 0,
       streakBest: Number.isFinite(p.streakBest) ? p.streakBest : 0,
       lastPlayDate: String(p.lastPlayDate || ''),
+      answeredCount: Number.isFinite(p.answeredCount) ? p.answeredCount : 0,
+      playedDates: Array.isArray(p.playedDates) ? p.playedDates : [],
     }));
   } catch (_) { return []; }
 }
@@ -1364,6 +1809,8 @@ function addPlayer(name, avatarId) {
     streakCur: 0,
     streakBest: 0,
     lastPlayDate: '',
+    answeredCount: 0,
+    playedDates: [],
   };
   players.push(p);
   savePlayers(players);
@@ -1426,13 +1873,18 @@ function applyStreak(p) {
   p.streakBest = Math.max(p.streakBest || 0, p.streakCur || 0);
 }
 
-function recordScore(playerId, score) {
+function recordScore(playerId, score, questionsCount) {
   const players = loadPlayers();
   const p = players.find(x => x.id === playerId);
   if (!p) return;
   p.plays = (p.plays || 0) + 1;
   p.bestScore = Math.max(p.bestScore || 0, score);
   p.recentScores = [score, ...(p.recentScores || [])].slice(0, 10);
+  if (questionsCount) p.answeredCount = (p.answeredCount || 0) + questionsCount;
+  const today = taipeiDateKey();
+  if (!p.playedDates) p.playedDates = [];
+  if (!p.playedDates.includes(today)) p.playedDates.push(today);
+  p.playedDates = p.playedDates.slice(-60);
   applyStreak(p);
   savePlayers(players);
 }
@@ -2043,9 +2495,7 @@ function renderOnboardingPassword() {
 
 function finishOnboarding() {
   hideOnboarding();
-  const player = findPlayer(getCurrentPlayerId());
-  if (player) renderQuizHome(player);
-  else renderProfileSelect();
+  switchTab('home');
 }
 
 /* ---------- Quiz state ---------- */
@@ -2865,7 +3315,7 @@ function finishQuiz() {
   const score = s.score;
   const pct = Math.round((score / total) * 100);
 
-  recordScore(s.playerId, score);
+  recordScore(s.playerId, score, total);
 
   // Fire cloud upsert in the background; refresh leaderboard UI when it returns.
   const playerForCloud = findPlayer(s.playerId);
@@ -2899,7 +3349,7 @@ function finishQuiz() {
       ${wrongHtml}
       <div class="dl-btn-row">
         <button class="dl-btn" onclick="startQuiz()">再玩一次</button>
-        <button class="dl-btn blue" onclick="switchTab('cards')">去看單字卡</button>
+        <button class="dl-btn blue" onclick="switchTab('flash')">去看單字卡</button>
         <button class="dl-btn gray" onclick="renderProfileSelect()">換玩家</button>
       </div>
       ${renderLeaderboardHtml(s.playerId)}
@@ -2912,17 +3362,25 @@ function finishQuiz() {
 document.getElementById('search-input').addEventListener('input', renderCards);
 loadVocab();
 
+if (needsOnboarding()) {
+  const curId = getCurrentPlayerId();
+  const player = curId ? findPlayer(curId) : null;
+  showOnboarding(player ? player.name : '');
+} else {
+  switchTab('home');
+}
+
 cloudFetchLeaderboard().then(() => {
-  const panel = document.getElementById('panel-quiz');
-  if (!panel || !panel.classList.contains('active')) return;
+  const rankPanel = document.getElementById('panel-rank');
+  if (rankPanel && rankPanel.classList.contains('active')) renderRank();
   const cur = getCurrentPlayerId();
   const p = cur ? findPlayer(cur) : null;
-  if (!p) { renderProfileSelect(); return; }
-  if (quiz && quiz.playerId === p.id && !quiz.finished) return; // don't disturb live quiz
-  // If on finish screen (has result-area), just refresh the lb container.
-  if (document.querySelector('#quiz-box .result-area')) {
-    refreshLeaderboardUI(p.id);
-  } else {
+  if (!p) return;
+  refreshLeaderboardUI(p.id);
+  const quizPanel = document.getElementById('panel-quiz');
+  if (quizPanel && quizPanel.classList.contains('active')) {
+    if (quiz && !quiz.finished) return;
+    if (document.querySelector('#quiz-box .result-area')) return;
     renderQuizHome(p);
   }
 });
