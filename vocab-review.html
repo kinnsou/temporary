@@ -231,6 +231,124 @@ function formatDate(dateKey){
   const js=new Date(y,m-1,d);
   return js.toLocaleDateString('zh-TW',{month:'long',day:'numeric',weekday:'short'});
 }
+function normalizeAnswer(s){return String(s||'').trim().toLowerCase().replace(/[.,!?;:'"`]/g,'').replace(/\s+/g,' ');}
+
+/* ══ Verb / tense helpers ════════════════════════════════ */
+const IRREGULAR={
+  ride:{thirds:'rides',past:'rode',ing:'riding'},leave:{thirds:'leaves',past:'left',ing:'leaving'},
+  go:{thirds:'goes',past:'went',ing:'going'},come:{thirds:'comes',past:'came',ing:'coming'},
+  have:{thirds:'has',past:'had',ing:'having'},do:{thirds:'does',past:'did',ing:'doing'},
+  make:{thirds:'makes',past:'made',ing:'making'},say:{thirds:'says',past:'said',ing:'saying'},
+  get:{thirds:'gets',past:'got',ing:'getting'},see:{thirds:'sees',past:'saw',ing:'seeing'},
+  eat:{thirds:'eats',past:'ate',ing:'eating'},run:{thirds:'runs',past:'ran',ing:'running'},
+  take:{thirds:'takes',past:'took',ing:'taking'},give:{thirds:'gives',past:'gave',ing:'giving'},
+  know:{thirds:'knows',past:'knew',ing:'knowing'},think:{thirds:'thinks',past:'thought',ing:'thinking'},
+  feel:{thirds:'feels',past:'felt',ing:'feeling'},buy:{thirds:'buys',past:'bought',ing:'buying'},
+  bring:{thirds:'brings',past:'brought',ing:'bringing'},catch:{thirds:'catches',past:'caught',ing:'catching'},
+  hear:{thirds:'hears',past:'heard',ing:'hearing'},hold:{thirds:'holds',past:'held',ing:'holding'},
+  read:{thirds:'reads',past:'read',ing:'reading'},send:{thirds:'sends',past:'sent',ing:'sending'},
+  sit:{thirds:'sits',past:'sat',ing:'sitting'},stand:{thirds:'stands',past:'stood',ing:'standing'},
+  win:{thirds:'wins',past:'won',ing:'winning'},write:{thirds:'writes',past:'wrote',ing:'writing'},
+  meet:{thirds:'meets',past:'met',ing:'meeting'},keep:{thirds:'keeps',past:'kept',ing:'keeping'},
+  put:{thirds:'puts',past:'put',ing:'putting'},cut:{thirds:'cuts',past:'cut',ing:'cutting'},
+  let:{thirds:'lets',past:'let',ing:'letting'},break:{thirds:'breaks',past:'broke',ing:'breaking'},
+  fall:{thirds:'falls',past:'fell',ing:'falling'},fly:{thirds:'flies',past:'flew',ing:'flying'},
+  speak:{thirds:'speaks',past:'spoke',ing:'speaking'},sleep:{thirds:'sleeps',past:'slept',ing:'sleeping'},
+  forget:{thirds:'forgets',past:'forgot',ing:'forgetting'},lose:{thirds:'loses',past:'lost',ing:'losing'},
+  tell:{thirds:'tells',past:'told',ing:'telling'},wear:{thirds:'wears',past:'wore',ing:'wearing'},
+  sing:{thirds:'sings',past:'sang',ing:'singing'},swim:{thirds:'swims',past:'swam',ing:'swimming'},
+  drink:{thirds:'drinks',past:'drank',ing:'drinking'},begin:{thirds:'begins',past:'began',ing:'beginning'},
+  understand:{thirds:'understands',past:'understood',ing:'understanding'},teach:{thirds:'teaches',past:'taught',ing:'teaching'},
+  build:{thirds:'builds',past:'built',ing:'building'},lend:{thirds:'lends',past:'lent',ing:'lending'},
+  find:{thirds:'finds',past:'found',ing:'finding'},feed:{thirds:'feeds',past:'fed',ing:'feeding'},
+  pay:{thirds:'pays',past:'paid',ing:'paying'},is:{thirds:'is',past:'was',ing:'being'},
+  are:{thirds:'is',past:'were',ing:'being'},be:{thirds:'is',past:'was',ing:'being'},
+};
+function toPast(v){v=v.toLowerCase();if(IRREGULAR[v])return IRREGULAR[v].past;if(/[^aeiou]e$/.test(v))return v+'d';if(/e$/.test(v))return v+'d';if(/[^aeiou]y$/.test(v))return v.slice(0,-1)+'ied';if(/[^aeiou][aeiou][^aeiouwxy]$/.test(v)&&v.length<=5)return v+v.slice(-1)+'ed';return v+'ed';}
+function toIng(v){v=v.toLowerCase();if(IRREGULAR[v])return IRREGULAR[v].ing;if(/ie$/.test(v))return v.slice(0,-2)+'ying';if(/[^aeiou]e$/.test(v))return v.slice(0,-1)+'ing';if(/[^aeiou][aeiou][^aeiouwxy]$/.test(v)&&v.length<=5)return v+v.slice(-1)+'ing';return v+'ing';}
+function toThirdS(v){v=v.toLowerCase();if(IRREGULAR[v])return IRREGULAR[v].thirds;if(/(s|x|z|o)$/.test(v))return v+'es';if(/(ch|sh)$/.test(v))return v+'es';if(/[^aeiou]y$/.test(v))return v.slice(0,-1)+'ies';return v+'s';}
+
+/* Word looks like a verb if ANY conjugated form appears right after a PRONOUN subject. */
+function looksLikeVerb(word,example){
+  if(!word||!example)return false;
+  const base=word.toLowerCase();
+  const forms=[...new Set([base,toThirdS(base),toPast(base),toIng(base)])];
+  for(const f of forms){
+    const safe=f.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    // Only safe: subject is a pronoun (I/We/They/You/He/She/It) directly followed by the verb form.
+    if(new RegExp('(?:^|[.!?,]\\s+)(?:I|We|They|You|He|She|It)\\s+'+safe+'\\b').test(example))return true;
+  }
+  return false;
+}
+
+/* Find which form of the verb appears in the example. Returns {form, index, length} or null. */
+function findVerbForm(base,example){
+  const forms=[toPast(base),toIng(base),toThirdS(base),base]; // prefer longer/more-specific first, keep base last
+  for(const f of [...new Set(forms)]){
+    const safe=f.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    const m=example.match(new RegExp('\\b'+safe+'\\b','i'));
+    if(m)return{form:f,index:m.index,length:m[0].length};
+  }
+  return null;
+}
+
+/* Split a sentence around the target word, case-insensitive, word-boundary preferred. */
+function splitAroundWord(sentence,word){
+  const safe=word.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  let m=sentence.match(new RegExp('\\b'+safe+'\\b','i'));
+  if(!m)m=sentence.match(new RegExp(safe,'i'));
+  if(!m)return null;
+  return{before:sentence.slice(0,m.index),match:m[0],after:sentence.slice(m.index+m[0].length)};
+}
+
+/* Build a cloze (type-in) question. Returns {type,correct,hintFirst,before,after,zh2} or null. */
+function buildClozeQuestion(w){
+  if(!w.en||!w.word)return null;
+  const parts=splitAroundWord(w.en,w.word);
+  if(!parts)return null;
+  return{type:'cloze',correct:w.word,hintFirst:String(w.word).trim().slice(0,1).toLowerCase(),before:parts.before,after:parts.after,zh2:w.zh2||'',zh:w.zh||''};
+}
+
+/* Build a tense (4-option) question. Target = whichever form appears in the sentence. Returns {type,correct,options,baseWord,before,after,zh2} or null. */
+function buildTenseQuestion(w,_otherVerbs){
+  if(!w.en||!w.word)return null;
+  const base=w.word.toLowerCase();
+  const hit=findVerbForm(base,w.en);
+  if(!hit)return null;
+  const correct=hit.form.toLowerCase();
+  const forms=[...new Set([base,toThirdS(base),toPast(base),toIng(base)])];
+  if(forms.length<4)return null; // need 4 distinct forms for a fair MC
+  if(!forms.includes(correct))return null;
+  const before=w.en.slice(0,hit.index);
+  const after=w.en.slice(hit.index+hit.length);
+  return{type:'tense',correct,options:shuffle(forms),baseWord:base,before,after,zh2:w.zh2||'',zh:w.zh||''};
+}
+
+/* Build mixed quiz items. Cap cloze at MAX_CLOZE. Prefer tense for detected verbs. */
+const MAX_CLOZE=5;
+function buildQuizItems(pool,total){
+  const verbs=pool.filter(w=>looksLikeVerb(w.word,w.en));
+  const chosen=shuffle(pool).slice(0,total);
+  let clozeBudget=Math.min(MAX_CLOZE,Math.floor(total/4));
+  if(clozeBudget<2&&total>=8)clozeBudget=2;
+  const items=[];
+  for(const w of chosen){
+    const isVerb=looksLikeVerb(w.word,w.en);
+    let built=null;
+    if(isVerb&&Math.random()<0.6){
+      built=buildTenseQuestion(w,verbs.filter(v=>v.word!==w.word));
+    }
+    if(!built&&clozeBudget>0&&w.en&&Math.random()<0.45){
+      built=buildClozeQuestion(w);
+      if(built)clozeBudget--;
+    }
+    if(!built){
+      built={type:'zh2en',options:getOptions(w,pool)};
+    }
+    items.push({...built,vocab:w});
+  }
+  return items;
+}
 
 /* ══ Shared UI ═══════════════════════════════════════════ */
 function Confetti({active}){
@@ -597,17 +715,38 @@ function FlashScreen({charSrc,flashPool,onNav,pc}){
 }
 
 /* ══ QUIZ ════════════════════════════════════════════════ */
+// Question-type theme tokens (matches fix1.jpg orange / fix2.jpg cyan)
+const Q_THEME={
+  zh2en:{color:'#61c2ff',icon:'🎯',label:'選出正確解釋'},
+  cloze:{color:'#FF9800',icon:'✏️',label:'填入正確單字'},
+  tense:{color:'#38bdf8',icon:'⏱',label:'選出正確時態'},
+};
+
+function Blank({width=78,color='#555',filled}){
+  return(<span style={{display:'inline-block',minWidth:width,padding:'0 6px',margin:'0 4px',borderBottom:`2px solid ${color}`,textAlign:'center',fontWeight:900,color:filled?color:'transparent',verticalAlign:'baseline',lineHeight:1.2,letterSpacing:1,fontFamily:filled?'monospace':'inherit'}}>{filled||'＿'}</span>);
+}
+
 function QuizScreen({charSrc,quizPool,onFinish,onNav,pc}){
   const TOTAL=Math.min(20,quizPool.length);
-  const [questions]=useState(()=>shuffle(quizPool).slice(0,TOTAL).map(v=>({vocab:v,options:getOptions(v,quizPool)})));
+  const [questions]=useState(()=>buildQuizItems(quizPool,TOTAL));
   const [idx,setIdx]=useState(0);
-  const [selected,setSel]=useState(null);
+  const [selected,setSel]=useState(null);   // for zh2en/tense: chosen option string; for cloze: 'submitted' marker
+  const [clozeInput,setClozeInput]=useState('');
+  const [clozeResult,setClozeResult]=useState(null); // {isCorrect, userAnswer}
   const [score,setScore]=useState(0);
   const [xp,setXp]=useState(0);
   const [combo,setCombo]=useState(0);
   const [showConf,setConf]=useState(false);
   const [xpMsg,setXpMsg]=useState(null);
   const [shaking,setShaking]=useState(false);
+  const inputRef=useRef(null);
+
+  useEffect(()=>{
+    // Focus input when a cloze question mounts
+    if(questions[idx]?.type==='cloze'&&inputRef.current){
+      setTimeout(()=>inputRef.current?.focus(),100);
+    }
+  },[idx,questions]);
 
   if(TOTAL===0)return(
     <div className="screen" style={{background:'linear-gradient(170deg,#fafeff 0%,#f0fdf8 100%)'}}>
@@ -622,13 +761,10 @@ function QuizScreen({charSrc,quizPool,onFinish,onNav,pc}){
   );
 
   const q=questions[idx];
-  const correct=q.vocab;
-  const catColor=CAT[correct.cat]||'#94a3b8';
+  const vocab=q.vocab;
+  const theme=Q_THEME[q.type]||Q_THEME.zh2en;
 
-  const answer=(opt)=>{
-    if(selected)return;
-    setSel(opt.word);
-    const ok=opt.word===correct.word;
+  const afterAnswer=(ok)=>{
     if(ok){
       const gain=10+combo*3;
       setScore(s=>s+1);setXp(x=>x+gain);setCombo(c=>c+1);
@@ -638,16 +774,123 @@ function QuizScreen({charSrc,quizPool,onFinish,onNav,pc}){
       setCombo(0);
       setShaking(true);setTimeout(()=>setShaking(false),500);
     }
+    // For cloze we linger a bit longer so kids can read the correct answer
+    const delay=q.type==='cloze'?1600:1100;
     setTimeout(()=>{
-      setSel(null);
+      setSel(null);setClozeInput('');setClozeResult(null);
       if(idx+1>=TOTAL) onFinish(ok?score+1:score,ok?xp+10+combo*3:xp,TOTAL);
       else setIdx(i=>i+1);
-    },1100);
+    },delay);
   };
 
-  const bg=opt=>{if(!selected)return'#fff';if(opt.word===correct.word)return'#4CAF82';if(opt.word===selected)return'#FF4D6D';return'#fff';};
-  const col=opt=>{if(!selected)return'#1a1a2e';if(opt.word===correct.word||opt.word===selected)return'#fff';return'#ccc';};
-  const bdr=opt=>{if(!selected)return'2px solid #f0eaea';if(opt.word===correct.word)return'2px solid #4CAF82';if(opt.word===selected)return'2px solid #FF4D6D';return'2px solid #f5f5f5';};
+  const answerChoice=(optStr)=>{
+    if(selected)return;
+    setSel(optStr);
+    const correctStr=q.type==='zh2en'?q.vocab.word:q.correct;
+    afterAnswer(normalizeAnswer(optStr)===normalizeAnswer(correctStr));
+  };
+  const submitCloze=()=>{
+    if(clozeResult)return;
+    const ok=normalizeAnswer(clozeInput)===normalizeAnswer(q.correct);
+    setClozeResult({isCorrect:ok,userAnswer:clozeInput});
+    afterAnswer(ok);
+  };
+
+  const bgBtn=(label,correctLabel)=>{if(!selected)return'#fff';if(normalizeAnswer(label)===normalizeAnswer(correctLabel))return'#4CAF82';if(normalizeAnswer(label)===normalizeAnswer(selected))return'#FF4D6D';return'#fff';};
+  const colBtn=(label,correctLabel)=>{if(!selected)return'#1a1a2e';if(normalizeAnswer(label)===normalizeAnswer(correctLabel)||normalizeAnswer(label)===normalizeAnswer(selected))return'#fff';return'#ccc';};
+  const bdrBtn=(label,correctLabel)=>{if(!selected)return'2px solid #f0eaea';if(normalizeAnswer(label)===normalizeAnswer(correctLabel))return'2px solid #4CAF82';if(normalizeAnswer(label)===normalizeAnswer(selected))return'2px solid #FF4D6D';return'2px solid #f5f5f5';};
+
+  // ─ Render question card per type ─
+  let questionCard,answerArea;
+
+  if(q.type==='zh2en'){
+    const correct=vocab;
+    const catColor=CAT[correct.cat]||'#94a3b8';
+    questionCard=(
+      <div style={{background:'#fff',borderRadius:22,padding:'14px 20px',textAlign:'center',boxShadow:'0 4px 18px rgba(0,0,0,0.07)',marginBottom:12,flexShrink:0,animation:shaking?'shake 0.4s ease-in-out':'pop 0.2s ease-out',display:'flex',flexDirection:'column',alignItems:'center',gap:6,position:'relative',overflow:'hidden'}}>
+        <div style={{position:'absolute',top:0,left:0,right:0,height:3,background:`linear-gradient(90deg,${catColor},${catColor}44)`}}/>
+        <div style={{fontSize:11,fontWeight:800,color:theme.color,background:`${theme.color}18`,padding:'3px 12px',borderRadius:20,letterSpacing:0.5}}>{theme.icon} {theme.label}</div>
+        {correct.visual&&<span style={{fontSize:44,lineHeight:1,marginTop:4}}>{correct.visual}</span>}
+        <div style={{fontSize:28,fontWeight:900,color:'#1a1a2e',letterSpacing:2,wordBreak:'break-word'}}>{correct.word}</div>
+        <div style={{fontSize:10,color:catColor,fontWeight:800,background:`${catColor}18`,padding:'2px 10px',borderRadius:20}}>{correct.cat}</div>
+      </div>
+    );
+    answerArea=(
+      <div className="scroll-body" style={{display:'flex',flexDirection:'column',gap:8,paddingBottom:8}}>
+        {q.options.map((opt,i)=>(
+          <button key={opt.word+i} onClick={()=>answerChoice(opt.word)} style={{width:'100%',padding:'12px 16px',borderRadius:16,border:bdrBtn(opt.word,correct.word),background:bgBtn(opt.word,correct.word),color:colBtn(opt.word,correct.word),fontSize:14,fontWeight:800,cursor:'pointer',textAlign:'left',display:'flex',alignItems:'center',gap:10,boxShadow:selected&&normalizeAnswer(opt.word)===normalizeAnswer(correct.word)?'0 4px 14px #4CAF8244':'0 2px 6px rgba(0,0,0,0.04)',transition:'all 0.15s',animation:`slideUp 0.2s ${i*0.04}s both`,opacity:selected&&normalizeAnswer(opt.word)!==normalizeAnswer(correct.word)&&normalizeAnswer(opt.word)!==normalizeAnswer(selected)?0.4:1,fontFamily:'inherit',flexShrink:0}}>
+            <span style={{fontSize:16,flexShrink:0}}>{opt.visual||'💬'}</span>
+            <span style={{flex:1,lineHeight:1.3,wordBreak:'break-word'}}>{opt.zh}</span>
+            {selected&&normalizeAnswer(opt.word)===normalizeAnswer(correct.word)&&<span style={{fontSize:16,flexShrink:0}}>✓</span>}
+            {selected&&normalizeAnswer(opt.word)===normalizeAnswer(selected)&&normalizeAnswer(opt.word)!==normalizeAnswer(correct.word)&&<span style={{fontSize:16,flexShrink:0}}>✗</span>}
+          </button>
+        ))}
+      </div>
+    );
+  } else if(q.type==='cloze'){
+    // Fill-in-the-word with input box
+    const hintDisplay=q.hintFirst+('_'.repeat(Math.max(2,String(q.correct).length-1)));
+    const locked=!!clozeResult;
+    const isCorrect=clozeResult?.isCorrect;
+    questionCard=(
+      <div style={{background:'#fff',borderRadius:22,padding:'16px 20px',boxShadow:'0 4px 18px rgba(0,0,0,0.07)',marginBottom:12,flexShrink:0,animation:shaking?'shake 0.4s ease-in-out':'pop 0.2s ease-out',display:'flex',flexDirection:'column',gap:10,position:'relative',overflow:'hidden'}}>
+        <div style={{position:'absolute',top:0,left:0,right:0,height:3,background:`linear-gradient(90deg,${theme.color},${theme.color}44)`}}/>
+        <div style={{textAlign:'center'}}>
+          <span style={{fontSize:11,fontWeight:800,color:theme.color,background:`${theme.color}18`,padding:'4px 12px',borderRadius:20,letterSpacing:0.5}}>{theme.icon} {theme.label}</span>
+        </div>
+        <div style={{fontSize:12,color:'#aaa',fontWeight:700,textAlign:'center'}}>提示首字：<span style={{fontFamily:'monospace',color:theme.color,fontWeight:900,fontSize:14}}>{hintDisplay}</span></div>
+        <div style={{fontSize:17,fontWeight:700,color:'#1a1a2e',lineHeight:1.8,textAlign:'left',padding:'4px 0'}}>
+          <span>{q.before}</span>
+          <Blank width={86} color={locked?(isCorrect?'#4CAF82':'#FF4D6D'):theme.color} filled={locked?q.correct:null}/>
+          <span>{q.after}</span>
+        </div>
+        {q.zh2&&<div style={{fontSize:12,color:'#aaa',textAlign:'center',fontStyle:'italic'}}>「{q.zh2}」</div>}
+      </div>
+    );
+    answerArea=(
+      <div style={{display:'flex',flexDirection:'column',gap:10,paddingBottom:8}}>
+        <input ref={inputRef} type="text" value={clozeInput} placeholder="輸入英文單字…"
+          disabled={locked} maxLength={24}
+          onChange={e=>setClozeInput(e.target.value)} onKeyDown={e=>{if(e.key==='Enter'&&!locked)submitCloze();}}
+          autoComplete="off" autoCapitalize="none" autoCorrect="off" spellCheck="false"
+          style={{width:'100%',padding:'14px 16px',borderRadius:16,border:`2px solid ${locked?(isCorrect?'#4CAF82':'#FF4D6D'):(clozeInput?theme.color:'#f0eaea')}`,background:locked?(isCorrect?'#e9f8ef':'#ffeef0'):'#fff',fontSize:18,fontWeight:800,color:'#1a1a2e',outline:'none',fontFamily:'monospace',textAlign:'center',letterSpacing:1,transition:'all 0.2s'}}/>
+        {locked&&<div style={{fontSize:12,fontWeight:800,color:isCorrect?'#4CAF82':'#FF4D6D',textAlign:'center'}}>
+          {isCorrect?'✓ 答對了！':`✗ 正確答案：${q.correct}`}
+        </div>}
+        {!locked&&<button onClick={submitCloze} disabled={!clozeInput.trim()} style={{padding:14,borderRadius:16,border:'none',cursor:'pointer',background:`linear-gradient(135deg,${theme.color},${theme.color}bb)`,fontSize:15,fontWeight:900,color:'#fff',boxShadow:`0 4px 14px ${theme.color}44`,opacity:clozeInput.trim()?1:0.4,transition:'opacity 0.2s',fontFamily:'inherit'}}>送出答案</button>}
+      </div>
+    );
+  } else if(q.type==='tense'){
+    questionCard=(
+      <div style={{background:'#fff',borderRadius:22,padding:'16px 20px',boxShadow:'0 4px 18px rgba(0,0,0,0.07)',marginBottom:12,flexShrink:0,animation:shaking?'shake 0.4s ease-in-out':'pop 0.2s ease-out',display:'flex',flexDirection:'column',gap:10,position:'relative',overflow:'hidden'}}>
+        <div style={{position:'absolute',top:0,left:0,right:0,height:3,background:`linear-gradient(90deg,${theme.color},${theme.color}44)`}}/>
+        <div style={{textAlign:'center'}}>
+          <span style={{fontSize:11,fontWeight:800,color:theme.color,background:`${theme.color}18`,padding:'4px 12px',borderRadius:20,letterSpacing:0.5}}>{theme.icon} {theme.label}</span>
+        </div>
+        <div style={{fontSize:16,fontWeight:700,color:'#1a1a2e',lineHeight:1.8,textAlign:'left',padding:'4px 0'}}>
+          <span>{q.before}</span>
+          <Blank width={90} color={selected?'#4CAF82':theme.color} filled={selected?q.correct:null}/>
+          <span>{q.after}</span>
+        </div>
+        <div style={{textAlign:'center'}}>
+          <span style={{fontSize:12,color:'#888',fontWeight:700}}>原形：</span>
+          <span style={{fontFamily:'monospace',fontSize:14,fontWeight:900,color:theme.color,background:`${theme.color}18`,padding:'3px 12px',borderRadius:14,letterSpacing:1}}>{q.baseWord}</span>
+        </div>
+        {q.zh2&&<div style={{fontSize:12,color:'#aaa',textAlign:'center',fontStyle:'italic'}}>「{q.zh2}」</div>}
+      </div>
+    );
+    answerArea=(
+      <div className="scroll-body" style={{display:'flex',flexDirection:'column',gap:8,paddingBottom:8}}>
+        {q.options.map((opt,i)=>(
+          <button key={opt+i} onClick={()=>answerChoice(opt)} style={{width:'100%',padding:'12px 16px',borderRadius:16,border:bdrBtn(opt,q.correct),background:bgBtn(opt,q.correct),color:colBtn(opt,q.correct),fontSize:15,fontWeight:800,cursor:'pointer',textAlign:'center',boxShadow:selected&&normalizeAnswer(opt)===normalizeAnswer(q.correct)?'0 4px 14px #4CAF8244':'0 2px 6px rgba(0,0,0,0.04)',transition:'all 0.15s',animation:`slideUp 0.2s ${i*0.04}s both`,opacity:selected&&normalizeAnswer(opt)!==normalizeAnswer(q.correct)&&normalizeAnswer(opt)!==normalizeAnswer(selected)?0.4:1,fontFamily:'monospace',letterSpacing:1,flexShrink:0}}>
+            {opt}
+            {selected&&normalizeAnswer(opt)===normalizeAnswer(q.correct)&&<span style={{fontSize:14,marginLeft:8}}>✓</span>}
+            {selected&&normalizeAnswer(opt)===normalizeAnswer(selected)&&normalizeAnswer(opt)!==normalizeAnswer(q.correct)&&<span style={{fontSize:14,marginLeft:8}}>✗</span>}
+          </button>
+        ))}
+      </div>
+    );
+  }
 
   return(<div className="screen" style={{background:'linear-gradient(170deg,#fafeff 0%,#f0fdf8 100%)',position:'relative',overflow:'hidden'}}>
     <Confetti active={showConf}/>
@@ -664,27 +907,10 @@ function QuizScreen({charSrc,quizPool,onFinish,onNav,pc}){
 
     <div style={{flex:1,display:'flex',flexDirection:'column',padding:'4px 20px 0',overflow:'hidden'}}>
       <div style={{display:'flex',justifyContent:'center',marginBottom:4,flexShrink:0}}>
-        <img src={charSrc} alt="" style={{width:54,height:54,objectFit:'contain',animation:'float 3s ease-in-out infinite'}}/>
+        <img src={charSrc} alt="" style={{width:48,height:48,objectFit:'contain',animation:'float 3s ease-in-out infinite'}}/>
       </div>
-
-      <div style={{background:'#fff',borderRadius:22,padding:'14px 20px',textAlign:'center',boxShadow:'0 4px 18px rgba(0,0,0,0.07)',marginBottom:12,flexShrink:0,animation:shaking?'shake 0.4s ease-in-out':'pop 0.2s ease-out',display:'flex',flexDirection:'column',alignItems:'center',gap:6,position:'relative',overflow:'hidden'}}>
-        <div style={{position:'absolute',top:0,left:0,right:0,height:3,background:`linear-gradient(90deg,${catColor},${catColor}44)`}}/>
-        <div style={{fontSize:11,fontWeight:700,color:'#ddd',letterSpacing:1}}>這個英文單字是什麼意思？</div>
-        {correct.visual&&<span style={{fontSize:44,lineHeight:1}}>{correct.visual}</span>}
-        <div style={{fontSize:28,fontWeight:900,color:'#1a1a2e',letterSpacing:2,wordBreak:'break-word'}}>{correct.word}</div>
-        <div style={{fontSize:10,color:catColor,fontWeight:800,background:`${catColor}18`,padding:'2px 10px',borderRadius:20}}>{correct.cat}</div>
-      </div>
-
-      <div className="scroll-body" style={{display:'flex',flexDirection:'column',gap:8,paddingBottom:8}}>
-        {q.options.map((opt,i)=>(
-          <button key={opt.word+i} onClick={()=>answer(opt)} style={{width:'100%',padding:'12px 16px',borderRadius:16,border:bdr(opt),background:bg(opt),color:col(opt),fontSize:14,fontWeight:800,cursor:'pointer',textAlign:'left',display:'flex',alignItems:'center',gap:10,boxShadow:selected&&opt.word===correct.word?'0 4px 14px #4CAF8244':'0 2px 6px rgba(0,0,0,0.04)',transition:'all 0.15s',animation:`slideUp 0.2s ${i*0.04}s both`,opacity:selected&&opt.word!==correct.word&&opt.word!==selected?0.4:1,fontFamily:'inherit',flexShrink:0}}>
-            <span style={{fontSize:16,flexShrink:0}}>{opt.visual||'💬'}</span>
-            <span style={{flex:1,lineHeight:1.3,wordBreak:'break-word'}}>{opt.zh}</span>
-            {selected&&opt.word===correct.word&&<span style={{fontSize:16,flexShrink:0}}>✓</span>}
-            {selected&&opt.word===selected&&opt.word!==correct.word&&<span style={{fontSize:16,flexShrink:0}}>✗</span>}
-          </button>
-        ))}
-      </div>
+      {questionCard}
+      {answerArea}
     </div>
     <div style={{textAlign:'center',padding:'6px 0',flexShrink:0}}>
       <span style={{fontSize:11,color:'#ccc',fontWeight:700}}>⭐ {xp} XP 已獲得</span>
