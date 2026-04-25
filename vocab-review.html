@@ -119,6 +119,7 @@ const genPassword=()=>{const c='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';return Array.f
 /* ══ Firebase leaderboard (REST, no SDK) ═════════════════ */
 const firebaseConfig={
   apiKey:"AIzaSyB1c6yopEMzDxbYBrgkqr_3Rsr9KqKwNbA",
+  authDomain:"vocab-eng2026.firebaseapp.com",
   projectId:"vocab-eng2026",
 };
 const FS_BASE=`https://firestore.googleapis.com/v1/projects/${firebaseConfig.projectId}/databases/(default)/documents`;
@@ -1154,6 +1155,109 @@ function App(){
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+
+<!-- ════════════════════════════════════════════════════════════════
+     Firebase Pet MVP — Phase 1: backend wiring (anon auth + seeds)
+     Spec: Claw_ENG/design_handoff/firebase_pet_mvp_spec.md
+     UI integration happens in Phase 2/3.
+     ════════════════════════════════════════════════════════════════ -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+import { getAuth, signInAnonymously, onAuthStateChanged }
+  from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
+import { getFirestore, doc, getDoc, setDoc, updateDoc, getDocs, collection, runTransaction }
+  from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyB1c6yopEMzDxbYBrgkqr_3Rsr9KqKwNbA",
+  authDomain: "vocab-eng2026.firebaseapp.com",
+  projectId: "vocab-eng2026",
+};
+
+// Append new entries here — seedPets() will create any missing on next page load.
+const HP_DECAY_MS = 30 * 60 * 1000; // 30 min per HP point => 100 hp ~= 50h
+const SEED_PETS = [
+  { id:'pet_001', type:'cat',     name:'奶油貓', desc:'愛撒嬌的貓咪', img:'Claw_ENG/design_handoff/assets/newcha1.png' },
+  { id:'pet_002', type:'dog',     name:'布丁狗', desc:'忠心的好夥伴', img:'Claw_ENG/design_handoff/assets/newcha2.png' },
+  { id:'pet_003', type:'hippo',   name:'胖河馬', desc:'萌萌的大塊頭', img:'Claw_ENG/design_handoff/assets/newcha3.png' },
+  { id:'pet_004', type:'fish',    name:'泡泡魚', desc:'藍藍的海洋寶', img:'Claw_ENG/design_handoff/assets/newcha4.png' },
+  { id:'pet_005', type:'spotted', name:'點點獸', desc:'斑點小可愛',   img:'Claw_ENG/design_handoff/assets/newcha5.png' },
+  { id:'pet_006', type:'chick',   name:'圓滾雞', desc:'圓圓愛學習',   img:'Claw_ENG/design_handoff/assets/newcha6.png' },
+  { id:'pet_007', type:'dragon',  name:'六角龍', desc:'粉紅小精靈',   img:'Claw_ENG/design_handoff/assets/newcha7.png' },
+  { id:'pet_008', type:'cheetah', name:'豹豹',   desc:'威風的小獵豹', img:'Claw_ENG/design_handoff/assets/newcha8.png' },
+];
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+function calcCurrentHp(pet, now = Date.now()) {
+  const last = pet.lastHpUpdate || now;
+  const passed = Math.floor((now - last) / HP_DECAY_MS);
+  return Math.max(0, (pet.hp || 0) - passed);
+}
+
+async function ensureUserProfile(uid, defaultName) {
+  const ref = doc(db, 'users', uid);
+  const snap = await getDoc(ref);
+  if (snap.exists()) return { ref, data: snap.data(), created: false };
+  const now = Date.now();
+  const data = {
+    name: defaultName || '匿名玩家',
+    currentPetId: null,
+    exp: 0, combo: 0, foodCount: 0,
+    totalCorrect: 0,
+    createdAt: now, updatedAt: now,
+  };
+  await setDoc(ref, data);
+  return { ref, data, created: true };
+}
+
+async function seedPets() {
+  const created = [];
+  for (const p of SEED_PETS) {
+    const ref = doc(db, 'pets', p.id);
+    const snap = await getDoc(ref);
+    if (snap.exists()) continue;
+    const now = Date.now();
+    await setDoc(ref, {
+      type: p.type, name: p.name, desc: p.desc, img: p.img,
+      ownerUid: null, status: 'available',
+      hp: 100, lastHpUpdate: now,
+      createdAt: now, updatedAt: now,
+    });
+    created.push(p.id);
+  }
+  return created;
+}
+
+// Boot
+signInAnonymously(auth).catch(err => console.error('[FB] anon signin failed', err));
+onAuthStateChanged(auth, async (user) => {
+  if (!user) return;
+  try {
+    let lpName = '匿名玩家';
+    try {
+      const p = JSON.parse(localStorage.getItem('epopProfile') || 'null');
+      if (p && p.name) lpName = String(p.name).slice(0, 40);
+    } catch {}
+
+    const { data: profile, created: userCreated } = await ensureUserProfile(user.uid, lpName);
+    const seeded = await seedPets();
+
+    window.FB = {
+      app, auth, db, uid: user.uid, profile,
+      config: { HP_DECAY_MS, SEED_PETS },
+      helpers: { calcCurrentHp, ensureUserProfile, seedPets },
+      modular: { doc, getDoc, setDoc, updateDoc, getDocs, collection, runTransaction },
+    };
+    window.dispatchEvent(new Event('fbready'));
+    console.log('[FB] phase1 ready', { uid: user.uid, userCreated, seededPets: seeded, profile });
+  } catch (e) {
+    console.error('[FB] boot failed', e);
+  }
+});
 </script>
 </body>
 </html>
