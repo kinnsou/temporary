@@ -47,6 +47,14 @@ const CHARACTERS=[
   {id:'newcha6',img:'Claw_ENG/design_handoff/assets/newcha6.png',name:'圓滾雞',desc:'圓圓愛學習'},
   {id:'newcha7',img:'Claw_ENG/design_handoff/assets/newcha7.png',name:'六角龍',desc:'粉紅小精靈'},
   {id:'newcha8',img:'Claw_ENG/design_handoff/assets/newcha8.png',name:'豹豹',  desc:'威風的小獵豹'},
+  {id:'newcha9',img:'Claw_ENG/design_handoff/assets/newcha9.png',name:'嫩芽龍',desc:'青嫩嫩的小恐龍'},
+  {id:'newcha10',img:'Claw_ENG/design_handoff/assets/newcha10.png',name:'橄欖鸚',desc:'藍尾巴的小鸚鵡'},
+  {id:'newcha11',img:'Claw_ENG/design_handoff/assets/newcha11.png',name:'繁星鯊',desc:'身上有點點的鯨鯊'},
+  {id:'newcha12',img:'Claw_ENG/design_handoff/assets/newcha12.png',name:'湯圓貓熊',desc:'黑白圓圓的小糰子'},
+  {id:'newcha13',img:'Claw_ENG/design_handoff/assets/newcha13.png',name:'冰棒企鵝',desc:'搖搖晃晃的小傢伙'},
+  {id:'newcha14',img:'Claw_ENG/design_handoff/assets/newcha14.png',name:'雲朵樹熊',desc:'慢慢抱住每個單字'},
+  {id:'newcha15',img:'Claw_ENG/design_handoff/assets/newcha15.png',name:'奶茶鼠',desc:'圓滾滾的倉鼠寶'},
+  {id:'newcha16',img:'Claw_ENG/design_handoff/assets/newcha16.png',name:'棉花羊駝',desc:'蓬鬆又溫柔'},
 ];
 const CHAR_MAP=Object.fromEntries(CHARACTERS.map((c,i)=>[c.id,{...c,idx:i}]));
 const DEFAULT_AVATAR='newcha1';
@@ -302,17 +310,17 @@ function WordVisual({vocab,size=48}){
   if(vocab.visual) return <span style={{fontSize:size,lineHeight:1}}>{vocab.visual}</span>;
   return null;
 }
-function speakWord(word){
+function speakText(text){
   try{
-    if(!word||!window.speechSynthesis)return;
+    if(!text||!window.speechSynthesis)return;
     window.speechSynthesis.cancel();
-    const u=new SpeechSynthesisUtterance(String(word));
+    const u=new SpeechSynthesisUtterance(String(text));
     u.lang='en-US';u.rate=0.82;u.pitch=1.05;
     window.speechSynthesis.speak(u);
   }catch{}
 }
-function SpeakButton({word,color='#61c2ff',size=30}){
-  return(<button onClick={e=>{e.stopPropagation();speakWord(word);}} aria-label={`播放 ${word} 發音`} title="播放發音" style={{width:size,height:size,border:'none',borderRadius:999,background:`${color}18`,color,display:'inline-flex',alignItems:'center',justifyContent:'center',fontSize:Math.round(size*0.52),cursor:'pointer',flexShrink:0,boxShadow:'0 1px 5px rgba(0,0,0,0.04)'}}>🔊</button>);
+function SpeakButton({text,color='#61c2ff',size=30,title='播放發音'}){
+  return(<button onClick={e=>{e.stopPropagation();speakText(text);}} aria-label={title} title={title} style={{width:size,height:size,border:'none',borderRadius:999,background:`${color}18`,color,display:'inline-flex',alignItems:'center',justifyContent:'center',fontSize:Math.round(size*0.52),cursor:'pointer',flexShrink:0,boxShadow:'0 1px 5px rgba(0,0,0,0.04)'}}>🔊</button>);
 }
 
 /* ══ Firebase Pet integration (Phase 2) ══════════════════ */
@@ -622,14 +630,17 @@ function HomeScreen({charSrc,charName,studentName,stats,todaySet,flashPool,dateL
                   <div style={{flex:1,minWidth:0}}>
                     <div style={{display:'flex',alignItems:'center',gap:7,minWidth:0}}>
                       <div style={{fontSize:20,fontWeight:900,color:'#1a1a2e',letterSpacing:1,overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap'}}>{w.word}</div>
-                      <SpeakButton word={w.word} color={bg} size={27}/>
+                      <SpeakButton text={w.word} color={bg} size={27} title={`播放 ${w.word} 發音`}/>
                     </div>
                     <div style={{fontSize:13,color:bg,fontWeight:800}}>{w.zh}</div>
                   </div>
                   <div style={{fontSize:14,color:'#ccc',transform:isOpen?'rotate(180deg)':'rotate(0)',transition:'transform 0.2s'}}>▼</div>
                 </div>
                 {isOpen&&w.en&&<div style={{marginTop:12,paddingTop:12,borderTop:`1px solid ${bg}33`,animation:'expandIn 0.25s ease-out'}}>
-                  <div style={{fontSize:13,fontWeight:800,color:bg,marginBottom:4}}>例句</div>
+                  <div style={{display:'flex',alignItems:'center',gap:7,marginBottom:4}}>
+                    <div style={{fontSize:13,fontWeight:800,color:bg}}>例句</div>
+                    <SpeakButton text={w.en} color={bg} size={26} title="播放例句"/>
+                  </div>
                   <div style={{fontSize:15,color:'#333',fontStyle:'italic',lineHeight:1.7}}>"{w.en}"</div>
                   {w.zh2&&<div style={{fontSize:13,color:'#777',marginTop:4}}>「{w.zh2}」</div>}
                 </div>}
@@ -784,7 +795,7 @@ function FlashScreen({charSrc,flashPool,onNav,pc}){
             <div style={{border:`1.5px dashed ${catColor}66`,background:`${catColor}10`,borderRadius:18,padding:'10px 18px',fontSize:18,fontWeight:900,color:catColor,lineHeight:1.35,textAlign:'center',maxWidth:'100%'}}>{card.zh}</div>
             <div style={{display:'flex',alignItems:'center',justifyContent:'center',gap:9,maxWidth:'100%'}}>
               <div style={{fontSize:30,fontWeight:900,color:'#1a1a2e',letterSpacing:2,textAlign:'center',wordBreak:'break-word',minWidth:0}}>{card.word}</div>
-              <SpeakButton word={card.word} color={catColor} size={32}/>
+              <SpeakButton text={card.word} color={catColor} size={32} title={`播放 ${card.word} 發音`}/>
             </div>
             <div style={{fontSize:12,color:'#ccc',marginTop:4}}>👆 點擊看例句</div>
           </>
@@ -792,8 +803,11 @@ function FlashScreen({charSrc,flashPool,onNav,pc}){
           const sentence=card.en||'';
           const wIdx=card.word&&sentence?sentence.toLowerCase().indexOf(card.word.toLowerCase()):-1;
           const sentenceNode=sentence?(
-            <div style={{fontSize:16,color:'#555',textAlign:'center',lineHeight:1.6,fontStyle:'italic',width:'100%',padding:'4px 2px'}}>
-              {wIdx>=0?(<>"{sentence.slice(0,wIdx)}<span style={{color:catColor,fontWeight:900,fontStyle:'normal'}}>{sentence.slice(wIdx,wIdx+card.word.length)}</span>{sentence.slice(wIdx+card.word.length)}"</>):`"${sentence}"`}
+            <div style={{display:'flex',alignItems:'center',justifyContent:'center',gap:8,width:'100%',padding:'4px 2px'}}>
+              <div style={{fontSize:16,color:'#555',textAlign:'center',lineHeight:1.6,fontStyle:'italic',minWidth:0}}>
+                {wIdx>=0?(<>"{sentence.slice(0,wIdx)}<span style={{color:catColor,fontWeight:900,fontStyle:'normal'}}>{sentence.slice(wIdx,wIdx+card.word.length)}</span>{sentence.slice(wIdx+card.word.length)}"</>):`"${sentence}"`}
+              </div>
+              <SpeakButton text={sentence} color={catColor} size={28} title="播放例句"/>
             </div>
           ):(
             <div style={{fontSize:22,fontWeight:900,color:catColor,textAlign:'center',lineHeight:1.3}}>{card.zh}</div>
@@ -1626,6 +1640,7 @@ async function claimPet(uid, petId) {
     if (petSnap.exists()) tx.update(petRef, claimPatch);
     else tx.set(petRef, { ...pet, ...claimPatch, createdAt: now });
     tx.update(userRef, { currentPetId: petId, updatedAt: now });
+    tx.set(doc(db, 'leaderboard', uid), { uid, avatarId: petId, name: user.name || '匿名玩家', updatedAt: new Date(now).toISOString() }, { merge: true });
     return { id: petId, ...pet, hp: claimHp, ownerUid: uid, ownerName: user.name || '匿名玩家', status: 'owned' };
   });
 }
@@ -1784,7 +1799,7 @@ async function upsertLeaderboardScore(uid, name, avatarId, score, total = 20) {
     const entry = {
       uid,
       name: String(name || user.name || '匿名玩家').trim().slice(0, 40),
-      avatarId: avatarId || user.currentPetId || 'pet_001',
+      avatarId: user.currentPetId || avatarId || prev.avatarId || 'pet_001',
       plays,
       bestScore: Math.max(prev.bestScore || user.bestScore || 0, scoreInt),
       recentScores: [scoreInt, ...((prev.recentScores || []).slice(0, 9))],
