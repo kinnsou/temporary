@@ -1327,6 +1327,16 @@ const SEED_PETS = [
   { id:'pet_008', type:'cheetah', name:'豹豹',   desc:'威風的小獵豹', img:'Claw_ENG/design_handoff/assets/newcha8.png' },
 ];
 
+const SEED_PET_MAP = Object.fromEntries(SEED_PETS.map(p => [p.id, p]));
+function seedPetDoc(id, now = Date.now()) {
+  const p = SEED_PET_MAP[id];
+  if (!p) return null;
+  return { type:p.type, name:p.name, desc:p.desc, img:p.img, ownerUid:null, ownerName:null, status:'available', hp:100, lastHpUpdate:now, createdAt:now, updatedAt:now };
+}
+function seedPetList(now = Date.now()) {
+  return SEED_PETS.map(p => ({ id:p.id, ...seedPetDoc(p.id, now), fallback:true }));
+}
+
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
@@ -1423,12 +1433,18 @@ async function updateUserName(uid, name) {
 }
 
 async function listPets() {
+  const now = Date.now();
   let snap = await getDocs(collection(db, 'pets'));
   if (snap.empty) {
-    await seedPets();
-    snap = await getDocs(collection(db, 'pets'));
+    try {
+      await seedPets();
+      snap = await getDocs(collection(db, 'pets'));
+    } catch (e) {
+      console.warn('[FB] seed on listPets failed; showing seed fallback', e);
+      return seedPetList(now);
+    }
+    if (snap.empty) return seedPetList(now);
   }
-  const now = Date.now();
   const out = [];
   const staleDisabled = [];
   snap.forEach(d => {
@@ -1448,11 +1464,12 @@ async function claimPet(uid, petId) {
     const petRef = doc(db, 'pets', petId);
     const userSnap = await tx.get(userRef);
     const petSnap = await tx.get(petRef);
-    if (!petSnap.exists()) throw new Error('pet-not-found');
     if (!userSnap.exists()) throw new Error('no-user');
-    const pet = petSnap.data();
-    const user = userSnap.data();
     const now = Date.now();
+    const seededPet = petSnap.exists() ? null : seedPetDoc(petId, now);
+    if (!petSnap.exists() && !seededPet) throw new Error('pet-not-found');
+    const pet = petSnap.exists() ? petSnap.data() : seededPet;
+    const user = userSnap.data();
 
     let releasedHp = null;
     const oldId = user.currentPetId;
@@ -1480,12 +1497,42 @@ async function claimPet(uid, petId) {
     if (pet.ownerUid && pet.ownerUid !== uid) throw new Error('pet-taken');
 
     const claimHp = (releasedHp != null) ? Math.min(curHp, releasedHp) : curHp;
-    tx.update(petRef, {
+    const claimPatch = {
       ownerUid: uid, ownerName: user.name || '匿名玩家', status: 'owned',
       hp: claimHp, lastHpUpdate: now, updatedAt: now,
-    });
+    };
+    if (petSnap.exists()) tx.update(petRef, claimPatch);
+    else tx.set(petRef, { ...pet, ...claimPatch, createdAt: now });
     tx.update(userRef, { currentPetId: petId, updatedAt: now });
     return { id: petId, ...pet, hp: claimHp, ownerUid: uid, ownerName: user.name || '匿名玩家', status: 'owned' };
+  });
+}
+
+async function feedMyPet(uid) {
+  return await runTransaction(db, async (tx) => {
+    const userRef = doc(db, 'users', uid);
+    const userSnap = await tx.get(userRef);
+    if (!userSnap.exists()) throw new Error('no-user');
+    const user = userSnap.data();
+    if ((user.foodCount || 0) <= 0) throw new Error('no-food');
+    if (!user.currentPetId) throw new Error('no-pet');
+    const petRef = doc(db, 'pets', user.currentPetId);
+    const petSnap = await tx.get(petRef);
+    if (!petSnap.exists()) throw new Error('pet-missing');
+    const pet = petSnap.data();
+    if (pet.ownerUid !== uid) throw new Error('not-owner');
+    const now = Date.now();
+    const curHp = calcCurrentHp(pet, now);
+    if (curHp <= 0) {
+      tx.update(petRef, { hp:0, status:'disabled', ownerUid:null, ownerName:null, lastHpUpdate: now, updatedAt: now });
+      tx.update(userRef, { currentPetId: null, updatedAt: now });
+      throw new Error('pet-starved');
+    }
+    const newHp = Math.min(100, curHp + 50);
+    const newFood = (user.foodCount || 0) - 1;
+    tx.update(petRef, { hp: newHp, status: 'owned', lastHpUpdate: now, updatedAt: now });
+    tx.update(userRef, { foodCount: newFood, updatedAt: now });
+    return { newHp, foodCount: newFood, petName: pet.name };
   });
 }
 
@@ -1654,22 +1701,11 @@ onAuthStateChanged(auth, async (user) => {
     } catch {}
 
     const { data: profile, created: userCreated } = await ensureUserProfile(user.uid, lpName);
-    const migrated = await migrateLocalStats(user.uid, profile);
-    if (lpName && lpName !== '匿名玩家' && (!profile.name || profile.name === '匿名玩家')) await updateUserName(user.uid, lpName);
-    const seeded = await seedPets();
+    let migrated = false;
+    try { migrated = await migrateLocalStats(user.uid, profile); } catch (e) { console.warn('[FB] local stats migration failed', e); }
+    try { if (lpName && lpName !== '匿名玩家' && (!profile.name || profile.name === '匿名玩家')) await updateUserName(user.uid, lpName); } catch (e) { console.warn('[FB] update user name failed', e); }
 
-    // Bridge: first-time users coming from old onboarding → auto-claim corresponding pet
-    let bridged = null;
-    if (!profile.currentPetId && lpCharIdx !== null && lpCharIdx >= 0 && lpCharIdx < SEED_PETS.length) {
-      try {
-        await claimPet(user.uid, SEED_PETS[lpCharIdx].id);
-        bridged = SEED_PETS[lpCharIdx].id;
-      } catch (e) {
-        console.warn('[FB] bridge claim failed', e.message);
-      }
-    }
-    const finalProfile = await refreshProfile(user.uid);
-
+    let finalProfile = await refreshProfile(user.uid);
     window.FB = {
       app, auth, db, uid: user.uid, profile: finalProfile,
       config: { HP_DECAY_MS, SEED_PETS },
@@ -1678,6 +1714,23 @@ onAuthStateChanged(auth, async (user) => {
       modular: { doc, getDoc, setDoc, updateDoc, getDocs, collection, runTransaction, query, orderBy, limit },
     };
     window.dispatchEvent(new Event('fbready'));
+
+    let seeded = [], bridged = null;
+    try { seeded = await seedPets(); }
+    catch (e) { console.warn('[FB] seedPets failed; UI remains ready with fallback list', e); }
+
+    // Bridge: first-time users coming from old onboarding → auto-claim corresponding pet
+    if (!finalProfile.currentPetId && lpCharIdx !== null && lpCharIdx >= 0 && lpCharIdx < SEED_PETS.length) {
+      try {
+        await claimPet(user.uid, SEED_PETS[lpCharIdx].id);
+        bridged = SEED_PETS[lpCharIdx].id;
+        finalProfile = await refreshProfile(user.uid);
+        window.FB.profile = finalProfile;
+        window.dispatchEvent(new Event('fbready'));
+      } catch (e) {
+        console.warn('[FB] bridge claim failed', e.message);
+      }
+    }
     console.log('[FB] phase3 ready', { uid: user.uid, userCreated, migrated, seededPets: seeded, bridgedTo: bridged, profile: finalProfile });
   } catch (e) {
     console.error('[FB] boot failed', e);
