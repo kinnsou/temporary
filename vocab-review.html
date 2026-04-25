@@ -82,6 +82,7 @@ function dateKeyToUtcMs(k){if(!/^\d{4}-\d{2}-\d{2}$/.test(String(k||'')))return 
 /* ══ POS → Category ══════════════════════════════════════ */
 const POS_CAT={v:'動作',adj:'形容詞',adv:'副詞',n:'名詞'};
 function posToCat(pos){const p=Array.isArray(pos)?pos[0]:pos;return POS_CAT[p]||'名詞';}
+function catLabel(cat){return cat==='動作'?'動詞':(cat||'名詞');}
 
 /* ══ Vocab shape normalization ═══════════════════════════ */
 function normalizeVocab(raw){
@@ -604,7 +605,7 @@ function HomeScreen({charSrc,charName,studentName,stats,todaySet,flashPool,dateL
               return(<div key={w.word+i} onClick={()=>setExpanded(isOpen?null:i)} style={{background:`linear-gradient(135deg,${bg}18,${bg}08)`,border:`1.5px solid ${bg}33`,borderRadius:20,padding:'14px 16px',cursor:'pointer',transition:'all 0.2s'}}>
                 <div style={{display:'flex',alignItems:'center',gap:12}}>
                   <div style={{width:48,height:48,borderRadius:14,background:`${bg}22`,display:'flex',alignItems:'center',justifyContent:'center',fontSize:28,flexShrink:0}}>
-                    {w.visual||<span style={{fontSize:14,fontWeight:900,color:bg}}>{(w.zh||'').slice(0,2)}</span>}
+                    {w.visual||<span style={{fontSize:12,fontWeight:900,color:bg,lineHeight:1.15,textAlign:'center'}}>{catLabel(w.cat)}</span>}
                   </div>
                   <div style={{flex:1,minWidth:0}}>
                     <div style={{fontSize:20,fontWeight:900,color:'#1a1a2e',letterSpacing:1,overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap'}}>{w.word}</div>
@@ -762,10 +763,10 @@ function FlashScreen({charSrc,flashPool,onNav,pc}){
     <div style={{flex:1,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',padding:'0 22px',gap:16}}>
       <div onClick={()=>setFlipped(f=>!f)} style={{width:'100%',background:'#fff',borderRadius:28,boxShadow:'0 6px 28px rgba(0,0,0,0.09)',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',padding:'28px 24px',gap:10,cursor:'pointer',minHeight:240,animation:'pop 0.2s ease-out',position:'relative',overflow:'hidden'}}>
         <div style={{position:'absolute',top:0,left:0,right:0,height:4,background:`linear-gradient(90deg,${catColor},${catColor}66)`,borderRadius:'28px 28px 0 0'}}/>
-        <div style={{fontSize:11,fontWeight:800,color:catColor,letterSpacing:1,opacity:0.8}}>{card.cat}</div>
-        <WordVisual vocab={card} size={56}/>
+        <div style={{fontSize:11,fontWeight:800,color:catColor,letterSpacing:1,opacity:0.8}}>{catLabel(card.cat)}</div>
         {!flipped?(
           <>
+            <div style={{border:'1.5px dashed #ffd6e0',background:'#fff7fa',borderRadius:18,padding:'10px 18px',fontSize:18,fontWeight:900,color:'#fb7185',lineHeight:1.35,textAlign:'center',maxWidth:'100%'}}>{card.zh}</div>
             <div style={{fontSize:30,fontWeight:900,color:'#1a1a2e',letterSpacing:2,textAlign:'center',wordBreak:'break-word'}}>{card.word}</div>
             <div style={{fontSize:12,color:'#ccc',marginTop:4}}>👆 點擊看例句</div>
           </>
@@ -1374,9 +1375,15 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 function calcCurrentHp(pet, now = Date.now()) {
+  if (!pet) return 0;
+  const hp = Math.max(0, Number(pet.hp ?? 100));
+  if (pet.status === 'disabled') return 0;
+  // Only actively adopted pets lose HP over time.
+  // Available pool pets are paused so unselected pets don't all starve while a child plays with one companion.
+  if (pet.status !== 'owned' || !pet.ownerUid) return hp;
   const last = pet.lastHpUpdate || now;
   const passed = Math.floor((now - last) / HP_DECAY_MS);
-  return Math.max(0, (pet.hp || 0) - passed);
+  return Math.max(0, hp - passed);
 }
 
 async function ensureUserProfile(uid, defaultName, legacyUid = null) {
