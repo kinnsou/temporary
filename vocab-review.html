@@ -1421,6 +1421,9 @@ async function claimPet(uid, petId) {
     const user = userSnap.data();
     const now = Date.now();
 
+    // Release old pet (if any) and capture its HP — used to cap new claim so
+    // switching never grants a player more HP than they had (no swap-to-refill).
+    let releasedHp = null;
     const oldId = user.currentPetId;
     if (oldId && oldId !== petId) {
       const oldRef = doc(db, 'pets', oldId);
@@ -1428,6 +1431,7 @@ async function claimPet(uid, petId) {
       if (oldSnap.exists() && oldSnap.data().ownerUid === uid) {
         const oldPet = oldSnap.data();
         const oldHp = calcCurrentHp(oldPet, now);
+        releasedHp = oldHp;
         tx.update(oldRef, {
           ownerUid: null,
           status: oldHp <= 0 ? 'disabled' : 'available',
@@ -1444,12 +1448,16 @@ async function claimPet(uid, petId) {
     }
     if (pet.ownerUid && pet.ownerUid !== uid) throw new Error('pet-taken');
 
+    // HP lock on swap: claimHp = min(new pet's natural HP, released pet's HP).
+    // First-time claim (releasedHp === null) skips the cap — no penalty.
+    const claimHp = (releasedHp != null) ? Math.min(curHp, releasedHp) : curHp;
+
     tx.update(petRef, {
       ownerUid: uid, status: 'owned',
-      hp: curHp, lastHpUpdate: now, updatedAt: now,
+      hp: claimHp, lastHpUpdate: now, updatedAt: now,
     });
     tx.update(userRef, { currentPetId: petId, updatedAt: now });
-    return { id: petId, ...pet, hp: curHp, ownerUid: uid, status: 'owned' };
+    return { id: petId, ...pet, hp: claimHp, ownerUid: uid, status: 'owned' };
   });
 }
 
