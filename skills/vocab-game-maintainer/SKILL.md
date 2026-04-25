@@ -121,8 +121,12 @@ Known regression to avoid: deleting or renaming an op still referenced in `windo
 
 ## Auto-update
 
-- Script: `scripts/update_vocab_game_weekly.sh` regenerates `vocab-data.json` and pushes if changed.
-- Cron job: “每日更新單字遊戲詞庫” (Asia/Taipei 19:10). Verify with `openclaw cron list`.
+- Cron job: “每日更新 CLAW ENG 首頁 3 個新單字（晚上7點）” (Asia/Taipei 19:00).
+- The daily job no longer sends LINE/Telegram vocab content. It updates `memory/vocab-history.json`, rebuilds `vocab-data.json`, updates `daughter-vocab.md` / `memory/daily-tasks.json`, commits, and pushes.
+- “Today’s 3 new words” are the newest `firstSeen` date in `vocab-data.json`; previous-day words automatically move into the flashcard and quiz pools because the app filters words older than today/latest.
+- Pronunciation direction: stop relying on Chinese homophone text for the game path; use the web speaker button / speech output as the short-term UI direction.
+- Legacy helper script: `scripts/update_vocab_game_weekly.sh` only regenerates and pushes `vocab-data.json`; the old 19:10 cron that called it is disabled.
+- Verify with `openclaw cron list`.
 
 ## Firestore admin operations (REST batch commit)
 
@@ -148,6 +152,8 @@ Reference implementation: 2026-04-25 cleanup pass — see Changelog below for co
 
 Newest first. Format: `YYYY-MM-DD [agent] commit `hash` — one-line summary`.
 
+- 2026-04-25 [OpenClaw] `5b17911` — daily game update pivot: homepage words agree/ugly/catch, speaker buttons, POS-colored meaning box, 640px pet assets, no-LINE daily status.
+- 2026-04-25 [OpenClaw] no-commit cron — changed 19:00 vocab cron to update CLAW ENG files and push with delivery none; disabled redundant 19:10 rebuild cron.
 - 2026-04-25 [OpenClaw] `b409718` — locked HP decay to owned pets only; restored flashcard meaning dashed box; changed today-new-word fallback chip to POS label.
 - 2026-04-25 [Claude Code] no-commit Firestore admin (round 2) — duplicate leaderboard cleanup: `leaderboard/jun` plays merged into `leaderboard/name_anVu` (best=16, plays=7), `leaderboard/kuro` plays merged into `leaderboard/name_a3Vybw` (best=20, plays=8), old ASCII keys deleted; Jun's residual anon-uid user `HhpNlw4aWMPO7TPsGXwmIt00CWe2` (0 progress) deleted. Outstanding: `leaderboard/yuki` orphan (no name-based mirror, no users doc — left as-is, will resolve when Yuki next logs in).
 - 2026-04-25 [Claude Code] no-commit Firestore admin — pets reset (16 docs to defaults, 9 test users deleted, 2 anon-uid 珺爸 records merged into `name_54-654i4` foodCount=25, 1 Kuro anon mirror cleaned, dangling `currentPetId` cleared on Jun/Kuro). 
