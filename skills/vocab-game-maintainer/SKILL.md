@@ -5,6 +5,19 @@ description: Maintain the CLAW ENG vocab web game (vocab-review.html), including
 
 # Vocab Game Maintainer
 
+> **Co-maintained by OpenClaw + Claude Code.** Either side may pick up next.
+> Mark explicitly asked for shared maintenance because both agents can hit
+> quota limits mid-task and need to hand off.
+>
+> **Canonical state of truth (read both before touching anything substantial):**
+> - This file (`SKILL.md`) — OpenClaw’s primary source
+> - `Claw_ENG/design_handoff/PHASE3_REPORT_AND_NEW_PETS.md` — most recent OpenClaw → Claude Code handoff
+> - `Claw_ENG/design_handoff/PHASE3_HANDOFF.md` — earlier Claude Code → OpenClaw handoff (Phases 1–2 background)
+> - `/home/kurohime/.claude/projects/-home-kurohime/memory/project_vocab_classroom.md` — Claude Code’s project memory (richer Changelog, accessible to Claude Code only but mirrored here in summary form)
+> - Recent `git log --oneline` in `/home/kurohime/.openclaw/workspace/` — most recent commits show who did what (commit messages start `vocab review:`)
+>
+> **Handoff convention:** when wrapping a session, append a Changelog entry under §Changelog below with date + commit hash + 1-line summary. Don’t rewrite history; append-only.
+
 Work on these files (repo root unless noted):
 - `vocab-review.html` (single-file React/Babel UI + Firebase v10 module script)
 - `memory/vocab-history.json` (source of truth for meanings/examples/translations, optional POS)
@@ -41,11 +54,15 @@ Current model:
 - Pet source list: `SEED_PETS` inside the module script of `vocab-review.html`.
 - Public pet names are intentional. `renameMyPet(uid, petId, newName)` updates `pets/{petId}.name` only if the pet is currently owned by that uid.
 
+Current `SEED_PETS` count: **16** (pet_001~008 = original CHARACTERS; pet_009~016 added 2026-04-25).
+
 When adding new pets:
-1. Add transparent PNG under `Claw_ENG/design_handoff/assets/` (`newcha9.png`, `newcha10.png`, ...).
-2. Add a new unique `pet_###` item to `SEED_PETS`.
-3. Verify locally that pet cards appear.
-4. Commit/push only relevant files.
+1. Add transparent PNG under `Claw_ENG/design_handoff/assets/` (`newcha17.png`, ...).
+2. **Open every PNG before naming.** Past mistake (2026-04-25): an agent named pet_009~016 from filename guesses; the actual images were dragon/parrot/whale-shark/panda/penguin/koala/hamster/alpaca but had been labelled rabbit/panda/fox/otter/penguin/koala/lion/seal in the suggested names. Always view the image first.
+3. Add a new unique `pet_###` item to `SEED_PETS`. Match the existing 3–4 char Chinese name style (奶油貓 / 雲朵樹熊 etc).
+4. **`seedPets()` does not overwrite existing pet docs.** It only creates missing ones. To change `name`/`desc`/`img` of a pet that already exists in Firestore, run a REST batch upsert (see `references/firebase-pet-mvp-phase3.md` for the pattern, or copy from the 2026-04-25 reset commit).
+5. Verify locally that pet cards appear.
+6. Commit/push only relevant files (vocab-review.html + the new PNGs).
 
 ## Verification gate
 
@@ -106,3 +123,40 @@ Known regression to avoid: deleting or renaming an op still referenced in `windo
 
 - Script: `scripts/update_vocab_game_weekly.sh` regenerates `vocab-data.json` and pushes if changed.
 - Cron job: “每日更新單字遊戲詞庫” (Asia/Taipei 19:10). Verify with `openclaw cron list`.
+
+## Firestore admin operations (REST batch commit)
+
+When pet pool resets, test data cleanup, or merging duplicate player records is needed,
+use REST `:commit` against `firestore.googleapis.com` with `?key=<apiKey>` (no auth header
+needed while rules are still permissive — Phase E tightens this).
+
+- **Single-shot batch up to 500 writes** (`update` / `delete` / `transform`) per commit.
+- **Pet pool reset** (preferred over deleting + reseeding): write all `pets/pet_###` docs
+  with `updateMask` listing the fields to overwrite and **omitting** `createdAt`. This
+  preserves original creation time on existing docs and works as upsert for new ones.
+  Defaults: `ownerUid=null, ownerName=null, status='available', hp=100, lastHpUpdate=now`.
+- **Test user cleanup criteria** (per Mark, 2026-04-25):
+  - delete `users/*` where `name == "匿名玩家"` AND all of `currentPetId/exp/foodCount/bestScore/totalCorrect` are 0/null
+  - delete `users/*` and `leaderboard/*` named `"測試哈酷"` or `"測試同名玩家"`
+  - **never delete** real names (Jun, 珺爸, Kuro, Yuki, etc.) or `name_<base64>` keys without explicit OK
+- **Merge duplicate player records** (legacy anon uid → new name-based playerId): sum `foodCount`/`exp`/`totalCorrect`, take `max` of `bestScore`/`streakBest`, write to canonical `name_<base64>`, then delete the legacy uid docs. Always include `updatedAt: Date.now()`.
+- **Dangling `currentPetId`**: after a pet pool reset, also clear `currentPetId` on remaining users so they re-pick from the fresh pool (their EXP/food carries over).
+
+Reference implementation: 2026-04-25 cleanup pass — see Changelog below for commit/timestamp markers, or `git log --grep "phase3\|reset\|cleanup"`.
+
+## Changelog (append-only handoff log)
+
+Newest first. Format: `YYYY-MM-DD [agent] commit `hash` — one-line summary`.
+
+- 2026-04-25 [Claude Code] no-commit Firestore admin — pets reset (16 docs to defaults, 9 test users deleted, 2 anon-uid 珺爸 records merged into `name_54-654i4` foodCount=25, 1 Kuro anon mirror cleaned, dangling `currentPetId` cleared on Jun/Kuro). 
+- 2026-04-25 [Claude Code] `155b050` — pet_009~016 added (嫩芽龍/橄欖鸚/繁星鯊/湯圓貓熊/冰棒企鵝/雲朵樹熊/奶茶鼠/棉花羊駝). Names re-derived after viewing each PNG.
+- 2026-04-25 [OpenClaw] `08f4e91` — wrote PHASE3_REPORT_AND_NEW_PETS.md handoff back to Claude Code.
+- 2026-04-25 [OpenClaw] `958e93e` — playerId switched from anon uid to name-based (`name_<base64>`) so same name shares record across devices.
+- 2026-04-25 [OpenClaw] `870b1fb` — restored deleted `feedMyPet` op that broke Firebase boot and made CharSelect spin forever. **Lesson**: always grep `window.FB.ops.<name>` before removing a function from the module script.
+- 2026-04-25 [OpenClaw] `a01c294` — Phase 3 main: quiz wired to Firestore EXP/combo/food, public pet rename/release/claim, leaderboard keyed by playerId, local stats migrated to `users/{uid}`.
+- 2026-04-25 [Claude Code] `750fb00` — HP swap lock: `claimPet` uses `Math.min(curHp, releasedHp)` so kids can't refill by switching pets.
+- 2026-04-25 [Claude Code] `2fb1567` — Phase 2: `PetCard` UI + `feedMyPet` + `FeedReaction` modal + visitor mode (🐈‍⬛) + `numToEnglish` + bridge from old onboarding.
+- 2026-04-25 [Claude Code] `297015b` — Phase 1: Firebase v10 modular SDK + Anonymous Auth + `ensureUserProfile` + `seedPets` (8 initial pets).
+- 2026-04-25 [Claude Code] `8720c6a` — UI simplifications per fix3-5.jpg (drop redundant home buttons, dashed hint card, “點擊看中文”→“點擊看例句”, restructure flashcard back).
+- 2026-04-24 [Claude Code] no-commit — Firestore leaderboard cleared (6 test rows deleted via REST commit) before pivoting to MVP.
+- 2026-04-24 [OpenClaw] `3736683` — added cloze + tense quiz question types.
