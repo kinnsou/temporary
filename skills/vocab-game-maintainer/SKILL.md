@@ -35,9 +35,9 @@ Current model:
 - Firebase project: `vocab-eng2026`
 - Auth: Anonymous Auth
 - Collections:
-  - `users/{uid}`
+  - `users/{playerId}` (name-derived after player enters a name)
   - `pets/{petId}`
-  - `leaderboard/{uid}`
+  - `leaderboard/{playerId}`
 - Pet source list: `SEED_PETS` inside the module script of `vocab-review.html`.
 - Public pet names are intentional. `renameMyPet(uid, petId, newName)` updates `pets/{petId}.name` only if the pet is currently owned by that uid.
 
@@ -84,10 +84,13 @@ Known regression to avoid: deleting or renaming an op still referenced in `windo
 - Supported: `n, v, adj, adv, prep, pron, conj, interj, det, num`.
 - UI renders POS dots; multiple dots are supported.
 
-## Leaderboard
+## Name identity and leaderboard
 
-- Current Firestore key: `leaderboard/{uid}`.
-- Compare the current player by uid, not name.
+- Anonymous Auth uid is only the Firebase access pass; named players use a stable name-derived `playerId`.
+- Same entered name across devices intentionally shares one record.
+- Same-name collisions are accepted for this classroom MVP.
+- Current Firestore key: `leaderboard/{playerId}`.
+- Compare the current player by playerId/uid field, not display name.
 - Streak date uses Asia/Taipei.
 - If cloud reads fail, UI should remain playable.
 

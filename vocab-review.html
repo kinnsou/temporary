@@ -472,17 +472,25 @@ function OnboardingScreen({onDone,pc}){
   useEffect(()=>{if(step===2)loadPets();},[step,loadPets]);
   useEffect(()=>{if(window.FB&&step===2)loadPets();const h=()=>step===2&&loadPets();window.addEventListener('fbready',h);return()=>window.removeEventListener('fbready',h);},[step,loadPets]);
 
-  const goStep2=()=>{
+  const goStep2=async()=>{
     if(!name.trim()){setNameErr('請輸入你的名字！');return;}
     if(name.trim().length>10){setNameErr('名字最多10個字喔！');return;}
-    setNameErr('');setStep(2);
+    setNameErr('');setErr('');
+    try{
+      if(window.FB?.ops?.switchPlayerByName) await window.FB.ops.switchPlayerByName(name.trim());
+    }catch(e){
+      console.warn('[Onboarding] switchPlayerByName failed',e);
+      setErr('玩家資料載入失敗，請稍後再試');
+      return;
+    }
+    setStep(2);
   };
   const confirmChar=async()=>{
     if(!selectedPetId||!window.FB?.ops)return;
     setErr('');
     try{
-      await window.FB.ops.updateUserName(window.FB.uid,name.trim());
-      await window.FB.ops.claimPet(window.FB.uid,selectedPetId);
+      const switched=await window.FB.ops.switchPlayerByName(name.trim());
+      await window.FB.ops.claimPet(switched.uid,selectedPetId);
       const idx=petIdxFromId(selectedPetId)??0;
       const profile={name:name.trim(),charIdx:idx,petId:selectedPetId};
       saveProfile(profile);onDone(profile);setStep(3);
@@ -1337,6 +1345,22 @@ function seedPetList(now = Date.now()) {
   return SEED_PETS.map(p => ({ id:p.id, ...seedPetDoc(p.id, now), fallback:true }));
 }
 
+function normalizePlayerName(name) {
+  return String(name || '').trim().replace(/\s+/g, ' ').slice(0, 40) || '匿名玩家';
+}
+function playerIdFromName(name) {
+  const clean = normalizePlayerName(name).toLowerCase();
+  try {
+    const bytes = new TextEncoder().encode(clean);
+    let bin = '';
+    for (const b of bytes) bin += String.fromCharCode(b);
+    return 'name_' + btoa(bin).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/g, '').slice(0, 120);
+  } catch {
+    return 'name_' + clean.replace(/[^a-z0-9_-]+/g, '_').replace(/^_+|_+$/g, '').slice(0, 80);
+  }
+}
+
+
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
@@ -1347,13 +1371,23 @@ function calcCurrentHp(pet, now = Date.now()) {
   return Math.max(0, (pet.hp || 0) - passed);
 }
 
-async function ensureUserProfile(uid, defaultName) {
+async function ensureUserProfile(uid, defaultName, legacyUid = null) {
   const ref = doc(db, 'users', uid);
   const snap = await getDoc(ref);
   if (snap.exists()) return { ref, data: snap.data(), created: false };
   const now = Date.now();
-  const data = {
-    name: defaultName || '匿名玩家',
+  let data = null;
+  if (legacyUid && legacyUid !== uid) {
+    try {
+      const legacySnap = await getDoc(doc(db, 'users', legacyUid));
+      if (legacySnap.exists()) {
+        data = { ...legacySnap.data(), name: normalizePlayerName(defaultName), playerId: uid, migratedFromAuthUid: legacyUid, updatedAt: now };
+      }
+    } catch (e) { console.warn('[FB] legacy profile copy failed', e); }
+  }
+  if (!data) data = {
+    name: normalizePlayerName(defaultName),
+    playerId: uid,
     currentPetId: null,
     exp: 0, combo: 0, foodCount: 0,
     totalCorrect: 0, totalGames: 0,
@@ -1363,6 +1397,19 @@ async function ensureUserProfile(uid, defaultName) {
   };
   await setDoc(ref, data);
   return { ref, data, created: true };
+}
+
+async function migrateLegacyPetOwner(legacyUid, playerId, currentPetId) {
+  if (!legacyUid || legacyUid === playerId || !currentPetId) return false;
+  try {
+    return await runTransaction(db, async (tx) => {
+      const petRef = doc(db, 'pets', currentPetId);
+      const petSnap = await tx.get(petRef);
+      if (!petSnap.exists() || petSnap.data().ownerUid !== legacyUid) return false;
+      tx.update(petRef, { ownerUid: playerId, updatedAt: Date.now() });
+      return true;
+    });
+  } catch (e) { console.warn('[FB] legacy pet owner migration failed', e); return false; }
 }
 
 async function migrateLocalStats(uid, profile) {
@@ -1415,7 +1462,7 @@ async function refreshProfile(uid) {
 }
 
 async function updateUserName(uid, name) {
-  const clean = String(name || '').trim().slice(0, 40) || '匿名玩家';
+  const clean = normalizePlayerName(name);
   return await runTransaction(db, async (tx) => {
     const userRef = doc(db, 'users', uid);
     const userSnap = await tx.get(userRef);
@@ -1430,6 +1477,48 @@ async function updateUserName(uid, name) {
     if (petRef && petSnap?.exists() && petSnap.data().ownerUid === uid) tx.update(petRef, { ownerName: clean, updatedAt: Date.now() });
     return clean;
   });
+}
+
+async function mergePetsByOwnerName(name, playerId) {
+  const clean = normalizePlayerName(name);
+  if (!clean || clean === '匿名玩家') return [];
+  const snap = await getDocs(collection(db, 'pets'));
+  const userRef = doc(db, 'users', playerId);
+  const userSnap = await getDoc(userRef);
+  const currentPetId = userSnap.exists() ? userSnap.data().currentPetId : null;
+  const merged = [];
+  const now = Date.now();
+  const writes = [];
+  snap.forEach(d => {
+    const pet = d.data();
+    if (normalizePlayerName(pet.ownerName || '') === clean && pet.ownerUid !== playerId) {
+      merged.push(d.id);
+      writes.push(updateDoc(d.ref, { ownerUid: playerId, updatedAt: now }).catch(e => console.warn('[FB] merge ownerName pet failed', d.id, e)));
+    }
+  });
+  await Promise.all(writes);
+  if (!currentPetId && merged.length) {
+    await setDoc(userRef, { currentPetId: merged[0], updatedAt: now }, { merge: true });
+  }
+  return merged;
+}
+
+async function switchPlayerByName(name) {
+  const clean = normalizePlayerName(name);
+  const playerId = playerIdFromName(clean);
+  const authUid = auth.currentUser?.uid || null;
+  const { data } = await ensureUserProfile(playerId, clean, authUid);
+  await migrateLegacyPetOwner(authUid, playerId, data.currentPetId);
+  await mergePetsByOwnerName(clean, playerId);
+  await updateUserName(playerId, clean);
+  const profile = await refreshProfile(playerId);
+  if (window.FB) {
+    window.FB.uid = playerId;
+    window.FB.playerId = playerId;
+    window.FB.profile = profile;
+    window.dispatchEvent(new Event('fbready'));
+  }
+  return { uid: playerId, profile };
 }
 
 async function listPets() {
@@ -1700,17 +1789,22 @@ onAuthStateChanged(auth, async (user) => {
       if (p && typeof p.charIdx === 'number' && !Object.prototype.hasOwnProperty.call(p,'petId')) lpCharIdx = p.charIdx;
     } catch {}
 
-    const { data: profile, created: userCreated } = await ensureUserProfile(user.uid, lpName);
+    const initialPlayerId = lpName && lpName !== '匿名玩家' ? playerIdFromName(lpName) : user.uid;
+    const { data: profile, created: userCreated } = await ensureUserProfile(initialPlayerId, lpName, user.uid);
+    await migrateLegacyPetOwner(user.uid, initialPlayerId, profile.currentPetId);
+    if (lpName && lpName !== '匿名玩家') {
+      try { await mergePetsByOwnerName(lpName, initialPlayerId); } catch (e) { console.warn('[FB] ownerName merge failed', e); }
+    }
     let migrated = false;
-    try { migrated = await migrateLocalStats(user.uid, profile); } catch (e) { console.warn('[FB] local stats migration failed', e); }
-    try { if (lpName && lpName !== '匿名玩家' && (!profile.name || profile.name === '匿名玩家')) await updateUserName(user.uid, lpName); } catch (e) { console.warn('[FB] update user name failed', e); }
+    try { migrated = await migrateLocalStats(initialPlayerId, profile); } catch (e) { console.warn('[FB] local stats migration failed', e); }
+    try { if (lpName && lpName !== '匿名玩家' && (!profile.name || profile.name === '匿名玩家')) await updateUserName(initialPlayerId, lpName); } catch (e) { console.warn('[FB] update user name failed', e); }
 
-    let finalProfile = await refreshProfile(user.uid);
+    let finalProfile = await refreshProfile(initialPlayerId);
     window.FB = {
-      app, auth, db, uid: user.uid, profile: finalProfile,
+      app, auth, db, authUid: user.uid, uid: initialPlayerId, playerId: initialPlayerId, profile: finalProfile,
       config: { HP_DECAY_MS, SEED_PETS },
-      helpers: { calcCurrentHp },
-      ops: { loadPet, refreshProfile, updateUserName, listPets, claimPet, releasePet, renameMyPet, feedMyPet, answerCorrect, answerWrong, getLeaderboardEntry, listLeaderboard, upsertLeaderboardScore, ensureUserProfile, seedPets },
+      helpers: { calcCurrentHp, normalizePlayerName, playerIdFromName },
+      ops: { loadPet, refreshProfile, updateUserName, switchPlayerByName, mergePetsByOwnerName, listPets, claimPet, releasePet, renameMyPet, feedMyPet, answerCorrect, answerWrong, getLeaderboardEntry, listLeaderboard, upsertLeaderboardScore, ensureUserProfile, seedPets },
       modular: { doc, getDoc, setDoc, updateDoc, getDocs, collection, runTransaction, query, orderBy, limit },
     };
     window.dispatchEvent(new Event('fbready'));
@@ -1722,7 +1816,7 @@ onAuthStateChanged(auth, async (user) => {
     // Bridge: first-time users coming from old onboarding → auto-claim corresponding pet
     if (!finalProfile.currentPetId && lpCharIdx !== null && lpCharIdx >= 0 && lpCharIdx < SEED_PETS.length) {
       try {
-        await claimPet(user.uid, SEED_PETS[lpCharIdx].id);
+        await claimPet(initialPlayerId, SEED_PETS[lpCharIdx].id);
         bridged = SEED_PETS[lpCharIdx].id;
         finalProfile = await refreshProfile(user.uid);
         window.FB.profile = finalProfile;
@@ -1731,7 +1825,7 @@ onAuthStateChanged(auth, async (user) => {
         console.warn('[FB] bridge claim failed', e.message);
       }
     }
-    console.log('[FB] phase3 ready', { uid: user.uid, userCreated, migrated, seededPets: seeded, bridgedTo: bridged, profile: finalProfile });
+    console.log('[FB] phase3 ready', { authUid: user.uid, uid: initialPlayerId, userCreated, migrated, seededPets: seeded, bridgedTo: bridged, profile: finalProfile });
   } catch (e) {
     console.error('[FB] boot failed', e);
   }

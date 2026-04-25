@@ -15,9 +15,9 @@ Use this when changing `vocab-review.html` pet/Firestore features.
 - Project: `vocab-eng2026`.
 - Auth: Anonymous Auth.
 - Collections:
-  - `users/{uid}`
+  - `users/{playerId}` where `playerId` is name-derived when a player name exists (for example `name_<base64url(normalizedName)>`)
   - `pets/{petId}`
-  - `leaderboard/{uid}`
+  - `leaderboard/{playerId}`
 
 ## Required `window.FB.ops`
 
@@ -58,9 +58,20 @@ Rules:
 - `seedPets()` only creates missing Firestore documents; it intentionally does not overwrite existing pet names/images/descriptions because players can publicly rename pets.
 - `listPets()` should not depend on successful seeding to avoid blank UI.
 
+## Name-based player identity
+
+Anonymous Auth is only the Firebase access pass. The game identity is the player name when available.
+
+- `normalizePlayerName(name)` trims/collapses whitespace.
+- `playerIdFromName(name)` creates a stable `name_...` id from the normalized name.
+- Entering the same name on phone/desktop/laptop maps to the same `users/{playerId}`, `leaderboard/{playerId}`, and `pets.ownerUid`.
+- Same-name collisions are accepted by design for this classroom MVP; anyone using the same name shares that record.
+- When a player enters a name, call `switchPlayerByName(name)` before pet selection so owned pets display as “我的”.
+- `mergePetsByOwnerName(name, playerId)` migrates legacy pets whose public `ownerName` matches the entered name.
+
 ## Pet rules
 
-- A player can hold one current pet: `users/{uid}.currentPetId`.
+- A player can hold one current pet: `users/{playerId}.currentPetId`.
 - `claimPet(uid, petId)` releases the old pet and claims the new one.
 - HP lock: switching pets must not refill HP; new claim HP is capped by released pet current HP.
 - `releasePet(uid)` sets `currentPetId:null` and returns current HP to the pet doc.
@@ -82,9 +93,9 @@ Rules:
 
 ## Leaderboard
 
-- Current key is `leaderboard/{uid}`, not name-derived IDs.
+- Current key is `leaderboard/{playerId}`; with named players this is the stable name-derived id, not the Anonymous Auth uid.
 - Store `uid` as a field too.
-- Compare “you” by uid, not studentName.
+- Compare “you” by `playerId`/uid field, not display name.
 
 ## Verification gate before pushing
 
