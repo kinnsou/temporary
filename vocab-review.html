@@ -103,6 +103,15 @@ const FALLBACK_WORDS=[
   {word:'apple',zh:'蘋果',visual:'🍎',cat:'食物',hint:'蘋果',en:'An apple a day keeps the doctor away.',zh2:'每天一顆蘋果，醫生遠離我。',date:'2026-04-17'},
 ].map(normalizeVocab);
 
+/* ══ English number words (for food count display) ══════ */
+const NUMBER_WORDS=['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen','twenty'];
+const TENS_WORDS=['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
+function numToEnglish(n){
+  n=n|0; if(n<0)return 'zero'; if(n<=20)return NUMBER_WORDS[n];
+  if(n<100){const t=Math.floor(n/10),o=n%10;return o?`${TENS_WORDS[t]}-${NUMBER_WORDS[o]}`:TENS_WORDS[t];}
+  return String(n); // ≥100 fallback to digits
+}
+
 /* ══ LocalStorage ════════════════════════════════════════ */
 const LS_PROFILE='epopProfile';
 const LS_CLAIMS='epopClaims';
@@ -378,6 +387,151 @@ function WordVisual({vocab,size=48}){
   return null;
 }
 
+/* ══ Firebase Pet integration (Phase 2) ══════════════════ */
+function useFb(){
+  const [fb,setFb]=useState(()=>({ready:false,uid:null,profile:null,pet:null}));
+  const refresh=useCallback(async()=>{
+    if(!window.FB){return;}
+    try{
+      const profile=await window.FB.ops.refreshProfile(window.FB.uid);
+      let pet=null;
+      if(profile&&profile.currentPetId){pet=await window.FB.ops.loadPet(profile.currentPetId);}
+      setFb({ready:true,uid:window.FB.uid,profile,pet});
+    }catch(e){console.warn('[useFb] refresh failed',e);}
+  },[]);
+  useEffect(()=>{
+    if(window.FB){refresh();return;}
+    const h=()=>refresh();
+    window.addEventListener('fbready',h);
+    return()=>window.removeEventListener('fbready',h);
+  },[refresh]);
+  return[fb,refresh];
+}
+
+const FEED_MESSAGES=[
+  '{name} 大口吃掉了飼料！',
+  '{name} 看起來精神好多了！',
+  '{name} 開心地跳了起來！',
+  '{name} 吃飽飽，眼睛都亮了！',
+];
+function pickFeedMessage(name,full){
+  if(full)return `${name} 已經吃飽飽，HP 回滿了！`;
+  const t=FEED_MESSAGES[Math.floor(Math.random()*FEED_MESSAGES.length)];
+  return t.replace('{name}',name);
+}
+
+function FeedReaction({pet,newHp,msg,onClose}){
+  useEffect(()=>{const t=setTimeout(onClose,2200);return()=>clearTimeout(t);},[onClose]);
+  return(<div onClick={onClose} style={{position:'absolute',inset:0,background:'rgba(0,0,0,0.45)',display:'flex',alignItems:'center',justifyContent:'center',zIndex:120,padding:24,cursor:'pointer'}}>
+    <div style={{background:'#fff',borderRadius:24,padding:'28px 24px 22px',width:'100%',maxWidth:300,textAlign:'center',boxShadow:'0 14px 40px rgba(0,0,0,0.25)',animation:'pop 0.25s ease-out'}}>
+      <div style={{animation:'float 1.2s ease-in-out infinite',display:'inline-block'}}>
+        {pet?.img?<img src={pet.img} alt="" style={{width:96,height:96,objectFit:'contain'}}/>:<span style={{fontSize:80}}>🍖</span>}
+      </div>
+      <div style={{fontSize:16,fontWeight:900,color:'#1a1a2e',marginTop:8,lineHeight:1.5}}>{msg}</div>
+      <div style={{marginTop:14,display:'flex',alignItems:'center',gap:8,justifyContent:'center'}}>
+        <span style={{fontSize:13,color:'#FF6B47',fontWeight:800}}>HP</span>
+        <div style={{flex:1,maxWidth:160,height:8,background:'#fde2e6',borderRadius:6,overflow:'hidden'}}>
+          <div style={{height:'100%',width:`${newHp}%`,background:'linear-gradient(90deg,#fb7185,#ff8fa3)',transition:'width 0.4s'}}/>
+        </div>
+        <span style={{fontSize:13,fontWeight:900,color:'#fb7185'}}>{newHp}/100</span>
+      </div>
+    </div>
+  </div>);
+}
+
+function PetCard({fb,refreshFb,onSelectPet,onStart,pc}){
+  const[feeding,setFeeding]=useState(false);
+  const[reaction,setReaction]=useState(null);
+  const[err,setErr]=useState('');
+  useEffect(()=>{if(!err)return;const t=setTimeout(()=>setErr(''),2200);return()=>clearTimeout(t);},[err]);
+
+  const ready=fb&&fb.ready;
+  const profile=fb?.profile||{};
+  const pet=fb?.pet;
+  const foodCount=profile.foodCount|0;
+  const helpers=window.FB?.helpers;
+  const curHp=pet&&helpers?helpers.calcCurrentHp(pet):0;
+  const isVisitor=!pet;
+  const isStarved=!isVisitor&&curHp<=0;
+
+  const handleFeed=async()=>{
+    if(feeding||isVisitor||isStarved||foodCount<=0)return;
+    setFeeding(true);
+    try{
+      const r=await window.FB.ops.feedMyPet(window.FB.uid);
+      setReaction({newHp:r.newHp,msg:pickFeedMessage(r.petName,r.newHp>=100)});
+      await refreshFb();
+    }catch(e){
+      const map={'no-food':'你沒有飼料了，再答對一些題目吧！','no-pet':'請先選一隻寵物喔！','pet-starved':'牠已經餓到不能餵了…','not-owner':'這不是你的寵物。'};
+      setErr(map[e.message]||`餵食失敗：${e.message}`);
+      await refreshFb();
+    }finally{setFeeding(false);}
+  };
+  const handleDev=async()=>{
+    if(!ready)return;
+    try{await window.FB.ops.devGrantFood(window.FB.uid,5);await refreshFb();}
+    catch(e){setErr('dev grant failed: '+e.message);}
+  };
+
+  // Visitor (no pet)
+  if(isVisitor){
+    return(<div style={{background:'#fff',borderRadius:22,padding:'14px 16px 14px',boxShadow:'0 3px 14px rgba(0,0,0,0.06)',position:'relative'}}>
+      <div style={{display:'flex',alignItems:'center',gap:14}}>
+        <button onClick={onSelectPet} aria-label="選寵物" style={{width:64,height:64,border:'2px dashed #cbd5e1',borderRadius:18,background:'#f8fafc',cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center',padding:0,fontSize:42,color:'#1a1a2e',animation:'float 3s ease-in-out infinite'}}>🐈‍⬛</button>
+        <div style={{flex:1,minWidth:0}}>
+          <div style={{fontSize:12,color:'#aaa',fontWeight:700}}>今天的夥伴</div>
+          <div style={{fontSize:18,fontWeight:900,color:'#1a1a2e'}}>訪客喵</div>
+          <div style={{fontSize:11,color:'#bbb',marginTop:1}}>選一隻寵物來照顧吧！</div>
+        </div>
+        <button onClick={onSelectPet} style={{padding:'9px 14px',borderRadius:14,border:'none',cursor:'pointer',background:`linear-gradient(135deg,${pc},${pc}bb)`,fontSize:12,fontWeight:900,color:'#fff',flexShrink:0,boxShadow:`0 3px 10px ${pc}44`,fontFamily:'inherit'}}>選寵物</button>
+      </div>
+      <div style={{marginTop:12,display:'flex',alignItems:'center',gap:10}}>
+        <div style={{flex:1,fontSize:13,fontWeight:800,color:'#666',display:'flex',alignItems:'center',gap:6}}>
+          <span style={{fontSize:16}}>🍖</span><span>:</span><span style={{color:'#FF9800',letterSpacing:0.5}}>{numToEnglish(foodCount)}</span>
+        </div>
+        <button onClick={handleDev} title="Phase 2 dev: 加 5 顆飼料測試用" style={{fontSize:10,padding:'5px 9px',borderRadius:10,border:'1px dashed #cbd5e1',background:'#f8fafc',color:'#94a3b8',cursor:'pointer',fontFamily:'inherit',fontWeight:700}}>🧪 +5</button>
+      </div>
+      {err&&<div style={{position:'absolute',top:-30,left:'50%',transform:'translateX(-50%)',background:'#fff4e5',color:'#9a4a00',padding:'6px 12px',borderRadius:10,fontSize:12,fontWeight:700,boxShadow:'0 2px 8px rgba(0,0,0,0.15)',whiteSpace:'nowrap'}}>{err}</div>}
+    </div>);
+  }
+
+  // Real pet
+  const grayStyle=isStarved?{filter:'grayscale(1)',opacity:0.55}:{};
+  const hpColor=curHp>60?'#fb7185':curHp>25?'#FF9800':'#dc2626';
+  return(<div style={{background:'#fff',borderRadius:22,padding:'14px 16px 14px',boxShadow:'0 3px 14px rgba(0,0,0,0.06)',position:'relative',overflow:'visible'}}>
+    <div style={{position:'absolute',right:-8,top:-8,width:80,height:80,borderRadius:'50%',background:`${pc}0f`,pointerEvents:'none'}}/>
+    <div style={{display:'flex',alignItems:'center',gap:14,position:'relative'}}>
+      <button onClick={onSelectPet} aria-label="換寵物" style={{width:64,height:64,border:'none',borderRadius:18,background:'transparent',cursor:'pointer',padding:0,flexShrink:0,animation:isStarved?'none':'float 3s ease-in-out infinite'}}>
+        <img src={pet.img} alt={pet.name} style={{width:'100%',height:'100%',objectFit:'contain',...grayStyle}}/>
+      </button>
+      <div style={{flex:1,minWidth:0}}>
+        <div style={{fontSize:12,color:'#aaa',fontWeight:700}}>今天的夥伴</div>
+        <div style={{fontSize:18,fontWeight:900,color:isStarved?'#94a3b8':pc}}>{pet.name}{isStarved?' 💤':''}</div>
+        <div style={{fontSize:11,color:'#bbb',marginTop:1}}>{isStarved?'牠餓壞了，去選別隻吧…':'一起來複習單字吧！'}</div>
+      </div>
+      <button onClick={onStart} style={{padding:'9px 14px',borderRadius:14,border:'none',cursor:'pointer',background:`linear-gradient(135deg,${pc},${pc}bb)`,fontSize:12,fontWeight:900,color:'#fff',flexShrink:0,boxShadow:`0 3px 10px ${pc}44`,fontFamily:'inherit'}}>開始 ▶</button>
+    </div>
+    {/* HP bar */}
+    <div style={{marginTop:12,display:'flex',alignItems:'center',gap:8}}>
+      <span style={{fontSize:11,color:'#999',fontWeight:800,width:24,flexShrink:0}}>HP</span>
+      <div style={{flex:1,height:9,background:'#fde2e6',borderRadius:6,overflow:'hidden',position:'relative'}}>
+        <div style={{position:'absolute',left:0,top:0,bottom:0,width:`${curHp}%`,background:`linear-gradient(90deg,${hpColor},${hpColor}cc)`,transition:'width 0.5s ease-out'}}/>
+      </div>
+      <span style={{fontSize:11,fontWeight:900,color:hpColor,width:48,textAlign:'right',flexShrink:0}}>{curHp}/100</span>
+    </div>
+    {/* Food + feed + dev */}
+    <div style={{marginTop:10,display:'flex',alignItems:'center',gap:8}}>
+      <div style={{flex:1,fontSize:13,fontWeight:800,color:'#666',display:'flex',alignItems:'center',gap:6}}>
+        <span style={{fontSize:16}}>🍖</span><span>:</span><span style={{color:'#FF9800',letterSpacing:0.5}}>{numToEnglish(foodCount)}</span>
+      </div>
+      <button onClick={handleDev} title="Phase 2 dev: 加 5 顆飼料測試用" style={{fontSize:10,padding:'5px 9px',borderRadius:10,border:'1px dashed #cbd5e1',background:'#f8fafc',color:'#94a3b8',cursor:'pointer',fontFamily:'inherit',fontWeight:700}}>🧪 +5</button>
+      <button onClick={handleFeed} disabled={feeding||isStarved||foodCount<=0} style={{padding:'8px 16px',borderRadius:12,border:'none',cursor:(feeding||isStarved||foodCount<=0)?'not-allowed':'pointer',background:(feeding||isStarved||foodCount<=0)?'#e5e7eb':'linear-gradient(135deg,#FF9800,#fbbf24)',color:(feeding||isStarved||foodCount<=0)?'#9ca3af':'#fff',fontSize:13,fontWeight:900,fontFamily:'inherit',boxShadow:(feeding||isStarved||foodCount<=0)?'none':'0 3px 10px rgba(255,152,0,0.35)'}}>{feeding?'…':'餵食'}</button>
+    </div>
+    {err&&<div style={{position:'absolute',top:-30,left:'50%',transform:'translateX(-50%)',background:'#fff4e5',color:'#9a4a00',padding:'6px 12px',borderRadius:10,fontSize:12,fontWeight:700,boxShadow:'0 2px 8px rgba(0,0,0,0.15)',whiteSpace:'nowrap',zIndex:5}}>{err}</div>}
+    {reaction&&<FeedReaction pet={pet} newHp={reaction.newHp} msg={reaction.msg} onClose={()=>setReaction(null)}/>}
+  </div>);
+}
+
 /* ══ ONBOARDING ══════════════════════════════════════════ */
 function OnboardingScreen({onDone,pc}){
   const [step,setStep]=useState(1);
@@ -504,7 +658,7 @@ function OnboardingScreen({onDone,pc}){
 }
 
 /* ══ HOME ════════════════════════════════════════════════ */
-function HomeScreen({charSrc,charName,studentName,stats,todaySet,flashPool,dateLabel,onNav,onSelectChar,pc}){
+function HomeScreen({charSrc,charName,studentName,stats,todaySet,flashPool,dateLabel,onNav,onSelectChar,pc,fb,refreshFb}){
   const [expanded,setExpanded]=useState(null);
   const statItems=[
     {icon:'🔥',val:stats.streak,label:'連續天數',color:'#FF6B47'},
@@ -533,6 +687,10 @@ function HomeScreen({charSrc,charName,studentName,stats,todaySet,flashPool,dateL
             <div style={{fontSize:9,color:'#bbb',fontWeight:700,marginTop:1}}>{s.label}</div>
           </div>
         ))}
+      </div>
+
+      <div style={{marginBottom:18}}>
+        <PetCard fb={fb} refreshFb={refreshFb} onSelectPet={onSelectChar} onStart={()=>onNav('quiz')} pc={pc}/>
       </div>
 
       <div style={{marginBottom:18}}>
@@ -569,18 +727,6 @@ function HomeScreen({charSrc,charName,studentName,stats,todaySet,flashPool,dateL
         )}
       </div>
 
-      <div style={{background:'#fff',borderRadius:20,padding:'14px 18px',boxShadow:'0 2px 12px rgba(0,0,0,0.06)',display:'flex',alignItems:'center',gap:14,marginBottom:4,position:'relative',overflow:'hidden'}}>
-        <div style={{position:'absolute',right:-10,top:-10,width:80,height:80,borderRadius:'50%',background:`${pc}0f`}}/>
-        <div style={{animation:'float 3s ease-in-out infinite',flexShrink:0}}>
-          <img src={charSrc} alt="" style={{width:56,height:56,objectFit:'contain'}}/>
-        </div>
-        <div style={{minWidth:0}}>
-          <div style={{fontSize:12,color:'#aaa',fontWeight:700}}>今天的夥伴</div>
-          <div style={{fontSize:18,fontWeight:900,color:pc}}>{charName}</div>
-          <div style={{fontSize:11,color:'#bbb',marginTop:1}}>一起來複習單字吧！</div>
-        </div>
-        <button onClick={()=>onNav('quiz')} style={{marginLeft:'auto',padding:'9px 16px',borderRadius:14,border:'none',cursor:'pointer',background:`linear-gradient(135deg,${pc},${pc}bb)`,fontSize:12,fontWeight:900,color:'#fff',flexShrink:0,boxShadow:`0 3px 10px ${pc}44`,fontFamily:'inherit'}}>開始 ▶</button>
-      </div>
     </div>
 
     <BottomNav screen="home" onNav={onNav} pc={pc}/>
@@ -1045,6 +1191,21 @@ function App(){
   const [cloudEntries,setCloudEntries]=useState([]);
   const [cloudStreakEntries,setCloudStreakEntries]=useState([]);
   const [cloudStatus,setCloudStatus]=useState('idle');
+  const [fb,refreshFb]=useFb();
+  const claimAttempted=useRef(false);
+  useEffect(()=>{
+    if(claimAttempted.current)return;
+    if(!fb?.ready||!window.FB)return;
+    if(fb.pet)return;
+    const idx=profile?.charIdx;
+    if(typeof idx!=='number')return;
+    const targetId=window.FB.config.SEED_PETS[idx]?.id;
+    if(!targetId)return;
+    claimAttempted.current=true;
+    window.FB.ops.claimPet(window.FB.uid,targetId)
+      .then(()=>refreshFb())
+      .catch(e=>{claimAttempted.current=false;console.warn('[App] auto-claim failed',e.message);});
+  },[fb,profile,refreshFb]);
 
   const pc='#61c2ff';
   const charIdx=profile?.charIdx??0;
@@ -1145,8 +1306,12 @@ function App(){
   </div>);
 
   return(<div style={{width:'100%',height:'100%',position:'relative'}}>
-    {screen==='home'&&<HomeScreen charSrc={charSrc} charName={charName} studentName={studentName} stats={stats} todaySet={todaySet} flashPool={flashPool} dateLabel={dateLabel} onNav={nav} onSelectChar={()=>setScreen('charselect')} pc={pc}/>}
-    {screen==='charselect'&&<CharSelectScreen current={charIdx} onSelect={i=>{const p={...profile,charIdx:i};setProfile(p);saveProfile(p);setScreen('home');}} onBack={()=>setScreen('home')} pc={pc}/>}
+    {screen==='home'&&<HomeScreen charSrc={charSrc} charName={charName} studentName={studentName} stats={stats} todaySet={todaySet} flashPool={flashPool} dateLabel={dateLabel} onNav={nav} onSelectChar={()=>setScreen('charselect')} pc={pc} fb={fb} refreshFb={refreshFb}/>}
+    {screen==='charselect'&&<CharSelectScreen current={charIdx} onSelect={async i=>{
+      const p={...profile,charIdx:i};setProfile(p);saveProfile(p);
+      if(window.FB){try{await window.FB.ops.claimPet(window.FB.uid,window.FB.config.SEED_PETS[i].id);await refreshFb();}catch(e){console.warn('[App] claim pet failed',e.message);}}
+      setScreen('home');
+    }} onBack={()=>setScreen('home')} pc={pc}/>}
     {screen==='flash'&&<FlashScreen charSrc={charSrc} flashPool={flashPool.length?flashPool:quizPool} onNav={nav} pc={pc}/>}
     {screen==='quiz'&&<QuizScreen charSrc={charSrc} quizPool={quizPool} onFinish={handleFinish} onNav={nav} pc={pc}/>}
     {screen==='result'&&result&&<ResultScreen {...result} charSrc={charSrc} charName={charName} onRetry={()=>setScreen('quiz')} onHome={()=>setScreen('home')} pc={pc}/>}
@@ -1232,28 +1397,134 @@ async function seedPets() {
   return created;
 }
 
+async function loadPet(petId) {
+  const ref = doc(db, 'pets', petId);
+  const snap = await getDoc(ref);
+  if (!snap.exists()) return null;
+  return { id: petId, ...snap.data() };
+}
+
+async function refreshProfile(uid) {
+  const snap = await getDoc(doc(db, 'users', uid));
+  return snap.exists() ? snap.data() : null;
+}
+
+async function claimPet(uid, petId) {
+  return await runTransaction(db, async (tx) => {
+    const userRef = doc(db, 'users', uid);
+    const petRef = doc(db, 'pets', petId);
+    const userSnap = await tx.get(userRef);
+    const petSnap = await tx.get(petRef);
+    if (!petSnap.exists()) throw new Error('pet-not-found');
+    if (!userSnap.exists()) throw new Error('no-user');
+    const pet = petSnap.data();
+    const user = userSnap.data();
+    const now = Date.now();
+
+    const oldId = user.currentPetId;
+    if (oldId && oldId !== petId) {
+      const oldRef = doc(db, 'pets', oldId);
+      const oldSnap = await tx.get(oldRef);
+      if (oldSnap.exists() && oldSnap.data().ownerUid === uid) {
+        const oldPet = oldSnap.data();
+        const oldHp = calcCurrentHp(oldPet, now);
+        tx.update(oldRef, {
+          ownerUid: null,
+          status: oldHp <= 0 ? 'disabled' : 'available',
+          hp: oldHp, lastHpUpdate: now, updatedAt: now,
+        });
+      }
+    }
+
+    const curHp = calcCurrentHp(pet, now);
+    if (curHp <= 0) {
+      tx.update(petRef, { hp:0, status:'disabled', ownerUid:null, lastHpUpdate: now, updatedAt: now });
+      tx.update(userRef, { currentPetId: null, updatedAt: now });
+      throw new Error('pet-disabled');
+    }
+    if (pet.ownerUid && pet.ownerUid !== uid) throw new Error('pet-taken');
+
+    tx.update(petRef, {
+      ownerUid: uid, status: 'owned',
+      hp: curHp, lastHpUpdate: now, updatedAt: now,
+    });
+    tx.update(userRef, { currentPetId: petId, updatedAt: now });
+    return { id: petId, ...pet, hp: curHp, ownerUid: uid, status: 'owned' };
+  });
+}
+
+async function feedMyPet(uid) {
+  return await runTransaction(db, async (tx) => {
+    const userRef = doc(db, 'users', uid);
+    const userSnap = await tx.get(userRef);
+    if (!userSnap.exists()) throw new Error('no-user');
+    const user = userSnap.data();
+    if ((user.foodCount || 0) <= 0) throw new Error('no-food');
+    if (!user.currentPetId) throw new Error('no-pet');
+    const petRef = doc(db, 'pets', user.currentPetId);
+    const petSnap = await tx.get(petRef);
+    if (!petSnap.exists()) throw new Error('pet-missing');
+    const pet = petSnap.data();
+    if (pet.ownerUid !== uid) throw new Error('not-owner');
+    const now = Date.now();
+    const curHp = calcCurrentHp(pet, now);
+    if (curHp <= 0) {
+      tx.update(petRef, { hp:0, status:'disabled', ownerUid:null, lastHpUpdate: now, updatedAt: now });
+      tx.update(userRef, { currentPetId: null, updatedAt: now });
+      throw new Error('pet-starved');
+    }
+    const newHp = Math.min(100, curHp + 50);
+    const newFood = (user.foodCount || 0) - 1;
+    tx.update(petRef, { hp: newHp, status: 'owned', lastHpUpdate: now, updatedAt: now });
+    tx.update(userRef, { foodCount: newFood, updatedAt: now });
+    return { newHp, foodCount: newFood, petName: pet.name };
+  });
+}
+
+async function devGrantFood(uid, n = 5) {
+  const userRef = doc(db, 'users', uid);
+  const snap = await getDoc(userRef);
+  const cur = snap.exists() ? (snap.data().foodCount || 0) : 0;
+  await updateDoc(userRef, { foodCount: cur + n, updatedAt: Date.now() });
+  return cur + n;
+}
+
 // Boot
 signInAnonymously(auth).catch(err => console.error('[FB] anon signin failed', err));
 onAuthStateChanged(auth, async (user) => {
   if (!user) return;
   try {
-    let lpName = '匿名玩家';
+    let lpName = '匿名玩家', lpCharIdx = null;
     try {
       const p = JSON.parse(localStorage.getItem('epopProfile') || 'null');
       if (p && p.name) lpName = String(p.name).slice(0, 40);
+      if (p && typeof p.charIdx === 'number') lpCharIdx = p.charIdx;
     } catch {}
 
     const { data: profile, created: userCreated } = await ensureUserProfile(user.uid, lpName);
     const seeded = await seedPets();
 
+    // Bridge: first-time users coming from old onboarding → auto-claim corresponding pet
+    let bridged = null;
+    if (!profile.currentPetId && lpCharIdx !== null && lpCharIdx >= 0 && lpCharIdx < SEED_PETS.length) {
+      try {
+        await claimPet(user.uid, SEED_PETS[lpCharIdx].id);
+        bridged = SEED_PETS[lpCharIdx].id;
+      } catch (e) {
+        console.warn('[FB] bridge claim failed', e.message);
+      }
+    }
+    const finalProfile = await refreshProfile(user.uid);
+
     window.FB = {
-      app, auth, db, uid: user.uid, profile,
+      app, auth, db, uid: user.uid, profile: finalProfile,
       config: { HP_DECAY_MS, SEED_PETS },
-      helpers: { calcCurrentHp, ensureUserProfile, seedPets },
+      helpers: { calcCurrentHp },
+      ops: { loadPet, refreshProfile, claimPet, feedMyPet, devGrantFood, ensureUserProfile, seedPets },
       modular: { doc, getDoc, setDoc, updateDoc, getDocs, collection, runTransaction },
     };
     window.dispatchEvent(new Event('fbready'));
-    console.log('[FB] phase1 ready', { uid: user.uid, userCreated, seededPets: seeded, profile });
+    console.log('[FB] phase2 ready', { uid: user.uid, userCreated, seededPets: seeded, bridgedTo: bridged, profile: finalProfile });
   } catch (e) {
     console.error('[FB] boot failed', e);
   }
