@@ -152,7 +152,7 @@ Reference implementation: 2026-04-25 cleanup pass — see Changelog below for co
 
 Newest first. Format: `YYYY-MM-DD [agent] commit `hash` — one-line summary`.
 
-- 2026-04-25 [OpenClaw] pending — leaderboard avatar fix: expanded client avatar map to pet_001~016, leaderboard writes now prefer currentPetId, and speaker buttons can read full example sentences.
+- 2026-04-25 [OpenClaw] `f84d3ad` — leaderboard avatar fix: expanded client avatar map to pet_001~016, leaderboard writes now prefer currentPetId, and speaker buttons can read full example sentences.
 - 2026-04-25 [OpenClaw] `5b17911` — daily game update pivot: homepage words agree/ugly/catch, speaker buttons, POS-colored meaning box, 640px pet assets, no-LINE daily status.
 - 2026-04-25 [OpenClaw] no-commit cron — changed 19:00 vocab cron to update CLAW ENG files and push with delivery none; disabled redundant 19:10 rebuild cron.
 - 2026-04-25 [OpenClaw] `b409718` — locked HP decay to owned pets only; restored flashcard meaning dashed box; changed today-new-word fallback chip to POS label.
