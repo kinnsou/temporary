@@ -148,6 +148,7 @@ Reference implementation: 2026-04-25 cleanup pass — see Changelog below for co
 
 Newest first. Format: `YYYY-MM-DD [agent] commit `hash` — one-line summary`.
 
+- 2026-04-25 [OpenClaw] `b409718` — locked HP decay to owned pets only; restored flashcard meaning dashed box; changed today-new-word fallback chip to POS label.
 - 2026-04-25 [Claude Code] no-commit Firestore admin (round 2) — duplicate leaderboard cleanup: `leaderboard/jun` plays merged into `leaderboard/name_anVu` (best=16, plays=7), `leaderboard/kuro` plays merged into `leaderboard/name_a3Vybw` (best=20, plays=8), old ASCII keys deleted; Jun's residual anon-uid user `HhpNlw4aWMPO7TPsGXwmIt00CWe2` (0 progress) deleted. Outstanding: `leaderboard/yuki` orphan (no name-based mirror, no users doc — left as-is, will resolve when Yuki next logs in).
 - 2026-04-25 [Claude Code] no-commit Firestore admin — pets reset (16 docs to defaults, 9 test users deleted, 2 anon-uid 珺爸 records merged into `name_54-654i4` foodCount=25, 1 Kuro anon mirror cleaned, dangling `currentPetId` cleared on Jun/Kuro). 
 - 2026-04-25 [Claude Code] `155b050` — pet_009~016 added (嫩芽龍/橄欖鸚/繁星鯊/湯圓貓熊/冰棒企鵝/雲朵樹熊/奶茶鼠/棉花羊駝). Names re-derived after viewing each PNG.
