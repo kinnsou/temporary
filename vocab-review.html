@@ -52,7 +52,16 @@ const CHAR_MAP=Object.fromEntries(CHARACTERS.map((c,i)=>[c.id,{...c,idx:i}]));
 const DEFAULT_AVATAR='newcha1';
 const AVATAR_COMPAT={chara01:'newcha1',chara02:'newcha2',chara03:'newcha3',chara04:'newcha4',chara05:'newcha5',chara06:'newcha6',chara07:'newcha7',chiika:'newcha1',hachi:'newcha2',usagi:'newcha3'};
 const normalizeAvatarId=id=>{const s=String(id||'').trim();if(CHAR_MAP[s])return s;if(AVATAR_COMPAT[s])return AVATAR_COMPAT[s];return DEFAULT_AVATAR;};
-const avatarIdxFromId=id=>CHAR_MAP[normalizeAvatarId(id)]?.idx??0;
+function petIdxFromId(id){
+  const m=String(id||'').match(/^pet_(\d+)$/);
+  if(!m)return null;
+  const idx=parseInt(m[1],10)-1;
+  return idx>=0&&idx<CHARACTERS.length?idx:null;
+}
+const avatarIdxFromId=id=>{
+  const p=petIdxFromId(id);if(p!==null)return p;
+  return CHAR_MAP[normalizeAvatarId(id)]?.idx??0;
+};
 
 /* ══ Category colours ════════════════════════════════════ */
 const CAT={
@@ -114,119 +123,25 @@ function numToEnglish(n){
 
 /* ══ LocalStorage ════════════════════════════════════════ */
 const LS_PROFILE='epopProfile';
-const LS_CLAIMS='epopClaims';
 const LS_STATS='epopStats3';
 const loadProfile=()=>{try{const p=localStorage.getItem(LS_PROFILE);return p?JSON.parse(p):null;}catch{return null;}};
 const saveProfile=p=>{try{localStorage.setItem(LS_PROFILE,JSON.stringify(p));}catch{}};
-const loadClaims=()=>{try{return JSON.parse(localStorage.getItem(LS_CLAIMS)||'{}');}catch{return{};}};
-const saveClaims=c=>{try{localStorage.setItem(LS_CLAIMS,JSON.stringify(c));}catch{}};
 const defaultStats={streak:0,xp:0,avgScore:0,best:0,totalGames:0};
 const loadStats=()=>{try{return{...defaultStats,...JSON.parse(localStorage.getItem(LS_STATS)||'{}')};}catch{return{...defaultStats};}};
 const saveStats=s=>{try{localStorage.setItem(LS_STATS,JSON.stringify(s));}catch{}};
-const genPassword=()=>{const c='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';return Array.from({length:6},()=>c[Math.floor(Math.random()*c.length)]).join('');};
 
-/* ══ Firebase leaderboard (REST, no SDK) ═════════════════ */
-const firebaseConfig={
-  apiKey:"AIzaSyB1c6yopEMzDxbYBrgkqr_3Rsr9KqKwNbA",
-  authDomain:"vocab-eng2026.firebaseapp.com",
-  projectId:"vocab-eng2026",
-};
-const FS_BASE=`https://firestore.googleapis.com/v1/projects/${firebaseConfig.projectId}/databases/(default)/documents`;
-const FS_COMMIT=`https://firestore.googleapis.com/v1/projects/${firebaseConfig.projectId}/databases/(default)/documents:commit`;
-
-function cloudDocId(name){
-  const raw=String(name||'').trim();if(!raw)return'_';
-  const ascii=raw.toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_+|_+$/g,'');
-  if(ascii&&ascii!=='_')return ascii.slice(0,80);
-  try{
-    const bytes=new TextEncoder().encode(raw);
-    let bin='';for(let i=0;i<bytes.length;i++)bin+=String.fromCharCode(bytes[i]);
-    const b64=btoa(bin).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/g,'');
-    return('u_'+b64).slice(0,120);
-  }catch{return'_';}
-}
-const fsNum=v=>!v?0:(v.integerValue!=null?parseInt(v.integerValue,10)||0:v.doubleValue!=null?Number(v.doubleValue)||0:0);
-const fsStr=v=>(v&&v.stringValue)||'';
-const fsArrInt=v=>{const a=v&&v.arrayValue&&v.arrayValue.values;return Array.isArray(a)?a.map(fsNum):[];};
-function fsDocToEntry(doc){
-  const f=(doc&&doc.fields)||{};
-  return{
-    name:fsStr(f.name),
-    avatarId:normalizeAvatarId(fsStr(f.avatarId)||DEFAULT_AVATAR),
-    plays:fsNum(f.plays),
-    bestScore:fsNum(f.bestScore),
-    recentScores:fsArrInt(f.recentScores),
-    streakCur:fsNum(f.streakCur),
-    streakBest:fsNum(f.streakBest),
-    lastPlayDate:fsStr(f.lastPlayDate),
-    updatedAt:fsStr(f.updatedAt),
-  };
-}
-function entryToFsFields(e){
-  return{
-    name:{stringValue:String(e.name||'')},
-    avatarId:{stringValue:e.avatarId||DEFAULT_AVATAR},
-    plays:{integerValue:String(e.plays|0)},
-    bestScore:{integerValue:String(e.bestScore|0)},
-    recentScores:{arrayValue:{values:(e.recentScores||[]).map(n=>({integerValue:String(n|0)}))}},
-    streakCur:{integerValue:String((e.streakCur||0)|0)},
-    streakBest:{integerValue:String((e.streakBest||0)|0)},
-    lastPlayDate:{stringValue:String(e.lastPlayDate||'')},
-    updatedAt:{stringValue:e.updatedAt||new Date().toISOString()},
-  };
-}
+/* ══ Firebase leaderboard (SDK via window.FB) ═══════════════ */
 async function cloudRunQuery(orderField,limit=80){
-  const res=await fetch(`${FS_BASE}:runQuery?key=${firebaseConfig.apiKey}`,{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({structuredQuery:{from:[{collectionId:'leaderboard'}],orderBy:[{field:{fieldPath:String(orderField)},direction:'DESCENDING'}],limit}}),
-  });
-  if(!res.ok)throw new Error(`runQuery(${orderField}) ${res.status}`);
-  const rows=await res.json();
-  const out=[];for(const r of rows)if(r&&r.document)out.push(fsDocToEntry(r.document));
-  return out;
+  if(!window.FB?.ops?.listLeaderboard)throw new Error('Firebase not ready');
+  return await window.FB.ops.listLeaderboard(orderField,limit);
 }
-async function cloudGetEntry(name){
-  const id=cloudDocId(name);
-  try{
-    const res=await fetch(`${FS_BASE}/leaderboard/${encodeURIComponent(id)}?key=${firebaseConfig.apiKey}`);
-    if(res.status===404)return null;
-    if(!res.ok)throw new Error('HTTP '+res.status);
-    return fsDocToEntry(await res.json());
-  }catch{return null;}
+async function cloudGetEntry(uid){
+  if(!window.FB?.ops?.getLeaderboardEntry||!uid)return null;
+  return await window.FB.ops.getLeaderboardEntry(uid);
 }
-async function cloudUpsertScore(name,avatarId,score){
-  const id=cloudDocId(name);if(!id||id==='_')return null;
-  const prev=await cloudGetEntry(name);
-  const base=prev||{plays:0,bestScore:0,recentScores:[],avatarId:DEFAULT_AVATAR,streakCur:0,streakBest:0,lastPlayDate:''};
-  const today=taipeiDateKey();
-  const last=String(base.lastPlayDate||'');
-  let streakCur=base.streakCur||0,streakBest=base.streakBest||0,lastPlayDate=last;
-  if(!last){streakCur=1;lastPlayDate=today;}
-  else{
-    const a=dateKeyToUtcMs(today),b=dateKeyToUtcMs(last);
-    const diff=(Number.isFinite(a)&&Number.isFinite(b))?Math.round((a-b)/86400000):NaN;
-    if(diff===0)streakCur=Math.max(streakCur,1);
-    else if(diff===1){streakCur=(streakCur||0)+1;lastPlayDate=today;}
-    else{streakCur=1;lastPlayDate=today;}
-  }
-  streakBest=Math.max(streakBest||0,streakCur||0);
-  const entry={
-    name:String(name||'').trim().slice(0,40),
-    avatarId:normalizeAvatarId(avatarId||base.avatarId||DEFAULT_AVATAR),
-    plays:(base.plays||0)+1,
-    bestScore:Math.max(base.bestScore||0,score|0),
-    recentScores:[score|0,...(base.recentScores||[])].slice(0,10),
-    streakCur,streakBest,lastPlayDate,updatedAt:new Date().toISOString(),
-  };
-  try{
-    const docName=`projects/${firebaseConfig.projectId}/databases/(default)/documents/leaderboard/${id}`;
-    const res=await fetch(`${FS_COMMIT}?key=${firebaseConfig.apiKey}`,{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({writes:[{update:{name:docName,fields:entryToFsFields(entry)}}]}),
-    });
-    if(!res.ok)throw new Error('HTTP '+res.status);
-    return entry;
-  }catch(e){console.warn('cloudUpsertScore failed',e);return null;}
+async function cloudUpsertScore(uid,name,avatarId,score,total=20){
+  if(!window.FB?.ops?.upsertLeaderboardScore||!uid)return null;
+  return await window.FB.ops.upsertLeaderboardScore(uid,name,avatarId,score,total);
 }
 
 /* ══ Utils ═══════════════════════════════════════════════ */
@@ -467,11 +382,6 @@ function PetCard({fb,refreshFb,onSelectPet,onStart,pc}){
       await refreshFb();
     }finally{setFeeding(false);}
   };
-  const handleDev=async()=>{
-    if(!ready)return;
-    try{await window.FB.ops.devGrantFood(window.FB.uid,5);await refreshFb();}
-    catch(e){setErr('dev grant failed: '+e.message);}
-  };
 
   // Visitor (no pet)
   if(isVisitor){
@@ -489,7 +399,6 @@ function PetCard({fb,refreshFb,onSelectPet,onStart,pc}){
         <div style={{flex:1,fontSize:13,fontWeight:800,color:'#666',display:'flex',alignItems:'center',gap:6}}>
           <span style={{fontSize:16}}>🍖</span><span>:</span><span style={{color:'#FF9800',letterSpacing:0.5}}>{numToEnglish(foodCount)}</span>
         </div>
-        <button onClick={handleDev} title="Phase 2 dev: 加 5 顆飼料測試用" style={{fontSize:10,padding:'5px 9px',borderRadius:10,border:'1px dashed #cbd5e1',background:'#f8fafc',color:'#94a3b8',cursor:'pointer',fontFamily:'inherit',fontWeight:700}}>🧪 +5</button>
       </div>
       {err&&<div style={{position:'absolute',top:-30,left:'50%',transform:'translateX(-50%)',background:'#fff4e5',color:'#9a4a00',padding:'6px 12px',borderRadius:10,fontSize:12,fontWeight:700,boxShadow:'0 2px 8px rgba(0,0,0,0.15)',whiteSpace:'nowrap'}}>{err}</div>}
     </div>);
@@ -524,7 +433,6 @@ function PetCard({fb,refreshFb,onSelectPet,onStart,pc}){
       <div style={{flex:1,fontSize:13,fontWeight:800,color:'#666',display:'flex',alignItems:'center',gap:6}}>
         <span style={{fontSize:16}}>🍖</span><span>:</span><span style={{color:'#FF9800',letterSpacing:0.5}}>{numToEnglish(foodCount)}</span>
       </div>
-      <button onClick={handleDev} title="Phase 2 dev: 加 5 顆飼料測試用" style={{fontSize:10,padding:'5px 9px',borderRadius:10,border:'1px dashed #cbd5e1',background:'#f8fafc',color:'#94a3b8',cursor:'pointer',fontFamily:'inherit',fontWeight:700}}>🧪 +5</button>
       <button onClick={handleFeed} disabled={feeding||isStarved||foodCount<=0} style={{padding:'8px 16px',borderRadius:12,border:'none',cursor:(feeding||isStarved||foodCount<=0)?'not-allowed':'pointer',background:(feeding||isStarved||foodCount<=0)?'#e5e7eb':'linear-gradient(135deg,#FF9800,#fbbf24)',color:(feeding||isStarved||foodCount<=0)?'#9ca3af':'#fff',fontSize:13,fontWeight:900,fontFamily:'inherit',boxShadow:(feeding||isStarved||foodCount<=0)?'none':'0 3px 10px rgba(255,152,0,0.35)'}}>{feeding?'…':'餵食'}</button>
     </div>
     {err&&<div style={{position:'absolute',top:-30,left:'50%',transform:'translateX(-50%)',background:'#fff4e5',color:'#9a4a00',padding:'6px 12px',borderRadius:10,fontSize:12,fontWeight:700,boxShadow:'0 2px 8px rgba(0,0,0,0.15)',whiteSpace:'nowrap',zIndex:5}}>{err}</div>}
@@ -533,48 +441,57 @@ function PetCard({fb,refreshFb,onSelectPet,onStart,pc}){
 }
 
 /* ══ ONBOARDING ══════════════════════════════════════════ */
+function PetGridButton({pet,pc,selected,onClick,disabled,tag}){
+  const hp=pet.hp|0;
+  return(<button onClick={onClick} disabled={disabled} style={{padding:'12px 6px 10px',borderRadius:18,border:`2.5px solid ${selected?pc:'#f0eaea'}`,background:selected?`${pc}12`:'#fff',cursor:disabled?'not-allowed':'pointer',boxShadow:selected?`0 4px 14px ${pc}33`:'0 2px 6px rgba(0,0,0,0.04)',transition:'all 0.18s',display:'flex',flexDirection:'column',alignItems:'center',gap:3,position:'relative',opacity:disabled?0.48:1,fontFamily:'inherit'}}>
+    {selected&&<div style={{position:'absolute',top:5,right:5,width:16,height:16,borderRadius:'50%',background:pc,display:'flex',alignItems:'center',justifyContent:'center',fontSize:9,color:'#fff',fontWeight:900}}>✓</div>}
+    {tag&&<div style={{position:'absolute',top:5,left:5,fontSize:9,fontWeight:900,color:disabled?'#94a3b8':pc,background:'#fff',borderRadius:8,padding:'2px 5px',boxShadow:'0 1px 5px rgba(0,0,0,0.08)'}}>{tag}</div>}
+    <img src={pet.img} alt={pet.name} style={{width:56,height:56,objectFit:'contain',filter:disabled?'grayscale(1)':'none'}}/>
+    <div style={{fontSize:11,fontWeight:900,color:selected?pc:'#1a1a2e',maxWidth:'100%',overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap'}}>{pet.name}</div>
+    <div style={{fontSize:9,color:'#bbb',fontWeight:700,textAlign:'center',minHeight:12}}>{disabled?(pet.status==='disabled'||hp<=0?'💤 餓壞了':`被 ${pet.ownerName||'別人'} 帶走`):`HP ${hp}`}</div>
+  </button>);
+}
+
+/* ══ ONBOARDING ══════════════════════════════════════════ */
 function OnboardingScreen({onDone,pc}){
   const [step,setStep]=useState(1);
   const [name,setName]=useState('');
   const [nameErr,setNameErr]=useState('');
-  const [selectedChar,setSel]=useState(null);
-  const [pwModal,setPwModal]=useState(null);
-  const [pwInput,setPwInput]=useState('');
-  const [pwErr,setPwErr]=useState('');
-  const [generatedPw,setGenPw]=useState('');
-  const claims=useRef(loadClaims());
+  const [pets,setPets]=useState([]);
+  const [loading,setLoading]=useState(false);
+  const [selectedPetId,setSelectedPetId]=useState(null);
+  const [err,setErr]=useState('');
+
+  const loadPets=useCallback(async()=>{
+    if(!window.FB?.ops?.listPets)return;
+    setLoading(true);setErr('');
+    try{setPets(await window.FB.ops.listPets());}
+    catch(e){setErr('寵物清單載入失敗，請再試一次');console.warn('[Onboarding] listPets failed',e);}
+    finally{setLoading(false);}
+  },[]);
+  useEffect(()=>{if(step===2)loadPets();},[step,loadPets]);
+  useEffect(()=>{if(window.FB&&step===2)loadPets();const h=()=>step===2&&loadPets();window.addEventListener('fbready',h);return()=>window.removeEventListener('fbready',h);},[step,loadPets]);
 
   const goStep2=()=>{
     if(!name.trim()){setNameErr('請輸入你的名字！');return;}
     if(name.trim().length>10){setNameErr('名字最多10個字喔！');return;}
     setNameErr('');setStep(2);
   };
-  const trySelect=(i)=>{
-    const claim=claims.current[CHARACTERS[i].id];
-    const isMine=claim&&claim.name===name.trim();
-    if(!claim||isMine){setSel(i);}
-    else{setPwModal({charIdx:i,charName:CHARACTERS[i].name,ownerName:claim.name});setPwInput('');setPwErr('');}
-  };
-  const verifyPw=()=>{
-    const claim=claims.current[CHARACTERS[pwModal.charIdx].id];
-    if(pwInput.toUpperCase()===claim.password){setPwModal(null);setSel(pwModal.charIdx);}
-    else setPwErr('密碼錯誤，請再試一次！');
-  };
-  const confirmChar=()=>{
-    if(selectedChar===null)return;
-    const existing=claims.current[CHARACTERS[selectedChar].id];
-    if(existing&&existing.name===name.trim()){
-      // Returning owner — reuse existing password
-      setGenPw(existing.password);setStep(3);return;
+  const confirmChar=async()=>{
+    if(!selectedPetId||!window.FB?.ops)return;
+    setErr('');
+    try{
+      await window.FB.ops.updateUserName(window.FB.uid,name.trim());
+      await window.FB.ops.claimPet(window.FB.uid,selectedPetId);
+      const idx=petIdxFromId(selectedPetId)??0;
+      const profile={name:name.trim(),charIdx:idx,petId:selectedPetId};
+      saveProfile(profile);onDone(profile);setStep(3);
+    }catch(e){
+      const msgs={'pet-taken':'這隻已經被別人帶走了！','pet-disabled':'這隻寵物餓壞了，不能選 😢','pet-not-found':'找不到這隻寵物'};
+      setErr(msgs[e.message]||`選寵失敗：${e.message}`);await loadPets();
     }
-    const pw=genPassword();setGenPw(pw);
-    const nc={...claims.current,[CHARACTERS[selectedChar].id]:{name:name.trim(),password:pw}};
-    claims.current=nc;saveClaims(nc);setStep(3);
   };
-  const finish=()=>{
-    const profile={name:name.trim(),charIdx:selectedChar,password:generatedPw};
-    saveProfile(profile);onDone(profile);
-  };
+  const selectedPet=pets.find(p=>p.id===selectedPetId);
 
   return(<div className="screen" style={{background:'linear-gradient(170deg,#fdf6ff 0%,#f0fdf4 100%)'}}>
     {step===1&&<div style={{flex:1,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',padding:'40px 28px',gap:22}}>
@@ -597,61 +514,32 @@ function OnboardingScreen({onDone,pc}){
         <button onClick={()=>setStep(1)} style={{width:38,height:38,borderRadius:12,border:'none',background:'rgba(0,0,0,0.06)',cursor:'pointer',fontSize:17}}>←</button>
         <div style={{flex:1}}>
           <div style={{fontSize:17,fontWeight:900,color:'#1a1a2e'}}>選一隻寵物，{name}！</div>
-          <div style={{fontSize:11,color:'#aaa'}}>🔒 已被其他同學認養的需要密碼</div>
+          <div style={{fontSize:11,color:'#aaa'}}>這裡是公共寵物池，名字大家都看得到</div>
         </div>
+        <button onClick={loadPets} style={{border:'none',background:`${pc}15`,color:pc,borderRadius:12,padding:'8px 10px',fontSize:11,fontWeight:900,cursor:'pointer'}}>↻</button>
       </div>
       <div className="scroll-body" style={{padding:'8px 16px 16px'}}>
+        {loading&&<div style={{display:'flex',justifyContent:'center',padding:30}}><div className="spinner"/></div>}
+        {err&&<div style={{background:'#fff4e5',color:'#b75d00',fontSize:12,fontWeight:800,padding:'8px 12px',borderRadius:12,marginBottom:10,textAlign:'center'}}>{err}</div>}
         <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:10}}>
-          {CHARACTERS.map((c,i)=>{
-            const claim=claims.current[c.id];
-            const isMine=claim&&claim.name===name.trim();
-            const isClaimed=!!claim&&!isMine;
-            const isSel=selectedChar===i;
-            return(<button key={c.id} onClick={()=>trySelect(i)} style={{padding:'12px 6px 10px',borderRadius:18,border:`2.5px solid ${isSel?pc:'#f0eaea'}`,background:isSel?`${pc}12`:'#fff',cursor:'pointer',boxShadow:isSel?`0 4px 14px ${pc}33`:'0 2px 6px rgba(0,0,0,0.04)',transition:'all 0.18s',display:'flex',flexDirection:'column',alignItems:'center',gap:3,position:'relative',opacity:isClaimed?0.65:1,fontFamily:'inherit'}}>
-              {isSel&&<div style={{position:'absolute',top:5,right:5,width:16,height:16,borderRadius:'50%',background:pc,display:'flex',alignItems:'center',justifyContent:'center',fontSize:9,color:'#fff',fontWeight:900}}>✓</div>}
-              {isClaimed&&<div style={{position:'absolute',top:5,right:5,fontSize:14}}>🔒</div>}
-              {isMine&&!isSel&&<div style={{position:'absolute',top:5,right:5,width:16,height:16,borderRadius:'50%',background:'#4CAF82',display:'flex',alignItems:'center',justifyContent:'center',fontSize:9,color:'#fff'}}>✓</div>}
-              <img src={c.img} alt={c.name} style={{width:56,height:56,objectFit:'contain',filter:isClaimed?'grayscale(0.4)':'none'}}/>
-              <div style={{fontSize:11,fontWeight:900,color:isSel?pc:'#1a1a2e'}}>{c.name}</div>
-              {isClaimed&&<div style={{fontSize:9,color:'#bbb',fontWeight:700}}>{claim.name} 的</div>}
-            </button>);
+          {pets.map(p=>{
+            const disabled=p.status==='disabled'||p.hp<=0||(p.ownerUid&&p.ownerUid!==window.FB?.uid);
+            const mine=p.ownerUid&&p.ownerUid===window.FB?.uid;
+            return <PetGridButton key={p.id} pet={p} pc={pc} selected={selectedPetId===p.id} disabled={disabled&&!mine} tag={mine?'我的':null} onClick={()=>setSelectedPetId(p.id)}/>;
           })}
         </div>
       </div>
       <div style={{padding:'0 16px 28px',flexShrink:0}}>
-        <button onClick={confirmChar} disabled={selectedChar===null} style={{width:'100%',padding:17,borderRadius:20,border:'none',cursor:'pointer',background:`linear-gradient(135deg,${pc},${pc}bb)`,fontSize:16,fontWeight:900,color:'#fff',boxShadow:`0 5px 18px ${pc}44`,opacity:selectedChar!==null?1:0.4,transition:'opacity 0.2s',fontFamily:'inherit'}}>確認，這是我的寵物！🐾</button>
+        <button onClick={confirmChar} disabled={!selectedPetId||loading} style={{width:'100%',padding:17,borderRadius:20,border:'none',cursor:(!selectedPetId||loading)?'not-allowed':'pointer',background:`linear-gradient(135deg,${pc},${pc}bb)`,fontSize:16,fontWeight:900,color:'#fff',boxShadow:`0 5px 18px ${pc}44`,opacity:selectedPetId&&!loading?1:0.4,transition:'opacity 0.2s',fontFamily:'inherit'}}>確認，這是我的寵物！🐾</button>
       </div>
     </div>}
 
     {step===3&&<div style={{flex:1,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',padding:'40px 28px',gap:20}}>
       <Confetti active/>
-      <div style={{animation:'float 3s ease-in-out infinite'}}><img src={CHARACTERS[selectedChar].img} alt="" style={{width:100,height:100,objectFit:'contain'}}/></div>
+      <div style={{animation:'float 3s ease-in-out infinite'}}><img src={selectedPet?.img||CHARACTERS[0].img} alt="" style={{width:100,height:100,objectFit:'contain'}}/></div>
       <div style={{textAlign:'center'}}>
         <div style={{fontSize:22,fontWeight:900,color:'#1a1a2e'}}>{name}，你的寵物是</div>
-        <div style={{fontSize:28,fontWeight:900,color:pc,marginTop:2}}>{CHARACTERS[selectedChar].name} 🎉</div>
-      </div>
-      <div style={{width:'100%',background:'#fff',borderRadius:24,padding:'22px 24px',boxShadow:'0 6px 24px rgba(0,0,0,0.08)',textAlign:'center'}}>
-        <div style={{fontSize:11,fontWeight:800,color:'#aaa',letterSpacing:1,marginBottom:10}}>📋 你的專屬密碼（請抄下來！）</div>
-        <div style={{fontSize:32,fontWeight:900,letterSpacing:6,color:pc,background:`${pc}12`,borderRadius:16,padding:'14px 20px',fontFamily:'monospace'}}>{generatedPw}</div>
-        <div style={{fontSize:11,color:'#bbb',marginTop:10,lineHeight:1.7}}>這隻寵物屬於你了！<br/>如果別人想認養同一隻，需要輸入這組密碼 🔒</div>
-      </div>
-      <button onClick={finish} style={{width:'100%',padding:17,borderRadius:20,border:'none',cursor:'pointer',background:`linear-gradient(135deg,${pc},${pc}bb)`,fontSize:17,fontWeight:900,color:'#fff',boxShadow:`0 5px 18px ${pc}44`,fontFamily:'inherit'}}>我記住了，開始學習！→</button>
-    </div>}
-
-    {pwModal&&<div style={{position:'absolute',inset:0,background:'rgba(0,0,0,0.45)',display:'flex',alignItems:'center',justifyContent:'center',zIndex:200,padding:24}}>
-      <div style={{background:'#fff',borderRadius:24,padding:26,width:'100%',animation:'pop 0.2s ease-out'}}>
-        <div style={{textAlign:'center',marginBottom:16}}>
-          <img src={CHARACTERS[pwModal.charIdx].img} alt="" style={{width:70,height:70,objectFit:'contain'}}/>
-          <div style={{fontSize:15,fontWeight:900,color:'#1a1a2e',marginTop:8}}>🔒 {pwModal.charName} 已被 {pwModal.ownerName} 認養</div>
-          <div style={{fontSize:12,color:'#aaa',marginTop:4}}>請輸入密碼來認領這隻寵物</div>
-        </div>
-        <input type="text" placeholder="輸入密碼…" value={pwInput} onChange={e=>{setPwInput(e.target.value.toUpperCase());setPwErr('');}} maxLength={6}
-          style={{width:'100%',padding:'14px 16px',borderRadius:14,border:`2px solid ${pwErr?'#FF4D6D':'#e8e0f8'}`,fontSize:22,fontWeight:900,letterSpacing:4,textAlign:'center',fontFamily:'monospace',outline:'none',color:'#1a1a2e',marginBottom:8}}/>
-        {pwErr&&<div style={{fontSize:12,color:'#FF4D6D',fontWeight:700,textAlign:'center',marginBottom:8}}>{pwErr}</div>}
-        <div style={{display:'flex',gap:10,marginTop:4}}>
-          <button onClick={()=>setPwModal(null)} style={{flex:1,padding:13,borderRadius:14,border:'2px solid #f0eaea',background:'#fff',fontSize:14,fontWeight:800,color:'#aaa',cursor:'pointer',fontFamily:'inherit'}}>取消</button>
-          <button onClick={verifyPw} style={{flex:2,padding:13,borderRadius:14,border:'none',background:`linear-gradient(135deg,${pc},${pc}bb)`,fontSize:14,fontWeight:900,color:'#fff',cursor:'pointer',fontFamily:'inherit'}}>確認密碼</button>
-        </div>
+        <div style={{fontSize:28,fontWeight:900,color:pc,marginTop:2}}>{selectedPet?.name||'小夥伴'} 🎉</div>
       </div>
     </div>}
   </div>);
@@ -734,28 +622,69 @@ function HomeScreen({charSrc,charName,studentName,stats,todaySet,flashPool,dateL
 }
 
 /* ══ CHAR SELECT ═════════════════════════════════════════ */
-function CharSelectScreen({current,onSelect,onBack,pc}){
-  const [sel,setSel]=useState(current);
+function CharSelectScreen({current,onSelect,onBack,pc,fb,refreshFb}){
+  const [pets,setPets]=useState([]);
+  const [loading,setLoading]=useState(false);
+  const [sel,setSel]=useState(fb?.profile?.currentPetId||null);
+  const [err,setErr]=useState('');
+  const [rename,setRename]=useState('');
+  const myPetId=fb?.profile?.currentPetId||null;
+  const myPet=pets.find(p=>p.id===myPetId)||fb?.pet||null;
+
+  const loadPets=useCallback(async()=>{
+    if(!window.FB?.ops?.listPets)return;
+    setLoading(true);setErr('');
+    try{setPets(await window.FB.ops.listPets());}
+    catch(e){setErr('寵物清單載入失敗：'+e.message);}
+    finally{setLoading(false);}
+  },[]);
+  useEffect(()=>{loadPets();},[loadPets]);
+  useEffect(()=>{setSel(fb?.profile?.currentPetId||null);setRename((fb?.pet?.name)||'');},[fb?.profile?.currentPetId,fb?.pet?.name]);
+
+  const doRelease=async()=>{
+    if(!myPetId||!confirm('要把目前這隻寵物釋放回公共池嗎？'))return;
+    try{await window.FB.ops.releasePet(window.FB.uid);await refreshFb();await loadPets();setSel(null);}
+    catch(e){setErr('釋放失敗：'+e.message);}
+  };
+  const doRename=async()=>{
+    const v=rename.trim();if(!v)return setErr('名字不可空白');
+    try{await window.FB.ops.renameMyPet(window.FB.uid,v);await refreshFb();await loadPets();}
+    catch(e){const msgs={'bad-name':'名字不可空白','name-too-long':'名字太長囉'};setErr(msgs[e.message]||`改名失敗：${e.message}`);}
+  };
+
   return(<div className="screen" style={{background:'linear-gradient(170deg,#fafeff 0%,#f0fdf8 100%)'}}>
     <div style={{padding:'48px 20px 12px',display:'flex',alignItems:'center',gap:12,flexShrink:0}}>
       <button onClick={onBack} style={{width:38,height:38,borderRadius:12,border:'none',background:'rgba(0,0,0,0.06)',cursor:'pointer',fontSize:17}}>←</button>
-      <div style={{fontSize:17,fontWeight:900,color:'#1a1a2e'}}>更換夥伴</div>
+      <div style={{flex:1}}>
+        <div style={{fontSize:17,fontWeight:900,color:'#1a1a2e'}}>更換夥伴</div>
+        <div style={{fontSize:11,color:'#aaa'}}>寵物名字是公開的，大家都看得到</div>
+      </div>
+      <button onClick={loadPets} style={{border:'none',background:`${pc}15`,color:pc,borderRadius:12,padding:'8px 10px',fontSize:11,fontWeight:900,cursor:'pointer'}}>↻</button>
     </div>
+
+    {myPet&&<div style={{margin:'0 18px 12px',background:'#fff',borderRadius:18,padding:12,boxShadow:'0 2px 10px rgba(0,0,0,0.05)'}}>
+      <div style={{fontSize:12,fontWeight:900,color:'#1a1a2e',marginBottom:8}}>我的寵物名稱</div>
+      <div style={{display:'flex',gap:8}}>
+        <input value={rename} onChange={e=>setRename(e.target.value)} maxLength={24} placeholder="幫牠取個怪名字…" style={{flex:1,minWidth:0,padding:'10px 12px',borderRadius:12,border:'2px solid #eef2f7',fontSize:14,fontWeight:800,fontFamily:'inherit',outline:'none'}}/>
+        <button onClick={doRename} style={{padding:'0 12px',borderRadius:12,border:'none',background:`linear-gradient(135deg,${pc},${pc}bb)`,color:'#fff',fontSize:12,fontWeight:900,fontFamily:'inherit',cursor:'pointer'}}>改名</button>
+      </div>
+      <button onClick={doRelease} style={{marginTop:8,width:'100%',padding:10,borderRadius:12,border:'1.5px solid #fecdd3',background:'#fff1f2',color:'#e11d48',fontSize:12,fontWeight:900,fontFamily:'inherit',cursor:'pointer'}}>💔 釋放這隻寵物</button>
+    </div>}
+
+    {err&&<div style={{margin:'0 18px 10px',background:'#fff4e5',color:'#b75d00',fontSize:12,fontWeight:800,padding:'8px 12px',borderRadius:12,textAlign:'center'}}>{err}</div>}
+
     <div className="scroll-body" style={{padding:'0 18px 16px'}}>
+      {loading&&<div style={{display:'flex',justifyContent:'center',padding:30}}><div className="spinner"/></div>}
       <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:12}}>
-        {CHARACTERS.map((c,i)=>{
-          const isSel=sel===i;
-          return(<button key={c.id} onClick={()=>setSel(i)} style={{padding:'14px 8px 12px',borderRadius:20,border:`2.5px solid ${isSel?pc:'#f0eaea'}`,background:isSel?`${pc}10`:'#fff',cursor:'pointer',boxShadow:isSel?`0 4px 16px ${pc}33`:'0 2px 8px rgba(0,0,0,0.05)',transition:'all 0.2s',display:'flex',flexDirection:'column',alignItems:'center',gap:4,position:'relative',fontFamily:'inherit'}}>
-            {isSel&&<div style={{position:'absolute',top:6,right:6,width:16,height:16,borderRadius:'50%',background:pc,display:'flex',alignItems:'center',justifyContent:'center',fontSize:9,color:'#fff',fontWeight:900}}>✓</div>}
-            <img src={c.img} alt={c.name} style={{width:60,height:60,objectFit:'contain'}}/>
-            <div style={{fontSize:12,fontWeight:900,color:isSel?pc:'#1a1a2e'}}>{c.name}</div>
-            <div style={{fontSize:9,color:'#bbb',fontWeight:700,textAlign:'center'}}>{c.desc}</div>
-          </button>);
+        {pets.map(p=>{
+          const mine=p.ownerUid&&p.ownerUid===fb?.uid;
+          const unavailable=(p.status==='disabled'||p.hp<=0)||(p.ownerUid&&!mine);
+          return(<PetGridButton key={p.id} pet={p} pc={pc} selected={sel===p.id} disabled={unavailable&&!mine} tag={mine?'我的':null} onClick={()=>setSel(p.id)}/>);
         })}
       </div>
     </div>
     <div style={{padding:'0 18px 28px',flexShrink:0}}>
-      <button onClick={()=>onSelect(sel)} style={{width:'100%',padding:17,borderRadius:20,border:'none',cursor:'pointer',background:`linear-gradient(135deg,${pc},${pc}bb)`,fontSize:16,fontWeight:900,color:'#fff',boxShadow:`0 5px 18px ${pc}44`,fontFamily:'inherit'}}>確認選擇 ✓</button>
+      <button onClick={()=>onSelect(sel)} disabled={!sel} style={{width:'100%',padding:17,borderRadius:20,border:'none',cursor:sel?'pointer':'not-allowed',background:`linear-gradient(135deg,${pc},${pc}bb)`,fontSize:16,fontWeight:900,color:'#fff',boxShadow:`0 5px 18px ${pc}44`,fontFamily:'inherit',opacity:sel?1:0.4}}>確認選擇 ✓</button>
     </div>
   </div>);
 }
@@ -859,7 +788,7 @@ function Blank({width=78,color='#555',filled}){
   return(<span style={{display:'inline-block',minWidth:width,padding:'0 6px',margin:'0 4px',borderBottom:`2px solid ${color}`,textAlign:'center',fontWeight:900,color:filled?color:'transparent',verticalAlign:'baseline',lineHeight:1.2,letterSpacing:1,fontFamily:filled?'monospace':'inherit'}}>{filled||'＿'}</span>);
 }
 
-function QuizScreen({charSrc,quizPool,onFinish,onNav,pc}){
+function QuizScreen({charSrc,quizPool,onFinish,onNav,pc,refreshFb}){
   const TOTAL=Math.min(20,quizPool.length);
   const [questions]=useState(()=>buildQuizItems(quizPool,TOTAL));
   const [idx,setIdx]=useState(0);
@@ -897,13 +826,21 @@ function QuizScreen({charSrc,quizPool,onFinish,onNav,pc}){
   const vocab=q.vocab;
   const theme=Q_THEME[q.type]||Q_THEME.zh2en;
 
-  const afterAnswer=(ok)=>{
+  const afterAnswer=async(ok)=>{
+    let gain=0,food=0,nextCombo=0;
     if(ok){
-      const gain=10+combo*3;
-      setScore(s=>s+1);setXp(x=>x+gain);setCombo(c=>c+1);
-      setConf(true);setXpMsg(`+${gain} XP`);
-      setTimeout(()=>setConf(false),1200);setTimeout(()=>setXpMsg(null),900);
+      try{
+        if(window.FB?.ops?.answerCorrect){
+          const r=await window.FB.ops.answerCorrect(window.FB.uid,q.type==='tense');
+          gain=r.gainExp||0;food=r.addFood||0;nextCombo=r.newCombo||0;
+          await refreshFb?.();
+        }
+      }catch(e){console.warn('[Quiz] answerCorrect failed',e);}
+      setScore(s=>s+1);setXp(x=>x+gain);setCombo(nextCombo);
+      setConf(true);setXpMsg(food>0?`+${gain} EXP　🍖 ×${food}！`:`+${gain} EXP`);
+      setTimeout(()=>setConf(false),1200);setTimeout(()=>setXpMsg(null),1000);
     }else{
+      try{if(window.FB?.ops?.answerWrong){await window.FB.ops.answerWrong(window.FB.uid);await refreshFb?.();}}catch(e){console.warn('[Quiz] answerWrong failed',e);}
       setCombo(0);
       setShaking(true);setTimeout(()=>setShaking(false),500);
     }
@@ -911,7 +848,7 @@ function QuizScreen({charSrc,quizPool,onFinish,onNav,pc}){
     const delay=q.type==='cloze'?1600:1100;
     setTimeout(()=>{
       setSel(null);setClozeInput('');setClozeResult(null);
-      if(idx+1>=TOTAL) onFinish(ok?score+1:score,ok?xp+10+combo*3:xp,TOTAL);
+      if(idx+1>=TOTAL) onFinish(ok?score+1:score,ok?xp+gain:xp,TOTAL);
       else setIdx(i=>i+1);
     },delay);
   };
@@ -1046,7 +983,7 @@ function QuizScreen({charSrc,quizPool,onFinish,onNav,pc}){
       {answerArea}
     </div>
     <div style={{textAlign:'center',padding:'6px 0',flexShrink:0}}>
-      <span style={{fontSize:11,color:'#ccc',fontWeight:700}}>⭐ {xp} XP 已獲得</span>
+      <span style={{fontSize:11,color:'#ccc',fontWeight:700}}>⭐ {xp} EXP 已獲得</span>
     </div>
     <BottomNav screen="quiz" onNav={onNav} pc={pc}/>
   </div>);
@@ -1100,7 +1037,7 @@ const PODIUM_H=[110,148,90];
 const PODIUM_C=['#C0C0C0','#FFD700','#CD7F32'];
 const PODIUM_MEDAL=['🥈','🥇','🥉'];
 
-function RankScreen({studentName,charIdx,stats,onNav,pc,cloudEntries,cloudStreakEntries,cloudStatus,onRefresh}){
+function RankScreen({uid,studentName,charIdx,stats,onNav,pc,cloudEntries,cloudStreakEntries,cloudStatus,onRefresh}){
   const [tab,setTab]=useState('score');
 
   const list=useMemo(()=>{
@@ -1111,17 +1048,18 @@ function RankScreen({studentName,charIdx,stats,onNav,pc,cloudEntries,cloudStreak
       streak:e.streakCur|0,
       streakBest:e.streakBest|0,
       charIdx:avatarIdxFromId(e.avatarId),
-      isMe:e.name&&studentName&&e.name.trim()===studentName.trim(),
+      uid:e.uid||'',
+      isMe:uid&&e.uid===uid,
     }));
     // Inject me locally if not in cloud yet
     if(studentName&&!arr.some(r=>r.isMe)){
-      arr.push({name:studentName,score:stats.best|0,streak:stats.streak|0,streakBest:stats.streak|0,charIdx,isMe:true});
+      arr.push({uid:uid||'',name:studentName,score:stats.best|0,streak:stats.streak|0,streakBest:stats.streakBest||stats.streak||0,charIdx,isMe:true});
     }
     const sortKey=tab==='score'?'score':'streak';
     const tieKey=tab==='score'?'streak':'score';
     arr.sort((a,b)=>(b[sortKey]-a[sortKey])||(b[tieKey]-a[tieKey])||(b.streakBest-a.streakBest));
     return arr.map((r,i)=>({...r,rank:i+1}));
-  },[tab,cloudEntries,cloudStreakEntries,studentName,charIdx,stats]);
+  },[tab,cloudEntries,cloudStreakEntries,studentName,charIdx,stats,uid]);
 
   const top3Src=[list[1],list[0],list[2]]; // left 2nd, center 1st, right 3rd
   const showUnit=tab==='score'?'分':'天';
@@ -1197,6 +1135,7 @@ function App(){
     if(claimAttempted.current)return;
     if(!fb?.ready||!window.FB)return;
     if(fb.pet)return;
+    if(Object.prototype.hasOwnProperty.call(profile||{},'petId'))return; // new-mode profiles may intentionally be visitor after release
     const idx=profile?.charIdx;
     if(typeof idx!=='number')return;
     const targetId=window.FB.config.SEED_PETS[idx]?.id;
@@ -1208,10 +1147,19 @@ function App(){
   },[fb,profile,refreshFb]);
 
   const pc='#61c2ff';
-  const charIdx=profile?.charIdx??0;
-  const charSrc=CHARACTERS[charIdx]?.img||CHARACTERS[0].img;
-  const charName=CHARACTERS[charIdx]?.name||'小夥伴';
-  const studentName=profile?.name||'同學';
+  const currentPetId=fb?.ready?(fb?.profile?.currentPetId||null):(profile?.petId||null);
+  const charIdx=(currentPetId?petIdxFromId(currentPetId):null)??profile?.charIdx??0;
+  const charSrc=fb?.pet?.img||CHARACTERS[charIdx]?.img||CHARACTERS[0].img;
+  const charName=fb?.pet?.name||CHARACTERS[charIdx]?.name||'小夥伴';
+  const studentName=fb?.profile?.name||profile?.name||'同學';
+  const displayStats={
+    ...stats,
+    streak:fb?.profile?.streakCur??stats.streak??0,
+    best:fb?.profile?.bestScore??stats.best??0,
+    avgScore:fb?.profile?.avgScore??stats.avgScore??0,
+    totalGames:fb?.profile?.totalGames??stats.totalGames??0,
+    xp:fb?.profile?.exp??stats.xp??0,
+  };
   const today=taipeiDateKey();
 
   // Load vocab-data.json once
@@ -1278,17 +1226,18 @@ function App(){
   const nav=(s)=>{if(s==='quiz'&&screen!=='quiz')setResult(null);setScreen(s);};
 
   const handleFinish=async(score,xpGained,total)=>{
-    const newAvg=stats.totalGames===0?Math.round(score/total*100):Math.round((stats.avgScore*stats.totalGames+Math.round(score/total*100))/(stats.totalGames+1));
-    // Update local stats (streak will be refined when cloud entry returns)
-    const ns={...stats,xp:(stats.xp||0)+xpGained,best:Math.max(stats.best,score),totalGames:stats.totalGames+1,avgScore:newAvg};
+    const pct=Math.round(score/total*100);
+    const baseStats=displayStats;
+    const newAvg=(baseStats.totalGames||0)===0?pct:Math.round(((baseStats.avgScore||0)*(baseStats.totalGames||0)+pct)/((baseStats.totalGames||0)+1));
+    const ns={...baseStats,xp:(baseStats.xp||0)+xpGained,best:Math.max(baseStats.best||0,score),totalGames:(baseStats.totalGames||0)+1,avgScore:newAvg};
     saveStats(ns);setStats(ns);
     setResult({score,xp:xpGained,total});setScreen('result');
-    // Fire-and-forget cloud sync; update streak when it returns
-    if(profile?.name){
-      const entry=await cloudUpsertScore(profile.name,CHARACTERS[charIdx]?.id||DEFAULT_AVATAR,score);
+    if(window.FB?.uid&&studentName){
+      const entry=await cloudUpsertScore(window.FB.uid,studentName,currentPetId||CHARACTERS[charIdx]?.id||DEFAULT_AVATAR,score,total);
       if(entry){
-        const ns2={...ns,streak:entry.streakCur};
+        const ns2={...ns,streak:entry.streakCur,best:entry.bestScore,avgScore:entry.avgScore??ns.avgScore};
         saveStats(ns2);setStats(ns2);
+        await refreshFb();
         refreshLeaderboard();
       }
     }
@@ -1306,16 +1255,24 @@ function App(){
   </div>);
 
   return(<div style={{width:'100%',height:'100%',position:'relative'}}>
-    {screen==='home'&&<HomeScreen charSrc={charSrc} charName={charName} studentName={studentName} stats={stats} todaySet={todaySet} flashPool={flashPool} dateLabel={dateLabel} onNav={nav} onSelectChar={()=>setScreen('charselect')} pc={pc} fb={fb} refreshFb={refreshFb}/>}
-    {screen==='charselect'&&<CharSelectScreen current={charIdx} onSelect={async i=>{
-      const p={...profile,charIdx:i};setProfile(p);saveProfile(p);
-      if(window.FB){try{await window.FB.ops.claimPet(window.FB.uid,window.FB.config.SEED_PETS[i].id);await refreshFb();}catch(e){console.warn('[App] claim pet failed',e.message);}}
+    {screen==='home'&&<HomeScreen charSrc={charSrc} charName={charName} studentName={studentName} stats={displayStats} todaySet={todaySet} flashPool={flashPool} dateLabel={dateLabel} onNav={nav} onSelectChar={()=>setScreen('charselect')} pc={pc} fb={fb} refreshFb={refreshFb}/>}
+    {screen==='charselect'&&<CharSelectScreen current={charIdx} fb={fb} refreshFb={refreshFb} onSelect={async petId=>{
+      if(window.FB&&petId){
+        try{await window.FB.ops.claimPet(window.FB.uid,petId);await refreshFb();}
+        catch(e){
+          const msgs={'pet-taken':'這隻已經被別人帶走了！','pet-disabled':'這隻寵物餓壞了，不能選 😢','pet-not-found':'找不到這隻寵物'};
+          alert(msgs[e.message]||`選寵失敗：${e.message}`);
+          return;
+        }
+      }
+      const idx=petIdxFromId(petId)??charIdx;
+      const p={...profile,charIdx:idx,petId};setProfile(p);saveProfile(p);
       setScreen('home');
     }} onBack={()=>setScreen('home')} pc={pc}/>}
     {screen==='flash'&&<FlashScreen charSrc={charSrc} flashPool={flashPool.length?flashPool:quizPool} onNav={nav} pc={pc}/>}
-    {screen==='quiz'&&<QuizScreen charSrc={charSrc} quizPool={quizPool} onFinish={handleFinish} onNav={nav} pc={pc}/>}
+    {screen==='quiz'&&<QuizScreen charSrc={charSrc} quizPool={quizPool} onFinish={handleFinish} onNav={nav} pc={pc} refreshFb={refreshFb}/>}
     {screen==='result'&&result&&<ResultScreen {...result} charSrc={charSrc} charName={charName} onRetry={()=>setScreen('quiz')} onHome={()=>setScreen('home')} pc={pc}/>}
-    {screen==='rank'&&<RankScreen studentName={studentName} charIdx={charIdx} stats={stats} onNav={nav} pc={pc} cloudEntries={cloudEntries} cloudStreakEntries={cloudStreakEntries} cloudStatus={cloudStatus} onRefresh={refreshLeaderboard}/>}
+    {screen==='rank'&&<RankScreen uid={fb?.uid} studentName={studentName} charIdx={charIdx} stats={displayStats} onNav={nav} pc={pc} cloudEntries={cloudEntries} cloudStreakEntries={cloudStreakEntries} cloudStatus={cloudStatus} onRefresh={refreshLeaderboard}/>}
   </div>);
 }
 
@@ -1331,7 +1288,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
 import { getAuth, signInAnonymously, onAuthStateChanged }
   from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
-import { getFirestore, doc, getDoc, setDoc, updateDoc, getDocs, collection, runTransaction }
+import { getFirestore, doc, getDoc, setDoc, updateDoc, getDocs, collection, runTransaction, query, orderBy, limit }
   from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -1372,11 +1329,32 @@ async function ensureUserProfile(uid, defaultName) {
     name: defaultName || '匿名玩家',
     currentPetId: null,
     exp: 0, combo: 0, foodCount: 0,
-    totalCorrect: 0,
+    totalCorrect: 0, totalGames: 0,
+    streakCur: 0, streakBest: 0, bestScore: 0, avgScore: 0,
+    weekPlayed: [], lastPlayDate: '',
     createdAt: now, updatedAt: now,
   };
   await setDoc(ref, data);
   return { ref, data, created: true };
+}
+
+async function migrateLocalStats(uid, profile) {
+  if (profile?.migratedFromLocalAt) return false;
+  let old = null;
+  try { old = JSON.parse(localStorage.getItem('epopStats3') || 'null'); } catch {}
+  if (!old) return false;
+  const patch = {
+    streakCur: Number(old.streak || 0),
+    streakBest: Math.max(Number(old.streak || 0), Number(old.streakBest || 0)),
+    bestScore: Number(old.best || 0),
+    avgScore: Number(old.avgScore || 0),
+    totalGames: Number(old.totalGames || 0),
+    exp: Number(profile?.exp || old.xp || 0) % 200,
+    weekPlayed: Array.isArray(old.weekPlayed) ? old.weekPlayed : [],
+    migratedFromLocalAt: Date.now(), updatedAt: Date.now(),
+  };
+  await setDoc(doc(db, 'users', uid), patch, { merge: true });
+  return true;
 }
 
 async function seedPets() {
@@ -1388,7 +1366,7 @@ async function seedPets() {
     const now = Date.now();
     await setDoc(ref, {
       type: p.type, name: p.name, desc: p.desc, img: p.img,
-      ownerUid: null, status: 'available',
+      ownerUid: null, ownerName: null, status: 'available',
       hp: 100, lastHpUpdate: now,
       createdAt: now, updatedAt: now,
     });
@@ -1409,6 +1387,40 @@ async function refreshProfile(uid) {
   return snap.exists() ? snap.data() : null;
 }
 
+async function updateUserName(uid, name) {
+  const clean = String(name || '').trim().slice(0, 40) || '匿名玩家';
+  return await runTransaction(db, async (tx) => {
+    const userRef = doc(db, 'users', uid);
+    const userSnap = await tx.get(userRef);
+    if (!userSnap.exists()) throw new Error('no-user');
+    const user = userSnap.data();
+    let petRef = null, petSnap = null;
+    if (user.currentPetId) {
+      petRef = doc(db, 'pets', user.currentPetId);
+      petSnap = await tx.get(petRef);
+    }
+    tx.update(userRef, { name: clean, updatedAt: Date.now() });
+    if (petRef && petSnap?.exists() && petSnap.data().ownerUid === uid) tx.update(petRef, { ownerName: clean, updatedAt: Date.now() });
+    return clean;
+  });
+}
+
+async function listPets() {
+  const snap = await getDocs(collection(db, 'pets'));
+  const now = Date.now();
+  const out = [];
+  const staleDisabled = [];
+  snap.forEach(d => {
+    const pet = d.data();
+    const hp = calcCurrentHp(pet, now);
+    const status = hp <= 0 ? 'disabled' : (pet.status || 'available');
+    if (hp <= 0 && (pet.status !== 'disabled' || pet.ownerUid)) staleDisabled.push({ id: d.id, ref: d.ref });
+    out.push({ id: d.id, ...pet, hp, status });
+  });
+  await Promise.all(staleDisabled.map(p => updateDoc(p.ref, { hp:0, status:'disabled', ownerUid:null, ownerName:null, lastHpUpdate: now, updatedAt: now }).catch(()=>{})));
+  return out.sort((a,b)=>String(a.id).localeCompare(String(b.id)));
+}
+
 async function claimPet(uid, petId) {
   return await runTransaction(db, async (tx) => {
     const userRef = doc(db, 'users', uid);
@@ -1421,8 +1433,6 @@ async function claimPet(uid, petId) {
     const user = userSnap.data();
     const now = Date.now();
 
-    // Release old pet (if any) and capture its HP — used to cap new claim so
-    // switching never grants a player more HP than they had (no swap-to-refill).
     let releasedHp = null;
     const oldId = user.currentPetId;
     if (oldId && oldId !== petId) {
@@ -1433,7 +1443,7 @@ async function claimPet(uid, petId) {
         const oldHp = calcCurrentHp(oldPet, now);
         releasedHp = oldHp;
         tx.update(oldRef, {
-          ownerUid: null,
+          ownerUid: null, ownerName: null,
           status: oldHp <= 0 ? 'disabled' : 'available',
           hp: oldHp, lastHpUpdate: now, updatedAt: now,
         });
@@ -1441,60 +1451,172 @@ async function claimPet(uid, petId) {
     }
 
     const curHp = calcCurrentHp(pet, now);
-    if (curHp <= 0) {
-      tx.update(petRef, { hp:0, status:'disabled', ownerUid:null, lastHpUpdate: now, updatedAt: now });
-      tx.update(userRef, { currentPetId: null, updatedAt: now });
+    if (curHp <= 0 || pet.status === 'disabled') {
+      tx.update(petRef, { hp:0, status:'disabled', ownerUid:null, ownerName:null, lastHpUpdate: now, updatedAt: now });
+      if (user.currentPetId === petId) tx.update(userRef, { currentPetId: null, updatedAt: now });
       throw new Error('pet-disabled');
     }
     if (pet.ownerUid && pet.ownerUid !== uid) throw new Error('pet-taken');
 
-    // HP lock on swap: claimHp = min(new pet's natural HP, released pet's HP).
-    // First-time claim (releasedHp === null) skips the cap — no penalty.
     const claimHp = (releasedHp != null) ? Math.min(curHp, releasedHp) : curHp;
-
     tx.update(petRef, {
-      ownerUid: uid, status: 'owned',
+      ownerUid: uid, ownerName: user.name || '匿名玩家', status: 'owned',
       hp: claimHp, lastHpUpdate: now, updatedAt: now,
     });
     tx.update(userRef, { currentPetId: petId, updatedAt: now });
-    return { id: petId, ...pet, hp: claimHp, ownerUid: uid, status: 'owned' };
+    return { id: petId, ...pet, hp: claimHp, ownerUid: uid, ownerName: user.name || '匿名玩家', status: 'owned' };
   });
 }
 
-async function feedMyPet(uid) {
+async function releasePet(uid) {
   return await runTransaction(db, async (tx) => {
     const userRef = doc(db, 'users', uid);
     const userSnap = await tx.get(userRef);
     if (!userSnap.exists()) throw new Error('no-user');
     const user = userSnap.data();
-    if ((user.foodCount || 0) <= 0) throw new Error('no-food');
+    if (!user.currentPetId) return null;
+    const petRef = doc(db, 'pets', user.currentPetId);
+    const petSnap = await tx.get(petRef);
+    const now = Date.now();
+    if (petSnap.exists() && petSnap.data().ownerUid === uid) {
+      const hp = calcCurrentHp(petSnap.data(), now);
+      tx.update(petRef, { ownerUid:null, ownerName:null, status:hp<=0?'disabled':'available', hp, lastHpUpdate:now, updatedAt:now });
+    }
+    tx.update(userRef, { currentPetId:null, updatedAt:now });
+    return true;
+  });
+}
+
+async function renameMyPet(uid, newName) {
+  const clean = String(newName || '').trim();
+  if (!clean) throw new Error('bad-name');
+  const chars = [...clean];
+  const hasWide = /[^\x00-\x7F]/.test(clean);
+  if ((hasWide && chars.length > 12) || (!hasWide && clean.length > 24) || chars.length > 24) throw new Error('name-too-long');
+  return await runTransaction(db, async (tx) => {
+    const userRef = doc(db, 'users', uid);
+    const userSnap = await tx.get(userRef);
+    if (!userSnap.exists()) throw new Error('no-user');
+    const user = userSnap.data();
     if (!user.currentPetId) throw new Error('no-pet');
     const petRef = doc(db, 'pets', user.currentPetId);
     const petSnap = await tx.get(petRef);
     if (!petSnap.exists()) throw new Error('pet-missing');
-    const pet = petSnap.data();
-    if (pet.ownerUid !== uid) throw new Error('not-owner');
-    const now = Date.now();
-    const curHp = calcCurrentHp(pet, now);
-    if (curHp <= 0) {
-      tx.update(petRef, { hp:0, status:'disabled', ownerUid:null, lastHpUpdate: now, updatedAt: now });
-      tx.update(userRef, { currentPetId: null, updatedAt: now });
-      throw new Error('pet-starved');
-    }
-    const newHp = Math.min(100, curHp + 50);
-    const newFood = (user.foodCount || 0) - 1;
-    tx.update(petRef, { hp: newHp, status: 'owned', lastHpUpdate: now, updatedAt: now });
-    tx.update(userRef, { foodCount: newFood, updatedAt: now });
-    return { newHp, foodCount: newFood, petName: pet.name };
+    if (petSnap.data().ownerUid !== uid) throw new Error('not-owner');
+    tx.update(petRef, { name: clean, updatedAt: Date.now() });
+    return clean;
   });
 }
 
-async function devGrantFood(uid, n = 5) {
-  const userRef = doc(db, 'users', uid);
-  const snap = await getDoc(userRef);
-  const cur = snap.exists() ? (snap.data().foodCount || 0) : 0;
-  await updateDoc(userRef, { foodCount: cur + n, updatedAt: Date.now() });
-  return cur + n;
+function calcExpGain(combo) {
+  const base = 10;
+  if (combo >= 10) return base + 20;
+  if (combo >= 5) return base + 10;
+  if (combo >= 3) return base + 5;
+  return base;
+}
+
+async function answerCorrect(uid, isVerb = false) {
+  return await runTransaction(db, async (tx) => {
+    const userRef = doc(db, 'users', uid);
+    const userSnap = await tx.get(userRef);
+    if (!userSnap.exists()) throw new Error('no-user');
+    const user = userSnap.data();
+    if (!user.currentPetId) return { gainExp:0, addFood:0, newCombo:user.combo||0, guest:true };
+    const gainExp = calcExpGain(user.combo || 0);
+    const totalExp = (user.exp || 0) + gainExp;
+    const addFood = Math.floor(totalExp / 200);
+    const newCombo = (user.combo || 0) + 1;
+    tx.update(userRef, {
+      exp: totalExp % 200,
+      combo: newCombo,
+      foodCount: (user.foodCount || 0) + addFood,
+      totalCorrect: (user.totalCorrect || 0) + 1,
+      updatedAt: Date.now(),
+    });
+    return { gainExp, addFood, newCombo };
+  });
+}
+
+async function answerWrong(uid) {
+  return await updateDoc(doc(db, 'users', uid), { combo: 0, updatedAt: Date.now() });
+}
+
+function taipeiDateKeyModule(d = new Date()) {
+  const utc = d.getTime() + d.getTimezoneOffset() * 60000;
+  const t = new Date(utc + 8 * 60 * 60 * 1000);
+  const y = t.getFullYear(), m = String(t.getMonth()+1).padStart(2,'0'), dd = String(t.getDate()).padStart(2,'0');
+  return `${y}-${m}-${dd}`;
+}
+function nextStreak(base) {
+  const today = taipeiDateKeyModule();
+  const last = String(base.lastPlayDate || '');
+  let streakCur = base.streakCur || 0;
+  if (!last) streakCur = 1;
+  else {
+    const a = Date.UTC(+today.slice(0,4), +today.slice(5,7)-1, +today.slice(8,10));
+    const b = /^\d{4}-\d{2}-\d{2}$/.test(last) ? Date.UTC(+last.slice(0,4), +last.slice(5,7)-1, +last.slice(8,10)) : NaN;
+    const diff = Number.isFinite(b) ? Math.round((a-b)/86400000) : NaN;
+    if (diff === 0) streakCur = Math.max(streakCur, 1);
+    else if (diff === 1) streakCur = streakCur + 1;
+    else streakCur = 1;
+  }
+  return { today, streakCur, streakBest: Math.max(base.streakBest || 0, streakCur) };
+}
+
+async function getLeaderboardEntry(uid) {
+  const snap = await getDoc(doc(db, 'leaderboard', uid));
+  return snap.exists() ? { uid, ...snap.data() } : null;
+}
+
+async function listLeaderboard(orderField = 'bestScore', maxRows = 80) {
+  const q = query(collection(db, 'leaderboard'), orderBy(orderField, 'desc'), limit(maxRows));
+  const snap = await getDocs(q);
+  const out = [];
+  snap.forEach(d => out.push({ uid: d.id, ...d.data() }));
+  return out;
+}
+
+async function upsertLeaderboardScore(uid, name, avatarId, score, total = 20) {
+  return await runTransaction(db, async (tx) => {
+    const lbRef = doc(db, 'leaderboard', uid);
+    const userRef = doc(db, 'users', uid);
+    const lbSnap = await tx.get(lbRef);
+    const userSnap = await tx.get(userRef);
+    const prev = lbSnap.exists() ? lbSnap.data() : {};
+    const user = userSnap.exists() ? userSnap.data() : {};
+    const scoreInt = score | 0;
+    const pct = total > 0 ? Math.round(scoreInt / total * 100) : 0;
+    const plays = (prev.plays || user.totalGames || 0) + 1;
+    const avgScore = Math.round((((user.avgScore || 0) * (user.totalGames || 0)) + pct) / ((user.totalGames || 0) + 1));
+    const streak = nextStreak(prev.lastPlayDate ? prev : user);
+    const entry = {
+      uid,
+      name: String(name || user.name || '匿名玩家').trim().slice(0, 40),
+      avatarId: avatarId || user.currentPetId || 'pet_001',
+      plays,
+      bestScore: Math.max(prev.bestScore || user.bestScore || 0, scoreInt),
+      recentScores: [scoreInt, ...((prev.recentScores || []).slice(0, 9))],
+      streakCur: streak.streakCur,
+      streakBest: streak.streakBest,
+      lastPlayDate: streak.today,
+      avgScore,
+      updatedAt: new Date().toISOString(),
+    };
+    tx.set(lbRef, entry, { merge: true });
+    tx.set(userRef, {
+      name: entry.name,
+      bestScore: entry.bestScore,
+      avgScore,
+      totalGames: (user.totalGames || 0) + 1,
+      streakCur: entry.streakCur,
+      streakBest: entry.streakBest,
+      lastPlayDate: entry.lastPlayDate,
+      weekPlayed: Array.from(new Set([...(Array.isArray(user.weekPlayed)?user.weekPlayed:[]), entry.lastPlayDate])).slice(-14),
+      updatedAt: Date.now(),
+    }, { merge: true });
+    return entry;
+  });
 }
 
 // Boot
@@ -1506,10 +1628,12 @@ onAuthStateChanged(auth, async (user) => {
     try {
       const p = JSON.parse(localStorage.getItem('epopProfile') || 'null');
       if (p && p.name) lpName = String(p.name).slice(0, 40);
-      if (p && typeof p.charIdx === 'number') lpCharIdx = p.charIdx;
+      if (p && typeof p.charIdx === 'number' && !Object.prototype.hasOwnProperty.call(p,'petId')) lpCharIdx = p.charIdx;
     } catch {}
 
     const { data: profile, created: userCreated } = await ensureUserProfile(user.uid, lpName);
+    const migrated = await migrateLocalStats(user.uid, profile);
+    if (lpName && lpName !== '匿名玩家' && (!profile.name || profile.name === '匿名玩家')) await updateUserName(user.uid, lpName);
     const seeded = await seedPets();
 
     // Bridge: first-time users coming from old onboarding → auto-claim corresponding pet
@@ -1528,11 +1652,11 @@ onAuthStateChanged(auth, async (user) => {
       app, auth, db, uid: user.uid, profile: finalProfile,
       config: { HP_DECAY_MS, SEED_PETS },
       helpers: { calcCurrentHp },
-      ops: { loadPet, refreshProfile, claimPet, feedMyPet, devGrantFood, ensureUserProfile, seedPets },
-      modular: { doc, getDoc, setDoc, updateDoc, getDocs, collection, runTransaction },
+      ops: { loadPet, refreshProfile, updateUserName, listPets, claimPet, releasePet, renameMyPet, feedMyPet, answerCorrect, answerWrong, getLeaderboardEntry, listLeaderboard, upsertLeaderboardScore, ensureUserProfile, seedPets },
+      modular: { doc, getDoc, setDoc, updateDoc, getDocs, collection, runTransaction, query, orderBy, limit },
     };
     window.dispatchEvent(new Event('fbready'));
-    console.log('[FB] phase2 ready', { uid: user.uid, userCreated, seededPets: seeded, bridgedTo: bridged, profile: finalProfile });
+    console.log('[FB] phase3 ready', { uid: user.uid, userCreated, migrated, seededPets: seeded, bridgedTo: bridged, profile: finalProfile });
   } catch (e) {
     console.error('[FB] boot failed', e);
   }
