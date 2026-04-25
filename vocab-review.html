@@ -653,7 +653,7 @@ function CharSelectScreen({current,onSelect,onBack,pc,fb,refreshFb}){
   };
   const doRename=async()=>{
     const v=rename.trim();if(!v)return setErr('名字不可空白');
-    try{await window.FB.ops.renameMyPet(window.FB.uid,v);await refreshFb();await loadPets();}
+    try{await window.FB.ops.renameMyPet(window.FB.uid,myPetId,v);await refreshFb();await loadPets();}
     catch(e){const msgs={'bad-name':'名字不可空白','name-too-long':'名字太長囉'};setErr(msgs[e.message]||`改名失敗：${e.message}`);}
   };
 
@@ -1497,7 +1497,7 @@ async function releasePet(uid) {
   });
 }
 
-async function renameMyPet(uid, newName) {
+async function renameMyPet(uid, petId, newName) {
   const clean = String(newName || '').trim();
   if (!clean) throw new Error('bad-name');
   const chars = [...clean];
@@ -1505,14 +1505,15 @@ async function renameMyPet(uid, newName) {
   if ((hasWide && chars.length > 12) || (!hasWide && clean.length > 24) || chars.length > 24) throw new Error('name-too-long');
   return await runTransaction(db, async (tx) => {
     const userRef = doc(db, 'users', uid);
+    const petRef = doc(db, 'pets', petId);
     const userSnap = await tx.get(userRef);
-    if (!userSnap.exists()) throw new Error('no-user');
-    const user = userSnap.data();
-    if (!user.currentPetId) throw new Error('no-pet');
-    const petRef = doc(db, 'pets', user.currentPetId);
     const petSnap = await tx.get(petRef);
+    if (!userSnap.exists()) throw new Error('no-user');
     if (!petSnap.exists()) throw new Error('pet-missing');
-    if (petSnap.data().ownerUid !== uid) throw new Error('not-owner');
+    const user = userSnap.data();
+    const pet = petSnap.data();
+    if (user.currentPetId !== petId) throw new Error('not-current-pet');
+    if (pet.ownerUid !== uid) throw new Error('not-owner');
     tx.update(petRef, { name: clean, updatedAt: Date.now() });
     return clean;
   });
