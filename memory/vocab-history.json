@@ -3,7 +3,7 @@
     "newWordsMustBeUniqueUntilExhausted": true,
     "reviewFormat": "guided_cloze_with_grammar_chunking",
     "sourceScope": "台灣普遍認定國中必會1000單",
-    "updatedAt": "2026-04-22T11:00:00Z"
+    "updatedAt": "2026-04-25T15:05:00Z"
   },
   "words": {
     "adventure": {
@@ -40,6 +40,15 @@
       ],
       "translation": "她正站在陽台上。"
     },
+    "believe": {
+      "example_sentence": "I believe you can do it.",
+      "first_seen": "2026-04-21",
+      "last_seen": "2026-04-21",
+      "meanings": [
+        "相信；信任"
+      ],
+      "translation": "我相信你做得到。"
+    },
     "belong": {
       "example_sentence": "This pencil belongs to you.",
       "first_seen": "2026-04-09",
@@ -66,6 +75,15 @@
         "借"
       ],
       "translation": "我可以借你的鉛筆嗎？"
+    },
+    "bottle": {
+      "example_sentence": "Please put some water in the bottle.",
+      "first_seen": "2026-04-23",
+      "last_seen": "2026-04-23",
+      "meanings": [
+        "瓶子"
+      ],
+      "translation": "請把一些水裝進瓶子裡。"
     },
     "brave": {
       "example_sentence": "The brave girl spoke in front of the class.",
@@ -198,6 +216,15 @@
       ],
       "translation": "外面很暗。"
     },
+    "desk": {
+      "example_sentence": "Please put your books on the desk.",
+      "first_seen": "2026-04-19",
+      "last_seen": "2026-04-19",
+      "meanings": [
+        "書桌；桌子"
+      ],
+      "translation": "請把你的書放在桌上。"
+    },
     "discover": {
       "first_seen": "2026-02-24",
       "last_seen": "2026-02-24",
@@ -213,6 +240,15 @@
         "分開；分成；除以"
       ],
       "translation": "把 12 除以 3。"
+    },
+    "dragon": {
+      "example_sentence": "The dragon in the story is very strong.",
+      "first_seen": "2026-04-20",
+      "last_seen": "2026-04-20",
+      "meanings": [
+        "龍"
+      ],
+      "translation": "故事裡的龍很強。"
     },
     "early": {
       "example_sentence": "She gets up early every morning.",
@@ -374,6 +410,15 @@
       ],
       "translation": "我在動物園看到一隻河馬。"
     },
+    "hole": {
+      "example_sentence": "There is a big hole in the ground.",
+      "first_seen": "2026-04-19",
+      "last_seen": "2026-04-19",
+      "meanings": [
+        "洞；孔洞"
+      ],
+      "translation": "地上有一個大洞。"
+    },
     "homework": {
       "example_sentence": "I finished my homework after dinner.",
       "first_seen": "2026-04-13",
@@ -391,6 +436,15 @@
         "醫院"
       ],
       "translation": "他在醫院裡。"
+    },
+    "hotel": {
+      "example_sentence": "We stayed in a nice hotel last night.",
+      "first_seen": "2026-04-19",
+      "last_seen": "2026-04-19",
+      "meanings": [
+        "旅館；飯店"
+      ],
+      "translation": "我們昨晚住在一間不錯的飯店。"
     },
     "hungry": {
       "example_sentence": "I am hungry. Can I have a sandwich?",
@@ -553,6 +607,15 @@
       ],
       "translation": "這個字是什麼意思？"
     },
+    "meet": {
+      "example_sentence": "I will meet my friend after school.",
+      "first_seen": "2026-04-22",
+      "last_seen": "2026-04-22",
+      "meanings": [
+        "遇見；見面"
+      ],
+      "translation": "我放學後要去見我的朋友。"
+    },
     "mirror": {
       "example_sentence": "I looked at myself in the mirror.",
       "first_seen": "2026-03-07",
@@ -579,6 +642,15 @@
         "新聞；消息"
       ],
       "translation": "我跟爸爸一起看新聞。"
+    },
+    "nice": {
+      "example_sentence": "She is a nice teacher.",
+      "first_seen": "2026-04-22",
+      "last_seen": "2026-04-22",
+      "meanings": [
+        "不錯的；親切的"
+      ],
+      "translation": "她是一位很親切的老師。"
     },
     "noisy": {
       "example_sentence": "The classroom is noisy during break time.",
@@ -650,6 +722,15 @@
       ],
       "translation": "我們要在公園野餐。"
     },
+    "pizza": {
+      "example_sentence": "I want to eat pizza for dinner.",
+      "first_seen": "2026-04-20",
+      "last_seen": "2026-04-20",
+      "meanings": [
+        "披薩"
+      ],
+      "translation": "我晚餐想吃披薩。"
+    },
     "popular": {
       "example_sentence": "This song is popular with students.",
       "first_seen": "2026-04-13",
@@ -704,6 +785,15 @@
       ],
       "translation": "公主住在城堡裡。"
     },
+    "probably": {
+      "example_sentence": "It will probably rain tomorrow.",
+      "first_seen": "2026-04-23",
+      "last_seen": "2026-04-23",
+      "meanings": [
+        "大概；可能"
+      ],
+      "translation": "明天大概會下雨。"
+    },
     "promise": {
       "example_sentence": "I promise to finish my homework tonight.",
       "first_seen": "2026-03-06",
@@ -748,6 +838,24 @@
         "準備好的"
       ],
       "translation": "我已經準備好考試了。"
+    },
+    "real": {
+      "example_sentence": "Is this story real?",
+      "first_seen": "2026-04-21",
+      "last_seen": "2026-04-21",
+      "meanings": [
+        "真的；真實的"
+      ],
+      "translation": "這個故事是真的嗎？"
+    },
+    "red": {
+      "example_sentence": "The apple is red.",
+      "first_seen": "2026-04-22",
+      "last_seen": "2026-04-22",
+      "meanings": [
+        "紅色（的）"
+      ],
+      "translation": "這顆蘋果是紅色的。"
     },
     "return": {
       "example_sentence": "Please return the book to the library tomorrow.",
@@ -829,6 +937,33 @@
         "春天"
       ],
       "translation": "春天是我最喜歡的季節。"
+    },
+    "storm": {
+      "example_sentence": "The storm is coming.",
+      "first_seen": "2026-04-21",
+      "last_seen": "2026-04-21",
+      "meanings": [
+        "暴風雨；風暴"
+      ],
+      "translation": "暴風雨要來了。"
+    },
+    "street": {
+      "example_sentence": "Don't play on the street.",
+      "first_seen": "2026-04-23",
+      "last_seen": "2026-04-23",
+      "meanings": [
+        "街道；馬路"
+      ],
+      "translation": "不要在馬路上玩。"
+    },
+    "sugar": {
+      "example_sentence": "Don't put too much sugar in your tea.",
+      "first_seen": "2026-04-20",
+      "last_seen": "2026-04-20",
+      "meanings": [
+        "糖"
+      ],
+      "translation": "你的茶不要加太多糖。"
     },
     "sunlight": {
       "example_sentence": "Plants need sunlight to grow.",
@@ -954,113 +1089,35 @@
       ],
       "translation": "我有一件黃色的雨衣。"
     },
-    "hole": {
-      "first_seen": "2026-04-19",
-      "last_seen": "2026-04-19",
+    "agree": {
+      "first_seen": "2026-04-25",
+      "last_seen": "2026-04-25",
       "meanings": [
-        "洞；孔洞"
+        "同意"
       ],
-      "example_sentence": "There is a big hole in the ground.",
-      "translation": "地上有一個大洞。"
+      "example_sentence": "I agree with your idea.",
+      "translation": "我同意你的想法。",
+      "pos": "v"
     },
-    "hotel": {
-      "first_seen": "2026-04-19",
-      "last_seen": "2026-04-19",
+    "ugly": {
+      "first_seen": "2026-04-25",
+      "last_seen": "2026-04-25",
       "meanings": [
-        "旅館；飯店"
+        "醜的；難看的"
       ],
-      "example_sentence": "We stayed in a nice hotel last night.",
-      "translation": "我們昨晚住在一間不錯的飯店。"
+      "example_sentence": "The ugly monster is not scary.",
+      "translation": "那隻醜醜的怪物並不可怕。",
+      "pos": "adj"
     },
-    "desk": {
-      "first_seen": "2026-04-19",
-      "last_seen": "2026-04-19",
+    "catch": {
+      "first_seen": "2026-04-25",
+      "last_seen": "2026-04-25",
       "meanings": [
-        "書桌；桌子"
+        "接住；抓住"
       ],
-      "example_sentence": "Please put your books on the desk.",
-      "translation": "請把你的書放在桌上。"
-    },
-    "pizza": {
-      "first_seen": "2026-04-20",
-      "last_seen": "2026-04-20",
-      "meanings": [
-        "披薩"
-      ],
-      "example_sentence": "I want to eat pizza for dinner.",
-      "translation": "我晚餐想吃披薩。"
-    },
-    "sugar": {
-      "first_seen": "2026-04-20",
-      "last_seen": "2026-04-20",
-      "meanings": [
-        "糖"
-      ],
-      "example_sentence": "Don't put too much sugar in your tea.",
-      "translation": "你的茶不要加太多糖。"
-    },
-    "dragon": {
-      "first_seen": "2026-04-20",
-      "last_seen": "2026-04-20",
-      "meanings": [
-        "龍"
-      ],
-      "example_sentence": "The dragon in the story is very strong.",
-      "translation": "故事裡的龍很強。"
-    },
-    "real": {
-      "first_seen": "2026-04-21",
-      "last_seen": "2026-04-21",
-      "meanings": [
-        "真的；真實的"
-      ],
-      "example_sentence": "Is this story real?",
-      "translation": "這個故事是真的嗎？"
-    },
-    "storm": {
-      "first_seen": "2026-04-21",
-      "last_seen": "2026-04-21",
-      "meanings": [
-        "暴風雨；風暴"
-      ],
-      "example_sentence": "The storm is coming.",
-      "translation": "暴風雨要來了。"
-    },
-    "believe": {
-      "first_seen": "2026-04-21",
-      "last_seen": "2026-04-21",
-      "meanings": [
-        "相信；信任"
-      ],
-      "example_sentence": "I believe you can do it.",
-      "translation": "我相信你做得到。"
-    },
-    "meet": {
-      "first_seen": "2026-04-22",
-      "last_seen": "2026-04-22",
-      "meanings": [
-        "遇見；見面"
-      ],
-      "example_sentence": "I will meet my friend after school.",
-      "translation": "我放學後要去見我的朋友。"
-    },
-    "red": {
-      "first_seen": "2026-04-22",
-      "last_seen": "2026-04-22",
-      "meanings": [
-        "紅色（的）"
-      ],
-      "example_sentence": "The apple is red.",
-      "translation": "這顆蘋果是紅色的。"
-    },
-    "nice": {
-      "first_seen": "2026-04-22",
-      "last_seen": "2026-04-22",
-      "meanings": [
-        "不錯的；親切的"
-      ],
-      "example_sentence": "She is a nice teacher.",
-      "translation": "她是一位很親切的老師。"
+      "example_sentence": "I can catch the ball.",
+      "translation": "我可以接住球。",
+      "pos": "v"
     }
   }
 }

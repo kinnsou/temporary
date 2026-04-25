@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-04-23T11:10:15Z",
-    "sourceCount": 122,
-    "includedCount": 114
+    "updatedAt": "2026-04-25T14:58:42Z",
+    "sourceCount": 125,
+    "includedCount": 117
   },
   "words": [
+    {
+      "word": "agree",
+      "meaning": "同意",
+      "example": "I agree with your idea.",
+      "translation": "我同意你的想法。",
+      "firstSeen": "2026-04-25",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "ugly",
+      "meaning": "醜的；難看的",
+      "example": "The ugly monster is not scary.",
+      "translation": "那隻醜醜的怪物並不可怕。",
+      "firstSeen": "2026-04-25",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "catch",
+      "meaning": "接住；抓住",
+      "example": "I can catch the ball.",
+      "translation": "我可以接住球。",
+      "firstSeen": "2026-04-25",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "bottle",
       "meaning": "瓶子",
