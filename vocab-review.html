@@ -632,10 +632,21 @@ function CharSelectScreen({current,onSelect,onBack,pc,fb,refreshFb}){
   const myPet=pets.find(p=>p.id===myPetId)||fb?.pet||null;
 
   const loadPets=useCallback(async()=>{
-    if(!window.FB?.ops?.listPets){setLoading(true);return;}
     setLoading(true);setErr('');
-    try{setPets(await window.FB.ops.listPets());}
-    catch(e){setErr('寵物清單載入失敗：'+e.message);}
+    try{
+      // Firebase may finish after this screen mounts; wait briefly instead of spinning forever.
+      for(let i=0;i<20&&!window.FB?.ops?.listPets;i++){
+        await new Promise(r=>setTimeout(r,150));
+      }
+      if(!window.FB?.ops?.listPets)throw new Error('firebase-not-ready');
+      const list=await window.FB.ops.listPets();
+      setPets(list);
+      if(!list.length)setErr('目前沒有寵物資料，請按右上角 ↻ 重試');
+    }
+    catch(e){
+      const msg=e.message==='firebase-not-ready'?'Firebase 還沒連上，請稍後按 ↻ 重試':'寵物清單載入失敗：'+e.message;
+      setErr(msg);
+    }
     finally{setLoading(false);}
   },[]);
   useEffect(()=>{loadPets();},[loadPets,fb?.ready]);
