@@ -163,6 +163,7 @@ Reference implementation: 2026-04-25 cleanup pass — see Changelog below for co
 
 Newest first. Format: `YYYY-MM-DD [agent] commit `hash` — one-line summary`.
 
+- 2026-04-26 [Claude Code] `da140f1` — hard-pin Zira (female) and David (male) ahead of priority list; Mark confirmed Zira is the desired female tone, David is "good enough, no stuttering" for male. Male pitch reset 0.95→1.0. Pin degrades gracefully on iOS/macOS (where Zira/David don't exist) by falling through to the keyword priority list.
 - 2026-04-26 [Claude Code] `2608db3` — pickVoice prefers `localService===true` voices first; Jenny (Online streaming, was stuttering) demoted to last; Zira / Google US English promoted on the local-voice tier; David promoted on male side. Lesson: avoid online neural voices in `speechSynthesis` priority lists — they break up under load.
 - 2026-04-26 [Claude Code] `c094efb` — younger female voice tuning (Jenny/Zira/Google US English ranked above Aria) + Verification-gate origin note clarifying the rule is self-QA, not Playwright.
 - 2026-04-26 [Claude Code] `a022d0d` — pet voice gender + flashcard speak-on-pet: dropped speaker icons from flashcard front/back, bumped back-of-card example to 18px, pet image now a stationary speaker with 5-line vertical-centered radial burst, `speakText(text,{gender})` picks en-* voice via priority list, new `setPetVoiceGender` op + Boy/Girl segmented toggle on rename card, voiceGender stored on `pets/{petId}` and threaded into FlashScreen.
