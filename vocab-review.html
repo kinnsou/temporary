@@ -724,9 +724,16 @@ function CharSelectScreen({current,onSelect,onBack,pc,fb,refreshFb}){
   const loadPets=useCallback(async()=>{
     setLoading(true);setErr('');
     try{
-      // Firebase may finish after this screen mounts; wait briefly instead of spinning forever.
-      for(let i=0;i<20&&!window.FB?.ops?.listPets;i++){
-        await new Promise(r=>setTimeout(r,150));
+      // Wait for fbready event or up to 12s — mobile cold-start Anonymous Auth + Firestore
+      // connection can take 5–10s on cellular, so pure 3s polling under-served mobile.
+      if(!window.FB?.ops?.listPets){
+        await new Promise(resolve=>{
+          let done=false;
+          const finish=()=>{if(done)return;done=true;clearTimeout(t);window.removeEventListener('fbready',finish);resolve();};
+          window.addEventListener('fbready',finish);
+          const t=setTimeout(finish,12000);
+          if(window.FB?.ops?.listPets)finish();
+        });
       }
       if(!window.FB?.ops?.listPets)throw new Error('firebase-not-ready');
       const list=await window.FB.ops.listPets();
