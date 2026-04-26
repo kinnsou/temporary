@@ -322,22 +322,27 @@ if(typeof window!=='undefined'&&window.speechSynthesis){
   _loadVoices();
   try{window.speechSynthesis.onvoiceschanged=_loadVoices;}catch{}
 }
-const FEMALE_VOICE_KEYS=['jenny','zira','google us english','samantha','google uk english female','allison','victoria','aria','karen','catherine','susan','female'];
-const MALE_VOICE_KEYS=['daniel','alex','tom','guy','david','google uk english male','fred','aaron','male'];
+const FEMALE_VOICE_KEYS=['zira','google us english','samantha','allison','google uk english female','victoria','karen','aria','catherine','susan','jenny','female'];
+const MALE_VOICE_KEYS=['david','alex','daniel','tom','guy','google uk english male','fred','aaron','male'];
 function pickVoice(gender){
   const list=_loadVoices();if(!list.length)return null;
   const enVoices=list.filter(v=>/^en[-_]/i.test(v.lang||''));
   const pool=enVoices.length?enVoices:list;
+  // Prefer local voices to avoid online/streaming TTS dropouts (e.g. Jenny Online stuttering).
+  const localPool=pool.filter(v=>v.localService!==false);
+  const tryPools=localPool.length?[localPool,pool]:[pool];
   const prefs=gender==='male'?MALE_VOICE_KEYS:FEMALE_VOICE_KEYS;
   const exclude=gender==='male'?'female':null;
-  for(const key of prefs){
-    const hit=pool.find(v=>{
-      const n=(v.name||'').toLowerCase();
-      if(!n.includes(key))return false;
-      if(exclude&&n.includes(exclude))return false;
-      return true;
-    });
-    if(hit)return hit;
+  for(const sub of tryPools){
+    for(const key of prefs){
+      const hit=sub.find(v=>{
+        const n=(v.name||'').toLowerCase();
+        if(!n.includes(key))return false;
+        if(exclude&&n.includes(exclude))return false;
+        return true;
+      });
+      if(hit)return hit;
+    }
   }
   return pool[0]||null;
 }
