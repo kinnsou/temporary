@@ -1,10 +1,42 @@
 {
   "meta": {
-    "updatedAt": "2026-04-25T14:58:42Z",
-    "sourceCount": 125,
-    "includedCount": 117
+    "updatedAt": "2026-04-26T11:01:07Z",
+    "sourceCount": 128,
+    "includedCount": 120
   },
   "words": [
+    {
+      "word": "white",
+      "meaning": "白色的；白的；白色",
+      "example": "My shoes are white.",
+      "translation": "我的鞋子是白色的。",
+      "firstSeen": "2026-04-26",
+      "pos": [
+        "adj",
+        "n"
+      ]
+    },
+    {
+      "word": "very",
+      "meaning": "非常；很",
+      "example": "It is very cold today.",
+      "translation": "今天很冷。",
+      "firstSeen": "2026-04-26",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "look",
+      "meaning": "看；看一看；看起來",
+      "example": "Look at the picture.",
+      "translation": "看看這張圖。",
+      "firstSeen": "2026-04-26",
+      "pos": [
+        "v",
+        "n"
+      ]
+    },
     {
       "word": "agree",
       "meaning": "同意",

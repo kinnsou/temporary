@@ -3,7 +3,7 @@
     "newWordsMustBeUniqueUntilExhausted": true,
     "reviewFormat": "guided_cloze_with_grammar_chunking",
     "sourceScope": "台灣普遍認定國中必會1000單",
-    "updatedAt": "2026-04-25T15:05:00Z"
+    "updatedAt": "2026-04-26T11:01:05Z"
   },
   "words": {
     "adventure": {
@@ -1118,6 +1118,44 @@
       "example_sentence": "I can catch the ball.",
       "translation": "我可以接住球。",
       "pos": "v"
+    },
+    "white": {
+      "first_seen": "2026-04-26",
+      "last_seen": "2026-04-26",
+      "pos": [
+        "adj",
+        "n"
+      ],
+      "meanings": [
+        "白色的；白的",
+        "白色"
+      ],
+      "example_sentence": "My shoes are white.",
+      "translation": "我的鞋子是白色的。"
+    },
+    "very": {
+      "first_seen": "2026-04-26",
+      "last_seen": "2026-04-26",
+      "pos": "adv",
+      "meanings": [
+        "非常；很"
+      ],
+      "example_sentence": "It is very cold today.",
+      "translation": "今天很冷。"
+    },
+    "look": {
+      "first_seen": "2026-04-26",
+      "last_seen": "2026-04-26",
+      "pos": [
+        "v",
+        "n"
+      ],
+      "meanings": [
+        "看；看一看",
+        "看起來"
+      ],
+      "example_sentence": "Look at the picture.",
+      "translation": "看看這張圖。"
     }
   }
 }
