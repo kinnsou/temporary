@@ -77,6 +77,17 @@ Minimum before claiming success or pushing UI/Firebase changes:
    - Firebase ready log/state exists
    - pet selection page shows pet names/cards when pet work is touched
 
+> **Origin note (added 2026-04-26 by Mark):** Step 3 exists because past sessions
+> pushed broken builds without self-checking and Mark had to debug them. The real
+> requirement is **functional self-verification**, not Playwright specifically. If
+> the change is small and you can confirm correctness by code reading + syntax
+> gates + reasoning that the diff matches the requested behavior, and you have no
+> browser tooling available, it's OK to ship — Mark will report visual-only
+> regressions as a follow-up. Hard blockers (syntax gate failure, missing/renamed
+> ops in `window.FB.ops`, Firebase boot breakage, pet/profile schema breaks) still
+> mean **do not ship**. The rule is "self-QA before push," not "Playwright or
+> bust."
+
 Known regression to avoid: deleting or renaming an op still referenced in `window.FB.ops` (for example `feedMyPet`) breaks Firebase boot and makes pet selection spin forever.
 
 ## Daily focus (today’s 3 new words)

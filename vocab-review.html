@@ -322,7 +322,7 @@ if(typeof window!=='undefined'&&window.speechSynthesis){
   _loadVoices();
   try{window.speechSynthesis.onvoiceschanged=_loadVoices;}catch{}
 }
-const FEMALE_VOICE_KEYS=['samantha','karen','victoria','allison','susan','aria','jenny','zira','catherine','google uk english female','google us english','female'];
+const FEMALE_VOICE_KEYS=['jenny','zira','google us english','samantha','google uk english female','allison','victoria','aria','karen','catherine','susan','female'];
 const MALE_VOICE_KEYS=['daniel','alex','tom','guy','david','google uk english male','fred','aaron','male'];
 function pickVoice(gender){
   const list=_loadVoices();if(!list.length)return null;
