@@ -322,8 +322,12 @@ if(typeof window!=='undefined'&&window.speechSynthesis){
   _loadVoices();
   try{window.speechSynthesis.onvoiceschanged=_loadVoices;}catch{}
 }
-const FEMALE_VOICE_KEYS=['zira','google us english','samantha','allison','google uk english female','victoria','karen','aria','catherine','susan','jenny','female'];
-const MALE_VOICE_KEYS=['david','alex','daniel','tom','guy','google uk english male','fred','aaron','male'];
+// Hard-pinned primary voices (Mark's preference confirmed on Windows + Edge).
+// On devices that don't have these, the broader priority list below kicks in.
+const FEMALE_VOICE_PIN='zira';
+const MALE_VOICE_PIN='david';
+const FEMALE_VOICE_KEYS=['zira','google us english','samantha','allison','google uk english female','victoria','karen','aria','catherine','susan','female'];
+const MALE_VOICE_KEYS=['david','alex','mark','google us english male','google uk english male','daniel','tom','guy','fred','aaron','male'];
 function pickVoice(gender){
   const list=_loadVoices();if(!list.length)return null;
   const enVoices=list.filter(v=>/^en[-_]/i.test(v.lang||''));
@@ -331,8 +335,20 @@ function pickVoice(gender){
   // Prefer local voices to avoid online/streaming TTS dropouts (e.g. Jenny Online stuttering).
   const localPool=pool.filter(v=>v.localService!==false);
   const tryPools=localPool.length?[localPool,pool]:[pool];
-  const prefs=gender==='male'?MALE_VOICE_KEYS:FEMALE_VOICE_KEYS;
   const exclude=gender==='male'?'female':null;
+  const primary=gender==='male'?MALE_VOICE_PIN:FEMALE_VOICE_PIN;
+  // Hard-pin first across local-then-full pool.
+  for(const sub of tryPools){
+    const hit=sub.find(v=>{
+      const n=(v.name||'').toLowerCase();
+      if(!n.includes(primary))return false;
+      if(exclude&&n.includes(exclude))return false;
+      return true;
+    });
+    if(hit)return hit;
+  }
+  // Fallback priority list for devices without the pin (iOS/Android etc).
+  const prefs=gender==='male'?MALE_VOICE_KEYS:FEMALE_VOICE_KEYS;
   for(const sub of tryPools){
     for(const key of prefs){
       const hit=sub.find(v=>{
@@ -352,7 +368,7 @@ function speakText(text,opts={}){
     window.speechSynthesis.cancel();
     const u=new SpeechSynthesisUtterance(String(text));
     const gender=opts.gender==='male'?'male':'female';
-    u.lang='en-US';u.rate=0.82;u.pitch=gender==='male'?0.95:1.05;
+    u.lang='en-US';u.rate=0.82;u.pitch=gender==='male'?1.0:1.05;
     const v=pickVoice(gender);if(v)u.voice=v;
     window.speechSynthesis.speak(u);
   }catch{}
