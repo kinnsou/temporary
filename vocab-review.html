@@ -362,6 +362,19 @@ function pickVoice(gender){
   }
   return pool[0]||null;
 }
+function isLineWebView(){
+  return typeof navigator!=='undefined'&&/\bLine\//i.test(navigator.userAgent||'');
+}
+function LineWebViewBanner(){
+  const [dismissed,setDismissed]=useState(()=>{try{return localStorage.getItem('vocab.lineNoticeDismissed')==='1';}catch{return false;}});
+  if(!isLineWebView()||dismissed)return null;
+  const close=()=>{setDismissed(true);try{localStorage.setItem('vocab.lineNoticeDismissed','1');}catch{}};
+  return(<div style={{position:'absolute',top:0,left:0,right:0,zIndex:200,background:'#fff7ed',color:'#9a3412',padding:'10px 32px 10px 12px',fontSize:11,fontWeight:800,lineHeight:1.45,boxShadow:'0 2px 8px rgba(0,0,0,0.08)'}}>
+    <div>⚠️ LINE 內建瀏覽器無法登入、儲存進度會失敗</div>
+    <div style={{fontWeight:700,opacity:0.85,marginTop:2}}>請點右上角 ⋯ → 選「在瀏覽器中開啟」（Chrome / Safari）</div>
+    <button onClick={close} aria-label="關閉提示" style={{position:'absolute',top:6,right:6,background:'transparent',border:'none',color:'#9a3412',fontSize:13,fontWeight:900,cursor:'pointer',padding:4,lineHeight:1}}>✕</button>
+  </div>);
+}
 function speakText(text,opts={}){
   try{
     if(!text||!window.speechSynthesis)return;
@@ -741,7 +754,8 @@ function CharSelectScreen({current,onSelect,onBack,pc,fb,refreshFb}){
       if(!list.length)setErr('目前沒有寵物資料，請按右上角 ↻ 重試');
     }
     catch(e){
-      const msg=e.message==='firebase-not-ready'?'Firebase 還沒連上，請稍後按 ↻ 重試':'寵物清單載入失敗：'+e.message;
+      const lineHint='LINE 內建瀏覽器無法登入。請點右上角 ⋯ → 在瀏覽器中開啟';
+      const msg=e.message==='firebase-not-ready'?(isLineWebView()?lineHint:'Firebase 還沒連上，請稍後按 ↻ 重試'):'寵物清單載入失敗：'+e.message;
       setErr(msg);
     }
     finally{setLoading(false);}
@@ -1391,10 +1405,12 @@ function App(){
   }
 
   if(!profile)return(<div style={{width:'100%',height:'100%',position:'relative'}}>
+    <LineWebViewBanner/>
     <OnboardingScreen onDone={p=>{setProfile(p);setScreen('home');}} pc={pc}/>
   </div>);
 
   return(<div style={{width:'100%',height:'100%',position:'relative'}}>
+    <LineWebViewBanner/>
     {screen==='home'&&<HomeScreen charSrc={charSrc} charName={charName} studentName={studentName} stats={displayStats} todaySet={todaySet} flashPool={flashPool} dateLabel={dateLabel} onNav={nav} onSelectChar={()=>setScreen('charselect')} pc={pc} fb={fb} refreshFb={refreshFb}/>}
     {screen==='charselect'&&<CharSelectScreen current={charIdx} fb={fb} refreshFb={refreshFb} onSelect={async petId=>{
       if(window.FB&&petId){
