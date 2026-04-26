@@ -163,6 +163,7 @@ Reference implementation: 2026-04-25 cleanup pass — see Changelog below for co
 
 Newest first. Format: `YYYY-MM-DD [agent] commit `hash` — one-line summary`.
 
+- 2026-04-26 [Claude Code] `4408143` — fix mobile false-negative "Firebase 還沒連上" on CharSelect: replaced 3s polling (20×150ms) in `loadPets` with `fbready` event race vs 12s timeout. Mobile cold-start Anonymous Auth + Firestore commonly takes 5–10s on cellular — old timeout under-served mobile users while desktop wifi met it. Lesson: Firebase boot wait windows in the UI must accommodate cellular cold start, not just desktop wifi.
 - 2026-04-26 [Claude Code] `da140f1` — hard-pin Zira (female) and David (male) ahead of priority list; Mark confirmed Zira is the desired female tone, David is "good enough, no stuttering" for male. Male pitch reset 0.95→1.0. Pin degrades gracefully on iOS/macOS (where Zira/David don't exist) by falling through to the keyword priority list.
 - 2026-04-26 [Claude Code] `2608db3` — pickVoice prefers `localService===true` voices first; Jenny (Online streaming, was stuttering) demoted to last; Zira / Google US English promoted on the local-voice tier; David promoted on male side. Lesson: avoid online neural voices in `speechSynthesis` priority lists — they break up under load.
 - 2026-04-26 [Claude Code] `c094efb` — younger female voice tuning (Jenny/Zira/Google US English ranked above Aria) + Verification-gate origin note clarifying the rule is self-QA, not Playwright.
