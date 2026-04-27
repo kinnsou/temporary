@@ -991,7 +991,8 @@ function FlashScreen({charSrc,flashAll,knownWords,refreshFb,onNav,pc,voiceGender
       </div>
     </div>
 
-    <div className="scroll-body" style={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',padding:'0 22px 12px',gap:16}}>
+    <div className="scroll-body" style={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',padding:'14px 22px 12px',gap:16}}>
+      <div style={{width:'100%',position:'relative'}}>
       <div onClick={()=>setFlipped(f=>!f)} style={{width:'100%',background:'#fff',borderRadius:28,boxShadow:'0 6px 28px rgba(0,0,0,0.09)',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',padding:'28px 24px',gap:10,cursor:'pointer',minHeight:240,animation:'pop 0.2s ease-out',position:'relative',overflow:'hidden'}}>
         <div style={{position:'absolute',top:0,left:0,right:0,height:4,background:`linear-gradient(90deg,${catColor},${catColor}66)`,borderRadius:'28px 28px 0 0'}}/>
         <div style={{fontSize:11,fontWeight:800,color:catColor,letterSpacing:1,opacity:0.8}}>{catLabel(card.cat)}</div>
@@ -1020,29 +1021,29 @@ function FlashScreen({charSrc,flashAll,knownWords,refreshFb,onNav,pc,voiceGender
         })()}
         {tab==='known'&&<div style={{position:'absolute',top:12,right:14,fontSize:16}}>✅</div>}
       </div>
-
-      <div style={{position:'relative',width:60,height:60}}>
-        {speakTick>0&&(
-          <div key={speakTick} style={{position:'absolute',top:'50%',left:'50%',width:0,height:0,pointerEvents:'none'}} aria-hidden>
-            {[-150,-120,-90,-60,-30].map((deg,i)=>(
-              <span key={i} style={{position:'absolute',top:-1.5,left:0,width:12,height:3,marginLeft:0,borderRadius:2,background:catColor,transformOrigin:'left center',['--ang']:`${deg}deg`,transform:`rotate(${deg}deg) translateX(22px) scaleX(0.35)`,animation:'speakBurst 0.55s ease-out forwards',animationDelay:`${i*40}ms`,opacity:0}}/>
-            ))}
-          </div>
-        )}
-        <button onClick={(e)=>{e.stopPropagation();speakText(flipped?(card.en||card.word):card.word,{gender:voiceGender});setSpeakTick(t=>t+1);}} aria-label="播放發音" title="點我發音" style={{border:'none',background:'transparent',padding:0,cursor:'pointer',display:'block'}}>
-          <img src={charSrc} alt="" style={{width:60,height:60,objectFit:'contain',display:'block'}}/>
-        </button>
+        <div style={{position:'absolute',top:-14,right:-6,width:54,height:54,zIndex:5}}>
+          {speakTick>0&&(
+            <div key={speakTick} style={{position:'absolute',top:'50%',left:'50%',width:0,height:0,pointerEvents:'none'}} aria-hidden>
+              {[-150,-120,-90,-60,-30].map((deg,i)=>(
+                <span key={i} style={{position:'absolute',top:-1.5,left:0,width:12,height:3,marginLeft:0,borderRadius:2,background:catColor,transformOrigin:'left center',['--ang']:`${deg}deg`,transform:`rotate(${deg}deg) translateX(22px) scaleX(0.35)`,animation:'speakBurst 0.55s ease-out forwards',animationDelay:`${i*40}ms`,opacity:0}}/>
+              ))}
+            </div>
+          )}
+          <button onClick={(e)=>{e.stopPropagation();speakText(flipped?(card.en||card.word):card.word,{gender:voiceGender});setSpeakTick(t=>t+1);}} aria-label="播放發音" title="點我發音" style={{border:'none',background:'transparent',padding:0,cursor:'pointer',display:'block',animation:'float 3s ease-in-out infinite',filter:'drop-shadow(0 3px 6px rgba(0,0,0,0.18))'}}>
+            <img src={charSrc} alt="" style={{width:54,height:54,objectFit:'contain',display:'block'}}/>
+          </button>
+        </div>
       </div>
     </div>
 
-    <div style={{padding:'0 20px 10px',display:'flex',gap:10,flexShrink:0}}>
-      <button onClick={goPrev} disabled={idx===0} style={{flex:1,padding:13,borderRadius:16,border:'1.5px solid #f0eaea',background:'#fff',fontSize:13,fontWeight:800,color:'#aaa',cursor:'pointer',opacity:idx===0?0.4:1,fontFamily:'inherit'}}>← 上一張</button>
+    <div style={{padding:'0 16px 6px',display:'flex',gap:8,flexShrink:0}}>
+      <button onClick={goPrev} disabled={idx===0} style={{flex:1,padding:'6px 10px',borderRadius:12,border:'1.5px solid #f0eaea',background:'#fff',fontSize:12,fontWeight:800,color:'#aaa',cursor:'pointer',opacity:idx===0?0.4:1,fontFamily:'inherit'}}>← 上一張</button>
       {tab==='unfamiliar'?(
-        <button onClick={handleMarkKnown} disabled={busy} style={{flex:1.6,padding:13,borderRadius:16,border:`1.5px solid ${pc}44`,background:`${pc}12`,fontSize:13,fontWeight:900,color:pc,cursor:busy?'wait':'pointer',fontFamily:'inherit',opacity:busy?0.6:1}}>{busy?'…':'✅ 我會了'}</button>
+        <button onClick={handleMarkKnown} disabled={busy} style={{flex:1.6,padding:'6px 10px',borderRadius:12,border:`1.5px solid ${pc}44`,background:`${pc}12`,fontSize:12,fontWeight:900,color:pc,cursor:busy?'wait':'pointer',fontFamily:'inherit',opacity:busy?0.6:1}}>{busy?'…':'✅ 我會了'}</button>
       ):(
-        <button onClick={handleMarkUnknown} disabled={busy} style={{flex:1.6,padding:13,borderRadius:16,border:'1.5px solid #fde2e6',background:'#fff5f7',fontSize:13,fontWeight:900,color:'#fb7185',cursor:busy?'wait':'pointer',fontFamily:'inherit',opacity:busy?0.6:1}}>{busy?'…':'↩ 移回未熟練'}</button>
+        <button onClick={handleMarkUnknown} disabled={busy} style={{flex:1.6,padding:'6px 10px',borderRadius:12,border:'1.5px solid #fde2e6',background:'#fff5f7',fontSize:12,fontWeight:900,color:'#fb7185',cursor:busy?'wait':'pointer',fontFamily:'inherit',opacity:busy?0.6:1}}>{busy?'…':'↩ 移回未熟練'}</button>
       )}
-      <button onClick={goNext} disabled={idx>=cards.length-1} style={{flex:1,padding:13,borderRadius:16,border:'none',background:`linear-gradient(135deg,${pc},${pc}bb)`,fontSize:13,fontWeight:900,color:'#fff',cursor:'pointer',opacity:idx>=cards.length-1?0.5:1,fontFamily:'inherit'}}>下一張 →</button>
+      <button onClick={goNext} disabled={idx>=cards.length-1} style={{flex:1,padding:'6px 10px',borderRadius:12,border:'none',background:`linear-gradient(135deg,${pc},${pc}bb)`,fontSize:12,fontWeight:900,color:'#fff',cursor:'pointer',opacity:idx>=cards.length-1?0.5:1,fontFamily:'inherit'}}>下一張 →</button>
     </div>
     <BottomNav screen="flash" onNav={onNav} pc={pc}/>
   </div>);
@@ -1183,6 +1184,12 @@ function QuizScreen({charSrc,quizPool,knownWords,onFinish,onNav,pc,refreshFb,voi
   const bdrBtn=(label,correctLabel)=>{if(!selected)return'2px solid #f0eaea';if(normalizeAnswer(label)===normalizeAnswer(correctLabel))return'2px solid #4CAF82';if(normalizeAnswer(label)===normalizeAnswer(selected))return'2px solid #FF4D6D';return'2px solid #f5f5f5';};
 
   // ─ Render question card per type ─
+  const giveUpBtn=(!selected&&!clozeResult)?(
+    <div style={{textAlign:'center',paddingTop:6,paddingBottom:4}}>
+      <button onClick={giveUp} style={{padding:'7px 16px',borderRadius:14,border:'none',background:'linear-gradient(135deg,#fb7185,#fb7185cc)',fontSize:11,fontWeight:900,color:'#fff',cursor:'pointer',fontFamily:'inherit',boxShadow:'0 3px 10px rgba(251,113,133,0.30)'}}>放棄此題（進未熟練）</button>
+    </div>
+  ):null;
+
   let questionCard,answerArea;
 
   if(q.type==='zh2en'){
@@ -1207,6 +1214,7 @@ function QuizScreen({charSrc,quizPool,knownWords,onFinish,onNav,pc,refreshFb,voi
             {selected&&normalizeAnswer(opt.word)===normalizeAnswer(selected)&&normalizeAnswer(opt.word)!==normalizeAnswer(correct.word)&&<span style={{fontSize:16,flexShrink:0}}>✗</span>}
           </button>
         ))}
+        {giveUpBtn}
       </div>
     );
   } else if(q.type==='cloze'){
@@ -1240,6 +1248,7 @@ function QuizScreen({charSrc,quizPool,knownWords,onFinish,onNav,pc,refreshFb,voi
           {isCorrect?'✓ 答對了！':`✗ 正確答案：${q.correct}`}
         </div>}
         {!locked&&<button onClick={submitCloze} disabled={!clozeInput.trim()} style={{padding:14,borderRadius:16,border:'none',cursor:'pointer',background:`linear-gradient(135deg,${theme.color},${theme.color}bb)`,fontSize:15,fontWeight:900,color:'#fff',boxShadow:`0 4px 14px ${theme.color}44`,opacity:clozeInput.trim()?1:0.4,transition:'opacity 0.2s',fontFamily:'inherit'}}>送出答案</button>}
+        {giveUpBtn}
       </div>
     );
   } else if(q.type==='tense'){
@@ -1271,6 +1280,7 @@ function QuizScreen({charSrc,quizPool,knownWords,onFinish,onNav,pc,refreshFb,voi
             {selected&&normalizeAnswer(opt)===normalizeAnswer(selected)&&normalizeAnswer(opt)!==normalizeAnswer(q.correct)&&<span style={{fontSize:14,marginLeft:8}}>✗</span>}
           </button>
         ))}
+        {giveUpBtn}
       </div>
     );
   }
@@ -1301,9 +1311,6 @@ function QuizScreen({charSrc,quizPool,knownWords,onFinish,onNav,pc,refreshFb,voi
       </div>
       {questionCard}
       {answerArea}
-      {!selected&&!clozeResult&&<div style={{textAlign:'center',padding:'4px 0 6px',flexShrink:0}}>
-        <button onClick={giveUp} style={{padding:'8px 18px',borderRadius:14,border:'none',background:'linear-gradient(135deg,#fb7185,#fb7185cc)',fontSize:12,fontWeight:900,color:'#fff',cursor:'pointer',fontFamily:'inherit',boxShadow:'0 3px 10px rgba(251,113,133,0.35)'}}>放棄此題（進未熟練）</button>
-      </div>}
     </div>
     <div style={{textAlign:'center',padding:'6px 0',flexShrink:0}}>
       <span style={{fontSize:11,color:'#ccc',fontWeight:700}}>⭐ {xp} EXP 已獲得</span>
