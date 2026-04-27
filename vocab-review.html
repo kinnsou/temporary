@@ -1107,6 +1107,7 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,pc,refr
   const [hintsLeft,setHintsLeft]=useState(HINT_BUDGET);
   const [hintRevealed,setHintRevealed]=useState(false); // tense hint shown
   const [hiddenOpts,setHiddenOpts]=useState(new Set()); // zh2en eliminated wrong options
+  const [hintUsedThisQ,setHintUsedThisQ]=useState(false); // per-question lock — only 1 hint debit per question
   const [hintFx,setHintFx]=useState(0);
   const inputRef=useRef(null);
 
@@ -1118,10 +1119,12 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,pc,refr
     // Reset per-question hint state
     setHintRevealed(false);
     setHiddenOpts(new Set());
+    setHintUsedThisQ(false);
   },[idx,questions]);
 
   const usePetHint=()=>{
     if(hintsLeft<=0)return;
+    if(hintUsedThisQ)return; // already debited this question — additional taps do nothing
     const cur=questions[idx];
     if(!cur||selected||clozeResult)return;
     if(cur.type==='zh2en'){
@@ -1132,9 +1135,9 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,pc,refr
     }else if(cur.type==='cloze'){
       try{speakText(cur.correct,{gender:voiceGender});}catch(e){console.warn('speak failed',e);}
     }else if(cur.type==='tense'){
-      if(hintRevealed)return;
       setHintRevealed(true);
     }else return;
+    setHintUsedThisQ(true);
     setHintsLeft(n=>Math.max(0,n-1));
     setHintFx(t=>t+1);
   };
@@ -1325,10 +1328,10 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,pc,refr
 
     <div style={{flex:1,display:'flex',flexDirection:'column',padding:'4px 20px 0',overflow:'hidden'}}>
       <div style={{display:'flex',justifyContent:'center',alignItems:'center',gap:8,marginBottom:4,paddingTop:22,flexShrink:0,position:'relative',overflow:'visible'}}>
-        <button onClick={usePetHint} disabled={hintsLeft<=0||!!selected||!!clozeResult} title={hintsLeft>0?'點寵物用提示':'提示用完了'} aria-label="寵物提示" style={{border:'none',background:'transparent',padding:0,cursor:hintsLeft>0&&!selected&&!clozeResult?'pointer':'default',position:'relative',width:48,height:48}}>
+        <button onClick={usePetHint} disabled={hintsLeft<=0||hintUsedThisQ||!!selected||!!clozeResult} title={hintUsedThisQ?'這題已用過提示':(hintsLeft>0?'點寵物用提示':'提示用完了')} aria-label="寵物提示" style={{border:'none',background:'transparent',padding:0,cursor:hintsLeft>0&&!hintUsedThisQ&&!selected&&!clozeResult?'pointer':'default',position:'relative',width:48,height:48}}>
           <span style={{display:'block',width:48,height:48,animation:'float 3s ease-in-out infinite'}}>
-            <img src={charSrc} alt="" style={{width:48,height:48,objectFit:'contain',filter:hintsLeft<=0?'grayscale(0.7) opacity(0.55)':'none',transition:'filter 0.2s'}}/>
-            {hintsLeft>0&&!selected&&!clozeResult&&<span style={{position:'absolute',top:-6,right:-2,fontSize:18,lineHeight:1,filter:'drop-shadow(0 1px 2px rgba(0,0,0,0.18))'}}>💡</span>}
+            <img src={charSrc} alt="" style={{width:48,height:48,objectFit:'contain',filter:(hintsLeft<=0||hintUsedThisQ)?'grayscale(0.7) opacity(0.55)':'none',transition:'filter 0.2s'}}/>
+            {hintsLeft>0&&!hintUsedThisQ&&!selected&&!clozeResult&&<span style={{position:'absolute',top:-6,right:-2,fontSize:18,lineHeight:1,filter:'drop-shadow(0 1px 2px rgba(0,0,0,0.18))'}}>💡</span>}
           </span>
           {hintFx>0&&<span key={hintFx} style={{position:'absolute',top:-6,right:-2,fontSize:20,animation:'pop 0.4s ease-out',lineHeight:1,pointerEvents:'none'}}>✨</span>}
         </button>
