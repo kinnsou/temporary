@@ -543,8 +543,9 @@ function PetCard({fb,refreshFb,onSelectPet,onStart,pc}){
   const foodCount=profile.foodCount|0;
   const level=profile.level||1;
   const totalExp=profile.totalExp!==undefined?Math.max(0,Math.round(Number(profile.totalExp)||0)):estimateTotalExpForLevel(level,profile.exp||0);
-  const lvLabel=<span style={{fontSize:12,color:pc,fontWeight:900,display:'inline-flex',alignItems:'center',gap:4}}><span style={{fontSize:13}}>⭐</span>LV {level}</span>;
-  const totalExpLabel=<span style={{fontSize:11,color:'#94a3b8',fontWeight:900,marginLeft:8}}>總EXP {totalExp}</span>;
+  const LV_COLOR='#a78bfa';
+  const lvLabel=<span style={{fontSize:12,color:LV_COLOR,fontWeight:900,display:'inline-flex',alignItems:'center',gap:5}}><span style={{fontSize:13}}>⭐</span>LV{level}<span style={{color:'#cbd5e1',fontWeight:700,margin:'0 2px'}}>∣</span>EXP {totalExp}</span>;
+  const totalExpLabel=null;
   const helpers=window.FB?.helpers;
   const curHp=pet&&helpers?helpers.calcCurrentHp(pet):0;
   const isVisitor=!pet;
@@ -905,8 +906,8 @@ function CharSelectScreen({current,onSelect,onBack,pc,fb,refreshFb}){
       <div style={{display:'flex',gap:8}}>
         <input value={rename} onChange={e=>setRename(e.target.value)} maxLength={24} placeholder="幫牠取個怪名字…" style={{flex:1,minWidth:0,padding:'10px 12px',borderRadius:12,border:'2px solid #eef2f7',fontSize:14,fontWeight:800,fontFamily:'inherit',outline:'none'}}/>
         <button onClick={doRename} style={{padding:'0 12px',borderRadius:12,border:'none',background:`linear-gradient(135deg,${pc},${pc}bb)`,color:'#fff',fontSize:12,fontWeight:900,fontFamily:'inherit',cursor:'pointer'}}>改名</button>
+        <button onClick={doRelease} style={{padding:'0 12px',borderRadius:12,border:'none',background:'linear-gradient(135deg,#fb7185,#fb7185cc)',color:'#fff',fontSize:12,fontWeight:900,fontFamily:'inherit',cursor:'pointer'}}>💔 釋放</button>
       </div>
-      <button onClick={doRelease} style={{marginTop:8,width:'100%',padding:10,borderRadius:12,border:'1.5px solid #fecdd3',background:'#fff1f2',color:'#e11d48',fontSize:12,fontWeight:900,fontFamily:'inherit',cursor:'pointer'}}>💔 釋放這隻寵物</button>
     </div>}
 
     {err&&<div style={{margin:'0 18px 10px',background:'#fff4e5',color:'#b75d00',fontSize:12,fontWeight:800,padding:'8px 12px',borderRadius:12,textAlign:'center'}}>{err}</div>}
@@ -1047,7 +1048,6 @@ function FlashScreen({charSrc,flashAll,knownWords,refreshFb,onNav,pc,voiceGender
             {(card.zh2||card.zh)&&<div style={{borderTop:'1px dashed #e8e0e0',width:'100%',marginTop:6,paddingTop:10,fontSize:14,color:'#333',textAlign:'center',fontWeight:700}}>「{card.zh2||card.zh}」</div>}
           </>);
         })()}
-        {tab==='known'&&<div style={{position:'absolute',top:12,right:14,fontSize:16}}>✅</div>}
       </div>
         <div style={{position:'absolute',top:15,right:12,width:54,height:54,zIndex:5}}>
           {speakTick>0&&(
@@ -1089,10 +1089,11 @@ function Blank({width=78,color='#555',filled}){
   return(<span style={{display:'inline-block',minWidth:width,padding:'0 6px',margin:'0 4px',borderBottom:`2px solid ${color}`,textAlign:'center',fontWeight:900,color:filled?color:'transparent',verticalAlign:'baseline',lineHeight:1.2,letterSpacing:1,fontFamily:filled?'monospace':'inherit'}}>{filled||'＿'}</span>);
 }
 
-function QuizScreen({charSrc,quizPool,knownWords,onFinish,onNav,pc,refreshFb,voiceGender='female'}){
+function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,pc,refreshFb,voiceGender='female'}){
   const TOTAL=Math.min(15,quizPool.length);
   const knownSet=useMemo(()=>new Set(knownWords||[]),[knownWords]);
   const [questions]=useState(()=>buildQuizItems(quizPool,TOTAL,knownSet));
+  const HINT_BUDGET=3;
   const [idx,setIdx]=useState(0);
   const [selected,setSel]=useState(null);   // for zh2en/tense: chosen option string; for cloze: 'submitted' marker
   const [clozeInput,setClozeInput]=useState('');
@@ -1103,7 +1104,7 @@ function QuizScreen({charSrc,quizPool,knownWords,onFinish,onNav,pc,refreshFb,voi
   const [showConf,setConf]=useState(false);
   const [xpMsg,setXpMsg]=useState(null);
   const [shaking,setShaking]=useState(false);
-  const [hintsLeft,setHintsLeft]=useState(2);
+  const [hintsLeft,setHintsLeft]=useState(HINT_BUDGET);
   const [hintRevealed,setHintRevealed]=useState(false); // tense hint shown
   const [hiddenOpts,setHiddenOpts]=useState(new Set()); // zh2en eliminated wrong options
   const [hintFx,setHintFx]=useState(0);
@@ -1291,11 +1292,7 @@ function QuizScreen({charSrc,quizPool,knownWords,onFinish,onNav,pc,refreshFb,voi
           <Blank width={90} color={selected?'#4CAF82':theme.color} filled={selected?q.correct:null}/>
           <span>{q.after}</span>
         </div>
-        <div style={{textAlign:'center'}}>
-          <span style={{fontSize:12,color:'#888',fontWeight:700}}>原形：</span>
-          <span style={{fontFamily:'monospace',fontSize:14,fontWeight:900,color:theme.color,background:`${theme.color}18`,padding:'3px 12px',borderRadius:14,letterSpacing:1}}>{q.baseWord}</span>
-        </div>
-        {hintRevealed&&q.tenseHint&&<div style={{fontSize:12,fontWeight:800,color:theme.color,background:`${theme.color}14`,padding:'7px 12px',borderRadius:14,textAlign:'center',animation:'pop 0.25s ease-out'}}>💡 {q.tenseHint}</div>}
+        {hintRevealed&&q.tenseHint&&<div style={{fontSize:12,fontWeight:800,color:theme.color,background:`${theme.color}14`,padding:'7px 12px',borderRadius:14,textAlign:'center',animation:'pop 0.25s ease-out'}}>💡 {q.tenseHint}（原形：<span style={{fontFamily:'monospace',fontWeight:900,letterSpacing:1}}>{q.baseWord}</span>）</div>}
         {q.zh2&&<div style={{fontSize:12,color:'#aaa',textAlign:'center',fontStyle:'italic'}}>「{q.zh2}」</div>}
       </div>
     );
@@ -1335,7 +1332,7 @@ function QuizScreen({charSrc,quizPool,knownWords,onFinish,onNav,pc,refreshFb,voi
           </span>
           {hintFx>0&&<span key={hintFx} style={{position:'absolute',top:-6,right:-2,fontSize:20,animation:'pop 0.4s ease-out',lineHeight:1,pointerEvents:'none'}}>✨</span>}
         </button>
-        <div style={{fontSize:11,fontWeight:800,color:hintsLeft>0?pc:'#bbb',background:hintsLeft>0?`${pc}18`:'#f0f0f0',padding:'4px 10px',borderRadius:14,whiteSpace:'nowrap'}}>提示 {hintsLeft}/2</div>
+        <div style={{fontSize:11,fontWeight:800,color:hintsLeft>0?pc:'#bbb',background:hintsLeft>0?`${pc}18`:'#f0f0f0',padding:'4px 10px',borderRadius:14,whiteSpace:'nowrap'}}>{(charName||'寵物')}提示 {hintsLeft}/{HINT_BUDGET}</div>
       </div>
       {questionCard}
       {answerArea}
@@ -1682,7 +1679,7 @@ function App(){
       setScreen('home');
     }} onBack={()=>setScreen('home')} pc={pc}/>}
     {screen==='flash'&&<FlashScreen charSrc={charSrc} flashAll={quizPool} knownWords={fb?.profile?.knownWords||[]} refreshFb={refreshFb} onNav={nav} pc={pc} voiceGender={fb?.pet?.voiceGender==='male'?'male':'female'}/>}
-    {screen==='quiz'&&<QuizScreen charSrc={charSrc} quizPool={quizPool} knownWords={fb?.profile?.knownWords||[]} onFinish={handleFinish} onNav={nav} pc={pc} refreshFb={refreshFb} voiceGender={fb?.pet?.voiceGender==='male'?'male':'female'}/>}
+    {screen==='quiz'&&<QuizScreen charSrc={charSrc} charName={charName} quizPool={quizPool} knownWords={fb?.profile?.knownWords||[]} onFinish={handleFinish} onNav={nav} pc={pc} refreshFb={refreshFb} voiceGender={fb?.pet?.voiceGender==='male'?'male':'female'}/>}
     {screen==='result'&&result&&<ResultScreen {...result} charSrc={charSrc} charName={charName} onRetry={()=>setScreen('quiz')} onHome={()=>setScreen('home')} pc={pc}/>}
     {screen==='rank'&&<RankScreen uid={fb?.uid} studentName={studentName} charIdx={charIdx} stats={displayStats} onNav={nav} pc={pc} cloudEntries={cloudEntries} cloudStreakEntries={cloudStreakEntries} cloudStatus={cloudStatus} onRefresh={refreshLeaderboard}/>}
     {levelUpInfo&&<LevelUpModal level={levelUpInfo.level} unlocked={levelUpInfo.unlocked||[]} pc={pc} onClose={handleCloseLevelUp}/>}
