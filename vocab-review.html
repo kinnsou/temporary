@@ -1120,7 +1120,15 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,pc,refr
     setHintRevealed(false);
     setHiddenOpts(new Set());
     setHintUsedThisQ(false);
+    setHintFx(0);
   },[idx,questions]);
+
+  // Auto-clear the ✨ pop overlay after its animation finishes (~0.4s)
+  useEffect(()=>{
+    if(hintFx<=0)return;
+    const t=setTimeout(()=>setHintFx(0),500);
+    return()=>clearTimeout(t);
+  },[hintFx]);
 
   const usePetHint=()=>{
     if(hintsLeft<=0)return;
@@ -1957,15 +1965,24 @@ async function listPets() {
     if (snap.empty) return seedPetList(now);
   }
   const out = [];
-  const staleDisabled = [];
+  const reborn = [];
+  const usersToClear = new Set();
   snap.forEach(d => {
     const pet = d.data();
     const hp = calcCurrentHp(pet, now);
-    const status = hp <= 0 ? 'disabled' : (pet.status || 'available');
-    if (hp <= 0 && (pet.status !== 'disabled' || pet.ownerUid)) staleDisabled.push({ id: d.id, ref: d.ref });
-    out.push({ id: d.id, ...pet, hp, status });
+    if (hp <= 0 && (pet.ownerUid || pet.status === 'disabled')) {
+      // Starved or legacy-disabled → auto-release and reset to a fresh available pet
+      // so abandoned accounts don't lock pets forever.
+      reborn.push({ id: d.id, ref: d.ref, prevOwner: pet.ownerUid || null });
+      if (pet.ownerUid) usersToClear.add(pet.ownerUid);
+      out.push({ id: d.id, ...pet, hp:100, status:'available', ownerUid:null, ownerName:null });
+    } else {
+      out.push({ id: d.id, ...pet, hp, status: pet.status || 'available' });
+    }
   });
-  await Promise.all(staleDisabled.map(p => updateDoc(p.ref, { hp:0, status:'disabled', ownerUid:null, ownerName:null, lastHpUpdate: now, updatedAt: now }).catch(()=>{})));
+  await Promise.all(reborn.map(p => updateDoc(p.ref, { hp:100, status:'available', ownerUid:null, ownerName:null, lastHpUpdate: now, updatedAt: now }).catch(()=>{})));
+  // Clear dangling currentPetId on the previous owners so they go through CharSelect again
+  await Promise.all([...usersToClear].map(uid => updateDoc(doc(db, 'users', uid), { currentPetId: null, updatedAt: now }).catch(()=>{})));
   return out.sort((a,b)=>String(a.id).localeCompare(String(b.id)));
 }
 
@@ -2000,14 +2017,19 @@ async function claimPet(uid, petId) {
     }
 
     const curHp = calcCurrentHp(pet, now);
-    if (curHp <= 0 || pet.status === 'disabled') {
-      tx.update(petRef, { hp:0, status:'disabled', ownerUid:null, ownerName:null, lastHpUpdate: now, updatedAt: now });
-      if (user.currentPetId === petId) tx.update(userRef, { currentPetId: null, updatedAt: now });
-      throw new Error('pet-disabled');
-    }
-    if (pet.ownerUid && pet.ownerUid !== uid) throw new Error('pet-taken');
+    const isStarved = curHp <= 0 || pet.status === 'disabled';
+    // Pets only block claims when they are alive AND owned by someone else.
+    // Starved/disabled pets are reborn (hp=100) and handed to whoever claims next.
+    if (!isStarved && pet.ownerUid && pet.ownerUid !== uid) throw new Error('pet-taken');
 
-    const claimHp = (releasedHp != null) ? Math.min(curHp, releasedHp) : curHp;
+    // Reborn handoff: clear the previous owner's currentPetId so they go through CharSelect again next login
+    if (isStarved && pet.ownerUid && pet.ownerUid !== uid) {
+      tx.update(doc(db, 'users', pet.ownerUid), { currentPetId: null, updatedAt: now });
+    }
+
+    const claimHp = isStarved
+      ? 100
+      : ((releasedHp != null) ? Math.min(curHp, releasedHp) : curHp);
     const claimPatch = {
       ownerUid: uid, ownerName: user.name || '匿名玩家', status: 'owned',
       hp: claimHp, lastHpUpdate: now, updatedAt: now,
