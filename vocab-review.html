@@ -1648,7 +1648,7 @@ function App(){
       const p={...profile,charIdx:idx,petId};setProfile(p);saveProfile(p);
       setScreen('home');
     }} onBack={()=>setScreen('home')} pc={pc}/>}
-    {screen==='flash'&&<FlashScreen charSrc={charSrc} flashAll={vocabAll||[]} knownWords={fb?.profile?.knownWords||[]} refreshFb={refreshFb} onNav={nav} pc={pc} voiceGender={fb?.pet?.voiceGender==='male'?'male':'female'}/>}
+    {screen==='flash'&&<FlashScreen charSrc={charSrc} flashAll={quizPool} knownWords={fb?.profile?.knownWords||[]} refreshFb={refreshFb} onNav={nav} pc={pc} voiceGender={fb?.pet?.voiceGender==='male'?'male':'female'}/>}
     {screen==='quiz'&&<QuizScreen charSrc={charSrc} quizPool={quizPool} knownWords={fb?.profile?.knownWords||[]} onFinish={handleFinish} onNav={nav} pc={pc} refreshFb={refreshFb} voiceGender={fb?.pet?.voiceGender==='male'?'male':'female'}/>}
     {screen==='result'&&result&&<ResultScreen {...result} charSrc={charSrc} charName={charName} onRetry={()=>setScreen('quiz')} onHome={()=>setScreen('home')} pc={pc}/>}
     {screen==='rank'&&<RankScreen uid={fb?.uid} studentName={studentName} charIdx={charIdx} stats={displayStats} onNav={nav} pc={pc} cloudEntries={cloudEntries} cloudStreakEntries={cloudStreakEntries} cloudStatus={cloudStatus} onRefresh={refreshLeaderboard}/>}
