@@ -131,12 +131,44 @@ function numToEnglish(n){
   return String(n); // ≥100 fallback to digits
 }
 
+/* ══ Level / unlock helpers ══════════════════════════════ */
+const LV1_SIZE=20;
+const LV_INCREMENT=5;
+function unlockedCountForLevel(level){
+  const lv=Math.max(1,level|0);
+  return LV1_SIZE+(lv-1)*LV_INCREMENT;
+}
+function unlockedWords(allWords,difficultyOrder,level){
+  const want=unlockedCountForLevel(level);
+  const wordToObj=new Map(allWords.map(w=>[w.word,w]));
+  const seen=new Set();
+  const out=[];
+  for(let i=0;i<difficultyOrder.length&&out.length<want;i++){
+    const obj=wordToObj.get(difficultyOrder[i]);
+    if(obj){out.push(obj);seen.add(obj.word);}
+  }
+  if(out.length<want){
+    const rest=allWords
+      .filter(w=>!seen.has(w.word))
+      .sort((a,b)=>String(a.firstSeen||a.date||'').localeCompare(String(b.firstSeen||b.date||'')));
+    for(const w of rest){if(out.length>=want)break;out.push(w);seen.add(w.word);}
+  }
+  return out;
+}
+function newlyUnlockedWords(difficultyOrder,allWords,oldLevel,newLevel){
+  if(newLevel<=oldLevel)return[];
+  const oldCount=unlockedCountForLevel(oldLevel);
+  const newCount=unlockedCountForLevel(newLevel);
+  const all=unlockedWords(allWords,difficultyOrder,newLevel);
+  return all.slice(oldCount,newCount);
+}
+
 /* ══ LocalStorage ════════════════════════════════════════ */
 const LS_PROFILE='epopProfile';
 const LS_STATS='epopStats3';
 const loadProfile=()=>{try{const p=localStorage.getItem(LS_PROFILE);return p?JSON.parse(p):null;}catch{return null;}};
 const saveProfile=p=>{try{localStorage.setItem(LS_PROFILE,JSON.stringify(p));}catch{}};
-const defaultStats={streak:0,xp:0,avgScore:0,best:0,totalGames:0};
+const defaultStats={streak:0,xp:0,avgScore:0,best:0,totalGames:0,todayQuiz:0,todayQuizDate:''};
 const loadStats=()=>{try{return{...defaultStats,...JSON.parse(localStorage.getItem(LS_STATS)||'{}')};}catch{return{...defaultStats};}};
 const saveStats=s=>{try{localStorage.setItem(LS_STATS,JSON.stringify(s));}catch{}};
 
@@ -452,6 +484,20 @@ function FeedReaction({pet,newHp,msg,onClose}){
   </div>);
 }
 
+function LevelUpModal({level,unlockedWords,pc,onClose}){
+  return(<div onClick={onClose} style={{position:'absolute',inset:0,background:'rgba(0,0,0,0.55)',display:'flex',alignItems:'center',justifyContent:'center',zIndex:130,padding:24,cursor:'pointer'}}>
+    <div onClick={e=>e.stopPropagation()} style={{background:'#fff',borderRadius:24,padding:'28px 22px 22px',width:'100%',maxWidth:320,textAlign:'center',boxShadow:'0 14px 40px rgba(0,0,0,0.3)',animation:'pop 0.3s ease-out',cursor:'default'}}>
+      <div style={{fontSize:50,animation:'float 1.2s ease-in-out infinite'}}>⭐</div>
+      <div style={{fontSize:22,fontWeight:900,color:pc,marginTop:6}}>已昇級至 LV {level}</div>
+      <div style={{fontSize:13,fontWeight:800,color:'#666',marginTop:4}}>解鎖 {unlockedWords.length} 個新單字</div>
+      {unlockedWords.length>0&&<div style={{marginTop:14,padding:'12px 10px',background:`${pc}10`,borderRadius:14,display:'flex',flexWrap:'wrap',gap:6,justifyContent:'center'}}>
+        {unlockedWords.map(w=><span key={w.word} style={{fontSize:13,fontWeight:900,color:pc,background:'#fff',padding:'5px 10px',borderRadius:10,boxShadow:`0 1px 4px ${pc}22`}}>{w.word}</span>)}
+      </div>}
+      <button onClick={onClose} style={{marginTop:16,padding:'9px 24px',borderRadius:14,border:'none',cursor:'pointer',background:`linear-gradient(135deg,${pc},${pc}bb)`,fontSize:13,fontWeight:900,color:'#fff',boxShadow:`0 3px 10px ${pc}44`,fontFamily:'inherit'}}>太棒了！</button>
+    </div>
+  </div>);
+}
+
 function PetCard({fb,refreshFb,onSelectPet,onStart,pc}){
   const[feeding,setFeeding]=useState(false);
   const[reaction,setReaction]=useState(null);
@@ -462,6 +508,8 @@ function PetCard({fb,refreshFb,onSelectPet,onStart,pc}){
   const profile=fb?.profile||{};
   const pet=fb?.pet;
   const foodCount=profile.foodCount|0;
+  const level=profile.level||1;
+  const lvLabel=<span style={{fontSize:12,color:pc,fontWeight:900,display:'inline-flex',alignItems:'center',gap:4}}><span style={{fontSize:13}}>⭐</span>LV {level}</span>;
   const helpers=window.FB?.helpers;
   const curHp=pet&&helpers?helpers.calcCurrentHp(pet):0;
   const isVisitor=!pet;
@@ -487,7 +535,7 @@ function PetCard({fb,refreshFb,onSelectPet,onStart,pc}){
       <div style={{display:'flex',alignItems:'center',gap:14}}>
         <button onClick={onSelectPet} aria-label="選寵物" style={{width:64,height:64,border:'2px dashed #cbd5e1',borderRadius:18,background:'#f8fafc',cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center',padding:0,fontSize:42,color:'#1a1a2e',animation:'float 3s ease-in-out infinite'}}>🐈‍⬛</button>
         <div style={{flex:1,minWidth:0}}>
-          <div style={{fontSize:12,color:'#aaa',fontWeight:700}}>今天的夥伴</div>
+          <div>{lvLabel}</div>
           <div style={{fontSize:18,fontWeight:900,color:'#1a1a2e'}}>訪客喵</div>
           <div style={{fontSize:11,color:'#bbb',marginTop:1}}>選一隻寵物來照顧吧！</div>
         </div>
@@ -512,7 +560,7 @@ function PetCard({fb,refreshFb,onSelectPet,onStart,pc}){
         <img src={pet.img} alt={pet.name} style={{width:'100%',height:'100%',objectFit:'contain',...grayStyle}}/>
       </button>
       <div style={{flex:1,minWidth:0}}>
-        <div style={{fontSize:12,color:'#aaa',fontWeight:700}}>今天的夥伴</div>
+        <div>{lvLabel}</div>
         <div style={{fontSize:18,fontWeight:900,color:isStarved?'#94a3b8':pc}}>{pet.name}{isStarved?' 💤':''}</div>
         <div style={{fontSize:11,color:'#bbb',marginTop:1}}>{isStarved?'牠餓壞了，去選別隻吧…':'一起來複習單字吧！'}</div>
       </div>
@@ -656,8 +704,8 @@ function HomeScreen({charSrc,charName,studentName,stats,todaySet,flashPool,dateL
   const [expanded,setExpanded]=useState(null);
   const statItems=[
     {icon:'🔥',val:stats.streak,label:'連續天數',color:'#FF6B47'},
-    {icon:'📊',val:`${stats.avgScore}%`,label:'平均分數',color:pc},
-    {icon:'🏆',val:stats.best,label:'最高分',color:'#FFB800'},
+    {icon:'📊',val:Number(stats.avgScore||0).toFixed(1),label:'平均分數',color:pc},
+    {icon:'📝',val:stats.todayQuiz|0,label:'今日題數',color:'#FFB800'},
   ];
   const accent=['#FF9800','#38bdf8','#a78bfa'];
 
@@ -1208,29 +1256,34 @@ const PODIUM_MEDAL=['🥈','🥇','🥉'];
 function RankScreen({uid,studentName,charIdx,stats,onNav,pc,cloudEntries,cloudStreakEntries,cloudStatus,onRefresh}){
   const [tab,setTab]=useState('score');
 
+  const todayKey=taipeiDateKey();
   const list=useMemo(()=>{
     const cloud=tab==='score'?cloudEntries:cloudStreakEntries;
     const arr=(cloud||[]).map(e=>({
       name:e.name||'(未命名)',
-      score:e.bestScore|0,
+      avgScore:Number(e.avgScore||0),
       streak:e.streakCur|0,
       streakBest:e.streakBest|0,
+      todayQuiz:(e.todayQuizDate===todayKey)?(e.todayQuizCount|0):0,
       charIdx:avatarIdxFromId(e.avatarId),
       uid:e.uid||'',
       isMe:uid&&e.uid===uid,
     }));
     // Inject me locally if not in cloud yet
     if(studentName&&!arr.some(r=>r.isMe)){
-      arr.push({uid:uid||'',name:studentName,score:stats.best|0,streak:stats.streak|0,streakBest:stats.streakBest||stats.streak||0,charIdx,isMe:true});
+      arr.push({uid:uid||'',name:studentName,avgScore:Number(stats.avgScore||0),streak:stats.streak|0,streakBest:stats.streakBest||stats.streak||0,todayQuiz:stats.todayQuiz|0,charIdx,isMe:true});
     }
-    const sortKey=tab==='score'?'score':'streak';
-    const tieKey=tab==='score'?'streak':'score';
-    arr.sort((a,b)=>(b[sortKey]-a[sortKey])||(b[tieKey]-a[tieKey])||(b.streakBest-a.streakBest));
+    if(tab==='score'){
+      arr.sort((a,b)=>(b.avgScore-a.avgScore)||(b.streak-a.streak)||(b.streakBest-a.streakBest));
+    }else{
+      arr.sort((a,b)=>(b.streak-a.streak)||(b.avgScore-a.avgScore)||(b.streakBest-a.streakBest));
+    }
     return arr.map((r,i)=>({...r,rank:i+1}));
-  },[tab,cloudEntries,cloudStreakEntries,studentName,charIdx,stats,uid]);
+  },[tab,cloudEntries,cloudStreakEntries,studentName,charIdx,stats,uid,todayKey]);
 
   const top3Src=[list[1],list[0],list[2]]; // left 2nd, center 1st, right 3rd
   const showUnit=tab==='score'?'分':'天';
+  const fmtVal=r=>tab==='score'?Number(r.avgScore||0).toFixed(1):r.streak;
 
   return(<div className="screen" style={{background:'linear-gradient(170deg,#fafeff 0%,#f0fdf8 100%)'}}>
     <div style={{padding:'48px 20px 6px',flexShrink:0,display:'flex',alignItems:'center',gap:8}}>
@@ -1252,7 +1305,7 @@ function RankScreen({uid,studentName,charIdx,stats,onNav,pc,cloudEntries,cloudSt
         <div style={{display:'flex',alignItems:'flex-end',justifyContent:'center',gap:6,padding:'0 20px 14px',flexShrink:0,minHeight:200}}>
           {top3Src.map((r,pi)=>{
             if(!r)return(<div key={'empty-'+pi} style={{flex:1}}/>);
-            const val=tab==='score'?r.score:r.streak;
+            const val=fmtVal(r);
             return(<div key={r.name+pi} style={{flex:1,display:'flex',flexDirection:'column',alignItems:'center',gap:3}}>
               {r.isMe&&<div style={{fontSize:9,fontWeight:900,color:pc,background:`${pc}20`,padding:'2px 6px',borderRadius:10}}>你</div>}
               <img src={CHARACTERS[r.charIdx]?.img||CHARACTERS[0].img} alt="" style={{width:pi===1?50:40,height:pi===1?50:40,objectFit:'contain'}}/>
@@ -1267,13 +1320,13 @@ function RankScreen({uid,studentName,charIdx,stats,onNav,pc,cloudEntries,cloudSt
 
         <div className="scroll-body" style={{padding:'0 20px 8px'}}>
           {list.slice(3).map(r=>{
-            const val=tab==='score'?r.score:r.streak;
+            const val=fmtVal(r);
             return(<div key={r.name+r.rank} style={{display:'flex',alignItems:'center',gap:12,padding:'11px 14px',background:r.isMe?`${pc}10`:'#fff',borderRadius:16,marginBottom:8,boxShadow:r.isMe?`0 2px 10px ${pc}22`:'0 1px 6px rgba(0,0,0,0.04)',border:r.isMe?`1.5px solid ${pc}33`:'1.5px solid transparent'}}>
               <div style={{width:26,textAlign:'center',fontSize:13,fontWeight:900,color:'#ddd'}}>{r.rank}</div>
               <img src={CHARACTERS[r.charIdx]?.img||CHARACTERS[0].img} alt="" style={{width:36,height:36,objectFit:'contain'}}/>
               <div style={{flex:1,minWidth:0}}>
                 <div style={{fontSize:13,fontWeight:900,color:r.isMe?pc:'#1a1a2e',overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap'}}>{r.name}{r.isMe?' (我)':''}</div>
-                <div style={{fontSize:10,color:'#aaa',fontWeight:700}}>🔥 連續 {r.streak} 天 · 最高 {r.score} 分</div>
+                <div style={{fontSize:10,color:'#aaa',fontWeight:700}}>🔥 連續 {r.streak} 天 · 今日 {r.todayQuiz|0} 題</div>
               </div>
               <div style={{fontSize:17,fontWeight:900,color:r.isMe?pc:'#555'}}>{val}<span style={{fontSize:10,color:'#aaa',fontWeight:700}}> {showUnit}</span></div>
             </div>);
@@ -1293,7 +1346,9 @@ function App(){
   const [result,setResult]=useState(null);
   const [stats,setStats]=useState(loadStats);
   const [vocabAll,setVocabAll]=useState(null);
+  const [difficultyOrder,setDifficultyOrder]=useState([]);
   const [loadError,setLoadError]=useState('');
+  const [levelUpInfo,setLevelUpInfo]=useState(null);
   const [cloudEntries,setCloudEntries]=useState([]);
   const [cloudStreakEntries,setCloudStreakEntries]=useState([]);
   const [cloudStatus,setCloudStatus]=useState('idle');
@@ -1320,6 +1375,9 @@ function App(){
   const charSrc=fb?.pet?.img||CHARACTERS[charIdx]?.img||CHARACTERS[0].img;
   const charName=fb?.pet?.name||CHARACTERS[charIdx]?.name||'小夥伴';
   const studentName=fb?.profile?.name||profile?.name||'同學';
+  const today=taipeiDateKey();
+  const profileTodayDate=fb?.profile?.todayQuizDate||stats.todayQuizDate||'';
+  const profileTodayCount=fb?.profile?.todayQuizCount??stats.todayQuiz??0;
   const displayStats={
     ...stats,
     streak:fb?.profile?.streakCur??stats.streak??0,
@@ -1327,10 +1385,10 @@ function App(){
     avgScore:fb?.profile?.avgScore??stats.avgScore??0,
     totalGames:fb?.profile?.totalGames??stats.totalGames??0,
     xp:fb?.profile?.exp??stats.xp??0,
+    todayQuiz:profileTodayDate===today?(profileTodayCount|0):0,
   };
-  const today=taipeiDateKey();
 
-  // Load vocab-data.json once
+  // Load vocab-data.json + difficulty file once
   useEffect(()=>{
     (async()=>{
       try{
@@ -1346,17 +1404,25 @@ function App(){
         setLoadError(String(e.message||e));
       }
     })();
+    (async()=>{
+      try{
+        const res=await fetch('vocab-difficulty.json?t='+Date.now(),{cache:'no-store'});
+        if(!res.ok)throw new Error('HTTP '+res.status);
+        const data=await res.json();
+        if(Array.isArray(data.order))setDifficultyOrder(data.order);
+      }catch(e){console.warn('vocab-difficulty.json 載入失敗，按日期 fallback:',e);}
+    })();
   },[]);
 
   const refreshLeaderboard=useCallback(async()=>{
     setCloudStatus('loading');
     try{
-      const best=await cloudRunQuery('bestScore',80);
-      best.sort((a,b)=>(b.bestScore||0)-(a.bestScore||0)||String(b.updatedAt||'').localeCompare(String(a.updatedAt||'')));
+      const best=await cloudRunQuery('avgScore',80);
+      best.sort((a,b)=>(Number(b.avgScore||0))-(Number(a.avgScore||0))||String(b.updatedAt||'').localeCompare(String(a.updatedAt||'')));
       setCloudEntries(best);
       try{
         const streak=await cloudRunQuery('streakCur',80);
-        streak.sort((a,b)=>(b.streakCur||0)-(a.streakCur||0)||(b.bestScore||0)-(a.bestScore||0));
+        streak.sort((a,b)=>(b.streakCur||0)-(a.streakCur||0)||(Number(b.avgScore||0)-Number(a.avgScore||0)));
         setCloudStreakEntries(streak);
       }catch{setCloudStreakEntries([]);}
       setCloudStatus('ok');
@@ -1369,7 +1435,8 @@ function App(){
   // Fetch leaderboard when entering rank screen or at startup
   useEffect(()=>{if(screen==='rank')refreshLeaderboard();},[screen,refreshLeaderboard]);
 
-  // Compute today's words / flash pool / quiz pool
+  // Compute today's words / flash pool / quiz pool (level-gated)
+  const profileLevel=fb?.profile?.level||1;
   const {todaySet,flashPool,quizPool,dateLabel}=useMemo(()=>{
     if(!vocabAll)return{todaySet:[],flashPool:[],quizPool:[],dateLabel:formatDate(today)};
     const byDate=new Map();
@@ -1379,31 +1446,57 @@ function App(){
     const todayWords=byDate.get(today)||[];
     const displayDate=todayWords.length?today:latest;
     const displaySet=todayWords.length?todayWords:(byDate.get(latest)||[]).slice(0,3);
-    // flashPool = words before today (or all but latest if no today)
-    const cutoff=todayWords.length?today:latest;
-    const before=vocabAll.filter(w=>w.date&&w.date<cutoff);
-    const pool=before.length>=4?before:vocabAll;
+    const todaySetIds=new Set(displaySet.map(w=>w.word));
+    const unlocked=unlockedWords(vocabAll,difficultyOrder||[],profileLevel);
+    const oldUnlocked=unlocked.filter(w=>!todaySetIds.has(w.word));
+    // quizPool = unlocked ∪ today's set (deduped)
+    const seen=new Set();
+    const quiz=[];
+    for(const w of unlocked){if(!seen.has(w.word)){seen.add(w.word);quiz.push(w);}}
+    for(const w of displaySet){if(!seen.has(w.word)){seen.add(w.word);quiz.push(w);}}
     return{
       todaySet:displaySet.slice(0,3),
-      flashPool:before,
-      quizPool:pool,
+      flashPool:oldUnlocked,
+      quizPool:quiz.length>=4?quiz:vocabAll,
       dateLabel:formatDate(displayDate||today),
     };
-  },[vocabAll,today]);
+  },[vocabAll,today,difficultyOrder,profileLevel]);
 
   const nav=(s)=>{if(s==='quiz'&&screen!=='quiz')setResult(null);setScreen(s);};
 
+  // Watch pendingLevelUp on home screen → show modal once
+  useEffect(()=>{
+    if(screen!=='home')return;
+    if(levelUpInfo)return;
+    if(!vocabAll||!difficultyOrder.length)return;
+    const pending=fb?.profile?.pendingLevelUp|0;
+    if(pending<=0)return;
+    const newLevel=fb?.profile?.level||1;
+    const oldLevel=Math.max(1,newLevel-pending);
+    const words=newlyUnlockedWords(difficultyOrder,vocabAll,oldLevel,newLevel);
+    setLevelUpInfo({level:newLevel,words});
+  },[screen,fb?.profile?.pendingLevelUp,fb?.profile?.level,vocabAll,difficultyOrder,levelUpInfo]);
+
+  const handleCloseLevelUp=async()=>{
+    setLevelUpInfo(null);
+    try{if(window.FB?.ops?.ackLevelUp&&window.FB?.uid)await window.FB.ops.ackLevelUp(window.FB.uid);}catch(e){console.warn('ackLevelUp failed',e);}
+    await refreshFb();
+  };
+
   const handleFinish=async(score,xpGained,total)=>{
-    const pct=Math.round(score/total*100);
+    const pct=total>0?(score/total*100):0;
     const baseStats=displayStats;
-    const newAvg=(baseStats.totalGames||0)===0?pct:Math.round(((baseStats.avgScore||0)*(baseStats.totalGames||0)+pct)/((baseStats.totalGames||0)+1));
-    const ns={...baseStats,xp:(baseStats.xp||0)+xpGained,best:Math.max(baseStats.best||0,score),totalGames:(baseStats.totalGames||0)+1,avgScore:newAvg};
+    const baseAvg=Number(baseStats.avgScore||0);
+    const games=baseStats.totalGames||0;
+    const newAvg=games===0?Math.round(pct*10)/10:Math.round((baseAvg*games+pct)/(games+1)*10)/10;
+    const todayCount=(baseStats.todayQuizDate===today?(baseStats.todayQuiz||0):0)+(total|0);
+    const ns={...baseStats,xp:(baseStats.xp||0)+xpGained,best:Math.max(baseStats.best||0,score),totalGames:games+1,avgScore:newAvg,todayQuiz:todayCount,todayQuizDate:today};
     saveStats(ns);setStats(ns);
     setResult({score,xp:xpGained,total});setScreen('result');
     if(window.FB?.uid&&studentName){
       const entry=await cloudUpsertScore(window.FB.uid,studentName,currentPetId||CHARACTERS[charIdx]?.id||DEFAULT_AVATAR,score,total);
       if(entry){
-        const ns2={...ns,streak:entry.streakCur,best:entry.bestScore,avgScore:entry.avgScore??ns.avgScore};
+        const ns2={...ns,streak:entry.streakCur,best:entry.bestScore,avgScore:entry.avgScore??ns.avgScore,todayQuiz:entry.todayQuizCount??ns.todayQuiz,todayQuizDate:entry.todayQuizDate??ns.todayQuizDate};
         saveStats(ns2);setStats(ns2);
         await refreshFb();
         refreshLeaderboard();
@@ -1443,6 +1536,7 @@ function App(){
     {screen==='quiz'&&<QuizScreen charSrc={charSrc} quizPool={quizPool} onFinish={handleFinish} onNav={nav} pc={pc} refreshFb={refreshFb}/>}
     {screen==='result'&&result&&<ResultScreen {...result} charSrc={charSrc} charName={charName} onRetry={()=>setScreen('quiz')} onHome={()=>setScreen('home')} pc={pc}/>}
     {screen==='rank'&&<RankScreen uid={fb?.uid} studentName={studentName} charIdx={charIdx} stats={displayStats} onNav={nav} pc={pc} cloudEntries={cloudEntries} cloudStreakEntries={cloudStreakEntries} cloudStatus={cloudStatus} onRefresh={refreshLeaderboard}/>}
+    {levelUpInfo&&<LevelUpModal level={levelUpInfo.level} unlockedWords={levelUpInfo.words} pc={pc} onClose={handleCloseLevelUp}/>}
   </div>);
 }
 
@@ -1533,7 +1627,17 @@ function calcCurrentHp(pet, now = Date.now()) {
 async function ensureUserProfile(uid, defaultName, legacyUid = null) {
   const ref = doc(db, 'users', uid);
   const snap = await getDoc(ref);
-  if (snap.exists()) return { ref, data: snap.data(), created: false };
+  if (snap.exists()) {
+    const existing = snap.data();
+    // Backfill level/pendingLevelUp for users created before LV system shipped.
+    // Default to 21 so existing players keep their full vocab pool (~120 words).
+    if (existing.level === undefined || existing.level === null) {
+      const patch = { level: 21, pendingLevelUp: 0, updatedAt: Date.now() };
+      try { await updateDoc(ref, patch); } catch (e) { console.warn('[FB] level backfill failed', e); }
+      return { ref, data: { ...existing, ...patch }, created: false };
+    }
+    return { ref, data: existing, created: false };
+  }
   const now = Date.now();
   let data = null;
   if (legacyUid && legacyUid !== uid) {
@@ -1549,8 +1653,10 @@ async function ensureUserProfile(uid, defaultName, legacyUid = null) {
     playerId: uid,
     currentPetId: null,
     exp: 0, combo: 0, foodCount: 0,
+    level: 1, pendingLevelUp: 0,
     totalCorrect: 0, totalGames: 0,
     streakCur: 0, streakBest: 0, bestScore: 0, avgScore: 0,
+    todayQuizCount: 0, todayQuizDate: '',
     weekPlayed: [], lastPlayDate: '',
     createdAt: now, updatedAt: now,
   };
@@ -1856,24 +1962,34 @@ async function answerCorrect(uid, isVerb = false) {
     const userSnap = await tx.get(userRef);
     if (!userSnap.exists()) throw new Error('no-user');
     const user = userSnap.data();
-    if (!user.currentPetId) return { gainExp:0, addFood:0, newCombo:user.combo||0, guest:true };
+    if (!user.currentPetId) return { gainExp:0, addFood:0, newCombo:user.combo||0, guest:true, levelUp:0 };
     const gainExp = calcExpGain(user.combo || 0);
     const totalExp = (user.exp || 0) + gainExp;
-    const addFood = Math.floor(totalExp / 200);
+    const wraps = Math.floor(totalExp / 200);
+    const addFood = wraps;
+    const levelUp = wraps;
+    const newLevel = (user.level || 1) + levelUp;
+    const newPending = (user.pendingLevelUp || 0) + levelUp;
     const newCombo = (user.combo || 0) + 1;
     tx.update(userRef, {
       exp: totalExp % 200,
       combo: newCombo,
       foodCount: (user.foodCount || 0) + addFood,
       totalCorrect: (user.totalCorrect || 0) + 1,
+      level: newLevel,
+      pendingLevelUp: newPending,
       updatedAt: Date.now(),
     });
-    return { gainExp, addFood, newCombo };
+    return { gainExp, addFood, newCombo, levelUp, level: newLevel };
   });
 }
 
 async function answerWrong(uid) {
   return await updateDoc(doc(db, 'users', uid), { combo: 0, updatedAt: Date.now() });
+}
+
+async function ackLevelUp(uid) {
+  return await updateDoc(doc(db, 'users', uid), { pendingLevelUp: 0, updatedAt: Date.now() });
 }
 
 function taipeiDateKeyModule(d = new Date()) {
@@ -1920,10 +2036,18 @@ async function upsertLeaderboardScore(uid, name, avatarId, score, total = 20) {
     const prev = lbSnap.exists() ? lbSnap.data() : {};
     const user = userSnap.exists() ? userSnap.data() : {};
     const scoreInt = score | 0;
-    const pct = total > 0 ? Math.round(scoreInt / total * 100) : 0;
+    const totalInt = total | 0;
+    const pct = totalInt > 0 ? (scoreInt / totalInt * 100) : 0;
     const plays = (prev.plays || user.totalGames || 0) + 1;
-    const avgScore = Math.round((((user.avgScore || 0) * (user.totalGames || 0)) + pct) / ((user.totalGames || 0) + 1));
+    const prevAvg = Number(user.avgScore || 0);
+    const prevGames = user.totalGames || 0;
+    const avgScore = prevGames === 0
+      ? Math.round(pct * 10) / 10
+      : Math.round((prevAvg * prevGames + pct) / (prevGames + 1) * 10) / 10;
     const streak = nextStreak(prev.lastPlayDate ? prev : user);
+    const today = streak.today;
+    const prevTodayDate = String(user.todayQuizDate || '');
+    const todayQuizCount = (prevTodayDate === today ? (user.todayQuizCount || 0) : 0) + totalInt;
     const entry = {
       uid,
       name: String(name || user.name || '匿名玩家').trim().slice(0, 40),
@@ -1933,8 +2057,10 @@ async function upsertLeaderboardScore(uid, name, avatarId, score, total = 20) {
       recentScores: [scoreInt, ...((prev.recentScores || []).slice(0, 9))],
       streakCur: streak.streakCur,
       streakBest: streak.streakBest,
-      lastPlayDate: streak.today,
+      lastPlayDate: today,
       avgScore,
+      todayQuizCount,
+      todayQuizDate: today,
       updatedAt: new Date().toISOString(),
     };
     tx.set(lbRef, entry, { merge: true });
@@ -1942,10 +2068,12 @@ async function upsertLeaderboardScore(uid, name, avatarId, score, total = 20) {
       name: entry.name,
       bestScore: entry.bestScore,
       avgScore,
-      totalGames: (user.totalGames || 0) + 1,
+      totalGames: prevGames + 1,
       streakCur: entry.streakCur,
       streakBest: entry.streakBest,
       lastPlayDate: entry.lastPlayDate,
+      todayQuizCount,
+      todayQuizDate: today,
       weekPlayed: Array.from(new Set([...(Array.isArray(user.weekPlayed)?user.weekPlayed:[]), entry.lastPlayDate])).slice(-14),
       updatedAt: Date.now(),
     }, { merge: true });
@@ -1980,7 +2108,7 @@ onAuthStateChanged(auth, async (user) => {
       app, auth, db, authUid: user.uid, uid: initialPlayerId, playerId: initialPlayerId, profile: finalProfile,
       config: { HP_DECAY_MS, SEED_PETS },
       helpers: { calcCurrentHp, normalizePlayerName, playerIdFromName },
-      ops: { loadPet, refreshProfile, updateUserName, switchPlayerByName, mergePetsByOwnerName, listPets, claimPet, releasePet, renameMyPet, setPetVoiceGender, feedMyPet, answerCorrect, answerWrong, getLeaderboardEntry, listLeaderboard, upsertLeaderboardScore, ensureUserProfile, seedPets },
+      ops: { loadPet, refreshProfile, updateUserName, switchPlayerByName, mergePetsByOwnerName, listPets, claimPet, releasePet, renameMyPet, setPetVoiceGender, feedMyPet, answerCorrect, answerWrong, ackLevelUp, getLeaderboardEntry, listLeaderboard, upsertLeaderboardScore, ensureUserProfile, seedPets },
       modular: { doc, getDoc, setDoc, updateDoc, getDocs, collection, runTransaction, query, orderBy, limit },
     };
     window.dispatchEvent(new Event('fbready'));
