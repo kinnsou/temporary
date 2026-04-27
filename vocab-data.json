@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-04-26T11:01:07Z",
-    "sourceCount": 128,
-    "includedCount": 120
+    "updatedAt": "2026-04-27T11:01:33Z",
+    "sourceCount": 131,
+    "includedCount": 123
   },
   "words": [
+    {
+      "word": "well",
+      "meaning": "很好地；很不錯地",
+      "example": "She sings well.",
+      "translation": "她唱得很好。",
+      "firstSeen": "2026-04-27",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "trip",
+      "meaning": "旅行；出遊",
+      "example": "Our trip to the zoo was fun.",
+      "translation": "我們去動物園的旅行很有趣。",
+      "firstSeen": "2026-04-27",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "wear",
+      "meaning": "穿；戴",
+      "example": "I wear my school uniform every day.",
+      "translation": "我每天都穿校服。",
+      "firstSeen": "2026-04-27",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "white",
       "meaning": "白色的；白的；白色",

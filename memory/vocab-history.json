@@ -3,7 +3,7 @@
     "newWordsMustBeUniqueUntilExhausted": true,
     "reviewFormat": "guided_cloze_with_grammar_chunking",
     "sourceScope": "台灣普遍認定國中必會1000單",
-    "updatedAt": "2026-04-26T11:01:05Z"
+    "updatedAt": "2026-04-27T11:01:32Z"
   },
   "words": {
     "adventure": {
@@ -1156,6 +1156,36 @@
       ],
       "example_sentence": "Look at the picture.",
       "translation": "看看這張圖。"
+    },
+    "well": {
+      "first_seen": "2026-04-27",
+      "last_seen": "2026-04-27",
+      "pos": "adv",
+      "meanings": [
+        "很好地；很不錯地"
+      ],
+      "example_sentence": "She sings well.",
+      "translation": "她唱得很好。"
+    },
+    "trip": {
+      "first_seen": "2026-04-27",
+      "last_seen": "2026-04-27",
+      "pos": "n",
+      "meanings": [
+        "旅行；出遊"
+      ],
+      "example_sentence": "Our trip to the zoo was fun.",
+      "translation": "我們去動物園的旅行很有趣。"
+    },
+    "wear": {
+      "first_seen": "2026-04-27",
+      "last_seen": "2026-04-27",
+      "pos": "v",
+      "meanings": [
+        "穿；戴"
+      ],
+      "example_sentence": "I wear my school uniform every day.",
+      "translation": "我每天都穿校服。"
     }
   }
 }
