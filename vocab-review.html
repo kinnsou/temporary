@@ -276,7 +276,14 @@ function buildClozeQuestion(w){
   return{type:'cloze',correct:w.word,hintFirst:String(w.word).trim().slice(0,1).toLowerCase(),before:parts.before,after:parts.after,zh2:w.zh2||'',zh:w.zh||''};
 }
 
-/* Build a tense (4-option) question. Target = whichever form appears in the sentence. Returns {type,correct,options,baseWord,before,after,zh2} or null. */
+function tenseHintText(form,base){
+  if(form===toPast(base))return '這句在講「過去」發生的事 → 用過去式';
+  if(form===toIng(base))return '這句在講「正在進行」 → 用 -ing 進行式';
+  if(form===toThirdS(base))return '主詞是 He / She / It → 動詞加 -s / -es（第三人稱現在式）';
+  return '主詞是 I / We / You / They → 用動詞「原形」';
+}
+
+/* Build a tense (4-option) question. Target = whichever form appears in the sentence. Returns {type,correct,options,baseWord,before,after,zh2,tenseHint} or null. */
 function buildTenseQuestion(w,_otherVerbs){
   if(!w.en||!w.word)return null;
   const base=w.word.toLowerCase();
@@ -288,14 +295,17 @@ function buildTenseQuestion(w,_otherVerbs){
   if(!forms.includes(correct))return null;
   const before=w.en.slice(0,hit.index);
   const after=w.en.slice(hit.index+hit.length);
-  return{type:'tense',correct,options:shuffle(forms),baseWord:base,before,after,zh2:w.zh2||'',zh:w.zh||''};
+  return{type:'tense',correct,options:shuffle(forms),baseWord:base,before,after,zh2:w.zh2||'',zh:w.zh||'',tenseHint:tenseHintText(correct,base)};
 }
 
-/* Build mixed quiz items. Cap cloze at MAX_CLOZE. Prefer tense for detected verbs. */
+/* Build mixed quiz items. Cap cloze at MAX_CLOZE. Prefer tense for detected verbs.
+   knownSet: Set of words the player has marked "我會了"; sampled last so unfamiliar words dominate. */
 const MAX_CLOZE=5;
-function buildQuizItems(pool,total){
+function buildQuizItems(pool,total,knownSet=new Set()){
   const verbs=pool.filter(w=>looksLikeVerb(w.word,w.en));
-  const chosen=shuffle(pool).slice(0,total);
+  const unknown=shuffle(pool.filter(w=>!knownSet.has(w.word)));
+  const known=shuffle(pool.filter(w=>knownSet.has(w.word)));
+  const chosen=[...unknown,...known].slice(0,total);
   let clozeBudget=Math.min(MAX_CLOZE,Math.floor(total/4));
   if(clozeBudget<2&&total>=8)clozeBudget=2;
   const items=[];
@@ -894,48 +904,93 @@ function CharSelectScreen({current,onSelect,onBack,pc,fb,refreshFb}){
 }
 
 /* ══ FLASHCARD ═══════════════════════════════════════════ */
-function FlashScreen({charSrc,flashPool,onNav,pc,voiceGender='female'}){
-  const cards=useMemo(()=>shuffle(flashPool),[flashPool]);
+function FlashScreen({charSrc,flashAll,knownWords,refreshFb,onNav,pc,voiceGender='female'}){
+  const [tab,setTab]=useState('unfamiliar'); // 'unfamiliar' | 'known'
+  const knownSet=useMemo(()=>new Set(knownWords||[]),[knownWords]);
+  const unfamiliarPool=useMemo(()=>(flashAll||[]).filter(w=>!knownSet.has(w.word)),[flashAll,knownSet]);
+  const knownPool=useMemo(()=>(flashAll||[]).filter(w=>knownSet.has(w.word)),[flashAll,knownSet]);
+  const cards=tab==='unfamiliar'?unfamiliarPool:knownPool;
   const [idx,setIdx]=useState(0);
   const [flipped,setFlipped]=useState(false);
-  const [known,setKnown]=useState(new Set());
   const [speakTick,setSpeakTick]=useState(0);
+  const [busy,setBusy]=useState(false);
+
+  // Reset index when switching tabs / pool changes
+  useEffect(()=>{setIdx(0);setFlipped(false);},[tab]);
+  useEffect(()=>{setIdx(i=>Math.min(i,Math.max(0,cards.length-1)));},[cards.length]);
+
+  const tabsHeader=(
+    <div style={{display:'flex',margin:'4px 20px 10px',background:'#f0f8fa',borderRadius:14,padding:3,flexShrink:0}}>
+      {[['unfamiliar',`未熟練 (${unfamiliarPool.length})`],['known',`已會 (${knownPool.length})`]].map(([id,label])=>(
+        <button key={id} onClick={()=>setTab(id)} style={{flex:1,padding:'8px',borderRadius:11,border:'none',cursor:'pointer',background:tab===id?'#fff':'transparent',fontSize:13,fontWeight:800,color:tab===id?pc:'#aaa',boxShadow:tab===id?'0 2px 8px rgba(0,0,0,0.08)':'none',transition:'all 0.2s',fontFamily:'inherit'}}>{label}</button>
+      ))}
+    </div>
+  );
 
   if(cards.length===0)return(
     <div className="screen" style={{background:'linear-gradient(170deg,#fafeff 0%,#f0fdf8 100%)'}}>
+      <div style={{padding:'48px 20px 8px',display:'flex',alignItems:'center',gap:12,flexShrink:0}}>
+        <div style={{flex:1,fontSize:16,fontWeight:900,color:'#1a1a2e'}}>📖 單字卡庫</div>
+      </div>
+      {tabsHeader}
       <div style={{flex:1,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',padding:40,gap:16,textAlign:'center'}}>
-        <span style={{fontSize:60}}>📖</span>
-        <div style={{fontSize:20,fontWeight:900,color:'#1a1a2e'}}>單字卡還是空的！</div>
-        <div style={{fontSize:14,color:'#aaa',lineHeight:1.6}}>每天的新單字，第二天才會加入單字卡喔。先去看首頁的今日新單字吧！</div>
+        <span style={{fontSize:60}}>{tab==='unfamiliar'?'🎉':'📖'}</span>
+        <div style={{fontSize:18,fontWeight:900,color:'#1a1a2e'}}>{tab==='unfamiliar'?'全部都會了！':'還沒有已會單字'}</div>
+        <div style={{fontSize:13,color:'#aaa',lineHeight:1.6}}>{tab==='unfamiliar'?'去做幾題測驗練手感吧～':'在「未熟練」按「我會了」後，單字會搬到這裡。'}</div>
         <button onClick={()=>onNav('home')} style={{padding:'14px 28px',borderRadius:18,border:'none',cursor:'pointer',background:`linear-gradient(135deg,${pc},${pc}bb)`,fontSize:15,fontWeight:900,color:'#fff',fontFamily:'inherit'}}>回首頁</button>
       </div>
       <BottomNav screen="flash" onNav={onNav} pc={pc}/>
     </div>
   );
 
-  const card=cards[idx%cards.length];
+  const card=cards[Math.min(idx,cards.length-1)];
   const catColor=CAT[card.cat]||'#94a3b8';
   const progress=(idx+1)/cards.length;
   const goNext=()=>{setFlipped(false);setTimeout(()=>setIdx(i=>Math.min(i+1,cards.length-1)),120);};
   const goPrev=()=>{setFlipped(false);setTimeout(()=>setIdx(i=>Math.max(i-1,0)),120);};
-  const markKnown=()=>{setKnown(s=>{const n=new Set(s);n.add(card.word);return n;});goNext();};
+  const handleMarkKnown=async()=>{
+    if(busy||!card)return;
+    setBusy(true);
+    try{
+      if(window.FB?.ops?.markWordKnown&&window.FB?.uid){
+        await window.FB.ops.markWordKnown(window.FB.uid,card.word);
+        await refreshFb?.();
+      }
+    }catch(e){console.warn('markWordKnown failed',e);}
+    setBusy(false);
+    setFlipped(false);
+    // After move, current card index may now point past the new (shorter) unfamiliar list — useEffect will clamp
+  };
+  const handleMarkUnknown=async()=>{
+    if(busy||!card)return;
+    setBusy(true);
+    try{
+      if(window.FB?.ops?.markWordUnknown&&window.FB?.uid){
+        await window.FB.ops.markWordUnknown(window.FB.uid,card.word);
+        await refreshFb?.();
+      }
+    }catch(e){console.warn('markWordUnknown failed',e);}
+    setBusy(false);
+    setFlipped(false);
+  };
 
   return(<div className="screen" style={{background:'linear-gradient(170deg,#fafeff 0%,#f0fdf8 100%)'}}>
-    <div style={{padding:'48px 20px 8px',display:'flex',alignItems:'center',gap:12,flexShrink:0}}>
+    <div style={{padding:'48px 20px 6px',display:'flex',alignItems:'center',gap:12,flexShrink:0}}>
       <div style={{flex:1}}>
         <div style={{fontSize:16,fontWeight:900,color:'#1a1a2e'}}>📖 單字卡庫</div>
-        <div style={{fontSize:11,color:'#aaa',marginTop:1}}>共 {cards.length} 個學過的單字</div>
       </div>
       <div style={{fontSize:13,fontWeight:800,color:pc,background:`${pc}15`,padding:'5px 12px',borderRadius:16}}>{idx+1}/{cards.length}</div>
     </div>
+
+    {tabsHeader}
 
     <div style={{padding:'0 20px 10px',flexShrink:0}}>
       <div style={{height:7,background:'#e8f8fa',borderRadius:8}}>
         <div style={{height:7,borderRadius:8,background:`linear-gradient(90deg,${pc},${pc}88)`,width:`${progress*100}%`,transition:'width 0.3s ease-out'}}/>
       </div>
       <div style={{display:'flex',justifyContent:'space-between',marginTop:5}}>
-        <span style={{fontSize:11,color:'#aaa',fontWeight:700}}>✅ 已記住 {known.size} 個</span>
-        <span style={{fontSize:11,color:'#aaa',fontWeight:700}}>還剩 {cards.length-idx-1} 張</span>
+        <span style={{fontSize:11,color:'#aaa',fontWeight:700}}>{tab==='unfamiliar'?`📚 未熟練 ${cards.length} 個`:`✅ 已會 ${cards.length} 個`}</span>
+        <span style={{fontSize:11,color:'#aaa',fontWeight:700}}>還剩 {Math.max(0,cards.length-idx-1)} 張</span>
       </div>
     </div>
 
@@ -966,7 +1021,7 @@ function FlashScreen({charSrc,flashPool,onNav,pc,voiceGender='female'}){
             {(card.zh2||card.zh)&&<div style={{borderTop:'1px dashed #e8e0e0',width:'100%',marginTop:6,paddingTop:10,fontSize:14,color:'#333',textAlign:'center',fontWeight:700}}>「{card.zh2||card.zh}」</div>}
           </>);
         })()}
-        {known.has(card.word)&&<div style={{position:'absolute',top:12,right:14,fontSize:16}}>✅</div>}
+        {tab==='known'&&<div style={{position:'absolute',top:12,right:14,fontSize:16}}>✅</div>}
       </div>
 
       <div style={{position:'relative',width:60,height:60}}>
@@ -985,8 +1040,12 @@ function FlashScreen({charSrc,flashPool,onNav,pc,voiceGender='female'}){
 
     <div style={{padding:'0 20px 10px',display:'flex',gap:10,flexShrink:0}}>
       <button onClick={goPrev} disabled={idx===0} style={{flex:1,padding:13,borderRadius:16,border:'1.5px solid #f0eaea',background:'#fff',fontSize:13,fontWeight:800,color:'#aaa',cursor:'pointer',opacity:idx===0?0.4:1,fontFamily:'inherit'}}>← 上一張</button>
-      <button onClick={markKnown} style={{flex:1.4,padding:13,borderRadius:16,border:`1.5px solid ${pc}44`,background:`${pc}12`,fontSize:13,fontWeight:900,color:pc,cursor:'pointer',fontFamily:'inherit'}}>✅ 我會了</button>
-      <button onClick={goNext} disabled={idx===cards.length-1} style={{flex:1,padding:13,borderRadius:16,border:'none',background:`linear-gradient(135deg,${pc},${pc}bb)`,fontSize:13,fontWeight:900,color:'#fff',cursor:'pointer',opacity:idx===cards.length-1?0.5:1,fontFamily:'inherit'}}>下一張 →</button>
+      {tab==='unfamiliar'?(
+        <button onClick={handleMarkKnown} disabled={busy} style={{flex:1.6,padding:13,borderRadius:16,border:`1.5px solid ${pc}44`,background:`${pc}12`,fontSize:13,fontWeight:900,color:pc,cursor:busy?'wait':'pointer',fontFamily:'inherit',opacity:busy?0.6:1}}>{busy?'…':'✅ 我會了'}</button>
+      ):(
+        <button onClick={handleMarkUnknown} disabled={busy} style={{flex:1.6,padding:13,borderRadius:16,border:'1.5px solid #fde2e6',background:'#fff5f7',fontSize:13,fontWeight:900,color:'#fb7185',cursor:busy?'wait':'pointer',fontFamily:'inherit',opacity:busy?0.6:1}}>{busy?'…':'↩ 移回未熟練'}</button>
+      )}
+      <button onClick={goNext} disabled={idx>=cards.length-1} style={{flex:1,padding:13,borderRadius:16,border:'none',background:`linear-gradient(135deg,${pc},${pc}bb)`,fontSize:13,fontWeight:900,color:'#fff',cursor:'pointer',opacity:idx>=cards.length-1?0.5:1,fontFamily:'inherit'}}>下一張 →</button>
     </div>
     <BottomNav screen="flash" onNav={onNav} pc={pc}/>
   </div>);
@@ -1004,9 +1063,10 @@ function Blank({width=78,color='#555',filled}){
   return(<span style={{display:'inline-block',minWidth:width,padding:'0 6px',margin:'0 4px',borderBottom:`2px solid ${color}`,textAlign:'center',fontWeight:900,color:filled?color:'transparent',verticalAlign:'baseline',lineHeight:1.2,letterSpacing:1,fontFamily:filled?'monospace':'inherit'}}>{filled||'＿'}</span>);
 }
 
-function QuizScreen({charSrc,quizPool,onFinish,onNav,pc,refreshFb}){
+function QuizScreen({charSrc,quizPool,knownWords,onFinish,onNav,pc,refreshFb,voiceGender='female'}){
   const TOTAL=Math.min(20,quizPool.length);
-  const [questions]=useState(()=>buildQuizItems(quizPool,TOTAL));
+  const knownSet=useMemo(()=>new Set(knownWords||[]),[knownWords]);
+  const [questions]=useState(()=>buildQuizItems(quizPool,TOTAL,knownSet));
   const [idx,setIdx]=useState(0);
   const [selected,setSel]=useState(null);   // for zh2en/tense: chosen option string; for cloze: 'submitted' marker
   const [clozeInput,setClozeInput]=useState('');
@@ -1017,6 +1077,10 @@ function QuizScreen({charSrc,quizPool,onFinish,onNav,pc,refreshFb}){
   const [showConf,setConf]=useState(false);
   const [xpMsg,setXpMsg]=useState(null);
   const [shaking,setShaking]=useState(false);
+  const [hintsLeft,setHintsLeft]=useState(2);
+  const [hintRevealed,setHintRevealed]=useState(false); // tense hint shown
+  const [hiddenOpts,setHiddenOpts]=useState(new Set()); // zh2en eliminated wrong options
+  const [hintFx,setHintFx]=useState(0);
   const inputRef=useRef(null);
 
   useEffect(()=>{
@@ -1024,7 +1088,29 @@ function QuizScreen({charSrc,quizPool,onFinish,onNav,pc,refreshFb}){
     if(questions[idx]?.type==='cloze'&&inputRef.current){
       setTimeout(()=>inputRef.current?.focus(),100);
     }
+    // Reset per-question hint state
+    setHintRevealed(false);
+    setHiddenOpts(new Set());
   },[idx,questions]);
+
+  const usePetHint=()=>{
+    if(hintsLeft<=0)return;
+    const cur=questions[idx];
+    if(!cur||selected||clozeResult)return;
+    if(cur.type==='zh2en'){
+      const wrongs=cur.options.filter(o=>normalizeAnswer(o.word)!==normalizeAnswer(cur.vocab.word));
+      const drop=shuffle(wrongs).slice(0,2).map(o=>o.word);
+      if(drop.length===0)return;
+      setHiddenOpts(new Set(drop));
+    }else if(cur.type==='cloze'){
+      try{speakText(cur.correct,{gender:voiceGender});}catch(e){console.warn('speak failed',e);}
+    }else if(cur.type==='tense'){
+      if(hintRevealed)return;
+      setHintRevealed(true);
+    }else return;
+    setHintsLeft(n=>Math.max(0,n-1));
+    setHintFx(t=>t+1);
+  };
 
   if(TOTAL===0)return(
     <div className="screen" style={{background:'linear-gradient(170deg,#fafeff 0%,#f0fdf8 100%)'}}>
@@ -1056,7 +1142,9 @@ function QuizScreen({charSrc,quizPool,onFinish,onNav,pc,refreshFb}){
       setConf(true);setXpMsg(food>0?`+${gain} EXP　🍖 ×${food}！`:`+${gain} EXP`);
       setTimeout(()=>setConf(false),1200);setTimeout(()=>setXpMsg(null),1000);
     }else{
-      try{if(window.FB?.ops?.answerWrong){await window.FB.ops.answerWrong(window.FB.uid);await refreshFb?.();}}catch(e){console.warn('[Quiz] answerWrong failed',e);}
+      try{if(window.FB?.ops?.answerWrong){await window.FB.ops.answerWrong(window.FB.uid);}}catch(e){console.warn('[Quiz] answerWrong failed',e);}
+      try{if(window.FB?.ops?.markWordUnknown&&q?.vocab?.word){await window.FB.ops.markWordUnknown(window.FB.uid,q.vocab.word);}}catch(e){console.warn('[Quiz] markWordUnknown failed',e);}
+      try{await refreshFb?.();}catch{}
       setCombo(0);
       setShaking(true);setTimeout(()=>setShaking(false),500);
     }
@@ -1081,6 +1169,17 @@ function QuizScreen({charSrc,quizPool,onFinish,onNav,pc,refreshFb}){
     setClozeResult({isCorrect:ok,userAnswer:clozeInput});
     afterAnswer(ok);
   };
+  const giveUp=()=>{
+    if(selected||clozeResult)return;
+    if(q.type==='cloze'){
+      setClozeInput('');
+      setClozeResult({isCorrect:false,userAnswer:''});
+    }else{
+      // mark a sentinel selection so UI shows correct answer highlight
+      setSel('__give_up__');
+    }
+    afterAnswer(false);
+  };
 
   const bgBtn=(label,correctLabel)=>{if(!selected)return'#fff';if(normalizeAnswer(label)===normalizeAnswer(correctLabel))return'#4CAF82';if(normalizeAnswer(label)===normalizeAnswer(selected))return'#FF4D6D';return'#fff';};
   const colBtn=(label,correctLabel)=>{if(!selected)return'#1a1a2e';if(normalizeAnswer(label)===normalizeAnswer(correctLabel)||normalizeAnswer(label)===normalizeAnswer(selected))return'#fff';return'#ccc';};
@@ -1103,7 +1202,7 @@ function QuizScreen({charSrc,quizPool,onFinish,onNav,pc,refreshFb}){
     );
     answerArea=(
       <div className="scroll-body" style={{display:'flex',flexDirection:'column',gap:8,paddingBottom:8}}>
-        {q.options.map((opt,i)=>(
+        {q.options.filter(opt=>!hiddenOpts.has(opt.word)).map((opt,i)=>(
           <button key={opt.word+i} onClick={()=>answerChoice(opt.word)} style={{width:'100%',padding:'12px 16px',borderRadius:16,border:bdrBtn(opt.word,correct.word),background:bgBtn(opt.word,correct.word),color:colBtn(opt.word,correct.word),fontSize:14,fontWeight:800,cursor:'pointer',textAlign:'left',display:'flex',alignItems:'center',gap:10,boxShadow:selected&&normalizeAnswer(opt.word)===normalizeAnswer(correct.word)?'0 4px 14px #4CAF8244':'0 2px 6px rgba(0,0,0,0.04)',transition:'all 0.15s',animation:`slideUp 0.2s ${i*0.04}s both`,opacity:selected&&normalizeAnswer(opt.word)!==normalizeAnswer(correct.word)&&normalizeAnswer(opt.word)!==normalizeAnswer(selected)?0.4:1,fontFamily:'inherit',flexShrink:0}}>
             <span style={{fontSize:16,flexShrink:0}}>{opt.visual||'💬'}</span>
             <span style={{flex:1,lineHeight:1.3,wordBreak:'break-word'}}>{opt.zh}</span>
@@ -1162,6 +1261,7 @@ function QuizScreen({charSrc,quizPool,onFinish,onNav,pc,refreshFb}){
           <span style={{fontSize:12,color:'#888',fontWeight:700}}>原形：</span>
           <span style={{fontFamily:'monospace',fontSize:14,fontWeight:900,color:theme.color,background:`${theme.color}18`,padding:'3px 12px',borderRadius:14,letterSpacing:1}}>{q.baseWord}</span>
         </div>
+        {hintRevealed&&q.tenseHint&&<div style={{fontSize:12,fontWeight:800,color:theme.color,background:`${theme.color}14`,padding:'7px 12px',borderRadius:14,textAlign:'center',animation:'pop 0.25s ease-out'}}>💡 {q.tenseHint}</div>}
         {q.zh2&&<div style={{fontSize:12,color:'#aaa',textAlign:'center',fontStyle:'italic'}}>「{q.zh2}」</div>}
       </div>
     );
@@ -1192,11 +1292,18 @@ function QuizScreen({charSrc,quizPool,onFinish,onNav,pc,refreshFb}){
     {combo>=2&&<div style={{textAlign:'center',fontSize:12,fontWeight:800,color:'#FF6B47',marginBottom:2,flexShrink:0}}>🔥 連續答對 {combo} 題！加油！</div>}
 
     <div style={{flex:1,display:'flex',flexDirection:'column',padding:'4px 20px 0',overflow:'hidden'}}>
-      <div style={{display:'flex',justifyContent:'center',marginBottom:4,flexShrink:0}}>
-        <img src={charSrc} alt="" style={{width:48,height:48,objectFit:'contain',animation:'float 3s ease-in-out infinite'}}/>
+      <div style={{display:'flex',justifyContent:'center',alignItems:'center',gap:8,marginBottom:4,flexShrink:0,position:'relative'}}>
+        <button onClick={usePetHint} disabled={hintsLeft<=0||!!selected||!!clozeResult} title={hintsLeft>0?'點寵物用提示':'提示用完了'} aria-label="寵物提示" style={{border:'none',background:'transparent',padding:0,cursor:hintsLeft>0&&!selected&&!clozeResult?'pointer':'default',position:'relative',animation:'float 3s ease-in-out infinite'}}>
+          <img src={charSrc} alt="" style={{width:48,height:48,objectFit:'contain',filter:hintsLeft<=0?'grayscale(0.7) opacity(0.55)':'none',transition:'filter 0.2s'}}/>
+          {hintFx>0&&<span key={hintFx} style={{position:'absolute',top:-4,right:-4,fontSize:18,animation:'pop 0.4s ease-out'}}>💡</span>}
+        </button>
+        <div style={{fontSize:11,fontWeight:800,color:hintsLeft>0?pc:'#bbb',background:hintsLeft>0?`${pc}18`:'#f0f0f0',padding:'4px 10px',borderRadius:14,whiteSpace:'nowrap'}}>💡 提示 {hintsLeft}/2</div>
       </div>
       {questionCard}
       {answerArea}
+      {!selected&&!clozeResult&&<div style={{textAlign:'center',padding:'4px 0 6px',flexShrink:0}}>
+        <button onClick={giveUp} style={{padding:'7px 16px',borderRadius:14,border:'1px solid #f0eaea',background:'#fff',fontSize:11,fontWeight:800,color:'#bbb',cursor:'pointer',fontFamily:'inherit'}}>放棄此題（進未熟練）</button>
+      </div>}
     </div>
     <div style={{textAlign:'center',padding:'6px 0',flexShrink:0}}>
       <span style={{fontSize:11,color:'#ccc',fontWeight:700}}>⭐ {xp} EXP 已獲得</span>
@@ -1306,13 +1413,17 @@ function RankScreen({uid,studentName,charIdx,stats,onNav,pc,cloudEntries,cloudSt
           {top3Src.map((r,pi)=>{
             if(!r)return(<div key={'empty-'+pi} style={{flex:1}}/>);
             const val=fmtVal(r);
+            const isFirst=pi===1,isSecond=pi===0;
+            const valSize=isFirst?30:isSecond?22:17;
+            const unitSize=Math.round(valSize*0.42);
+            const medalSize=isFirst?30:24;
             return(<div key={r.name+pi} style={{flex:1,display:'flex',flexDirection:'column',alignItems:'center',gap:3}}>
               {r.isMe&&<div style={{fontSize:9,fontWeight:900,color:pc,background:`${pc}20`,padding:'2px 6px',borderRadius:10}}>你</div>}
-              <img src={CHARACTERS[r.charIdx]?.img||CHARACTERS[0].img} alt="" style={{width:pi===1?50:40,height:pi===1?50:40,objectFit:'contain'}}/>
+              <img src={CHARACTERS[r.charIdx]?.img||CHARACTERS[0].img} alt="" style={{width:isFirst?50:40,height:isFirst?50:40,objectFit:'contain'}}/>
               <div style={{fontSize:10,fontWeight:900,color:r.isMe?pc:'#555',maxWidth:78,textAlign:'center',overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap'}}>{r.name}</div>
-              <div style={{fontSize:11,fontWeight:700,color:'#aaa'}}>{val}{showUnit}</div>
-              <div style={{width:'100%',height:PODIUM_H[pi],borderRadius:'10px 10px 0 0',background:`linear-gradient(180deg,${PODIUM_C[pi]},${PODIUM_C[pi]}88)`,display:'flex',alignItems:'flex-start',justifyContent:'center',paddingTop:8,boxShadow:`0 -4px 12px ${PODIUM_C[pi]}44`}}>
-                <span style={{fontSize:22}}>{PODIUM_MEDAL[pi]}</span>
+              <div style={{width:'100%',height:PODIUM_H[pi],borderRadius:'10px 10px 0 0',background:`linear-gradient(180deg,${PODIUM_C[pi]},${PODIUM_C[pi]}88)`,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'space-between',padding:'10px 0 6px',boxShadow:`0 -4px 12px ${PODIUM_C[pi]}44`}}>
+                <span style={{fontSize:valSize,fontWeight:900,color:'#fff',lineHeight:1,textShadow:'0 2px 6px rgba(0,0,0,0.22)'}}>{val}<span style={{fontSize:unitSize,marginLeft:2,opacity:0.92}}>{showUnit}</span></span>
+                <span style={{fontSize:medalSize,filter:'drop-shadow(0 2px 4px rgba(0,0,0,0.18))'}}>{PODIUM_MEDAL[pi]}</span>
               </div>
             </div>);
           })}
@@ -1532,8 +1643,8 @@ function App(){
       const p={...profile,charIdx:idx,petId};setProfile(p);saveProfile(p);
       setScreen('home');
     }} onBack={()=>setScreen('home')} pc={pc}/>}
-    {screen==='flash'&&<FlashScreen charSrc={charSrc} flashPool={flashPool.length?flashPool:quizPool} onNav={nav} pc={pc} voiceGender={fb?.pet?.voiceGender==='male'?'male':'female'}/>}
-    {screen==='quiz'&&<QuizScreen charSrc={charSrc} quizPool={quizPool} onFinish={handleFinish} onNav={nav} pc={pc} refreshFb={refreshFb}/>}
+    {screen==='flash'&&<FlashScreen charSrc={charSrc} flashAll={quizPool} knownWords={fb?.profile?.knownWords||[]} refreshFb={refreshFb} onNav={nav} pc={pc} voiceGender={fb?.pet?.voiceGender==='male'?'male':'female'}/>}
+    {screen==='quiz'&&<QuizScreen charSrc={charSrc} quizPool={quizPool} knownWords={fb?.profile?.knownWords||[]} onFinish={handleFinish} onNav={nav} pc={pc} refreshFb={refreshFb} voiceGender={fb?.pet?.voiceGender==='male'?'male':'female'}/>}
     {screen==='result'&&result&&<ResultScreen {...result} charSrc={charSrc} charName={charName} onRetry={()=>setScreen('quiz')} onHome={()=>setScreen('home')} pc={pc}/>}
     {screen==='rank'&&<RankScreen uid={fb?.uid} studentName={studentName} charIdx={charIdx} stats={displayStats} onNav={nav} pc={pc} cloudEntries={cloudEntries} cloudStreakEntries={cloudStreakEntries} cloudStatus={cloudStatus} onRefresh={refreshLeaderboard}/>}
     {levelUpInfo&&<LevelUpModal level={levelUpInfo.level} unlockedWords={levelUpInfo.words} pc={pc} onClose={handleCloseLevelUp}/>}
@@ -1552,7 +1663,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
 import { getAuth, signInAnonymously, onAuthStateChanged }
   from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
-import { getFirestore, doc, getDoc, setDoc, updateDoc, getDocs, collection, runTransaction, query, orderBy, limit }
+import { getFirestore, doc, getDoc, setDoc, updateDoc, getDocs, collection, runTransaction, query, orderBy, limit, arrayUnion, arrayRemove }
   from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -1657,6 +1768,7 @@ async function ensureUserProfile(uid, defaultName, legacyUid = null) {
     totalCorrect: 0, totalGames: 0,
     streakCur: 0, streakBest: 0, bestScore: 0, avgScore: 0,
     todayQuizCount: 0, todayQuizDate: '',
+    knownWords: [],
     weekPlayed: [], lastPlayDate: '',
     createdAt: now, updatedAt: now,
   };
@@ -1992,6 +2104,16 @@ async function ackLevelUp(uid) {
   return await updateDoc(doc(db, 'users', uid), { pendingLevelUp: 0, updatedAt: Date.now() });
 }
 
+async function markWordKnown(uid, word) {
+  if (!uid || !word) return;
+  return await updateDoc(doc(db, 'users', uid), { knownWords: arrayUnion(word), updatedAt: Date.now() });
+}
+
+async function markWordUnknown(uid, word) {
+  if (!uid || !word) return;
+  return await updateDoc(doc(db, 'users', uid), { knownWords: arrayRemove(word), updatedAt: Date.now() });
+}
+
 function taipeiDateKeyModule(d = new Date()) {
   const utc = d.getTime() + d.getTimezoneOffset() * 60000;
   const t = new Date(utc + 8 * 60 * 60 * 1000);
@@ -2108,7 +2230,7 @@ onAuthStateChanged(auth, async (user) => {
       app, auth, db, authUid: user.uid, uid: initialPlayerId, playerId: initialPlayerId, profile: finalProfile,
       config: { HP_DECAY_MS, SEED_PETS },
       helpers: { calcCurrentHp, normalizePlayerName, playerIdFromName },
-      ops: { loadPet, refreshProfile, updateUserName, switchPlayerByName, mergePetsByOwnerName, listPets, claimPet, releasePet, renameMyPet, setPetVoiceGender, feedMyPet, answerCorrect, answerWrong, ackLevelUp, getLeaderboardEntry, listLeaderboard, upsertLeaderboardScore, ensureUserProfile, seedPets },
+      ops: { loadPet, refreshProfile, updateUserName, switchPlayerByName, mergePetsByOwnerName, listPets, claimPet, releasePet, renameMyPet, setPetVoiceGender, feedMyPet, answerCorrect, answerWrong, ackLevelUp, markWordKnown, markWordUnknown, getLeaderboardEntry, listLeaderboard, upsertLeaderboardScore, ensureUserProfile, seedPets },
       modular: { doc, getDoc, setDoc, updateDoc, getDocs, collection, runTransaction, query, orderBy, limit },
     };
     window.dispatchEvent(new Event('fbready'));
