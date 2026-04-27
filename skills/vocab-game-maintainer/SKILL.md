@@ -95,15 +95,15 @@ Known regression to avoid: deleting or renaming an op still referenced in `windo
 Pinning the values that drove design decisions, so future sessions don’t have to re-derive them. Source of truth is the code; update this section if you change a constant.
 
 - **Quiz length**: 15 questions (`QuizScreen TOTAL = Math.min(15, quizPool.length)`).
-- **Quiz pool**: most-recent 15 words by `firstSeen` (newest first), regardless of `knownWords` or LV. New daily 3 words inherently appear; oldest 3 fall out. LV unlocking and known-word filtering do **not** gate the quiz pool — Mark deliberately removed those gates because tests should always cover the words just learned.
-- **Flashcard pool**: same recent-15 slice, split into 未熟練 / 已會 tabs by `knownWords`. (Was briefly the full corpus in `4b9bb6d`/early; reverted in `e3bf34b` because new players landing on 120 cards is overwhelming.)
+- **Quiz pool**: level-based study path from `vocab-difficulty.json` plus daily focus. LV1 gets the 15 easiest ranked words **excluding today's focus words**, then today's newest 3 are appended; each additional LV unlocks the next 5 ranked words. The quiz samples 15 questions from that pool and prioritizes daily focus words first.
+- **Flashcard pool**: same level-based study path + daily focus pool, split into 未熟練 / 已會 tabs by `knownWords`. Do not revert to recent-15-only or full corpus without Mark confirming; progression should move easy → hard.
 - **Cloze cap per quiz**: 3 (`MAX_CLOZE`). Down from 5 when length was 20.
 - **Pet hint budget**: 2 per quiz. zh2en eliminates 2 wrong options, cloze speaks target via TTS, tense reveals previously always-on `tenseHintText(form, base)`. Hint state resets per question, budget persists across questions. The pet image acts as the hint button.
 - **EXP per correct answer**: `calcExpGain(combo)` = 10, +5 at combo≥3, +10 at combo≥5, +20 at combo≥10.
 - **Level XP curve** (`levelXpRequirement(level)`): 100, 130, 176, 246, 357, **536**, then **caps linear at 536** for every higher level. Multiplier sequence is 1.30, 1.35, 1.40, 1.45, 1.50, then stays at 1.70 with `Math.min(LEVEL_XP_CAP, ...)`. Earlier exponential curve was explicitly rejected by Mark.
 - **Food**: 1 food per level-up (`addFood = levelUp` inside `answerCorrect`). HP decay is on `pets/{petId}` only when `status===’owned’`.
 - **Level-up modal**: fired on home only when `pendingLevelUp > 0`. Closing calls `ackLevelUp(uid)`. The close handler must `ack→refresh→setLevelUpInfo(null)` in that order, with a `useRef` lock — the inverse order races and re-opens the modal with stale pending>0.
-- **`vocab-difficulty.json`**: still in repo, currently unused for pool gating after `395bfaa`. Keep until we have a reason to remove (could drive a future "study path" view). The 100 curated words are the AI’s easy→hard ranking.
+- **`vocab-difficulty.json`**: active study-path source. The first 100 curated words are the easy→hard ranking; rank 101+ falls back to `firstSeen` oldest-first. `perLevel.lv1Size=15`, `lvIncrement=5`.
 
 ## Daily focus (today’s 3 new words)
 

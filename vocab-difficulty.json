@@ -3,7 +3,7 @@
   "createdAt": "2026-04-27",
   "note": "AI-curated easy-to-hard ordering for the first 100 words. Used for level-based vocab unlock. Beyond rank 100, fall back to firstSeen date order (oldest first). Once curated, this list is intended to be stable across versions.",
   "perLevel": {
-    "lv1Size": 20,
+    "lv1Size": 15,
     "lvIncrement": 5,
     "maxCuratedRank": 100
   },

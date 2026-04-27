@@ -132,7 +132,7 @@ function numToEnglish(n){
 }
 
 /* ══ Level / unlock helpers ══════════════════════════════ */
-const LV1_SIZE=20;
+const LV1_SIZE=15;
 const LV_INCREMENT=5;
 function unlockedCountForLevel(level){
   const lv=Math.max(1,level|0);
@@ -161,6 +161,29 @@ function newlyUnlockedWords(difficultyOrder,allWords,oldLevel,newLevel){
   const newCount=unlockedCountForLevel(newLevel);
   const all=unlockedWords(allWords,difficultyOrder,newLevel);
   return all.slice(oldCount,newCount);
+}
+function mergeStudyPool(unlocked,todaySet){
+  const map=new Map();
+  for(const w of unlocked||[])map.set(w.word,w);
+  for(const w of todaySet||[])map.set(w.word,{...w,isDailyFocus:true});
+  return [...map.values()];
+}
+const LEVEL_XP_CAP_UI=536;
+function levelXpRequirementUi(level){
+  const lv=Math.max(1,level|0);
+  let req=100;
+  for(let n=2;n<=lv;n++){
+    if(req>=LEVEL_XP_CAP_UI)return LEVEL_XP_CAP_UI;
+    const mult=1.30+0.05*(n-2);
+    req=Math.min(LEVEL_XP_CAP_UI,Math.round(req*mult));
+  }
+  return req;
+}
+function estimateTotalExpForLevel(level,exp=0){
+  const lv=Math.max(1,level|0);
+  let total=Number(exp||0);
+  for(let n=1;n<lv;n++)total+=levelXpRequirementUi(n);
+  return Math.max(0,Math.round(total));
 }
 
 /* ══ LocalStorage ════════════════════════════════════════ */
@@ -303,9 +326,11 @@ function buildTenseQuestion(w,_otherVerbs){
 const MAX_CLOZE=3;
 function buildQuizItems(pool,total,knownSet=new Set()){
   const verbs=pool.filter(w=>looksLikeVerb(w.word,w.en));
-  const unknown=shuffle(pool.filter(w=>!knownSet.has(w.word)));
-  const known=shuffle(pool.filter(w=>knownSet.has(w.word)));
-  const chosen=[...unknown,...known].slice(0,total);
+  const focus=shuffle(pool.filter(w=>w.isDailyFocus));
+  const focusWords=new Set(focus.map(w=>w.word));
+  const unknown=shuffle(pool.filter(w=>!focusWords.has(w.word)&&!knownSet.has(w.word)));
+  const known=shuffle(pool.filter(w=>!focusWords.has(w.word)&&knownSet.has(w.word)));
+  const chosen=[...focus,...unknown,...known].slice(0,total);
   let clozeBudget=Math.min(MAX_CLOZE,Math.floor(total/4));
   if(clozeBudget<2&&total>=8)clozeBudget=2;
   const items=[];
@@ -494,12 +519,13 @@ function FeedReaction({pet,newHp,msg,onClose}){
   </div>);
 }
 
-function LevelUpModal({level,pc,onClose}){
+function LevelUpModal({level,unlocked=[],pc,onClose}){
   return(<div onClick={onClose} style={{position:'absolute',inset:0,background:'rgba(0,0,0,0.55)',display:'flex',alignItems:'center',justifyContent:'center',zIndex:130,padding:24,cursor:'pointer'}}>
     <div onClick={e=>e.stopPropagation()} style={{background:'#fff',borderRadius:24,padding:'30px 24px 22px',width:'100%',maxWidth:300,textAlign:'center',boxShadow:'0 14px 40px rgba(0,0,0,0.3)',animation:'pop 0.3s ease-out',cursor:'default'}}>
       <div style={{fontSize:60,animation:'float 1.2s ease-in-out infinite'}}>⭐</div>
       <div style={{fontSize:13,fontWeight:800,color:'#888',marginTop:8,letterSpacing:2}}>升級啦！</div>
       <div style={{fontSize:32,fontWeight:900,color:pc,marginTop:2,letterSpacing:1}}>LV {level}</div>
+      {unlocked.length>0&&<div style={{marginTop:10,background:`${pc}12`,borderRadius:14,padding:'8px 10px',fontSize:12,fontWeight:800,color:'#475569',lineHeight:1.45}}>新解鎖 {unlocked.length} 張單字卡：<br/><span style={{color:pc}}>{unlocked.slice(0,6).map(w=>w.word).join('、')}{unlocked.length>6?'…':''}</span></div>}
       <button onClick={onClose} style={{marginTop:18,padding:'10px 28px',borderRadius:14,border:'none',cursor:'pointer',background:`linear-gradient(135deg,${pc},${pc}bb)`,fontSize:14,fontWeight:900,color:'#fff',boxShadow:`0 3px 10px ${pc}44`,fontFamily:'inherit'}}>太棒了！</button>
     </div>
   </div>);
@@ -516,7 +542,9 @@ function PetCard({fb,refreshFb,onSelectPet,onStart,pc}){
   const pet=fb?.pet;
   const foodCount=profile.foodCount|0;
   const level=profile.level||1;
+  const totalExp=profile.totalExp!==undefined?Math.max(0,Math.round(Number(profile.totalExp)||0)):estimateTotalExpForLevel(level,profile.exp||0);
   const lvLabel=<span style={{fontSize:12,color:pc,fontWeight:900,display:'inline-flex',alignItems:'center',gap:4}}><span style={{fontSize:13}}>⭐</span>LV {level}</span>;
+  const totalExpLabel=<span style={{fontSize:11,color:'#94a3b8',fontWeight:900,marginLeft:8}}>總EXP {totalExp}</span>;
   const helpers=window.FB?.helpers;
   const curHp=pet&&helpers?helpers.calcCurrentHp(pet):0;
   const isVisitor=!pet;
@@ -542,7 +570,7 @@ function PetCard({fb,refreshFb,onSelectPet,onStart,pc}){
       <div style={{display:'flex',alignItems:'center',gap:14}}>
         <button onClick={onSelectPet} aria-label="選寵物" style={{width:64,height:64,border:'2px dashed #cbd5e1',borderRadius:18,background:'#f8fafc',cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center',padding:0,fontSize:42,color:'#1a1a2e',animation:'float 3s ease-in-out infinite'}}>🐈‍⬛</button>
         <div style={{flex:1,minWidth:0}}>
-          <div>{lvLabel}</div>
+          <div>{lvLabel}{totalExpLabel}</div>
           <div style={{fontSize:18,fontWeight:900,color:'#1a1a2e'}}>訪客喵</div>
           <div style={{fontSize:11,color:'#bbb',marginTop:1}}>選一隻寵物來照顧吧！</div>
         </div>
@@ -567,7 +595,7 @@ function PetCard({fb,refreshFb,onSelectPet,onStart,pc}){
         <img src={pet.img} alt={pet.name} style={{width:'100%',height:'100%',objectFit:'contain',...grayStyle}}/>
       </button>
       <div style={{flex:1,minWidth:0}}>
-        <div>{lvLabel}</div>
+        <div>{lvLabel}{totalExpLabel}</div>
         <div style={{fontSize:18,fontWeight:900,color:isStarved?'#94a3b8':pc}}>{pet.name}{isStarved?' 💤':''}</div>
         <div style={{fontSize:11,color:'#bbb',marginTop:1}}>{isStarved?'牠餓壞了，去選別隻吧…':'一起來複習單字吧！'}</div>
       </div>
@@ -1506,6 +1534,7 @@ function App(){
     xp:fb?.profile?.exp??stats.xp??0,
     todayQuiz:profileTodayDate===today?(profileTodayCount|0):0,
     level:fb?.profile?.level||1,
+    totalExp:fb?.profile?.totalExp??estimateTotalExpForLevel(fb?.profile?.level||1,fb?.profile?.exp??stats.xp??0),
   };
 
   // Load vocab-data.json + difficulty file once
@@ -1555,8 +1584,7 @@ function App(){
   // Fetch leaderboard when entering rank screen or at startup
   useEffect(()=>{if(screen==='rank')refreshLeaderboard();},[screen,refreshLeaderboard]);
 
-  // Today's set / quiz pool (most-recent 15 by firstSeen) / flash all (full corpus)
-  const RECENT_QUIZ_SIZE=15;
+  // Today's set + level-based study path: LV1 gets easiest 15 cards + today's 3; each level unlocks 5 more.
   const {todaySet,quizPool,dateLabel}=useMemo(()=>{
     if(!vocabAll)return{todaySet:[],quizPool:[],dateLabel:formatDate(today)};
     const byDate=new Map();
@@ -1565,16 +1593,17 @@ function App(){
     const latest=allDates[allDates.length-1]||'';
     const todayWords=byDate.get(today)||[];
     const displayDate=todayWords.length?today:latest;
-    const displaySet=todayWords.length?todayWords:(byDate.get(latest)||[]).slice(0,3);
-    // Most recent 15 by firstSeen (newest first), regardless of known/level
-    const sortedDesc=[...vocabAll].sort((a,b)=>String(b.date||'').localeCompare(String(a.date||'')));
-    const quiz=sortedDesc.slice(0,RECENT_QUIZ_SIZE);
+    const displaySet=(todayWords.length?todayWords:(byDate.get(latest)||[])).slice(0,3);
+    const focusWords=new Set(displaySet.map(w=>w.word));
+    const pathWords=vocabAll.filter(w=>!focusWords.has(w.word));
+    const unlocked=unlockedWords(pathWords,difficultyOrder,displayStats.level||1);
+    const studyPool=mergeStudyPool(unlocked,displaySet);
     return{
-      todaySet:displaySet.slice(0,3),
-      quizPool:quiz.length?quiz:vocabAll,
+      todaySet:displaySet,
+      quizPool:studyPool.length?studyPool:vocabAll,
       dateLabel:formatDate(displayDate||today),
     };
-  },[vocabAll,today]);
+  },[vocabAll,difficultyOrder,today,displayStats.level]);
 
   const nav=(s)=>{if(s==='quiz'&&screen!=='quiz')setResult(null);setScreen(s);};
 
@@ -1587,8 +1616,12 @@ function App(){
     const pending=fb?.profile?.pendingLevelUp|0;
     if(pending<=0)return;
     const newLevel=fb?.profile?.level||1;
-    setLevelUpInfo({level:newLevel});
-  },[screen,fb?.profile?.pendingLevelUp,fb?.profile?.level,levelUpInfo]);
+    const oldLevel=Math.max(1,newLevel-pending);
+    const focusWords=new Set((todaySet||[]).map(w=>w.word));
+    const pathWords=vocabAll?vocabAll.filter(w=>!focusWords.has(w.word)):[];
+    const unlocked=pathWords.length?newlyUnlockedWords(difficultyOrder,pathWords,oldLevel,newLevel):[];
+    setLevelUpInfo({level:newLevel,unlocked});
+  },[screen,fb?.profile?.pendingLevelUp,fb?.profile?.level,levelUpInfo,vocabAll,difficultyOrder,todaySet]);
 
   const handleCloseLevelUp=async()=>{
     levelUpAckingRef.current=true;
@@ -1652,7 +1685,7 @@ function App(){
     {screen==='quiz'&&<QuizScreen charSrc={charSrc} quizPool={quizPool} knownWords={fb?.profile?.knownWords||[]} onFinish={handleFinish} onNav={nav} pc={pc} refreshFb={refreshFb} voiceGender={fb?.pet?.voiceGender==='male'?'male':'female'}/>}
     {screen==='result'&&result&&<ResultScreen {...result} charSrc={charSrc} charName={charName} onRetry={()=>setScreen('quiz')} onHome={()=>setScreen('home')} pc={pc}/>}
     {screen==='rank'&&<RankScreen uid={fb?.uid} studentName={studentName} charIdx={charIdx} stats={displayStats} onNav={nav} pc={pc} cloudEntries={cloudEntries} cloudStreakEntries={cloudStreakEntries} cloudStatus={cloudStatus} onRefresh={refreshLeaderboard}/>}
-    {levelUpInfo&&<LevelUpModal level={levelUpInfo.level} pc={pc} onClose={handleCloseLevelUp}/>}
+    {levelUpInfo&&<LevelUpModal level={levelUpInfo.level} unlocked={levelUpInfo.unlocked||[]} pc={pc} onClose={handleCloseLevelUp}/>}
   </div>);
 }
 
@@ -1745,11 +1778,17 @@ async function ensureUserProfile(uid, defaultName, legacyUid = null) {
   const snap = await getDoc(ref);
   if (snap.exists()) {
     const existing = snap.data();
-    // Backfill level/pendingLevelUp for users created before LV system shipped.
-    // Default to 21 so existing players keep their full vocab pool (~120 words).
-    if (existing.level === undefined || existing.level === null) {
-      const patch = { level: 21, pendingLevelUp: 0, updatedAt: Date.now() };
-      try { await updateDoc(ref, patch); } catch (e) { console.warn('[FB] level backfill failed', e); }
+    // Backfill fields for users created before the LV/study-path system shipped.
+    const patch = {};
+    if (existing.level === undefined || existing.level === null) { patch.level = 1; patch.pendingLevelUp = 0; }
+    if (existing.pendingLevelUp === undefined || existing.pendingLevelUp === null) patch.pendingLevelUp = 0;
+    if (existing.knownWords === undefined || existing.knownWords === null) patch.knownWords = [];
+    const levelForTotal = patch.level || existing.level || 1;
+    const expForTotal = existing.exp || 0;
+    if (existing.totalExp === undefined || existing.totalExp === null) patch.totalExp = estimateTotalExpForLevelModule(levelForTotal, expForTotal);
+    if (Object.keys(patch).length) {
+      patch.updatedAt = Date.now();
+      try { await updateDoc(ref, patch); } catch (e) { console.warn('[FB] profile backfill failed', e); }
       return { ref, data: { ...existing, ...patch }, created: false };
     }
     return { ref, data: existing, created: false };
@@ -1768,7 +1807,7 @@ async function ensureUserProfile(uid, defaultName, legacyUid = null) {
     name: normalizePlayerName(defaultName),
     playerId: uid,
     currentPetId: null,
-    exp: 0, combo: 0, foodCount: 0,
+    exp: 0, totalExp: 0, combo: 0, foodCount: 0,
     level: 1, pendingLevelUp: 0,
     totalCorrect: 0, totalGames: 0,
     streakCur: 0, streakBest: 0, bestScore: 0, avgScore: 0,
@@ -1806,6 +1845,7 @@ async function migrateLocalStats(uid, profile) {
     avgScore: Number(old.avgScore || 0),
     totalGames: Number(old.totalGames || 0),
     exp: Number(profile?.exp || old.xp || 0) % 200,
+    totalExp: Number(profile?.totalExp ?? old.xp ?? 0),
     weekPlayed: Array.isArray(old.weekPlayed) ? old.weekPlayed : [],
     migratedFromLocalAt: Date.now(), updatedAt: Date.now(),
   };
@@ -2088,6 +2128,12 @@ function levelXpRequirement(level) {
   }
   return req;
 }
+function estimateTotalExpForLevelModule(level, exp = 0) {
+  const lv = Math.max(1, level | 0);
+  let total = Number(exp || 0);
+  for (let n = 1; n < lv; n++) total += levelXpRequirement(n);
+  return Math.max(0, Math.round(total));
+}
 
 async function answerCorrect(uid, isVerb = false) {
   return await runTransaction(db, async (tx) => {
@@ -2099,6 +2145,7 @@ async function answerCorrect(uid, isVerb = false) {
     const gainExp = calcExpGain(user.combo || 0);
     let curExp = (user.exp || 0) + gainExp;
     let level = user.level || 1;
+    const totalExp = Number(user.totalExp ?? estimateTotalExpForLevelModule(level, user.exp || 0)) + gainExp;
     let levelUp = 0;
     // Advance through any thresholds crossed (usually 0 or 1 per question; defensive while-loop in case of huge multi-correct accumulators)
     let safety = 8;
@@ -2113,6 +2160,7 @@ async function answerCorrect(uid, isVerb = false) {
     const newCombo = (user.combo || 0) + 1;
     tx.update(userRef, {
       exp: curExp,
+      totalExp,
       combo: newCombo,
       foodCount: (user.foodCount || 0) + addFood,
       totalCorrect: (user.totalCorrect || 0) + 1,
