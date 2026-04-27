@@ -178,6 +178,7 @@ Reference implementation: 2026-04-25 cleanup pass — see Changelog below for co
 
 Newest first. Format: `YYYY-MM-DD [agent] commit `hash` — one-line summary`.
 
+- 2026-04-27 [OpenClaw] `c9eb9a0` — Restored level-based study path: LV1 gets 15 easiest ranked words plus today's 3; each level unlocks +5; quiz prioritizes daily focus; totalExp is persisted and shown on the home pet card.
 - 2026-04-27 [Claude Code] `e3bf34b` — FlashScreen pool scoped to quizPool (recent 15 by firstSeen) instead of full vocabAll. New players landing on 120 cards was overwhelming; cards now follow the same daily-rolling 15-word window as the quiz. 未熟練/已會 tabs split this 15.
 - 2026-04-27 [Claude Code] `f835d67` — flashcard pet position to top:15 right:12 (inside card top-right corner), per Mark's preference.
 - 2026-04-27 [Claude Code] `d020113` — flashcard pet floats absolute on the card top-right (54x54, drop-shadow + float anim) so SE3 / short phones see it without scrolling. Tap pet=speak, tap card=flip. Action row buttons trimmed to padding '6px 10px'/font 12 (now visibly shorter than tab pills). 放棄此題 button moved out of the always-visible XP footer back into each answerArea's last child — only reachable by scrolling, so it doesn't tempt children to bail.
