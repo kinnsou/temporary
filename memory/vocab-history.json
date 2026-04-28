@@ -3,7 +3,7 @@
     "newWordsMustBeUniqueUntilExhausted": true,
     "reviewFormat": "guided_cloze_with_grammar_chunking",
     "sourceScope": "台灣普遍認定國中必會1000單",
-    "updatedAt": "2026-04-27T11:01:32Z"
+    "updatedAt": "2026-04-28T11:00:54Z"
   },
   "words": {
     "adventure": {
@@ -1186,6 +1186,36 @@
       ],
       "example_sentence": "I wear my school uniform every day.",
       "translation": "我每天都穿校服。"
+    },
+    "always": {
+      "first_seen": "2026-04-28",
+      "last_seen": "2026-04-28",
+      "pos": "adv",
+      "meanings": [
+        "總是；一直"
+      ],
+      "example_sentence": "She always eats breakfast.",
+      "translation": "她總是會吃早餐。"
+    },
+    "correctly": {
+      "first_seen": "2026-04-28",
+      "last_seen": "2026-04-28",
+      "pos": "adv",
+      "meanings": [
+        "正確地"
+      ],
+      "example_sentence": "Please write your name correctly.",
+      "translation": "請把你的名字寫正確。"
+    },
+    "coffee": {
+      "first_seen": "2026-04-28",
+      "last_seen": "2026-04-28",
+      "pos": "n",
+      "meanings": [
+        "咖啡"
+      ],
+      "example_sentence": "My dad drinks coffee in the morning.",
+      "translation": "我爸爸早上會喝咖啡。"
     }
   }
 }

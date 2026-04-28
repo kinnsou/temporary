@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-04-27T11:01:33Z",
-    "sourceCount": 131,
-    "includedCount": 123
+    "updatedAt": "2026-04-28T11:01:07Z",
+    "sourceCount": 134,
+    "includedCount": 126
   },
   "words": [
+    {
+      "word": "always",
+      "meaning": "總是；一直",
+      "example": "She always eats breakfast.",
+      "translation": "她總是會吃早餐。",
+      "firstSeen": "2026-04-28",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "correctly",
+      "meaning": "正確地",
+      "example": "Please write your name correctly.",
+      "translation": "請把你的名字寫正確。",
+      "firstSeen": "2026-04-28",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "coffee",
+      "meaning": "咖啡",
+      "example": "My dad drinks coffee in the morning.",
+      "translation": "我爸爸早上會喝咖啡。",
+      "firstSeen": "2026-04-28",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "well",
       "meaning": "很好地；很不錯地",
