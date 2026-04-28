@@ -325,9 +325,25 @@ function buildTenseQuestion(w,_otherVerbs){
   return{type:'tense',correct,options:shuffle(forms),baseWord:base,before,after,zh2:w.zh2||'',zh:w.zh||'',tenseHint:tenseHintText(correct,base)};
 }
 
+function tokenizeSentence(sentence){
+  return String(sentence||'').trim().replace(/\s+/g,' ').split(' ').filter(Boolean);
+}
+
+/* Build a sentence-order question. Returns {type,correct,answerTokens,tokens,zh2,zh}. */
+function buildOrderQuestion(w){
+  if(!w.en)return null;
+  const answerTokens=tokenizeSentence(w.en);
+  if(answerTokens.length<4||answerTokens.length>10)return null;
+  const tokens=answerTokens.map((text,i)=>({id:`${i}:${text}`,text,idx:i}));
+  let shuffled=shuffle(tokens);
+  if(shuffled.map(t=>t.id).join('|')===tokens.map(t=>t.id).join('|'))shuffled=shuffle(tokens.slice().reverse());
+  return{type:'order',correct:answerTokens.join(' '),answerTokens,tokens:shuffled,zh2:w.zh2||'',zh:w.zh||''};
+}
+
 /* Build mixed quiz items. Cap cloze at MAX_CLOZE. Prefer tense for detected verbs.
    knownSet: Set of words the player has marked "我會了"; sampled last so unfamiliar words dominate. */
 const MAX_CLOZE=3;
+const MAX_ORDER=3;
 function buildQuizItems(pool,total,knownSet=new Set()){
   const verbs=pool.filter(w=>looksLikeVerb(w.word,w.en));
   const focus=shuffle(pool.filter(w=>w.isDailyFocus));
@@ -337,11 +353,16 @@ function buildQuizItems(pool,total,knownSet=new Set()){
   const chosen=[...focus,...unknown,...known].slice(0,total);
   let clozeBudget=Math.min(MAX_CLOZE,Math.floor(total/4));
   if(clozeBudget<2&&total>=8)clozeBudget=2;
+  let orderBudget=Math.min(MAX_ORDER,Math.floor(total/5)||1);
   const items=[];
   for(const w of chosen){
     const isVerb=looksLikeVerb(w.word,w.en);
     let built=null;
-    if(isVerb&&Math.random()<0.6){
+    if(orderBudget>0&&w.en&&Math.random()<0.28){
+      built=buildOrderQuestion(w);
+      if(built)orderBudget--;
+    }
+    if(!built&&isVerb&&Math.random()<0.6){
       built=buildTenseQuestion(w,verbs.filter(v=>v.word!==w.word));
     }
     if(!built&&clozeBudget>0&&w.en&&Math.random()<0.45){
@@ -508,8 +529,11 @@ function FeedReaction({pet,newHp,msg,onClose}){
   useEffect(()=>{const t=setTimeout(onClose,2200);return()=>clearTimeout(t);},[onClose]);
   return(<div onClick={onClose} style={{position:'absolute',inset:0,background:'rgba(0,0,0,0.45)',display:'flex',alignItems:'center',justifyContent:'center',zIndex:120,padding:24,cursor:'pointer'}}>
     <div style={{background:'#fff',borderRadius:24,padding:'28px 24px 22px',width:'100%',maxWidth:300,textAlign:'center',boxShadow:'0 14px 40px rgba(0,0,0,0.25)',animation:'pop 0.25s ease-out'}}>
-      <div style={{animation:'float 1.2s ease-in-out infinite',display:'inline-block'}}>
+      <div style={{animation:'float 1.2s ease-in-out infinite',display:'inline-block',position:'relative',overflow:'visible'}}>
         {pet?.img?<img src={pet.img} alt="" style={{width:96,height:96,objectFit:'contain'}}/>:<span style={{fontSize:80}}>🍖</span>}
+        <span style={{position:'absolute',left:-15,top:4,fontSize:25,transform:'rotate(-18deg)',filter:'drop-shadow(0 2px 3px rgba(0,0,0,0.18))',pointerEvents:'none'}}>❤️</span>
+        <span style={{position:'absolute',right:-12,top:18,fontSize:18,transform:'rotate(16deg)',filter:'drop-shadow(0 2px 3px rgba(0,0,0,0.14))',pointerEvents:'none'}}>💖</span>
+        <span style={{position:'absolute',left:12,bottom:-4,fontSize:14,transform:'rotate(-10deg)',filter:'drop-shadow(0 1px 2px rgba(0,0,0,0.12))',pointerEvents:'none'}}>💕</span>
       </div>
       <div style={{fontSize:16,fontWeight:900,color:'#1a1a2e',marginTop:8,lineHeight:1.5}}>{msg}</div>
       <div style={{marginTop:14,display:'flex',alignItems:'center',gap:8,justifyContent:'center'}}>
@@ -538,10 +562,8 @@ function LevelUpModal({level,unlocked=[],pc,onClose}){
 function PetCard({fb,refreshFb,onSelectPet,onStart,pc}){
   const[feeding,setFeeding]=useState(false);
   const[reaction,setReaction]=useState(null);
-  const[feedHearts,setFeedHearts]=useState(false);
   const[err,setErr]=useState('');
   useEffect(()=>{if(!err)return;const t=setTimeout(()=>setErr(''),2200);return()=>clearTimeout(t);},[err]);
-  useEffect(()=>{if(!feedHearts)return;const t=setTimeout(()=>setFeedHearts(false),1600);return()=>clearTimeout(t);},[feedHearts]);
 
   const ready=fb&&fb.ready;
   const profile=fb?.profile||{};
@@ -563,7 +585,6 @@ function PetCard({fb,refreshFb,onSelectPet,onStart,pc}){
     try{
       const r=await window.FB.ops.feedMyPet(window.FB.uid);
       setReaction({newHp:r.newHp,msg:pickFeedMessage(r.petName,r.newHp>=100)});
-      setFeedHearts(true);
       await refreshFb();
     }catch(e){
       const map={'no-food':'你沒有飼料了，再答對一些題目吧！','no-pet':'請先選一隻寵物喔！','pet-starved':'牠已經餓到不能餵了…','not-owner':'這不是你的寵物。'};
@@ -601,10 +622,6 @@ function PetCard({fb,refreshFb,onSelectPet,onStart,pc}){
     <div style={{display:'flex',alignItems:'center',gap:14,position:'relative'}}>
       <button onClick={onSelectPet} aria-label="換寵物" style={{width:64,height:64,border:'none',borderRadius:18,background:'transparent',cursor:'pointer',padding:0,flexShrink:0,position:'relative',overflow:'visible',animation:isStarved?'none':'float 3s ease-in-out infinite'}}>
         <img src={pet.img} alt={pet.name} style={{width:'100%',height:'100%',objectFit:'contain',...grayStyle}}/>
-        {feedHearts&&<>
-          <span style={{position:'absolute',left:-12,top:-2,fontSize:20,filter:'drop-shadow(0 1px 2px rgba(0,0,0,0.18))',pointerEvents:'none'}}>❤️</span>
-          <span style={{position:'absolute',left:-18,top:22,fontSize:13,filter:'drop-shadow(0 1px 2px rgba(0,0,0,0.15))',pointerEvents:'none'}}>❤️</span>
-        </>}
         {!isStarved&&curHp>0&&curHp<20&&<span style={{position:'absolute',right:0,bottom:6,fontSize:16,filter:'drop-shadow(0 1px 2px rgba(0,0,0,0.18))',pointerEvents:'none'}}>😢</span>}
       </button>
       <div style={{flex:1,minWidth:0}}>
@@ -837,7 +854,6 @@ function CharSelectScreen({current,onSelect,onBack,pc,fb,refreshFb}){
   const [err,setErr]=useState('');
   const [rename,setRename]=useState('');
   const [voiceGender,setVoiceGender]=useState('female');
-  const voiceName=useVoiceName(voiceGender);
   const myPetId=fb?.profile?.currentPetId||null;
   const myPet=pets.find(p=>p.id===myPetId)||fb?.pet||null;
 
@@ -912,7 +928,6 @@ function CharSelectScreen({current,onSelect,onBack,pc,fb,refreshFb}){
               return(<button key={g} onClick={()=>changeVoice(g)} style={{padding:'4px 12px',borderRadius:8,border:'none',background:active?pc:'transparent',color:active?'#fff':'#64748b',fontSize:11,fontWeight:900,cursor:'pointer',fontFamily:'inherit',letterSpacing:0.6,transition:'background 0.15s,color 0.15s'}}>{label}</button>);
             })}
           </div>
-          {voiceName&&<div style={{fontSize:9,color:'#94a3b8',fontWeight:700,letterSpacing:0.2,maxWidth:160,textAlign:'right',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}} title={voiceName}>🎙 {voiceName}</div>}
         </div>
       </div>
       <div style={{display:'flex',gap:8}}>
@@ -1095,6 +1110,7 @@ const Q_THEME={
   zh2en:{color:'#61c2ff',icon:'🎯',label:'選出正確解釋'},
   cloze:{color:'#FF9800',icon:'✏️',label:'填入正確單字'},
   tense:{color:'#38bdf8',icon:'⏱',label:'選出正確時態'},
+  order:{color:'#a78bfa',icon:'🧩',label:'排出完整句子'},
 };
 
 function Blank({width=78,color='#555',filled}){
@@ -1110,6 +1126,8 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,pc,refr
   const [selected,setSel]=useState(null);   // for zh2en/tense: chosen option string; for cloze: 'submitted' marker
   const [clozeInput,setClozeInput]=useState('');
   const [clozeResult,setClozeResult]=useState(null); // {isCorrect, userAnswer}
+  const [orderPicked,setOrderPicked]=useState([]); // token ids picked for sentence-order questions
+  const [orderResult,setOrderResult]=useState(null); // {isCorrect}
   const [score,setScore]=useState(0);
   const [xp,setXp]=useState(0);
   const [combo,setCombo]=useState(0);
@@ -1122,6 +1140,7 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,pc,refr
   const [hintUsedThisQ,setHintUsedThisQ]=useState(false); // per-question lock — only 1 hint debit per question
   const [hintFx,setHintFx]=useState(0);
   const inputRef=useRef(null);
+  const dragTokenRef=useRef(null);
 
   useEffect(()=>{
     // Focus input when a cloze question mounts
@@ -1133,6 +1152,8 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,pc,refr
     setHiddenOpts(new Set());
     setHintUsedThisQ(false);
     setHintFx(0);
+    setOrderPicked([]);
+    setOrderResult(null);
   },[idx,questions]);
 
   // Auto-clear the ✨ pop overlay after its animation finishes (~0.4s)
@@ -1146,7 +1167,7 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,pc,refr
     if(hintsLeft<=0)return;
     if(hintUsedThisQ)return; // already debited this question — additional taps do nothing
     const cur=questions[idx];
-    if(!cur||selected||clozeResult)return;
+    if(!cur||selected||clozeResult||orderResult)return;
     if(cur.type==='zh2en'){
       const wrongs=cur.options.filter(o=>normalizeAnswer(o.word)!==normalizeAnswer(cur.vocab.word));
       const drop=shuffle(wrongs).slice(0,2).map(o=>o.word);
@@ -1156,6 +1177,9 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,pc,refr
       try{speakText(cur.correct,{gender:voiceGender});}catch(e){console.warn('speak failed',e);}
     }else if(cur.type==='tense'){
       setHintRevealed(true);
+    }else if(cur.type==='order'){
+      const first3=cur.tokens.filter(t=>t.idx<3).sort((a,b)=>a.idx-b.idx).map(t=>t.id);
+      setOrderPicked(prev=>[...first3,...prev.filter(id=>!first3.includes(id))]);
     }else return;
     setHintUsedThisQ(true);
     setHintsLeft(n=>Math.max(0,n-1));
@@ -1178,6 +1202,18 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,pc,refr
   const vocab=q.vocab;
   const theme=Q_THEME[q.type]||Q_THEME.zh2en;
 
+  const sentenceForQuestion=(qq)=>{
+    if(!qq)return '';
+    if(qq.type==='order')return qq.correct||qq.vocab?.en||'';
+    if(qq.type==='cloze')return `${qq.before||''}${qq.correct||''}${qq.after||''}`.trim();
+    if(qq.type==='tense')return `${qq.before||''}${qq.correct||''}${qq.after||''}`.trim();
+    return qq.vocab?.word||qq.correct||'';
+  };
+  const speakAfterAnswer=(qq)=>{
+    const text=sentenceForQuestion(qq);
+    if(text)try{speakText(text,{gender:voiceGender});}catch(e){console.warn('speak failed',e);}
+  };
+
   const afterAnswer=async(ok)=>{
     let gain=0,food=0,nextCombo=0;
     if(ok){
@@ -1199,9 +1235,9 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,pc,refr
       setShaking(true);setTimeout(()=>setShaking(false),500);
     }
     // For cloze we linger a bit longer so kids can read the correct answer
-    const delay=q.type==='cloze'?1600:1100;
+    const delay=(q.type==='cloze'||q.type==='tense'||q.type==='order')?1700:1100;
     setTimeout(()=>{
-      setSel(null);setClozeInput('');setClozeResult(null);
+      setSel(null);setClozeInput('');setClozeResult(null);setOrderPicked([]);setOrderResult(null);
       if(idx+1>=TOTAL) onFinish(ok?score+1:score,ok?xp+gain:xp,TOTAL);
       else setIdx(i=>i+1);
     },delay);
@@ -1210,6 +1246,7 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,pc,refr
   const answerChoice=(optStr)=>{
     if(selected)return;
     setSel(optStr);
+    speakAfterAnswer(q);
     const correctStr=q.type==='zh2en'?q.vocab.word:q.correct;
     afterAnswer(normalizeAnswer(optStr)===normalizeAnswer(correctStr));
   };
@@ -1217,13 +1254,35 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,pc,refr
     if(clozeResult)return;
     const ok=normalizeAnswer(clozeInput)===normalizeAnswer(q.correct);
     setClozeResult({isCorrect:ok,userAnswer:clozeInput});
+    speakAfterAnswer(q);
+    afterAnswer(ok);
+  };
+  const addOrderToken=(id)=>{
+    if(orderResult||orderPicked.includes(id))return;
+    setOrderPicked(prev=>[...prev,id]);
+  };
+  const removeOrderToken=(id)=>{
+    if(orderResult)return;
+    setOrderPicked(prev=>prev.filter(x=>x!==id));
+  };
+  const submitOrder=()=>{
+    if(orderResult||orderPicked.length!==q.tokens.length)return;
+    const byId=new Map(q.tokens.map(t=>[t.id,t]));
+    const text=orderPicked.map(id=>byId.get(id)?.text||'').join(' ');
+    const ok=normalizeAnswer(text)===normalizeAnswer(q.correct);
+    setOrderResult({isCorrect:ok});
+    speakAfterAnswer(q);
     afterAnswer(ok);
   };
   const giveUp=()=>{
-    if(selected||clozeResult)return;
+    if(selected||clozeResult||orderResult)return;
+    speakAfterAnswer(q);
     if(q.type==='cloze'){
       setClozeInput('');
       setClozeResult({isCorrect:false,userAnswer:''});
+    }else if(q.type==='order'){
+      setOrderResult({isCorrect:false});
+      setOrderPicked(q.tokens.slice().sort((a,b)=>a.idx-b.idx).map(t=>t.id));
     }else{
       // mark a sentinel selection so UI shows correct answer highlight
       setSel('__give_up__');
@@ -1236,7 +1295,7 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,pc,refr
   const bdrBtn=(label,correctLabel)=>{if(!selected)return'2px solid #f0eaea';if(normalizeAnswer(label)===normalizeAnswer(correctLabel))return'2px solid #4CAF82';if(normalizeAnswer(label)===normalizeAnswer(selected))return'2px solid #FF4D6D';return'2px solid #f5f5f5';};
 
   // ─ Render question card per type ─
-  const giveUpBtn=(!selected&&!clozeResult)?(
+  const giveUpBtn=(!selected&&!clozeResult&&!orderResult)?(
     <div style={{textAlign:'center',paddingTop:6,paddingBottom:4}}>
       <button onClick={giveUp} style={{padding:'7px 16px',borderRadius:14,border:'none',background:'linear-gradient(135deg,#fb7185,#fb7185cc)',fontSize:11,fontWeight:900,color:'#fff',cursor:'pointer',fontFamily:'inherit',boxShadow:'0 3px 10px rgba(251,113,133,0.30)'}}>放棄此題（進未熟練）</button>
     </div>
@@ -1331,6 +1390,41 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,pc,refr
         {giveUpBtn}
       </div>
     );
+  } else if(q.type==='order'){
+    const byId=new Map(q.tokens.map(t=>[t.id,t]));
+    const picked=orderPicked.map(id=>byId.get(id)).filter(Boolean);
+    const available=q.tokens.filter(t=>!orderPicked.includes(t.id));
+    const locked=!!orderResult;
+    const isCorrect=orderResult?.isCorrect;
+    const dropOnAnswer=(e)=>{e.preventDefault();const id=dragTokenRef.current;if(id)addOrderToken(id);dragTokenRef.current=null;};
+    questionCard=(
+      <div style={{background:'#fff',borderRadius:22,padding:'16px 18px',boxShadow:'0 4px 18px rgba(0,0,0,0.07)',marginBottom:12,flexShrink:0,animation:shaking?'shake 0.4s ease-in-out':'pop 0.2s ease-out',display:'flex',flexDirection:'column',gap:10,position:'relative',overflow:'hidden'}}>
+        <div style={{position:'absolute',top:0,left:0,right:0,height:3,background:`linear-gradient(90deg,${theme.color},${theme.color}44)`}}/>
+        <div style={{textAlign:'center'}}>
+          <span style={{fontSize:11,fontWeight:800,color:theme.color,background:`${theme.color}18`,padding:'4px 12px',borderRadius:20,letterSpacing:0.5}}>{theme.icon} {theme.label}</span>
+        </div>
+        {q.zh2&&<div style={{fontSize:12,color:'#aaa',textAlign:'center',fontStyle:'italic'}}>「{q.zh2}」</div>}
+        <div onDragOver={e=>e.preventDefault()} onDrop={dropOnAnswer} style={{minHeight:78,border:`2px dashed ${locked?(isCorrect?'#4CAF82':'#FF4D6D'):theme.color}`,background:locked?(isCorrect?'#e9f8ef':'#ffeef0'):`${theme.color}0f`,borderRadius:18,padding:10,display:'flex',flexWrap:'wrap',alignContent:'flex-start',gap:7,transition:'all 0.2s'}}>
+          {picked.length===0&&<div style={{width:'100%',fontSize:12,color:'#94a3b8',fontWeight:800,textAlign:'center',paddingTop:16}}>把下方單字拖到這裡排句子（也可點一下）</div>}
+          {picked.map((t,i)=>(
+            <button key={t.id} onClick={()=>removeOrderToken(t.id)} disabled={locked} style={{padding:'8px 10px',borderRadius:13,border:'none',background:locked?'#fff':'#fff',color:'#1a1a2e',fontSize:14,fontWeight:900,fontFamily:'inherit',boxShadow:'0 2px 7px rgba(0,0,0,0.08)',cursor:locked?'default':'pointer'}}>{t.text}<span style={{marginLeft:5,color:'#cbd5e1',fontSize:11}}>{i+1}</span></button>
+          ))}
+        </div>
+        {locked&&<div style={{fontSize:12,fontWeight:800,color:isCorrect?'#4CAF82':'#FF4D6D',textAlign:'center'}}>{isCorrect?'✓ 句子排對了！':`✗ 正確句子：${q.correct}`}</div>}
+      </div>
+    );
+    answerArea=(
+      <div className="scroll-body" style={{display:'flex',flexDirection:'column',gap:10,paddingBottom:8}}>
+        <div style={{display:'flex',flexWrap:'wrap',gap:8,justifyContent:'center',background:'#fff',borderRadius:18,padding:12,boxShadow:'0 2px 8px rgba(0,0,0,0.04)'}}>
+          {available.map((t,i)=>(
+            <button key={t.id} draggable={!locked} onDragStart={()=>{dragTokenRef.current=t.id;}} onClick={()=>addOrderToken(t.id)} disabled={locked} style={{padding:'9px 12px',borderRadius:14,border:`2px solid ${theme.color}25`,background:'#fff',color:'#1a1a2e',fontSize:14,fontWeight:900,fontFamily:'inherit',cursor:locked?'default':'grab',boxShadow:'0 2px 7px rgba(0,0,0,0.06)',animation:`slideUp 0.2s ${i*0.035}s both`}}>{t.text}</button>
+          ))}
+          {available.length===0&&<div style={{fontSize:12,color:'#94a3b8',fontWeight:800}}>全部放上去了，按「送出答案」</div>}
+        </div>
+        {!locked&&<button onClick={submitOrder} disabled={orderPicked.length!==q.tokens.length} style={{padding:14,borderRadius:16,border:'none',cursor:orderPicked.length===q.tokens.length?'pointer':'not-allowed',background:`linear-gradient(135deg,${theme.color},${theme.color}bb)`,fontSize:15,fontWeight:900,color:'#fff',boxShadow:`0 4px 14px ${theme.color}44`,opacity:orderPicked.length===q.tokens.length?1:0.4,transition:'opacity 0.2s',fontFamily:'inherit'}}>送出答案</button>}
+        {giveUpBtn}
+      </div>
+    );
   }
 
   return(<div className="screen" style={{background:'linear-gradient(170deg,#fafeff 0%,#f0fdf8 100%)',position:'relative',overflow:'hidden'}}>
@@ -1348,10 +1442,10 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,pc,refr
 
     <div style={{flex:1,display:'flex',flexDirection:'column',padding:'4px 20px 0',overflow:'hidden'}}>
       <div style={{display:'flex',justifyContent:'center',alignItems:'center',gap:8,marginBottom:4,paddingTop:22,flexShrink:0,position:'relative',overflow:'visible'}}>
-        <button onClick={usePetHint} disabled={hintsLeft<=0||hintUsedThisQ||!!selected||!!clozeResult} title={hintUsedThisQ?'這題已用過提示':(hintsLeft>0?'點寵物用提示':'提示用完了')} aria-label="寵物提示" style={{border:'none',background:'transparent',padding:0,cursor:hintsLeft>0&&!hintUsedThisQ&&!selected&&!clozeResult?'pointer':'default',position:'relative',width:48,height:48}}>
+        <button onClick={usePetHint} disabled={hintsLeft<=0||hintUsedThisQ||!!selected||!!clozeResult||!!orderResult} title={hintUsedThisQ?'這題已用過提示':(hintsLeft>0?'點寵物用提示':'提示用完了')} aria-label="寵物提示" style={{border:'none',background:'transparent',padding:0,cursor:hintsLeft>0&&!hintUsedThisQ&&!selected&&!clozeResult&&!orderResult?'pointer':'default',position:'relative',width:48,height:48}}>
           <span style={{display:'block',width:48,height:48,animation:'float 3s ease-in-out infinite'}}>
             <img src={charSrc} alt="" style={{width:48,height:48,objectFit:'contain',filter:(hintsLeft<=0||hintUsedThisQ)?'grayscale(0.7) opacity(0.55)':'none',transition:'filter 0.2s'}}/>
-            {hintsLeft>0&&!hintUsedThisQ&&!selected&&!clozeResult&&<span style={{position:'absolute',top:-6,right:-2,fontSize:18,lineHeight:1,filter:'drop-shadow(0 1px 2px rgba(0,0,0,0.18))'}}>💡</span>}
+            {hintsLeft>0&&!hintUsedThisQ&&!selected&&!clozeResult&&!orderResult&&<span style={{position:'absolute',top:-6,right:-2,fontSize:18,lineHeight:1,filter:'drop-shadow(0 1px 2px rgba(0,0,0,0.18))'}}>💡</span>}
           </span>
           {hintFx>0&&<span key={hintFx} style={{position:'absolute',top:-6,right:-2,fontSize:20,animation:'pop 0.4s ease-out',lineHeight:1,pointerEvents:'none'}}>✨</span>}
         </button>
