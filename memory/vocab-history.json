@@ -1216,6 +1216,36 @@
       ],
       "example_sentence": "My dad drinks coffee in the morning.",
       "translation": "我爸爸早上會喝咖啡。"
+    },
+    "say": {
+      "first_seen": "2026-04-29",
+      "last_seen": "2026-04-29",
+      "pos": "v",
+      "meanings": [
+        "說；講"
+      ],
+      "example_sentence": "Please say it again.",
+      "translation": "請再說一次。"
+    },
+    "gift": {
+      "first_seen": "2026-04-29",
+      "last_seen": "2026-04-29",
+      "pos": "n",
+      "meanings": [
+        "禮物"
+      ],
+      "example_sentence": "I got a gift from my friend.",
+      "translation": "我收到朋友送的禮物。"
+    },
+    "every": {
+      "first_seen": "2026-04-29",
+      "last_seen": "2026-04-29",
+      "pos": "det",
+      "meanings": [
+        "每一個；每"
+      ],
+      "example_sentence": "I brush my teeth every night.",
+      "translation": "我每天晚上都刷牙。"
     }
   }
 }

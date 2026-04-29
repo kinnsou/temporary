@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-04-28T11:01:07Z",
-    "sourceCount": 134,
-    "includedCount": 126
+    "updatedAt": "2026-04-29T11:01:04Z",
+    "sourceCount": 137,
+    "includedCount": 129
   },
   "words": [
+    {
+      "word": "say",
+      "meaning": "說；講",
+      "example": "Please say it again.",
+      "translation": "請再說一次。",
+      "firstSeen": "2026-04-29",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "gift",
+      "meaning": "禮物",
+      "example": "I got a gift from my friend.",
+      "translation": "我收到朋友送的禮物。",
+      "firstSeen": "2026-04-29",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "every",
+      "meaning": "每一個；每",
+      "example": "I brush my teeth every night.",
+      "translation": "我每天晚上都刷牙。",
+      "firstSeen": "2026-04-29",
+      "pos": [
+        "det"
+      ]
+    },
     {
       "word": "always",
       "meaning": "總是；一直",
