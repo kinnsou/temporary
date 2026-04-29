@@ -14,14 +14,27 @@ Build lesson web pages for the weekly reading workflow.
 3. Calculate week number with `ceil(day / 7)`.
 4. If Mark explicitly assigns which source section goes to Wednesday or Sunday, follow that instead of the default mapping.
 5. If Mark specifies both Wednesday and Sunday in one request, finish both in the same run.
-6. Prefer Gemini CLI for draft generation, keep local model usage for orchestration, validation, and file edits only.
-7. After edits, commit and push unless Mark says not to.
+6. If Mark asks to keep going section-by-section across lessons, switch to sequential continuation mode: each output page consumes one source weekday section, Wednesday takes the current pointer, Sunday takes the next pointer, and crossing `主日` advances to the next lesson's `周一`.
+7. Prefer Gemini CLI for draft generation, keep local model usage for orchestration, validation, and file edits only.
+8. After edits, commit and push unless Mark says not to.
 
 ## Default content mapping
 
 - Wednesday page: use the source lesson's Monday + Tuesday sections, with the simple single-card weekday layout.
 - Sunday page: use the source lesson's Wednesday + Thursday sections, with the richer two-column Sunday layout.
 - Mark override wins over these defaults.
+
+## Sequential continuation mode
+
+Use this when Mark asks to keep the Wednesday/Sunday job advancing automatically through the source site.
+
+- Consume exactly one source section per output page.
+- Wednesday page: current pointer section.
+- Sunday page: next pointer section.
+- Day order: `周一 → 周二 → 周三 → 周四 → 周五 → 周六 → 主日`.
+- After `主日`, advance the lesson number and continue at the next lesson's `周一`.
+- File naming still follows each page's own source lesson number.
+- Keep a durable pointer/state file so the next scheduled run resumes correctly.
 
 ## Output rules
 

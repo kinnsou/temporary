@@ -38,6 +38,27 @@ These override the defaults above.
 - If Mark specifies Wednesday and Sunday together, complete both pages in the same run.
 - If Mark gives only one page assignment, do that page only unless he asks for both.
 
+## 3.5) Sequential continuation mode
+
+Use this mode when Mark wants the recurring Wednesday/Sunday task to keep advancing through the source site automatically.
+
+- Consume one source section per output page.
+- Wednesday page = current pointer section.
+- Sunday page = next pointer section.
+- Advance in this fixed order:
+  - 周一
+  - 周二
+  - 周三
+  - 周四
+  - 周五
+  - 周六
+  - 主日
+- After `主日`, increment the lesson number and continue at the next lesson's `周一`.
+- Because of this, a single Wednesday run may cross lesson boundaries, for example:
+  - Wednesday page = lesson 13 / 主日
+  - Sunday page = lesson 14 / 周一
+- Keep the current pointer in a durable state file so the next scheduled run resumes from the correct section.
+
 ## 4) Writing rules
 
 - Use Traditional Chinese.
@@ -89,3 +110,11 @@ For the 2026-04 week 3 lesson-13 pages:
 - Sunday page used: `周四 罗得的迁移` in Sunday format
 
 Treat this as a concrete example, not a global fixed mapping.
+
+For the 2026-04-29 revision of the recurring Wednesday/Sunday job:
+- Current pair used:
+  - Wednesday page = lesson 13 / 主日 / 蒙羞的記號
+  - Sunday page = lesson 14 / 周一 / 以撒的出生與長大
+- Next scheduled pair should continue with:
+  - lesson 14 / 周二
+  - lesson 14 / 周三

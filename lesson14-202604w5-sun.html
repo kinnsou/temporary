@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>第14課：應許之子的誕生</title>
+  <meta name="description" content="學習以撒出生的故事，明白神如何藉著祂的恩典，在我們裡面生出基督。" />
+  <style>
+    :root {
+      --bg: #f6f1e8;
+      --paper: #fffaf2;
+      --ink: #2f2a25;
+      --muted: #6f6559;
+      --line: #e6d7bf;
+      --gold: #c29045;
+      --gold-deep: #966b2f;
+      --olive: #6f7d55;
+      --rose: #b56a59;
+      --shadow: 0 16px 40px rgba(88, 63, 30, 0.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.9;
+      background:
+        radial-gradient(1000px 480px at 110% -10%, rgba(194, 144, 69, 0.16), transparent 55%),
+        radial-gradient(900px 420px at -10% 100%, rgba(111, 125, 85, 0.16), transparent 55%),
+        var(--bg);
+    }
+    .grain::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.05;
+      background-image: radial-gradient(rgba(68, 48, 24, 0.28) 0.7px, transparent 0.7px);
+      background-size: 4px 4px;
+      z-index: 0;
+    }
+    .wrap { position: relative; z-index: 1; width: min(1020px, 92vw); margin: 28px auto 56px; }
+    .hero { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 28px; padding: clamp(26px, 5vw, 48px); background: linear-gradient(140deg, #fffdf8 0%, #fff5e7 100%); box-shadow: var(--shadow); }
+    .hero::after { content: ""; position: absolute; right: -120px; top: -120px; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(194, 144, 69, 0.28) 0%, rgba(194, 144, 69, 0) 70%); }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; border: 1px solid #ebd6b0; background: #fff7e8; color: var(--gold-deep); font-size: 13px; font-weight: 700; letter-spacing: 0.02em; }
+    h1 { margin: 0 0 12px; font-family: "Noto Serif TC", "PMingLiU", serif; font-size: clamp(34px, 6vw, 58px); line-height: 1.15; color: #2d2419; }
+    .lead { margin: 0; max-width: 66ch; color: var(--muted); font-size: clamp(16px, 2.1vw, 19px); }
+    .hero-actions { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 12px; }
+    .button { display: inline-block; padding: 12px 18px; border-radius: 14px; text-decoration: none; font-weight: 700; transition: transform .18s ease, box-shadow .18s ease; }
+    .button.primary { color: white; background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%); box-shadow: 0 10px 20px rgba(150, 107, 47, 0.28); }
+    .button.secondary { color: var(--ink); background: rgba(255,255,255,0.74); border: 1px solid var(--line); }
+    .button:hover { transform: translateY(-1px); }
+    .intro-grid, .content-grid, .summary-grid { display: grid; gap: 18px; margin-top: 22px; }
+    .intro-grid { grid-template-columns: 1.15fr 0.95fr; }
+    .content-grid { grid-template-columns: 1fr 1fr; }
+    .summary-grid { grid-template-columns: 1fr 1fr; }
+    .card { border: 1px solid var(--line); border-radius: 22px; background: var(--paper); padding: 22px; box-shadow: 0 10px 24px rgba(88, 63, 30, 0.08); }
+    .card h2, .card h3 { margin: 0 0 12px; font-family: "Noto Serif TC", serif; color: #352a1e; line-height: 1.45; }
+    .eyebrow { margin: 0 0 8px; color: var(--gold-deep); font-size: 13px; text-transform: uppercase; letter-spacing: .09em; font-weight: 700; }
+    .section-tag { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 12px; padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 700; color: #fff; }
+    .wednesday { background: linear-gradient(180deg, #6f7d55 0%, #53613e 100%); }
+    .thursday { background: linear-gradient(180deg, #b56a59 0%, #8f4d40 100%); }
+    p { margin: 0 0 14px; }
+    ul, ol { margin: 0; padding-left: 22px; }
+    li + li { margin-top: 8px; }
+    .focus-box { background: linear-gradient(180deg, #fffdf9 0%, #f7efe2 100%); }
+    .scripture { border-left: 4px solid var(--gold); background: #fff3df; border-radius: 12px; padding: 14px 16px; color: #5f4b31; margin-top: 14px; }
+    .prayer { background: #fdf6ee; border: 1px dashed #d4a070; border-radius: 14px; padding: 16px; }
+    .footer-note { margin-top: 22px; text-align: center; color: #8a7a66; font-size: 13px; }
+    @media (max-width: 920px) { .intro-grid, .content-grid, .summary-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 560px) { .wrap { margin-top: 18px; } .hero, .card { border-radius: 18px; } .button { width: 100%; text-align: center; } }
+  </style>
+</head>
+<body class="grain">
+  <main class="wrap">
+    <section class="hero">
+      <div class="badge-row">
+        <span class="badge">📖 主日帶讀</span>
+        <span class="badge">第十四課 · 2026 四月第五週</span>
+        <span class="badge">來源段落：周一</span>
+        <span class="badge">主題：喜笑的兒子與神的恩典</span>
+      </div>
+      <h1>第14課：應許之子的誕生</h1>
+      <p class="lead">小朋友們，你們知道神給亞伯拉罕最好的禮物是什麼嗎？那就是應許之子——以撒。</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#reading">開始閱讀</a>
+        <a class="button secondary" href="#discussion">看主日重點</a>
+      </div>
+    </section>
+
+    <section class="intro-grid" aria-label="overview">
+      <article class="card">
+        <p class="eyebrow">Overview</p>
+        <h2>這一篇在提醒什麼？</h2>
+            <p>耶和華神按照祂先前所說的話，眷顧了撒拉，讓她在年老時懷孕。在神所約定的日期，亞伯拉罕一百歲、撒拉九十九歲的時候，以撒就在「生命的時候」出生了。</p>
+            <p>以撒這個名字的意思是「喜笑」。撒拉開心地說，神使她喜笑，凡聽見的人也都要與她一同喜笑。這不是憑著亞伯拉罕自己的力量，而是神恩典的工作。</p>
+      </article>
+
+      <aside class="card focus-box">
+        <p class="eyebrow">Sunday Focus</p>
+        <h2>主日可以先抓三句話</h2>
+        <ul>
+          <li>信心與應許：信靠神的話必定成就。</li>
+          <li>恩典的工作：不靠天然力量，只靠神的恩典。</li>
+          <li>基督的成形：讓主耶穌在我們裡面長大。</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="reading" class="content-grid" aria-label="reading-content">
+      <article class="card">
+        <span class="section-tag wednesday">周一｜正文帶讀</span>
+        <h2>喜笑的兒子與神的恩典</h2>
+            <p>以撒的出生對亞伯拉罕和撒拉來說，是一件天大的喜事。在人看來，年老的他們要生孩子是不可能的事，但神卻在約定的時候行了奇事。</p>
+            <p>聖經告訴我們，以撒的出生並不是因為亞伯拉罕還有力氣，也不是按照人的時間表，而是完全憑著神恩典的工作。這讓我們看見，只要信靠神，在祂沒有難成的事。</p>
+            <p>以撒出生後漸漸長大，到了斷奶的日子，亞伯拉罕特別為他擺設了豐盛的筵席，全家人一同歡騰，慶祝這個在恩典中成長的孩子。</p>
+            <p>保羅在聖經中解釋，這其實有一個很深的意義：我們蒙召不是要憑自己做出好行為，而是要在我們的生活中「生出基督」。</p>
+            <p>當我們發現自己很難在學校有好見證、很難聽話時，這就是在提醒我們，不能靠自己天然的力量，而要讓神的恩典進到我們裡面作工。</p>
+      </article>
+
+      <article class="card">
+        <span class="section-tag thursday">主日｜補充提醒與操練</span>
+        <h2>在生活中彰顯基督</h2>
+            <p>在召會生活或家庭生活中，我們不需要咬緊牙關、努力表現出好孩子的樣子。相反地，我們要學習放下自己的努力，轉向這位全豐全足的神。</p>
+            <p>真正的「以撒」就是基督。當我們信靠神時，基督就會在我們的日常生活中活出來。無論是在學校當好學生，還是在家裡當好兒女，都是基督在我們裡面活的結果。</p>
+            <p>基督不僅要成形在我們個人裡面，也要成形在我們中間。當大家看見我們相親相愛、彰顯基督時，就像那場豐盛的筵席一樣，讓每個人都一同享受神的恩典。</p>
+        <div class="scripture"><strong>可帶的一句提醒</strong><br />「我們蒙召不是要產生好行為，而是要生出基督。」</div>
+      </article>
+    </section>
+
+    <section id="discussion" class="summary-grid" aria-label="discussion-guide">
+      <article class="card focus-box">
+        <p class="eyebrow">Lead the Group</p>
+        <h3>這篇可以帶出的三件事</h3>
+        <ol>
+          <li>承認自己天然的力量有限，轉向主的恩典。</li>
+          <li>每天操練呼求主名，讓基督在我們裡面長大。</li>
+          <li>在家庭與召會生活中，學習彰顯成形的基督。</li>
+        </ol>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Discussion</p>
+        <h3>可直接帶的三個問題</h3>
+        <ul>
+          <li>「以撒」這個名字是什麼意思？為什麼撒拉會這樣命名？</li>
+          <li>以撒的出生是憑著亞伯拉罕的力量，還是憑著神的恩典？</li>
+          <li>在學校或家裡，當你覺得很難做到好行為時，你該怎麼辦？</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="summary-grid" aria-label="verse-prayer">
+      <article class="card">
+        <p class="eyebrow">Verse</p>
+        <h3>今天的經文</h3>
+        <div class="scripture">我的孩子們，我為你們再受生產之苦，直等到基督成形在你們裡面。<br />加拉太書四章19節</div>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Prayer</p>
+        <h3>一起禱告</h3>
+        <div class="prayer">親愛的主耶穌，謝謝祢是那應許的恩典。求祢赦免我常常想靠自己的努力做好，卻發現自己做不到。我要學習放下天然的力量，單單信靠祢。<br /><br />主耶穌，願祢在我的生活、學校和家庭中，更多地成形在我裡面。讓我的言行不再是出於我自己，而是出於祢的恩典，好讓身邊的人都能看見基督。阿們。</div>
+      </article>
+    </section>
+
+    <p class="footer-note">lesson14-202604w5-sun.html · sequential lesson-page workflow · 202604w5</p>
+  </main>
+</body>
+</html>

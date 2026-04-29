@@ -1,0 +1,31 @@
+{
+  "mode": "sequential-single-section-pair",
+  "siteTemplate": "https://ezoe.work/books/2/2264-1-{lesson}.html",
+  "stopAfterLesson": 18,
+  "next": {
+    "lesson": 14,
+    "day": "周二"
+  },
+  "lastBuilt": {
+    "weekTag": "202604w5",
+    "builtAt": "2026-04-29T09:39:20.747889+08:00",
+    "wednesday": {
+      "kind": "wednesday",
+      "lesson": 13,
+      "day": "主日",
+      "title": "蒙羞的记号",
+      "file": "lesson13-202604w5.html",
+      "url": "https://kinnsou.github.io/temporary/lesson13-202604w5.html",
+      "sourceUrl": "https://ezoe.work/books/2/2264-1-13.html"
+    },
+    "sunday": {
+      "kind": "sunday",
+      "lesson": 14,
+      "day": "周一",
+      "title": "以撒的出生与长大",
+      "file": "lesson14-202604w5-sun.html",
+      "url": "https://kinnsou.github.io/temporary/lesson14-202604w5-sun.html",
+      "sourceUrl": "https://ezoe.work/books/2/2264-1-14.html"
+    }
+  }
+}
