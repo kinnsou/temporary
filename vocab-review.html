@@ -1565,13 +1565,13 @@ function RankScreen({uid,studentName,charIdx,stats,onNav,pc,cloudEntries,cloudSt
             const isFirst=pi===1,isSecond=pi===0;
             const valSize=isFirst?30:isSecond?22:17;
             const unitSize=Math.round(valSize*0.42);
-            const medalSize=isFirst?30:24;
+            const medalSize=isFirst?24:18;
             const nameSuffix=tab==='score'
               ?(<><span style={{color:'#ffb300'}}>平均</span> <span style={{color:'#1a1a2e'}}>{Number(r.avgScore||0).toFixed(1)}</span></>)
               :(<span style={{color:'#ffb300'}}>LV{r.level}</span>);
             const valNode=tab==='score'
               ?(<span style={{fontSize:valSize,fontWeight:900,color:'#fff',lineHeight:1,textShadow:'0 2px 6px rgba(0,0,0,0.22)'}}><span style={{fontSize:unitSize,marginRight:2,opacity:0.92}}>LV</span>{r.level}</span>)
-              :(<span style={{fontSize:valSize,fontWeight:900,color:'#fff',lineHeight:1,textShadow:'0 2px 6px rgba(0,0,0,0.22)'}}>{r.streak}<span style={{fontSize:unitSize,marginLeft:2,opacity:0.92}}>天</span><span style={{fontSize:Math.round(unitSize*0.95),marginLeft:5,opacity:0.92,fontWeight:800}}>今日{r.todayQuiz|0}題</span></span>);
+              :(<span style={{fontSize:valSize,fontWeight:900,color:'#fff',lineHeight:1,textShadow:'0 2px 6px rgba(0,0,0,0.22)',whiteSpace:'nowrap'}}>{r.streak}<span style={{fontSize:unitSize,marginLeft:2,opacity:0.92}}>天</span><span style={{marginLeft:6}}>{r.todayQuiz|0}</span><span style={{fontSize:unitSize,marginLeft:2,opacity:0.92}}>題</span></span>);
             return(<div key={r.name+pi} style={{flex:1,display:'flex',flexDirection:'column',alignItems:'center',gap:3}}>
               {r.isMe&&<div style={{fontSize:9,fontWeight:900,color:pc,background:`${pc}20`,padding:'2px 6px',borderRadius:10}}>你</div>}
               <img src={CHARACTERS[r.charIdx]?.img||CHARACTERS[0].img} alt="" style={{width:isFirst?50:40,height:isFirst?50:40,objectFit:'contain'}}/>
