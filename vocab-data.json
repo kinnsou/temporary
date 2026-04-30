@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-04-29T11:01:04Z",
-    "sourceCount": 137,
-    "includedCount": 129
+    "updatedAt": "2026-04-30T11:01:30Z",
+    "sourceCount": 140,
+    "includedCount": 132
   },
   "words": [
+    {
+      "word": "window",
+      "meaning": "窗戶",
+      "example": "The window is open.",
+      "translation": "窗戶是開著的。",
+      "firstSeen": "2026-04-30",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "heavy",
+      "meaning": "重的；沉的",
+      "example": "This bag is heavy.",
+      "translation": "這個袋子很重。",
+      "firstSeen": "2026-04-30",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "father",
+      "meaning": "爸爸；父親",
+      "example": "My father is at work.",
+      "translation": "我爸爸在上班。",
+      "firstSeen": "2026-04-30",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "say",
       "meaning": "說；講",

@@ -1246,6 +1246,36 @@
       ],
       "example_sentence": "I brush my teeth every night.",
       "translation": "我每天晚上都刷牙。"
+    },
+    "window": {
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "pos": "n",
+      "meanings": [
+        "窗戶"
+      ],
+      "example_sentence": "The window is open.",
+      "translation": "窗戶是開著的。"
+    },
+    "heavy": {
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "pos": "adj",
+      "meanings": [
+        "重的；沉的"
+      ],
+      "example_sentence": "This bag is heavy.",
+      "translation": "這個袋子很重。"
+    },
+    "father": {
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "pos": "n",
+      "meanings": [
+        "爸爸；父親"
+      ],
+      "example_sentence": "My father is at work.",
+      "translation": "我爸爸在上班。"
     }
   }
 }
