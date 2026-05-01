@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-04-30T11:01:30Z",
-    "sourceCount": 140,
-    "includedCount": 132
+    "updatedAt": "2026-05-01T11:01:20Z",
+    "sourceCount": 143,
+    "includedCount": 135
   },
   "words": [
+    {
+      "word": "store",
+      "meaning": "商店；店家",
+      "example": "I went to the store with my dad.",
+      "translation": "我跟爸爸一起去商店。",
+      "firstSeen": "2026-05-01",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "inside",
+      "meaning": "在…裡面",
+      "example": "Please put the toy inside the box.",
+      "translation": "請把玩具放進盒子裡。",
+      "firstSeen": "2026-05-01",
+      "pos": [
+        "prep",
+        "adv"
+      ]
+    },
+    {
+      "word": "between",
+      "meaning": "在…之間",
+      "example": "The ball is between the two chairs.",
+      "translation": "球在兩張椅子中間。",
+      "firstSeen": "2026-05-01",
+      "pos": [
+        "prep"
+      ]
+    },
     {
       "word": "window",
       "meaning": "窗戶",

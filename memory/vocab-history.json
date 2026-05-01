@@ -1276,6 +1276,39 @@
       ],
       "example_sentence": "My father is at work.",
       "translation": "我爸爸在上班。"
+    },
+    "store": {
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "pos": "n",
+      "meanings": [
+        "商店；店家"
+      ],
+      "example_sentence": "I went to the store with my dad.",
+      "translation": "我跟爸爸一起去商店。"
+    },
+    "inside": {
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "pos": [
+        "prep",
+        "adv"
+      ],
+      "meanings": [
+        "在…裡面"
+      ],
+      "example_sentence": "Please put the toy inside the box.",
+      "translation": "請把玩具放進盒子裡。"
+    },
+    "between": {
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "pos": "prep",
+      "meanings": [
+        "在…之間"
+      ],
+      "example_sentence": "The ball is between the two chairs.",
+      "translation": "球在兩張椅子中間。"
     }
   }
 }
