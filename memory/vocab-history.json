@@ -1309,6 +1309,43 @@
       ],
       "example_sentence": "The ball is between the two chairs.",
       "translation": "球在兩張椅子中間。"
+    },
+    "cat": {
+      "first_seen": "2026-05-02",
+      "last_seen": "2026-05-02",
+      "pos": "n",
+      "meanings": [
+        "貓"
+      ],
+      "example_sentence": "The cat is sleeping.",
+      "translation": "那隻貓在睡覺。"
+    },
+    "behind": {
+      "first_seen": "2026-05-02",
+      "last_seen": "2026-05-02",
+      "pos": [
+        "prep",
+        "adv"
+      ],
+      "meanings": [
+        "在…後面；在後方"
+      ],
+      "example_sentence": "The cat is behind the chair.",
+      "translation": "那隻貓在椅子後面。"
+    },
+    "place": {
+      "first_seen": "2026-05-02",
+      "last_seen": "2026-05-02",
+      "pos": [
+        "n",
+        "v"
+      ],
+      "meanings": [
+        "地方；位置",
+        "放置"
+      ],
+      "example_sentence": "Please place your bag on the chair.",
+      "translation": "請把你的書包放在椅子上。"
     }
   }
 }

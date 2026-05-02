@@ -1,10 +1,42 @@
 {
   "meta": {
-    "updatedAt": "2026-05-01T11:01:20Z",
-    "sourceCount": 143,
-    "includedCount": 135
+    "updatedAt": "2026-05-02T11:01:13Z",
+    "sourceCount": 146,
+    "includedCount": 138
   },
   "words": [
+    {
+      "word": "cat",
+      "meaning": "貓",
+      "example": "The cat is sleeping.",
+      "translation": "那隻貓在睡覺。",
+      "firstSeen": "2026-05-02",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "behind",
+      "meaning": "在…後面；在後方",
+      "example": "The cat is behind the chair.",
+      "translation": "那隻貓在椅子後面。",
+      "firstSeen": "2026-05-02",
+      "pos": [
+        "prep",
+        "adv"
+      ]
+    },
+    {
+      "word": "place",
+      "meaning": "地方；位置；放置",
+      "example": "Please place your bag on the chair.",
+      "translation": "請把你的書包放在椅子上。",
+      "firstSeen": "2026-05-02",
+      "pos": [
+        "n",
+        "v"
+      ]
+    },
     {
       "word": "store",
       "meaning": "商店；店家",
