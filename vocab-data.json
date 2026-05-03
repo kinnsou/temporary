@@ -1,10 +1,42 @@
 {
   "meta": {
-    "updatedAt": "2026-05-02T11:01:13Z",
-    "sourceCount": 146,
-    "includedCount": 138
+    "updatedAt": "2026-05-03T11:01:12Z",
+    "sourceCount": 149,
+    "includedCount": 141
   },
   "words": [
+    {
+      "word": "program",
+      "meaning": "程式；電腦程式；（活動／課程的）方案；節目",
+      "example": "I wrote a simple program for my class.",
+      "translation": "我為課堂寫了一個簡單的程式。",
+      "firstSeen": "2026-05-03",
+      "pos": [
+        "n",
+        "v"
+      ]
+    },
+    {
+      "word": "rush",
+      "meaning": "匆忙；趕忙；一陣忙亂；匆促",
+      "example": "Don't rush. We have enough time.",
+      "translation": "別急，我們時間很夠。",
+      "firstSeen": "2026-05-03",
+      "pos": [
+        "v",
+        "n"
+      ]
+    },
+    {
+      "word": "crayon",
+      "meaning": "蠟筆",
+      "example": "My child drew a sun with a yellow crayon.",
+      "translation": "我的孩子用黃色蠟筆畫了一個太陽。",
+      "firstSeen": "2026-05-03",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "cat",
       "meaning": "貓",

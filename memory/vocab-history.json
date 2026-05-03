@@ -3,7 +3,7 @@
     "newWordsMustBeUniqueUntilExhausted": true,
     "reviewFormat": "guided_cloze_with_grammar_chunking",
     "sourceScope": "台灣普遍認定國中必會1000單",
-    "updatedAt": "2026-04-28T11:00:54Z"
+    "updatedAt": "2026-05-03T11:01:10Z"
   },
   "words": {
     "adventure": {
@@ -1346,6 +1346,44 @@
       ],
       "example_sentence": "Please place your bag on the chair.",
       "translation": "請把你的書包放在椅子上。"
+    },
+    "program": {
+      "first_seen": "2026-05-03",
+      "last_seen": "2026-05-03",
+      "pos": [
+        "n",
+        "v"
+      ],
+      "meanings": [
+        "程式；電腦程式",
+        "（活動／課程的）方案；節目"
+      ],
+      "example_sentence": "I wrote a simple program for my class.",
+      "translation": "我為課堂寫了一個簡單的程式。"
+    },
+    "rush": {
+      "first_seen": "2026-05-03",
+      "last_seen": "2026-05-03",
+      "pos": [
+        "v",
+        "n"
+      ],
+      "meanings": [
+        "匆忙；趕忙",
+        "一陣忙亂；匆促"
+      ],
+      "example_sentence": "Don't rush. We have enough time.",
+      "translation": "別急，我們時間很夠。"
+    },
+    "crayon": {
+      "first_seen": "2026-05-03",
+      "last_seen": "2026-05-03",
+      "pos": "n",
+      "meanings": [
+        "蠟筆"
+      ],
+      "example_sentence": "My child drew a sun with a yellow crayon.",
+      "translation": "我的孩子用黃色蠟筆畫了一個太陽。"
     }
   }
 }
