@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-05-03T11:01:12Z",
-    "sourceCount": 149,
-    "includedCount": 141
+    "updatedAt": "2026-05-04T11:01:18Z",
+    "sourceCount": 152,
+    "includedCount": 144
   },
   "words": [
+    {
+      "word": "build",
+      "meaning": "建造；建立",
+      "example": "We will build a sandcastle at the beach.",
+      "translation": "我們要在海灘堆一座沙堡。",
+      "firstSeen": "2026-05-04",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "shine",
+      "meaning": "發亮；照耀",
+      "example": "The sun shines in the morning.",
+      "translation": "太陽早上會發光。",
+      "firstSeen": "2026-05-04",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "hate",
+      "meaning": "討厭；憎恨",
+      "example": "I hate spiders.",
+      "translation": "我討厭蜘蛛。",
+      "firstSeen": "2026-05-04",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "program",
       "meaning": "程式；電腦程式；（活動／課程的）方案；節目",

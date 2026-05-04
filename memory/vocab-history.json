@@ -3,7 +3,7 @@
     "newWordsMustBeUniqueUntilExhausted": true,
     "reviewFormat": "guided_cloze_with_grammar_chunking",
     "sourceScope": "台灣普遍認定國中必會1000單",
-    "updatedAt": "2026-05-03T11:01:10Z"
+    "updatedAt": "2026-05-04T11:00:29Z"
   },
   "words": {
     "adventure": {
@@ -1384,6 +1384,36 @@
       ],
       "example_sentence": "My child drew a sun with a yellow crayon.",
       "translation": "我的孩子用黃色蠟筆畫了一個太陽。"
+    },
+    "build": {
+      "first_seen": "2026-05-04",
+      "last_seen": "2026-05-04",
+      "pos": "v",
+      "meanings": [
+        "建造；建立"
+      ],
+      "example_sentence": "We will build a sandcastle at the beach.",
+      "translation": "我們要在海灘堆一座沙堡。"
+    },
+    "shine": {
+      "first_seen": "2026-05-04",
+      "last_seen": "2026-05-04",
+      "pos": "v",
+      "meanings": [
+        "發亮；照耀"
+      ],
+      "example_sentence": "The sun shines in the morning.",
+      "translation": "太陽早上會發光。"
+    },
+    "hate": {
+      "first_seen": "2026-05-04",
+      "last_seen": "2026-05-04",
+      "pos": "v",
+      "meanings": [
+        "討厭；憎恨"
+      ],
+      "example_sentence": "I hate spiders.",
+      "translation": "我討厭蜘蛛。"
     }
   }
 }
