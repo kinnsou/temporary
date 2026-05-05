@@ -1414,6 +1414,39 @@
       ],
       "example_sentence": "I hate spiders.",
       "translation": "我討厭蜘蛛。"
+    },
+    "comfortable": {
+      "first_seen": "2026-05-05",
+      "last_seen": "2026-05-05",
+      "pos": "adj",
+      "meanings": [
+        "舒服的；舒適的"
+      ],
+      "example_sentence": "This chair is comfortable.",
+      "translation": "這張椅子很舒服。"
+    },
+    "terrible": {
+      "first_seen": "2026-05-05",
+      "last_seen": "2026-05-05",
+      "pos": "adj",
+      "meanings": [
+        "糟糕的；可怕的"
+      ],
+      "example_sentence": "The weather was terrible yesterday.",
+      "translation": "昨天天氣很糟。"
+    },
+    "first": {
+      "first_seen": "2026-05-05",
+      "last_seen": "2026-05-05",
+      "pos": [
+        "adj",
+        "adv"
+      ],
+      "meanings": [
+        "第一（的）；最先"
+      ],
+      "example_sentence": "I was first in line.",
+      "translation": "我排在隊伍最前面。"
     }
   }
 }

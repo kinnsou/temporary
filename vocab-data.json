@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-05-04T11:01:18Z",
-    "sourceCount": 152,
-    "includedCount": 144
+    "updatedAt": "2026-05-05T11:01:49Z",
+    "sourceCount": 155,
+    "includedCount": 147
   },
   "words": [
+    {
+      "word": "comfortable",
+      "meaning": "舒服的；舒適的",
+      "example": "This chair is comfortable.",
+      "translation": "這張椅子很舒服。",
+      "firstSeen": "2026-05-05",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "terrible",
+      "meaning": "糟糕的；可怕的",
+      "example": "The weather was terrible yesterday.",
+      "translation": "昨天天氣很糟。",
+      "firstSeen": "2026-05-05",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "first",
+      "meaning": "第一（的）；最先",
+      "example": "I was first in line.",
+      "translation": "我排在隊伍最前面。",
+      "firstSeen": "2026-05-05",
+      "pos": [
+        "adj",
+        "adv"
+      ]
+    },
     {
       "word": "build",
       "meaning": "建造；建立",
