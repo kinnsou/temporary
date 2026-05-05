@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>以撒與神的羔羊</title>
+  <meta name="description" content="從亞伯拉罕獻以撒的圖畫中，認識神為我們預備的救贖計畫與大愛。" />
+  <style>
+    :root {
+      --bg: #f6f1e8;
+      --paper: #fffaf2;
+      --ink: #2f2a25;
+      --muted: #6f6559;
+      --line: #e6d7bf;
+      --gold: #c29045;
+      --gold-deep: #966b2f;
+      --olive: #6f7d55;
+      --rose: #b56a59;
+      --shadow: 0 16px 40px rgba(88, 63, 30, 0.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.9;
+      background:
+        radial-gradient(1000px 480px at 110% -10%, rgba(194, 144, 69, 0.16), transparent 55%),
+        radial-gradient(900px 420px at -10% 100%, rgba(111, 125, 85, 0.16), transparent 55%),
+        var(--bg);
+    }
+    .grain::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.05;
+      background-image: radial-gradient(rgba(68, 48, 24, 0.28) 0.7px, transparent 0.7px);
+      background-size: 4px 4px;
+      z-index: 0;
+    }
+    .wrap { position: relative; z-index: 1; width: min(1020px, 92vw); margin: 28px auto 56px; }
+    .hero { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 28px; padding: clamp(26px, 5vw, 48px); background: linear-gradient(140deg, #fffdf8 0%, #fff5e7 100%); box-shadow: var(--shadow); }
+    .hero::after { content: ""; position: absolute; right: -120px; top: -120px; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(194, 144, 69, 0.28) 0%, rgba(194, 144, 69, 0) 70%); }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; border: 1px solid #ebd6b0; background: #fff7e8; color: var(--gold-deep); font-size: 13px; font-weight: 700; letter-spacing: 0.02em; }
+    h1 { margin: 0 0 12px; font-family: "Noto Serif TC", "PMingLiU", serif; font-size: clamp(34px, 6vw, 58px); line-height: 1.15; color: #2d2419; }
+    .lead { margin: 0; max-width: 66ch; color: var(--muted); font-size: clamp(16px, 2.1vw, 19px); }
+    .hero-actions { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 12px; }
+    .button { display: inline-block; padding: 12px 18px; border-radius: 14px; text-decoration: none; font-weight: 700; transition: transform .18s ease, box-shadow .18s ease; }
+    .button.primary { color: white; background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%); box-shadow: 0 10px 20px rgba(150, 107, 47, 0.28); }
+    .button.secondary { color: var(--ink); background: rgba(255,255,255,0.74); border: 1px solid var(--line); }
+    .button:hover { transform: translateY(-1px); }
+    .intro-grid, .content-grid, .summary-grid { display: grid; gap: 18px; margin-top: 22px; }
+    .intro-grid { grid-template-columns: 1.15fr 0.95fr; }
+    .content-grid { grid-template-columns: 1fr 1fr; }
+    .summary-grid { grid-template-columns: 1fr 1fr; }
+    .card { border: 1px solid var(--line); border-radius: 22px; background: var(--paper); padding: 22px; box-shadow: 0 10px 24px rgba(88, 63, 30, 0.08); }
+    .card h2, .card h3 { margin: 0 0 12px; font-family: "Noto Serif TC", serif; color: #352a1e; line-height: 1.45; }
+    .eyebrow { margin: 0 0 8px; color: var(--gold-deep); font-size: 13px; text-transform: uppercase; letter-spacing: .09em; font-weight: 700; }
+    .section-tag { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 12px; padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 700; color: #fff; }
+    .wednesday { background: linear-gradient(180deg, #6f7d55 0%, #53613e 100%); }
+    .thursday { background: linear-gradient(180deg, #b56a59 0%, #8f4d40 100%); }
+    p { margin: 0 0 14px; }
+    ul, ol { margin: 0; padding-left: 22px; }
+    li + li { margin-top: 8px; }
+    .focus-box { background: linear-gradient(180deg, #fffdf9 0%, #f7efe2 100%); }
+    .scripture { border-left: 4px solid var(--gold); background: #fff3df; border-radius: 12px; padding: 14px 16px; color: #5f4b31; margin-top: 14px; }
+    .prayer { background: #fdf6ee; border: 1px dashed #d4a070; border-radius: 14px; padding: 16px; }
+    .footer-note { margin-top: 22px; text-align: center; color: #8a7a66; font-size: 13px; }
+    @media (max-width: 920px) { .intro-grid, .content-grid, .summary-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 560px) { .wrap { margin-top: 18px; } .hero, .card { border-radius: 18px; } .button { width: 100%; text-align: center; } }
+  </style>
+</head>
+<body class="grain">
+  <main class="wrap">
+    <section class="hero">
+      <div class="badge-row">
+        <span class="badge">📖 主日帶讀</span>
+        <span class="badge">第十四課 · 2026 五月第一週</span>
+        <span class="badge">來源段落：周三</span>
+        <span class="badge">主題：摩利亞山上的預備與順從</span>
+      </div>
+      <h1>以撒與神的羔羊</h1>
+      <p class="lead">亞伯拉罕聽從神的呼召，帶著他心愛的兒子以撒前往摩利亞山，這段旅程不僅展現了信心，更向我們揭示了神那奇妙的預備。</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#reading">開始閱讀</a>
+        <a class="button secondary" href="#discussion">看主日重點</a>
+      </div>
+    </section>
+
+    <section class="intro-grid" aria-label="overview">
+      <article class="card">
+        <p class="eyebrow">Overview</p>
+        <h2>這一篇在提醒什麼？</h2>
+            <p>在聖經的記載中，亞伯拉罕帶著獨生子以撒上山獻祭的故事，是創世記中最動人的篇章之一。當亞伯拉罕準備順從神的命令時，神及時預備了一隻公羊代替以撒，並讓我們認識了「耶和華以勒」——意思就是耶和華必有預備。</p>
+            <p>以撒的經歷其實是一幅生動的圖畫，預表了後來要來的那位救主耶穌。透過這段歷史，我們看見父神如何愛我們，甚至願意為我們預備祂的獨生子作為真羔羊，替我們承擔罪的結果。</p>
+      </article>
+
+      <aside class="card focus-box">
+        <p class="eyebrow">Sunday Focus</p>
+        <h2>主日可以先抓三句話</h2>
+        <ul>
+          <li>以撒順從父親的旨意被放在祭壇上，預表基督順從父神的旨意，甚至順從至死。</li>
+          <li>神在小樹叢中預備的公羊，預表基督是神的羔羊，親自代替我們成為祭物。</li>
+          <li>亞伯拉罕與以撒一同上山的交通，描繪了主耶穌與父神在受難路上的親密交通。</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="reading" class="content-grid" aria-label="reading-content">
+      <article class="card">
+        <span class="section-tag wednesday">周三｜正文帶讀</span>
+        <h2>摩利亞山上的預備與順從</h2>
+            <p>亞伯拉罕帶著以撒走向摩利亞山，這是一段信心的旅程。當以撒看著父親準備火與柴，卻問祭物在哪裡時，亞伯拉罕堅定地回答：「神必親自預備」。到了山頂，亞伯拉罕將柴擺好，將以撒捆在壇上，正要伸手時，神攔阻了他。</p>
+            <p>就在那一刻，亞伯拉罕看見一隻公羊，兩角扣在稠密的小樹中。他便取了那隻公羊，代替兒子獻為燔祭。亞伯拉罕給那地方起名叫「耶和華以勒」，因為在耶和華的山上必有預備。這神聖的預備，不僅救了以撒，更指明了神對萬國的祝福。</p>
+            <p>以撒是亞伯拉罕的愛子，這預表基督是神的獨生子，也是父所喜悅的。以撒甘心順服父親，被放在祭壇上；同樣地，主耶穌也揀選了父的旨意，甚至順從至死，死在十字架上。他們走向摩利亞山的路，正是主耶穌後來背著十字架走向各各他的同一條路。</p>
+            <p>以撒像羊羔一樣被帶到祭壇，而耶穌也像羊羔被牽到宰殺之地。那隻頂替以撒的公羊，正說出基督就是神的羔羊，除去世人的罪。亞伯拉罕將兒子獻上，神卻叫他從死人中復活得到兒子；照樣，神也叫基督從死裡復活，使我們得著生命。</p>
+      </article>
+
+      <article class="card">
+        <span class="section-tag thursday">主日｜補充提醒與操練</span>
+        <h2>回應神那預備好的大愛</h2>
+            <p>當我們看見神為亞伯拉罕預備公羊時，我們要記得，神也為我們每一個人預備了主耶穌。我們本來像以撒一樣無法自救，但神因著愛，讓祂的獨生子代替了我們，這就是「耶和華以勒」在我們生命中最真實的體現。</p>
+            <p>這種愛不是勉強的，而是主耶穌主動選擇順從父神的結果。正如以撒在祭壇上的安靜順服，主耶穌在十字架上也是默默地承擔了一切。當我們認識到這份代付的代價有多大，我們的心也會被這份深情所觸動。</p>
+            <p>現在，我們不再需要獻上牛羊，而是可以學習亞伯拉罕和以撒的榜樣，主動將自己獻給神。這不是一個重擔，而是對主愛的回應。當我們願意將自己的生活、時間和心交給主，我們就是在日常生活中，活出這份愛的故事。</p>
+        <div class="scripture"><strong>可帶的一句提醒</strong><br />「唯有基督在我們還作罪人的時候，為我們死，神就在此將祂自己的愛向我們顯明了。」</div>
+      </article>
+    </section>
+
+    <section id="discussion" class="summary-grid" aria-label="discussion-guide">
+      <article class="card focus-box">
+        <p class="eyebrow">Lead the Group</p>
+        <h3>這篇可以帶出的三件事</h3>
+        <ol>
+          <li>認識「耶和華以勒」的意義，知道神必會為跟隨祂的人預備一切所需。</li>
+          <li>看見主耶穌作為神的羔羊，是如何無怨無尤地代替我們受苦。</li>
+          <li>體會父神與子神之間親密的交通，並學習在每件事上尋求與神的交通。</li>
+        </ol>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Discussion</p>
+        <h3>可直接帶的三個問題</h3>
+        <ul>
+          <li>在這段故事中，哪一個細節最讓你感受到亞伯拉罕或以撒對神的信心？</li>
+          <li>為什麼說那隻扣在樹叢中的公羊對以撒來說非常重要？它代表了誰？</li>
+          <li>當你知道主耶穌為了愛我們而自願成為那隻代替的「羔羊」時，你心裡有什麼感覺？</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="summary-grid" aria-label="verse-prayer">
+      <article class="card">
+        <p class="eyebrow">Verse</p>
+        <h3>今天的經文</h3>
+        <div class="scripture">看哪，神的羔羊，除去世人之罪的！<br />約翰福音一章二十九節</div>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Prayer</p>
+        <h3>一起禱告</h3>
+        <div class="prayer">親愛的主耶穌，我們讚美祢！祢是那真實的神羔羊，為了我們除去罪孽，甘願順從父神的旨意，甚至為我們死在十字架上。謝謝祢成為了那個代替，讓我們能再次回到神面前享受平安與福氣。<br /><br />主啊，謝謝祢向我們顯明這麼大的愛。我們願意受這愛的困迫，主動將自己奉獻給祢。願祢帶領我們每一天的生活，讓我們在凡事上都能信靠祢這「耶和華以勒」的神，一生在召會中跟隨祢。</div>
+      </article>
+    </section>
+
+    <p class="footer-note">lesson14-202605w1-sun.html · sequential lesson-page workflow · 202605w1</p>
+  </main>
+</body>
+</html>
