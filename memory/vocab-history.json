@@ -3,7 +3,7 @@
     "newWordsMustBeUniqueUntilExhausted": true,
     "reviewFormat": "guided_cloze_with_grammar_chunking",
     "sourceScope": "台灣普遍認定國中必會1000單",
-    "updatedAt": "2026-05-04T11:00:29Z"
+    "updatedAt": "2026-05-06T11:00:00Z"
   },
   "words": {
     "adventure": {
@@ -1447,6 +1447,40 @@
       ],
       "example_sentence": "I was first in line.",
       "translation": "我排在隊伍最前面。"
+    },
+    "ring": {
+      "first_seen": "2026-05-06",
+      "last_seen": "2026-05-06",
+      "pos": "n",
+      "meanings": [
+        "戒指"
+      ],
+      "example_sentence": "She wears a ring on her finger.",
+      "translation": "她手指上戴著一枚戒指。"
+    },
+    "top": {
+      "first_seen": "2026-05-06",
+      "last_seen": "2026-05-06",
+      "pos": [
+        "n",
+        "prep"
+      ],
+      "meanings": [
+        "頂端；上面",
+        "在…上面"
+      ],
+      "example_sentence": "Put the book on top of the box.",
+      "translation": "把書放在盒子上面。"
+    },
+    "freeze": {
+      "first_seen": "2026-05-06",
+      "last_seen": "2026-05-06",
+      "pos": "v",
+      "meanings": [
+        "結冰；冷凍；凍住"
+      ],
+      "example_sentence": "Water can freeze in winter.",
+      "translation": "水在冬天會結冰。"
     }
   }
 }

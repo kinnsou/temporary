@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-05-05T11:01:49Z",
-    "sourceCount": 155,
-    "includedCount": 147
+    "updatedAt": "2026-05-06T11:01:14Z",
+    "sourceCount": 158,
+    "includedCount": 150
   },
   "words": [
+    {
+      "word": "ring",
+      "meaning": "戒指",
+      "example": "She wears a ring on her finger.",
+      "translation": "她手指上戴著一枚戒指。",
+      "firstSeen": "2026-05-06",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "top",
+      "meaning": "頂端；上面；在…上面",
+      "example": "Put the book on top of the box.",
+      "translation": "把書放在盒子上面。",
+      "firstSeen": "2026-05-06",
+      "pos": [
+        "n",
+        "prep"
+      ]
+    },
+    {
+      "word": "freeze",
+      "meaning": "結冰；冷凍；凍住",
+      "example": "Water can freeze in winter.",
+      "translation": "水在冬天會結冰。",
+      "firstSeen": "2026-05-06",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "comfortable",
       "meaning": "舒服的；舒適的",
