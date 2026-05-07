@@ -1128,7 +1128,7 @@ function Blank({width=78,color='#555',filled}){
   return(<span style={{display:'inline-block',minWidth:width,padding:'0 6px',margin:'0 4px',borderBottom:`2px solid ${color}`,textAlign:'center',fontWeight:900,color:filled?color:'transparent',verticalAlign:'baseline',lineHeight:1.2,letterSpacing:1,fontFamily:filled?'monospace':'inherit'}}>{filled||'＿'}</span>);
 }
 
-function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,pc,refreshFb,voiceGender='female'}){
+function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,onAnsweredChange,pc,refreshFb,voiceGender='female'}){
   const TOTAL=Math.min(15,quizPool.length);
   const knownSet=useMemo(()=>new Set(knownWords||[]),[knownWords]);
   const [questions]=useState(()=>buildQuizItems(quizPool,TOTAL,knownSet));
@@ -1150,6 +1150,7 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,pc,refr
   const [hiddenOpts,setHiddenOpts]=useState(new Set()); // zh2en eliminated wrong options
   const [hintUsedThisQ,setHintUsedThisQ]=useState(false); // per-question lock — only 1 hint debit per question
   const [hintFx,setHintFx]=useState(0);
+  const answeredRef=useRef(0);
   const dragTokenRef=useRef(null);
 
   useEffect(()=>{
@@ -1224,6 +1225,8 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,pc,refr
   };
 
   const afterAnswer=async(ok)=>{
+    answeredRef.current+=1;
+    onAnsweredChange?.(answeredRef.current);
     let gain=0,food=0,nextCombo=0;
     if(ok){
       try{
@@ -1639,6 +1642,19 @@ function RankScreen({uid,studentName,charIdx,stats,onNav,pc,cloudEntries,cloudSt
   </div>);
 }
 
+function ConfirmExitQuizModal({onYes,onNo}){
+  return(<div style={{position:'absolute',inset:0,background:'rgba(15,23,42,0.42)',zIndex:120,display:'flex',alignItems:'center',justifyContent:'center',padding:24}}>
+    <div style={{width:'100%',maxWidth:310,background:'#fff',borderRadius:24,padding:'24px 20px 18px',boxShadow:'0 18px 50px rgba(0,0,0,0.28)',textAlign:'center',animation:'pop 0.25s ease-out'}}>
+      <div style={{fontSize:34,marginBottom:8}}>⚠️</div>
+      <div style={{fontSize:16,fontWeight:900,color:'#1a1a2e',lineHeight:1.55,marginBottom:18}}>測驗已作答，如退出此頁則捨棄您的作答記錄。</div>
+      <div style={{display:'flex',gap:10}}>
+        <button onClick={onNo} style={{flex:1,padding:13,borderRadius:16,border:'2px solid #e5e7eb',background:'#fff',color:'#64748b',fontSize:14,fontWeight:900,cursor:'pointer',fontFamily:'inherit'}}>NO</button>
+        <button onClick={onYes} style={{flex:1,padding:13,borderRadius:16,border:'none',background:'linear-gradient(135deg,#fb7185,#fb7185cc)',color:'#fff',fontSize:14,fontWeight:900,cursor:'pointer',fontFamily:'inherit',boxShadow:'0 4px 14px rgba(251,113,133,0.32)'}}>YES</button>
+      </div>
+    </div>
+  </div>);
+}
+
 /* ══ APP ═════════════════════════════════════════════════ */
 function App(){
   const [profile,setProfile]=useState(()=>loadProfile());
@@ -1652,6 +1668,8 @@ function App(){
   const [cloudEntries,setCloudEntries]=useState([]);
   const [cloudStreakEntries,setCloudStreakEntries]=useState([]);
   const [cloudStatus,setCloudStatus]=useState('idle');
+  const [quizAnswered,setQuizAnswered]=useState(0);
+  const [pendingNav,setPendingNav]=useState(null);
   const [fb,refreshFb]=useFb();
   const claimAttempted=useRef(false);
   useEffect(()=>{
@@ -1758,7 +1776,20 @@ function App(){
     };
   },[vocabAll,difficultyOrder,today,displayStats.level]);
 
-  const nav=(s)=>{if(s==='quiz'&&screen!=='quiz')setResult(null);setScreen(s);};
+  const goScreen=(s)=>{
+    if(s==='quiz'&&screen!=='quiz'){setResult(null);setQuizAnswered(0);}
+    setScreen(s);
+  };
+  const nav=(s)=>{
+    if(screen==='quiz'&&s!=='quiz'&&quizAnswered>0){setPendingNav(s);return;}
+    goScreen(s);
+  };
+  const confirmExitQuiz=()=>{
+    const s=pendingNav||'home';
+    setPendingNav(null);
+    setQuizAnswered(0);
+    goScreen(s);
+  };
 
   const levelUpAckingRef=useRef(false);
   // Watch pendingLevelUp on home screen → show modal once
@@ -1794,6 +1825,7 @@ function App(){
     const todayCount=(baseStats.todayQuizDate===today?(baseStats.todayQuiz||0):0)+(total|0);
     const ns={...baseStats,xp:(baseStats.xp||0)+xpGained,best:Math.max(baseStats.best||0,score),totalGames:games+1,avgScore:newAvg,todayQuiz:todayCount,todayQuizDate:today};
     saveStats(ns);setStats(ns);
+    setQuizAnswered(0);
     setResult({score,xp:xpGained,total});setScreen('result');
     if(window.FB?.uid&&studentName){
       const entry=await cloudUpsertScore(window.FB.uid,studentName,currentPetId||CHARACTERS[charIdx]?.id||DEFAULT_AVATAR,score,total);
@@ -1835,9 +1867,10 @@ function App(){
       setScreen('home');
     }} onBack={()=>setScreen('home')} pc={pc}/>}
     {screen==='flash'&&<FlashScreen charSrc={charSrc} flashAll={quizPool} knownWords={fb?.profile?.knownWords||[]} refreshFb={refreshFb} onNav={nav} pc={pc} voiceGender={fb?.pet?.voiceGender==='male'?'male':'female'}/>}
-    {screen==='quiz'&&<QuizScreen charSrc={charSrc} charName={charName} quizPool={quizPool} knownWords={fb?.profile?.knownWords||[]} onFinish={handleFinish} onNav={nav} pc={pc} refreshFb={refreshFb} voiceGender={fb?.pet?.voiceGender==='male'?'male':'female'}/>}
+    {screen==='quiz'&&<QuizScreen charSrc={charSrc} charName={charName} quizPool={quizPool} knownWords={fb?.profile?.knownWords||[]} onFinish={handleFinish} onNav={nav} onAnsweredChange={setQuizAnswered} pc={pc} refreshFb={refreshFb} voiceGender={fb?.pet?.voiceGender==='male'?'male':'female'}/>}
     {screen==='result'&&result&&<ResultScreen {...result} charSrc={charSrc} charName={charName} onRetry={()=>setScreen('quiz')} onHome={()=>setScreen('home')} pc={pc}/>}
     {screen==='rank'&&<RankScreen uid={fb?.uid} studentName={studentName} charIdx={charIdx} stats={displayStats} onNav={nav} pc={pc} cloudEntries={cloudEntries} cloudStreakEntries={cloudStreakEntries} cloudStatus={cloudStatus} onRefresh={refreshLeaderboard}/>}
+    {pendingNav&&<ConfirmExitQuizModal onYes={confirmExitQuiz} onNo={()=>setPendingNav(null)}/>}
     {levelUpInfo&&<LevelUpModal level={levelUpInfo.level} unlocked={levelUpInfo.unlocked||[]} pc={pc} onClose={handleCloseLevelUp}/>}
   </div>);
 }
