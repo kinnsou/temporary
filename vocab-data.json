@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-05-06T11:01:14Z",
-    "sourceCount": 158,
-    "includedCount": 150
+    "updatedAt": "2026-05-07T11:01:03Z",
+    "sourceCount": 161,
+    "includedCount": 153
   },
   "words": [
+    {
+      "word": "drop",
+      "meaning": "掉下來；掉落；放下；放開（手上的東西）",
+      "example": "I dropped my pencil on the floor.",
+      "translation": "我把鉛筆掉到地上了。",
+      "firstSeen": "2026-05-07",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "gray",
+      "meaning": "灰色的",
+      "example": "The sky is gray today.",
+      "translation": "今天的天空是灰灰的。",
+      "firstSeen": "2026-05-07",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "help",
+      "meaning": "幫助；協助",
+      "example": "Can you help me with my homework?",
+      "translation": "你可以幫我寫作業嗎？",
+      "firstSeen": "2026-05-07",
+      "pos": [
+        "v",
+        "n"
+      ]
+    },
     {
       "word": "ring",
       "meaning": "戒指",

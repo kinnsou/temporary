@@ -3,7 +3,7 @@
     "newWordsMustBeUniqueUntilExhausted": true,
     "reviewFormat": "guided_cloze_with_grammar_chunking",
     "sourceScope": "台灣普遍認定國中必會1000單",
-    "updatedAt": "2026-05-06T11:00:00Z"
+    "updatedAt": "2026-05-07T11:00:00Z"
   },
   "words": {
     "adventure": {
@@ -1481,6 +1481,40 @@
       ],
       "example_sentence": "Water can freeze in winter.",
       "translation": "水在冬天會結冰。"
+    },
+    "drop": {
+      "first_seen": "2026-05-07",
+      "last_seen": "2026-05-07",
+      "pos": "v",
+      "meanings": [
+        "掉下來；掉落",
+        "放下；放開（手上的東西）"
+      ],
+      "example_sentence": "I dropped my pencil on the floor.",
+      "translation": "我把鉛筆掉到地上了。"
+    },
+    "gray": {
+      "first_seen": "2026-05-07",
+      "last_seen": "2026-05-07",
+      "pos": "adj",
+      "meanings": [
+        "灰色的"
+      ],
+      "example_sentence": "The sky is gray today.",
+      "translation": "今天的天空是灰灰的。"
+    },
+    "help": {
+      "first_seen": "2026-05-07",
+      "last_seen": "2026-05-07",
+      "pos": [
+        "v",
+        "n"
+      ],
+      "meanings": [
+        "幫助；協助"
+      ],
+      "example_sentence": "Can you help me with my homework?",
+      "translation": "你可以幫我寫作業嗎？"
     }
   }
 }
