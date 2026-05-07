@@ -297,12 +297,21 @@ function splitAroundWord(sentence,word){
   return{before:sentence.slice(0,m.index),match:m[0],after:sentence.slice(m.index+m[0].length)};
 }
 
-/* Build a cloze (type-in) question. Returns {type,correct,hintFirst,before,after,zh2} or null. */
+function buildLetterTokens(word){
+  const letters=Array.from(String(word||'').trim().toLowerCase()).filter(ch=>ch.trim());
+  return letters.map((text,i)=>({id:`${i}:${text}`,text,idx:i}));
+}
+
+/* Build a cloze spelling question. Returns {type,correct,letterTokens,tokens,before,after,zh2} or null. */
 function buildClozeQuestion(w){
   if(!w.en||!w.word)return null;
   const parts=splitAroundWord(w.en,w.word);
   if(!parts)return null;
-  return{type:'cloze',correct:w.word,hintFirst:String(w.word).trim().slice(0,1).toLowerCase(),before:parts.before,after:parts.after,zh2:w.zh2||'',zh:w.zh||''};
+  const letterTokens=buildLetterTokens(w.word);
+  if(letterTokens.length<2)return null;
+  let tokens=shuffle(letterTokens);
+  if(tokens.map(t=>t.id).join('|')===letterTokens.map(t=>t.id).join('|'))tokens=shuffle(letterTokens.slice().reverse());
+  return{type:'cloze',correct:w.word,letterTokens,tokens,before:parts.before,after:parts.after,zh2:w.zh2||'',zh:w.zh||''};
 }
 
 function tenseHintText(form,base){
@@ -1110,7 +1119,7 @@ function FlashScreen({charSrc,flashAll,knownWords,refreshFb,onNav,pc,voiceGender
 // Question-type theme tokens (matches fix1.jpg orange / fix2.jpg cyan)
 const Q_THEME={
   zh2en:{color:'#61c2ff',icon:'🎯',label:'選出正確解釋'},
-  cloze:{color:'#FF9800',icon:'✏️',label:'填入正確單字'},
+  cloze:{color:'#FF9800',icon:'✏️',label:'拼出正確單字'},
   tense:{color:'#38bdf8',icon:'⏱',label:'選出正確時態'},
   order:{color:'#a78bfa',icon:'🧩',label:'排出完整句子'},
 };
@@ -1125,8 +1134,8 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,pc,refr
   const [questions]=useState(()=>buildQuizItems(quizPool,TOTAL,knownSet));
   const HINT_BUDGET=3;
   const [idx,setIdx]=useState(0);
-  const [selected,setSel]=useState(null);   // for zh2en/tense: chosen option string; for cloze: 'submitted' marker
-  const [clozeInput,setClozeInput]=useState('');
+  const [selected,setSel]=useState(null);   // for zh2en/tense: chosen option string
+  const [clozePicked,setClozePicked]=useState([]); // token ids picked for spelling questions
   const [clozeResult,setClozeResult]=useState(null); // {isCorrect, userAnswer}
   const [orderPicked,setOrderPicked]=useState([]); // token ids picked for sentence-order questions
   const [orderResult,setOrderResult]=useState(null); // {isCorrect}
@@ -1141,19 +1150,15 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,pc,refr
   const [hiddenOpts,setHiddenOpts]=useState(new Set()); // zh2en eliminated wrong options
   const [hintUsedThisQ,setHintUsedThisQ]=useState(false); // per-question lock — only 1 hint debit per question
   const [hintFx,setHintFx]=useState(0);
-  const inputRef=useRef(null);
   const dragTokenRef=useRef(null);
 
   useEffect(()=>{
-    // Focus input when a cloze question mounts
-    if(questions[idx]?.type==='cloze'&&inputRef.current){
-      setTimeout(()=>inputRef.current?.focus(),100);
-    }
     // Reset per-question hint state
     setHintRevealed(false);
     setHiddenOpts(new Set());
     setHintUsedThisQ(false);
     setHintFx(0);
+    setClozePicked([]);
     setOrderPicked([]);
     setOrderResult(null);
   },[idx,questions]);
@@ -1176,7 +1181,9 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,pc,refr
       if(drop.length===0)return;
       setHiddenOpts(new Set(drop));
     }else if(cur.type==='cloze'){
-      try{speakText(cur.correct,{gender:voiceGender});}catch(e){console.warn('speak failed',e);}
+      const first3=(cur.letterTokens||[]).filter(t=>t.idx<3).sort((a,b)=>a.idx-b.idx).map(t=>t.id);
+      if(first3.length===0)return;
+      setClozePicked(prev=>[...first3,...prev.filter(id=>!first3.includes(id))]);
     }else if(cur.type==='tense'){
       setHintRevealed(true);
     }else if(cur.type==='order'){
@@ -1239,7 +1246,7 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,pc,refr
     // For cloze we linger a bit longer so kids can read the correct answer
     const delay=(q.type==='cloze'||q.type==='tense'||q.type==='order')?1700:1100;
     setTimeout(()=>{
-      setSel(null);setClozeInput('');setClozeResult(null);setOrderPicked([]);setOrderResult(null);
+      setSel(null);setClozePicked([]);setClozeResult(null);setOrderPicked([]);setOrderResult(null);
       if(idx+1>=TOTAL) onFinish(ok?score+1:score,ok?xp+gain:xp,TOTAL);
       else setIdx(i=>i+1);
     },delay);
@@ -1252,10 +1259,20 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,pc,refr
     const correctStr=q.type==='zh2en'?q.vocab.word:q.correct;
     afterAnswer(normalizeAnswer(optStr)===normalizeAnswer(correctStr));
   };
-  const submitCloze=()=>{
+  const addClozeLetter=(id)=>{
+    if(clozeResult||clozePicked.includes(id))return;
+    setClozePicked(prev=>[...prev,id]);
+  };
+  const removeClozeLetter=(id)=>{
     if(clozeResult)return;
-    const ok=normalizeAnswer(clozeInput)===normalizeAnswer(q.correct);
-    setClozeResult({isCorrect:ok,userAnswer:clozeInput});
+    setClozePicked(prev=>prev.filter(x=>x!==id));
+  };
+  const submitCloze=()=>{
+    if(clozeResult||clozePicked.length!==(q.letterTokens||[]).length)return;
+    const byId=new Map((q.letterTokens||[]).map(t=>[t.id,t]));
+    const userAnswer=clozePicked.map(id=>byId.get(id)?.text||'').join('');
+    const ok=normalizeAnswer(userAnswer)===normalizeAnswer(q.correct);
+    setClozeResult({isCorrect:ok,userAnswer});
     speakAfterAnswer(q);
     afterAnswer(ok);
   };
@@ -1280,7 +1297,7 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,pc,refr
     if(selected||clozeResult||orderResult)return;
     speakAfterAnswer(q);
     if(q.type==='cloze'){
-      setClozeInput('');
+      setClozePicked((q.letterTokens||[]).slice().sort((a,b)=>a.idx-b.idx).map(t=>t.id));
       setClozeResult({isCorrect:false,userAnswer:''});
     }else if(q.type==='order'){
       setOrderResult({isCorrect:false});
@@ -1331,8 +1348,10 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,pc,refr
       </div>
     );
   } else if(q.type==='cloze'){
-    // Fill-in-the-word with input box
-    const hintDisplay=q.hintFirst+('_'.repeat(Math.max(2,String(q.correct).length-1)));
+    const byId=new Map((q.letterTokens||[]).map(t=>[t.id,t]));
+    const picked=clozePicked.map(id=>byId.get(id)).filter(Boolean);
+    const available=(q.tokens||[]).filter(t=>!clozePicked.includes(t.id));
+    const pickedText=picked.map(t=>t.text).join('');
     const locked=!!clozeResult;
     const isCorrect=clozeResult?.isCorrect;
     questionCard=(
@@ -1341,26 +1360,33 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,pc,refr
         <div style={{textAlign:'center'}}>
           <span style={{fontSize:11,fontWeight:800,color:theme.color,background:`${theme.color}18`,padding:'4px 12px',borderRadius:20,letterSpacing:0.5}}>{theme.icon} {theme.label}</span>
         </div>
-        <div style={{fontSize:12,color:'#aaa',fontWeight:700,textAlign:'center'}}>提示首字：<span style={{fontFamily:'monospace',color:theme.color,fontWeight:900,fontSize:14}}>{hintDisplay}</span></div>
+        <div style={{fontSize:12,color:'#aaa',fontWeight:700,textAlign:'center'}}>點下方字母，拼出空格裡的單字。點寵物可先排前 3 個字母。</div>
         <div style={{fontSize:17,fontWeight:700,color:'#1a1a2e',lineHeight:1.8,textAlign:'left',padding:'4px 0'}}>
           <span>{q.before}</span>
-          <Blank width={86} color={locked?(isCorrect?'#4CAF82':'#FF4D6D'):theme.color} filled={locked?q.correct:null}/>
+          <Blank width={Math.max(86,String(q.correct||'').length*18)} color={locked?(isCorrect?'#4CAF82':'#FF4D6D'):theme.color} filled={locked?q.correct:(pickedText||null)}/>
           <span>{q.after}</span>
         </div>
         {q.zh2&&<div style={{fontSize:12,color:'#aaa',textAlign:'center',fontStyle:'italic'}}>「{q.zh2}」</div>}
       </div>
     );
     answerArea=(
-      <div style={{display:'flex',flexDirection:'column',gap:10,paddingBottom:8}}>
-        <input ref={inputRef} type="text" value={clozeInput} placeholder="輸入英文單字…"
-          disabled={locked} maxLength={24}
-          onChange={e=>setClozeInput(e.target.value)} onKeyDown={e=>{if(e.key==='Enter'&&!locked)submitCloze();}}
-          autoComplete="off" autoCapitalize="none" autoCorrect="off" spellCheck="false"
-          style={{width:'100%',padding:'14px 16px',borderRadius:16,border:`2px solid ${locked?(isCorrect?'#4CAF82':'#FF4D6D'):(clozeInput?theme.color:'#f0eaea')}`,background:locked?(isCorrect?'#e9f8ef':'#ffeef0'):'#fff',fontSize:18,fontWeight:800,color:'#1a1a2e',outline:'none',fontFamily:'monospace',textAlign:'center',letterSpacing:1,transition:'all 0.2s'}}/>
+      <div className="scroll-body" style={{display:'flex',flexDirection:'column',gap:10,paddingBottom:8}}>
+        <div style={{minHeight:66,border:`2px dashed ${locked?(isCorrect?'#4CAF82':'#FF4D6D'):theme.color}`,background:locked?(isCorrect?'#e9f8ef':'#ffeef0'):`${theme.color}0f`,borderRadius:18,padding:10,display:'flex',flexWrap:'wrap',alignContent:'flex-start',justifyContent:picked.length?'center':'center',gap:7,transition:'all 0.2s'}}>
+          {picked.length===0&&<div style={{width:'100%',fontSize:12,color:'#94a3b8',fontWeight:800,textAlign:'center',paddingTop:12}}>從下方點字母，排成英文單字</div>}
+          {picked.map((t,i)=>(
+            <button key={t.id} onClick={()=>removeClozeLetter(t.id)} disabled={locked} style={{width:36,height:36,borderRadius:12,border:'none',background:'#fff',color:'#1a1a2e',fontSize:18,fontWeight:900,fontFamily:'monospace',textTransform:'uppercase',boxShadow:'0 2px 7px rgba(0,0,0,0.08)',cursor:locked?'default':'pointer'}}>{t.text}<span style={{display:'block',fontSize:8,color:'#cbd5e1',lineHeight:1}}>{i+1}</span></button>
+          ))}
+        </div>
+        <div style={{display:'flex',flexWrap:'wrap',gap:8,justifyContent:'center',background:'#fff',borderRadius:18,padding:12,boxShadow:'0 2px 8px rgba(0,0,0,0.04)'}}>
+          {available.map((t,i)=>(
+            <button key={t.id} onClick={()=>addClozeLetter(t.id)} disabled={locked} style={{width:38,height:38,borderRadius:14,border:`2px solid ${theme.color}25`,background:'#fff',color:'#1a1a2e',fontSize:18,fontWeight:900,fontFamily:'monospace',textTransform:'uppercase',cursor:locked?'default':'pointer',boxShadow:'0 2px 7px rgba(0,0,0,0.06)',animation:`slideUp 0.2s ${i*0.035}s both`}}>{t.text}</button>
+          ))}
+          {available.length===0&&<div style={{fontSize:12,color:'#94a3b8',fontWeight:800}}>全部放上去了，按「送出答案」</div>}
+        </div>
         {locked&&<div style={{fontSize:12,fontWeight:800,color:isCorrect?'#4CAF82':'#FF4D6D',textAlign:'center'}}>
-          {isCorrect?'✓ 答對了！':`✗ 正確答案：${q.correct}`}
+          {isCorrect?'✓ 拼對了！':`✗ 正確答案：${q.correct}`}
         </div>}
-        {!locked&&<button onClick={submitCloze} disabled={!clozeInput.trim()} style={{padding:14,borderRadius:16,border:'none',cursor:'pointer',background:`linear-gradient(135deg,${theme.color},${theme.color}bb)`,fontSize:15,fontWeight:900,color:'#fff',boxShadow:`0 4px 14px ${theme.color}44`,opacity:clozeInput.trim()?1:0.4,transition:'opacity 0.2s',fontFamily:'inherit'}}>送出答案</button>}
+        {!locked&&<button onClick={submitCloze} disabled={clozePicked.length!==(q.letterTokens||[]).length} style={{padding:14,borderRadius:16,border:'none',cursor:clozePicked.length===(q.letterTokens||[]).length?'pointer':'not-allowed',background:`linear-gradient(135deg,${theme.color},${theme.color}bb)`,fontSize:15,fontWeight:900,color:'#fff',boxShadow:`0 4px 14px ${theme.color}44`,opacity:clozePicked.length===(q.letterTokens||[]).length?1:0.4,transition:'opacity 0.2s',fontFamily:'inherit'}}>送出答案</button>}
         {giveUpBtn}
       </div>
     );
