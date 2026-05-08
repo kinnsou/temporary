@@ -3,7 +3,7 @@
     "newWordsMustBeUniqueUntilExhausted": true,
     "reviewFormat": "guided_cloze_with_grammar_chunking",
     "sourceScope": "台灣普遍認定國中必會1000單",
-    "updatedAt": "2026-05-07T11:00:00Z"
+    "updatedAt": "2026-05-08T11:00:49Z"
   },
   "words": {
     "adventure": {
@@ -21,6 +21,26 @@
         "害怕的；擔心的"
       ],
       "translation": "我怕黑。"
+    },
+    "agree": {
+      "example_sentence": "I agree with your idea.",
+      "first_seen": "2026-04-25",
+      "last_seen": "2026-04-25",
+      "meanings": [
+        "同意"
+      ],
+      "pos": "v",
+      "translation": "我同意你的想法。"
+    },
+    "always": {
+      "example_sentence": "She always eats breakfast.",
+      "first_seen": "2026-04-28",
+      "last_seen": "2026-04-28",
+      "meanings": [
+        "總是；一直"
+      ],
+      "pos": "adv",
+      "translation": "她總是會吃早餐。"
     },
     "arrive": {
       "example_sentence": "We will arrive at school before eight.",
@@ -40,6 +60,19 @@
       ],
       "translation": "她正站在陽台上。"
     },
+    "behind": {
+      "example_sentence": "The cat is behind the chair.",
+      "first_seen": "2026-05-02",
+      "last_seen": "2026-05-02",
+      "meanings": [
+        "在…後面；在後方"
+      ],
+      "pos": [
+        "prep",
+        "adv"
+      ],
+      "translation": "那隻貓在椅子後面。"
+    },
     "believe": {
       "example_sentence": "I believe you can do it.",
       "first_seen": "2026-04-21",
@@ -57,6 +90,16 @@
         "屬於"
       ],
       "translation": "這枝鉛筆是你的。"
+    },
+    "between": {
+      "example_sentence": "The ball is between the two chairs.",
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "meanings": [
+        "在…之間"
+      ],
+      "pos": "prep",
+      "translation": "球在兩張椅子中間。"
     },
     "blow": {
       "example_sentence": "Please blow on the soup. It is hot.",
@@ -94,6 +137,16 @@
       ],
       "translation": "那位勇敢的女孩在全班前面發言。"
     },
+    "build": {
+      "example_sentence": "We will build a sandcastle at the beach.",
+      "first_seen": "2026-05-04",
+      "last_seen": "2026-05-04",
+      "meanings": [
+        "建造；建立"
+      ],
+      "pos": "v",
+      "translation": "我們要在海灘堆一座沙堡。"
+    },
     "camera": {
       "example_sentence": "I took a photo with my camera.",
       "first_seen": "2026-04-07",
@@ -111,6 +164,26 @@
         "小心的；謹慎的"
       ],
       "translation": "過馬路時要小心。"
+    },
+    "cat": {
+      "example_sentence": "The cat is sleeping.",
+      "first_seen": "2026-05-02",
+      "last_seen": "2026-05-02",
+      "meanings": [
+        "貓"
+      ],
+      "pos": "n",
+      "translation": "那隻貓在睡覺。"
+    },
+    "catch": {
+      "example_sentence": "I can catch the ball.",
+      "first_seen": "2026-04-25",
+      "last_seen": "2026-04-25",
+      "meanings": [
+        "接住；抓住"
+      ],
+      "pos": "v",
+      "translation": "我可以接住球。"
     },
     "child": {
       "example_sentence": "The child is playing in the park.",
@@ -175,6 +248,26 @@
       ],
       "translation": "那朵雲看起來像一隻兔子。"
     },
+    "coffee": {
+      "example_sentence": "My dad drinks coffee in the morning.",
+      "first_seen": "2026-04-28",
+      "last_seen": "2026-04-28",
+      "meanings": [
+        "咖啡"
+      ],
+      "pos": "n",
+      "translation": "我爸爸早上會喝咖啡。"
+    },
+    "comfortable": {
+      "example_sentence": "This chair is comfortable.",
+      "first_seen": "2026-05-05",
+      "last_seen": "2026-05-05",
+      "meanings": [
+        "舒服的；舒適的"
+      ],
+      "pos": "adj",
+      "translation": "這張椅子很舒服。"
+    },
     "contest": {
       "example_sentence": "She won the singing contest.",
       "first_seen": "2026-03-24",
@@ -192,6 +285,26 @@
         "對話；談話"
       ],
       "translation": "下課後我們聊了很久。"
+    },
+    "correctly": {
+      "example_sentence": "Please write your name correctly.",
+      "first_seen": "2026-04-28",
+      "last_seen": "2026-04-28",
+      "meanings": [
+        "正確地"
+      ],
+      "pos": "adv",
+      "translation": "請把你的名字寫正確。"
+    },
+    "crayon": {
+      "example_sentence": "My child drew a sun with a yellow crayon.",
+      "first_seen": "2026-05-03",
+      "last_seen": "2026-05-03",
+      "meanings": [
+        "蠟筆"
+      ],
+      "pos": "n",
+      "translation": "我的孩子用黃色蠟筆畫了一個太陽。"
     },
     "curious": {
       "first_seen": "2025-02-23",
@@ -241,6 +354,16 @@
       ],
       "translation": "把 12 除以 3。"
     },
+    "doctor": {
+      "example_sentence": "The doctor helps sick people.",
+      "first_seen": "2026-05-08",
+      "last_seen": "2026-05-08",
+      "meanings": [
+        "醫生"
+      ],
+      "pos": "n",
+      "translation": "醫生會幫助生病的人。"
+    },
     "dragon": {
       "example_sentence": "The dragon in the story is very strong.",
       "first_seen": "2026-04-20",
@@ -249,6 +372,17 @@
         "龍"
       ],
       "translation": "故事裡的龍很強。"
+    },
+    "drop": {
+      "example_sentence": "I dropped my pencil on the floor.",
+      "first_seen": "2026-05-07",
+      "last_seen": "2026-05-07",
+      "meanings": [
+        "掉下來；掉落",
+        "放下；放開（手上的東西）"
+      ],
+      "pos": "v",
+      "translation": "我把鉛筆掉到地上了。"
     },
     "early": {
       "example_sentence": "She gets up early every morning.",
@@ -267,6 +401,16 @@
         "敵人"
       ],
       "translation": "他不是我的敵人。"
+    },
+    "every": {
+      "example_sentence": "I brush my teeth every night.",
+      "first_seen": "2026-04-29",
+      "last_seen": "2026-04-29",
+      "meanings": [
+        "每一個；每"
+      ],
+      "pos": "det",
+      "translation": "我每天晚上都刷牙。"
     },
     "everywhere": {
       "example_sentence": "I looked everywhere for my pencil.",
@@ -302,6 +446,16 @@
       ],
       "translation": "請把電風扇打開。"
     },
+    "father": {
+      "example_sentence": "My father is at work.",
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "meanings": [
+        "爸爸；父親"
+      ],
+      "pos": "n",
+      "translation": "我爸爸在上班。"
+    },
     "feel": {
       "example_sentence": "I feel tired after school.",
       "first_seen": "2026-03-26",
@@ -310,6 +464,19 @@
         "感覺；覺得"
       ],
       "translation": "放學後我覺得很累。"
+    },
+    "first": {
+      "example_sentence": "I was first in line.",
+      "first_seen": "2026-05-05",
+      "last_seen": "2026-05-05",
+      "meanings": [
+        "第一（的）；最先"
+      ],
+      "pos": [
+        "adj",
+        "adv"
+      ],
+      "translation": "我排在隊伍最前面。"
     },
     "forest": {
       "example_sentence": "We walked through the forest after lunch.",
@@ -328,6 +495,28 @@
         "向前；前方的"
       ],
       "translation": "請往前移一點。"
+    },
+    "free": {
+      "example_sentence": "This app is free.",
+      "first_seen": "2026-05-08",
+      "last_seen": "2026-05-08",
+      "meanings": [
+        "免費的",
+        "自由的",
+        "空閒的"
+      ],
+      "pos": "adj",
+      "translation": "這個 App 是免費的。"
+    },
+    "freeze": {
+      "example_sentence": "Water can freeze in winter.",
+      "first_seen": "2026-05-06",
+      "last_seen": "2026-05-06",
+      "meanings": [
+        "結冰；冷凍；凍住"
+      ],
+      "pos": "v",
+      "translation": "水在冬天會結冰。"
     },
     "friendly": {
       "example_sentence": "Our new classmate is very friendly.",
@@ -356,6 +545,16 @@
       ],
       "translation": "對寶寶要溫柔一點。"
     },
+    "gift": {
+      "example_sentence": "I got a gift from my friend.",
+      "first_seen": "2026-04-29",
+      "last_seen": "2026-04-29",
+      "meanings": [
+        "禮物"
+      ],
+      "pos": "n",
+      "translation": "我收到朋友送的禮物。"
+    },
     "giggle": {
       "example_sentence": "The kids giggle when they hear a funny joke.",
       "first_seen": "2026-03-05",
@@ -383,6 +582,16 @@
       ],
       "translation": "這隻手套對我的手來說太大了。"
     },
+    "gray": {
+      "example_sentence": "The sky is gray today.",
+      "first_seen": "2026-05-07",
+      "last_seen": "2026-05-07",
+      "meanings": [
+        "灰色的"
+      ],
+      "pos": "adj",
+      "translation": "今天的天空是灰灰的。"
+    },
     "happy": {
       "example_sentence": "I am happy today.",
       "first_seen": "2026-03-26",
@@ -391,6 +600,39 @@
         "開心的；快樂的"
       ],
       "translation": "我今天很開心。"
+    },
+    "hate": {
+      "example_sentence": "I hate spiders.",
+      "first_seen": "2026-05-04",
+      "last_seen": "2026-05-04",
+      "meanings": [
+        "討厭；憎恨"
+      ],
+      "pos": "v",
+      "translation": "我討厭蜘蛛。"
+    },
+    "heavy": {
+      "example_sentence": "This bag is heavy.",
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "meanings": [
+        "重的；沉的"
+      ],
+      "pos": "adj",
+      "translation": "這個袋子很重。"
+    },
+    "help": {
+      "example_sentence": "Can you help me with my homework?",
+      "first_seen": "2026-05-07",
+      "last_seen": "2026-05-07",
+      "meanings": [
+        "幫助；協助"
+      ],
+      "pos": [
+        "v",
+        "n"
+      ],
+      "translation": "你可以幫我寫作業嗎？"
     },
     "hide": {
       "example_sentence": "Don't hide your feelings.",
@@ -479,6 +721,19 @@
         "改善；進步"
       ],
       "translation": "每天閱讀有助於提升你的英文。"
+    },
+    "inside": {
+      "example_sentence": "Please put the toy inside the box.",
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "meanings": [
+        "在…裡面"
+      ],
+      "pos": [
+        "prep",
+        "adv"
+      ],
+      "translation": "請把玩具放進盒子裡。"
     },
     "invite": {
       "example_sentence": "I want to invite my friend to the party.",
@@ -588,6 +843,20 @@
         "借出；借給"
       ],
       "translation": "你可以把你的尺借給我嗎？"
+    },
+    "look": {
+      "example_sentence": "Look at the picture.",
+      "first_seen": "2026-04-26",
+      "last_seen": "2026-04-26",
+      "meanings": [
+        "看；看一看",
+        "看起來"
+      ],
+      "pos": [
+        "v",
+        "n"
+      ],
+      "translation": "看看這張圖。"
     },
     "luck": {
       "example_sentence": "Good luck on your test!",
@@ -731,6 +1000,20 @@
       ],
       "translation": "我晚餐想吃披薩。"
     },
+    "place": {
+      "example_sentence": "Please place your bag on the chair.",
+      "first_seen": "2026-05-02",
+      "last_seen": "2026-05-02",
+      "meanings": [
+        "地方；位置",
+        "放置"
+      ],
+      "pos": [
+        "n",
+        "v"
+      ],
+      "translation": "請把你的書包放在椅子上。"
+    },
     "popular": {
       "example_sentence": "This song is popular with students.",
       "first_seen": "2026-04-13",
@@ -793,6 +1076,20 @@
         "大概；可能"
       ],
       "translation": "明天大概會下雨。"
+    },
+    "program": {
+      "example_sentence": "I wrote a simple program for my class.",
+      "first_seen": "2026-05-03",
+      "last_seen": "2026-05-03",
+      "meanings": [
+        "程式；電腦程式",
+        "（活動／課程的）方案；節目"
+      ],
+      "pos": [
+        "n",
+        "v"
+      ],
+      "translation": "我為課堂寫了一個簡單的程式。"
     },
     "promise": {
       "example_sentence": "I promise to finish my homework tonight.",
@@ -875,6 +1172,30 @@
       ],
       "translation": "我騎腳踏車去上學。"
     },
+    "ring": {
+      "example_sentence": "She wears a ring on her finger.",
+      "first_seen": "2026-05-06",
+      "last_seen": "2026-05-06",
+      "meanings": [
+        "戒指"
+      ],
+      "pos": "n",
+      "translation": "她手指上戴著一枚戒指。"
+    },
+    "rush": {
+      "example_sentence": "Don't rush. We have enough time.",
+      "first_seen": "2026-05-03",
+      "last_seen": "2026-05-03",
+      "meanings": [
+        "匆忙；趕忙",
+        "一陣忙亂；匆促"
+      ],
+      "pos": [
+        "v",
+        "n"
+      ],
+      "translation": "別急，我們時間很夠。"
+    },
     "sand": {
       "example_sentence": "There is sand on the beach.",
       "first_seen": "2026-04-10",
@@ -883,6 +1204,26 @@
         "沙子；沙"
       ],
       "translation": "海灘上有沙子。"
+    },
+    "say": {
+      "example_sentence": "Please say it again.",
+      "first_seen": "2026-04-29",
+      "last_seen": "2026-04-29",
+      "meanings": [
+        "說；講"
+      ],
+      "pos": "v",
+      "translation": "請再說一次。"
+    },
+    "shine": {
+      "example_sentence": "The sun shines in the morning.",
+      "first_seen": "2026-05-04",
+      "last_seen": "2026-05-04",
+      "meanings": [
+        "發亮；照耀"
+      ],
+      "pos": "v",
+      "translation": "太陽早上會發光。"
     },
     "side": {
       "example_sentence": "The ball rolled to the side of the road.",
@@ -938,6 +1279,16 @@
       ],
       "translation": "春天是我最喜歡的季節。"
     },
+    "store": {
+      "example_sentence": "I went to the store with my dad.",
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "meanings": [
+        "商店；店家"
+      ],
+      "pos": "n",
+      "translation": "我跟爸爸一起去商店。"
+    },
     "storm": {
       "example_sentence": "The storm is coming.",
       "first_seen": "2026-04-21",
@@ -974,6 +1325,16 @@
       ],
       "translation": "植物需要陽光才能長大。"
     },
+    "surely": {
+      "example_sentence": "I will surely call you tonight.",
+      "first_seen": "2026-05-08",
+      "last_seen": "2026-05-08",
+      "meanings": [
+        "一定；肯定地"
+      ],
+      "pos": "adv",
+      "translation": "我今晚一定會打給你。"
+    },
     "sweet": {
       "example_sentence": "This cake is sweet.",
       "first_seen": "2026-04-15",
@@ -991,6 +1352,16 @@
         "老師"
       ],
       "translation": "我的老師很親切又有趣。"
+    },
+    "terrible": {
+      "example_sentence": "The weather was terrible yesterday.",
+      "first_seen": "2026-05-05",
+      "last_seen": "2026-05-05",
+      "meanings": [
+        "糟糕的；可怕的"
+      ],
+      "pos": "adj",
+      "translation": "昨天天氣很糟。"
     },
     "ticket": {
       "example_sentence": "I bought a ticket for the train.",
@@ -1019,12 +1390,36 @@
       ],
       "translation": "我們明天要考試。"
     },
+    "top": {
+      "example_sentence": "Put the book on top of the box.",
+      "first_seen": "2026-05-06",
+      "last_seen": "2026-05-06",
+      "meanings": [
+        "頂端；上面",
+        "在…上面"
+      ],
+      "pos": [
+        "n",
+        "prep"
+      ],
+      "translation": "把書放在盒子上面。"
+    },
     "treasure": {
       "first_seen": "2025-02-23",
       "last_seen": "2025-02-23",
       "meanings": [
         "寶藏"
       ]
+    },
+    "trip": {
+      "example_sentence": "Our trip to the zoo was fun.",
+      "first_seen": "2026-04-27",
+      "last_seen": "2026-04-27",
+      "meanings": [
+        "旅行；出遊"
+      ],
+      "pos": "n",
+      "translation": "我們去動物園的旅行很有趣。"
     },
     "typhoon": {
       "example_sentence": "A typhoon is coming.",
@@ -1035,6 +1430,16 @@
       ],
       "translation": "颱風要來了。"
     },
+    "ugly": {
+      "example_sentence": "The ugly monster is not scary.",
+      "first_seen": "2026-04-25",
+      "last_seen": "2026-04-25",
+      "meanings": [
+        "醜的；難看的"
+      ],
+      "pos": "adj",
+      "translation": "那隻醜醜的怪物並不可怕。"
+    },
     "vegetable": {
       "example_sentence": "I eat vegetables every day.",
       "first_seen": "2026-03-28",
@@ -1043,6 +1448,16 @@
         "蔬菜"
       ],
       "translation": "我每天吃蔬菜。"
+    },
+    "very": {
+      "example_sentence": "It is very cold today.",
+      "first_seen": "2026-04-26",
+      "last_seen": "2026-04-26",
+      "meanings": [
+        "非常；很"
+      ],
+      "pos": "adv",
+      "translation": "今天很冷。"
     },
     "wait": {
       "example_sentence": "Please wait for me.",
@@ -1053,6 +1468,16 @@
       ],
       "translation": "請等我一下。"
     },
+    "wear": {
+      "example_sentence": "I wear my school uniform every day.",
+      "first_seen": "2026-04-27",
+      "last_seen": "2026-04-27",
+      "meanings": [
+        "穿；戴"
+      ],
+      "pos": "v",
+      "translation": "我每天都穿校服。"
+    },
     "weekend": {
       "example_sentence": "I visit my grandma on the weekend.",
       "first_seen": "2026-03-31",
@@ -1062,6 +1487,16 @@
       ],
       "translation": "我週末會去看外婆。"
     },
+    "well": {
+      "example_sentence": "She sings well.",
+      "first_seen": "2026-04-27",
+      "last_seen": "2026-04-27",
+      "meanings": [
+        "很好地；很不錯地"
+      ],
+      "pos": "adv",
+      "translation": "她唱得很好。"
+    },
     "whisper": {
       "example_sentence": "Please whisper in the library.",
       "first_seen": "2026-03-04",
@@ -1070,6 +1505,30 @@
         "小聲說；耳語"
       ],
       "translation": "在圖書館請小聲說話。"
+    },
+    "white": {
+      "example_sentence": "My shoes are white.",
+      "first_seen": "2026-04-26",
+      "last_seen": "2026-04-26",
+      "meanings": [
+        "白色的；白的",
+        "白色"
+      ],
+      "pos": [
+        "adj",
+        "n"
+      ],
+      "translation": "我的鞋子是白色的。"
+    },
+    "window": {
+      "example_sentence": "The window is open.",
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "meanings": [
+        "窗戶"
+      ],
+      "pos": "n",
+      "translation": "窗戶是開著的。"
     },
     "woman": {
       "example_sentence": "The woman is a teacher.",
@@ -1088,433 +1547,6 @@
         "黃色（的）"
       ],
       "translation": "我有一件黃色的雨衣。"
-    },
-    "agree": {
-      "first_seen": "2026-04-25",
-      "last_seen": "2026-04-25",
-      "meanings": [
-        "同意"
-      ],
-      "example_sentence": "I agree with your idea.",
-      "translation": "我同意你的想法。",
-      "pos": "v"
-    },
-    "ugly": {
-      "first_seen": "2026-04-25",
-      "last_seen": "2026-04-25",
-      "meanings": [
-        "醜的；難看的"
-      ],
-      "example_sentence": "The ugly monster is not scary.",
-      "translation": "那隻醜醜的怪物並不可怕。",
-      "pos": "adj"
-    },
-    "catch": {
-      "first_seen": "2026-04-25",
-      "last_seen": "2026-04-25",
-      "meanings": [
-        "接住；抓住"
-      ],
-      "example_sentence": "I can catch the ball.",
-      "translation": "我可以接住球。",
-      "pos": "v"
-    },
-    "white": {
-      "first_seen": "2026-04-26",
-      "last_seen": "2026-04-26",
-      "pos": [
-        "adj",
-        "n"
-      ],
-      "meanings": [
-        "白色的；白的",
-        "白色"
-      ],
-      "example_sentence": "My shoes are white.",
-      "translation": "我的鞋子是白色的。"
-    },
-    "very": {
-      "first_seen": "2026-04-26",
-      "last_seen": "2026-04-26",
-      "pos": "adv",
-      "meanings": [
-        "非常；很"
-      ],
-      "example_sentence": "It is very cold today.",
-      "translation": "今天很冷。"
-    },
-    "look": {
-      "first_seen": "2026-04-26",
-      "last_seen": "2026-04-26",
-      "pos": [
-        "v",
-        "n"
-      ],
-      "meanings": [
-        "看；看一看",
-        "看起來"
-      ],
-      "example_sentence": "Look at the picture.",
-      "translation": "看看這張圖。"
-    },
-    "well": {
-      "first_seen": "2026-04-27",
-      "last_seen": "2026-04-27",
-      "pos": "adv",
-      "meanings": [
-        "很好地；很不錯地"
-      ],
-      "example_sentence": "She sings well.",
-      "translation": "她唱得很好。"
-    },
-    "trip": {
-      "first_seen": "2026-04-27",
-      "last_seen": "2026-04-27",
-      "pos": "n",
-      "meanings": [
-        "旅行；出遊"
-      ],
-      "example_sentence": "Our trip to the zoo was fun.",
-      "translation": "我們去動物園的旅行很有趣。"
-    },
-    "wear": {
-      "first_seen": "2026-04-27",
-      "last_seen": "2026-04-27",
-      "pos": "v",
-      "meanings": [
-        "穿；戴"
-      ],
-      "example_sentence": "I wear my school uniform every day.",
-      "translation": "我每天都穿校服。"
-    },
-    "always": {
-      "first_seen": "2026-04-28",
-      "last_seen": "2026-04-28",
-      "pos": "adv",
-      "meanings": [
-        "總是；一直"
-      ],
-      "example_sentence": "She always eats breakfast.",
-      "translation": "她總是會吃早餐。"
-    },
-    "correctly": {
-      "first_seen": "2026-04-28",
-      "last_seen": "2026-04-28",
-      "pos": "adv",
-      "meanings": [
-        "正確地"
-      ],
-      "example_sentence": "Please write your name correctly.",
-      "translation": "請把你的名字寫正確。"
-    },
-    "coffee": {
-      "first_seen": "2026-04-28",
-      "last_seen": "2026-04-28",
-      "pos": "n",
-      "meanings": [
-        "咖啡"
-      ],
-      "example_sentence": "My dad drinks coffee in the morning.",
-      "translation": "我爸爸早上會喝咖啡。"
-    },
-    "say": {
-      "first_seen": "2026-04-29",
-      "last_seen": "2026-04-29",
-      "pos": "v",
-      "meanings": [
-        "說；講"
-      ],
-      "example_sentence": "Please say it again.",
-      "translation": "請再說一次。"
-    },
-    "gift": {
-      "first_seen": "2026-04-29",
-      "last_seen": "2026-04-29",
-      "pos": "n",
-      "meanings": [
-        "禮物"
-      ],
-      "example_sentence": "I got a gift from my friend.",
-      "translation": "我收到朋友送的禮物。"
-    },
-    "every": {
-      "first_seen": "2026-04-29",
-      "last_seen": "2026-04-29",
-      "pos": "det",
-      "meanings": [
-        "每一個；每"
-      ],
-      "example_sentence": "I brush my teeth every night.",
-      "translation": "我每天晚上都刷牙。"
-    },
-    "window": {
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "pos": "n",
-      "meanings": [
-        "窗戶"
-      ],
-      "example_sentence": "The window is open.",
-      "translation": "窗戶是開著的。"
-    },
-    "heavy": {
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "pos": "adj",
-      "meanings": [
-        "重的；沉的"
-      ],
-      "example_sentence": "This bag is heavy.",
-      "translation": "這個袋子很重。"
-    },
-    "father": {
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "pos": "n",
-      "meanings": [
-        "爸爸；父親"
-      ],
-      "example_sentence": "My father is at work.",
-      "translation": "我爸爸在上班。"
-    },
-    "store": {
-      "first_seen": "2026-05-01",
-      "last_seen": "2026-05-01",
-      "pos": "n",
-      "meanings": [
-        "商店；店家"
-      ],
-      "example_sentence": "I went to the store with my dad.",
-      "translation": "我跟爸爸一起去商店。"
-    },
-    "inside": {
-      "first_seen": "2026-05-01",
-      "last_seen": "2026-05-01",
-      "pos": [
-        "prep",
-        "adv"
-      ],
-      "meanings": [
-        "在…裡面"
-      ],
-      "example_sentence": "Please put the toy inside the box.",
-      "translation": "請把玩具放進盒子裡。"
-    },
-    "between": {
-      "first_seen": "2026-05-01",
-      "last_seen": "2026-05-01",
-      "pos": "prep",
-      "meanings": [
-        "在…之間"
-      ],
-      "example_sentence": "The ball is between the two chairs.",
-      "translation": "球在兩張椅子中間。"
-    },
-    "cat": {
-      "first_seen": "2026-05-02",
-      "last_seen": "2026-05-02",
-      "pos": "n",
-      "meanings": [
-        "貓"
-      ],
-      "example_sentence": "The cat is sleeping.",
-      "translation": "那隻貓在睡覺。"
-    },
-    "behind": {
-      "first_seen": "2026-05-02",
-      "last_seen": "2026-05-02",
-      "pos": [
-        "prep",
-        "adv"
-      ],
-      "meanings": [
-        "在…後面；在後方"
-      ],
-      "example_sentence": "The cat is behind the chair.",
-      "translation": "那隻貓在椅子後面。"
-    },
-    "place": {
-      "first_seen": "2026-05-02",
-      "last_seen": "2026-05-02",
-      "pos": [
-        "n",
-        "v"
-      ],
-      "meanings": [
-        "地方；位置",
-        "放置"
-      ],
-      "example_sentence": "Please place your bag on the chair.",
-      "translation": "請把你的書包放在椅子上。"
-    },
-    "program": {
-      "first_seen": "2026-05-03",
-      "last_seen": "2026-05-03",
-      "pos": [
-        "n",
-        "v"
-      ],
-      "meanings": [
-        "程式；電腦程式",
-        "（活動／課程的）方案；節目"
-      ],
-      "example_sentence": "I wrote a simple program for my class.",
-      "translation": "我為課堂寫了一個簡單的程式。"
-    },
-    "rush": {
-      "first_seen": "2026-05-03",
-      "last_seen": "2026-05-03",
-      "pos": [
-        "v",
-        "n"
-      ],
-      "meanings": [
-        "匆忙；趕忙",
-        "一陣忙亂；匆促"
-      ],
-      "example_sentence": "Don't rush. We have enough time.",
-      "translation": "別急，我們時間很夠。"
-    },
-    "crayon": {
-      "first_seen": "2026-05-03",
-      "last_seen": "2026-05-03",
-      "pos": "n",
-      "meanings": [
-        "蠟筆"
-      ],
-      "example_sentence": "My child drew a sun with a yellow crayon.",
-      "translation": "我的孩子用黃色蠟筆畫了一個太陽。"
-    },
-    "build": {
-      "first_seen": "2026-05-04",
-      "last_seen": "2026-05-04",
-      "pos": "v",
-      "meanings": [
-        "建造；建立"
-      ],
-      "example_sentence": "We will build a sandcastle at the beach.",
-      "translation": "我們要在海灘堆一座沙堡。"
-    },
-    "shine": {
-      "first_seen": "2026-05-04",
-      "last_seen": "2026-05-04",
-      "pos": "v",
-      "meanings": [
-        "發亮；照耀"
-      ],
-      "example_sentence": "The sun shines in the morning.",
-      "translation": "太陽早上會發光。"
-    },
-    "hate": {
-      "first_seen": "2026-05-04",
-      "last_seen": "2026-05-04",
-      "pos": "v",
-      "meanings": [
-        "討厭；憎恨"
-      ],
-      "example_sentence": "I hate spiders.",
-      "translation": "我討厭蜘蛛。"
-    },
-    "comfortable": {
-      "first_seen": "2026-05-05",
-      "last_seen": "2026-05-05",
-      "pos": "adj",
-      "meanings": [
-        "舒服的；舒適的"
-      ],
-      "example_sentence": "This chair is comfortable.",
-      "translation": "這張椅子很舒服。"
-    },
-    "terrible": {
-      "first_seen": "2026-05-05",
-      "last_seen": "2026-05-05",
-      "pos": "adj",
-      "meanings": [
-        "糟糕的；可怕的"
-      ],
-      "example_sentence": "The weather was terrible yesterday.",
-      "translation": "昨天天氣很糟。"
-    },
-    "first": {
-      "first_seen": "2026-05-05",
-      "last_seen": "2026-05-05",
-      "pos": [
-        "adj",
-        "adv"
-      ],
-      "meanings": [
-        "第一（的）；最先"
-      ],
-      "example_sentence": "I was first in line.",
-      "translation": "我排在隊伍最前面。"
-    },
-    "ring": {
-      "first_seen": "2026-05-06",
-      "last_seen": "2026-05-06",
-      "pos": "n",
-      "meanings": [
-        "戒指"
-      ],
-      "example_sentence": "She wears a ring on her finger.",
-      "translation": "她手指上戴著一枚戒指。"
-    },
-    "top": {
-      "first_seen": "2026-05-06",
-      "last_seen": "2026-05-06",
-      "pos": [
-        "n",
-        "prep"
-      ],
-      "meanings": [
-        "頂端；上面",
-        "在…上面"
-      ],
-      "example_sentence": "Put the book on top of the box.",
-      "translation": "把書放在盒子上面。"
-    },
-    "freeze": {
-      "first_seen": "2026-05-06",
-      "last_seen": "2026-05-06",
-      "pos": "v",
-      "meanings": [
-        "結冰；冷凍；凍住"
-      ],
-      "example_sentence": "Water can freeze in winter.",
-      "translation": "水在冬天會結冰。"
-    },
-    "drop": {
-      "first_seen": "2026-05-07",
-      "last_seen": "2026-05-07",
-      "pos": "v",
-      "meanings": [
-        "掉下來；掉落",
-        "放下；放開（手上的東西）"
-      ],
-      "example_sentence": "I dropped my pencil on the floor.",
-      "translation": "我把鉛筆掉到地上了。"
-    },
-    "gray": {
-      "first_seen": "2026-05-07",
-      "last_seen": "2026-05-07",
-      "pos": "adj",
-      "meanings": [
-        "灰色的"
-      ],
-      "example_sentence": "The sky is gray today.",
-      "translation": "今天的天空是灰灰的。"
-    },
-    "help": {
-      "first_seen": "2026-05-07",
-      "last_seen": "2026-05-07",
-      "pos": [
-        "v",
-        "n"
-      ],
-      "meanings": [
-        "幫助；協助"
-      ],
-      "example_sentence": "Can you help me with my homework?",
-      "translation": "你可以幫我寫作業嗎？"
     }
   }
 }

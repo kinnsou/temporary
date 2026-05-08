@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-05-07T11:01:03Z",
-    "sourceCount": 161,
-    "includedCount": 153
+    "updatedAt": "2026-05-08T11:00:51Z",
+    "sourceCount": 164,
+    "includedCount": 156
   },
   "words": [
+    {
+      "word": "doctor",
+      "meaning": "醫生",
+      "example": "The doctor helps sick people.",
+      "translation": "醫生會幫助生病的人。",
+      "firstSeen": "2026-05-08",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "free",
+      "meaning": "免費的；自由的；空閒的",
+      "example": "This app is free.",
+      "translation": "這個 App 是免費的。",
+      "firstSeen": "2026-05-08",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "surely",
+      "meaning": "一定；肯定地",
+      "example": "I will surely call you tonight.",
+      "translation": "我今晚一定會打給你。",
+      "firstSeen": "2026-05-08",
+      "pos": [
+        "adv"
+      ]
+    },
     {
       "word": "drop",
       "meaning": "掉下來；掉落；放下；放開（手上的東西）",
@@ -37,6 +67,16 @@
       ]
     },
     {
+      "word": "freeze",
+      "meaning": "結冰；冷凍；凍住",
+      "example": "Water can freeze in winter.",
+      "translation": "水在冬天會結冰。",
+      "firstSeen": "2026-05-06",
+      "pos": [
+        "v"
+      ]
+    },
+    {
       "word": "ring",
       "meaning": "戒指",
       "example": "She wears a ring on her finger.",
@@ -58,30 +98,10 @@
       ]
     },
     {
-      "word": "freeze",
-      "meaning": "結冰；冷凍；凍住",
-      "example": "Water can freeze in winter.",
-      "translation": "水在冬天會結冰。",
-      "firstSeen": "2026-05-06",
-      "pos": [
-        "v"
-      ]
-    },
-    {
       "word": "comfortable",
       "meaning": "舒服的；舒適的",
       "example": "This chair is comfortable.",
       "translation": "這張椅子很舒服。",
-      "firstSeen": "2026-05-05",
-      "pos": [
-        "adj"
-      ]
-    },
-    {
-      "word": "terrible",
-      "meaning": "糟糕的；可怕的",
-      "example": "The weather was terrible yesterday.",
-      "translation": "昨天天氣很糟。",
       "firstSeen": "2026-05-05",
       "pos": [
         "adj"
@@ -99,10 +119,30 @@
       ]
     },
     {
+      "word": "terrible",
+      "meaning": "糟糕的；可怕的",
+      "example": "The weather was terrible yesterday.",
+      "translation": "昨天天氣很糟。",
+      "firstSeen": "2026-05-05",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
       "word": "build",
       "meaning": "建造；建立",
       "example": "We will build a sandcastle at the beach.",
       "translation": "我們要在海灘堆一座沙堡。",
+      "firstSeen": "2026-05-04",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "hate",
+      "meaning": "討厭；憎恨",
+      "example": "I hate spiders.",
+      "translation": "我討厭蜘蛛。",
       "firstSeen": "2026-05-04",
       "pos": [
         "v"
@@ -119,13 +159,13 @@
       ]
     },
     {
-      "word": "hate",
-      "meaning": "討厭；憎恨",
-      "example": "I hate spiders.",
-      "translation": "我討厭蜘蛛。",
-      "firstSeen": "2026-05-04",
+      "word": "crayon",
+      "meaning": "蠟筆",
+      "example": "My child drew a sun with a yellow crayon.",
+      "translation": "我的孩子用黃色蠟筆畫了一個太陽。",
+      "firstSeen": "2026-05-03",
       "pos": [
-        "v"
+        "n"
       ]
     },
     {
@@ -151,13 +191,14 @@
       ]
     },
     {
-      "word": "crayon",
-      "meaning": "蠟筆",
-      "example": "My child drew a sun with a yellow crayon.",
-      "translation": "我的孩子用黃色蠟筆畫了一個太陽。",
-      "firstSeen": "2026-05-03",
+      "word": "behind",
+      "meaning": "在…後面；在後方",
+      "example": "The cat is behind the chair.",
+      "translation": "那隻貓在椅子後面。",
+      "firstSeen": "2026-05-02",
       "pos": [
-        "n"
+        "prep",
+        "adv"
       ]
     },
     {
@@ -168,17 +209,6 @@
       "firstSeen": "2026-05-02",
       "pos": [
         "n"
-      ]
-    },
-    {
-      "word": "behind",
-      "meaning": "在…後面；在後方",
-      "example": "The cat is behind the chair.",
-      "translation": "那隻貓在椅子後面。",
-      "firstSeen": "2026-05-02",
-      "pos": [
-        "prep",
-        "adv"
       ]
     },
     {
@@ -193,13 +223,13 @@
       ]
     },
     {
-      "word": "store",
-      "meaning": "商店；店家",
-      "example": "I went to the store with my dad.",
-      "translation": "我跟爸爸一起去商店。",
+      "word": "between",
+      "meaning": "在…之間",
+      "example": "The ball is between the two chairs.",
+      "translation": "球在兩張椅子中間。",
       "firstSeen": "2026-05-01",
       "pos": [
-        "n"
+        "prep"
       ]
     },
     {
@@ -214,20 +244,20 @@
       ]
     },
     {
-      "word": "between",
-      "meaning": "在…之間",
-      "example": "The ball is between the two chairs.",
-      "translation": "球在兩張椅子中間。",
+      "word": "store",
+      "meaning": "商店；店家",
+      "example": "I went to the store with my dad.",
+      "translation": "我跟爸爸一起去商店。",
       "firstSeen": "2026-05-01",
       "pos": [
-        "prep"
+        "n"
       ]
     },
     {
-      "word": "window",
-      "meaning": "窗戶",
-      "example": "The window is open.",
-      "translation": "窗戶是開著的。",
+      "word": "father",
+      "meaning": "爸爸；父親",
+      "example": "My father is at work.",
+      "translation": "我爸爸在上班。",
       "firstSeen": "2026-04-30",
       "pos": [
         "n"
@@ -244,31 +274,11 @@
       ]
     },
     {
-      "word": "father",
-      "meaning": "爸爸；父親",
-      "example": "My father is at work.",
-      "translation": "我爸爸在上班。",
+      "word": "window",
+      "meaning": "窗戶",
+      "example": "The window is open.",
+      "translation": "窗戶是開著的。",
       "firstSeen": "2026-04-30",
-      "pos": [
-        "n"
-      ]
-    },
-    {
-      "word": "say",
-      "meaning": "說；講",
-      "example": "Please say it again.",
-      "translation": "請再說一次。",
-      "firstSeen": "2026-04-29",
-      "pos": [
-        "v"
-      ]
-    },
-    {
-      "word": "gift",
-      "meaning": "禮物",
-      "example": "I got a gift from my friend.",
-      "translation": "我收到朋友送的禮物。",
-      "firstSeen": "2026-04-29",
       "pos": [
         "n"
       ]
@@ -284,20 +294,30 @@
       ]
     },
     {
+      "word": "gift",
+      "meaning": "禮物",
+      "example": "I got a gift from my friend.",
+      "translation": "我收到朋友送的禮物。",
+      "firstSeen": "2026-04-29",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "say",
+      "meaning": "說；講",
+      "example": "Please say it again.",
+      "translation": "請再說一次。",
+      "firstSeen": "2026-04-29",
+      "pos": [
+        "v"
+      ]
+    },
+    {
       "word": "always",
       "meaning": "總是；一直",
       "example": "She always eats breakfast.",
       "translation": "她總是會吃早餐。",
-      "firstSeen": "2026-04-28",
-      "pos": [
-        "adv"
-      ]
-    },
-    {
-      "word": "correctly",
-      "meaning": "正確地",
-      "example": "Please write your name correctly.",
-      "translation": "請把你的名字寫正確。",
       "firstSeen": "2026-04-28",
       "pos": [
         "adv"
@@ -314,11 +334,11 @@
       ]
     },
     {
-      "word": "well",
-      "meaning": "很好地；很不錯地",
-      "example": "She sings well.",
-      "translation": "她唱得很好。",
-      "firstSeen": "2026-04-27",
+      "word": "correctly",
+      "meaning": "正確地",
+      "example": "Please write your name correctly.",
+      "translation": "請把你的名字寫正確。",
+      "firstSeen": "2026-04-28",
       "pos": [
         "adv"
       ]
@@ -344,22 +364,11 @@
       ]
     },
     {
-      "word": "white",
-      "meaning": "白色的；白的；白色",
-      "example": "My shoes are white.",
-      "translation": "我的鞋子是白色的。",
-      "firstSeen": "2026-04-26",
-      "pos": [
-        "adj",
-        "n"
-      ]
-    },
-    {
-      "word": "very",
-      "meaning": "非常；很",
-      "example": "It is very cold today.",
-      "translation": "今天很冷。",
-      "firstSeen": "2026-04-26",
+      "word": "well",
+      "meaning": "很好地；很不錯地",
+      "example": "She sings well.",
+      "translation": "她唱得很好。",
+      "firstSeen": "2026-04-27",
       "pos": [
         "adv"
       ]
@@ -376,10 +385,41 @@
       ]
     },
     {
+      "word": "very",
+      "meaning": "非常；很",
+      "example": "It is very cold today.",
+      "translation": "今天很冷。",
+      "firstSeen": "2026-04-26",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "white",
+      "meaning": "白色的；白的；白色",
+      "example": "My shoes are white.",
+      "translation": "我的鞋子是白色的。",
+      "firstSeen": "2026-04-26",
+      "pos": [
+        "adj",
+        "n"
+      ]
+    },
+    {
       "word": "agree",
       "meaning": "同意",
       "example": "I agree with your idea.",
       "translation": "我同意你的想法。",
+      "firstSeen": "2026-04-25",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "catch",
+      "meaning": "接住；抓住",
+      "example": "I can catch the ball.",
+      "translation": "我可以接住球。",
       "firstSeen": "2026-04-25",
       "pos": [
         "v"
@@ -393,16 +433,6 @@
       "firstSeen": "2026-04-25",
       "pos": [
         "adj"
-      ]
-    },
-    {
-      "word": "catch",
-      "meaning": "接住；抓住",
-      "example": "I can catch the ball.",
-      "translation": "我可以接住球。",
-      "firstSeen": "2026-04-25",
-      "pos": [
-        "v"
       ]
     },
     {
