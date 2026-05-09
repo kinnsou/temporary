@@ -1,10 +1,42 @@
 {
   "meta": {
-    "updatedAt": "2026-05-08T11:00:51Z",
-    "sourceCount": 164,
-    "includedCount": 156
+    "updatedAt": "2026-05-09T11:01:10Z",
+    "sourceCount": 167,
+    "includedCount": 159
   },
   "words": [
+    {
+      "word": "pleasant",
+      "meaning": "愉快的；令人舒服的",
+      "example": "It is a pleasant day today.",
+      "translation": "今天是個舒服的一天。",
+      "firstSeen": "2026-05-09",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "love",
+      "meaning": "愛；喜愛",
+      "example": "I love my family.",
+      "translation": "我愛我的家人。",
+      "firstSeen": "2026-05-09",
+      "pos": [
+        "v",
+        "n"
+      ]
+    },
+    {
+      "word": "until",
+      "meaning": "直到…為止",
+      "example": "Wait here until I come back.",
+      "translation": "在這裡等我回來。",
+      "firstSeen": "2026-05-09",
+      "pos": [
+        "prep",
+        "conj"
+      ]
+    },
     {
       "word": "doctor",
       "meaning": "醫生",

@@ -1547,6 +1547,42 @@
         "黃色（的）"
       ],
       "translation": "我有一件黃色的雨衣。"
+    },
+    "pleasant": {
+      "first_seen": "2026-05-09",
+      "last_seen": "2026-05-09",
+      "meanings": [
+        "愉快的；令人舒服的"
+      ],
+      "example_sentence": "It is a pleasant day today.",
+      "translation": "今天是個舒服的一天。",
+      "pos": "adj"
+    },
+    "love": {
+      "first_seen": "2026-05-09",
+      "last_seen": "2026-05-09",
+      "meanings": [
+        "愛；喜愛"
+      ],
+      "example_sentence": "I love my family.",
+      "translation": "我愛我的家人。",
+      "pos": [
+        "v",
+        "n"
+      ]
+    },
+    "until": {
+      "first_seen": "2026-05-09",
+      "last_seen": "2026-05-09",
+      "meanings": [
+        "直到…為止"
+      ],
+      "example_sentence": "Wait here until I come back.",
+      "translation": "在這裡等我回來。",
+      "pos": [
+        "prep",
+        "conj"
+      ]
     }
   }
 }
