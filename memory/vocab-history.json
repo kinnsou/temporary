@@ -844,6 +844,16 @@
       ],
       "translation": "你可以把你的尺借給我嗎？"
     },
+    "library": {
+      "example_sentence": "We read books in the library.",
+      "first_seen": "2026-05-10",
+      "last_seen": "2026-05-10",
+      "meanings": [
+        "圖書館"
+      ],
+      "pos": "n",
+      "translation": "我們在圖書館看書。"
+    },
     "look": {
       "example_sentence": "Look at the picture.",
       "first_seen": "2026-04-26",
@@ -857,6 +867,19 @@
         "n"
       ],
       "translation": "看看這張圖。"
+    },
+    "love": {
+      "example_sentence": "I love my family.",
+      "first_seen": "2026-05-09",
+      "last_seen": "2026-05-09",
+      "meanings": [
+        "愛；喜愛"
+      ],
+      "pos": [
+        "v",
+        "n"
+      ],
+      "translation": "我愛我的家人。"
     },
     "luck": {
       "example_sentence": "Good luck on your test!",
@@ -902,6 +925,16 @@
         "月亮"
       ],
       "translation": "今晚月亮很亮。"
+    },
+    "nature": {
+      "example_sentence": "I love nature.",
+      "first_seen": "2026-05-10",
+      "last_seen": "2026-05-10",
+      "meanings": [
+        "大自然"
+      ],
+      "pos": "n",
+      "translation": "我喜歡大自然。"
     },
     "news": {
       "example_sentence": "I watched the news with my dad.",
@@ -1013,6 +1046,16 @@
         "v"
       ],
       "translation": "請把你的書包放在椅子上。"
+    },
+    "pleasant": {
+      "example_sentence": "It is a pleasant day today.",
+      "first_seen": "2026-05-09",
+      "last_seen": "2026-05-09",
+      "meanings": [
+        "愉快的；令人舒服的"
+      ],
+      "pos": "adj",
+      "translation": "今天是個舒服的一天。"
     },
     "popular": {
       "example_sentence": "This song is popular with students.",
@@ -1153,6 +1196,16 @@
         "紅色（的）"
       ],
       "translation": "這顆蘋果是紅色的。"
+    },
+    "repeat": {
+      "example_sentence": "Please repeat after me.",
+      "first_seen": "2026-05-10",
+      "last_seen": "2026-05-10",
+      "meanings": [
+        "重複；再說一次"
+      ],
+      "pos": "v",
+      "translation": "請跟我重複一次。"
     },
     "return": {
       "example_sentence": "Please return the book to the library tomorrow.",
@@ -1440,6 +1493,19 @@
       "pos": "adj",
       "translation": "那隻醜醜的怪物並不可怕。"
     },
+    "until": {
+      "example_sentence": "Wait here until I come back.",
+      "first_seen": "2026-05-09",
+      "last_seen": "2026-05-09",
+      "meanings": [
+        "直到…為止"
+      ],
+      "pos": [
+        "prep",
+        "conj"
+      ],
+      "translation": "在這裡等我回來。"
+    },
     "vegetable": {
       "example_sentence": "I eat vegetables every day.",
       "first_seen": "2026-03-28",
@@ -1547,42 +1613,6 @@
         "黃色（的）"
       ],
       "translation": "我有一件黃色的雨衣。"
-    },
-    "pleasant": {
-      "first_seen": "2026-05-09",
-      "last_seen": "2026-05-09",
-      "meanings": [
-        "愉快的；令人舒服的"
-      ],
-      "example_sentence": "It is a pleasant day today.",
-      "translation": "今天是個舒服的一天。",
-      "pos": "adj"
-    },
-    "love": {
-      "first_seen": "2026-05-09",
-      "last_seen": "2026-05-09",
-      "meanings": [
-        "愛；喜愛"
-      ],
-      "example_sentence": "I love my family.",
-      "translation": "我愛我的家人。",
-      "pos": [
-        "v",
-        "n"
-      ]
-    },
-    "until": {
-      "first_seen": "2026-05-09",
-      "last_seen": "2026-05-09",
-      "meanings": [
-        "直到…為止"
-      ],
-      "example_sentence": "Wait here until I come back.",
-      "translation": "在這裡等我回來。",
-      "pos": [
-        "prep",
-        "conj"
-      ]
     }
   }
 }

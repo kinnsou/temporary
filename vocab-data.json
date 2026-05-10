@@ -1,18 +1,38 @@
 {
   "meta": {
-    "updatedAt": "2026-05-09T11:01:10Z",
-    "sourceCount": 167,
-    "includedCount": 159
+    "updatedAt": "2026-05-10T11:01:55Z",
+    "sourceCount": 170,
+    "includedCount": 162
   },
   "words": [
     {
-      "word": "pleasant",
-      "meaning": "愉快的；令人舒服的",
-      "example": "It is a pleasant day today.",
-      "translation": "今天是個舒服的一天。",
-      "firstSeen": "2026-05-09",
+      "word": "library",
+      "meaning": "圖書館",
+      "example": "We read books in the library.",
+      "translation": "我們在圖書館看書。",
+      "firstSeen": "2026-05-10",
       "pos": [
-        "adj"
+        "n"
+      ]
+    },
+    {
+      "word": "nature",
+      "meaning": "大自然",
+      "example": "I love nature.",
+      "translation": "我喜歡大自然。",
+      "firstSeen": "2026-05-10",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "repeat",
+      "meaning": "重複；再說一次",
+      "example": "Please repeat after me.",
+      "translation": "請跟我重複一次。",
+      "firstSeen": "2026-05-10",
+      "pos": [
+        "v"
       ]
     },
     {
@@ -24,6 +44,16 @@
       "pos": [
         "v",
         "n"
+      ]
+    },
+    {
+      "word": "pleasant",
+      "meaning": "愉快的；令人舒服的",
+      "example": "It is a pleasant day today.",
+      "translation": "今天是個舒服的一天。",
+      "firstSeen": "2026-05-09",
+      "pos": [
+        "adj"
       ]
     },
     {
