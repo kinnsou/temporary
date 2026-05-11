@@ -419,6 +419,7 @@ function stagePass(score,total,run){
   return clearScore>=target;
 }
 function formatSec(sec){const n=Number(sec||0);return n>0?`${n.toFixed(1)}秒`:'--';}
+function isStreakRankEligible(streak,todayQuiz){const days=Number(streak||0),today=Number(todayQuiz||0);return days>=1&&!(days===1&&today===0);}
 function mapStarsForScore(score,total=15){const st=Number(score||0);if(st>=15)return 3;if(st>=6)return 2;if(st>=1)return 1;return 0;}
 
 /* ══ Shared UI ═══════════════════════════════════════════ */
@@ -1786,7 +1787,7 @@ function RankScreen({uid,studentName,charIdx,stats,onNav,pc,cloudEntries,cloudSt
     if(tab==='score'){
       arr.sort((a,b)=>(b.level-a.level)||(b.avgScore-a.avgScore)||(b.streak-a.streak));
     }else{
-      arr=arr.filter(r=>Number(r.streak||0)>=1);
+      arr=arr.filter(r=>isStreakRankEligible(r.streak,r.todayQuiz));
       arr.sort((a,b)=>(b.streak-a.streak)||(b.streakBest-a.streakBest)||(b.level-a.level));
     }
     return arr.map((r,i)=>({...r,rank:i+1}));
@@ -1967,7 +1968,8 @@ function App(){
       setCloudEntries(best);
       try{
         const streak=await cloudRunQuery('streakCur',80);
-        const eligibleStreak=streak.filter(e=>Number(e.streakCur||0)>=1);
+        const todayKey=taipeiDateKey();
+        const eligibleStreak=streak.filter(e=>isStreakRankEligible(e.streakCur,e.todayQuizDate===todayKey?(e.todayQuizCount|0):0));
         eligibleStreak.sort((a,b)=>(b.streakCur||0)-(a.streakCur||0)||(Number(b.avgScore||0)-Number(a.avgScore||0)));
         setCloudStreakEntries(eligibleStreak);
       }catch{setCloudStreakEntries([]);}
