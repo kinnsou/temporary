@@ -409,11 +409,14 @@ function defaultBossAvgSec(stage){return Math.max(30,50-Math.floor((Math.max(1,s
 const MAP_FOOD_BONUS=3;
 const MAP_FOOD_BONUS_STAGES=[4,9,14,19,24,29];
 function isFoodBonusStage(stage){return MAP_FOOD_BONUS_STAGES.includes(Number(stage));}
-function bossPassTarget(total){return Math.max(8,Math.ceil((total||15)*0.55));}
+function clearPassTarget(total){return Math.max(1,Math.ceil((total||15)/2));}
+function bossPassTarget(total){return Math.max(8,clearPassTarget(total));}
 function stagePass(score,total,run){
   if(!run)return true;
-  if(run.isBoss)return score>=bossPassTarget(total)&&Number(run.clearWins||0)>=bossPassTarget(total);
-  return total>0&&(score/total)>=0.5;
+  const target=run.isBoss?bossPassTarget(total):clearPassTarget(total);
+  const clearScore=Number(run.clearScore??score??0);
+  if(run.isBoss)return clearScore>=target&&Number(run.clearWins||0)>=target;
+  return clearScore>=target;
 }
 function formatSec(sec){const n=Number(sec||0);return n>0?`${n.toFixed(1)}秒`:'--';}
 function mapStarsForScore(score,total=15){const st=Number(score||0);if(st>=15)return 3;if(st>=6)return 2;if(st>=1)return 1;return 0;}
@@ -1300,11 +1303,17 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,onAnswe
   const answerTimesRef=useRef([]);
   const speedWinsRef=useRef(0);
   const clearWinsRef=useRef(0);
+  const clearScoreRef=useRef(0);
   const [speedWins,setSpeedWins]=useState(0);
+  const [clearScore,setClearScore]=useState(0);
+  const clearTarget=quest?.isBoss?bossPassTarget(TOTAL):clearPassTarget(TOTAL);
+  const bossTimeLimit=Math.max(1,Math.round(Number(quest?.bossClearSec||defaultBossAvgSec(quest?.stage||1))));
+  const [timeLeft,setTimeLeft]=useState(bossTimeLimit);
 
   useEffect(()=>{
     // Reset per-question hint state
     questionStartRef.current=Date.now();
+    setTimeLeft(bossTimeLimit);
     setHintRevealed(false);
     setHiddenOpts(new Set());
     setHintUsedThisQ(false);
@@ -1312,7 +1321,7 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,onAnswe
     setClozePicked([]);
     setOrderPicked([]);
     setOrderResult(null);
-  },[idx,questions]);
+  },[idx,questions,bossTimeLimit]);
 
   // Auto-clear the ✨ pop overlay after its animation finishes (~0.4s)
   useEffect(()=>{
@@ -1320,6 +1329,25 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,onAnswe
     const t=setTimeout(()=>setHintFx(0),500);
     return()=>clearTimeout(t);
   },[hintFx]);
+
+  useEffect(()=>{
+    if(!quest?.isBoss||selected||clozeResult||orderResult)return;
+    const tick=()=>{
+      const elapsed=(Date.now()-questionStartRef.current)/1000;
+      setTimeLeft(Math.max(0,bossTimeLimit-elapsed));
+    };
+    tick();
+    const t=setInterval(tick,250);
+    return()=>clearInterval(t);
+  },[idx,quest?.isBoss,bossTimeLimit,selected,clozeResult,orderResult]);
+
+  const advanceClearScore=(ok)=>{
+    const prev=clearScoreRef.current;
+    const next=ok?Math.min(TOTAL,prev+1):(prev>=clearTarget?Math.max(0,prev-1):prev);
+    clearScoreRef.current=next;
+    setClearScore(next);
+    return next;
+  };
 
   const usePetHint=()=>{
     if(hintsLeft<=0)return;
@@ -1379,6 +1407,7 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,onAnswe
     onAnsweredChange?.(answeredRef.current);
     const elapsedSec=Math.max(0.2,(Date.now()-questionStartRef.current)/1000);
     answerTimesRef.current=[...answerTimesRef.current,elapsedSec];
+    const finalClearScore=advanceClearScore(ok);
     if(quest?.isBoss&&ok&&elapsedSec<=Number(quest.bossClearSec||defaultBossAvgSec(quest.stage))){
       clearWinsRef.current+=1;
     }
@@ -1412,7 +1441,8 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,onAnswe
       if(idx+1>=TOTAL){
         const times=answerTimesRef.current;
         const avgSec=times.length?times.reduce((a,b)=>a+b,0)/times.length:0;
-        onFinish(ok?score+1:score,ok?xp+gain:xp,TOTAL,quest?{...quest,avgSec,clearWins:clearWinsRef.current,speedWins:speedWinsRef.current,bossClearSec:Number(quest.bossClearSec||defaultBossAvgSec(quest.stage)),bossTargetSec:Number(quest.bossChallengeSec||quest.bossClearSec||defaultBossAvgSec(quest.stage))}:null);
+        const rawScore=ok?score+1:score;
+        onFinish(rawScore,ok?xp+gain:xp,TOTAL,quest?{...quest,avgSec,clearScore:finalClearScore,rawScore,clearWins:clearWinsRef.current,speedWins:speedWinsRef.current,bossClearSec:Number(quest.bossClearSec||defaultBossAvgSec(quest.stage)),bossTargetSec:Number(quest.bossChallengeSec||quest.bossClearSec||defaultBossAvgSec(quest.stage))}:null);
       }
       else setIdx(i=>i+1);
     },delay);
@@ -1621,20 +1651,33 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,onAnswe
     );
   }
 
+  const isBossQuest=!!quest?.isBoss;
+  const meterColor=clearScore>=clearTarget?pc:'#fb7185';
+  const meterPct=TOTAL>0?Math.min(100,(clearScore/TOTAL)*100):0;
+  const timerPct=isBossQuest&&bossTimeLimit>0?Math.max(0,Math.min(100,(timeLeft/bossTimeLimit)*100)):0;
+  const timerText=Math.ceil(timeLeft);
+
   return(<div className="screen" style={{background:'linear-gradient(170deg,#fafeff 0%,#f0fdf8 100%)',position:'relative',overflow:'hidden'}}>
+    {isBossQuest&&<>
+      <div style={{position:'absolute',top:0,left:0,right:0,height:5,background:'rgba(251,113,133,0.16)',zIndex:40}}>
+        <div style={{height:'100%',width:`${timerPct}%`,background:'linear-gradient(90deg,#fb7185,#ffb703)',transition:'width 0.25s linear',boxShadow:'0 0 10px rgba(251,113,133,0.35)'}}/>
+      </div>
+      <div style={{position:'absolute',top:10,right:16,zIndex:45,fontSize:12,fontWeight:900,color:timerText<=10?'#fb7185':'#f97316',background:'#fff',border:'1.5px solid rgba(251,113,133,0.18)',borderRadius:14,padding:'3px 9px',boxShadow:'0 3px 10px rgba(0,0,0,0.08)'}}>⏳ {timerText}</div>
+    </>}
     <Confetti active={showConf}/>
     {xpMsg&&<div style={{position:'absolute',top:'22%',left:'50%',fontSize:22,fontWeight:900,color:'#FFB800',textShadow:'0 2px 8px rgba(0,0,0,0.15)',animation:'xpRise 0.9s ease-out forwards',pointerEvents:'none',zIndex:50,whiteSpace:'nowrap'}}>{xpMsg} ⭐</div>}
 
     <div style={{padding:'46px 20px 6px',display:'flex',alignItems:'center',gap:10,flexShrink:0}}>
-      <div style={{flex:1,height:9,background:'rgba(0,0,0,0.06)',borderRadius:9}}>
-        <div style={{height:9,borderRadius:9,background:`linear-gradient(90deg,${pc},${pc}99)`,width:`${(idx/TOTAL)*100}%`,transition:'width 0.35s ease-out'}}/>
+      <div style={{flex:1,height:9,background:clearScore>=clearTarget?'rgba(97,194,255,0.16)':'rgba(251,113,133,0.16)',borderRadius:9,position:'relative',overflow:'hidden'}}>
+        <div style={{height:9,borderRadius:9,background:`linear-gradient(90deg,${meterColor},${meterColor}99)`,width:`${meterPct}%`,transition:'width 0.35s ease-out, background 0.25s ease-out'}}/>
+        <div style={{position:'absolute',left:'50%',top:-3,bottom:-3,width:2,background:'rgba(26,26,46,0.22)',boxShadow:'0 0 0 1px rgba(255,255,255,0.75)',borderRadius:2}}/>
       </div>
-      <div style={{fontSize:13,fontWeight:800,color:pc,background:'#fff',padding:'4px 10px',borderRadius:14,boxShadow:'0 2px 6px rgba(0,0,0,0.06)'}}>{idx+1}/{TOTAL}</div>
+      <div style={{fontSize:13,fontWeight:800,color:meterColor,background:'#fff',padding:'4px 10px',borderRadius:14,boxShadow:'0 2px 6px rgba(0,0,0,0.06)'}}>{idx+1}/{TOTAL}</div>
     </div>
 
     {combo>=2&&<div style={{textAlign:'center',fontSize:12,fontWeight:800,color:'#FF6B47',marginBottom:2,flexShrink:0}}>🔥 連續答對 {combo} 題！加油！</div>}
     {quest&&<div style={{textAlign:'center',fontSize:11,fontWeight:900,color:quest.isBoss?'#fb7185':pc,marginBottom:2,flexShrink:0}}>
-      {quest.isBoss?`👑 第 ${quest.stage} 關魔王：通關 ${formatSec(quest.bossClearSec)}｜王位 ${formatSec(quest.bossChallengeSec)}`:`🗺️ 第 ${quest.stage} 關闖關中`}
+      {quest.isBoss?`👑 第 ${quest.stage} 關魔王：通關血條 ${clearScore}/${clearTarget}｜限時 ${timerText} 秒`:`🗺️ 第 ${quest.stage} 關闖關中｜通關血條 ${clearScore}/${clearTarget}`}
     </div>}
 
     <div style={{flex:1,display:'flex',flexDirection:'column',padding:'4px 20px 0',overflow:'hidden'}}>
@@ -1664,6 +1707,11 @@ function ResultScreen({score,xp,total,questRun,charSrc,charName,onRetry,onHome,p
   const isGreat=pct>=80,isOk=pct>=50;
   const grade=isGreat?'S 🌟':isOk?'B 👍':'C 💪';
   const msg=isGreat?'太厲害了！':isOk?'做得不錯！':'繼續加油！';
+  const questTarget=questRun?(questRun.isBoss?bossPassTarget(total):clearPassTarget(total)):0;
+  const questClearScore=Number(questRun?.clearScore??score??0);
+  const questFailText=questRun?.isBoss
+    ?(questClearScore<questTarget?`魔王關還差一點：通關血條 ${questClearScore}/${questTarget}。`:`魔王關還差一點：限時答對 ${questRun.clearWins||0}/${questTarget}。`)
+    :`第 ${questRun?.stage} 關需要通關血條達到 ${questTarget}。`;
   return(<div className="screen" style={{background:'linear-gradient(170deg,#fafeff 0%,#f0fdf8 100%)',position:'relative'}}>
     {isGreat&&<Confetti active/>}
     <div className="scroll-body" style={{padding:'52px 22px 28px',display:'flex',flexDirection:'column',alignItems:'center',gap:18}}>
@@ -1692,9 +1740,9 @@ function ResultScreen({score,xp,total,questRun,charSrc,charName,onRetry,onHome,p
       {questRun&&<div style={{width:'100%',background:questRun.passed?'#ecfdf5':'#fff7ed',borderRadius:18,padding:'14px 18px',display:'flex',alignItems:'center',gap:12,border:`1.5px solid ${questRun.passed?'#86efac':'#fed7aa'}`}}>
         <span style={{fontSize:24}}>{questRun.passed?'🗺️':'👑'}</span>
         <div style={{fontSize:12,color:questRun.passed?'#166534':'#9a3412',fontWeight:800,lineHeight:1.55}}>
-          {questRun.passed?`第 ${questRun.stage} 關通過！地圖已前進到第 ${Math.min(MAP_STAGE_COUNT,(questRun.stage||1)+1)} 關。`:(questRun.isBoss?`魔王關還差一點：通關題數 ${questRun.clearWins||0}/${total}，需要 ${bossPassTarget(total)} 題。`:`第 ${questRun.stage} 關需要答對一半以上才算通關。`)}
+          {questRun.passed?`第 ${questRun.stage} 關通過！地圖已前進到第 ${Math.min(MAP_STAGE_COUNT,(questRun.stage||1)+1)} 關。`:questFailText}
           {questRun.rewardFood>0&&<div style={{marginTop:3}}>路上撿到肉塊 🍖 ×{questRun.rewardFood}！</div>}
-          {questRun.isBoss&&<div style={{marginTop:3}}>平均答題 {formatSec(questRun.avgSec)}，通關門檻 {formatSec(questRun.bossClearSec)}，王位速度 {formatSec(questRun.bossTargetSec)}。</div>}
+          {questRun.isBoss&&<div style={{marginTop:3}}>通關血條 {questClearScore}/{questTarget}，限時答對 {questRun.clearWins||0}/{questTarget}，平均答題 {formatSec(questRun.avgSec)}。</div>}
         </div>
       </div>}
       <div style={{width:'100%',background:`${pc}10`,borderRadius:18,padding:'14px 18px',display:'flex',alignItems:'center',gap:12}}>
@@ -1720,7 +1768,7 @@ function RankScreen({uid,studentName,charIdx,stats,onNav,pc,cloudEntries,cloudSt
   const todayKey=taipeiDateKey();
   const list=useMemo(()=>{
     const cloud=tab==='score'?cloudEntries:cloudStreakEntries;
-    const arr=(cloud||[]).map(e=>({
+    let arr=(cloud||[]).map(e=>({
       name:e.name||'(未命名)',
       avgScore:Number(e.avgScore||0),
       streak:e.streakCur|0,
@@ -1738,6 +1786,7 @@ function RankScreen({uid,studentName,charIdx,stats,onNav,pc,cloudEntries,cloudSt
     if(tab==='score'){
       arr.sort((a,b)=>(b.level-a.level)||(b.avgScore-a.avgScore)||(b.streak-a.streak));
     }else{
+      arr=arr.filter(r=>Number(r.streak||0)>=1);
       arr.sort((a,b)=>(b.streak-a.streak)||(b.streakBest-a.streakBest)||(b.level-a.level));
     }
     return arr.map((r,i)=>({...r,rank:i+1}));
@@ -1918,8 +1967,9 @@ function App(){
       setCloudEntries(best);
       try{
         const streak=await cloudRunQuery('streakCur',80);
-        streak.sort((a,b)=>(b.streakCur||0)-(a.streakCur||0)||(Number(b.avgScore||0)-Number(a.avgScore||0)));
-        setCloudStreakEntries(streak);
+        const eligibleStreak=streak.filter(e=>Number(e.streakCur||0)>=1);
+        eligibleStreak.sort((a,b)=>(b.streakCur||0)-(a.streakCur||0)||(Number(b.avgScore||0)-Number(a.avgScore||0)));
+        setCloudStreakEntries(eligibleStreak);
       }catch{setCloudStreakEntries([]);}
       setCloudStatus('ok');
     }catch(e){
@@ -2631,12 +2681,12 @@ async function clearMapStage(uid, run = {}) {
     const nextMap = passed ? Math.max(curMap, Math.min(30, stage + 1)) : curMap;
     const cleanName = String(run.name || user.name || '匿名玩家').trim().slice(0, 40);
     const avgSec = Math.max(0, Number(run.avgSec || 0));
-    const stars = mapStarsForScoreModule(run.score, run.total || 15);
+    const stars = mapStarsForScoreModule(run.clearScore ?? run.score, run.total || 15);
     const prevStars = (user.mapStars && typeof user.mapStars === 'object') ? user.mapStars : {};
     const userPatch = {
       mapStage: nextMap,
       mapBestStage: Math.max(Number(user.mapBestStage || 0), passed ? stage : 0),
-      mapLastRun: { stage, passed, score: run.score | 0, total: run.total | 0, pct: Number(run.pct || 0), isBoss: !!run.isBoss, clearWins: run.clearWins | 0, speedWins: run.speedWins | 0, avgSec, bossClearSec: Number(run.bossClearSec || 0), stars, at: now },
+      mapLastRun: { stage, passed, score: run.score | 0, clearScore: run.clearScore | 0, total: run.total | 0, pct: Number(run.pct || 0), isBoss: !!run.isBoss, clearWins: run.clearWins | 0, speedWins: run.speedWins | 0, avgSec, bossClearSec: Number(run.bossClearSec || 0), stars, at: now },
       mapStars: { ...prevStars, [stage]: Math.max(Number(prevStars[stage] || 0), stars) },
       updatedAt: now,
     };

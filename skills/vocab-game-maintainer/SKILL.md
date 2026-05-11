@@ -95,6 +95,8 @@ Known regression to avoid: deleting or renaming an op still referenced in `windo
 Pinning the values that drove design decisions, so future sessions don’t have to re-derive them. Source of truth is the code; update this section if you change a constant.
 
 - **Quiz length**: 15 questions (`QuizScreen TOTAL = Math.min(15, quizPool.length)`).
+- **Map clear bar / pass gate**: pass target is middle-plus for 15 questions = 8 (`clearPassTarget(total)=ceil(total/2)`; `bossPassTarget(total)=max(8, clearPassTarget(total))`). The clear meter starts red (`#fb7185`), turns blue only at/above target, does **not** deduct wrong answers before target, and deducts 1 clear point per wrong/give-up after target.
+- **Boss timer bar**: boss quiz screens show a top-edge countdown bar using `quest.bossClearSec` (first boss 50s; later default boss limits may be lower). The number counts down per question and the existing `clearWins` gate only counts correct answers inside the limit.
 - **Quiz pool**: level-based study path from `vocab-difficulty.json` plus daily focus. LV1 gets the 15 easiest ranked words **excluding today's focus words**, then today's newest 3 are appended; each additional LV unlocks the next 5 ranked words. The quiz samples 15 questions from that pool and prioritizes daily focus words first.
 - **Flashcard pool**: same level-based study path + daily focus pool, split into 未熟練 / 已會 tabs by `knownWords`. Do not revert to recent-15-only or full corpus without Mark confirming; progression should move easy → hard.
 - **Cloze cap per quiz**: 3 (`MAX_CLOZE`). Down from 5 when length was 20.
