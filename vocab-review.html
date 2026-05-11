@@ -405,7 +405,7 @@ function biomeForStage(stage){return MAP_BIOMES.find(b=>stage>=b.from&&stage<=b.
 function stageDocId(stage){return `stage_${String(stage).padStart(3,'0')}`;}
 function getPlayerMapStage(profile){return Math.max(1,Number(profile?.mapStage||profile?.level||1));}
 function getEntryMapStage(entry){return Math.max(1,Number(entry?.mapStage||entry?.level||1));}
-function defaultBossAvgSec(stage){return Math.max(30,50-Math.floor((Math.max(1,stage)-1)/5)*2);}
+function defaultBossAvgSec(stage){return Math.max(30,50-Math.floor((Math.max(1,stage)-1)/5)*5);}
 const MAP_FOOD_BONUS=3;
 const MAP_FOOD_BONUS_STAGES=[4,9,14,19,24,29];
 function isFoodBonusStage(stage){return MAP_FOOD_BONUS_STAGES.includes(Number(stage));}
