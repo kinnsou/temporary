@@ -1166,14 +1166,27 @@ function MapScreen({profile,uid,studentName,charSrc,pc,onNav,onStartStage,cloudE
       const group=Math.ceil(stage/5);
       const prev=bossAnchors[(group-1)*5];
       const next=bossAnchors[group*5];
-      const t=(stage-(group-1)*5)/5;
+      const slot=stage-(group-1)*5;
+      // Regular stages occupy the lower 48% of each boss segment, leaving a
+      // reserved clear zone under every boss for the notice card.
+      const t=(slot/5)*0.60;
       const wave=(stage%2===0?-8:8);
       const x=prev.x+(next.x-prev.x)*ease(t)+wave;
       const y=prev.y+(next.y-prev.y)*t;
       return{stage,x:Math.max(18,Math.min(82,x)),y,biome:biomeForStage(stage),boss:false};
     });
   },[]);
-  useEffect(()=>{const t=setTimeout(()=>currentNodeRef.current?.scrollIntoView?.({block:'center',behavior:'smooth'}),120);return()=>clearTimeout(t);},[currentStage]);
+  useEffect(()=>{
+    const t=setTimeout(()=>{
+      const el=scrollRef.current;
+      const cur=points.find(p=>p.stage===currentStage);
+      if(el&&cur){
+        const target=Math.max(0,cur.y-el.clientHeight*0.42);
+        try{el.scrollTo({top:target,behavior:'smooth'});}catch{el.scrollTop=target;}
+      }else currentNodeRef.current?.scrollIntoView?.({block:'center',behavior:'smooth'});
+    },180);
+    return()=>clearTimeout(t);
+  },[currentStage,points]);
   const cleared=Math.max(0,currentStage-1);
   const nextBoss=Math.ceil(currentStage/BOSS_EVERY)*BOSS_EVERY;
   const pointByStage=new Map(points.map(p=>[p.stage,p]));
