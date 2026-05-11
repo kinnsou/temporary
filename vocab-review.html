@@ -413,6 +413,7 @@ function stagePass(score,total,run){
   return total>0&&(score/total)>=0.5;
 }
 function formatSec(sec){const n=Number(sec||0);return n>0?`${n.toFixed(1)}秒`:'--';}
+function mapStarsForScore(score,total=15){const st=Number(score||0);if(st>=15)return 3;if(st>=6)return 2;if(st>=1)return 1;return 0;}
 
 /* ══ Shared UI ═══════════════════════════════════════════ */
 function Confetti({active}){
@@ -1143,12 +1144,13 @@ function FlashScreen({charSrc,flashAll,knownWords,refreshFb,onNav,pc,voiceGender
 
 
 /* ══ MAP QUEST ═══════════════════════════════════════════ */
-function MapScreen({profile,studentName,charSrc,pc,onNav,onStartStage,cloudEntries,stageRecords,onRefreshMap}){
+function MapScreen({profile,uid,studentName,charSrc,pc,onNav,onStartStage,cloudEntries,stageRecords,onRefreshMap}){
   const scrollRef=useRef(null);
   const currentNodeRef=useRef(null);
   const currentStage=Math.min(MAP_STAGE_COUNT,getPlayerMapStage(profile));
   const records=useMemo(()=>{const m=new Map();(stageRecords||[]).forEach(r=>m.set(Number(r.stage||0),r));return m;},[stageRecords]);
-  const friends=useMemo(()=>{const map=new Map();(cloudEntries||[]).slice(0,16).forEach((e,i)=>{const st=Math.min(MAP_STAGE_COUNT,getEntryMapStage(e));if(!map.has(st))map.set(st,[]);map.get(st).push({...e,rank:i+1});});return map;},[cloudEntries]);
+  const mapStars=profile?.mapStars||{};
+  const friends=useMemo(()=>{const map=new Map();(cloudEntries||[]).filter(e=>String(e.uid||'')!==String(uid||'')&&String(e.name||'')!==String(studentName||'')).slice(0,16).forEach((e,i)=>{const st=Math.min(MAP_STAGE_COUNT,getEntryMapStage(e));if(!map.has(st))map.set(st,[]);map.get(st).push({...e,rank:i+1});});return map;},[cloudEntries,uid,studentName]);
   const boardH=1360;
   const points=useMemo(()=>Array.from({length:MAP_STAGE_COUNT},(_,i)=>{
     const stage=i+1;
@@ -1180,6 +1182,9 @@ function MapScreen({profile,studentName,charSrc,pc,onNav,onStartStage,cloudEntri
       <button onClick={()=>!locked&&onStartStage({stage,isBoss:boss,biome,bossName,bossAvgSec:bossSec})} disabled={locked} style={{position:'relative',width:size,height:size,border:'none',borderRadius:'50%',background:locked?'linear-gradient(145deg,#e5e7eb,#cbd5e1)':done?'linear-gradient(145deg,#75e49a,#22c55e)':current?'linear-gradient(145deg,#ffe680,#ffb703)':'linear-gradient(145deg,#74d7ff,#2797ff)',boxShadow:locked?'inset 0 3px 8px rgba(255,255,255,.7),0 5px 12px rgba(15,23,42,.12)':current?'0 0 0 5px rgba(255,183,3,.22),0 10px 24px rgba(255,183,3,.42),inset 0 4px 7px rgba(255,255,255,.72)':'0 8px 18px rgba(39,151,255,.28),inset 0 4px 7px rgba(255,255,255,.70)',cursor:locked?'not-allowed':'pointer',fontFamily:'inherit',animation:current?'float 2.2s ease-in-out infinite':'none'}}>
         <span style={{position:'absolute',inset:9,borderRadius:'50%',background:locked?'rgba(255,255,255,.65)':'rgba(255,255,255,.88)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:boss?17:18,fontWeight:900,color:locked?'#94a3b8':done?'#15803d':'#1a1a2e',boxShadow:'inset 0 2px 5px rgba(255,255,255,.9)'}}>{locked?'🔒':done?'✓':stage}</span>
       </button>
+      <div style={{position:'absolute',left:'50%',bottom:-2,transform:'translateX(-50%)',display:'flex',gap:0,letterSpacing:-2,fontSize:15,lineHeight:1,textShadow:'0 1px 2px rgba(255,255,255,.85)'}}>
+        {[0,1,2].map(i=><span key={i} style={{color:i<(Number(mapStars[stage]||0))?'#facc15':'rgba(15,23,42,.22)'}}>★</span>)}
+      </div>
       {current&&<img src={charSrc} alt="目前寵物" style={{position:'absolute',right:-16,bottom:-14,width:40,height:40,objectFit:'contain',filter:'drop-shadow(0 4px 5px rgba(0,0,0,.24))'}}/>}
       {boss&&<div style={{position:'absolute',left:p.x>50?-100:78,top:8,width:94,background:'#fff',border:`2px solid ${biome.color}55`,borderRadius:14,padding:'5px 7px',boxShadow:'0 4px 13px rgba(0,0,0,.10)',fontSize:9,color:'#334155',fontWeight:900,lineHeight:1.25,textAlign:'center'}}><div style={{color:'#fb7185',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>{rec.firstClearerName||'玩家名字'}</div><div style={{color:'#94a3b8'}}>每題速度 {formatSec(bossSec)}</div></div>}
       {people.length>0&&<div style={{position:'absolute',left:p.x>50?-28:68,bottom:-18,display:'flex',pointerEvents:'none'}}>{people.slice(0,3).map((e,i)=>{const idx=petIdxFromId(e.avatarId)??avatarIdxFromId(e.avatarId);const src=CHARACTERS[idx]?.img||CHARACTERS[0].img;return <img key={(e.uid||e.name||i)+i} src={src} title={e.name||'玩家'} style={{width:40,height:40,objectFit:'contain',filter:'drop-shadow(0 3px 4px rgba(0,0,0,.22))',marginLeft:i?-24:0}}/>;})}</div>}
@@ -2009,7 +2014,7 @@ function App(){
       setScreen('home');
     }} onBack={()=>setScreen('home')} pc={pc}/>}
     {screen==='flash'&&<FlashScreen charSrc={charSrc} flashAll={quizPool} knownWords={fb?.profile?.knownWords||[]} refreshFb={refreshFb} onNav={nav} pc={pc} voiceGender={fb?.pet?.voiceGender==='male'?'male':'female'}/>}
-    {screen==='map'&&<MapScreen profile={fb?.profile||displayStats} studentName={studentName} charSrc={charSrc} pc={pc} onNav={nav} cloudEntries={cloudEntries} stageRecords={stageRecords} onRefreshMap={()=>{refreshLeaderboard();refreshMapStages();}} onStartStage={q=>{setActiveQuest(q);setResult(null);setQuizAnswered(0);setScreen('quiz');}}/>}
+    {screen==='map'&&<MapScreen profile={fb?.profile||displayStats} uid={fb?.uid} studentName={studentName} charSrc={charSrc} pc={pc} onNav={nav} cloudEntries={cloudEntries} stageRecords={stageRecords} onRefreshMap={()=>{refreshLeaderboard();refreshMapStages();}} onStartStage={q=>{setActiveQuest(q);setResult(null);setQuizAnswered(0);setScreen('quiz');}}/>}
     {screen==='quiz'&&<QuizScreen charSrc={charSrc} charName={charName} quizPool={quizPool} knownWords={fb?.profile?.knownWords||[]} onFinish={handleFinish} onNav={nav} onAnsweredChange={setQuizAnswered} pc={pc} refreshFb={refreshFb} voiceGender={fb?.pet?.voiceGender==='male'?'male':'female'} quest={activeQuest}/>}
     {screen==='result'&&result&&<ResultScreen {...result} charSrc={charSrc} charName={charName} onRetry={()=>setScreen('map')} onHome={()=>setScreen('home')} pc={pc}/>}
     {screen==='rank'&&<RankScreen uid={fb?.uid} studentName={studentName} charIdx={charIdx} stats={displayStats} onNav={nav} pc={pc} cloudEntries={cloudEntries} cloudStreakEntries={cloudStreakEntries} cloudStatus={cloudStatus} onRefresh={refreshLeaderboard}/>}
@@ -2117,6 +2122,7 @@ async function ensureUserProfile(uid, defaultName, legacyUid = null) {
     if (existing.mapStage === undefined || existing.mapStage === null) patch.mapStage = Math.max(1, Number(existing.level || 1));
     if (existing.mapBestStage === undefined || existing.mapBestStage === null) patch.mapBestStage = Math.max(0, Number((patch.mapStage || existing.mapStage || 1) - 1));
     if (existing.mapFoodBonuses === undefined || existing.mapFoodBonuses === null) patch.mapFoodBonuses = [];
+    if (existing.mapStars === undefined || existing.mapStars === null) patch.mapStars = {};
     const levelForTotal = patch.level || existing.level || 1;
     const expForTotal = existing.exp || 0;
     if (existing.totalExp === undefined || existing.totalExp === null) patch.totalExp = estimateTotalExpForLevelModule(levelForTotal, expForTotal);
@@ -2143,7 +2149,7 @@ async function ensureUserProfile(uid, defaultName, legacyUid = null) {
     currentPetId: null,
     exp: 0, totalExp: 0, combo: 0, foodCount: 0,
     level: 1, pendingLevelUp: 0,
-    mapStage: 1, mapBestStage: 0, mapClears: 0, mapFoodBonuses: [],
+    mapStage: 1, mapBestStage: 0, mapClears: 0, mapFoodBonuses: [], mapStars: {},
     totalCorrect: 0, totalGames: 0,
     streakCur: 0, streakBest: 0, bestScore: 0, avgScore: 0,
     todayQuizCount: 0, todayQuizDate: '',
@@ -2554,6 +2560,7 @@ function mapStageDocId(stage) {
 const MAP_FOOD_BONUS_MODULE = 3;
 const MAP_FOOD_BONUS_STAGES_MODULE = [4,9,14,19,24,29];
 function isMapFoodBonusStageModule(stage) { return MAP_FOOD_BONUS_STAGES_MODULE.includes(Number(stage)); }
+function mapStarsForScoreModule(score, total = 15) { const st = Number(score || 0); if (st >= 15) return 3; if (st >= 6) return 2; if (st >= 1) return 1; return 0; }
 
 async function clearMapStage(uid, run = {}) {
   const stage = Math.max(1, Math.min(30, Number(run.stage || 1) | 0));
@@ -2571,10 +2578,13 @@ async function clearMapStage(uid, run = {}) {
     const nextMap = passed ? Math.max(curMap, Math.min(30, stage + 1)) : curMap;
     const cleanName = String(run.name || user.name || '匿名玩家').trim().slice(0, 40);
     const avgSec = Math.max(0, Number(run.avgSec || 0));
+    const stars = mapStarsForScoreModule(run.score, run.total || 15);
+    const prevStars = (user.mapStars && typeof user.mapStars === 'object') ? user.mapStars : {};
     const userPatch = {
       mapStage: nextMap,
       mapBestStage: Math.max(Number(user.mapBestStage || 0), passed ? stage : 0),
-      mapLastRun: { stage, passed, score: run.score | 0, total: run.total | 0, pct: Number(run.pct || 0), isBoss: !!run.isBoss, speedWins: run.speedWins | 0, avgSec, at: now },
+      mapLastRun: { stage, passed, score: run.score | 0, total: run.total | 0, pct: Number(run.pct || 0), isBoss: !!run.isBoss, speedWins: run.speedWins | 0, avgSec, stars, at: now },
+      mapStars: { ...prevStars, [stage]: Math.max(Number(prevStars[stage] || 0), stars) },
       updatedAt: now,
     };
     let rewardFood = 0;
@@ -2610,7 +2620,7 @@ async function clearMapStage(uid, run = {}) {
       }
     }
     tx.set(stageRef, stagePatch, { merge: true });
-    return { mapStage: nextMap, stage, passed, rewardFood, firstClearerName: prev.firstClearerName || stagePatch.firstClearerName || null };
+    return { mapStage: nextMap, stage, passed, stars, rewardFood, firstClearerName: prev.firstClearerName || stagePatch.firstClearerName || null };
   });
 }
 
