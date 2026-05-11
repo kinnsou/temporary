@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-05-10T11:01:55Z",
-    "sourceCount": 170,
-    "includedCount": 162
+    "updatedAt": "2026-05-11T11:01:18Z",
+    "sourceCount": 173,
+    "includedCount": 165
   },
   "words": [
+    {
+      "word": "live",
+      "meaning": "住；居住；活著；生活",
+      "example": "We live near the school.",
+      "translation": "我們住在學校附近。",
+      "firstSeen": "2026-05-11",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "player",
+      "meaning": "（運動或遊戲的）選手；玩家",
+      "example": "He is a good soccer player.",
+      "translation": "他是一個很棒的足球選手。",
+      "firstSeen": "2026-05-11",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "thick",
+      "meaning": "厚的；濃的",
+      "example": "This book is thick.",
+      "translation": "這本書很厚。",
+      "firstSeen": "2026-05-11",
+      "pos": [
+        "adj"
+      ]
+    },
     {
       "word": "library",
       "meaning": "圖書館",

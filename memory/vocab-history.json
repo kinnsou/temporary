@@ -3,7 +3,7 @@
     "newWordsMustBeUniqueUntilExhausted": true,
     "reviewFormat": "guided_cloze_with_grammar_chunking",
     "sourceScope": "台灣普遍認定國中必會1000單",
-    "updatedAt": "2026-05-08T11:00:49Z"
+    "updatedAt": "2026-05-11T11:01:07Z"
   },
   "words": {
     "adventure": {
@@ -854,6 +854,19 @@
       "pos": "n",
       "translation": "我們在圖書館看書。"
     },
+    "live": {
+      "example_sentence": "We live near the school.",
+      "first_seen": "2026-05-11",
+      "last_seen": "2026-05-11",
+      "meanings": [
+        "住；居住",
+        "活著；生活"
+      ],
+      "pos": [
+        "v"
+      ],
+      "translation": "我們住在學校附近。"
+    },
     "look": {
       "example_sentence": "Look at the picture.",
       "first_seen": "2026-04-26",
@@ -1046,6 +1059,17 @@
         "v"
       ],
       "translation": "請把你的書包放在椅子上。"
+    },
+    "player": {
+      "example_sentence": "He is a good soccer player.",
+      "first_seen": "2026-05-11",
+      "last_seen": "2026-05-11",
+      "meanings": [
+        "（運動或遊戲的）選手",
+        "玩家"
+      ],
+      "pos": "n",
+      "translation": "他是一個很棒的足球選手。"
     },
     "pleasant": {
       "example_sentence": "It is a pleasant day today.",
@@ -1415,6 +1439,17 @@
       ],
       "pos": "adj",
       "translation": "昨天天氣很糟。"
+    },
+    "thick": {
+      "example_sentence": "This book is thick.",
+      "first_seen": "2026-05-11",
+      "last_seen": "2026-05-11",
+      "meanings": [
+        "厚的",
+        "濃的"
+      ],
+      "pos": "adj",
+      "translation": "這本書很厚。"
     },
     "ticket": {
       "example_sentence": "I bought a ticket for the train.",
