@@ -409,7 +409,7 @@ function isFoodBonusStage(stage){return MAP_FOOD_BONUS_STAGES.includes(Number(st
 function bossPassTarget(total){return Math.max(8,Math.ceil((total||15)*0.55));}
 function stagePass(score,total,run){
   if(!run)return true;
-  if(run.isBoss)return score>=bossPassTarget(total)&&Number(run.speedWins||0)>=bossPassTarget(total);
+  if(run.isBoss)return score>=bossPassTarget(total)&&Number(run.clearWins||0)>=bossPassTarget(total);
   return total>0&&(score/total)>=0.5;
 }
 function formatSec(sec){const n=Number(sec||0);return n>0?`${n.toFixed(1)}秒`:'--';}
@@ -1172,21 +1172,22 @@ function MapScreen({profile,uid,studentName,charSrc,pc,onNav,onStartStage,cloudE
     const rec=records.get(stage)||{};
     const people=friends.get(stage)||[];
     const bossName=rec.firstClearerName||rec.bossName||'等你成為首位通關者';
-    const bossSec=Number(rec.bossAvgSec||rec.firstClearerAvgSec||defaultBossAvgSec(stage));
+    const bossClearSec=defaultBossAvgSec(stage);
+    const bossChallengeSec=Number(rec.bestBossAvgSec||rec.bossAvgSec||rec.firstClearerAvgSec||bossClearSec);
     const firstAvatarId=rec.firstClearerAvatarId||rec.bossAvatarId||null;
     const firstAvatarSrc=firstAvatarId?(CHARACTERS[petIdxFromId(firstAvatarId)??avatarIdxFromId(firstAvatarId)]?.img||CHARACTERS[0].img):null;
     const size=boss?62:54;
     return(<div key={stage} ref={current?currentNodeRef:null} style={{position:'absolute',left:`${p.x}%`,top:p.y,transform:'translate(-50%,-50%)',zIndex:locked?2:5,width:110,height:96,display:'flex',alignItems:'center',justifyContent:'center'}}>
       {boss&&firstAvatarSrc&&<img src={firstAvatarSrc} alt="首位通關寵物" style={{position:'absolute',top:-25,left:'50%',transform:'translateX(-50%)',width:32,height:32,objectFit:'contain',filter:'drop-shadow(0 3px 4px rgba(0,0,0,.22))',zIndex:4}}/>}
       {boss&&<div style={{position:'absolute',top:firstAvatarSrc?-6:-18,left:'50%',transform:'translateX(-50%)',fontSize:23,filter:'drop-shadow(0 2px 2px rgba(0,0,0,0.18))',zIndex:3}}>👑</div>}
-      <button onClick={()=>!locked&&onStartStage({stage,isBoss:boss,biome,bossName,bossAvgSec:bossSec})} disabled={locked} style={{position:'relative',width:size,height:size,border:'none',borderRadius:'50%',background:locked?'linear-gradient(145deg,#e5e7eb,#cbd5e1)':done?'linear-gradient(145deg,#75e49a,#22c55e)':current?'linear-gradient(145deg,#ffe680,#ffb703)':'linear-gradient(145deg,#74d7ff,#2797ff)',boxShadow:locked?'inset 0 3px 8px rgba(255,255,255,.7),0 5px 12px rgba(15,23,42,.12)':current?'0 0 0 5px rgba(255,183,3,.22),0 10px 24px rgba(255,183,3,.42),inset 0 4px 7px rgba(255,255,255,.72)':'0 8px 18px rgba(39,151,255,.28),inset 0 4px 7px rgba(255,255,255,.70)',cursor:locked?'not-allowed':'pointer',fontFamily:'inherit',animation:current?'float 2.2s ease-in-out infinite':'none'}}>
+      <button onClick={()=>!locked&&onStartStage({stage,isBoss:boss,biome,bossName,bossClearSec,bossChallengeSec})} disabled={locked} style={{position:'relative',width:size,height:size,border:'none',borderRadius:'50%',background:locked?'linear-gradient(145deg,#e5e7eb,#cbd5e1)':done?'linear-gradient(145deg,#75e49a,#22c55e)':current?'linear-gradient(145deg,#ffe680,#ffb703)':'linear-gradient(145deg,#74d7ff,#2797ff)',boxShadow:locked?'inset 0 3px 8px rgba(255,255,255,.7),0 5px 12px rgba(15,23,42,.12)':current?'0 0 0 5px rgba(255,183,3,.22),0 10px 24px rgba(255,183,3,.42),inset 0 4px 7px rgba(255,255,255,.72)':'0 8px 18px rgba(39,151,255,.28),inset 0 4px 7px rgba(255,255,255,.70)',cursor:locked?'not-allowed':'pointer',fontFamily:'inherit',animation:current?'float 2.2s ease-in-out infinite':'none'}}>
         <span style={{position:'absolute',inset:9,borderRadius:'50%',background:locked?'rgba(255,255,255,.65)':'rgba(255,255,255,.88)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:boss?17:18,fontWeight:900,color:locked?'#94a3b8':done?'#15803d':'#1a1a2e',boxShadow:'inset 0 2px 5px rgba(255,255,255,.9)'}}>{locked?'🔒':stage}</span>
       </button>
       <div style={{position:'absolute',left:'50%',bottom:-2,transform:'translateX(-50%)',display:'flex',gap:0,letterSpacing:-2,fontSize:15,lineHeight:1,textShadow:'0 1px 2px rgba(255,255,255,.85)'}}>
         {[0,1,2].map(i=><span key={i} style={{opacity:i<(Number(mapStars[stage]||0))?1:0.30,filter:i<(Number(mapStars[stage]||0))?'saturate(1.2)':'grayscale(1)'}}> {i<(Number(mapStars[stage]||0))?'⭐':'☆'} </span>)}
       </div>
       {current&&<img src={charSrc} alt="目前寵物" style={{position:'absolute',right:-16,bottom:-14,width:40,height:40,objectFit:'contain',filter:'drop-shadow(0 4px 5px rgba(0,0,0,.24))'}}/>}
-      {boss&&<div style={{position:'absolute',left:p.x>50?-100:78,top:8,width:94,background:'#fff',border:`2px solid ${biome.color}55`,borderRadius:14,padding:'5px 7px',boxShadow:'0 4px 13px rgba(0,0,0,.10)',fontSize:9,color:'#334155',fontWeight:900,lineHeight:1.25,textAlign:'center'}}><div style={{color:'#fb7185',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>{rec.firstClearerName||'首位通關者'}</div><div style={{color:'#94a3b8'}}>每題速度 {formatSec(bossSec)}</div></div>}
+      {boss&&<div style={{position:'absolute',left:p.x>50?-100:78,top:8,width:94,background:'#fff',border:`2px solid ${biome.color}55`,borderRadius:14,padding:'5px 7px',boxShadow:'0 4px 13px rgba(0,0,0,.10)',fontSize:9,color:'#334155',fontWeight:900,lineHeight:1.25,textAlign:'center'}}><div style={{color:'#fb7185',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>{rec.firstClearerName||'首位通關者'}</div><div style={{color:'#94a3b8'}}>每題速度 {formatSec(bossClearSec)}</div></div>}
       {people.length>0&&<div style={{position:'absolute',left:p.x>50?-28:68,bottom:-18,display:'flex',pointerEvents:'none'}}>{people.slice(0,3).map((e,i)=>{const idx=petIdxFromId(e.avatarId)??avatarIdxFromId(e.avatarId);const src=CHARACTERS[idx]?.img||CHARACTERS[0].img;return <img key={(e.uid||e.name||i)+i} src={src} title={e.name||'玩家'} style={{width:40,height:40,objectFit:'contain',filter:'drop-shadow(0 3px 4px rgba(0,0,0,.22))',marginLeft:i?-24:0}}/>;})}</div>}
     </div>);
   };
@@ -1201,7 +1202,16 @@ function MapScreen({profile,uid,studentName,charSrc,pc,onNav,onStartStage,cloudE
       <div style={{height:9,background:'#eef2f7',borderRadius:999,overflow:'hidden',marginTop:12}}><div style={{height:'100%',width:`${Math.min(100,cleared/MAP_STAGE_COUNT*100)}%`,background:'linear-gradient(90deg,#61c2ff,#22c55e,#ffb703)',borderRadius:999}}/></div>
     </div>
     <div ref={scrollRef} className="scroll-body" style={{padding:'10px 14px 14px',background:'#7c4a24'}}>
-      <div style={{position:'relative',height:boardH,border:'5px solid #fff',borderRadius:30,overflow:'hidden',boxShadow:'inset 0 0 0 2px rgba(255,255,255,.45),0 8px 28px rgba(0,0,0,.24)',background:'linear-gradient(180deg,#bdefff 0%,#bdefff 23%,#ffd6b1 23%,#ffd6b1 47%,#e8f7a6 47%,#e8f7a6 70%,#9be77b 70%,#9be77b 100%)'}}>
+      <div style={{position:'relative',height:boardH,border:'5px solid #fff',borderRadius:30,overflow:'hidden',boxShadow:'inset 0 0 0 2px rgba(255,255,255,.45),0 8px 28px rgba(0,0,0,.24)',background:'linear-gradient(180deg,#f8ffff 0%,#dff8f6 31%,#fff7c2 55%,#fff0a3 72%,#d8f8a8 100%)'}}>
+        <svg viewBox="0 0 390 1360" preserveAspectRatio="none" style={{position:'absolute',inset:0,width:'100%',height:'100%',zIndex:0,pointerEvents:'none'}}>
+          <path d="M0 115 C70 55 135 170 205 92 S330 25 390 92 V360 H0 Z" fill="#9ceee7" opacity="0.32"/>
+          <path d="M0 190 C88 120 142 250 225 168 S330 112 390 176 V430 H0 Z" fill="#69d9d6" opacity="0.30"/>
+          <path d="M0 280 C70 210 155 330 235 252 S330 215 390 260 V520 H0 Z" fill="#4ccfd0" opacity="0.22"/>
+          <path d="M0 500 C86 430 135 560 218 486 S326 425 390 488 V755 H0 Z" fill="#fff3a2" opacity="0.64"/>
+          <path d="M0 590 C72 535 150 640 226 574 S325 532 390 590 V825 H0 Z" fill="#ffd976" opacity="0.36"/>
+          <path d="M0 835 C72 775 155 910 235 826 S325 765 390 825 V1085 H0 Z" fill="#b9ef8f" opacity="0.55"/>
+          <path d="M0 940 C88 860 145 1015 230 925 S330 850 390 930 V1225 H0 Z" fill="#7edb72" opacity="0.30"/>
+        </svg>
         <div style={{position:'absolute',left:-30,top:75,width:145,height:62,borderRadius:'50%',background:'#fff8',filter:'blur(.2px)'}}/><div style={{position:'absolute',right:-35,top:230,width:130,height:55,borderRadius:'50%',background:'#fff7'}}/>
         <div style={{position:'absolute',left:18,top:290,fontSize:34}}>🏜️</div><div style={{position:'absolute',right:18,top:610,fontSize:34}}>🌾</div><div style={{position:'absolute',left:18,bottom:40,fontSize:34}}>🎲</div><div style={{position:'absolute',right:18,bottom:115,fontSize:38}}>🌲</div>
         <svg width="100%" height="100%" style={{position:'absolute',inset:0,zIndex:1,overflow:'visible'}}>{Array.from({length:MAP_STAGE_COUNT-1},(_,i)=>stageLine(i+1,i+2))}</svg>
@@ -1253,6 +1263,7 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,onAnswe
   const questionStartRef=useRef(Date.now());
   const answerTimesRef=useRef([]);
   const speedWinsRef=useRef(0);
+  const clearWinsRef=useRef(0);
   const [speedWins,setSpeedWins]=useState(0);
 
   useEffect(()=>{
@@ -1332,7 +1343,10 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,onAnswe
     onAnsweredChange?.(answeredRef.current);
     const elapsedSec=Math.max(0.2,(Date.now()-questionStartRef.current)/1000);
     answerTimesRef.current=[...answerTimesRef.current,elapsedSec];
-    if(quest?.isBoss&&ok&&elapsedSec<Number(quest.bossAvgSec||defaultBossAvgSec(quest.stage))){
+    if(quest?.isBoss&&ok&&elapsedSec<=Number(quest.bossClearSec||defaultBossAvgSec(quest.stage))){
+      clearWinsRef.current+=1;
+    }
+    if(quest?.isBoss&&ok&&elapsedSec<Number(quest.bossChallengeSec||quest.bossClearSec||defaultBossAvgSec(quest.stage))){
       speedWinsRef.current+=1;
       setSpeedWins(speedWinsRef.current);
     }
@@ -1362,7 +1376,7 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,onAnswe
       if(idx+1>=TOTAL){
         const times=answerTimesRef.current;
         const avgSec=times.length?times.reduce((a,b)=>a+b,0)/times.length:0;
-        onFinish(ok?score+1:score,ok?xp+gain:xp,TOTAL,quest?{...quest,avgSec,speedWins:speedWinsRef.current,bossTargetSec:Number(quest.bossAvgSec||defaultBossAvgSec(quest.stage))}:null);
+        onFinish(ok?score+1:score,ok?xp+gain:xp,TOTAL,quest?{...quest,avgSec,clearWins:clearWinsRef.current,speedWins:speedWinsRef.current,bossClearSec:Number(quest.bossClearSec||defaultBossAvgSec(quest.stage)),bossTargetSec:Number(quest.bossChallengeSec||quest.bossClearSec||defaultBossAvgSec(quest.stage))}:null);
       }
       else setIdx(i=>i+1);
     },delay);
@@ -1584,7 +1598,7 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,onAnswe
 
     {combo>=2&&<div style={{textAlign:'center',fontSize:12,fontWeight:800,color:'#FF6B47',marginBottom:2,flexShrink:0}}>🔥 連續答對 {combo} 題！加油！</div>}
     {quest&&<div style={{textAlign:'center',fontSize:11,fontWeight:900,color:quest.isBoss?'#fb7185':pc,marginBottom:2,flexShrink:0}}>
-      {quest.isBoss?`👑 第 ${quest.stage} 關魔王：速度分 ${speedWins}/${TOTAL}（目標 ${formatSec(quest.bossAvgSec)}）`:`🗺️ 第 ${quest.stage} 關闖關中`}
+      {quest.isBoss?`👑 第 ${quest.stage} 關魔王：通關 ${formatSec(quest.bossClearSec)}｜王位 ${formatSec(quest.bossChallengeSec)}`:`🗺️ 第 ${quest.stage} 關闖關中`}
     </div>}
 
     <div style={{flex:1,display:'flex',flexDirection:'column',padding:'4px 20px 0',overflow:'hidden'}}>
@@ -1642,9 +1656,9 @@ function ResultScreen({score,xp,total,questRun,charSrc,charName,onRetry,onHome,p
       {questRun&&<div style={{width:'100%',background:questRun.passed?'#ecfdf5':'#fff7ed',borderRadius:18,padding:'14px 18px',display:'flex',alignItems:'center',gap:12,border:`1.5px solid ${questRun.passed?'#86efac':'#fed7aa'}`}}>
         <span style={{fontSize:24}}>{questRun.passed?'🗺️':'👑'}</span>
         <div style={{fontSize:12,color:questRun.passed?'#166534':'#9a3412',fontWeight:800,lineHeight:1.55}}>
-          {questRun.passed?`第 ${questRun.stage} 關通過！地圖已前進到第 ${Math.min(MAP_STAGE_COUNT,(questRun.stage||1)+1)} 關。`:(questRun.isBoss?`魔王關還差一點：速度分 ${questRun.speedWins||0}/${total}，需要 ${bossPassTarget(total)} 分。`:`第 ${questRun.stage} 關需要答對一半以上才算通關。`)}
+          {questRun.passed?`第 ${questRun.stage} 關通過！地圖已前進到第 ${Math.min(MAP_STAGE_COUNT,(questRun.stage||1)+1)} 關。`:(questRun.isBoss?`魔王關還差一點：通關題數 ${questRun.clearWins||0}/${total}，需要 ${bossPassTarget(total)} 題。`:`第 ${questRun.stage} 關需要答對一半以上才算通關。`)}
           {questRun.rewardFood>0&&<div style={{marginTop:3}}>路上撿到肉塊 🍖 ×{questRun.rewardFood}！</div>}
-          {questRun.isBoss&&<div style={{marginTop:3}}>平均答題 {formatSec(questRun.avgSec)}，守關速度 {formatSec(questRun.bossTargetSec)}。</div>}
+          {questRun.isBoss&&<div style={{marginTop:3}}>平均答題 {formatSec(questRun.avgSec)}，通關門檻 {formatSec(questRun.bossClearSec)}，王位速度 {formatSec(questRun.bossTargetSec)}。</div>}
         </div>
       </div>}
       <div style={{width:'100%',background:`${pc}10`,borderRadius:18,padding:'14px 18px',display:'flex',alignItems:'center',gap:12}}>
@@ -2583,7 +2597,7 @@ async function clearMapStage(uid, run = {}) {
     const userPatch = {
       mapStage: nextMap,
       mapBestStage: Math.max(Number(user.mapBestStage || 0), passed ? stage : 0),
-      mapLastRun: { stage, passed, score: run.score | 0, total: run.total | 0, pct: Number(run.pct || 0), isBoss: !!run.isBoss, speedWins: run.speedWins | 0, avgSec, stars, at: now },
+      mapLastRun: { stage, passed, score: run.score | 0, total: run.total | 0, pct: Number(run.pct || 0), isBoss: !!run.isBoss, clearWins: run.clearWins | 0, speedWins: run.speedWins | 0, avgSec, bossClearSec: Number(run.bossClearSec || 0), stars, at: now },
       mapStars: { ...prevStars, [stage]: Math.max(Number(prevStars[stage] || 0), stars) },
       updatedAt: now,
     };
@@ -2607,7 +2621,7 @@ async function clearMapStage(uid, run = {}) {
       stagePatch.firstClearerAvgSec = avgSec || null;
       stagePatch.firstClearerScore = run.score | 0;
       stagePatch.firstClearedAt = now;
-      if (run.isBoss) stagePatch.bossAvgSec = avgSec || Number(run.bossTargetSec || 7);
+      if (run.isBoss) stagePatch.firstClearerAvgSec = avgSec || null;
     }
     if (run.isBoss && passed) {
       const oldBest = Number(prev.bestBossSpeedScore || -1);
