@@ -1151,29 +1151,18 @@ function MapScreen({profile,uid,studentName,charSrc,pc,onNav,onStartStage,cloudE
   const records=useMemo(()=>{const m=new Map();(stageRecords||[]).forEach(r=>m.set(Number(r.stage||0),r));return m;},[stageRecords]);
   const mapStars=profile?.mapStars||{};
   const friends=useMemo(()=>{const map=new Map();(cloudEntries||[]).filter(e=>String(e.uid||'')!==String(uid||'')&&String(e.name||'')!==String(studentName||'')).slice(0,16).forEach((e,i)=>{const st=Math.min(MAP_STAGE_COUNT,getEntryMapStage(e));if(!map.has(st))map.set(st,[]);map.get(st).push({...e,rank:i+1});});return map;},[cloudEntries,uid,studentName]);
-  const boardH=1680;
+  const boardH=1840;
   const points=useMemo(()=>{
-    const bossAnchors={0:{x:50,y:boardH-82}};
-    for(let b=1;b<=6;b++){
-      const stage=b*5;
-      bossAnchors[stage]={x:b%2===1?22:78,y:boardH-82-b*248};
-    }
-    const ease=t=>t*t*(3-2*t);
+    const rowGap=285;
+    const baseY=boardH-180;
+    const xsForward=[17,33.5,50,66.5,83];
+    const xsBackward=[83,66.5,50,33.5,17];
     return Array.from({length:MAP_STAGE_COUNT},(_,i)=>{
       const stage=i+1;
-      const boss=isBossStage(stage);
-      if(boss){const a=bossAnchors[stage];return{stage,x:a.x,y:a.y,biome:biomeForStage(stage),boss:true};}
-      const group=Math.ceil(stage/5);
-      const prev=bossAnchors[(group-1)*5];
-      const next=bossAnchors[group*5];
-      const slot=stage-(group-1)*5;
-      // Regular stages occupy the lower 48% of each boss segment, leaving a
-      // reserved clear zone under every boss for the notice card.
-      const t=(slot/5)*0.60;
-      const wave=(stage%2===0?-8:8);
-      const x=prev.x+(next.x-prev.x)*ease(t)+wave;
-      const y=prev.y+(next.y-prev.y)*t;
-      return{stage,x:Math.max(18,Math.min(82,x)),y,biome:biomeForStage(stage),boss:false};
+      const row=Math.floor((stage-1)/5);
+      const col=(stage-1)%5;
+      const xs=row%2===0?xsForward:xsBackward;
+      return{stage,x:xs[col],y:baseY-row*rowGap,biome:biomeForStage(stage),boss:isBossStage(stage)};
     });
   },[]);
   useEffect(()=>{
@@ -1219,7 +1208,7 @@ function MapScreen({profile,uid,studentName,charSrc,pc,onNav,onStartStage,cloudE
       {people.length>0&&<div style={{position:'absolute',left:p.x>50?-28:68,bottom:-18,display:'flex',pointerEvents:'none'}}>{people.slice(0,3).map((e,i)=>{const idx=petIdxFromId(e.avatarId)??avatarIdxFromId(e.avatarId);const src=CHARACTERS[idx]?.img||CHARACTERS[0].img;return <img key={(e.uid||e.name||i)+i} src={src} title={e.name||'玩家'} style={{width:40,height:40,objectFit:'contain',filter:'drop-shadow(0 3px 4px rgba(0,0,0,.22))',marginLeft:i?-24:0}}/>;})}</div>}
     </div>);
   };
-  const foodBonuses=MAP_FOOD_BONUS_STAGES.map(stage=>{const p=pointByStage.get(stage);if(!p)return null;const side=p.x>50?-1:1;const got=stage<currentStage;return(<div key={`food-${stage}`} style={{position:'absolute',left:`${p.x+side*30}%`,top:p.y-8,transform:'translate(-50%,-50%)',zIndex:3,textAlign:'center',opacity:got?0.42:1}}><div title={`通過第 ${stage} 關獲得肉塊 ×${MAP_FOOD_BONUS}`} style={{width:38,height:38,borderRadius:13,background:'#fff8',border:'2px dashed #fff',display:'flex',alignItems:'center',justifyContent:'center',fontSize:22,boxShadow:'0 3px 10px rgba(0,0,0,.09)'}}>🍖</div><div style={{fontSize:9,fontWeight:900,color:'#111827',textShadow:'0 1px 2px rgba(255,255,255,.75)',marginTop:1}}>+{MAP_FOOD_BONUS}</div><div style={{height:2,width:34,background:'repeating-linear-gradient(90deg,#fff 0 5px,transparent 5px 10px)',transform:`translate(${side*-16}px,-28px)`}}/></div>);});
+  const foodBonuses=MAP_FOOD_BONUS_STAGES.map(stage=>{const p=pointByStage.get(stage);if(!p)return null;const side=p.x>50?-1:1;const got=stage<currentStage;return(<div key={`food-${stage}`} style={{position:'absolute',left:`${p.x+side*30}%`,top:p.y-78,transform:'translate(-50%,-50%)',zIndex:3,textAlign:'center',opacity:got?0.42:1}}><div title={`通過第 ${stage} 關獲得肉塊 ×${MAP_FOOD_BONUS}`} style={{width:38,height:38,borderRadius:13,background:'#fff8',border:'2px dashed #fff',display:'flex',alignItems:'center',justifyContent:'center',fontSize:22,boxShadow:'0 3px 10px rgba(0,0,0,.09)'}}>🍖</div><div style={{fontSize:9,fontWeight:900,color:'#111827',textShadow:'0 1px 2px rgba(255,255,255,.75)',marginTop:1}}>+{MAP_FOOD_BONUS}</div><div style={{height:2,width:34,background:'repeating-linear-gradient(90deg,#fff 0 5px,transparent 5px 10px)',transform:`translate(${side*-12}px,22px) rotate(${side*24}deg)`}}/></div>);});
   return(<div className="screen" style={{background:'linear-gradient(170deg,#fafeff 0%,#f0fdf8 100%)'}}>
     <div style={{padding:'42px 18px 10px',background:'linear-gradient(180deg,#ffffff,#f8fdff)',boxShadow:'0 2px 12px rgba(0,0,0,.04)',zIndex:10}}>
       <div style={{display:'flex',alignItems:'center',gap:12}}>
