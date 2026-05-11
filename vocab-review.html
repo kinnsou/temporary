@@ -1151,13 +1151,28 @@ function MapScreen({profile,uid,studentName,charSrc,pc,onNav,onStartStage,cloudE
   const records=useMemo(()=>{const m=new Map();(stageRecords||[]).forEach(r=>m.set(Number(r.stage||0),r));return m;},[stageRecords]);
   const mapStars=profile?.mapStars||{};
   const friends=useMemo(()=>{const map=new Map();(cloudEntries||[]).filter(e=>String(e.uid||'')!==String(uid||'')&&String(e.name||'')!==String(studentName||'')).slice(0,16).forEach((e,i)=>{const st=Math.min(MAP_STAGE_COUNT,getEntryMapStage(e));if(!map.has(st))map.set(st,[]);map.get(st).push({...e,rank:i+1});});return map;},[cloudEntries,uid,studentName]);
-  const boardH=1360;
-  const points=useMemo(()=>Array.from({length:MAP_STAGE_COUNT},(_,i)=>{
-    const stage=i+1;
-    const y=boardH-74-i*42;
-    const x=50+Math.sin(i*0.83)*30;
-    return{stage,x,y,biome:biomeForStage(stage),boss:isBossStage(stage)};
-  }),[]);
+  const boardH=1680;
+  const points=useMemo(()=>{
+    const bossAnchors={0:{x:50,y:boardH-82}};
+    for(let b=1;b<=6;b++){
+      const stage=b*5;
+      bossAnchors[stage]={x:b%2===1?22:78,y:boardH-82-b*248};
+    }
+    const ease=t=>t*t*(3-2*t);
+    return Array.from({length:MAP_STAGE_COUNT},(_,i)=>{
+      const stage=i+1;
+      const boss=isBossStage(stage);
+      if(boss){const a=bossAnchors[stage];return{stage,x:a.x,y:a.y,biome:biomeForStage(stage),boss:true};}
+      const group=Math.ceil(stage/5);
+      const prev=bossAnchors[(group-1)*5];
+      const next=bossAnchors[group*5];
+      const t=(stage-(group-1)*5)/5;
+      const wave=(stage%2===0?-8:8);
+      const x=prev.x+(next.x-prev.x)*ease(t)+wave;
+      const y=prev.y+(next.y-prev.y)*t;
+      return{stage,x:Math.max(18,Math.min(82,x)),y,biome:biomeForStage(stage),boss:false};
+    });
+  },[]);
   useEffect(()=>{const t=setTimeout(()=>currentNodeRef.current?.scrollIntoView?.({block:'center',behavior:'smooth'}),120);return()=>clearTimeout(t);},[currentStage]);
   const cleared=Math.max(0,currentStage-1);
   const nextBoss=Math.ceil(currentStage/BOSS_EVERY)*BOSS_EVERY;
@@ -1178,8 +1193,8 @@ function MapScreen({profile,uid,studentName,charSrc,pc,onNav,onStartStage,cloudE
     const firstAvatarSrc=firstAvatarId?(CHARACTERS[petIdxFromId(firstAvatarId)??avatarIdxFromId(firstAvatarId)]?.img||CHARACTERS[0].img):null;
     const size=boss?62:54;
     return(<div key={stage} ref={current?currentNodeRef:null} style={{position:'absolute',left:`${p.x}%`,top:p.y,transform:'translate(-50%,-50%)',zIndex:locked?2:5,width:110,height:96,display:'flex',alignItems:'center',justifyContent:'center'}}>
-      {boss&&firstAvatarSrc&&<img src={firstAvatarSrc} alt="首位通關寵物" style={{position:'absolute',top:-25,left:'50%',transform:'translateX(-50%)',width:32,height:32,objectFit:'contain',filter:'drop-shadow(0 3px 4px rgba(0,0,0,.22))',zIndex:4}}/>}
-      {boss&&<div style={{position:'absolute',top:firstAvatarSrc?-6:-18,left:'50%',transform:'translateX(-50%)',fontSize:23,filter:'drop-shadow(0 2px 2px rgba(0,0,0,0.18))',zIndex:3}}>👑</div>}
+      {boss&&firstAvatarSrc&&<img src={firstAvatarSrc} alt="首位通關寵物" style={{position:'absolute',top:-36,left:'50%',transform:'translateX(-50%)',width:32,height:32,objectFit:'contain',filter:'drop-shadow(0 3px 4px rgba(0,0,0,.22))',zIndex:4}}/>}
+      {boss&&<div style={{position:'absolute',top:firstAvatarSrc?-17:-18,left:'50%',transform:'translateX(-50%)',fontSize:23,filter:'drop-shadow(0 2px 2px rgba(0,0,0,0.18))',zIndex:3}}>👑</div>}
       <button onClick={()=>!locked&&onStartStage({stage,isBoss:boss,biome,bossName,bossClearSec,bossChallengeSec})} disabled={locked} style={{position:'relative',width:size,height:size,border:'none',borderRadius:'50%',background:locked?'linear-gradient(145deg,#e5e7eb,#cbd5e1)':done?'linear-gradient(145deg,#75e49a,#22c55e)':current?'linear-gradient(145deg,#ffe680,#ffb703)':'linear-gradient(145deg,#74d7ff,#2797ff)',boxShadow:locked?'inset 0 3px 8px rgba(255,255,255,.7),0 5px 12px rgba(15,23,42,.12)':current?'0 0 0 5px rgba(255,183,3,.22),0 10px 24px rgba(255,183,3,.42),inset 0 4px 7px rgba(255,255,255,.72)':'0 8px 18px rgba(39,151,255,.28),inset 0 4px 7px rgba(255,255,255,.70)',cursor:locked?'not-allowed':'pointer',fontFamily:'inherit',animation:current?'float 2.2s ease-in-out infinite':'none'}}>
         <span style={{position:'absolute',inset:9,borderRadius:'50%',background:locked?'rgba(255,255,255,.65)':'rgba(255,255,255,.88)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:boss?17:18,fontWeight:900,color:locked?'#94a3b8':done?'#15803d':'#1a1a2e',boxShadow:'inset 0 2px 5px rgba(255,255,255,.9)'}}>{locked?'🔒':stage}</span>
       </button>
@@ -1187,7 +1202,7 @@ function MapScreen({profile,uid,studentName,charSrc,pc,onNav,onStartStage,cloudE
         {[0,1,2].map(i=><span key={i} style={{opacity:i<(Number(mapStars[stage]||0))?1:0.30,filter:i<(Number(mapStars[stage]||0))?'saturate(1.2)':'grayscale(1)'}}> {i<(Number(mapStars[stage]||0))?'⭐':'☆'} </span>)}
       </div>
       {current&&<img src={charSrc} alt="目前寵物" style={{position:'absolute',right:-16,bottom:-14,width:40,height:40,objectFit:'contain',filter:'drop-shadow(0 4px 5px rgba(0,0,0,.24))'}}/>}
-      {boss&&<div style={{position:'absolute',left:stage===15?'50%':(p.x>50?-100:78),top:stage===15?(firstAvatarSrc?-82:-62):8,transform:stage===15?'translateX(-50%)':'none',width:104,background:'#fff',border:`2px solid ${biome.color}55`,borderRadius:14,padding:'5px 7px',boxShadow:'0 4px 13px rgba(0,0,0,.10)',fontSize:9,color:'#334155',fontWeight:900,lineHeight:1.25,textAlign:'center',zIndex:6}}><div style={{color:'#fb7185',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>{rec.firstClearerName||'首位通關者'} <span style={{color:'#64748b'}}>(AVG {formatSec(rec.firstClearerAvgSec||rec.bestBossAvgSec||bossChallengeSec)})</span></div><div style={{color:'#94a3b8'}}>每題限{formatSec(bossClearSec)}</div></div>}
+      {boss&&<div style={{position:'absolute',left:'50%',top:72,transform:'translateX(-50%)',width:112,background:'#fff',border:`2px solid ${biome.color}55`,borderRadius:14,padding:'5px 7px',boxShadow:'0 4px 13px rgba(0,0,0,.10)',fontSize:9,color:'#334155',fontWeight:900,lineHeight:1.25,textAlign:'center',zIndex:6}}><div style={{color:'#fb7185',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>{rec.firstClearerName||'首位通關者'} <span style={{color:'#64748b'}}>(AVG {formatSec(rec.firstClearerAvgSec||rec.bestBossAvgSec||bossChallengeSec)})</span></div><div style={{color:'#94a3b8'}}>每題限{formatSec(bossClearSec)}</div></div>}
       {people.length>0&&<div style={{position:'absolute',left:p.x>50?-28:68,bottom:-18,display:'flex',pointerEvents:'none'}}>{people.slice(0,3).map((e,i)=>{const idx=petIdxFromId(e.avatarId)??avatarIdxFromId(e.avatarId);const src=CHARACTERS[idx]?.img||CHARACTERS[0].img;return <img key={(e.uid||e.name||i)+i} src={src} title={e.name||'玩家'} style={{width:40,height:40,objectFit:'contain',filter:'drop-shadow(0 3px 4px rgba(0,0,0,.22))',marginLeft:i?-24:0}}/>;})}</div>}
     </div>);
   };
