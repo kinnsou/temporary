@@ -402,7 +402,10 @@ function biomeForStage(stage){return MAP_BIOMES.find(b=>stage>=b.from&&stage<=b.
 function stageDocId(stage){return `stage_${String(stage).padStart(3,'0')}`;}
 function getPlayerMapStage(profile){return Math.max(1,Number(profile?.mapStage||profile?.level||1));}
 function getEntryMapStage(entry){return Math.max(1,Number(entry?.mapStage||entry?.level||1));}
-function defaultBossAvgSec(stage){return Math.max(4.8,8.2-Math.floor((stage-1)/5)*0.45);}
+function defaultBossAvgSec(stage){return Math.max(30,50-Math.floor((Math.max(1,stage)-1)/5)*2);}
+const MAP_FOOD_BONUS=3;
+const MAP_FOOD_BONUS_STAGES=[4,9,14,19,24,29];
+function isFoodBonusStage(stage){return MAP_FOOD_BONUS_STAGES.includes(Number(stage));}
 function bossPassTarget(total){return Math.max(8,Math.ceil((total||15)*0.55));}
 function stagePass(score,total,run){
   if(!run)return true;
@@ -564,7 +567,7 @@ function FeedReaction({pet,newHp,msg,onClose}){
   return(<div onClick={onClose} style={{position:'absolute',inset:0,background:'rgba(0,0,0,0.45)',display:'flex',alignItems:'center',justifyContent:'center',zIndex:120,padding:24,cursor:'pointer'}}>
     <div style={{background:'#fff',borderRadius:24,padding:'28px 24px 22px',width:'100%',maxWidth:300,textAlign:'center',boxShadow:'0 14px 40px rgba(0,0,0,0.25)',animation:'pop 0.25s ease-out'}}>
       <div style={{animation:'float 1.2s ease-in-out infinite',display:'inline-block',position:'relative',overflow:'visible'}}>
-        {pet?.img?<img src={pet.img} alt="" style={{width:96,height:96,objectFit:'contain'}}/>:<span style={{fontSize:80}}>🍖</span>}
+        {pet?.img?<img src={pet.img} alt="" style={{width:96,height:96,objectFit:'contain'}}/>:<span style={{fontSize:80}}>🍙</span>}
         <span style={{position:'absolute',left:-15,top:4,fontSize:25,transform:'rotate(-18deg)',filter:'drop-shadow(0 2px 3px rgba(0,0,0,0.18))',pointerEvents:'none'}}>❤️</span>
         <span style={{position:'absolute',right:-12,top:18,fontSize:18,transform:'rotate(16deg)',filter:'drop-shadow(0 2px 3px rgba(0,0,0,0.14))',pointerEvents:'none'}}>💖</span>
         <span style={{position:'absolute',left:12,bottom:-4,fontSize:14,transform:'rotate(-10deg)',filter:'drop-shadow(0 1px 2px rgba(0,0,0,0.12))',pointerEvents:'none'}}>💕</span>
@@ -641,7 +644,7 @@ function PetCard({fb,refreshFb,onSelectPet,onStart,pc}){
       </div>
       <div style={{marginTop:12,display:'flex',alignItems:'center',gap:10}}>
         <div style={{flex:1,fontSize:13,fontWeight:800,color:'#666',display:'flex',alignItems:'center',gap:6}}>
-          <span style={{fontSize:16}}>🍖</span><span>:</span><span style={{color:'#FF9800',letterSpacing:0.5}}>{numToEnglish(foodCount)}</span>
+          <span style={{fontSize:16}}>🍙</span><span>:</span><span style={{color:'#FF9800',letterSpacing:0.5}}>{numToEnglish(foodCount)}</span>
         </div>
       </div>
       {err&&<div style={{position:'absolute',top:-30,left:'50%',transform:'translateX(-50%)',background:'#fff4e5',color:'#9a4a00',padding:'6px 12px',borderRadius:10,fontSize:12,fontWeight:700,boxShadow:'0 2px 8px rgba(0,0,0,0.15)',whiteSpace:'nowrap'}}>{err}</div>}
@@ -676,7 +679,7 @@ function PetCard({fb,refreshFb,onSelectPet,onStart,pc}){
     {/* Food + feed + dev */}
     <div style={{marginTop:10,display:'flex',alignItems:'center',gap:8}}>
       <div style={{flex:1,fontSize:13,fontWeight:800,color:'#666',display:'flex',alignItems:'center',gap:6}}>
-        <span style={{fontSize:16}}>🍖</span><span>:</span><span style={{color:'#FF9800',letterSpacing:0.5}}>{numToEnglish(foodCount)}</span>
+        <span style={{fontSize:16}}>🍙</span><span>:</span><span style={{color:'#FF9800',letterSpacing:0.5}}>{numToEnglish(foodCount)}</span>
       </div>
       <button onClick={handleFeed} disabled={feeding||isStarved||foodCount<=0} style={{padding:'8px 16px',borderRadius:12,border:'none',cursor:(feeding||isStarved||foodCount<=0)?'not-allowed':'pointer',background:(feeding||isStarved||foodCount<=0)?'#e5e7eb':'linear-gradient(135deg,#FF9800,#fbbf24)',color:(feeding||isStarved||foodCount<=0)?'#9ca3af':'#fff',fontSize:13,fontWeight:900,fontFamily:'inherit',boxShadow:(feeding||isStarved||foodCount<=0)?'none':'0 3px 10px rgba(255,152,0,0.35)'}}>{feeding?'…':'餵食'}</button>
     </div>
@@ -1174,12 +1177,12 @@ function MapScreen({profile,studentName,charSrc,pc,onNav,onStartStage,cloudEntri
       <button onClick={()=>!locked&&onStartStage({stage,isBoss:boss,biome,bossName,bossAvgSec:bossSec})} disabled={locked} style={{position:'relative',width:size,height:size,border:'none',borderRadius:'50%',background:locked?'linear-gradient(145deg,#e5e7eb,#cbd5e1)':done?'linear-gradient(145deg,#75e49a,#22c55e)':current?'linear-gradient(145deg,#ffe680,#ffb703)':'linear-gradient(145deg,#74d7ff,#2797ff)',boxShadow:locked?'inset 0 3px 8px rgba(255,255,255,.7),0 5px 12px rgba(15,23,42,.12)':current?'0 0 0 5px rgba(255,183,3,.22),0 10px 24px rgba(255,183,3,.42),inset 0 4px 7px rgba(255,255,255,.72)':'0 8px 18px rgba(39,151,255,.28),inset 0 4px 7px rgba(255,255,255,.70)',cursor:locked?'not-allowed':'pointer',fontFamily:'inherit',animation:current?'float 2.2s ease-in-out infinite':'none'}}>
         <span style={{position:'absolute',inset:9,borderRadius:'50%',background:locked?'rgba(255,255,255,.65)':'rgba(255,255,255,.88)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:boss?17:18,fontWeight:900,color:locked?'#94a3b8':done?'#15803d':'#1a1a2e',boxShadow:'inset 0 2px 5px rgba(255,255,255,.9)'}}>{locked?'🔒':done?'✓':stage}</span>
       </button>
-      {current&&<img src={charSrc} alt="" style={{position:'absolute',right:2,bottom:-2,width:34,height:34,objectFit:'contain',filter:'drop-shadow(0 3px 4px rgba(0,0,0,.18))'}}/>}
+      {current&&<img src={charSrc} alt="" style={{position:'absolute',right:2,bottom:-2,width:42,height:42,objectFit:'cover',objectPosition:'center 22%',borderRadius:'50%',background:'#fff',border:'3px solid #fff',filter:'drop-shadow(0 3px 4px rgba(0,0,0,.18))'}}/>}
       {boss&&<div style={{position:'absolute',left:p.x>50?-96:72,top:8,width:94,background:'#fff',border:`2px solid ${biome.color}55`,borderRadius:14,padding:'5px 7px',boxShadow:'0 4px 13px rgba(0,0,0,.10)',fontSize:9,color:'#334155',fontWeight:900,lineHeight:1.25,textAlign:'center'}}><div style={{color:'#fb7185',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>{bossName}</div><div style={{color:'#94a3b8'}}>速度 {formatSec(bossSec)}</div></div>}
-      {people.length>0&&<div style={{position:'absolute',left:p.x>50?-8:58,bottom:1,display:'flex'}}>{people.slice(0,3).map((e,i)=>{const idx=petIdxFromId(e.avatarId)??avatarIdxFromId(e.avatarId);const src=CHARACTERS[idx]?.img||CHARACTERS[0].img;return <img key={(e.uid||e.name||i)+i} src={src} title={e.name||'玩家'} style={{width:21,height:21,borderRadius:999,objectFit:'contain',background:'#fff',border:'1.5px solid #fff',boxShadow:'0 1px 4px rgba(0,0,0,0.16)',marginLeft:i?-7:0}}/>;})}</div>}
+      {people.length>0&&<div style={{position:'absolute',left:p.x>50?-8:58,bottom:1,display:'flex'}}>{people.slice(0,3).map((e,i)=>{const idx=petIdxFromId(e.avatarId)??avatarIdxFromId(e.avatarId);const src=CHARACTERS[idx]?.img||CHARACTERS[0].img;return <img key={(e.uid||e.name||i)+i} src={src} title={e.name||'玩家'} style={{width:24,height:24,borderRadius:999,objectFit:'cover',objectPosition:'center 22%',background:'#fff',border:'1.5px solid #fff',boxShadow:'0 1px 4px rgba(0,0,0,0.16)',marginLeft:i?-7:0}}/>;})}</div>}
     </div>);
   };
-  const mysteries=[4,9,14,19,24,29].map(stage=>{const p=pointByStage.get(stage);if(!p)return null;const side=p.x>50?-1:1;return(<div key={`m-${stage}`} style={{position:'absolute',left:`${p.x+side*30}%`,top:p.y-8,transform:'translate(-50%,-50%)',zIndex:3,textAlign:'center'}}><div style={{width:34,height:34,borderRadius:10,background:'#fff8',border:'2px dashed #fff',display:'flex',alignItems:'center',justifyContent:'center',fontSize:19,boxShadow:'0 3px 10px rgba(0,0,0,.09)'}}>?</div><div style={{height:2,width:34,background:'repeating-linear-gradient(90deg,#fff 0 5px,transparent 5px 10px)',transform:`translate(${side*-16}px,-18px)`}}/></div>);});
+  const foodBonuses=MAP_FOOD_BONUS_STAGES.map(stage=>{const p=pointByStage.get(stage);if(!p)return null;const side=p.x>50?-1:1;const locked=stage>currentStage;const got=stage<currentStage;return(<div key={`food-${stage}`} style={{position:'absolute',left:`${p.x+side*30}%`,top:p.y-8,transform:'translate(-50%,-50%)',zIndex:3,textAlign:'center',opacity:locked?0.45:1}}><div title={`通過第 ${stage} 關獲得飯團 ×${MAP_FOOD_BONUS}`} style={{width:38,height:38,borderRadius:13,background:got?'#ecfdf5':'#fff8',border:`2px ${got?'solid':'dashed'} ${got?'#22c55e':'#fff'}`,display:'flex',alignItems:'center',justifyContent:'center',fontSize:22,boxShadow:'0 3px 10px rgba(0,0,0,.09)'}}>{got?'✅':'🍙'}</div><div style={{fontSize:9,fontWeight:900,color:'#fff',textShadow:'0 1px 2px rgba(0,0,0,.35)',marginTop:1}}>+{MAP_FOOD_BONUS}</div><div style={{height:2,width:34,background:'repeating-linear-gradient(90deg,#fff 0 5px,transparent 5px 10px)',transform:`translate(${side*-16}px,-28px)`}}/></div>);});
   return(<div className="screen" style={{background:'linear-gradient(170deg,#fafeff 0%,#f0fdf8 100%)'}}>
     <div style={{padding:'42px 18px 10px',background:'linear-gradient(180deg,#ffffff,#f8fdff)',boxShadow:'0 2px 12px rgba(0,0,0,.04)',zIndex:10}}>
       <div style={{display:'flex',alignItems:'center',gap:12}}>
@@ -1194,7 +1197,7 @@ function MapScreen({profile,studentName,charSrc,pc,onNav,onStartStage,cloudEntri
         <div style={{position:'absolute',left:-30,top:75,width:145,height:62,borderRadius:'50%',background:'#fff8',filter:'blur(.2px)'}}/><div style={{position:'absolute',right:-35,top:230,width:130,height:55,borderRadius:'50%',background:'#fff7'}}/>
         <div style={{position:'absolute',left:18,top:290,fontSize:34}}>🏜️</div><div style={{position:'absolute',right:18,top:610,fontSize:34}}>🌾</div><div style={{position:'absolute',left:18,bottom:40,fontSize:34}}>🎲</div><div style={{position:'absolute',right:18,bottom:115,fontSize:38}}>🌲</div>
         <svg width="100%" height="100%" style={{position:'absolute',inset:0,zIndex:1,overflow:'visible'}}>{Array.from({length:MAP_STAGE_COUNT-1},(_,i)=>stageLine(i+1,i+2))}</svg>
-        {mysteries}
+        {foodBonuses}
         {points.map(renderNode)}
       </div>
     </div>
@@ -1335,7 +1338,7 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,onAnswe
         }
       }catch(e){console.warn('[Quiz] answerCorrect failed',e);}
       setScore(s=>s+1);setXp(x=>x+gain);setCombo(nextCombo);
-      setConf(true);setXpMsg(food>0?`+${gain} EXP　🍖 ×${food}！`:`+${gain} EXP`);
+      setConf(true);setXpMsg(food>0?`+${gain} EXP　🍙 ×${food}！`:`+${gain} EXP`);
       setTimeout(()=>setConf(false),1200);setTimeout(()=>setXpMsg(null),1000);
     }else{
       try{if(window.FB?.ops?.answerWrong){await window.FB.ops.answerWrong(window.FB.uid);}}catch(e){console.warn('[Quiz] answerWrong failed',e);}
@@ -1632,6 +1635,7 @@ function ResultScreen({score,xp,total,questRun,charSrc,charName,onRetry,onHome,p
         <span style={{fontSize:24}}>{questRun.passed?'🗺️':'👑'}</span>
         <div style={{fontSize:12,color:questRun.passed?'#166534':'#9a3412',fontWeight:800,lineHeight:1.55}}>
           {questRun.passed?`第 ${questRun.stage} 關通過！地圖已前進到第 ${Math.min(MAP_STAGE_COUNT,(questRun.stage||1)+1)} 關。`:(questRun.isBoss?`魔王關還差一點：速度分 ${questRun.speedWins||0}/${total}，需要 ${bossPassTarget(total)} 分。`:`第 ${questRun.stage} 關需要答對一半以上才算通關。`)}
+          {questRun.rewardFood>0&&<div style={{marginTop:3}}>路上撿到飯團 🍙 ×{questRun.rewardFood}！</div>}
           {questRun.isBoss&&<div style={{marginTop:3}}>平均答題 {formatSec(questRun.avgSec)}，守關速度 {formatSec(questRun.bossTargetSec)}。</div>}
         </div>
       </div>}
@@ -1944,7 +1948,7 @@ function App(){
   const handleFinish=async(score,xpGained,total,questRun=null)=>{
     const pct=total>0?(score/total*100):0;
     const passed=questRun?stagePass(score,total,questRun):true;
-    const finalQuestRun=questRun?{...questRun,passed}:null;
+    let finalQuestRun=questRun?{...questRun,passed}:null;
     const baseStats=displayStats;
     const baseAvg=Number(baseStats.avgScore||0);
     const games=baseStats.totalGames||0;
@@ -1955,7 +1959,8 @@ function App(){
     setQuizAnswered(0);
     if(window.FB?.uid&&studentName&&finalQuestRun){
       try{
-        await window.FB.ops.clearMapStage?.(window.FB.uid,{...finalQuestRun,score,total,pct,name:studentName,avatarId:currentPetId||CHARACTERS[charIdx]?.id||DEFAULT_AVATAR});
+        const mapResult=await window.FB.ops.clearMapStage?.(window.FB.uid,{...finalQuestRun,score,total,pct,name:studentName,avatarId:currentPetId||CHARACTERS[charIdx]?.id||DEFAULT_AVATAR});
+        if(mapResult)finalQuestRun={...finalQuestRun,...mapResult};
         await refreshFb();
         refreshMapStages();
       }catch(e){console.warn('clearMapStage failed',e);}
@@ -2108,6 +2113,7 @@ async function ensureUserProfile(uid, defaultName, legacyUid = null) {
     if (existing.knownWords === undefined || existing.knownWords === null) patch.knownWords = [];
     if (existing.mapStage === undefined || existing.mapStage === null) patch.mapStage = Math.max(1, Number(existing.level || 1));
     if (existing.mapBestStage === undefined || existing.mapBestStage === null) patch.mapBestStage = Math.max(0, Number((patch.mapStage || existing.mapStage || 1) - 1));
+    if (existing.mapFoodBonuses === undefined || existing.mapFoodBonuses === null) patch.mapFoodBonuses = [];
     const levelForTotal = patch.level || existing.level || 1;
     const expForTotal = existing.exp || 0;
     if (existing.totalExp === undefined || existing.totalExp === null) patch.totalExp = estimateTotalExpForLevelModule(levelForTotal, expForTotal);
@@ -2134,7 +2140,7 @@ async function ensureUserProfile(uid, defaultName, legacyUid = null) {
     currentPetId: null,
     exp: 0, totalExp: 0, combo: 0, foodCount: 0,
     level: 1, pendingLevelUp: 0,
-    mapStage: 1, mapBestStage: 0, mapClears: 0,
+    mapStage: 1, mapBestStage: 0, mapClears: 0, mapFoodBonuses: [],
     totalCorrect: 0, totalGames: 0,
     streakCur: 0, streakBest: 0, bestScore: 0, avgScore: 0,
     todayQuizCount: 0, todayQuizDate: '',
@@ -2542,6 +2548,9 @@ async function listMapStages(maxRows = 60) {
 function mapStageDocId(stage) {
   return 'stage_' + String(stage | 0).padStart(3, '0');
 }
+const MAP_FOOD_BONUS_MODULE = 3;
+const MAP_FOOD_BONUS_STAGES_MODULE = [4,9,14,19,24,29];
+function isMapFoodBonusStageModule(stage) { return MAP_FOOD_BONUS_STAGES_MODULE.includes(Number(stage)); }
 
 async function clearMapStage(uid, run = {}) {
   const stage = Math.max(1, Math.min(30, Number(run.stage || 1) | 0));
@@ -2565,6 +2574,13 @@ async function clearMapStage(uid, run = {}) {
       mapLastRun: { stage, passed, score: run.score | 0, total: run.total | 0, pct: Number(run.pct || 0), isBoss: !!run.isBoss, speedWins: run.speedWins | 0, avgSec, at: now },
       updatedAt: now,
     };
+    let rewardFood = 0;
+    const claimedBonuses = Array.isArray(user.mapFoodBonuses) ? user.mapFoodBonuses.map(Number) : [];
+    if (passed && isMapFoodBonusStageModule(stage) && !claimedBonuses.includes(stage)) {
+      rewardFood = MAP_FOOD_BONUS_MODULE;
+      userPatch.foodCount = (user.foodCount || 0) + rewardFood;
+      userPatch.mapFoodBonuses = [...claimedBonuses, stage].sort((a,b)=>a-b);
+    }
     if (passed && stage >= curMap) userPatch.mapClears = (user.mapClears || 0) + 1;
     tx.set(userRef, userPatch, { merge: true });
     tx.set(lbRef, { uid, name: cleanName, avatarId: run.avatarId || user.currentPetId || 'pet_001', mapStage: nextMap, mapBestStage: userPatch.mapBestStage, updatedAt: new Date(now).toISOString() }, { merge: true });
@@ -2591,7 +2607,7 @@ async function clearMapStage(uid, run = {}) {
       }
     }
     tx.set(stageRef, stagePatch, { merge: true });
-    return { mapStage: nextMap, stage, passed, firstClearerName: prev.firstClearerName || stagePatch.firstClearerName || null };
+    return { mapStage: nextMap, stage, passed, rewardFood, firstClearerName: prev.firstClearerName || stagePatch.firstClearerName || null };
   });
 }
 
