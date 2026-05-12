@@ -3,7 +3,7 @@
     "newWordsMustBeUniqueUntilExhausted": true,
     "reviewFormat": "guided_cloze_with_grammar_chunking",
     "sourceScope": "台灣普遍認定國中必會1000單",
-    "updatedAt": "2026-05-11T11:01:07Z"
+    "updatedAt": "2026-05-12T11:01:31Z"
   },
   "words": {
     "adventure": {
@@ -127,6 +127,16 @@
         "瓶子"
       ],
       "translation": "請把一些水裝進瓶子裡。"
+    },
+    "box": {
+      "example_sentence": "Put the toys in the box.",
+      "first_seen": "2026-05-12",
+      "last_seen": "2026-05-12",
+      "meanings": [
+        "盒子；箱子"
+      ],
+      "pos": "n",
+      "translation": "把玩具放進盒子裡。"
     },
     "brave": {
       "example_sentence": "The brave girl spoke in front of the class.",
@@ -790,6 +800,16 @@
       ],
       "translation": "這種肥皂可以殺死細菌。"
     },
+    "kind": {
+      "example_sentence": "My teacher is kind to everyone.",
+      "first_seen": "2026-05-12",
+      "last_seen": "2026-05-12",
+      "meanings": [
+        "親切的；善良的"
+      ],
+      "pos": "adj",
+      "translation": "我的老師對每個人都很親切。"
+    },
     "kiss": {
       "example_sentence": "Give Mom a kiss.",
       "first_seen": "2026-04-11",
@@ -1291,6 +1311,16 @@
       ],
       "pos": "v",
       "translation": "請再說一次。"
+    },
+    "send": {
+      "example_sentence": "I will send a message to Dad.",
+      "first_seen": "2026-05-12",
+      "last_seen": "2026-05-12",
+      "meanings": [
+        "寄送；送出；派遣"
+      ],
+      "pos": "v",
+      "translation": "我會傳一則訊息給爸爸。"
     },
     "shine": {
       "example_sentence": "The sun shines in the morning.",

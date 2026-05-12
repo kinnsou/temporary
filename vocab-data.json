@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-05-11T11:01:18Z",
-    "sourceCount": 173,
-    "includedCount": 165
+    "updatedAt": "2026-05-12T11:01:47Z",
+    "sourceCount": 176,
+    "includedCount": 168
   },
   "words": [
+    {
+      "word": "box",
+      "meaning": "盒子；箱子",
+      "example": "Put the toys in the box.",
+      "translation": "把玩具放進盒子裡。",
+      "firstSeen": "2026-05-12",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "kind",
+      "meaning": "親切的；善良的",
+      "example": "My teacher is kind to everyone.",
+      "translation": "我的老師對每個人都很親切。",
+      "firstSeen": "2026-05-12",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "send",
+      "meaning": "寄送；送出；派遣",
+      "example": "I will send a message to Dad.",
+      "translation": "我會傳一則訊息給爸爸。",
+      "firstSeen": "2026-05-12",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "live",
       "meaning": "住；居住；活著；生活",
