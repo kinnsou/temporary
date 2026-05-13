@@ -4,27 +4,27 @@
   "stopAfterLesson": 18,
   "next": {
     "lesson": 14,
-    "day": "周四"
+    "day": "周六"
   },
   "lastBuilt": {
-    "weekTag": "202605w1",
-    "builtAt": "2026-05-06T06:30:19.167247+08:00",
+    "weekTag": "202605w2",
+    "builtAt": "2026-05-13T09:01:46.126320+08:00",
     "wednesday": {
       "kind": "wednesday",
       "lesson": 14,
-      "day": "周二",
-      "title": "以撒的献上",
-      "file": "lesson14-202605w1.html",
-      "url": "https://kinnsou.github.io/temporary/lesson14-202605w1.html",
+      "day": "周四",
+      "title": "以撒的婚姻",
+      "file": "lesson14-202605w2.html",
+      "url": "https://kinnsou.github.io/temporary/lesson14-202605w2.html",
       "sourceUrl": "https://ezoe.work/books/2/2264-1-14.html"
     },
     "sunday": {
       "kind": "sunday",
       "lesson": 14,
-      "day": "周三",
-      "title": "以撒预表基督",
-      "file": "lesson14-202605w1-sun.html",
-      "url": "https://kinnsou.github.io/temporary/lesson14-202605w1-sun.html",
+      "day": "周五",
+      "title": "利百加的特点",
+      "file": "lesson14-202605w2-sun.html",
+      "url": "https://kinnsou.github.io/temporary/lesson14-202605w2-sun.html",
       "sourceUrl": "https://ezoe.work/books/2/2264-1-14.html"
     }
   }
