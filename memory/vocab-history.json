@@ -3,7 +3,7 @@
     "newWordsMustBeUniqueUntilExhausted": true,
     "reviewFormat": "guided_cloze_with_grammar_chunking",
     "sourceScope": "台灣普遍認定國中必會1000單",
-    "updatedAt": "2026-05-12T11:01:31Z"
+    "updatedAt": "2026-05-13T11:00:00Z"
   },
   "words": {
     "adventure": {
@@ -1678,6 +1678,45 @@
         "黃色（的）"
       ],
       "translation": "我有一件黃色的雨衣。"
+    },
+    "order": {
+      "first_seen": "2026-05-13",
+      "last_seen": "2026-05-13",
+      "meanings": [
+        "點（餐）；訂購",
+        "命令；指示",
+        "順序",
+        "訂單"
+      ],
+      "example_sentence": "I want to order a hamburger.",
+      "translation": "我想點一個漢堡。",
+      "pos": [
+        "v",
+        "n"
+      ]
+    },
+    "mouth": {
+      "first_seen": "2026-05-13",
+      "last_seen": "2026-05-13",
+      "meanings": [
+        "嘴巴；口"
+      ],
+      "example_sentence": "Open your mouth, please.",
+      "translation": "請把嘴巴張開。",
+      "pos": "n"
+    },
+    "guess": {
+      "first_seen": "2026-05-13",
+      "last_seen": "2026-05-13",
+      "meanings": [
+        "猜；猜測"
+      ],
+      "example_sentence": "Can you guess the answer?",
+      "translation": "你猜得出答案嗎？",
+      "pos": [
+        "v",
+        "n"
+      ]
     }
   }
 }
