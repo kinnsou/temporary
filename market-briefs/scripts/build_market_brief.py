@@ -111,6 +111,14 @@ def item_key(row: dict[str, str]) -> str:
     return "|".join([row["date"], row["market"], row["code"], row["event"]])
 
 
+def add_months(value: dt.date, months: int) -> dt.date:
+    month = value.month - 1 + months
+    year = value.year + month // 12
+    month = month % 12 + 1
+    month_days = [31, 29 if year % 4 == 0 and (year % 100 != 0 or year % 400 == 0) else 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    return dt.date(year, month, min(value.day, month_days[month - 1]))
+
+
 def load_morning_content(date_str: str) -> str:
     with DAILY_TASKS.open(encoding="utf-8") as f:
         data = json.load(f)
@@ -196,17 +204,18 @@ def render_table(rows: list[dict[str, str]], *, max_rows: int | None = None) -> 
 
 def render_html(date: dt.date, rows: list[dict[str, str]], new_future: list[dict[str, str]], morning: str) -> str:
     week_end = date + dt.timedelta(days=7)
+    future_start = add_months(date, 1)
+    future_end = add_months(date, 2)
     stock_rows = [r for r in rows if is_stock(r)]
     week_stock = [r for r in stock_rows if date.isoformat() <= r["date"] <= week_end.isoformat()]
     week_fund = [r for r in rows if not is_stock(r) and date.isoformat() <= r["date"] <= week_end.isoformat()]
-    future_stock = [r for r in stock_rows if r["date"] > week_end.isoformat()]
-    farthest = max((r["date"] for r in rows), default=date.isoformat())
+    future_window_stock = [r for r in stock_rows if future_start.isoformat() <= r["date"] <= future_end.isoformat()]
     sections = split_morning(morning)
     date_label = f"{date.year}/{date.month:02d}/{date.day:02d}"
+    future_label = f"{future_start.strftime('%m/%d')}～{future_end.strftime('%m/%d')}"
     title = html.escape(sections.get("title", f"今日早報｜{date_label}"))
-    generated = dt.datetime.now(dt.timezone(dt.timedelta(hours=8))).strftime("%Y/%m/%d %H:%M")
-    new_note = "本次是初始化基準；之後若官方資料新增一週以外的除權息日期，會自動列在這格。"
-    new_table = f"<p class='muted'>{new_note}</p>" if not new_future else render_table(new_future, max_rows=12)
+    new_note = "目前沒有新增的 1～2 個月遠期公告。"
+    new_table = f"<p class='muted'>{new_note}</p>" if not new_future else render_table(new_future, max_rows=10)
 
     return f"""<!doctype html>
 <html lang="zh-Hant">
@@ -270,7 +279,6 @@ def render_html(date: dt.date, rows: list[dict[str, str]], new_future: list[dict
     .news ol {{ padding-left: 24px; }}
     .radar {{ border-left: 5px solid var(--green); }}
     .new {{ border-left: 5px solid var(--red); }}
-    .source {{ border-left: 5px solid var(--blue); }}
     .table-wrap {{ width:100%; overflow:auto; border:1px solid var(--line); border-radius:16px; background:#fffdf8; }}
     table {{ width:100%; border-collapse:collapse; min-width:720px; }}
     th, td {{ padding:12px 14px; border-bottom:1px solid #eadcc7; text-align:left; vertical-align:top; }}
@@ -290,11 +298,11 @@ def render_html(date: dt.date, rows: list[dict[str, str]], new_future: list[dict
       <div class="badge-row">
         <span class="badge">📰 一條網址版早報</span>
         <span class="badge">{html.escape(date_label)}</span>
-        <span class="badge">TWSE / TPEx 官方 OpenAPI</span>
-        <span class="badge">一週個股除權息雷達</span>
+        <span class="badge">除權息日曆</span>
+        <span class="badge">一週個股雷達</span>
       </div>
       <h1>{title}</h1>
-      <p class="lead">把原本擠在 LINE 裡的早報改成主日經文式卡片頁：新聞、台股焦點、社群觀點與除權息日曆分欄呈現；群組之後只需要收到這一條網址。</p>
+      <p class="lead">新聞重點、台股焦點與除權息日曆整理成一頁，群組裡快速打開就能掃重點。</p>
       <div class="hero-actions">
         <a class="button primary" href="#radar">看除權息雷達</a>
         <a class="button secondary" href="#brief">看今日早報</a>
@@ -308,14 +316,14 @@ def render_html(date: dt.date, rows: list[dict[str, str]], new_future: list[dict
         <p class="muted">{html.escape(date.strftime('%m/%d'))}～{html.escape(week_end.strftime('%m/%d'))} 一週內除權息個股；ETF / 債券型商品另有 {len(week_fund)} 檔，先收起避免洗版。</p>
       </article>
       <article class="card focus">
-        <p class="eyebrow">Forward Calendar</p>
-        <div class="metric">{len(future_stock)}</div>
-        <p class="muted">一週以外已排程個股，最遠目前看到 {html.escape(farthest)}。後續若新增遠期日期，早報會高亮提示。</p>
+        <p class="eyebrow">1–2 Months</p>
+        <div class="metric">{len(future_window_stock)}</div>
+        <p class="muted">{html.escape(future_label)} 之間已排程除權息個股，只看真正遠期、但不拉太遠。</p>
       </article>
       <article class="card focus">
-        <p class="eyebrow">Data Source</p>
-        <div class="metric">2</div>
-        <p class="muted">採官方 TWSE + TPEx JSON，不抓民間網頁，穩定度與可追溯性比較好。</p>
+        <p class="eyebrow">New Notices</p>
+        <div class="metric">{len(new_future)}</div>
+        <p class="muted">相較前次快照新增的 1～2 個月遠期公告。</p>
       </article>
     </section>
 
@@ -326,11 +334,11 @@ def render_html(date: dt.date, rows: list[dict[str, str]], new_future: list[dict
         {render_table(week_stock)}
       </article>
       <article class="card new">
-        <p class="eyebrow">New Forward Announcements</p>
-        <h2>遠期公告追蹤</h2>
+        <p class="eyebrow">Forward Calendar</p>
+        <h2>1～2 個月遠期除權息</h2>
+        {render_table(future_window_stock, max_rows=12)}
+        <h3>新增遠期公告</h3>
         {new_table}
-        <h3>目前遠期已排程焦點</h3>
-        {render_table(future_stock, max_rows=10)}
       </article>
     </section>
 
@@ -341,26 +349,7 @@ def render_html(date: dt.date, rows: list[dict[str, str]], new_future: list[dict
       <article class="card news">{block_to_html(sections.get('social', ''), ordered=False)}</article>
     </section>
 
-    <section class="grid two" aria-label="sources">
-      <article class="card source">
-        <p class="eyebrow">Source Policy</p>
-        <h2>資料源選擇</h2>
-        <ul>
-          <li>上市：臺灣證券交易所 OpenAPI「上市股票除權除息預告表」。</li>
-          <li>上櫃：證券櫃檯買賣中心 OpenAPI「上櫃股票除權除息預告表」。</li>
-          <li>個股表只列四碼股票，ETF、債券 ETF、REIT 與主動式基金先排除，降低早報噪音。</li>
-        </ul>
-      </article>
-      <article class="card">
-        <p class="eyebrow">Build Info</p>
-        <h2>頁面資訊</h2>
-        <p>產生時間：{html.escape(generated)}（Asia/Taipei）</p>
-        <p>資料期間：{html.escape(min((r['date'] for r in rows), default=date.isoformat()))} ～ {html.escape(farthest)}</p>
-        <p class="muted">本頁為試作版，等版面確認後再把 07:00 早報 cron 改成只發網址。</p>
-      </article>
-    </section>
-
-    <p class="footer-note">market-briefs/market-brief-{date.isoformat()}.html · OpenClaw market morning brief prototype</p>
+    <p class="footer-note">資料：TWSE / TPEx · market-briefs/market-brief-{date.isoformat()}.html</p>
   </main>
 </body>
 </html>
@@ -391,8 +380,15 @@ def main() -> int:
         # First run establishes the baseline. Do not announce every existing
         # future record as "new"; only future diffs after this snapshot count.
         previous_keys = set(current_keys)
+    future_start = add_months(date, 1)
+    future_end = add_months(date, 2)
     week_end = date + dt.timedelta(days=7)
-    new_future = [r for r in rows if is_stock(r) and r["date"] > week_end.isoformat() and item_key(r) not in previous_keys]
+    new_future = [
+        r for r in rows
+        if is_stock(r)
+        and future_start.isoformat() <= r["date"] <= future_end.isoformat()
+        and item_key(r) not in previous_keys
+    ]
     new_future.sort(key=lambda r: (r["date"], r["market"], r["code"]))
 
     data_payload = {
@@ -403,6 +399,8 @@ def main() -> int:
             "total_rows": len(rows),
             "stock_rows": sum(is_stock(r) for r in rows),
             "week_stock_rows": sum(is_stock(r) and date.isoformat() <= r["date"] <= week_end.isoformat() for r in rows),
+            "future_window": {"start": future_start.isoformat(), "end": future_end.isoformat()},
+            "future_window_stock_rows": sum(is_stock(r) and future_start.isoformat() <= r["date"] <= future_end.isoformat() for r in rows),
             "new_future_stock_rows": len(new_future),
         },
         "rows": rows,
