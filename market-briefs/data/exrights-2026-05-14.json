@@ -1,6 +1,6 @@
 {
   "date": "2026-05-14",
-  "fetched_at": "2026-05-14T16:40:02+08:00",
+  "fetched_at": "2026-05-14T17:00:52+08:00",
   "sources": {
     "twse": "https://openapi.twse.com.tw/v1/exchangeReport/TWT48U_ALL",
     "tpex": "https://www.tpex.org.tw/openapi/v1/tpex_exright_prepost"
@@ -14,7 +14,7 @@
       "end": "2026-07-14"
     },
     "future_window_stock_rows": 21,
-    "new_future_stock_rows": 1
+    "new_observed_stock_rows": 0
   },
   "rows": [
     {
@@ -29,7 +29,7 @@
       "subscription_price": "50",
       "stock_holding_ratio": "55.57307411",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -43,7 +43,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -57,7 +57,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -71,7 +71,7 @@
       "subscription_price": "108",
       "stock_holding_ratio": "62.8972951",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -85,7 +85,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -99,7 +99,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -113,7 +113,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -127,7 +127,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -141,7 +141,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -155,7 +155,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -169,7 +169,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -183,7 +183,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -197,7 +197,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -211,7 +211,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -225,7 +225,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -239,7 +239,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -253,7 +253,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -267,7 +267,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -281,7 +281,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -295,7 +295,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -309,7 +309,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -323,7 +323,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -337,7 +337,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -351,7 +351,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -365,7 +365,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -379,7 +379,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -393,7 +393,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -407,7 +407,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -421,7 +421,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -435,7 +435,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -449,7 +449,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -463,7 +463,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -477,7 +477,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -491,7 +491,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -505,7 +505,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -519,7 +519,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -533,7 +533,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -547,7 +547,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -561,7 +561,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -575,7 +575,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -589,7 +589,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -603,7 +603,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -617,7 +617,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -631,7 +631,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -645,7 +645,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -659,7 +659,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -673,7 +673,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -687,7 +687,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -701,7 +701,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -715,7 +715,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -729,7 +729,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -743,7 +743,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -757,7 +757,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -771,7 +771,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -785,7 +785,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -799,7 +799,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -813,7 +813,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -827,7 +827,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -841,7 +841,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -855,7 +855,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -869,7 +869,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -883,7 +883,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -897,7 +897,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -911,7 +911,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -925,7 +925,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -939,7 +939,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -953,7 +953,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -967,7 +967,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -981,7 +981,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -995,7 +995,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -1009,7 +1009,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -1023,7 +1023,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -1037,7 +1037,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -1051,7 +1051,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -1065,7 +1065,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -1079,7 +1079,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -1093,7 +1093,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -1107,7 +1107,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -1121,7 +1121,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -1135,7 +1135,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -1149,7 +1149,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -1163,7 +1163,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -1177,7 +1177,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -1191,7 +1191,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -1205,7 +1205,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -1219,7 +1219,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -1233,7 +1233,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -1247,7 +1247,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -1261,7 +1261,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -1275,7 +1275,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -1289,7 +1289,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -1303,7 +1303,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -1317,7 +1317,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -1331,7 +1331,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -1345,7 +1345,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -1359,7 +1359,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -1373,7 +1373,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -1387,7 +1387,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -1401,7 +1401,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -1415,7 +1415,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -1429,7 +1429,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -1443,7 +1443,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -1457,7 +1457,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -1471,7 +1471,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -1485,7 +1485,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -1499,7 +1499,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -1513,7 +1513,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -1527,7 +1527,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -1541,7 +1541,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -1555,7 +1555,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -1569,7 +1569,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -1583,7 +1583,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -1597,7 +1597,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -1611,7 +1611,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -1625,7 +1625,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -1639,7 +1639,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -1653,7 +1653,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -1667,7 +1667,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -1681,7 +1681,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -1695,7 +1695,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -1709,7 +1709,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -1723,7 +1723,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -1737,7 +1737,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -1751,7 +1751,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -1765,7 +1765,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -1779,7 +1779,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -1793,7 +1793,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "203.22769122",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上市",
@@ -1807,7 +1807,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -1821,7 +1821,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -1835,7 +1835,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -1849,7 +1849,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -1863,7 +1863,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     },
     {
       "market": "上櫃",
@@ -1877,23 +1877,8 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
+      "fetched_at": "2026-05-14T17:00:52+08:00"
     }
   ],
-  "new_future_stock_rows": [
-    {
-      "market": "上櫃",
-      "date": "2026-06-17",
-      "code": "2926",
-      "name": "誠品生活",
-      "event": "息",
-      "cash_dividend": "0.46",
-      "stock_dividend_ratio": "未公告",
-      "subscription_ratio": "未公告",
-      "subscription_price": "未公告",
-      "stock_holding_ratio": "未公告",
-      "source": "TPEx",
-      "fetched_at": "2026-05-14T16:40:02+08:00"
-    }
-  ]
+  "new_observed_stock_rows": []
 }

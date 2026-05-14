@@ -202,7 +202,7 @@ def render_table(rows: list[dict[str, str]], *, max_rows: int | None = None) -> 
     )
 
 
-def render_html(date: dt.date, rows: list[dict[str, str]], new_future: list[dict[str, str]], morning: str) -> str:
+def render_html(date: dt.date, rows: list[dict[str, str]], new_observed: list[dict[str, str]], morning: str) -> str:
     week_end = date + dt.timedelta(days=7)
     future_start = add_months(date, 1)
     future_end = add_months(date, 2)
@@ -214,8 +214,8 @@ def render_html(date: dt.date, rows: list[dict[str, str]], new_future: list[dict
     date_label = f"{date.year}/{date.month:02d}/{date.day:02d}"
     future_label = f"{future_start.strftime('%m/%d')}～{future_end.strftime('%m/%d')}"
     title = html.escape(sections.get("title", f"今日早報｜{date_label}"))
-    new_note = "目前沒有新增的 1～2 個月遠期公告。"
-    new_table = f"<p class='muted'>{new_note}</p>" if not new_future else render_table(new_future, max_rows=10)
+    new_note = "目前沒有昨日～今晨新增的個股除權息公告。"
+    new_table = f"<p class='muted'>{new_note}</p>" if not new_observed else render_table(new_observed, max_rows=12)
 
     return f"""<!doctype html>
 <html lang="zh-Hant">
@@ -223,7 +223,7 @@ def render_html(date: dt.date, rows: list[dict[str, str]], new_future: list[dict
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title>
-  <meta name="description" content="一條網址版台股早報，整合官方除權息日曆與一週內個股提醒。" />
+  <meta name="description" content="一條網址版台股早報，整合新聞、台股焦點與除權息日曆。" />
   <style>
     :root {{
       --bg: #f3efe7;
@@ -235,7 +235,6 @@ def render_html(date: dt.date, rows: list[dict[str, str]], new_future: list[dict
       --gold-deep: #875c25;
       --green: #607756;
       --red: #b56b59;
-      --blue: #496b88;
       --shadow: 0 16px 44px rgba(83, 58, 28, 0.13);
     }}
     * {{ box-sizing: border-box; }}
@@ -247,7 +246,7 @@ def render_html(date: dt.date, rows: list[dict[str, str]], new_future: list[dict
       line-height: 1.85;
       background:
         radial-gradient(980px 480px at 110% -10%, rgba(189, 135, 65, 0.18), transparent 55%),
-        radial-gradient(860px 420px at -10% 110%, rgba(73, 107, 136, 0.15), transparent 55%),
+        radial-gradient(860px 420px at -10% 110%, rgba(96, 119, 86, 0.15), transparent 55%),
         var(--bg);
     }}
     body::before {{ content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .045; background-image: radial-gradient(rgba(68,48,24,.32) .7px, transparent .7px); background-size: 4px 4px; }}
@@ -298,48 +297,15 @@ def render_html(date: dt.date, rows: list[dict[str, str]], new_future: list[dict
       <div class="badge-row">
         <span class="badge">📰 一條網址版早報</span>
         <span class="badge">{html.escape(date_label)}</span>
+        <span class="badge">新聞主版</span>
         <span class="badge">除權息日曆</span>
-        <span class="badge">一週個股雷達</span>
       </div>
       <h1>{title}</h1>
-      <p class="lead">新聞重點、台股焦點與除權息日曆整理成一頁，群組裡快速打開就能掃重點。</p>
+      <p class="lead">新聞重點、台股焦點與除權息日曆整理成一頁；新聞放前面，除權息放最後補充。</p>
       <div class="hero-actions">
-        <a class="button primary" href="#radar">看除權息雷達</a>
-        <a class="button secondary" href="#brief">看今日早報</a>
+        <a class="button primary" href="#brief">看今日早報</a>
+        <a class="button secondary" href="#radar">看除權息日曆</a>
       </div>
-    </section>
-
-    <section class="grid three" aria-label="overview">
-      <article class="card focus">
-        <p class="eyebrow">Next 7 Days</p>
-        <div class="metric">{len(week_stock)}</div>
-        <p class="muted">{html.escape(date.strftime('%m/%d'))}～{html.escape(week_end.strftime('%m/%d'))} 一週內除權息個股；ETF / 債券型商品另有 {len(week_fund)} 檔，先收起避免洗版。</p>
-      </article>
-      <article class="card focus">
-        <p class="eyebrow">1–2 Months</p>
-        <div class="metric">{len(future_window_stock)}</div>
-        <p class="muted">{html.escape(future_label)} 之間已排程除權息個股，只看真正遠期、但不拉太遠。</p>
-      </article>
-      <article class="card focus">
-        <p class="eyebrow">New Notices</p>
-        <div class="metric">{len(new_future)}</div>
-        <p class="muted">相較前次快照新增的 1～2 個月遠期公告。</p>
-      </article>
-    </section>
-
-    <section id="radar" class="grid two" aria-label="ex-rights-radar">
-      <article class="card radar">
-        <p class="eyebrow">Dividend Radar</p>
-        <h2>一週內除權息個股</h2>
-        {render_table(week_stock)}
-      </article>
-      <article class="card new">
-        <p class="eyebrow">Forward Calendar</p>
-        <h2>1～2 個月遠期除權息</h2>
-        {render_table(future_window_stock, max_rows=12)}
-        <h3>新增遠期公告</h3>
-        {new_table}
-      </article>
     </section>
 
     <section id="brief" class="grid two" aria-label="morning-brief">
@@ -349,12 +315,50 @@ def render_html(date: dt.date, rows: list[dict[str, str]], new_future: list[dict
       <article class="card news">{block_to_html(sections.get('social', ''), ordered=False)}</article>
     </section>
 
+    <section id="radar" class="grid three" aria-label="ex-rights-summary">
+      <article class="card focus">
+        <p class="eyebrow">New Notices</p>
+        <div class="metric">{len(new_observed)}</div>
+        <p class="muted">昨日～今晨新出現的個股除權息公告。</p>
+      </article>
+      <article class="card focus">
+        <p class="eyebrow">Next 7 Days</p>
+        <div class="metric">{len(week_stock)}</div>
+        <p class="muted">{html.escape(date.strftime('%m/%d'))}～{html.escape(week_end.strftime('%m/%d'))} 一週內個股；ETF / 債券型商品另有 {len(week_fund)} 檔未列。</p>
+      </article>
+      <article class="card focus">
+        <p class="eyebrow">1–2 Months</p>
+        <div class="metric">{len(future_window_stock)}</div>
+        <p class="muted">{html.escape(future_label)} 之間已排程個股。</p>
+      </article>
+    </section>
+
+    <section class="grid" aria-label="new-ex-rights">
+      <article class="card new">
+        <p class="eyebrow">First Look</p>
+        <h2>昨日～今晨新增除權息公告</h2>
+        {new_table}
+      </article>
+    </section>
+
+    <section class="grid two" aria-label="ex-rights-radar">
+      <article class="card radar">
+        <p class="eyebrow">Dividend Radar</p>
+        <h2>一週內除權息個股</h2>
+        {render_table(week_stock)}
+      </article>
+      <article class="card radar">
+        <p class="eyebrow">Forward Queue</p>
+        <h2>1～2 個月遠期除權息</h2>
+        {render_table(future_window_stock, max_rows=12)}
+      </article>
+    </section>
+
     <p class="footer-note">資料：TWSE / TPEx · market-briefs/market-brief-{date.isoformat()}.html</p>
   </main>
 </body>
 </html>
 """
-
 
 def main() -> int:
     ap = argparse.ArgumentParser()
@@ -383,13 +387,13 @@ def main() -> int:
     future_start = add_months(date, 1)
     future_end = add_months(date, 2)
     week_end = date + dt.timedelta(days=7)
-    new_future = [
+    new_observed = [
         r for r in rows
         if is_stock(r)
-        and future_start.isoformat() <= r["date"] <= future_end.isoformat()
+        and r["date"] >= date.isoformat()
         and item_key(r) not in previous_keys
     ]
-    new_future.sort(key=lambda r: (r["date"], r["market"], r["code"]))
+    new_observed.sort(key=lambda r: (r["date"], r["market"], r["code"]))
 
     data_payload = {
         "date": date.isoformat(),
@@ -401,17 +405,17 @@ def main() -> int:
             "week_stock_rows": sum(is_stock(r) and date.isoformat() <= r["date"] <= week_end.isoformat() for r in rows),
             "future_window": {"start": future_start.isoformat(), "end": future_end.isoformat()},
             "future_window_stock_rows": sum(is_stock(r) and future_start.isoformat() <= r["date"] <= future_end.isoformat() for r in rows),
-            "new_future_stock_rows": len(new_future),
+            "new_observed_stock_rows": len(new_observed),
         },
         "rows": rows,
-        "new_future_stock_rows": new_future,
+        "new_observed_stock_rows": new_observed,
     }
     data_path = data_dir / f"exrights-{date.isoformat()}.json"
     data_path.write_text(json.dumps(data_payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     snapshot_path.write_text(json.dumps({"updated_at": now.isoformat(timespec="seconds"), "keys": sorted(current_keys)}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     morning = load_morning_content(date.isoformat())
-    html_text = render_html(date, rows, new_future, morning)
+    html_text = render_html(date, rows, new_observed, morning)
     page_path = PROJECT_DIR / f"market-brief-{date.isoformat()}.html"
     page_path.write_text(html_text, encoding="utf-8")
     index_path = PROJECT_DIR / "index.html"
