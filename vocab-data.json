@@ -1,15 +1,45 @@
 {
   "meta": {
-    "updatedAt": "2026-05-13T11:01:54Z",
-    "sourceCount": 179,
-    "includedCount": 171
+    "updatedAt": "2026-05-14T11:01:00Z",
+    "sourceCount": 182,
+    "includedCount": 174
   },
   "words": [
     {
-      "word": "order",
-      "meaning": "點（餐）；訂購；命令；指示；順序；訂單",
-      "example": "I want to order a hamburger.",
-      "translation": "我想點一個漢堡。",
+      "word": "although",
+      "meaning": "雖然；儘管",
+      "example": "Although it was raining, we still went outside.",
+      "translation": "雖然在下雨，我們還是出門了。",
+      "firstSeen": "2026-05-14",
+      "pos": [
+        "conj"
+      ]
+    },
+    {
+      "word": "bridge",
+      "meaning": "橋；橋樑",
+      "example": "We walked across the bridge.",
+      "translation": "我們走過那座橋。",
+      "firstSeen": "2026-05-14",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "share",
+      "meaning": "分享；分擔；共用",
+      "example": "I want to share my snack with you.",
+      "translation": "我想跟你分享我的點心。",
+      "firstSeen": "2026-05-14",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "guess",
+      "meaning": "猜；猜測",
+      "example": "Can you guess the answer?",
+      "translation": "你猜得出答案嗎？",
       "firstSeen": "2026-05-13",
       "pos": [
         "v",
@@ -27,10 +57,10 @@
       ]
     },
     {
-      "word": "guess",
-      "meaning": "猜；猜測",
-      "example": "Can you guess the answer?",
-      "translation": "你猜得出答案嗎？",
+      "word": "order",
+      "meaning": "點（餐）；訂購；命令；指示；順序；訂單",
+      "example": "I want to order a hamburger.",
+      "translation": "我想點一個漢堡。",
       "firstSeen": "2026-05-13",
       "pos": [
         "v",
