@@ -214,7 +214,7 @@ def render_html(date: dt.date, rows: list[dict[str, str]], new_observed: list[di
     date_label = f"{date.year}/{date.month:02d}/{date.day:02d}"
     future_label = f"{future_start.strftime('%m/%d')}～{future_end.strftime('%m/%d')}"
     title = html.escape(sections.get("title", f"今日早報｜{date_label}"))
-    new_note = "目前沒有昨日～今晨新增的個股除權息公告。"
+    new_note = "目前沒有今晨新增的個股除權息公告。"
     new_table = f"<p class='muted'>{new_note}</p>" if not new_observed else render_table(new_observed, max_rows=12)
 
     return f"""<!doctype html>
@@ -319,7 +319,7 @@ def render_html(date: dt.date, rows: list[dict[str, str]], new_observed: list[di
       <article class="card focus">
         <p class="eyebrow">New Notices</p>
         <div class="metric">{len(new_observed)}</div>
-        <p class="muted">昨日～今晨新出現的個股除權息公告。</p>
+        <p class="muted">今晨新出現的個股除權息公告。</p>
       </article>
       <article class="card focus">
         <p class="eyebrow">Next 7 Days</p>
@@ -336,7 +336,7 @@ def render_html(date: dt.date, rows: list[dict[str, str]], new_observed: list[di
     <section class="grid" aria-label="new-ex-rights">
       <article class="card new">
         <p class="eyebrow">First Look</p>
-        <h2>昨日～今晨新增除權息公告</h2>
+        <h2>今晨新增除權息公告</h2>
         {new_table}
       </article>
     </section>
@@ -349,7 +349,7 @@ def render_html(date: dt.date, rows: list[dict[str, str]], new_observed: list[di
       </article>
       <article class="card radar">
         <p class="eyebrow">Forward Queue</p>
-        <h2>1～2 個月遠期除權息</h2>
+        <h2>1-2 個月內 遠期除權息</h2>
         {render_table(future_window_stock, max_rows=12)}
       </article>
     </section>
