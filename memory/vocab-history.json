@@ -3,7 +3,7 @@
     "newWordsMustBeUniqueUntilExhausted": true,
     "reviewFormat": "guided_cloze_with_grammar_chunking",
     "sourceScope": "台灣普遍認定國中必會1000單",
-    "updatedAt": "2026-05-14T11:00:58.200565Z"
+    "updatedAt": "2026-05-15T11:00:59.612955Z"
   },
   "words": {
     "adventure": {
@@ -33,13 +33,13 @@
       "translation": "我同意你的想法。"
     },
     "although": {
+      "example_sentence": "Although it was raining, we still went outside.",
       "first_seen": "2026-05-14",
       "last_seen": "2026-05-14",
       "meanings": [
         "雖然；儘管"
       ],
       "pos": "conj",
-      "example_sentence": "Although it was raining, we still went outside.",
       "translation": "雖然在下雨，我們還是出門了。"
     },
     "always": {
@@ -158,13 +158,13 @@
       "translation": "那位勇敢的女孩在全班前面發言。"
     },
     "bridge": {
+      "example_sentence": "We walked across the bridge.",
       "first_seen": "2026-05-14",
       "last_seen": "2026-05-14",
       "meanings": [
         "橋；橋樑"
       ],
       "pos": "n",
-      "example_sentence": "We walked across the bridge.",
       "translation": "我們走過那座橋。"
     },
     "build": {
@@ -432,6 +432,16 @@
       ],
       "translation": "他不是我的敵人。"
     },
+    "engine": {
+      "example_sentence": "The car engine is very loud.",
+      "first_seen": "2026-05-15",
+      "last_seen": "2026-05-15",
+      "meanings": [
+        "引擎"
+      ],
+      "pos": "n",
+      "translation": "這台車的引擎很大聲。"
+    },
     "every": {
       "example_sentence": "I brush my teeth every night.",
       "first_seen": "2026-04-29",
@@ -623,17 +633,17 @@
       "translation": "今天的天空是灰灰的。"
     },
     "guess": {
+      "example_sentence": "Can you guess the answer?",
       "first_seen": "2026-05-13",
       "last_seen": "2026-05-13",
       "meanings": [
         "猜；猜測"
       ],
-      "example_sentence": "Can you guess the answer?",
-      "translation": "你猜得出答案嗎？",
       "pos": [
         "v",
         "n"
-      ]
+      ],
+      "translation": "你猜得出答案嗎？"
     },
     "happy": {
       "example_sentence": "I am happy today.",
@@ -721,6 +731,16 @@
         "醫院"
       ],
       "translation": "他在醫院裡。"
+    },
+    "hot": {
+      "example_sentence": "The soup is too hot to drink.",
+      "first_seen": "2026-05-15",
+      "last_seen": "2026-05-15",
+      "meanings": [
+        "熱的；燙的"
+      ],
+      "pos": "adj",
+      "translation": "這碗湯太燙了，沒辦法喝。"
     },
     "hotel": {
       "example_sentence": "We stayed in a nice hotel last night.",
@@ -993,14 +1013,14 @@
       "translation": "今晚月亮很亮。"
     },
     "mouth": {
+      "example_sentence": "Open your mouth, please.",
       "first_seen": "2026-05-13",
       "last_seen": "2026-05-13",
       "meanings": [
         "嘴巴；口"
       ],
-      "example_sentence": "Open your mouth, please.",
-      "translation": "請把嘴巴張開。",
-      "pos": "n"
+      "pos": "n",
+      "translation": "請把嘴巴張開。"
     },
     "nature": {
       "example_sentence": "I love nature.",
@@ -1067,6 +1087,7 @@
       "translation": "我為晚餐切了一顆洋蔥。"
     },
     "order": {
+      "example_sentence": "I want to order a hamburger.",
       "first_seen": "2026-05-13",
       "last_seen": "2026-05-13",
       "meanings": [
@@ -1075,12 +1096,11 @@
         "順序",
         "訂單"
       ],
-      "example_sentence": "I want to order a hamburger.",
-      "translation": "我想點一個漢堡。",
       "pos": [
         "v",
         "n"
-      ]
+      ],
+      "translation": "我想點一個漢堡。"
     },
     "paint": {
       "example_sentence": "I like to paint pictures.",
@@ -1382,13 +1402,13 @@
       "translation": "我會傳一則訊息給爸爸。"
     },
     "share": {
+      "example_sentence": "I want to share my snack with you.",
       "first_seen": "2026-05-14",
       "last_seen": "2026-05-14",
       "meanings": [
         "分享；分擔；共用"
       ],
       "pos": "v",
-      "example_sentence": "I want to share my snack with you.",
       "translation": "我想跟你分享我的點心。"
     },
     "shine": {
@@ -1696,6 +1716,16 @@
       ],
       "pos": "adv",
       "translation": "她唱得很好。"
+    },
+    "whale": {
+      "example_sentence": "We saw a whale in the ocean.",
+      "first_seen": "2026-05-15",
+      "last_seen": "2026-05-15",
+      "meanings": [
+        "鯨魚"
+      ],
+      "pos": "n",
+      "translation": "我們在海裡看到一隻鯨魚。"
     },
     "whisper": {
       "example_sentence": "Please whisper in the library.",

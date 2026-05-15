@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-05-14T11:01:00Z",
-    "sourceCount": 182,
-    "includedCount": 174
+    "updatedAt": "2026-05-15T11:01:02Z",
+    "sourceCount": 185,
+    "includedCount": 177
   },
   "words": [
+    {
+      "word": "engine",
+      "meaning": "引擎",
+      "example": "The car engine is very loud.",
+      "translation": "這台車的引擎很大聲。",
+      "firstSeen": "2026-05-15",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "hot",
+      "meaning": "熱的；燙的",
+      "example": "The soup is too hot to drink.",
+      "translation": "這碗湯太燙了，沒辦法喝。",
+      "firstSeen": "2026-05-15",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "whale",
+      "meaning": "鯨魚",
+      "example": "We saw a whale in the ocean.",
+      "translation": "我們在海裡看到一隻鯨魚。",
+      "firstSeen": "2026-05-15",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "although",
       "meaning": "雖然；儘管",
