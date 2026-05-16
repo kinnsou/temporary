@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-05-15T11:01:02Z",
-    "sourceCount": 185,
-    "includedCount": 177
+    "updatedAt": "2026-05-16T11:01:22Z",
+    "sourceCount": 188,
+    "includedCount": 180
   },
   "words": [
+    {
+      "word": "compare",
+      "meaning": "比較；對照",
+      "example": "Compare these two pictures.",
+      "translation": "把這兩張照片比較一下。",
+      "firstSeen": "2026-05-16",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "station",
+      "meaning": "車站；站（地點）",
+      "example": "We waited for the bus at the station.",
+      "translation": "我們在車站等公車。",
+      "firstSeen": "2026-05-16",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "total",
+      "meaning": "總共的；總數",
+      "example": "The total cost is 300 dollars.",
+      "translation": "總費用是 300 美元。",
+      "firstSeen": "2026-05-16",
+      "pos": [
+        "adj",
+        "n"
+      ]
+    },
     {
       "word": "engine",
       "meaning": "引擎",

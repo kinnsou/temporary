@@ -6,6 +6,39 @@
     "updatedAt": "2026-05-15T11:00:59.612955Z"
   },
   "words": {
+    "compare": {
+      "example_sentence": "Compare these two pictures.",
+      "first_seen": "2026-05-16",
+      "last_seen": "2026-05-16",
+      "meanings": [
+        "比較；對照"
+      ],
+      "pos": "v",
+      "translation": "把這兩張照片比較一下。"
+    },
+    "station": {
+      "example_sentence": "We waited for the bus at the station.",
+      "first_seen": "2026-05-16",
+      "last_seen": "2026-05-16",
+      "meanings": [
+        "車站；站（地點）"
+      ],
+      "pos": "n",
+      "translation": "我們在車站等公車。"
+    },
+    "total": {
+      "example_sentence": "The total cost is 300 dollars.",
+      "first_seen": "2026-05-16",
+      "last_seen": "2026-05-16",
+      "meanings": [
+        "總共的；總數"
+      ],
+      "pos": [
+        "adj",
+        "n"
+      ],
+      "translation": "總費用是 300 美元。"
+    },
     "adventure": {
       "first_seen": "2025-02-23",
       "last_seen": "2025-02-23",
