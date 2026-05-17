@@ -31,6 +31,9 @@ body{display:flex;justify-content:center;align-items:center;overscroll-behavior:
 @keyframes expandIn{from{max-height:0;opacity:0}to{max-height:220px;opacity:1}}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes speakBurst{0%{transform:rotate(var(--ang,0deg)) translateX(22px) scaleX(0.35);opacity:0}25%{opacity:1}100%{transform:rotate(var(--ang,0deg)) translateX(40px) scaleX(1);opacity:0}}
+@keyframes resultStarLand{0%{opacity:.28;transform:translateY(-54px) scale(1.95) rotate(-58deg);filter:blur(.4px) saturate(1.15)}68%{opacity:1;transform:translateY(6px) scale(.92) rotate(8deg);filter:drop-shadow(0 4px 8px rgba(255,184,0,.35))}100%{opacity:1;transform:translateY(0) scale(1) rotate(0deg);filter:drop-shadow(0 5px 9px rgba(255,184,0,.42))}}
+@keyframes resultStarShine{0%,100%{transform:translateY(0) scale(1) rotate(0deg);filter:drop-shadow(0 5px 9px rgba(255,184,0,.42))}45%{transform:translateY(-2px) scale(1.17) rotate(0deg);filter:drop-shadow(0 0 8px rgba(255,255,255,.95)) drop-shadow(0 0 18px rgba(255,197,61,.92))}}
+@keyframes resultGlint{0%{opacity:0;transform:translate(-50%,-50%) scale(.45) rotate(-20deg)}35%{opacity:1}100%{opacity:0;transform:translate(-50%,-50%) scale(1.4) rotate(24deg)}}
 .screen{width:100%;height:100%;display:flex;flex-direction:column;overflow:hidden;}
 .scroll-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;}
 .scroll-body::-webkit-scrollbar{display:none;}
@@ -1271,6 +1274,7 @@ const Q_THEME={
   tense:{color:'#38bdf8',icon:'⏱',label:'選出正確時態'},
   order:{color:'#a78bfa',icon:'🧩',label:'排出完整句子'},
 };
+const QUIZ_ZH_SENTENCE_STYLE={fontSize:14,color:'#333',textAlign:'center',fontWeight:800,lineHeight:1.55};
 
 function Blank({width=78,color='#555',filled}){
   return(<span style={{display:'inline-block',minWidth:width,padding:'0 6px',margin:'0 4px',borderBottom:`2px solid ${color}`,textAlign:'center',fontWeight:900,color:filled?color:'transparent',verticalAlign:'baseline',lineHeight:1.2,letterSpacing:1,fontFamily:filled?'monospace':'inherit'}}>{filled||'＿'}</span>);
@@ -1563,7 +1567,7 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,onAnswe
           <Blank width={Math.max(86,String(q.correct||'').length*18)} color={locked?(isCorrect?'#4CAF82':'#FF4D6D'):theme.color} filled={locked?q.correct:(pickedText||null)}/>
           <span>{q.after}</span>
         </div>
-        {q.zh2&&<div style={{fontSize:12,color:'#aaa',textAlign:'center',fontStyle:'italic'}}>「{q.zh2}」</div>}
+        {q.zh2&&<div style={QUIZ_ZH_SENTENCE_STYLE}>「{q.zh2}」</div>}
       </div>
     );
     answerArea=(
@@ -1600,7 +1604,7 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,onAnswe
           <span>{q.after}</span>
         </div>
         {hintRevealed&&q.tenseHint&&<div style={{fontSize:12,fontWeight:800,color:theme.color,background:`${theme.color}14`,padding:'7px 12px',borderRadius:14,textAlign:'center',animation:'pop 0.25s ease-out'}}>💡 {q.tenseHint}（原形：<span style={{fontFamily:'monospace',fontWeight:900,letterSpacing:1}}>{q.baseWord}</span>）</div>}
-        {q.zh2&&<div style={{fontSize:12,color:'#aaa',textAlign:'center',fontStyle:'italic'}}>「{q.zh2}」</div>}
+        {q.zh2&&<div style={QUIZ_ZH_SENTENCE_STYLE}>「{q.zh2}」</div>}
       </div>
     );
     answerArea=(
@@ -1628,7 +1632,7 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,onAnswe
         <div style={{textAlign:'center'}}>
           <span style={{fontSize:11,fontWeight:800,color:theme.color,background:`${theme.color}18`,padding:'4px 12px',borderRadius:20,letterSpacing:0.5}}>{theme.icon} {theme.label}</span>
         </div>
-        {q.zh2&&<div style={{fontSize:12,color:'#aaa',textAlign:'center',fontStyle:'italic'}}>「{q.zh2}」</div>}
+        {q.zh2&&<div style={QUIZ_ZH_SENTENCE_STYLE}>「{q.zh2}」</div>}
         <div onDragOver={e=>e.preventDefault()} onDrop={dropOnAnswer} style={{minHeight:78,border:`2px dashed ${locked?(isCorrect?'#4CAF82':'#FF4D6D'):theme.color}`,background:locked?(isCorrect?'#e9f8ef':'#ffeef0'):`${theme.color}0f`,borderRadius:18,padding:10,display:'flex',flexWrap:'wrap',alignContent:'flex-start',gap:7,transition:'all 0.2s'}}>
           {picked.length===0&&<div style={{width:'100%',fontSize:12,color:'#94a3b8',fontWeight:800,textAlign:'center',paddingTop:16}}>把下方單字拖到這裡排句子（也可點一下）</div>}
           {picked.map((t,i)=>(
@@ -1703,6 +1707,30 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,onAnswe
 }
 
 /* ══ RESULT ══════════════════════════════════════════════ */
+function ResultStars({stars,pc}){
+  const got=Math.max(0,Math.min(3,Number(stars||0)));
+  const shine=got===3;
+  return(
+    <div style={{width:'100%',margin:'-4px 0 18px',padding:'14px 14px 13px',borderRadius:22,background:'linear-gradient(180deg,#fff8df 0%,#fff 100%)',border:'1.5px solid rgba(255,197,61,0.34)',boxShadow:'inset 0 1px 0 rgba(255,255,255,.9),0 6px 18px rgba(255,184,0,.13)',textAlign:'center',overflow:'hidden',position:'relative'}}>
+      <div style={{fontSize:11,fontWeight:900,color:'#b7791f',letterSpacing:1,marginBottom:5}}>本關獲得</div>
+      <div style={{height:48,display:'flex',justifyContent:'center',alignItems:'center',gap:10,position:'relative'}}>
+        {[0,1,2].map(i=>{
+          const active=i<got;
+          const landDelay=0.12+i*0.22;
+          const anim=active?`resultStarLand 0.72s cubic-bezier(.18,1.16,.32,1) ${landDelay}s both${shine?', resultStarShine 0.72s ease-out 1.36s forwards':''}`:'none';
+          return(
+            <span key={i} aria-hidden="true" style={{width:46,height:46,display:'inline-flex',alignItems:'center',justifyContent:'center',position:'relative',fontSize:active?39:31,lineHeight:1,color:active?'#ffc53d':'#e5e7eb',textShadow:active?'0 2px 0 #fff,0 5px 10px rgba(255,184,0,.35)':'none',opacity:active?1:.9,animation:anim}}>
+              {active?'★':'☆'}
+              {shine&&active&&<span style={{position:'absolute',left:'50%',top:'48%',fontSize:31,color:'#fff',textShadow:'0 0 8px rgba(255,255,255,.95),0 0 16px rgba(255,197,61,.9)',animation:'resultGlint 0.74s ease-out 1.39s both',pointerEvents:'none'}}>✦</span>}
+            </span>
+          );
+        })}
+      </div>
+      <div style={{fontSize:13,fontWeight:900,color:'#333',marginTop:3}}>得了 <span style={{fontSize:18,color:pc}}>{got}</span> 顆星</div>
+    </div>
+  );
+}
+
 function ResultScreen({score,xp,total,questRun,charSrc,charName,onRetry,onHome,pc}){
   const pct=total>0?Math.round((score/total)*100):0;
   const isGreat=pct>=80,isOk=pct>=50;
@@ -1710,6 +1738,7 @@ function ResultScreen({score,xp,total,questRun,charSrc,charName,onRetry,onHome,p
   const msg=isGreat?'太厲害了！':isOk?'做得不錯！':'繼續加油！';
   const questTarget=questRun?(questRun.isBoss?bossPassTarget(total):clearPassTarget(total)):0;
   const questClearScore=Number(questRun?.clearScore??score??0);
+  const resultStars=questRun?.passed?Math.max(0,Math.min(3,Number.isFinite(Number(questRun.stars))?Number(questRun.stars):mapStarsForScore(questClearScore,total))):0;
   const questFailText=questRun?.isBoss
     ?(questClearScore<questTarget?`魔王關還差一點：通關血條 ${questClearScore}/${questTarget}。`:`魔王關還差一點：限時答對 ${questRun.clearWins||0}/${questTarget}。`)
     :`第 ${questRun?.stage} 關需要通關血條達到 ${questTarget}。`;
@@ -1728,6 +1757,7 @@ function ResultScreen({score,xp,total,questRun,charSrc,charName,onRetry,onHome,p
             <div style={{fontSize:9,color:'rgba(255,255,255,0.8)'}}>正確率</div>
           </div>
         </div>
+        {questRun?.passed&&<ResultStars stars={resultStars} pc={pc}/>}
         <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:10}}>
           {[{icon:'✅',label:'答對題數',val:`${score}/${total}`,color:'#4CAF82'},{icon:'⭐',label:'XP獲得',val:`+${xp}`,color:'#FFB800'},{icon:'🎯',label:'等級',val:grade,color:pc}].map(item=>(
             <div key={item.label} style={{textAlign:'center',background:'#fafeff',borderRadius:14,padding:'12px 6px'}}>
