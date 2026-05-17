@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-05-16T11:01:22Z",
-    "sourceCount": 188,
-    "includedCount": 180
+    "updatedAt": "2026-05-17T11:01:18Z",
+    "sourceCount": 191,
+    "includedCount": 183
   },
   "words": [
+    {
+      "word": "helicopter",
+      "meaning": "直升機",
+      "example": "The helicopter flew over the city.",
+      "translation": "直升機飛過城市上空。",
+      "firstSeen": "2026-05-17",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "back",
+      "meaning": "背部；背面",
+      "example": "My backpack is on my back.",
+      "translation": "我的背包在我背上。",
+      "firstSeen": "2026-05-17",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "dress",
+      "meaning": "穿衣服；打扮",
+      "example": "I dress quickly in the morning.",
+      "translation": "我早上很快就穿好衣服。",
+      "firstSeen": "2026-05-17",
+      "pos": [
+        "v",
+        "n"
+      ]
+    },
     {
       "word": "compare",
       "meaning": "比較；對照",
