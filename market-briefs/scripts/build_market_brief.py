@@ -18,6 +18,8 @@ from typing import Any
 
 TWSE_URL = "https://openapi.twse.com.tw/v1/exchangeReport/TWT48U_ALL"
 TPEX_URL = "https://www.tpex.org.tw/openapi/v1/tpex_exright_prepost"
+TWSE_CLOSE_URL = "https://openapi.twse.com.tw/v1/exchangeReport/STOCK_DAY_ALL"
+TPEX_CLOSE_URL = "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes"
 REPO_ROOT = Path(__file__).resolve().parents[2]
 PROJECT_DIR = Path(__file__).resolve().parents[1]
 DAILY_TASKS = REPO_ROOT / "memory" / "daily-tasks.json"
@@ -59,6 +61,44 @@ def clean_num(value: Any, *, blank: str = "未公告") -> str:
     return out if out else blank
 
 
+def to_float(value: Any) -> float | None:
+    try:
+        return float(str(value or "").replace(",", "").strip())
+    except ValueError:
+        return None
+
+
+def fetch_latest_close_prices() -> dict[tuple[str, str], dict[str, str]]:
+    """Return latest official close prices by (market, code).
+
+    The morning run happens before the Taiwan market opens, so these official
+    daily-close endpoints normally represent the previous trading day's close.
+    If either source is temporarily unavailable, keep the page build alive and
+    leave affected rows blank rather than dropping the morning brief.
+    """
+    prices: dict[tuple[str, str], dict[str, str]] = {}
+    sources = [
+        ("上市", TWSE_CLOSE_URL, "Code", "Name", "ClosingPrice"),
+        ("上櫃", TPEX_CLOSE_URL, "SecuritiesCompanyCode", "CompanyName", "Close"),
+    ]
+    for market, url, code_key, name_key, price_key in sources:
+        try:
+            close_rows = fetch_json(url)
+        except Exception:
+            continue
+        for raw in close_rows:
+            code = str(raw.get(code_key, "")).strip()
+            if not code:
+                continue
+            d = roc_to_date(str(raw.get("Date", "")))
+            prices[(market, code)] = {
+                "close": clean_num(raw.get(price_key), blank="—"),
+                "close_date": d.isoformat() if d else "",
+                "close_name": str(raw.get(name_key, "")).strip(),
+            }
+    return prices
+
+
 def normalize_rows(now: dt.datetime) -> list[dict[str, str]]:
     rows: list[dict[str, str]] = []
     for raw in fetch_json(TWSE_URL):
@@ -97,6 +137,11 @@ def normalize_rows(now: dt.datetime) -> list[dict[str, str]]:
             "source": "TPEx",
             "fetched_at": now.isoformat(timespec="seconds"),
         })
+    close_prices = fetch_latest_close_prices()
+    for row in rows:
+        close = close_prices.get((row["market"], row["code"]), {})
+        row["last_close"] = close.get("close", "—")
+        row["last_close_date"] = close.get("close_date", "")
     rows.sort(key=lambda r: (r["date"], r["market"], r["code"]))
     return rows
 
@@ -117,6 +162,27 @@ def add_months(value: dt.date, months: int) -> dt.date:
     month = month % 12 + 1
     month_days = [31, 29 if year % 4 == 0 and (year % 100 != 0 or year % 400 == 0) else 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     return dt.date(year, month, min(value.day, month_days[month - 1]))
+
+
+def dividend_value_html(value: str) -> str:
+    amount = to_float(value)
+    classes = ["dividend-value"]
+    if amount is not None and amount >= 5:
+        classes.append("is-high")
+    elif amount is not None and amount >= 3:
+        classes.append("is-mid")
+    return f"<span class='{' '.join(classes)}'>{html.escape(value)}</span>"
+
+
+def close_price_html(row: dict[str, str]) -> str:
+    close = row.get("last_close", "—") or "—"
+    if close == "—":
+        return "<span class='muted'>—</span>"
+    close_date = row.get("last_close_date", "")
+    date_hint = ""
+    if close_date:
+        date_hint = f"<br><span class='close-date'>{html.escape(close_date[5:].replace('-', '/'))}</span>"
+    return f"<strong class='last-close'>{html.escape(close)}</strong>{date_hint}"
 
 
 def load_morning_content(date_str: str) -> str:
@@ -174,14 +240,14 @@ def render_table(rows: list[dict[str, str]], *, max_rows: int | None = None) -> 
     for r in subset:
         extras = []
         if r["cash_dividend"] != "未公告":
-            extras.append(f"息 {html.escape(r['cash_dividend'])}")
+            extras.append(f"<span class='detail-item'><span class='detail-label'>息</span> {dividend_value_html(r['cash_dividend'])}</span>")
         if r["stock_dividend_ratio"] != "未公告":
-            extras.append(f"股 {html.escape(r['stock_dividend_ratio'])}")
+            extras.append(f"<span class='detail-item'><span class='detail-label'>股</span> {dividend_value_html(r['stock_dividend_ratio'])}</span>")
         if r["subscription_ratio"] != "未公告":
             sub = f"增資 {html.escape(r['subscription_ratio'])}"
             if r["subscription_price"] != "未公告":
                 sub += f"｜認購 {html.escape(r['subscription_price'])}"
-            extras.append(sub)
+            extras.append(f"<span class='detail-item'>{sub}</span>")
         detail = "；".join(extras) if extras else "未公告"
         trs.append(
             "<tr>"
@@ -190,6 +256,7 @@ def render_table(rows: list[dict[str, str]], *, max_rows: int | None = None) -> 
             f"<td>{html.escape(r['market'])}</td>"
             f"<td><span class='pill'>{html.escape(r['event'])}</span></td>"
             f"<td>{detail}</td>"
+            f"<td>{close_price_html(r)}</td>"
             "</tr>"
         )
     more = ""
@@ -197,7 +264,7 @@ def render_table(rows: list[dict[str, str]], *, max_rows: int | None = None) -> 
         more = f"<p class='muted table-note'>另有 {len(rows) - max_rows} 檔未展開。</p>"
     return (
         "<div class='table-wrap'><table>"
-        "<thead><tr><th>日期</th><th>代號 / 名稱</th><th>市場</th><th>類型</th><th>配息 / 配股 / 增資</th></tr></thead>"
+        "<thead><tr><th>日期</th><th>代號 / 名稱</th><th>市場</th><th>類型</th><th>配息 / 配股 / 增資</th><th>昨日收盤價</th></tr></thead>"
         f"<tbody>{''.join(trs)}</tbody></table></div>{more}"
     )
 
@@ -279,12 +346,19 @@ def render_html(date: dt.date, rows: list[dict[str, str]], new_observed: list[di
     .radar {{ border-left: 5px solid var(--green); }}
     .new {{ border-left: 5px solid var(--red); }}
     .table-wrap {{ width:100%; overflow:auto; border:1px solid var(--line); border-radius:16px; background:#fffdf8; }}
-    table {{ width:100%; border-collapse:collapse; min-width:720px; }}
+    table {{ width:100%; border-collapse:collapse; min-width:860px; }}
     th, td {{ padding:12px 14px; border-bottom:1px solid #eadcc7; text-align:left; vertical-align:top; }}
     th {{ color:#6d5635; background:#fff4df; font-size:13px; letter-spacing:.04em; }}
     td.date {{ white-space:nowrap; font-weight:800; color:#5e6f4d; }}
     td span {{ color:var(--muted); font-size:13px; }}
     .pill {{ display:inline-flex; padding:3px 9px; border-radius:999px; background:#f0e2ca; color:#6b4b20; font-weight:800; font-size:13px; }}
+    .detail-item {{ display:inline-block; white-space:nowrap; margin-right:3px; }}
+    .detail-label {{ color:#7a6040; font-weight:800; }}
+    .dividend-value {{ color:#2f261d; font-size:15px; font-weight:900; letter-spacing:.01em; }}
+    .dividend-value.is-mid {{ font-size:18px; color:#51391f; }}
+    .dividend-value.is-high {{ font-size:21px; color:#c7372f; text-shadow:0 1px 0 rgba(255,255,255,.75); }}
+    .last-close {{ white-space:nowrap; color:#2f261d; font-size:15px; }}
+    .close-date {{ color:var(--muted); font-size:12px; }}
     .table-note {{ margin-top:10px !important; }}
     .footer-note {{ margin-top:22px; text-align:center; color:#887964; font-size:13px; }}
     @media (max-width: 980px) {{ .two, .three {{ grid-template-columns: 1fr; }} }}
@@ -398,7 +472,12 @@ def main() -> int:
     data_payload = {
         "date": date.isoformat(),
         "fetched_at": now.isoformat(timespec="seconds"),
-        "sources": {"twse": TWSE_URL, "tpex": TPEX_URL},
+        "sources": {
+            "twse": TWSE_URL,
+            "tpex": TPEX_URL,
+            "twse_close": TWSE_CLOSE_URL,
+            "tpex_close": TPEX_CLOSE_URL,
+        },
         "summary": {
             "total_rows": len(rows),
             "stock_rows": sum(is_stock(r) for r in rows),
