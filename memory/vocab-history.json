@@ -6,6 +6,36 @@
     "updatedAt": "2026-05-17T11:01:11Z"
   },
   "words": {
+    "light": {
+      "example_sentence": "Please turn on the light.",
+      "first_seen": "2026-05-18",
+      "last_seen": "2026-05-18",
+      "meanings": [
+        "燈；光"
+      ],
+      "pos": "n",
+      "translation": "請把燈打開。"
+    },
+    "smart": {
+      "example_sentence": "My sister is smart.",
+      "first_seen": "2026-05-18",
+      "last_seen": "2026-05-18",
+      "meanings": [
+        "聰明的"
+      ],
+      "pos": "adj",
+      "translation": "我姊姊很聰明。"
+    },
+    "housework": {
+      "example_sentence": "I do housework after dinner.",
+      "first_seen": "2026-05-18",
+      "last_seen": "2026-05-18",
+      "meanings": [
+        "家事"
+      ],
+      "pos": "n",
+      "translation": "我晚餐後做家事。"
+    },
     "compare": {
       "example_sentence": "Compare these two pictures.",
       "first_seen": "2026-05-16",

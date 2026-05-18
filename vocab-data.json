@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-05-17T11:01:18Z",
-    "sourceCount": 191,
-    "includedCount": 183
+    "updatedAt": "2026-05-18T11:01:29Z",
+    "sourceCount": 194,
+    "includedCount": 186
   },
   "words": [
+    {
+      "word": "light",
+      "meaning": "燈；光",
+      "example": "Please turn on the light.",
+      "translation": "請把燈打開。",
+      "firstSeen": "2026-05-18",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "smart",
+      "meaning": "聰明的",
+      "example": "My sister is smart.",
+      "translation": "我姊姊很聰明。",
+      "firstSeen": "2026-05-18",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "housework",
+      "meaning": "家事",
+      "example": "I do housework after dinner.",
+      "translation": "我晚餐後做家事。",
+      "firstSeen": "2026-05-18",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "helicopter",
       "meaning": "直升機",
