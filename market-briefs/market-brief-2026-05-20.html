@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>📰 今日早報｜2026年5月20日（三）</title>
+  <meta name="description" content="一條網址版台股早報，整合新聞、台股焦點與除權息日曆。" />
+  <style>
+    :root {
+      --bg: #f3efe7;
+      --paper: #fffaf2;
+      --ink: #29241e;
+      --muted: #70675c;
+      --line: #e3d2b6;
+      --gold: #bd8741;
+      --gold-deep: #875c25;
+      --green: #607756;
+      --red: #b56b59;
+      --shadow: 0 16px 44px rgba(83, 58, 28, 0.13);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.85;
+      background:
+        radial-gradient(980px 480px at 110% -10%, rgba(189, 135, 65, 0.18), transparent 55%),
+        radial-gradient(860px 420px at -10% 110%, rgba(96, 119, 86, 0.15), transparent 55%),
+        var(--bg);
+    }
+    body::before { content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .045; background-image: radial-gradient(rgba(68,48,24,.32) .7px, transparent .7px); background-size: 4px 4px; }
+    .wrap { position: relative; z-index: 1; width: min(1120px, 92vw); margin: 28px auto 60px; }
+    .hero { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 30px; padding: clamp(26px, 5vw, 50px); background: linear-gradient(140deg, #fffdf8 0%, #fff3df 100%); box-shadow: var(--shadow); }
+    .hero::after { content: ""; position: absolute; right: -120px; top: -120px; width: 340px; height: 340px; border-radius: 50%; background: radial-gradient(circle, rgba(189,135,65,.28) 0%, rgba(189,135,65,0) 70%); }
+    .badge-row { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:18px; }
+    .badge { display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border-radius:999px; border:1px solid #ead5ae; background:#fff7e8; color:var(--gold-deep); font-size:13px; font-weight:800; letter-spacing:.02em; }
+    h1 { margin:0 0 12px; font-family:"Noto Serif TC", "PMingLiU", serif; font-size:clamp(34px, 6vw, 60px); line-height:1.14; color:#2b2118; }
+    h2, h3 { font-family:"Noto Serif TC", "PMingLiU", serif; line-height:1.35; color:#33281d; }
+    .lead { margin:0; max-width:72ch; color:var(--muted); font-size:clamp(16px, 2.05vw, 19px); }
+    .hero-actions { margin-top:22px; display:flex; flex-wrap:wrap; gap:12px; }
+    .button { display:inline-block; padding:12px 18px; border-radius:14px; text-decoration:none; font-weight:800; }
+    .button.primary { color:white; background:linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%); box-shadow:0 10px 20px rgba(135,92,37,.24); }
+    .button.secondary { color:var(--ink); background:rgba(255,255,255,.75); border:1px solid var(--line); }
+    .grid { display:grid; gap:18px; margin-top:22px; }
+    .two { grid-template-columns: 1fr 1fr; }
+    .three { grid-template-columns: repeat(3, 1fr); }
+    .card { border:1px solid var(--line); border-radius:22px; background:var(--paper); padding:22px; box-shadow:0 10px 24px rgba(83,58,28,.08); }
+    .card h2, .card h3 { margin:0 0 12px; }
+    .card p { margin: 0 0 12px; }
+    .eyebrow { margin:0 0 8px; color:var(--gold-deep); font-size:13px; text-transform:uppercase; letter-spacing:.09em; font-weight:800; }
+    .metric { font-size: clamp(30px, 5vw, 46px); font-weight:900; line-height:1; color:#31261b; }
+    .muted { color: var(--muted); }
+    ol, ul { margin: 0; padding-left: 22px; }
+    li + li { margin-top: 8px; }
+    .focus { background: linear-gradient(180deg, #fffdf9 0%, #f7efe2 100%); }
+    .news h2 { font-size: 22px; }
+    .news ol { padding-left: 24px; }
+    .radar { border-left: 5px solid var(--green); }
+    .new { border-left: 5px solid var(--red); }
+    .table-wrap { width:100%; overflow:auto; border:1px solid var(--line); border-radius:16px; background:#fffdf8; }
+    table { width:100%; border-collapse:collapse; min-width:860px; }
+    th, td { padding:12px 14px; border-bottom:1px solid #eadcc7; text-align:left; vertical-align:top; }
+    th { color:#6d5635; background:#fff4df; font-size:13px; letter-spacing:.04em; }
+    td.date { white-space:nowrap; font-weight:800; color:#5e6f4d; }
+    td span { color:var(--muted); font-size:13px; }
+    .pill { display:inline-flex; padding:3px 9px; border-radius:999px; background:#f0e2ca; color:#6b4b20; font-weight:800; font-size:13px; }
+    .detail-item { display:inline-block; white-space:nowrap; margin-right:3px; }
+    .detail-label { color:#7a6040; font-weight:800; }
+    .dividend-value { color:#2f261d; font-size:15px; font-weight:900; letter-spacing:.01em; }
+    .dividend-value.is-mid { font-size:18px; color:#51391f; }
+    .dividend-value.is-high { font-size:21px; color:#c7372f; text-shadow:0 1px 0 rgba(255,255,255,.75); }
+    .last-close { white-space:nowrap; color:#2f261d; font-size:15px; }
+    .close-date { color:var(--muted); font-size:12px; }
+    .table-note { margin-top:10px !important; }
+    .footer-note { margin-top:22px; text-align:center; color:#887964; font-size:13px; }
+    @media (max-width: 980px) { .two, .three { grid-template-columns: 1fr; } }
+    @media (max-width: 560px) { .wrap { margin-top:18px; } .hero, .card { border-radius:18px; } .button { width:100%; text-align:center; } }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <div class="badge-row">
+        <span class="badge">📰 一條網址版早報</span>
+        <span class="badge">2026/05/20</span>
+        <span class="badge">新聞主版</span>
+        <span class="badge">除權息日曆</span>
+      </div>
+      <h1>📰 今日早報｜2026年5月20日（三）</h1>
+      <p class="lead">新聞重點、台股焦點與除權息日曆整理成一頁；新聞放前面，除權息放最後補充。</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#brief">看今日早報</a>
+        <a class="button secondary" href="#radar">看除權息日曆</a>
+      </div>
+    </section>
+
+    <section id="brief" class="grid two" aria-label="morning-brief">
+      <article class="card news"><h2>🌍 國際新聞（5則）</h2><ol><li>路透經濟學家調查：受中東戰事推升油價與通膨影響，多數預測聯準會至少再等 6 個月才可能降息，利率可能在 3.50%～3.75% 區間維持更久。</li><li>市場重新評估「通膨再黏著」風險：能源與運輸成本回升，使今年降息幅度預期再被下修，風險資產波動維持偏高。</li><li>俄烏戰線延續消耗戰：空襲、無人機與後勤動員消息持續，歐洲安全與國防支出討論升溫。</li><li>中東局勢仍是油市核心變數：各方在停火/談判與軍事威懾之間拉扯，油價與運價對 headline 依然敏感。</li><li>AI 基礎建設支出續熱：資料中心、電網與半導體供應鏈仍是全球資本支出焦點，但高利率環境下估值波動加劇。</li></ol></article>
+      <article class="card news"><h2>🇹🇼 台灣新聞（3則）</h2><ol><li>出口與接單仍呈分化：AI/HPC 與伺服器鏈撐盤，但部分傳產與終端消費復甦偏慢，市場持續盯第二季展望。</li><li>能源與物價仍是關鍵觀察：油價波動牽動進口成本與通膨預期，政策面持續以穩供應、控風險為主。</li><li>兩岸與國安議題維持熱度：相關政策訊號與國際互動仍會影響市場風險溢價與資金偏好。</li></ol></article>
+      <article class="card news"><h2>📈 台股焦點</h2><ul><li>昨日收盤：加權指數高檔震盪、偏弱整理（以盤後實際資料為準）。</li><li>盤面觀察：電子權值與 AI 供應鏈仍是主線，但短線更看重籌碼與財報/展望；資金輪動速度偏快。</li><li>一句話重點：高波動盤先控槓桿、分批進出；盯油價／美元／外資買賣超的連續性。</li></ul></article>
+      <article class="card news"><h2>💬 馬斯克 &amp; 川普 &amp; Michael Saylor</h2><p>@elonmusk：近期公開訊號仍以 xAI/算力、Tesla 與太空進展為主；截至截稿未見可公開驗證的單一重大新表態改變市場定價。</p><p>@realDonaldTrump：發言仍高度牽動中東與能源預期；市場對其談判/施壓訊號敏感度維持高位。</p><p>@saylor：延續「比特幣長期配置」主線，並以「buy more Bitcoin than you sell」等表態強化企業/機構持幣敘事。</p></article>
+    </section>
+
+    <section id="radar" class="grid three" aria-label="ex-rights-summary">
+      <article class="card focus">
+        <p class="eyebrow">New Notices</p>
+        <div class="metric">4</div>
+        <p class="muted">今晨新出現的個股除權息公告。</p>
+      </article>
+      <article class="card focus">
+        <p class="eyebrow">Next 7 Days</p>
+        <div class="metric">11</div>
+        <p class="muted">05/20～05/27 一週內個股；ETF / 債券型商品另有 15 檔未列。</p>
+      </article>
+      <article class="card focus">
+        <p class="eyebrow">1–2 Months</p>
+        <div class="metric">18</div>
+        <p class="muted">06/20～07/20 之間已排程個股。</p>
+      </article>
+    </section>
+
+    <section class="grid" aria-label="new-ex-rights">
+      <article class="card new">
+        <p class="eyebrow">First Look</p>
+        <h2>今晨新增除權息公告</h2>
+        <div class='table-wrap'><table><thead><tr><th>日期</th><th>代號 / 名稱</th><th>市場</th><th>類型</th><th>配息 / 配股 / 增資</th><th>昨日收盤價</th></tr></thead><tbody><tr><td class='date'>06/01</td><td><strong>3709</strong><br><span>鑫聯大投控</span></td><td>上櫃</td><td><span class='pill'>權</span></td><td><span class='detail-item'>增資 0.15927441｜認購 註4</span></td><td><strong class='last-close'>78.9</strong><br><span class='close-date'>05/19</span></td></tr><tr><td class='date'>06/02</td><td><strong>4912</strong><br><span>聯德控股-KY</span></td><td>上市</td><td><span class='pill'>息</span></td><td><span class='detail-item'><span class='detail-label'>息</span> <span class='dividend-value'>1</span></span></td><td><strong class='last-close'>102</strong><br><span class='close-date'>05/19</span></td></tr><tr><td class='date'>06/02</td><td><strong>6788</strong><br><span>華景電</span></td><td>上櫃</td><td><span class='pill'>息</span></td><td><span class='detail-item'><span class='detail-label'>息</span> <span class='dividend-value is-high'>15</span></span></td><td><strong class='last-close'>404</strong><br><span class='close-date'>05/19</span></td></tr><tr><td class='date'>06/25</td><td><strong>6846</strong><br><span>綠茵</span></td><td>上櫃</td><td><span class='pill'>息</span></td><td><span class='detail-item'><span class='detail-label'>息</span> <span class='dividend-value is-mid'>3.94448057</span></span></td><td><strong class='last-close'>70</strong><br><span class='close-date'>05/19</span></td></tr></tbody></table></div>
+      </article>
+    </section>
+
+    <section class="grid two" aria-label="ex-rights-radar">
+      <article class="card radar">
+        <p class="eyebrow">Dividend Radar</p>
+        <h2>一週內除權息個股</h2>
+        <div class='table-wrap'><table><thead><tr><th>日期</th><th>代號 / 名稱</th><th>市場</th><th>類型</th><th>配息 / 配股 / 增資</th><th>昨日收盤價</th></tr></thead><tbody><tr><td class='date'>05/20</td><td><strong>6597</strong><br><span>立誠</span></td><td>上櫃</td><td><span class='pill'>息</span></td><td><span class='detail-item'><span class='detail-label'>息</span> <span class='dividend-value'>1</span></span></td><td><strong class='last-close'>72.9</strong><br><span class='close-date'>05/19</span></td></tr><tr><td class='date'>05/22</td><td><strong>3257</strong><br><span>虹冠電</span></td><td>上市</td><td><span class='pill'>息</span></td><td><span class='detail-item'><span class='detail-label'>息</span> <span class='dividend-value'>2.8</span></span></td><td><strong class='last-close'>54.2</strong><br><span class='close-date'>05/19</span></td></tr><tr><td class='date'>05/25</td><td><strong>2426</strong><br><span>鼎元</span></td><td>上市</td><td><span class='pill'>息</span></td><td><span class='detail-item'><span class='detail-label'>息</span> <span class='dividend-value'>0.1</span></span></td><td><strong class='last-close'>64.8</strong><br><span class='close-date'>05/19</span></td></tr><tr><td class='date'>05/25</td><td><strong>2486</strong><br><span>一詮</span></td><td>上市</td><td><span class='pill'>息</span></td><td><span class='detail-item'><span class='detail-label'>息</span> <span class='dividend-value'>0.49846</span></span></td><td><strong class='last-close'>251.5</strong><br><span class='close-date'>05/19</span></td></tr><tr><td class='date'>05/25</td><td><strong>7715</strong><br><span>裕山</span></td><td>上櫃</td><td><span class='pill'>息</span></td><td><span class='detail-item'><span class='detail-label'>息</span> <span class='dividend-value'>1.8</span></span></td><td><strong class='last-close'>28.45</strong><br><span class='close-date'>05/19</span></td></tr><tr><td class='date'>05/27</td><td><strong>1215</strong><br><span>卜蜂</span></td><td>上市</td><td><span class='pill'>息</span></td><td><span class='detail-item'><span class='detail-label'>息</span> <span class='dividend-value is-high'>7</span></span></td><td><strong class='last-close'>141.5</strong><br><span class='close-date'>05/19</span></td></tr><tr><td class='date'>05/27</td><td><strong>1568</strong><br><span>倉佑</span></td><td>上市</td><td><span class='pill'>息</span></td><td><span class='detail-item'><span class='detail-label'>息</span> <span class='dividend-value'>1</span></span></td><td><strong class='last-close'>27.5</strong><br><span class='close-date'>05/19</span></td></tr><tr><td class='date'>05/27</td><td><strong>3413</strong><br><span>京鼎</span></td><td>上市</td><td><span class='pill'>息</span></td><td><span class='detail-item'><span class='detail-label'>息</span> <span class='dividend-value is-high'>10.983792</span></span></td><td><strong class='last-close'>314.5</strong><br><span class='close-date'>05/19</span></td></tr><tr><td class='date'>05/27</td><td><strong>3680</strong><br><span>家登</span></td><td>上櫃</td><td><span class='pill'>息</span></td><td><span class='detail-item'><span class='detail-label'>息</span> <span class='dividend-value is-mid'>4.99733964</span></span></td><td><strong class='last-close'>514</strong><br><span class='close-date'>05/19</span></td></tr><tr><td class='date'>05/27</td><td><strong>4995</strong><br><span>晶達</span></td><td>上櫃</td><td><span class='pill'>息</span></td><td><span class='detail-item'><span class='detail-label'>息</span> <span class='dividend-value'>1.99286251</span></span></td><td><strong class='last-close'>44.65</strong><br><span class='close-date'>05/19</span></td></tr><tr><td class='date'>05/27</td><td><strong>6679</strong><br><span>鈺太</span></td><td>上櫃</td><td><span class='pill'>息</span></td><td><span class='detail-item'><span class='detail-label'>息</span> <span class='dividend-value is-high'>6.5</span></span></td><td><strong class='last-close'>306.5</strong><br><span class='close-date'>05/19</span></td></tr></tbody></table></div>
+      </article>
+      <article class="card radar">
+        <p class="eyebrow">Forward Queue</p>
+        <h2>1-2 個月內 遠期除權息</h2>
+        <div class='table-wrap'><table><thead><tr><th>日期</th><th>代號 / 名稱</th><th>市場</th><th>類型</th><th>配息 / 配股 / 增資</th><th>昨日收盤價</th></tr></thead><tbody><tr><td class='date'>06/22</td><td><strong>1319</strong><br><span>東陽</span></td><td>上市</td><td><span class='pill'>息</span></td><td><span class='detail-item'><span class='detail-label'>息</span> <span class='dividend-value is-high'>5</span></span></td><td><strong class='last-close'>80</strong><br><span class='close-date'>05/19</span></td></tr><tr><td class='date'>06/22</td><td><strong>3447</strong><br><span>展達</span></td><td>上市</td><td><span class='pill'>息</span></td><td><span class='detail-item'><span class='detail-label'>息</span> <span class='dividend-value'>1.1</span></span></td><td><strong class='last-close'>35.3</strong><br><span class='close-date'>05/19</span></td></tr><tr><td class='date'>06/22</td><td><strong>6120</strong><br><span>達運</span></td><td>上市</td><td><span class='pill'>息</span></td><td><span class='detail-item'><span class='detail-label'>息</span> <span class='dividend-value'>0.25</span></span></td><td><strong class='last-close'>12.65</strong><br><span class='close-date'>05/19</span></td></tr><tr><td class='date'>06/23</td><td><strong>6292</strong><br><span>迅德</span></td><td>上櫃</td><td><span class='pill'>息</span></td><td><span class='detail-item'><span class='detail-label'>息</span> <span class='dividend-value'>1.8</span></span></td><td><strong class='last-close'>53</strong><br><span class='close-date'>05/19</span></td></tr><tr><td class='date'>06/24</td><td><strong>3705</strong><br><span>永信</span></td><td>上市</td><td><span class='pill'>息</span></td><td><span class='detail-item'><span class='detail-label'>息</span> <span class='dividend-value is-mid'>3</span></span></td><td><strong class='last-close'>55.9</strong><br><span class='close-date'>05/19</span></td></tr><tr><td class='date'>06/25</td><td><strong>5522</strong><br><span>遠雄</span></td><td>上市</td><td><span class='pill'>息</span></td><td><span class='detail-item'><span class='detail-label'>息</span> <span class='dividend-value is-high'>5.5</span></span></td><td><strong class='last-close'>70.8</strong><br><span class='close-date'>05/19</span></td></tr><tr><td class='date'>06/25</td><td><strong>6208</strong><br><span>日揚</span></td><td>上櫃</td><td><span class='pill'>息</span></td><td><span class='detail-item'><span class='detail-label'>息</span> <span class='dividend-value'>2</span></span></td><td><strong class='last-close'>103.5</strong><br><span class='close-date'>05/19</span></td></tr><tr><td class='date'>06/25</td><td><strong>6846</strong><br><span>綠茵</span></td><td>上櫃</td><td><span class='pill'>息</span></td><td><span class='detail-item'><span class='detail-label'>息</span> <span class='dividend-value is-mid'>3.94448057</span></span></td><td><strong class='last-close'>70</strong><br><span class='close-date'>05/19</span></td></tr><tr><td class='date'>06/25</td><td><strong>7767</strong><br><span>仁大資訊</span></td><td>上櫃</td><td><span class='pill'>息</span></td><td><span class='detail-item'><span class='detail-label'>息</span> <span class='dividend-value is-mid'>3</span></span></td><td><strong class='last-close'>43.85</strong><br><span class='close-date'>05/19</span></td></tr><tr><td class='date'>06/29</td><td><strong>4989</strong><br><span>榮科</span></td><td>上市</td><td><span class='pill'>權</span></td><td><span class='detail-item'>增資 0.25403461</span></td><td><strong class='last-close'>88.7</strong><br><span class='close-date'>05/19</span></td></tr><tr><td class='date'>06/29</td><td><strong>8045</strong><br><span>達運光電</span></td><td>上市</td><td><span class='pill'>息</span></td><td><span class='detail-item'><span class='detail-label'>息</span> <span class='dividend-value'>0.999821</span></span></td><td><strong class='last-close'>71.9</strong><br><span class='close-date'>05/19</span></td></tr><tr><td class='date'>07/01</td><td><strong>6655</strong><br><span>科定</span></td><td>上市</td><td><span class='pill'>息</span></td><td><span class='detail-item'><span class='detail-label'>息</span> <span class='dividend-value is-mid'>4.8</span></span></td><td><strong class='last-close'>132</strong><br><span class='close-date'>05/19</span></td></tr></tbody></table></div><p class='muted table-note'>另有 6 檔未展開。</p>
+      </article>
+    </section>
+
+    <p class="footer-note">資料：TWSE / TPEx · market-briefs/market-brief-2026-05-20.html</p>
+  </main>
+</body>
+</html>
