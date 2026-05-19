@@ -3,9 +3,39 @@
     "newWordsMustBeUniqueUntilExhausted": true,
     "reviewFormat": "guided_cloze_with_grammar_chunking",
     "sourceScope": "台灣普遍認定國中必會1000單",
-    "updatedAt": "2026-05-17T11:01:11Z"
+    "updatedAt": "2026-05-19T11:00:47Z"
   },
   "words": {
+    "cake": {
+      "example_sentence": "I want a piece of cake.",
+      "first_seen": "2026-05-19",
+      "last_seen": "2026-05-19",
+      "meanings": [
+        "蛋糕"
+      ],
+      "pos": "n",
+      "translation": "我想要一塊蛋糕。"
+    },
+    "beautiful": {
+      "example_sentence": "The sky is beautiful today.",
+      "first_seen": "2026-05-19",
+      "last_seen": "2026-05-19",
+      "meanings": [
+        "漂亮的；美麗的"
+      ],
+      "pos": "adj",
+      "translation": "今天的天空很美。"
+    },
+    "finish": {
+      "example_sentence": "I will finish my homework before dinner.",
+      "first_seen": "2026-05-19",
+      "last_seen": "2026-05-19",
+      "meanings": [
+        "完成；做完"
+      ],
+      "pos": "v",
+      "translation": "我會在晚餐前把作業寫完。"
+    },
     "light": {
       "example_sentence": "Please turn on the light.",
       "first_seen": "2026-05-18",

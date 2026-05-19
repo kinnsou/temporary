@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-05-18T11:01:29Z",
-    "sourceCount": 194,
-    "includedCount": 186
+    "updatedAt": "2026-05-19T11:01:01Z",
+    "sourceCount": 197,
+    "includedCount": 189
   },
   "words": [
+    {
+      "word": "cake",
+      "meaning": "蛋糕",
+      "example": "I want a piece of cake.",
+      "translation": "我想要一塊蛋糕。",
+      "firstSeen": "2026-05-19",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "beautiful",
+      "meaning": "漂亮的；美麗的",
+      "example": "The sky is beautiful today.",
+      "translation": "今天的天空很美。",
+      "firstSeen": "2026-05-19",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "finish",
+      "meaning": "完成；做完",
+      "example": "I will finish my homework before dinner.",
+      "translation": "我會在晚餐前把作業寫完。",
+      "firstSeen": "2026-05-19",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "light",
       "meaning": "燈；光",
