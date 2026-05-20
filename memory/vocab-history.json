@@ -3,9 +3,42 @@
     "newWordsMustBeUniqueUntilExhausted": true,
     "reviewFormat": "guided_cloze_with_grammar_chunking",
     "sourceScope": "台灣普遍認定國中必會1000單",
-    "updatedAt": "2026-05-19T11:00:47Z"
+    "updatedAt": "2026-05-20T11:00:46Z"
   },
   "words": {
+    "about": {
+      "example_sentence": "Tell me about your day.",
+      "first_seen": "2026-05-20",
+      "last_seen": "2026-05-20",
+      "meanings": [
+        "關於"
+      ],
+      "pos": [
+        "prep",
+        "adv"
+      ],
+      "translation": "跟我說說你今天過得怎麼樣。"
+    },
+    "large": {
+      "example_sentence": "He has a large backpack.",
+      "first_seen": "2026-05-20",
+      "last_seen": "2026-05-20",
+      "meanings": [
+        "大的；巨大的"
+      ],
+      "pos": "adj",
+      "translation": "他有一個很大的背包。"
+    },
+    "wizard": {
+      "example_sentence": "The wizard lives in a tall tower.",
+      "first_seen": "2026-05-20",
+      "last_seen": "2026-05-20",
+      "meanings": [
+        "巫師；魔法師"
+      ],
+      "pos": "n",
+      "translation": "那位巫師住在一座高塔裡。"
+    },
     "cake": {
       "example_sentence": "I want a piece of cake.",
       "first_seen": "2026-05-19",

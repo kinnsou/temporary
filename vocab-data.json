@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-05-19T11:01:01Z",
-    "sourceCount": 197,
-    "includedCount": 189
+    "updatedAt": "2026-05-20T11:01:03Z",
+    "sourceCount": 200,
+    "includedCount": 192
   },
   "words": [
+    {
+      "word": "about",
+      "meaning": "關於",
+      "example": "Tell me about your day.",
+      "translation": "跟我說說你今天過得怎麼樣。",
+      "firstSeen": "2026-05-20",
+      "pos": [
+        "prep",
+        "adv"
+      ]
+    },
+    {
+      "word": "large",
+      "meaning": "大的；巨大的",
+      "example": "He has a large backpack.",
+      "translation": "他有一個很大的背包。",
+      "firstSeen": "2026-05-20",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "wizard",
+      "meaning": "巫師；魔法師",
+      "example": "The wizard lives in a tall tower.",
+      "translation": "那位巫師住在一座高塔裡。",
+      "firstSeen": "2026-05-20",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "cake",
       "meaning": "蛋糕",
