@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-05-20T11:01:03Z",
-    "sourceCount": 200,
-    "includedCount": 192
+    "updatedAt": "2026-05-21T11:01:16Z",
+    "sourceCount": 203,
+    "includedCount": 195
   },
   "words": [
+    {
+      "word": "sister",
+      "meaning": "姊妹；姐姐／妹妹",
+      "example": "My sister helps me with my homework.",
+      "translation": "我姐姐（妹妹）會幫我寫作業。",
+      "firstSeen": "2026-05-21",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "skin",
+      "meaning": "皮膚",
+      "example": "My skin feels dry in winter.",
+      "translation": "冬天我的皮膚會覺得乾。",
+      "firstSeen": "2026-05-21",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "wood",
+      "meaning": "木頭；木材",
+      "example": "The table is made of wood.",
+      "translation": "這張桌子是木頭做的。",
+      "firstSeen": "2026-05-21",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "about",
       "meaning": "關於",
@@ -37,16 +67,6 @@
       ]
     },
     {
-      "word": "cake",
-      "meaning": "蛋糕",
-      "example": "I want a piece of cake.",
-      "translation": "我想要一塊蛋糕。",
-      "firstSeen": "2026-05-19",
-      "pos": [
-        "n"
-      ]
-    },
-    {
       "word": "beautiful",
       "meaning": "漂亮的；美麗的",
       "example": "The sky is beautiful today.",
@@ -57,6 +77,16 @@
       ]
     },
     {
+      "word": "cake",
+      "meaning": "蛋糕",
+      "example": "I want a piece of cake.",
+      "translation": "我想要一塊蛋糕。",
+      "firstSeen": "2026-05-19",
+      "pos": [
+        "n"
+      ]
+    },
+    {
       "word": "finish",
       "meaning": "完成；做完",
       "example": "I will finish my homework before dinner.",
@@ -64,6 +94,16 @@
       "firstSeen": "2026-05-19",
       "pos": [
         "v"
+      ]
+    },
+    {
+      "word": "housework",
+      "meaning": "家事",
+      "example": "I do housework after dinner.",
+      "translation": "我晚餐後做家事。",
+      "firstSeen": "2026-05-18",
+      "pos": [
+        "n"
       ]
     },
     {
@@ -87,26 +127,6 @@
       ]
     },
     {
-      "word": "housework",
-      "meaning": "家事",
-      "example": "I do housework after dinner.",
-      "translation": "我晚餐後做家事。",
-      "firstSeen": "2026-05-18",
-      "pos": [
-        "n"
-      ]
-    },
-    {
-      "word": "helicopter",
-      "meaning": "直升機",
-      "example": "The helicopter flew over the city.",
-      "translation": "直升機飛過城市上空。",
-      "firstSeen": "2026-05-17",
-      "pos": [
-        "n"
-      ]
-    },
-    {
       "word": "back",
       "meaning": "背部；背面",
       "example": "My backpack is on my back.",
@@ -124,6 +144,16 @@
       "firstSeen": "2026-05-17",
       "pos": [
         "v",
+        "n"
+      ]
+    },
+    {
+      "word": "helicopter",
+      "meaning": "直升機",
+      "example": "The helicopter flew over the city.",
+      "translation": "直升機飛過城市上空。",
+      "firstSeen": "2026-05-17",
+      "pos": [
         "n"
       ]
     },

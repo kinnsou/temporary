@@ -3,7 +3,7 @@
     "newWordsMustBeUniqueUntilExhausted": true,
     "reviewFormat": "guided_cloze_with_grammar_chunking",
     "sourceScope": "台灣普遍認定國中必會1000單",
-    "updatedAt": "2026-05-20T11:00:46Z"
+    "updatedAt": "2026-05-21T11:01:10Z"
   },
   "words": {
     "about": {
@@ -18,119 +18,6 @@
         "adv"
       ],
       "translation": "跟我說說你今天過得怎麼樣。"
-    },
-    "large": {
-      "example_sentence": "He has a large backpack.",
-      "first_seen": "2026-05-20",
-      "last_seen": "2026-05-20",
-      "meanings": [
-        "大的；巨大的"
-      ],
-      "pos": "adj",
-      "translation": "他有一個很大的背包。"
-    },
-    "wizard": {
-      "example_sentence": "The wizard lives in a tall tower.",
-      "first_seen": "2026-05-20",
-      "last_seen": "2026-05-20",
-      "meanings": [
-        "巫師；魔法師"
-      ],
-      "pos": "n",
-      "translation": "那位巫師住在一座高塔裡。"
-    },
-    "cake": {
-      "example_sentence": "I want a piece of cake.",
-      "first_seen": "2026-05-19",
-      "last_seen": "2026-05-19",
-      "meanings": [
-        "蛋糕"
-      ],
-      "pos": "n",
-      "translation": "我想要一塊蛋糕。"
-    },
-    "beautiful": {
-      "example_sentence": "The sky is beautiful today.",
-      "first_seen": "2026-05-19",
-      "last_seen": "2026-05-19",
-      "meanings": [
-        "漂亮的；美麗的"
-      ],
-      "pos": "adj",
-      "translation": "今天的天空很美。"
-    },
-    "finish": {
-      "example_sentence": "I will finish my homework before dinner.",
-      "first_seen": "2026-05-19",
-      "last_seen": "2026-05-19",
-      "meanings": [
-        "完成；做完"
-      ],
-      "pos": "v",
-      "translation": "我會在晚餐前把作業寫完。"
-    },
-    "light": {
-      "example_sentence": "Please turn on the light.",
-      "first_seen": "2026-05-18",
-      "last_seen": "2026-05-18",
-      "meanings": [
-        "燈；光"
-      ],
-      "pos": "n",
-      "translation": "請把燈打開。"
-    },
-    "smart": {
-      "example_sentence": "My sister is smart.",
-      "first_seen": "2026-05-18",
-      "last_seen": "2026-05-18",
-      "meanings": [
-        "聰明的"
-      ],
-      "pos": "adj",
-      "translation": "我姊姊很聰明。"
-    },
-    "housework": {
-      "example_sentence": "I do housework after dinner.",
-      "first_seen": "2026-05-18",
-      "last_seen": "2026-05-18",
-      "meanings": [
-        "家事"
-      ],
-      "pos": "n",
-      "translation": "我晚餐後做家事。"
-    },
-    "compare": {
-      "example_sentence": "Compare these two pictures.",
-      "first_seen": "2026-05-16",
-      "last_seen": "2026-05-16",
-      "meanings": [
-        "比較；對照"
-      ],
-      "pos": "v",
-      "translation": "把這兩張照片比較一下。"
-    },
-    "station": {
-      "example_sentence": "We waited for the bus at the station.",
-      "first_seen": "2026-05-16",
-      "last_seen": "2026-05-16",
-      "meanings": [
-        "車站；站（地點）"
-      ],
-      "pos": "n",
-      "translation": "我們在車站等公車。"
-    },
-    "total": {
-      "example_sentence": "The total cost is 300 dollars.",
-      "first_seen": "2026-05-16",
-      "last_seen": "2026-05-16",
-      "meanings": [
-        "總共的；總數"
-      ],
-      "pos": [
-        "adj",
-        "n"
-      ],
-      "translation": "總費用是 300 美元。"
     },
     "adventure": {
       "first_seen": "2025-02-23",
@@ -187,6 +74,17 @@
       ],
       "translation": "我們會在八點前到達學校。"
     },
+    "back": {
+      "example_sentence": "My backpack is on my back.",
+      "first_seen": "2026-05-17",
+      "last_seen": "2026-05-17",
+      "meanings": [
+        "背部",
+        "背面"
+      ],
+      "pos": "n",
+      "translation": "我的背包在我背上。"
+    },
     "balcony": {
       "example_sentence": "She is standing on the balcony.",
       "first_seen": "2026-04-05",
@@ -195,6 +93,16 @@
         "陽台"
       ],
       "translation": "她正站在陽台上。"
+    },
+    "beautiful": {
+      "example_sentence": "The sky is beautiful today.",
+      "first_seen": "2026-05-19",
+      "last_seen": "2026-05-19",
+      "meanings": [
+        "漂亮的；美麗的"
+      ],
+      "pos": "adj",
+      "translation": "今天的天空很美。"
     },
     "behind": {
       "example_sentence": "The cat is behind the chair.",
@@ -302,6 +210,16 @@
       ],
       "pos": "v",
       "translation": "我們要在海灘堆一座沙堡。"
+    },
+    "cake": {
+      "example_sentence": "I want a piece of cake.",
+      "first_seen": "2026-05-19",
+      "last_seen": "2026-05-19",
+      "meanings": [
+        "蛋糕"
+      ],
+      "pos": "n",
+      "translation": "我想要一塊蛋糕。"
     },
     "camera": {
       "example_sentence": "I took a photo with my camera.",
@@ -424,6 +342,16 @@
       "pos": "adj",
       "translation": "這張椅子很舒服。"
     },
+    "compare": {
+      "example_sentence": "Compare these two pictures.",
+      "first_seen": "2026-05-16",
+      "last_seen": "2026-05-16",
+      "meanings": [
+        "比較；對照"
+      ],
+      "pos": "v",
+      "translation": "把這兩張照片比較一下。"
+    },
     "contest": {
       "example_sentence": "She won the singing contest.",
       "first_seen": "2026-03-24",
@@ -529,6 +457,20 @@
       ],
       "translation": "故事裡的龍很強。"
     },
+    "dress": {
+      "example_sentence": "I dress quickly in the morning.",
+      "first_seen": "2026-05-17",
+      "last_seen": "2026-05-17",
+      "meanings": [
+        "穿衣服",
+        "打扮"
+      ],
+      "pos": [
+        "v",
+        "n"
+      ],
+      "translation": "我早上很快就穿好衣服。"
+    },
     "drop": {
       "example_sentence": "I dropped my pencil on the floor.",
       "first_seen": "2026-05-07",
@@ -630,6 +572,16 @@
         "感覺；覺得"
       ],
       "translation": "放學後我覺得很累。"
+    },
+    "finish": {
+      "example_sentence": "I will finish my homework before dinner.",
+      "first_seen": "2026-05-19",
+      "last_seen": "2026-05-19",
+      "meanings": [
+        "完成；做完"
+      ],
+      "pos": "v",
+      "translation": "我會在晚餐前把作業寫完。"
     },
     "first": {
       "example_sentence": "I was first in line.",
@@ -800,6 +752,16 @@
       "pos": "adj",
       "translation": "這個袋子很重。"
     },
+    "helicopter": {
+      "example_sentence": "The helicopter flew over the city.",
+      "first_seen": "2026-05-17",
+      "last_seen": "2026-05-17",
+      "meanings": [
+        "直升機"
+      ],
+      "pos": "n",
+      "translation": "直升機飛過城市上空。"
+    },
     "help": {
       "example_sentence": "Can you help me with my homework?",
       "first_seen": "2026-05-07",
@@ -876,6 +838,16 @@
         "旅館；飯店"
       ],
       "translation": "我們昨晚住在一間不錯的飯店。"
+    },
+    "housework": {
+      "example_sentence": "I do housework after dinner.",
+      "first_seen": "2026-05-18",
+      "last_seen": "2026-05-18",
+      "meanings": [
+        "家事"
+      ],
+      "pos": "n",
+      "translation": "我晚餐後做家事。"
     },
     "hungry": {
       "example_sentence": "I am hungry. Can I have a sandwich?",
@@ -1025,6 +997,16 @@
       ],
       "translation": "飛機很快就會降落。"
     },
+    "large": {
+      "example_sentence": "He has a large backpack.",
+      "first_seen": "2026-05-20",
+      "last_seen": "2026-05-20",
+      "meanings": [
+        "大的；巨大的"
+      ],
+      "pos": "adj",
+      "translation": "他有一個很大的背包。"
+    },
     "leave": {
       "example_sentence": "I have to leave now.",
       "first_seen": "2026-04-03",
@@ -1052,6 +1034,16 @@
       ],
       "pos": "n",
       "translation": "我們在圖書館看書。"
+    },
+    "light": {
+      "example_sentence": "Please turn on the light.",
+      "first_seen": "2026-05-18",
+      "last_seen": "2026-05-18",
+      "meanings": [
+        "燈；光"
+      ],
+      "pos": "n",
+      "translation": "請把燈打開。"
     },
     "live": {
       "example_sentence": "We live near the school.",
@@ -1565,6 +1557,36 @@
       ],
       "translation": "別傻傻的啦。"
     },
+    "sister": {
+      "example_sentence": "My sister helps me with my homework.",
+      "first_seen": "2026-05-21",
+      "last_seen": "2026-05-21",
+      "meanings": [
+        "姊妹；姐姐／妹妹"
+      ],
+      "pos": "n",
+      "translation": "我姐姐（妹妹）會幫我寫作業。"
+    },
+    "skin": {
+      "example_sentence": "My skin feels dry in winter.",
+      "first_seen": "2026-05-21",
+      "last_seen": "2026-05-21",
+      "meanings": [
+        "皮膚"
+      ],
+      "pos": "n",
+      "translation": "冬天我的皮膚會覺得乾。"
+    },
+    "smart": {
+      "example_sentence": "My sister is smart.",
+      "first_seen": "2026-05-18",
+      "last_seen": "2026-05-18",
+      "meanings": [
+        "聰明的"
+      ],
+      "pos": "adj",
+      "translation": "我姊姊很聰明。"
+    },
     "son": {
       "example_sentence": "My son plays basketball after school.",
       "first_seen": "2026-03-27",
@@ -1600,6 +1622,16 @@
         "春天"
       ],
       "translation": "春天是我最喜歡的季節。"
+    },
+    "station": {
+      "example_sentence": "We waited for the bus at the station.",
+      "first_seen": "2026-05-16",
+      "last_seen": "2026-05-16",
+      "meanings": [
+        "車站；站（地點）"
+      ],
+      "pos": "n",
+      "translation": "我們在車站等公車。"
     },
     "store": {
       "example_sentence": "I went to the store with my dad.",
@@ -1736,6 +1768,19 @@
         "prep"
       ],
       "translation": "把書放在盒子上面。"
+    },
+    "total": {
+      "example_sentence": "The total cost is 300 dollars.",
+      "first_seen": "2026-05-16",
+      "last_seen": "2026-05-16",
+      "meanings": [
+        "總共的；總數"
+      ],
+      "pos": [
+        "adj",
+        "n"
+      ],
+      "translation": "總費用是 300 美元。"
     },
     "treasure": {
       "first_seen": "2025-02-23",
@@ -1886,6 +1931,16 @@
       "pos": "n",
       "translation": "窗戶是開著的。"
     },
+    "wizard": {
+      "example_sentence": "The wizard lives in a tall tower.",
+      "first_seen": "2026-05-20",
+      "last_seen": "2026-05-20",
+      "meanings": [
+        "巫師；魔法師"
+      ],
+      "pos": "n",
+      "translation": "那位巫師住在一座高塔裡。"
+    },
     "woman": {
       "example_sentence": "The woman is a teacher.",
       "first_seen": "2026-03-29",
@@ -1895,6 +1950,16 @@
       ],
       "translation": "那位女士是老師。"
     },
+    "wood": {
+      "example_sentence": "The table is made of wood.",
+      "first_seen": "2026-05-21",
+      "last_seen": "2026-05-21",
+      "meanings": [
+        "木頭；木材"
+      ],
+      "pos": "n",
+      "translation": "這張桌子是木頭做的。"
+    },
     "yellow": {
       "example_sentence": "I have a yellow raincoat.",
       "first_seen": "2026-03-31",
@@ -1903,41 +1968,6 @@
         "黃色（的）"
       ],
       "translation": "我有一件黃色的雨衣。"
-    },
-    "helicopter": {
-      "first_seen": "2026-05-17",
-      "last_seen": "2026-05-17",
-      "meanings": [
-        "直升機"
-      ],
-      "pos": "n",
-      "example_sentence": "The helicopter flew over the city.",
-      "translation": "直升機飛過城市上空。"
-    },
-    "back": {
-      "first_seen": "2026-05-17",
-      "last_seen": "2026-05-17",
-      "meanings": [
-        "背部",
-        "背面"
-      ],
-      "pos": "n",
-      "example_sentence": "My backpack is on my back.",
-      "translation": "我的背包在我背上。"
-    },
-    "dress": {
-      "first_seen": "2026-05-17",
-      "last_seen": "2026-05-17",
-      "meanings": [
-        "穿衣服",
-        "打扮"
-      ],
-      "pos": [
-        "v",
-        "n"
-      ],
-      "example_sentence": "I dress quickly in the morning.",
-      "translation": "我早上很快就穿好衣服。"
     }
   }
 }
