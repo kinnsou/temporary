@@ -15,6 +15,7 @@ import re
 import urllib.request
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlparse
 
 TWSE_URL = "https://openapi.twse.com.tw/v1/exchangeReport/TWT48U_ALL"
 TPEX_URL = "https://www.tpex.org.tw/openapi/v1/tpex_exright_prepost"
@@ -205,30 +206,159 @@ def split_morning(content: str) -> dict[str, str]:
         elif first.startswith("🇹🇼"):
             sections["taiwan"] = block.strip()
         elif first.startswith("📈"):
+            # Kept for backward compatibility with older saved briefs, but the
+            # page no longer renders this section because it encouraged generic
+            # filler instead of source-backed news.
             sections["market"] = block.strip()
         elif first.startswith("💬"):
             sections["social"] = block.strip()
     return sections
 
 
-def block_to_html(block: str, *, ordered: bool = True) -> str:
+URL_RE = re.compile(r"https?://[^\s<>()\]\"]+")
+MD_LINK_RE = re.compile(r"\[([^\]]+)\]\((https?://[^\s<>()\]\"]+)\)")
+
+
+def inline_html(text: str) -> str:
+    """Escape text while preserving source links as clickable anchors."""
+    out: list[str] = []
+    pos = 0
+    for m in MD_LINK_RE.finditer(text):
+        out.append(linkify_urls(text[pos:m.start()]))
+        label = html.escape(m.group(1), quote=False)
+        url = html.escape(m.group(2), quote=True)
+        out.append(f"<a href=\"{url}\" target=\"_blank\" rel=\"noopener noreferrer\">{label}</a>")
+        pos = m.end()
+    out.append(linkify_urls(text[pos:]))
+    return "".join(out)
+
+
+def linkify_urls(text: str) -> str:
+    out: list[str] = []
+    pos = 0
+    for m in URL_RE.finditer(text):
+        out.append(html.escape(text[pos:m.start()], quote=False))
+        raw_url = m.group(0).rstrip(".,;，。；）)")
+        trailing = m.group(0)[len(raw_url):]
+        url = html.escape(raw_url, quote=True)
+        label = html.escape(raw_url, quote=False)
+        out.append(f"<a href=\"{url}\" target=\"_blank\" rel=\"noopener noreferrer\">{label}</a>")
+        out.append(html.escape(trailing, quote=False))
+        pos = m.end()
+    out.append(html.escape(text[pos:], quote=False))
+    return "".join(out)
+
+
+def source_label(url: str) -> str:
+    host = urlparse(url).netloc.lower().removeprefix("www.")
+    if not host:
+        return "來源"
+    if host in {"x.com", "twitter.com"}:
+        return "X 原文"
+    if "truthsocial" in host or "supertrumptracker" in host:
+        return "Truth Social"
+    if host.endswith("taipeitimes.com"):
+        return "Taipei Times"
+    if host.endswith("usnews.com"):
+        return "U.S. News"
+    if host.endswith("cnbc.com"):
+        return "CNBC"
+    if host.endswith("kitco.com"):
+        return "Kitco"
+    if host.endswith("aljazeera.com"):
+        return "Al Jazeera"
+    if host.endswith("theguardian.com"):
+        return "The Guardian"
+    if host.endswith("ukrinform.net"):
+        return "Ukrinform"
+    return host
+
+
+def extract_source_links(text: str) -> tuple[str, list[tuple[str, str]]]:
+    """Move inline URLs out of the story body into compact source buttons."""
+    sources: list[tuple[str, str]] = []
+
+    def md_repl(m: re.Match[str]) -> str:
+        label = m.group(1).strip()
+        url = m.group(2).strip()
+        sources.append((label if label and not label.startswith("http") else source_label(url), url))
+        return label
+
+    without_md = MD_LINK_RE.sub(md_repl, text)
+
+    def url_repl(m: re.Match[str]) -> str:
+        raw = m.group(0)
+        url = raw.rstrip(".,;，。；）)")
+        trailing = raw[len(url):]
+        sources.append((source_label(url), url))
+        return trailing
+
+    cleaned = URL_RE.sub(url_repl, without_md)
+    cleaned = re.sub(r"\s+([，。、；：）\)])", r"\1", cleaned)
+    cleaned = re.sub(r"\s{2,}", " ", cleaned).strip()
+
+    deduped: list[tuple[str, str]] = []
+    seen: set[str] = set()
+    for label, url in sources:
+        if url in seen:
+            continue
+        seen.add(url)
+        deduped.append((label, url))
+    return cleaned, deduped
+
+
+def source_links_html(sources: list[tuple[str, str]]) -> str:
+    if not sources:
+        return ""
+    links = "".join(
+        f"<a href=\"{html.escape(url, quote=True)}\" target=\"_blank\" rel=\"noopener noreferrer\">{html.escape(label)}</a>"
+        for label, url in sources
+    )
+    return f"<p class=\"source-links\"><span>來源</span>{links}</p>"
+
+
+def story_card_html(text: str, *, number: int | None = None) -> str:
+    cleaned, sources = extract_source_links(text)
+    marker = f"<div class=\"story-index\">{number:02d}</div>" if number is not None else ""
+    return (
+        f"<article class=\"story-item\">{marker}"
+        f"<div class=\"story-body\"><p>{inline_html(cleaned)}</p>{source_links_html(sources)}</div>"
+        "</article>"
+    )
+
+
+def block_to_html(block: str, *, ordered: bool = True, cards: bool = False) -> str:
     if not block:
         return ""
     lines = [line.strip() for line in block.splitlines() if line.strip()]
     heading = html.escape(lines[0])
     body = lines[1:]
+    items: list[str] = []
     lis: list[str] = []
     paras: list[str] = []
     for line in body:
         m = re.match(r"^(\d+)\.\s*(.+)", line)
         if m and ordered:
-            lis.append(f"<li>{html.escape(m.group(2))}</li>")
+            if cards:
+                items.append(m.group(2))
+            else:
+                lis.append(f"<li>{inline_html(m.group(2))}</li>")
         elif line.startswith("-"):
-            lis.append(f"<li>{html.escape(line.lstrip('- ').strip())}</li>")
+            item = line.lstrip("- ").strip()
+            if cards:
+                items.append(item)
+            else:
+                lis.append(f"<li>{inline_html(item)}</li>")
         else:
-            paras.append(f"<p>{html.escape(line)}</p>")
-    list_tag = "ol" if ordered else "ul"
-    list_html = f"<{list_tag}>" + "".join(lis) + f"</{list_tag}>" if lis else ""
+            paras.append(f"<p>{inline_html(line)}</p>")
+    if cards and items:
+        list_html = "<div class=\"story-list\">" + "".join(
+            story_card_html(item, number=i if ordered else None)
+            for i, item in enumerate(items, start=1)
+        ) + "</div>"
+    else:
+        list_tag = "ol" if ordered else "ul"
+        list_html = f"<{list_tag}>" + "".join(lis) + f"</{list_tag}>" if lis else ""
     return f"<h2>{heading}</h2>{list_html}{''.join(paras)}"
 
 
@@ -290,19 +420,20 @@ def render_html(date: dt.date, rows: list[dict[str, str]], new_observed: list[di
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title>
-  <meta name="description" content="一條網址版台股早報，整合新聞、台股焦點與除權息日曆。" />
+  <meta name="description" content="一條網址版台股早報，整合來源連結、第一手發表與除權息日曆。" />
   <style>
     :root {{
-      --bg: #f3efe7;
-      --paper: #fffaf2;
-      --ink: #29241e;
-      --muted: #70675c;
-      --line: #e3d2b6;
-      --gold: #bd8741;
-      --gold-deep: #875c25;
-      --green: #607756;
-      --red: #b56b59;
-      --shadow: 0 16px 44px rgba(83, 58, 28, 0.13);
+      --bg: #f5f7fb;
+      --paper: #ffffff;
+      --ink: #17202a;
+      --muted: #607080;
+      --line: #dce5ee;
+      --accent: #165a86;
+      --accent-soft: #e7f2fa;
+      --gold: #b88136;
+      --green: #4f7353;
+      --red: #b5534b;
+      --shadow: 0 18px 46px rgba(21, 42, 62, 0.10);
     }}
     * {{ box-sizing: border-box; }}
     html {{ scroll-behavior: smooth; }}
@@ -310,59 +441,93 @@ def render_html(date: dt.date, rows: list[dict[str, str]], new_observed: list[di
       margin: 0;
       color: var(--ink);
       font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
-      line-height: 1.85;
+      line-height: 1.82;
       background:
-        radial-gradient(980px 480px at 110% -10%, rgba(189, 135, 65, 0.18), transparent 55%),
-        radial-gradient(860px 420px at -10% 110%, rgba(96, 119, 86, 0.15), transparent 55%),
-        var(--bg);
+        linear-gradient(180deg, #eef5fb 0%, #f8fafc 40%, #f5f7fb 100%);
     }}
-    body::before {{ content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .045; background-image: radial-gradient(rgba(68,48,24,.32) .7px, transparent .7px); background-size: 4px 4px; }}
-    .wrap {{ position: relative; z-index: 1; width: min(1120px, 92vw); margin: 28px auto 60px; }}
-    .hero {{ position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 30px; padding: clamp(26px, 5vw, 50px); background: linear-gradient(140deg, #fffdf8 0%, #fff3df 100%); box-shadow: var(--shadow); }}
-    .hero::after {{ content: ""; position: absolute; right: -120px; top: -120px; width: 340px; height: 340px; border-radius: 50%; background: radial-gradient(circle, rgba(189,135,65,.28) 0%, rgba(189,135,65,0) 70%); }}
+    .wrap {{ width: min(1160px, 92vw); margin: 24px auto 58px; }}
+    .hero {{
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: clamp(24px, 5vw, 48px);
+      background: linear-gradient(135deg, #ffffff 0%, #eef7fd 100%);
+      box-shadow: var(--shadow);
+    }}
     .badge-row {{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:18px; }}
-    .badge {{ display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border-radius:999px; border:1px solid #ead5ae; background:#fff7e8; color:var(--gold-deep); font-size:13px; font-weight:800; letter-spacing:.02em; }}
-    h1 {{ margin:0 0 12px; font-family:"Noto Serif TC", "PMingLiU", serif; font-size:clamp(34px, 6vw, 60px); line-height:1.14; color:#2b2118; }}
-    h2, h3 {{ font-family:"Noto Serif TC", "PMingLiU", serif; line-height:1.35; color:#33281d; }}
-    .lead {{ margin:0; max-width:72ch; color:var(--muted); font-size:clamp(16px, 2.05vw, 19px); }}
+    .badge {{ display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border-radius:999px; background:var(--accent-soft); color:var(--accent); font-size:13px; font-weight:900; letter-spacing:.02em; }}
+    h1 {{ margin:0 0 12px; font-family:"Noto Serif TC", "PMingLiU", serif; font-size:clamp(34px, 6vw, 58px); line-height:1.14; color:#111b24; }}
+    h2, h3 {{ font-family:"Noto Serif TC", "PMingLiU", serif; line-height:1.35; color:#162333; }}
+    .lead {{ margin:0; max-width:76ch; color:var(--muted); font-size:clamp(16px, 2.05vw, 19px); }}
     .hero-actions {{ margin-top:22px; display:flex; flex-wrap:wrap; gap:12px; }}
-    .button {{ display:inline-block; padding:12px 18px; border-radius:14px; text-decoration:none; font-weight:800; }}
-    .button.primary {{ color:white; background:linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%); box-shadow:0 10px 20px rgba(135,92,37,.24); }}
-    .button.secondary {{ color:var(--ink); background:rgba(255,255,255,.75); border:1px solid var(--line); }}
+    .button {{ display:inline-block; padding:12px 18px; border-radius:14px; text-decoration:none; font-weight:900; }}
+    .button.primary {{ color:white; background:linear-gradient(180deg, #1e6f9f 0%, #164d78 100%); box-shadow:0 10px 20px rgba(22,77,120,.22); }}
+    .button.secondary {{ color:var(--accent); background:#fff; border:1px solid var(--line); }}
     .grid {{ display:grid; gap:18px; margin-top:22px; }}
     .two {{ grid-template-columns: 1fr 1fr; }}
-    .three {{ grid-template-columns: repeat(3, 1fr); }}
-    .card {{ border:1px solid var(--line); border-radius:22px; background:var(--paper); padding:22px; box-shadow:0 10px 24px rgba(83,58,28,.08); }}
-    .card h2, .card h3 {{ margin:0 0 12px; }}
-    .card p {{ margin: 0 0 12px; }}
-    .eyebrow {{ margin:0 0 8px; color:var(--gold-deep); font-size:13px; text-transform:uppercase; letter-spacing:.09em; font-weight:800; }}
-    .metric {{ font-size: clamp(30px, 5vw, 46px); font-weight:900; line-height:1; color:#31261b; }}
+    .card, .section-card {{
+      border:1px solid var(--line);
+      border-radius:22px;
+      background:var(--paper);
+      padding:22px;
+      box-shadow:0 10px 24px rgba(21,42,62,.06);
+    }}
+    .section-card h2, .card h2, .card h3 {{ margin:0 0 14px; }}
+    .section-card p, .card p {{ margin: 0 0 12px; }}
+    .section-card a, .card a {{ color:var(--accent); font-weight:900; text-underline-offset:3px; overflow-wrap:anywhere; }}
+    .news-board {{ display:grid; grid-template-columns: 1.18fr .82fr; gap:18px; margin-top:22px; align-items:start; }}
+    .news-board .full {{ grid-column: 1 / -1; }}
+    .eyebrow {{ margin:0 0 8px; color:var(--accent); font-size:12px; text-transform:uppercase; letter-spacing:.12em; font-weight:900; }}
     .muted {{ color: var(--muted); }}
-    ol, ul {{ margin: 0; padding-left: 22px; }}
-    li + li {{ margin-top: 8px; }}
-    .focus {{ background: linear-gradient(180deg, #fffdf9 0%, #f7efe2 100%); }}
-    .news h2 {{ font-size: 22px; }}
-    .news ol {{ padding-left: 24px; }}
+    .story-list {{ display:grid; gap:12px; }}
+    .story-item {{
+      display:grid;
+      grid-template-columns: 42px 1fr;
+      gap:14px;
+      padding:15px;
+      border:1px solid #e7edf3;
+      border-radius:18px;
+      background:#fbfdff;
+    }}
+    .story-index {{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      background:var(--accent-soft);
+      color:var(--accent);
+      font-weight:900;
+      line-height:1;
+    }}
+    .story-body p {{ margin:0; }}
+    .source-links {{ margin-top:10px !important; display:flex; flex-wrap:wrap; align-items:center; gap:8px; color:var(--muted); font-size:13px; }}
+    .source-links span {{ font-weight:900; color:#485868; }}
+    .source-links a {{ display:inline-flex; align-items:center; padding:4px 9px; border-radius:999px; background:#edf5fb; border:1px solid #d7e8f4; text-decoration:none; font-size:13px; }}
+    .exrights-shell {{ margin-top:24px; border-top:3px solid #d7e3eb; padding-top:22px; }}
+    .section-heading {{ display:flex; justify-content:space-between; gap:18px; align-items:end; margin-bottom:16px; }}
+    .section-heading h2 {{ margin:0; font-size:clamp(26px, 4vw, 36px); }}
+    .section-heading p {{ margin:0; max-width:68ch; }}
+    .count-tag {{ display:inline-flex; margin-left:8px; padding:2px 9px; border-radius:999px; background:#edf5fb; color:var(--accent); font-size:13px; font-weight:900; vertical-align:middle; }}
     .radar {{ border-left: 5px solid var(--green); }}
     .new {{ border-left: 5px solid var(--red); }}
-    .table-wrap {{ width:100%; overflow:auto; border:1px solid var(--line); border-radius:16px; background:#fffdf8; }}
+    .table-wrap {{ width:100%; overflow:auto; border:1px solid var(--line); border-radius:16px; background:#fff; }}
     table {{ width:100%; border-collapse:collapse; min-width:860px; }}
-    th, td {{ padding:12px 14px; border-bottom:1px solid #eadcc7; text-align:left; vertical-align:top; }}
-    th {{ color:#6d5635; background:#fff4df; font-size:13px; letter-spacing:.04em; }}
-    td.date {{ white-space:nowrap; font-weight:800; color:#5e6f4d; }}
+    th, td {{ padding:12px 14px; border-bottom:1px solid #e5edf4; text-align:left; vertical-align:top; }}
+    th {{ color:#4a5c69; background:#f0f6fb; font-size:13px; letter-spacing:.04em; }}
+    td.date {{ white-space:nowrap; font-weight:900; color:#426848; }}
     td span {{ color:var(--muted); font-size:13px; }}
-    .pill {{ display:inline-flex; padding:3px 9px; border-radius:999px; background:#f0e2ca; color:#6b4b20; font-weight:800; font-size:13px; }}
+    .pill {{ display:inline-flex; padding:3px 9px; border-radius:999px; background:#edf3e9; color:#3f633f; font-weight:900; font-size:13px; }}
     .detail-item {{ display:inline-block; white-space:nowrap; margin-right:3px; }}
-    .detail-label {{ color:#7a6040; font-weight:800; }}
-    .dividend-value {{ color:#2f261d; font-size:15px; font-weight:900; letter-spacing:.01em; }}
-    .dividend-value.is-mid {{ font-size:18px; color:#51391f; }}
-    .dividend-value.is-high {{ font-size:21px; color:#c7372f; text-shadow:0 1px 0 rgba(255,255,255,.75); }}
-    .last-close {{ white-space:nowrap; color:#2f261d; font-size:15px; }}
+    .detail-label {{ color:#5d744c; font-weight:900; }}
+    .dividend-value {{ color:#25313a; font-size:15px; font-weight:900; letter-spacing:.01em; }}
+    .dividend-value.is-mid {{ font-size:18px; color:#3d532c; }}
+    .dividend-value.is-high {{ font-size:21px; color:#c7372f; }}
+    .last-close {{ white-space:nowrap; color:#25313a; font-size:15px; }}
     .close-date {{ color:var(--muted); font-size:12px; }}
     .table-note {{ margin-top:10px !important; }}
-    .footer-note {{ margin-top:22px; text-align:center; color:#887964; font-size:13px; }}
-    @media (max-width: 980px) {{ .two, .three {{ grid-template-columns: 1fr; }} }}
-    @media (max-width: 560px) {{ .wrap {{ margin-top:18px; }} .hero, .card {{ border-radius:18px; }} .button {{ width:100%; text-align:center; }} }}
+    .footer-note {{ margin-top:22px; text-align:center; color:#7a8792; font-size:13px; }}
+    @media (max-width: 980px) {{ .two, .news-board {{ grid-template-columns: 1fr; }} .section-heading {{ display:block; }} }}
+    @media (max-width: 560px) {{ .wrap {{ margin-top:16px; }} .hero, .card, .section-card {{ border-radius:18px; }} .button {{ width:100%; text-align:center; }} .story-item {{ grid-template-columns: 1fr; }} .story-index {{ width:36px; height:36px; }} }}
   </style>
 </head>
 <body>
@@ -375,57 +540,50 @@ def render_html(date: dt.date, rows: list[dict[str, str]], new_observed: list[di
         <span class="badge">除權息日曆</span>
       </div>
       <h1>{title}</h1>
-      <p class="lead">新聞重點、台股焦點與除權息日曆整理成一頁；新聞放前面，除權息放最後補充。</p>
+      <p class="lead">追蹤國際大事、台灣要聞、第一手發言與 TWSE / TPEx 官方除權息日程。</p>
       <div class="hero-actions">
         <a class="button primary" href="#brief">看今日早報</a>
         <a class="button secondary" href="#radar">看除權息日曆</a>
       </div>
     </section>
 
-    <section id="brief" class="grid two" aria-label="morning-brief">
-      <article class="card news">{block_to_html(sections.get('global', ''))}</article>
-      <article class="card news">{block_to_html(sections.get('taiwan', ''))}</article>
-      <article class="card news">{block_to_html(sections.get('market', ''), ordered=False)}</article>
-      <article class="card news">{block_to_html(sections.get('social', ''), ordered=False)}</article>
+    <section id="brief" class="news-board" aria-label="morning-brief">
+      <article class="section-card full news">{block_to_html(sections.get('global', ''), cards=True)}</article>
+      <article class="section-card news">{block_to_html(sections.get('taiwan', ''), cards=True)}</article>
+      <article class="section-card news">{block_to_html(sections.get('social', ''), ordered=False, cards=True)}</article>
     </section>
 
-    <section id="radar" class="grid three" aria-label="ex-rights-summary">
-      <article class="card focus">
-        <p class="eyebrow">New Notices</p>
-        <div class="metric">{len(new_observed)}</div>
-        <p class="muted">今晨新出現的個股除權息公告。</p>
-      </article>
-      <article class="card focus">
-        <p class="eyebrow">Next 7 Days</p>
-        <div class="metric">{len(week_stock)}</div>
-        <p class="muted">{html.escape(date.strftime('%m/%d'))}～{html.escape(week_end.strftime('%m/%d'))} 一週內個股；ETF / 債券型商品另有 {len(week_fund)} 檔未列。</p>
-      </article>
-      <article class="card focus">
-        <p class="eyebrow">1–2 Months</p>
-        <div class="metric">{len(future_window_stock)}</div>
-        <p class="muted">{html.escape(future_label)} 之間已排程個股。</p>
-      </article>
-    </section>
+    <section id="radar" class="exrights-shell" aria-label="ex-rights-calendar">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">TWSE / TPEx Official Calendar</p>
+          <h2>除權息日曆</h2>
+        </div>
+        <p class="muted">TWSE / TPEx 官方日程，含今晨新增、一週內與遠期個股。</p>
+      </div>
 
-    <section class="grid" aria-label="new-ex-rights">
-      <article class="card new">
-        <p class="eyebrow">First Look</p>
-        <h2>今晨新增除權息公告</h2>
-        {new_table}
-      </article>
-    </section>
+      <section class="grid" aria-label="new-ex-rights">
+        <article class="card new">
+          <p class="eyebrow">First Look</p>
+          <h2>今晨新增除權息公告 <span class="count-tag">{len(new_observed)} 檔</span></h2>
+          {new_table}
+        </article>
+      </section>
 
-    <section class="grid two" aria-label="ex-rights-radar">
-      <article class="card radar">
-        <p class="eyebrow">Dividend Radar</p>
-        <h2>一週內除權息個股</h2>
-        {render_table(week_stock)}
-      </article>
-      <article class="card radar">
-        <p class="eyebrow">Forward Queue</p>
-        <h2>1-2 個月內 遠期除權息</h2>
-        {render_table(future_window_stock, max_rows=12)}
-      </article>
+      <section class="grid two" aria-label="ex-rights-radar">
+        <article class="card radar">
+          <p class="eyebrow">Next 7 Days</p>
+          <h2>一週內除權息個股 <span class="count-tag">{len(week_stock)} 檔</span></h2>
+          <p class="muted">{html.escape(date.strftime('%m/%d'))}～{html.escape(week_end.strftime('%m/%d'))}；ETF / 債券型商品另有 {len(week_fund)} 檔未列。</p>
+          {render_table(week_stock)}
+        </article>
+        <article class="card radar">
+          <p class="eyebrow">Forward Queue</p>
+          <h2>1-2 個月內 遠期除權息 <span class="count-tag">{len(future_window_stock)} 檔</span></h2>
+          <p class="muted">{html.escape(future_label)} 之間已排程個股。</p>
+          {render_table(future_window_stock, max_rows=15)}
+        </article>
+      </section>
     </section>
 
     <p class="footer-note">資料：TWSE / TPEx · market-briefs/market-brief-{date.isoformat()}.html</p>
