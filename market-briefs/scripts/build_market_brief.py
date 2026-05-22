@@ -518,7 +518,7 @@ def render_news_items(stories: list[Story]) -> str:
     for idx, story in enumerate(stories, start=1):
         num_cls = "num accent" if idx == 1 else "num"
         source = f'<a href="{esc_attr(story.source_url)}">{esc(story.source_label)}</a>' if story.source_url else esc(story.source_label)
-        suffix = "" if story.title.endswith(("。", "！", "？", ".", "…")) else "。"
+        suffix = "" if story.title.endswith(("。", "！", "？", ".")) else "。"
         parts.append(f"""        <article class="news-item">
           <div class="{num_cls}">{idx:02d}</div>
           <div>
