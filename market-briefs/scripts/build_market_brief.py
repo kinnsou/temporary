@@ -148,7 +148,10 @@ def tx_night_url(query_date: dt.date) -> str:
 
 def fetch_tx_night_snapshot(date: dt.date) -> dict[str, str]:
     """Fetch previous night-session TX close from TAIFEX when available."""
-    query_date = date - dt.timedelta(days=1)
+    # TAIFEX marks the after-hours session by the calendar date it ends;
+    # the useful pre-open value is the TX night-session close at 05:00 on
+    # the brief date, not the previous calendar date.
+    query_date = date
     url = tx_night_url(query_date)
     fallback = {
         "label": "TX Night · 昨夜盤 05:00",
@@ -703,13 +706,13 @@ def render_html(date: dt.date, rows: list[dict[str, str]], new_observed: list[di
 <div class="container">
   <header class="masthead">
     <div>
-      <h1>早報</h1>
+      <h1>新聞摘要</h1>
       <p class="en-line">Market <span class="amp">&amp;</span> Brief</p>
     </div>
     <div class="masthead-meta">
       <div class="row"><span class="label">Date</span><span class="val">{esc(en_full_date(date))}</span></div>
       <div class="row"><span class="label">中文日期</span><span class="val tc">{esc(zh_full_date(date))}</span></div>
-      <div class="row"><span class="label">Edition</span><span class="val">台股早報</span></div>
+      <div class="row"><span class="label">Edition</span><span class="val">Daily Express</span></div>
     </div>
   </header>
 </div>
