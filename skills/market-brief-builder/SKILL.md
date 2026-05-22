@@ -18,6 +18,7 @@ description: Build, update, debug, or manually rerun Mark's one-link Taiwan mark
 
 - News first: masthead → pulse → hero → international news → Taiwan news → topic voices → dividend radar.
 - Masthead fixed labels: the large Chinese title is `新聞摘要`; the right-side Edition value is English-only: `Daily Express`.
+- Heading/display typography must stay at `font-weight <= 700`. Do not use 800/900 for masthead, section titles, hero numbers, stats, or other title-like text.
 - In the three-big-block hero layout, the second block is fixed to Taiwan index futures night-session close (`TX Night · 昨夜盤 05:00`, TAIFEX); do not replace it with a world-news summary. Fetch by the brief date itself, because TAIFEX labels the after-hours session by the calendar date it ends at 05:00. The dividend block comes after it.
 - No `📈 台股焦點` section.
 - The visible page must read like a finished publication. Do not expose workflow terms such as `source-first`, `no filler`, `Filler Removed`, `0段`, `單一 responsive HTML`, or quality/debug notes.
@@ -32,7 +33,7 @@ description: Build, update, debug, or manually rerun Mark's one-link Taiwan mark
 2. Build: `python3 /home/kurohime/.openclaw/workspace/market-briefs/scripts/build_market_brief.py --date YYYY-MM-DD`.
 3. Verify the generated HTML contains the approved template markers: `class="masthead"`, `class="news-grid"`, `class="tweet-card"`, `class="div-table"`.
 4. Verify it does not contain old-layout markers or forbidden text: `story-item`, `source-links`, `台股焦點`, `source-first`, `Filler Removed`, `午間快報`.
-5. Verify masthead / hero requirements: `<h1>新聞摘要</h1>`, `Edition` = `Daily Express`, and the second hero stat is `TX Night · 昨夜盤 05:00` with a TAIFEX source.
+5. Verify masthead / hero requirements: `<h1>新聞摘要</h1>`, `Edition` = `Daily Express`, heading/display `font-weight` never exceeds 700, and the second hero stat is `TX Night · 昨夜盤 05:00` with a TAIFEX source.
 6. Commit only relevant market-brief files and push `origin master`.
 
 ## Persistent update rule
