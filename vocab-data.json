@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-05-21T11:01:16Z",
-    "sourceCount": 203,
-    "includedCount": 195
+    "updatedAt": "2026-05-22T11:01:22Z",
+    "sourceCount": 206,
+    "includedCount": 198
   },
   "words": [
+    {
+      "word": "dinosaur",
+      "meaning": "恐龍",
+      "example": "My son likes dinosaurs.",
+      "translation": "我兒子喜歡恐龍。",
+      "firstSeen": "2026-05-22",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "hair",
+      "meaning": "頭髮",
+      "example": "Her hair is long.",
+      "translation": "她的頭髮很長。",
+      "firstSeen": "2026-05-22",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "quite",
+      "meaning": "相當；蠻（很）",
+      "example": "It is quite cold today.",
+      "translation": "今天蠻冷的。",
+      "firstSeen": "2026-05-22",
+      "pos": [
+        "adv"
+      ]
+    },
     {
       "word": "sister",
       "meaning": "姊妹；姐姐／妹妹",

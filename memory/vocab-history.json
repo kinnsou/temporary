@@ -438,6 +438,16 @@
       ],
       "translation": "把 12 除以 3。"
     },
+    "dinosaur": {
+      "example_sentence": "My son likes dinosaurs.",
+      "first_seen": "2026-05-22",
+      "last_seen": "2026-05-22",
+      "meanings": [
+        "恐龍"
+      ],
+      "pos": "n",
+      "translation": "我兒子喜歡恐龍。"
+    },
     "doctor": {
       "example_sentence": "The doctor helps sick people.",
       "first_seen": "2026-05-08",
@@ -722,6 +732,16 @@
         "n"
       ],
       "translation": "你猜得出答案嗎？"
+    },
+    "hair": {
+      "example_sentence": "Her hair is long.",
+      "first_seen": "2026-05-22",
+      "last_seen": "2026-05-22",
+      "meanings": [
+        "頭髮"
+      ],
+      "pos": "n",
+      "translation": "她的頭髮很長。"
     },
     "happy": {
       "example_sentence": "I am happy today.",
@@ -1401,6 +1421,16 @@
         "安靜的"
       ],
       "translation": "在圖書館請安靜。"
+    },
+    "quite": {
+      "example_sentence": "It is quite cold today.",
+      "first_seen": "2026-05-22",
+      "last_seen": "2026-05-22",
+      "meanings": [
+        "相當；蠻（很）"
+      ],
+      "pos": "adv",
+      "translation": "今天蠻冷的。"
     },
     "rainbow": {
       "example_sentence": "I can see a rainbow after the rain.",
