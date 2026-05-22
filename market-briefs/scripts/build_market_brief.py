@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """Build the one-link Taiwan market morning brief page.
 
-Sources are official structured OpenAPI endpoints, not scraped HTML:
-- TWSE listed ex-right/ex-dividend schedule
-- TPEx OTC ex-right/ex-dividend schedule
+The page layout intentionally follows the approved package template at:
+NEWS/market-brief-package/market-brief-2026-05-21-noon.html
+
+News content comes from memory/daily-tasks.json; dividend data comes from
+TWSE / TPEx official structured endpoints.
 """
 from __future__ import annotations
 
@@ -13,6 +15,7 @@ import html
 import json
 import re
 import urllib.request
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
@@ -24,6 +27,40 @@ TPEX_CLOSE_URL = "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_
 REPO_ROOT = Path(__file__).resolve().parents[2]
 PROJECT_DIR = Path(__file__).resolve().parents[1]
 DAILY_TASKS = REPO_ROOT / "memory" / "daily-tasks.json"
+TEMPLATE_PATH = REPO_ROOT / "NEWS" / "market-brief-package" / "market-brief-2026-05-21-noon.html"
+
+URL_RE = re.compile(r"https?://[^\s<>()\]\"]+")
+MD_LINK_RE = re.compile(r"\[([^\]]+)\]\((https?://[^\s<>()\]\"]+)\)")
+DATE_RE = re.compile(r"20\d{2}-\d{2}-\d{2}")
+
+
+@dataclass
+class Story:
+    title: str
+    body: str
+    tag: str
+    source_label: str
+    source_url: str
+
+
+@dataclass
+class Voice:
+    person: str
+    handle: str
+    summary_title: str
+    summary_body: str
+    source_label: str
+    source_url: str
+    avatar_class: str
+    avatar_text: str
+
+
+def esc(value: Any) -> str:
+    return html.escape(str(value or ""), quote=False)
+
+
+def esc_attr(value: Any) -> str:
+    return html.escape(str(value or ""), quote=True)
 
 
 def roc_to_date(value: str) -> dt.date | None:
@@ -50,7 +87,7 @@ def fetch_json(url: str) -> list[dict[str, Any]]:
 
 def clean_num(value: Any, *, blank: str = "未公告") -> str:
     s = str(value or "").strip()
-    if not s or s == "0" or s == "0.00" or s == "0.000000" or s == "0.00000000":
+    if not s or s in {"0", "0.00", "0.000000", "0.00000000"}:
         return blank
     if "尚未" in s:
         return "未公告"
@@ -70,13 +107,7 @@ def to_float(value: Any) -> float | None:
 
 
 def fetch_latest_close_prices() -> dict[tuple[str, str], dict[str, str]]:
-    """Return latest official close prices by (market, code).
-
-    The morning run happens before the Taiwan market opens, so these official
-    daily-close endpoints normally represent the previous trading day's close.
-    If either source is temporarily unavailable, keep the page build alive and
-    leave affected rows blank rather than dropping the morning brief.
-    """
+    """Return latest official close prices by (market, code)."""
     prices: dict[tuple[str, str], dict[str, str]] = {}
     sources = [
         ("上市", TWSE_CLOSE_URL, "Code", "Name", "ClosingPrice"),
@@ -149,7 +180,7 @@ def normalize_rows(now: dt.datetime) -> list[dict[str, str]]:
 
 def is_stock(row: dict[str, str]) -> bool:
     # Common Taiwan listed/OTC stocks are four numeric digits. This keeps ETFs,
-    # bond ETFs, REITs, ETNs, and active fund tickers out of the "個股" table.
+    # bond ETFs, REITs, ETNs, and active fund tickers out of the individual-stock tables.
     return bool(re.fullmatch(r"\d{4}", row.get("code", "")))
 
 
@@ -163,27 +194,6 @@ def add_months(value: dt.date, months: int) -> dt.date:
     month = month % 12 + 1
     month_days = [31, 29 if year % 4 == 0 and (year % 100 != 0 or year % 400 == 0) else 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     return dt.date(year, month, min(value.day, month_days[month - 1]))
-
-
-def dividend_value_html(value: str) -> str:
-    amount = to_float(value)
-    classes = ["dividend-value"]
-    if amount is not None and amount >= 5:
-        classes.append("is-high")
-    elif amount is not None and amount >= 3:
-        classes.append("is-mid")
-    return f"<span class='{' '.join(classes)}'>{html.escape(value)}</span>"
-
-
-def close_price_html(row: dict[str, str]) -> str:
-    close = row.get("last_close", "—") or "—"
-    if close == "—":
-        return "<span class='muted'>—</span>"
-    close_date = row.get("last_close_date", "")
-    date_hint = ""
-    if close_date:
-        date_hint = f"<br><span class='close-date'>{html.escape(close_date[5:].replace('-', '/'))}</span>"
-    return f"<strong class='last-close'>{html.escape(close)}</strong>{date_hint}"
 
 
 def load_morning_content(date_str: str) -> str:
@@ -206,198 +216,346 @@ def split_morning(content: str) -> dict[str, str]:
         elif first.startswith("🇹🇼"):
             sections["taiwan"] = block.strip()
         elif first.startswith("📈"):
-            # Kept for backward compatibility with older saved briefs, but the
-            # page no longer renders this section because it encouraged generic
-            # filler instead of source-backed news.
+            # Older cached briefs may contain this block, but the V2 page does not render it.
             sections["market"] = block.strip()
         elif first.startswith("💬"):
             sections["social"] = block.strip()
     return sections
 
 
-URL_RE = re.compile(r"https?://[^\s<>()\]\"]+")
-MD_LINK_RE = re.compile(r"\[([^\]]+)\]\((https?://[^\s<>()\]\"]+)\)")
-
-
-def inline_html(text: str) -> str:
-    """Escape text while preserving source links as clickable anchors."""
-    out: list[str] = []
-    pos = 0
-    for m in MD_LINK_RE.finditer(text):
-        out.append(linkify_urls(text[pos:m.start()]))
-        label = html.escape(m.group(1), quote=False)
-        url = html.escape(m.group(2), quote=True)
-        out.append(f"<a href=\"{url}\" target=\"_blank\" rel=\"noopener noreferrer\">{label}</a>")
-        pos = m.end()
-    out.append(linkify_urls(text[pos:]))
-    return "".join(out)
-
-
-def linkify_urls(text: str) -> str:
-    out: list[str] = []
-    pos = 0
-    for m in URL_RE.finditer(text):
-        out.append(html.escape(text[pos:m.start()], quote=False))
-        raw_url = m.group(0).rstrip(".,;，。；）)")
-        trailing = m.group(0)[len(raw_url):]
-        url = html.escape(raw_url, quote=True)
-        label = html.escape(raw_url, quote=False)
-        out.append(f"<a href=\"{url}\" target=\"_blank\" rel=\"noopener noreferrer\">{label}</a>")
-        out.append(html.escape(trailing, quote=False))
-        pos = m.end()
-    out.append(html.escape(text[pos:], quote=False))
-    return "".join(out)
-
-
-def source_label(url: str) -> str:
+def source_label_from_url(url: str) -> str:
     host = urlparse(url).netloc.lower().removeprefix("www.")
     if not host:
         return "來源"
+    mapping = [
+        ("aljazeera.com", "Al Jazeera"),
+        ("taipeitimes.com", "Taipei Times"),
+        ("theguardian.com", "The Guardian"),
+        ("ukrinform.net", "Ukrinform"),
+        ("usnews.com", "U.S. News"),
+        ("cnbc.com", "CNBC"),
+        ("kitco.com", "Kitco"),
+        ("cna.com.tw", "中央社"),
+        ("reuters.com", "Reuters"),
+        ("apnews.com", "AP"),
+        ("tradingeconomics.com", "Trading Economics"),
+        ("twse.com.tw", "TWSE"),
+        ("taifex.com.tw", "TAIFEX"),
+        ("tpex.org.tw", "TPEx"),
+    ]
     if host in {"x.com", "twitter.com"}:
         return "X 原文"
     if "truthsocial" in host or "supertrumptracker" in host:
         return "Truth Social"
-    if host.endswith("taipeitimes.com"):
-        return "Taipei Times"
-    if host.endswith("usnews.com"):
-        return "U.S. News"
-    if host.endswith("cnbc.com"):
-        return "CNBC"
-    if host.endswith("kitco.com"):
-        return "Kitco"
-    if host.endswith("aljazeera.com"):
-        return "Al Jazeera"
-    if host.endswith("theguardian.com"):
-        return "The Guardian"
-    if host.endswith("ukrinform.net"):
-        return "Ukrinform"
+    for suffix, label in mapping:
+        if host.endswith(suffix):
+            return label
     return host
 
 
-def extract_source_links(text: str) -> tuple[str, list[tuple[str, str]]]:
-    """Move inline URLs out of the story body into compact source buttons."""
-    sources: list[tuple[str, str]] = []
+def extract_links(text: str) -> tuple[str, list[tuple[str, str]]]:
+    links: list[tuple[str, str]] = []
 
     def md_repl(m: re.Match[str]) -> str:
         label = m.group(1).strip()
         url = m.group(2).strip()
-        sources.append((label if label and not label.startswith("http") else source_label(url), url))
+        links.append((label if label and not label.startswith("http") else source_label_from_url(url), url))
         return label
 
-    without_md = MD_LINK_RE.sub(md_repl, text)
+    text = MD_LINK_RE.sub(md_repl, text)
 
     def url_repl(m: re.Match[str]) -> str:
         raw = m.group(0)
         url = raw.rstrip(".,;，。；）)")
         trailing = raw[len(url):]
-        sources.append((source_label(url), url))
+        links.append((source_label_from_url(url), url))
         return trailing
 
-    cleaned = URL_RE.sub(url_repl, without_md)
-    cleaned = re.sub(r"\s+([，。、；：）\)])", r"\1", cleaned)
-    cleaned = re.sub(r"\s{2,}", " ", cleaned).strip()
+    text = URL_RE.sub(url_repl, text)
+    text = re.sub(r"\s+([，。、；：）\)])", r"\1", text)
+    text = re.sub(r"\s{2,}", " ", text).strip()
 
     deduped: list[tuple[str, str]] = []
     seen: set[str] = set()
-    for label, url in sources:
+    for label, url in links:
         if url in seen:
             continue
         seen.add(url)
         deduped.append((label, url))
-    return cleaned, deduped
+    return text, deduped
 
 
-def source_links_html(sources: list[tuple[str, str]]) -> str:
-    if not sources:
-        return ""
-    links = "".join(
-        f"<a href=\"{html.escape(url, quote=True)}\" target=\"_blank\" rel=\"noopener noreferrer\">{html.escape(label)}</a>"
-        for label, url in sources
-    )
-    return f"<p class=\"source-links\"><span>來源</span>{links}</p>"
+def extract_source_hint(text: str, links: list[tuple[str, str]]) -> tuple[str, str]:
+    """Return (clean_text, source_label). Pull a trailing parenthetical into the source label."""
+    label = links[0][0] if links else "來源"
+    m = re.search(r"[（(]([^（）()]*?(?:20\d{2}-\d{2}-\d{2})[^（）()]*?)[）)]\s*$", text)
+    if m:
+        label = m.group(1).strip()
+        text = text[:m.start()].strip()
+    return text.strip(), label
 
 
-def story_card_html(text: str, *, number: int | None = None) -> str:
-    cleaned, sources = extract_source_links(text)
-    marker = f"<div class=\"story-index\">{number:02d}</div>" if number is not None else ""
-    cls = "story-item" if number is not None else "story-item no-index"
-    return (
-        f"<article class=\"{cls}\">{marker}"
-        f"<div class=\"story-body\"><p>{inline_html(cleaned)}</p>{source_links_html(sources)}</div>"
-        "</article>"
-    )
+def shorten(text: str, max_len: int) -> str:
+    text = re.sub(r"\s+", " ", text).strip(" ，。、；：")
+    return text if len(text) <= max_len else text[: max_len - 1].rstrip() + "…"
 
 
-def block_to_html(block: str, *, ordered: bool = True, cards: bool = False) -> str:
+def split_title_body(text: str) -> tuple[str, str]:
+    text = text.strip()
+    bracket = re.match(r"^【(.{2,34}?)】\s*(.+)$", text)
+    if bracket:
+        return shorten(bracket.group(1), 24), bracket.group(2).strip()
+
+    for sep in ["；", "。", "，", "：", ":"]:
+        idx = text.find(sep)
+        if 6 <= idx <= 34:
+            title = text[:idx]
+            body = text[idx + 1 :].strip()
+            return shorten(title, 24), body or text
+    return shorten(text, 24), text
+
+
+def infer_tag(text: str, fallback: str) -> str:
+    rules = [
+        (r"伊朗|中東|荷姆茲|油價|波灣", "Middle East · Energy"),
+        (r"烏克蘭|俄羅斯|無人機|戰爭", "War · Security"),
+        (r"中國|美中|關稅|稀土|礦產|洪水", "China · Policy"),
+        (r"Fed|聯準會|美元|金價|殖利率|降息|CPI|通膨", "Rates · Commodities"),
+        (r"台海|國防|軍售|國安|賴清德", "Taiwan · Security"),
+        (r"外銷|接單|半導體|AI|HPC|台股", "Taiwan · Markets"),
+        (r"疫情|伊波拉|災", "Health · Disaster"),
+    ]
+    for pattern, tag in rules:
+        if re.search(pattern, text, re.I):
+            return tag
+    return shorten(fallback.split(",")[0], 28)
+
+
+def parse_item_lines(block: str, *, ordered: bool) -> list[str]:
     if not block:
-        return ""
+        return []
     lines = [line.strip() for line in block.splitlines() if line.strip()]
-    heading = html.escape(lines[0])
-    body = lines[1:]
     items: list[str] = []
-    lis: list[str] = []
-    paras: list[str] = []
-    for line in body:
-        m = re.match(r"^(\d+)\.\s*(.+)", line)
-        if m and ordered:
-            if cards:
-                items.append(m.group(2))
-            else:
-                lis.append(f"<li>{inline_html(m.group(2))}</li>")
+    for line in lines[1:]:
+        numbered = re.match(r"^\d+\.\s*(.+)", line)
+        if ordered and numbered:
+            items.append(numbered.group(1).strip())
         elif line.startswith("-"):
-            item = line.lstrip("- ").strip()
-            if cards:
-                items.append(item)
-            else:
-                lis.append(f"<li>{inline_html(item)}</li>")
+            items.append(line.lstrip("- ").strip())
+        elif not ordered:
+            items.append(line)
+        elif items:
+            items[-1] = f"{items[-1]} {line}"
+    return items
+
+
+def parse_stories(block: str, *, ordered: bool = True) -> list[Story]:
+    stories: list[Story] = []
+    for raw in parse_item_lines(block, ordered=ordered):
+        clean, links = extract_links(raw)
+        clean, source_hint = extract_source_hint(clean, links)
+        title, body = split_title_body(clean)
+        # Avoid immediate duplication after the bold title.
+        body = body.strip()
+        for prefix in [title, title.rstrip("…")]:
+            if prefix and body.startswith(prefix):
+                body = body[len(prefix):].lstrip(" ，。、；：") or clean
+                break
+        source_url = links[0][1] if links else ""
+        source_label = source_hint or (links[0][0] if links else "來源")
+        stories.append(Story(
+            title=title,
+            body=body,
+            tag=infer_tag(clean, source_label),
+            source_label=source_label,
+            source_url=source_url,
+        ))
+    return stories
+
+
+def normalize_person(raw: str) -> tuple[str, str, str, str]:
+    key = raw.lower()
+    if "elon" in key or "@elonmusk" in key:
+        return "Elon Musk", "@elonmusk", "musk", "E"
+    if "trump" in key or "@realdonaldtrump" in key:
+        return "Donald J. Trump", "@realDonaldTrump", "trump", "T"
+    if "saylor" in key or "@saylor" in key:
+        return "Michael Saylor", "@saylor", "saylor", "S"
+    if "zelensky" in key or "澤倫斯基" in raw:
+        return "Volodymyr Zelenskyy", "Ukraine President", "musk", "Z"
+    if "黃仁勳" in raw or "jensen" in key:
+        return "Jensen Huang", "Nvidia CEO", "saylor", "J"
+    if "zuckerberg" in key or "祖克柏" in raw:
+        return "Mark Zuckerberg", "Meta CEO", "musk", "Z"
+    name = raw.strip("：: ") or "Topic Voice"
+    return shorten(name, 28), "today", "saylor", name[:1].upper() or "V"
+
+
+def voice_title(summary: str) -> str:
+    s = summary.lower()
+    if "spacexai" in s or "hiring" in s:
+        return "SpaceXAI 招募"
+    if "daylight" in s or "sunshine protection" in s:
+        return "日光節約法案"
+    if "對等回應" in summary or "ceasefire" in s:
+        return "停火回應"
+    if "bitcoin" in s or "比特幣" in summary:
+        return "比特幣配置"
+    if "ai" in s or "晶片" in summary:
+        return "AI 與晶片"
+    plain = summary.strip("「」『』\"' ")
+    return shorten(plain, 14)
+
+
+def parse_voices(block: str) -> list[Voice]:
+    voices: list[Voice] = []
+    for raw in parse_item_lines(block, ordered=False):
+        clean, links = extract_links(raw)
+        clean, source_hint = extract_source_hint(clean, links)
+        if "：" in clean:
+            raw_person, summary = clean.split("：", 1)
+        elif ":" in clean:
+            raw_person, summary = clean.split(":", 1)
         else:
-            paras.append(f"<p>{inline_html(line)}</p>")
-    if cards and items:
-        list_html = "<div class=\"story-list\">" + "".join(
-            story_card_html(item, number=i if ordered else None)
-            for i, item in enumerate(items, start=1)
-        ) + "</div>"
-    else:
-        list_tag = "ol" if ordered else "ul"
-        list_html = f"<{list_tag}>" + "".join(lis) + f"</{list_tag}>" if lis else ""
-    return f"<h2>{heading}</h2>{list_html}{''.join(paras)}"
+            raw_person, summary = "Topic Voice", clean
+        person, handle, avatar_class, avatar_text = normalize_person(raw_person)
+        summary = summary.strip()
+        source_url = links[0][1] if links else ""
+        source_label = source_hint or (links[0][0] if links else "來源")
+        voices.append(Voice(
+            person=person,
+            handle=handle,
+            summary_title=voice_title(summary),
+            summary_body=summary,
+            source_label=source_label,
+            source_url=source_url,
+            avatar_class=avatar_class,
+            avatar_text=avatar_text,
+        ))
+    return voices[:3]
 
 
-def render_table(rows: list[dict[str, str]], *, max_rows: int | None = None) -> str:
+def template_assets() -> str:
+    text = TEMPLATE_PATH.read_text(encoding="utf-8")
+    links = "\n".join(re.findall(r"<link\s+[^>]+>", text))
+    css_match = re.search(r"<style>(.*?)</style>", text, re.S)
+    if not css_match:
+        raise ValueError(f"No <style> block found in {TEMPLATE_PATH}")
+    return f"{links}\n<style>{css_match.group(1)}</style>"
+
+
+ZH_WEEKDAYS = "一二三四五六日"
+EN_WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+ZH_DIGITS = "〇一二三四五六七八九"
+
+
+def zh_number(num: int) -> str:
+    if num <= 10:
+        return "十" if num == 10 else ZH_DIGITS[num]
+    if num < 20:
+        return "十" + ZH_DIGITS[num % 10]
+    tens, ones = divmod(num, 10)
+    return ZH_DIGITS[tens] + "十" + (ZH_DIGITS[ones] if ones else "")
+
+
+def zh_full_date(date: dt.date) -> str:
+    year = "".join(ZH_DIGITS[int(d)] for d in str(date.year))
+    return f"{year}年{zh_number(date.month)}月{zh_number(date.day)}日　星期{ZH_WEEKDAYS[date.weekday()]}"
+
+
+def en_full_date(date: dt.date) -> str:
+    return f"{EN_WEEKDAYS[date.weekday()]}, {date.day:02d} {date.strftime('%B')} {date.year}"
+
+
+def amount_cell(row: dict[str, str]) -> tuple[str, str, float | None]:
+    if row.get("cash_dividend") != "未公告":
+        return row["cash_dividend"], "元", to_float(row["cash_dividend"])
+    if row.get("stock_dividend_ratio") != "未公告":
+        return row["stock_dividend_ratio"], "股", to_float(row["stock_dividend_ratio"])
+    if row.get("subscription_ratio") != "未公告":
+        label = f"增資 {row['subscription_ratio']}"
+        if row.get("subscription_price") != "未公告":
+            label += f" / {row['subscription_price']}元"
+        return label, "", to_float(row["subscription_ratio"])
+    return "未公告", "", None
+
+
+def render_dividend_table(rows: list[dict[str, str]], *, max_rows: int | None = None) -> str:
     subset = rows[:max_rows] if max_rows else rows
     if not subset:
-        return '<p class="muted">目前沒有符合條件的個股。</p>'
-    trs = []
-    for r in subset:
-        extras = []
-        if r["cash_dividend"] != "未公告":
-            extras.append(f"<span class='detail-item'><span class='detail-label'>息</span> {dividend_value_html(r['cash_dividend'])}</span>")
-        if r["stock_dividend_ratio"] != "未公告":
-            extras.append(f"<span class='detail-item'><span class='detail-label'>股</span> {dividend_value_html(r['stock_dividend_ratio'])}</span>")
-        if r["subscription_ratio"] != "未公告":
-            sub = f"增資 {html.escape(r['subscription_ratio'])}"
-            if r["subscription_price"] != "未公告":
-                sub += f"｜認購 {html.escape(r['subscription_price'])}"
-            extras.append(f"<span class='detail-item'>{sub}</span>")
-        detail = "；".join(extras) if extras else "未公告"
-        trs.append(
-            "<tr>"
-            f"<td class='date'>{html.escape(r['date'][5:].replace('-', '/'))}</td>"
-            f"<td><strong>{html.escape(r['code'])}</strong><br><span>{html.escape(r['name'])}</span></td>"
-            f"<td>{html.escape(r['market'])}</td>"
-            f"<td><span class='pill'>{html.escape(r['event'])}</span></td>"
-            f"<td>{detail}</td>"
-            f"<td>{close_price_html(r)}</td>"
-            "</tr>"
-        )
-    more = ""
-    if max_rows and len(rows) > max_rows:
-        more = f"<p class='muted table-note'>另有 {len(rows) - max_rows} 檔未展開。</p>"
+        body = '<tr><td colspan="4" class="source-line">目前沒有符合條件的個股。</td></tr>'
+    else:
+        body_parts: list[str] = []
+        prev_date = ""
+        for idx, row in enumerate(subset):
+            date_label = row["date"][5:].replace("-", "/")
+            show_date = date_label if row["date"] != prev_date else ""
+            cls = "day-break" if idx > 0 and row["date"] != prev_date else ""
+            prev_date = row["date"]
+            amount, unit, tier_value = amount_cell(row)
+            tier_cls = "tier-3" if tier_value is not None and tier_value >= 5 else "tier-2" if tier_value is not None and tier_value >= 3 else ""
+            otc = '<span class="otc">OTC</span>' if row.get("market") == "上櫃" else ""
+            body_parts.append(f"""
+            <tr class="{cls}">
+              <td class="date">{esc(show_date)}</td>
+              <td><span class="name-cell"><span class="ticker">{esc(row['code'])}</span><span class="name">{esc(row['name'])}</span><span class="type-pill">{esc(row['event'])}</span>{otc}</span></td>
+              <td class="amt {tier_cls}">{esc(amount)} <small>{esc(unit)}</small></td>
+              <td class="close">{esc(row.get('last_close', '—') or '—')}</td>
+            </tr>""")
+        if max_rows and len(rows) > max_rows:
+            body_parts.append(f'<tr><td></td><td colspan="3" class="source-line">另有 {len(rows) - max_rows} 檔未展開。</td></tr>')
+        body = "".join(body_parts)
     return (
-        "<div class='table-wrap'><table>"
-        "<thead><tr><th>日期</th><th>代號 / 名稱</th><th>市場</th><th>類型</th><th>配息 / 配股 / 增資</th><th>昨日收盤價</th></tr></thead>"
-        f"<tbody>{''.join(trs)}</tbody></table></div>{more}"
+        '<table class="div-table"><thead><tr>'
+        '<th style="width:50px;">日期</th><th>代號 / 名稱</th>'
+        '<th style="text-align:right;">配息 / 配股</th><th style="text-align:right;">昨收</th>'
+        f'</tr></thead><tbody>{body}</tbody></table>'
     )
+
+
+def render_news_items(stories: list[Story]) -> str:
+    parts: list[str] = []
+    for idx, story in enumerate(stories, start=1):
+        num_cls = "num accent" if idx == 1 else "num"
+        source = f'<a href="{esc_attr(story.source_url)}">{esc(story.source_label)}</a>' if story.source_url else esc(story.source_label)
+        suffix = "" if story.title.endswith(("。", "！", "？", ".", "…")) else "。"
+        parts.append(f"""        <article class="news-item">
+          <div class="{num_cls}">{idx:02d}</div>
+          <div>
+            <div class="body"><b>{esc(story.title)}{suffix}</b>{esc(story.body)}</div>
+            <div class="tag">{esc(story.tag)}</div>
+            <div class="source-line">SOURCE · {source}</div>
+          </div>
+        </article>""")
+    return "".join(parts)
+
+
+def render_voice_cards(voices: list[Voice]) -> str:
+    parts: list[str] = []
+    for voice in voices:
+        source = f'<a href="{esc_attr(voice.source_url)}">{esc(voice.source_label)}</a>' if voice.source_url else esc(voice.source_label)
+        suffix = "" if voice.summary_title.endswith(("。", "！", "？", ".")) else "："
+        parts.append(f"""      <article class="tweet-card">
+        <div class="head">
+          <div class="avatar {esc_attr(voice.avatar_class)}">{esc(voice.avatar_text)}</div>
+          <div class="name-line"><span class="name">{esc(voice.person)}</span><span class="handle">{esc(voice.handle)}</span></div>
+          <span class="time">today</span>
+        </div>
+        <div class="content"><b>{esc(voice.summary_title)}{suffix}</b>{esc(voice.summary_body)}</div>
+        <div class="source-line">FIRST PARTY · {source}</div>
+      </article>""")
+    return "".join(parts)
+
+
+def render_first_look(new_observed: list[dict[str, str]]) -> str:
+    if not new_observed:
+        return '<div class="first-look"><span><b>First Look ·</b> 目前沒有今晨新增的個股除權息公告。</span></div>'
+    chips = []
+    for row in new_observed[:8]:
+        amount, unit, _ = amount_cell(row)
+        chips.append(f"{row['date'][5:].replace('-', '/')} {row['code']} {row['name']} {row['event']} {amount}{unit}")
+    more = f"；另有 {len(new_observed) - 8} 檔" if len(new_observed) > 8 else ""
+    return f'<div class="first-look"><span><b>First Look ·</b> {esc("；".join(chips) + more)}</span></div>'
 
 
 def render_html(date: dt.date, rows: list[dict[str, str]], new_observed: list[dict[str, str]], morning: str) -> str:
@@ -408,191 +566,140 @@ def render_html(date: dt.date, rows: list[dict[str, str]], new_observed: list[di
     week_stock = [r for r in stock_rows if date.isoformat() <= r["date"] <= week_end.isoformat()]
     week_fund = [r for r in rows if not is_stock(r) and date.isoformat() <= r["date"] <= week_end.isoformat()]
     future_window_stock = [r for r in stock_rows if future_start.isoformat() <= r["date"] <= future_end.isoformat()]
+
     sections = split_morning(morning)
-    date_label = f"{date.year}/{date.month:02d}/{date.day:02d}"
-    future_label = f"{future_start.strftime('%m/%d')}～{future_end.strftime('%m/%d')}"
-    title = html.escape(sections.get("title", f"今日早報｜{date_label}"))
-    new_note = "目前沒有今晨新增的個股除權息公告。"
-    new_table = f"<p class='muted'>{new_note}</p>" if not new_observed else render_table(new_observed, max_rows=12)
+    page_title = sections.get("title", f"今日早報｜{date.isoformat()}")
+    world = parse_stories(sections.get("global", ""), ordered=True)
+    taiwan = parse_stories(sections.get("taiwan", ""), ordered=True)
+    voices = parse_voices(sections.get("social", ""))
+    hero_story = (world or taiwan or [Story("今日主線", "請參考下方新聞卡片。", "Brief", "", "")])[0]
+    hero_sources = " / ".join(dict.fromkeys([s.source_label.split(",")[0] for s in (world[:2] + taiwan[:1]) if s.source_label])) or "Source-backed"
+
+    date_slash = f"{date.year}/{date.month:02d}/{date.day:02d}"
+    week_label = f"{date.strftime('%m/%d')}–{week_end.strftime('%m/%d')}"
+    future_label = f"{future_start.strftime('%m/%d')}–{future_end.strftime('%m/%d')}"
+    assets = template_assets()
 
     return f"""<!doctype html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{title}</title>
-  <meta name="description" content="一條網址版台股早報，整合來源連結、第一手發表與除權息日曆。" />
-  <style>
-    :root {{
-      --bg: #f5f7fb;
-      --paper: #ffffff;
-      --ink: #17202a;
-      --muted: #607080;
-      --line: #dce5ee;
-      --accent: #165a86;
-      --accent-soft: #e7f2fa;
-      --gold: #b88136;
-      --green: #4f7353;
-      --red: #b5534b;
-      --shadow: 0 18px 46px rgba(21, 42, 62, 0.10);
-    }}
-    * {{ box-sizing: border-box; }}
-    html {{ scroll-behavior: smooth; }}
-    body {{
-      margin: 0;
-      color: var(--ink);
-      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
-      line-height: 1.82;
-      background:
-        linear-gradient(180deg, #eef5fb 0%, #f8fafc 40%, #f5f7fb 100%);
-    }}
-    .wrap {{ width: min(1160px, 92vw); margin: 24px auto 58px; }}
-    .hero {{
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      padding: clamp(24px, 5vw, 48px);
-      background: linear-gradient(135deg, #ffffff 0%, #eef7fd 100%);
-      box-shadow: var(--shadow);
-    }}
-    .badge-row {{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:18px; }}
-    .badge {{ display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border-radius:999px; background:var(--accent-soft); color:var(--accent); font-size:13px; font-weight:900; letter-spacing:.02em; }}
-    h1 {{ margin:0 0 12px; font-family:"Noto Serif TC", "PMingLiU", serif; font-size:clamp(34px, 6vw, 58px); line-height:1.14; color:#111b24; }}
-    h2, h3 {{ font-family:"Noto Serif TC", "PMingLiU", serif; line-height:1.35; color:#162333; }}
-    .lead {{ margin:0; max-width:76ch; color:var(--muted); font-size:clamp(16px, 2.05vw, 19px); }}
-    .hero-actions {{ margin-top:22px; display:flex; flex-wrap:wrap; gap:12px; }}
-    .button {{ display:inline-block; padding:12px 18px; border-radius:14px; text-decoration:none; font-weight:900; }}
-    .button.primary {{ color:white; background:linear-gradient(180deg, #1e6f9f 0%, #164d78 100%); box-shadow:0 10px 20px rgba(22,77,120,.22); }}
-    .button.secondary {{ color:var(--accent); background:#fff; border:1px solid var(--line); }}
-    .grid {{ display:grid; gap:18px; margin-top:22px; }}
-    .two {{ grid-template-columns: 1fr 1fr; }}
-    .card, .section-card {{
-      border:1px solid var(--line);
-      border-radius:22px;
-      background:var(--paper);
-      padding:22px;
-      box-shadow:0 10px 24px rgba(21,42,62,.06);
-    }}
-    .section-card h2, .card h2, .card h3 {{ margin:0 0 14px; }}
-    .section-card p, .card p {{ margin: 0 0 12px; }}
-    .section-card a, .card a {{ color:var(--accent); font-weight:900; text-underline-offset:3px; overflow-wrap:anywhere; }}
-    .news-board {{ display:grid; grid-template-columns: 1.18fr .82fr; gap:18px; margin-top:22px; align-items:start; }}
-    .news-board .full {{ grid-column: 1 / -1; }}
-    .eyebrow {{ margin:0 0 8px; color:var(--accent); font-size:12px; text-transform:uppercase; letter-spacing:.12em; font-weight:900; }}
-    .muted {{ color: var(--muted); }}
-    .story-list {{ display:grid; gap:12px; }}
-    .story-item {{
-      display:grid;
-      grid-template-columns: 42px 1fr;
-      gap:14px;
-      padding:15px;
-      border:1px solid #e7edf3;
-      border-radius:18px;
-      background:#fbfdff;
-    }}
-    .story-index {{
-      width:42px;
-      height:42px;
-      border-radius:14px;
-      display:grid;
-      place-items:center;
-      background:var(--accent-soft);
-      color:var(--accent);
-      font-weight:900;
-      line-height:1;
-    }}
-    .story-item.no-index {{ grid-template-columns: 1fr; }}
-    .story-body p {{ margin:0; }}
-    .source-links {{ margin-top:10px !important; display:flex; flex-wrap:wrap; align-items:center; gap:8px; color:var(--muted); font-size:13px; }}
-    .source-links span {{ font-weight:900; color:#485868; }}
-    .source-links a {{ display:inline-flex; align-items:center; padding:4px 9px; border-radius:999px; background:#edf5fb; border:1px solid #d7e8f4; text-decoration:none; font-size:13px; }}
-    .exrights-shell {{ margin-top:24px; border-top:3px solid #d7e3eb; padding-top:22px; }}
-    .section-heading {{ display:flex; justify-content:space-between; gap:18px; align-items:end; margin-bottom:16px; }}
-    .section-heading h2 {{ margin:0; font-size:clamp(26px, 4vw, 36px); }}
-    .section-heading p {{ margin:0; max-width:68ch; }}
-    .count-tag {{ display:inline-flex; margin-left:8px; padding:2px 9px; border-radius:999px; background:#edf5fb; color:var(--accent); font-size:13px; font-weight:900; vertical-align:middle; }}
-    .radar {{ border-left: 5px solid var(--green); }}
-    .new {{ border-left: 5px solid var(--red); }}
-    .table-wrap {{ width:100%; overflow:auto; border:1px solid var(--line); border-radius:16px; background:#fff; }}
-    table {{ width:100%; border-collapse:collapse; min-width:860px; }}
-    th, td {{ padding:12px 14px; border-bottom:1px solid #e5edf4; text-align:left; vertical-align:top; }}
-    th {{ color:#4a5c69; background:#f0f6fb; font-size:13px; letter-spacing:.04em; }}
-    td.date {{ white-space:nowrap; font-weight:900; color:#426848; }}
-    td span {{ color:var(--muted); font-size:13px; }}
-    .pill {{ display:inline-flex; padding:3px 9px; border-radius:999px; background:#edf3e9; color:#3f633f; font-weight:900; font-size:13px; }}
-    .detail-item {{ display:inline-block; white-space:nowrap; margin-right:3px; }}
-    .detail-label {{ color:#5d744c; font-weight:900; }}
-    .dividend-value {{ color:#25313a; font-size:15px; font-weight:900; letter-spacing:.01em; }}
-    .dividend-value.is-mid {{ font-size:18px; color:#3d532c; }}
-    .dividend-value.is-high {{ font-size:21px; color:#c7372f; }}
-    .last-close {{ white-space:nowrap; color:#25313a; font-size:15px; }}
-    .close-date {{ color:var(--muted); font-size:12px; }}
-    .table-note {{ margin-top:10px !important; }}
-    .footer-note {{ margin-top:22px; text-align:center; color:#7a8792; font-size:13px; }}
-    @media (max-width: 980px) {{ .two, .news-board {{ grid-template-columns: 1fr; }} .section-heading {{ display:block; }} }}
-    @media (max-width: 560px) {{ .wrap {{ margin-top:16px; }} .hero, .card, .section-card {{ border-radius:18px; }} .button {{ width:100%; text-align:center; }} .story-item {{ grid-template-columns: 1fr; }} .story-index {{ width:36px; height:36px; }} }}
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{esc(page_title)}</title>
+{assets}
 </head>
 <body>
-  <main class="wrap">
-    <section class="hero">
-      <div class="badge-row">
-        <span class="badge">📰 一條網址版早報</span>
-        <span class="badge">{html.escape(date_label)}</span>
-        <span class="badge">新聞主版</span>
-        <span class="badge">除權息日曆</span>
+<div class="container">
+  <div class="topbar">
+    <div class="left">
+      <span><span class="dot"></span>Morning · 07:00 TPE</span>
+      <span>Official market brief</span>
+    </div>
+    <div class="right">
+      <span>{esc(date.isoformat())}</span>
+      <span><b>TWSE / TPEx</b></span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <header class="masthead">
+    <div>
+      <h1>早報</h1>
+      <p class="en-line">Market <span class="amp">&amp;</span> Brief</p>
+    </div>
+    <div class="masthead-meta">
+      <div class="row"><span class="label">Date</span><span class="val">{esc(en_full_date(date))}</span></div>
+      <div class="row"><span class="label">中文日期</span><span class="val tc">{esc(zh_full_date(date))}</span></div>
+      <div class="row"><span class="label">Edition</span><span class="val">台股早報</span></div>
+    </div>
+  </header>
+</div>
+
+<section class="pulse">
+  <div class="pulse-inner">
+    <span class="pulse-item"><span class="lbl">World</span><span class="val">{len(world)}則</span></span>
+    <span class="pulse-divider"></span>
+    <span class="pulse-item"><span class="lbl">Taiwan</span><span class="val">{len(taiwan)}則</span></span>
+    <span class="pulse-divider"></span>
+    <span class="pulse-item"><span class="lbl">Voices</span><span class="val">{len(voices)}位</span></span>
+    <span class="pulse-divider"></span>
+    <span class="pulse-item"><span class="lbl">Dividend 7D</span><span class="val">{len(week_stock)}檔</span></span>
+    <span class="pulse-tag">台股早報</span>
+  </div>
+</section>
+
+<div class="container">
+  <section class="hero">
+    <div class="focus-card">
+      <div class="qmark">&quot;</div>
+      <div>
+        <div class="label">Lead · 早報主結論</div>
+        <div class="takeaway">{esc(hero_story.title)}</div>
+        <div class="lead-body">{esc(hero_story.body)}</div>
       </div>
-      <h1>{title}</h1>
-      <p class="lead">追蹤國際大事、台灣要聞、第一手發言與 TWSE / TPEx 官方除權息日程。</p>
-      <div class="hero-actions">
-        <a class="button primary" href="#brief">看今日早報</a>
-        <a class="button secondary" href="#radar">看除權息日曆</a>
+      <div class="by-line"><span>{esc(hero_sources)}</span><span>Morning · 01 / 03</span></div>
+    </div>
+    <div class="hero-side">
+      <div class="hero-stat primary">
+        <div class="lbl">World · 國際主線</div>
+        <div class="num">{len(world)}<span class="delta">則</span></div>
+        <div class="desc">{esc(world[0].title if world else hero_story.title)}</div>
+        <div class="source-line">SOURCE · {esc(world[0].source_label if world else hero_story.source_label)}</div>
       </div>
-    </section>
-
-    <section id="brief" class="news-board" aria-label="morning-brief">
-      <article class="section-card full news">{block_to_html(sections.get('global', ''), cards=True)}</article>
-      <article class="section-card news">{block_to_html(sections.get('taiwan', ''), cards=True)}</article>
-      <article class="section-card news">{block_to_html(sections.get('social', ''), ordered=False, cards=True)}</article>
-    </section>
-
-    <section id="radar" class="exrights-shell" aria-label="ex-rights-calendar">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">TWSE / TPEx Official Calendar</p>
-          <h2>除權息日曆</h2>
-        </div>
-        <p class="muted">TWSE / TPEx 官方日程，含今晨新增、一週內與遠期個股。</p>
+      <div class="hero-stat">
+        <div class="lbl">Dividend · 一週內除權息</div>
+        <div class="num">{len(week_stock)}<span class="delta">檔</span></div>
+        <div class="desc">{esc(week_label)} 個股；ETF / 債券型另有 {len(week_fund)} 檔未列。</div>
+        <div class="source-line">SOURCE · TWSE / TPEx official API</div>
       </div>
+    </div>
+  </section>
+</div>
 
-      <section class="grid" aria-label="new-ex-rights">
-        <article class="card new">
-          <p class="eyebrow">First Look</p>
-          <h2>今晨新增除權息公告 <span class="count-tag">{len(new_observed)} 檔</span></h2>
-          {new_table}
-        </article>
-      </section>
+<div class="container">
+  <section class="news-grid">
+    <div class="news-col world">
+      <div class="section-head"><div class="left"><div class="eyebrow">World · Headlines</div><div class="section-title">國際<span class="en">World</span></div></div><div class="count">{len(world)}<sup>則</sup></div></div>
+      <div class="news-items">{render_news_items(world)}</div>
+    </div>
+    <div class="news-col local">
+      <div class="section-head"><div class="left"><div class="eyebrow">Taiwan · Headlines</div><div class="section-title">台灣<span class="en">Taiwan</span></div></div><div class="count">{len(taiwan)}<sup>則</sup></div></div>
+      <div class="news-items">{render_news_items(taiwan)}</div>
+    </div>
+  </section>
+</div>
 
-      <section class="grid two" aria-label="ex-rights-radar">
-        <article class="card radar">
-          <p class="eyebrow">Next 7 Days</p>
-          <h2>一週內除權息個股 <span class="count-tag">{len(week_stock)} 檔</span></h2>
-          <p class="muted">{html.escape(date.strftime('%m/%d'))}～{html.escape(week_end.strftime('%m/%d'))}；ETF / 債券型商品另有 {len(week_fund)} 檔未列。</p>
-          {render_table(week_stock)}
-        </article>
-        <article class="card radar">
-          <p class="eyebrow">Forward Queue</p>
-          <h2>1-2 個月內 遠期除權息 <span class="count-tag">{len(future_window_stock)} 檔</span></h2>
-          <p class="muted">{html.escape(future_label)} 之間已排程個股。</p>
-          {render_table(future_window_stock, max_rows=15)}
-        </article>
-      </section>
-    </section>
+<div class="container">
+  <section class="social">
+    <div class="section-head"><div class="left"><div class="eyebrow">Social · Topic Voices</div><div class="section-title">話題人物<span class="en">Voices</span></div></div><div class="count">{len(voices)}<sup>位</sup></div></div>
+    <div class="tweet-row">{render_voice_cards(voices)}</div>
+  </section>
+</div>
 
-    <p class="footer-note">資料：TWSE / TPEx · market-briefs/market-brief-{date.isoformat()}.html</p>
-  </main>
+<div class="container"><div class="ornament"><div class="line"></div><div class="glyph">§</div><div class="line"></div></div></div>
+
+<div class="container">
+  <section class="dividend">
+    <div class="section-head"><div class="left"><div class="eyebrow">Dividend · Official data</div><div class="section-title">除權息<span class="en">Radar</span></div></div><div class="count" style="font-size:22px;color:var(--ink-3);font-style:italic;">TWSE / TPEx</div></div>
+    <div class="stats">
+      <div class="stat"><div class="lbl">New Notices</div><div class="num">{len(new_observed)}<small>件</small></div><div class="desc">今晨新出現的個股除權息公告</div></div>
+      <div class="stat"><div class="lbl">Next 7 Days</div><div class="num accent">{len(week_stock)}<small>檔</small></div><div class="desc">{esc(week_label)} 一週內個股；ETF / 債券型 {len(week_fund)} 檔未列</div></div>
+      <div class="stat"><div class="lbl">1–2 Months</div><div class="num">{len(future_window_stock)}<small>檔</small></div><div class="desc">{esc(future_label)} 已排程個股</div></div>
+    </div>
+    {render_first_look(new_observed)}
+    <div class="tables-row">
+      <div class="table-block"><div class="table-title">One Week · 一週內</div><div class="table-sub">本週除權息<span class="en">{esc(week_label)}</span></div>{render_dividend_table(week_stock)}</div>
+      <div class="table-block"><div class="table-title">Forward Queue · 一至兩個月內</div><div class="table-sub">遠期除權息<span class="en">{esc(future_label)}</span></div>{render_dividend_table(future_window_stock, max_rows=15)}<div class="table-note"><div><b>資料來源 ·</b> TWSE / TPEx OpenAPI；昨收使用官方最近收盤資料，不可得則顯示 —。</div></div></div>
+    </div>
+  </section>
+</div>
+
+<div class="container"><footer class="footer"><div class="end-mark">今日早報完</div><div class="source">資料：TWSE · TPEx · 各新聞來源與人物原文</div><div class="colophon">{esc(date_slash)} · 台股早報</div></footer></div>
 </body>
 </html>
 """
+
 
 def main() -> int:
     ap = argparse.ArgumentParser()
@@ -618,6 +725,7 @@ def main() -> int:
         # First run establishes the baseline. Do not announce every existing
         # future record as "new"; only future diffs after this snapshot count.
         previous_keys = set(current_keys)
+
     future_start = add_months(date, 1)
     future_end = add_months(date, 2)
     week_end = date + dt.timedelta(days=7)
