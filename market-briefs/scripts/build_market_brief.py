@@ -320,8 +320,9 @@ def source_links_html(sources: list[tuple[str, str]]) -> str:
 def story_card_html(text: str, *, number: int | None = None) -> str:
     cleaned, sources = extract_source_links(text)
     marker = f"<div class=\"story-index\">{number:02d}</div>" if number is not None else ""
+    cls = "story-item" if number is not None else "story-item no-index"
     return (
-        f"<article class=\"story-item\">{marker}"
+        f"<article class=\"{cls}\">{marker}"
         f"<div class=\"story-body\"><p>{inline_html(cleaned)}</p>{source_links_html(sources)}</div>"
         "</article>"
     )
@@ -499,6 +500,7 @@ def render_html(date: dt.date, rows: list[dict[str, str]], new_observed: list[di
       font-weight:900;
       line-height:1;
     }}
+    .story-item.no-index {{ grid-template-columns: 1fr; }}
     .story-body p {{ margin:0; }}
     .source-links {{ margin-top:10px !important; display:flex; flex-wrap:wrap; align-items:center; gap:8px; color:var(--muted); font-size:13px; }}
     .source-links span {{ font-weight:900; color:#485868; }}
