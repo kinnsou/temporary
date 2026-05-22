@@ -17,10 +17,12 @@ description: Build, update, debug, or manually rerun Mark's one-link Taiwan mark
 ## Layout rules
 
 - News first: masthead → pulse → hero → international news → Taiwan news → topic voices → dividend radar.
+- In the three-big-block hero layout, the second block is fixed to Taiwan index futures night-session close (`TX Night · 昨夜盤 05:00`, TAIFEX); do not replace it with a world-news summary. The dividend block comes after it.
 - No `📈 台股焦點` section.
 - The visible page must read like a finished publication. Do not expose workflow terms such as `source-first`, `no filler`, `Filler Removed`, `0段`, `單一 responsive HTML`, or quality/debug notes.
 - Topic voices are 3 cards. Prefer @elonmusk, @realDonaldTrump, @saylor first-party/current-day speech; if missing, fill with current high-profile direct quotes. Do not write “not found” style placeholders.
 - One-week dividend rows must be fully expanded. The 1–2 month queue shows 15 rows and may say how many more are hidden.
+- Do not end the page with Chinese newspaper-like signoffs such as `今日早報完` / `午間快報完`. Use an English mark such as `END OF BRIEF`, or omit the signoff entirely.
 
 ## Run / verify
 

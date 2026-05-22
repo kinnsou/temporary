@@ -16,6 +16,7 @@ import json
 import re
 import urllib.request
 from dataclasses import dataclass
+from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
@@ -24,6 +25,7 @@ TWSE_URL = "https://openapi.twse.com.tw/v1/exchangeReport/TWT48U_ALL"
 TPEX_URL = "https://www.tpex.org.tw/openapi/v1/tpex_exright_prepost"
 TWSE_CLOSE_URL = "https://openapi.twse.com.tw/v1/exchangeReport/STOCK_DAY_ALL"
 TPEX_CLOSE_URL = "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes"
+TAIFEX_FUT_URL = "https://www.taifex.com.tw/cht/3/futDailyMarketReport"
 REPO_ROOT = Path(__file__).resolve().parents[2]
 PROJECT_DIR = Path(__file__).resolve().parents[1]
 DAILY_TASKS = REPO_ROOT / "memory" / "daily-tasks.json"
@@ -104,6 +106,101 @@ def to_float(value: Any) -> float | None:
         return float(str(value or "").replace(",", "").strip())
     except ValueError:
         return None
+
+
+
+class TableRowParser(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self.rows: list[list[str]] = []
+        self._row: list[str] | None = None
+        self._cell: list[str] | None = None
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag.lower() == "tr":
+            self._row = []
+        elif tag.lower() in {"td", "th"} and self._row is not None:
+            self._cell = []
+
+    def handle_data(self, data: str) -> None:
+        if self._cell is not None:
+            self._cell.append(data)
+
+    def handle_endtag(self, tag: str) -> None:
+        tag = tag.lower()
+        if tag in {"td", "th"} and self._row is not None and self._cell is not None:
+            text = re.sub(r"\s+", " ", html.unescape("".join(self._cell))).strip()
+            self._row.append(text)
+            self._cell = None
+        elif tag == "tr" and self._row is not None:
+            if any(cell for cell in self._row):
+                self.rows.append(self._row)
+            self._row = None
+            self._cell = None
+
+
+def tx_night_url(query_date: dt.date) -> str:
+    return (
+        f"{TAIFEX_FUT_URL}?queryType=2&marketCode=2&commodity_id=TX"
+        f"&queryDate={query_date.strftime('%Y/%m/%d')}"
+    )
+
+
+def fetch_tx_night_snapshot(date: dt.date) -> dict[str, str]:
+    """Fetch previous night-session TX close from TAIFEX when available."""
+    query_date = date - dt.timedelta(days=1)
+    url = tx_night_url(query_date)
+    fallback = {
+        "label": "TX Night · 昨夜盤 05:00",
+        "value": "—",
+        "delta": "",
+        "desc": "盤後交易最後成交價以 TAIFEX 公布為準。",
+        "source_url": url,
+        "source_label": "TAIFEX",
+    }
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": "OpenClaw market-brief builder"})
+        with urllib.request.urlopen(req, timeout=25) as resp:
+            text = resp.read().decode("utf-8", errors="ignore")
+    except Exception:
+        return fallback
+
+    parser = TableRowParser()
+    parser.feed(text)
+    for row in parser.rows:
+        if len(row) < 9:
+            continue
+        contract = row[0].strip()
+        if contract != "TX":
+            continue
+        month = row[1].strip()
+        close = row[5].strip().replace(",", "")
+        change = row[6].strip()
+        pct = row[7].strip()
+        volume = row[8].strip()
+        if not close or close in {"-", "—"}:
+            continue
+        delta_bits = []
+        if change and change not in {"-", "—"}:
+            delta_bits.append(change)
+        if pct and pct not in {"-", "—"}:
+            delta_bits.append(pct if pct.endswith("%") else f"{pct}%")
+        delta = " / ".join(delta_bits)
+        desc = f"TX {month} 盤後交易最後成交價"
+        if delta:
+            desc += f"，{delta}"
+        if volume and volume not in {"-", "—", "0"}:
+            desc += f"，成交量 {volume} 口"
+        desc += "。"
+        return {
+            "label": "TX Night · 昨夜盤 05:00",
+            "value": close,
+            "delta": delta,
+            "desc": desc,
+            "source_url": url,
+            "source_label": "TAIFEX",
+        }
+    return fallback
 
 
 def fetch_latest_close_prices() -> dict[tuple[str, str], dict[str, str]]:
@@ -566,6 +663,7 @@ def render_html(date: dt.date, rows: list[dict[str, str]], new_observed: list[di
     week_stock = [r for r in stock_rows if date.isoformat() <= r["date"] <= week_end.isoformat()]
     week_fund = [r for r in rows if not is_stock(r) and date.isoformat() <= r["date"] <= week_end.isoformat()]
     future_window_stock = [r for r in stock_rows if future_start.isoformat() <= r["date"] <= future_end.isoformat()]
+    tx_night = fetch_tx_night_snapshot(date)
 
     sections = split_morning(morning)
     page_title = sections.get("title", f"今日早報｜{date.isoformat()}")
@@ -622,7 +720,7 @@ def render_html(date: dt.date, rows: list[dict[str, str]], new_observed: list[di
     <span class="pulse-divider"></span>
     <span class="pulse-item"><span class="lbl">Taiwan</span><span class="val">{len(taiwan)}則</span></span>
     <span class="pulse-divider"></span>
-    <span class="pulse-item"><span class="lbl">Voices</span><span class="val">{len(voices)}位</span></span>
+    <span class="pulse-item"><span class="lbl">TX Night 05:00</span><span class="val">{esc(tx_night['value'])}</span></span>
     <span class="pulse-divider"></span>
     <span class="pulse-item"><span class="lbl">Dividend 7D</span><span class="val">{len(week_stock)}檔</span></span>
     <span class="pulse-tag">台股早報</span>
@@ -642,10 +740,10 @@ def render_html(date: dt.date, rows: list[dict[str, str]], new_observed: list[di
     </div>
     <div class="hero-side">
       <div class="hero-stat primary">
-        <div class="lbl">World · 國際主線</div>
-        <div class="num">{len(world)}<span class="delta">則</span></div>
-        <div class="desc">{esc(world[0].title if world else hero_story.title)}</div>
-        <div class="source-line">SOURCE · {esc(world[0].source_label if world else hero_story.source_label)}</div>
+        <div class="lbl">{esc(tx_night['label'])}</div>
+        <div class="num">{esc(tx_night['value'])}<span class="delta">{esc(tx_night['delta'])}</span></div>
+        <div class="desc">{esc(tx_night['desc'])}</div>
+        <div class="source-line">SOURCE · <a href="{esc_attr(tx_night['source_url'])}">{esc(tx_night['source_label'])}</a></div>
       </div>
       <div class="hero-stat">
         <div class="lbl">Dividend · 一週內除權息</div>
@@ -695,7 +793,7 @@ def render_html(date: dt.date, rows: list[dict[str, str]], new_observed: list[di
   </section>
 </div>
 
-<div class="container"><footer class="footer"><div class="end-mark">今日早報完</div><div class="source">資料：TWSE · TPEx · 各新聞來源與人物原文</div><div class="colophon">{esc(date_slash)} · 台股早報</div></footer></div>
+<div class="container"><footer class="footer"><div class="end-mark">END OF BRIEF</div><div class="source">資料：TWSE · TAIFEX · TPEx · 各新聞來源與人物原文</div><div class="colophon">{esc(date_slash)} · 台股早報</div></footer></div>
 </body>
 </html>
 """
