@@ -108,6 +108,33 @@ def to_float(value: Any) -> float | None:
         return None
 
 
+ZH_HANT_FALLBACK = str.maketrans({
+    "炼": "煉", "厂": "廠", "后": "後", "发": "發", "复": "復",
+    "国": "國", "际": "際", "与": "與", "关": "關", "联": "聯", "战": "戰",
+    "风": "風", "险": "險", "经": "經", "济": "濟", "财": "財",
+    "务": "務", "办": "辦", "会": "會", "议": "議", "数": "數",
+    "据": "據", "价": "價", "场": "場", "业": "業", "产": "產",
+    "广": "廣", "东": "東", "实": "實", "达": "達", "门": "門",
+    "长": "長", "币": "幣", "汇": "匯", "兑": "兌", "欧": "歐",
+    "乌": "烏", "罗": "羅", "无": "無", "为": "為", "对": "對",
+    "应": "應", "区": "區", "阳": "陽", "历": "歷", "万": "萬",
+    "亿": "億", "级": "級", "额": "額", "货": "貨", "运": "運",
+    "输": "輸", "压": "壓", "电": "電", "网": "網", "云": "雲",
+    "认": "認", "购": "購", "买": "買", "卖": "賣", "盘": "盤",
+    "开": "開", "转": "轉", "给": "給", "线": "線", "动": "動",
+    "预": "預", "计": "計", "续": "續", "径": "徑", "质": "質",
+    "储": "儲", "证": "證", "该": "該", "这": "這", "进": "進",
+    "过": "過", "还": "還", "显": "顯", "众": "眾", "资": "資",
+    "讯": "訊", "标": "標", "题": "題", "势": "勢", "涨": "漲",
+    "报": "報", "续": "續", "边": "邊", "难": "難", "舰": "艦",
+})
+
+
+def normalize_zh_hant(text: str) -> str:
+    """Keep generated Chinese copy in Traditional Chinese even if sources contain Simplified snippets."""
+    return text.translate(ZH_HANT_FALLBACK)
+
+
 
 class TableRowParser(HTMLParser):
     def __init__(self) -> None:
@@ -302,7 +329,7 @@ def load_morning_content(date_str: str) -> str:
     content = data.get(date_str, {}).get("morning_news", {}).get("content", "")
     if not content:
         raise KeyError(f"No morning_news.content for {date_str} in {DAILY_TASKS}")
-    return content.strip()
+    return normalize_zh_hant(content.strip())
 
 
 def split_morning(content: str) -> dict[str, str]:

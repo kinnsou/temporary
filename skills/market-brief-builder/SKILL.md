@@ -22,6 +22,7 @@ description: Build, update, debug, or manually rerun Mark's one-link Taiwan mark
 - In the three-big-block hero layout, the second block is fixed to Taiwan index futures night-session close (`TX Night · 昨夜盤 05:00`, TAIFEX); do not replace it with a world-news summary. Fetch by the brief date itself, because TAIFEX labels the after-hours session by the calendar date it ends at 05:00. The dividend block comes after it.
 - No `📈 台股焦點` section.
 - The visible page must read like a finished publication. Do not expose workflow terms such as `source-first`, `no filler`, `Filler Removed`, `0段`, `單一 responsive HTML`, or quality/debug notes.
+- All visible Chinese copy must be 繁體中文 / Traditional Chinese (`zh-Hant`). Convert Simplified snippets from sources/model output before rendering; e.g. `炼油廠` must become `煉油廠`.
 - Topic voices are 3 cards. Prefer @elonmusk, @realDonaldTrump, @saylor first-party/current-day speech; if missing, fill with current high-profile direct quotes. Do not write “not found” style placeholders.
 - One-week dividend rows must be fully expanded. The 1–2 month queue shows 15 rows and may say how many more are hidden.
 - Mobile body text is intentionally about 2px larger than desktop/base for readability: news body and voice content around `16.5px`, lead body around `17px`, table body around `15px` in the template's mobile media query.
@@ -33,6 +34,7 @@ description: Build, update, debug, or manually rerun Mark's one-link Taiwan mark
 2. Build: `python3 /home/kurohime/.openclaw/workspace/market-briefs/scripts/build_market_brief.py --date YYYY-MM-DD`.
 3. Verify the generated HTML contains the approved template markers: `class="masthead"`, `class="news-grid"`, `class="tweet-card"`, `class="div-table"`.
 4. Verify it does not contain old-layout markers or forbidden text: `story-item`, `source-links`, `台股焦點`, `source-first`, `Filler Removed`, `午間快報`.
+4a. Verify visible Chinese is 繁體中文 / Traditional Chinese; spot-check common Simplified chars such as `炼`, `厂`, `后`, `发`, `国`, `际`, `与`, `关`, `联`, `战`, `风`, `险`, `经`, `济`, `财`, `务`, `办`, `会`, `议`, `数`, `据`, `价`, `场`, `业`, `产`, `万`, `亿`, `报`, `涨`, `盘`, `开`, `预`, `计`.
 5. Verify masthead / hero requirements: `<h1>新聞摘要</h1>`, `Edition` = `Daily Express`, heading/display `font-weight` never exceeds 700, and the second hero stat is `TX Night · 昨夜盤 05:00` with a TAIFEX source.
 6. Commit only relevant market-brief files and push `origin master`.
 
