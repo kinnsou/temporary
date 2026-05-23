@@ -3,7 +3,7 @@
     "newWordsMustBeUniqueUntilExhausted": true,
     "reviewFormat": "guided_cloze_with_grammar_chunking",
     "sourceScope": "台灣普遍認定國中必會1000單",
-    "updatedAt": "2026-05-21T11:01:10Z"
+    "updatedAt": "2026-05-23T11:00:50Z"
   },
   "words": {
     "about": {
@@ -422,6 +422,16 @@
       ],
       "translation": "請把你的書放在桌上。"
     },
+    "dinosaur": {
+      "example_sentence": "My son likes dinosaurs.",
+      "first_seen": "2026-05-22",
+      "last_seen": "2026-05-22",
+      "meanings": [
+        "恐龍"
+      ],
+      "pos": "n",
+      "translation": "我兒子喜歡恐龍。"
+    },
     "discover": {
       "first_seen": "2026-02-24",
       "last_seen": "2026-02-24",
@@ -437,16 +447,6 @@
         "分開；分成；除以"
       ],
       "translation": "把 12 除以 3。"
-    },
-    "dinosaur": {
-      "example_sentence": "My son likes dinosaurs.",
-      "first_seen": "2026-05-22",
-      "last_seen": "2026-05-22",
-      "meanings": [
-        "恐龍"
-      ],
-      "pos": "n",
-      "translation": "我兒子喜歡恐龍。"
     },
     "doctor": {
       "example_sentence": "The doctor helps sick people.",
@@ -654,6 +654,16 @@
         "友善的；親切的"
       ],
       "translation": "我們的新同學非常友善。"
+    },
+    "fruit": {
+      "first_seen": "2026-05-23",
+      "last_seen": "2026-05-23",
+      "meanings": [
+        "水果"
+      ],
+      "pos": "n",
+      "example_sentence": "I eat fruit after dinner.",
+      "translation": "我晚餐後會吃水果。"
     },
     "fun": {
       "example_sentence": "The game is fun.",
@@ -1265,6 +1275,17 @@
         "耐心"
       ]
     },
+    "phone": {
+      "first_seen": "2026-05-23",
+      "last_seen": "2026-05-23",
+      "meanings": [
+        "電話",
+        "手機"
+      ],
+      "pos": "n",
+      "example_sentence": "My phone is on the table.",
+      "translation": "我的手機在桌上。"
+    },
     "picnic": {
       "example_sentence": "We will have a picnic in the park.",
       "first_seen": "2026-03-06",
@@ -1860,6 +1881,17 @@
         "conj"
       ],
       "translation": "在這裡等我回來。"
+    },
+    "vacation": {
+      "first_seen": "2026-05-23",
+      "last_seen": "2026-05-23",
+      "meanings": [
+        "假期",
+        "度假"
+      ],
+      "pos": "n",
+      "example_sentence": "We are on vacation next week.",
+      "translation": "我們下週要去度假。"
     },
     "vegetable": {
       "example_sentence": "I eat vegetables every day.",

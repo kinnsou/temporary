@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-05-22T11:01:22Z",
-    "sourceCount": 206,
-    "includedCount": 198
+    "updatedAt": "2026-05-23T11:00:53Z",
+    "sourceCount": 209,
+    "includedCount": 201
   },
   "words": [
+    {
+      "word": "fruit",
+      "meaning": "水果",
+      "example": "I eat fruit after dinner.",
+      "translation": "我晚餐後會吃水果。",
+      "firstSeen": "2026-05-23",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "phone",
+      "meaning": "電話；手機",
+      "example": "My phone is on the table.",
+      "translation": "我的手機在桌上。",
+      "firstSeen": "2026-05-23",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "vacation",
+      "meaning": "假期；度假",
+      "example": "We are on vacation next week.",
+      "translation": "我們下週要去度假。",
+      "firstSeen": "2026-05-23",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "dinosaur",
       "meaning": "恐龍",
