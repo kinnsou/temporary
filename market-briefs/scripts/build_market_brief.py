@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import difflib
 import html
 import json
 import re
@@ -55,6 +56,32 @@ class Voice:
     source_url: str
     avatar_class: str
     avatar_text: str
+
+
+@dataclass
+class Lead:
+    title: str
+    body: str
+
+
+SIMILARITY_BIGRAM_STOPWORDS = {
+    "中央", "央社", "表示", "指出", "官方", "市場", "消息", "報導", "人士", "今日", "今晨",
+}
+
+WORLD_LEAD_PATTERNS: list[tuple[str, tuple[str, str]]] = [
+    (r"伊朗|中東|荷莫茲|波灣|和談|停火|高濃縮鈾|核談判", ("中東談判牽動盤前", "中東談判與能源航道")),
+    (r"烏克蘭|俄羅斯|蘇米|盧甘斯克", ("俄烏戰火未歇", "俄烏前線與地緣安全")),
+    (r"中國|關稅|稀土|煤礦|習近平", ("中國變數升高", "中國政策與重大事件")),
+    (r"Fed|聯準會|CPI|就業|非農|降息|美元|金價|油價", ("利率與商品盤整", "利率預期與商品價格")),
+    (r"伊波拉|疫情|病毒", ("公共衛生風險升溫", "公共衛生與跨境風險")),
+]
+
+TAIWAN_LEAD_PATTERNS: list[tuple[str, tuple[str, str]]] = [
+    (r"外資|加權|台股|指數|ETF|買超|賣超|收盤|期貨", ("台股資金流向", "外資與台股資金流向")),
+    (r"國防|海馬士|軍售|國安|台美|潛艦|漢光", ("國防與台海政策", "國防與台海政策")),
+    (r"AI|半導體|台積電|鴻海|廣達|HPC", ("半導體與 AI 供應鏈", "半導體與 AI 供應鏈")),
+    (r"外交|部長|歐洲|GLOBSEC|獎學金", ("外交與政策訊號", "外交與政策訊號")),
+]
 
 
 def esc(value: Any) -> str:
@@ -335,10 +362,12 @@ def load_morning_content(date_str: str) -> str:
 def split_morning(content: str) -> dict[str, str]:
     title = content.splitlines()[0].strip()
     sections: dict[str, str] = {"title": title}
-    pattern = re.compile(r"\n\n(?=(?:🌍 國際新聞|🇹🇼 台灣新聞|📈 台股焦點|💬))")
+    pattern = re.compile(r"\n\n(?=(?:🧭 主結論|🌍 國際新聞|🇹🇼 台灣新聞|📈 台股焦點|💬))")
     for block in pattern.split(content)[1:]:
         first = block.splitlines()[0].strip()
-        if first.startswith("🌍"):
+        if first.startswith("🧭"):
+            sections["lead"] = block.strip()
+        elif first.startswith("🌍"):
             sections["global"] = block.strip()
         elif first.startswith("🇹🇼"):
             sections["taiwan"] = block.strip()
@@ -440,6 +469,126 @@ def split_title_body(text: str) -> tuple[str, str]:
             body = text[idx + 1 :].strip()
             return shorten(title, 24), body or text
     return shorten(text, 24), text
+
+
+def split_lead_text(text: str) -> tuple[str, str]:
+    text = re.sub(r"\s+", " ", text).strip(" ，。、；：")
+    for sep in ["，", "；", "。", "：", ":"]:
+        idx = text.find(sep)
+        if 5 <= idx <= 18:
+            title = text[:idx].strip(" ，。、；：")
+            body = text[idx + 1 :].strip(" ，。、；：")
+            if title and body:
+                return shorten(title, 18), shorten(body, 72)
+    return shorten(text, 18), shorten(text, 72)
+
+
+def story_text(story: Story) -> str:
+    return f"{story.title} {story.body}".strip()
+
+
+def normalized_event_text(text: str) -> str:
+    text = normalize_zh_hant(text.lower())
+    text = MD_LINK_RE.sub(lambda m: f" {m.group(1)} ", text)
+    text = URL_RE.sub(" ", text)
+    text = DATE_RE.sub(" ", text)
+    text = re.sub(r"[^0-9a-z@\u4e00-\u9fff]+", "", text)
+    return text
+
+
+def event_tokens(text: str) -> set[str]:
+    normalized = normalized_event_text(text)
+    cjk = "".join(ch for ch in normalized if "\u4e00" <= ch <= "\u9fff")
+    tokens = {cjk[i : i + 2] for i in range(max(0, len(cjk) - 1))}
+    tokens = {token for token in tokens if token not in SIMILARITY_BIGRAM_STOPWORDS}
+    tokens |= {tok for tok in re.findall(r"[a-z0-9@]{3,}", normalized) if not tok.isdigit()}
+    return tokens
+
+
+def looks_like_duplicate_event(left: str, right: str) -> bool:
+    left_norm = normalized_event_text(left)
+    right_norm = normalized_event_text(right)
+    if not left_norm or not right_norm:
+        return False
+    left_tokens = event_tokens(left)
+    right_tokens = event_tokens(right)
+    overlap = left_tokens & right_tokens
+    smaller = min(len(left_tokens), len(right_tokens)) or 1
+    if len(overlap) >= 5 and len(overlap) / smaller >= 0.16:
+        return True
+    return difflib.SequenceMatcher(None, left_norm, right_norm).ratio() >= 0.26
+
+
+def dedupe_stories(stories: list[Story]) -> list[Story]:
+    unique: list[Story] = []
+    for story in stories:
+        if any(
+            (story.source_url and story.source_url == existing.source_url)
+            or looks_like_duplicate_event(story_text(story), story_text(existing))
+            for existing in unique
+        ):
+            continue
+        unique.append(story)
+    return unique
+
+
+def focus_from_patterns(text: str, patterns: list[tuple[str, tuple[str, str]]], default: tuple[str, str]) -> tuple[str, str]:
+    for pattern, payload in patterns:
+        if re.search(pattern, text, re.I):
+            return payload
+    return default
+
+
+def synthesize_lead(world: list[Story], taiwan: list[Story]) -> Lead:
+    world_text = " ".join(story_text(story) for story in world[:2])
+    taiwan_text = " ".join(story_text(story) for story in taiwan)
+    lead_title, world_focus = focus_from_patterns(
+        world_text,
+        WORLD_LEAD_PATTERNS,
+        ("國際變數牽動盤前", "國際局勢變化"),
+    )
+    _, taiwan_focus = focus_from_patterns(
+        taiwan_text,
+        TAIWAN_LEAD_PATTERNS,
+        ("台灣政策與產業動向", "台灣政策與產業動向"),
+    )
+    return Lead(
+        title=lead_title,
+        body=shorten(f"今晨先看{world_focus}，台股盤前再看{taiwan_focus}。", 72),
+    )
+
+
+def parse_lead(block: str, world: list[Story], taiwan: list[Story]) -> Lead:
+    if not block:
+        return synthesize_lead(world, taiwan)
+
+    title = ""
+    body_parts: list[str] = []
+    for line in [line.strip() for line in block.splitlines() if line.strip()]:
+        if line.startswith("🧭"):
+            tail = re.sub(r"^🧭\s*主結論\s*", "", line).strip("：: ")
+            if tail:
+                body_parts.append(tail)
+            continue
+        if re.match(r"^標題\s*[：:]", line):
+            title = re.split(r"[：:]", line, 1)[1].strip()
+            continue
+        if re.match(r"^摘要\s*[：:]", line):
+            body_parts.append(re.split(r"[：:]", line, 1)[1].strip())
+            continue
+        body_parts.append(re.sub(r"^主結論\s*[：:]\s*", "", line))
+
+    body = " ".join(part for part in body_parts if part).strip()
+    if body:
+        body, links = extract_links(body)
+        body, _ = extract_source_hint(body, links)
+    if not title and body:
+        title, body = split_lead_text(body)
+    elif title and body:
+        body = shorten(body, 72)
+    if title and body:
+        return Lead(title=shorten(title, 18), body=body)
+    return synthesize_lead(world, taiwan)
 
 
 def infer_tag(text: str, fallback: str) -> str:
@@ -697,10 +846,10 @@ def render_html(date: dt.date, rows: list[dict[str, str]], new_observed: list[di
 
     sections = split_morning(morning)
     page_title = sections.get("title", f"今日早報｜{date.isoformat()}")
-    world = parse_stories(sections.get("global", ""), ordered=True)
-    taiwan = parse_stories(sections.get("taiwan", ""), ordered=True)
+    world = dedupe_stories(parse_stories(sections.get("global", ""), ordered=True))
+    taiwan = dedupe_stories(parse_stories(sections.get("taiwan", ""), ordered=True))
     voices = parse_voices(sections.get("social", ""))
-    hero_story = (world or taiwan or [Story("今日主線", "請參考下方新聞卡片。", "Brief", "", "")])[0]
+    lead = parse_lead(sections.get("lead", ""), world, taiwan)
     hero_sources = " / ".join(dict.fromkeys([s.source_label.split(",")[0] for s in (world[:2] + taiwan[:1]) if s.source_label])) or "Source-backed"
 
     date_slash = f"{date.year}/{date.month:02d}/{date.day:02d}"
@@ -763,8 +912,8 @@ def render_html(date: dt.date, rows: list[dict[str, str]], new_observed: list[di
       <div class="qmark">&quot;</div>
       <div>
         <div class="label">Lead · 早報主結論</div>
-        <div class="takeaway">{esc(hero_story.title)}</div>
-        <div class="lead-body">{esc(hero_story.body)}</div>
+        <div class="takeaway">{esc(lead.title)}</div>
+        <div class="lead-body">{esc(lead.body)}</div>
       </div>
       <div class="by-line"><span>{esc(hero_sources)}</span><span>Morning · 01 / 03</span></div>
     </div>

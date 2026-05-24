@@ -6,15 +6,20 @@
 3) 若今日 `memory/daily-tasks.json` 的 `morning_news.done=true`，只有在既有 content 通過本規格時才可沿用；不通過就重抓並覆寫今日 content / done=true。
 4) 成品頁是已完稿新聞版面：可見文字只能是新聞、行情、來源、人物發言與市場結論。所有中文可見文字一律使用繁體中文（zh-Hant），若來源或模型輸出混入簡體字，建頁前必須轉成繁體；例如 `炼油廠` 必須改成 `煉油廠`。禁止出現任何編輯台提醒、製作說明、改版說明、流程語、品質檢查、反省文或欄位配置說明，例如「本刊製作調整」「這篇只放可追溯來源」「source-first」「no filler」「Filler Removed」「0段」「單一 responsive HTML」。
 5) 禁止 `📈 台股焦點` 區塊；這個區塊已關閉。
-6) 國際新聞固定 6 則：前 4 則必須是撼動世界的國際大事（戰爭、外交、地緣、重大政策、災難、國際秩序），最後 2 則才放財經/市場/產業；其中 1～2 則要專門留給美元、黃金、石油、降息預期、非農、就業、CPI、Fed 等當日市場報告或數據延伸。
-7) 台灣新聞固定 3 則：前 2 則台灣要事（政策、國安、產業戰略、重大社會事件），最後 1 則財經/台股/市場。
-8) 每則新聞必須有來源名稱、日期、可開啟網址；沒有來源就刪。只收近 24～48 小時內新事實，禁止泛泛句型。
-9) 話題人物 3 格：優先查 @elonmusk、@realDonaldTrump、@saylor 當日第一手發言；若有人沒發言，不要寫「未找到」「not verified」「今日無發言」等提示文，改用當日話題排名 1–3 的知名人物實際發言補滿。人物卡只寫人物說了什麼。
-10) 除權息不用寫進 content；建頁腳本用 TWSE/TPEx 官方資料產生。三大標／hero 版面順序固定：第 1 格主結論，第 2 格固定放台股昨日夜盤收盤價（TAIFEX `TX Night · 昨夜盤 05:00`，用早報日期查，因 TAIFEX 盤後交易以凌晨 05:00 結束的日曆日標示），第 3 格才放除權息；不可把第 2 格改成國際摘要或其他卡。
-11) 本週／一週內除權息必須直接全展開；不可寫「另有 N 檔未展開」。1～2 個月遠期除權息固定顯示 15 條；若仍有更多，可顯示未展開數，但若有「看更多」按鈕就必須真的可用。
-12) 產生網頁：`python3 /home/kurohime/.openclaw/workspace/market-briefs/scripts/build_market_brief.py --date YYYY-MM-DD`。版面固定使用核准模板 `/home/kurohime/.openclaw/workspace/NEWS/market-brief-package/market-brief-2026-05-21-noon.html` 的 masthead/news-grid/tweet-card/dividend/table 視覺系統；禁止回到舊版 `market-briefs` 卡片版面。masthead 大字固定 `新聞摘要`；右側 Edition 固定英文 `Daily Express`；各標題/大數字/display 文字 `font-weight` 最大 700，禁止 800/900。
-13) 只 stage 相關 market-brief 檔案：`market-briefs/market-brief-YYYY-MM-DD.html`、`market-briefs/index.html`、`market-briefs/data/exrights-YYYY-MM-DD.json`、`market-briefs/data/latest-exrights-snapshot.json`。不要 stage workspace 其他檔案、`.learnings/*`、`memory/daily-tasks.json` 或秘密/備份檔。
-14) 若 staged 有變更，commit message：`market brief: update daily page YYYY-MM-DD`，然後 push `origin master`。
-15) 除權息標題固定：`今晨新增除權息公告`、`1-2 個月內 遠期除權息`。除權息表格最後一欄必須是 `昨日收盤價`，配息/配股數字 3 以上放大、5 以上更大且變紅。
-16) 頁尾禁止中文報紙式收尾如「今日早報完」「午間快報完」；若保留收尾標記，改用英文 `END OF BRIEF`，否則直接省略。
-17) 成功後最終回應只輸出網址。任何失敗只輸出 `NO_REPLY`，不要補發舊訊息。
+6) 國際新聞固定 6 則：前 4 則必須是撼動世界的國際大事（戰爭、外交、地緣、重大政策、災難、國際秩序），最後 2 則才放財經/市場/產業；其中 1～2 則要專門留給美元、黃金、石油、降息預期、非農、就業、CPI、Fed 等當日市場報告或數據延伸。**6 則必須是 6 個不同事件**，不可把同一件事拆成兩則不同說法。
+7) 台灣新聞固定 3 則：前 2 則台灣要事（政策、國安、產業戰略、重大社會事件），最後 1 則財經/台股/市場。3 則也必須彼此不同事件。
+8) 標題之後先寫一段 `🧭 主結論`，格式固定為：
+   `🧭 主結論`
+   `標題：...`
+   `摘要：...`
+   只寫 1 組，簡短即可。這一格是**總結**，不可直接複製國際01、台灣01或話題人物任一則，也不可只是把同一事件換句話再說。
+9) 每則新聞必須有來源名稱、日期、可開啟網址；沒有來源就刪。只收近 24～48 小時內新事實，禁止泛泛句型。
+10) 話題人物 3 格：優先查 @elonmusk、@realDonaldTrump、@saylor 當日第一手發言；若有人沒發言，不要寫「未找到」「not verified」「今日無發言」等提示文，改用當日話題排名 1–3 的知名人物實際發言補滿。人物卡只寫人物說了什麼。**若某發言已經成為主結論或新聞卡主事件，就不要再重覆塞進人物卡。**
+11) 除權息不用寫進 content；建頁腳本用 TWSE/TPEx 官方資料產生。三大標／hero 版面順序固定：第 1 格主結論，第 2 格固定放台股昨日夜盤收盤價（TAIFEX `TX Night · 昨夜盤 05:00`，用早報日期查，因 TAIFEX 盤後交易以凌晨 05:00 結束的日曆日標示），第 3 格才放除權息；不可把第 2 格改成國際摘要或其他卡。
+12) 本週／一週內除權息必須直接全展開；不可寫「另有 N 檔未展開」。1～2 個月遠期除權息固定顯示 15 條；若仍有更多，可顯示未展開數，但若有「看更多」按鈕就必須真的可用。
+13) 產生網頁：`python3 /home/kurohime/.openclaw/workspace/market-briefs/scripts/build_market_brief.py --date YYYY-MM-DD`。版面固定使用核准模板 `/home/kurohime/.openclaw/workspace/NEWS/market-brief-package/market-brief-2026-05-21-noon.html` 的 masthead/news-grid/tweet-card/dividend/table 視覺系統；禁止回到舊版 `market-briefs` 卡片版面。masthead 大字固定 `新聞摘要`；右側 Edition 固定英文 `Daily Express`；各標題/大數字/display 文字 `font-weight` 最大 700，禁止 800/900。
+14) 只 stage 相關 market-brief 檔案：`market-briefs/market-brief-YYYY-MM-DD.html`、`market-briefs/index.html`、`market-briefs/data/exrights-YYYY-MM-DD.json`、`market-briefs/data/latest-exrights-snapshot.json`。不要 stage workspace 其他檔案、`.learnings/*`、`memory/daily-tasks.json` 或秘密/備份檔。
+15) 若 staged 有變更，commit message：`market brief: update daily page YYYY-MM-DD`，然後 push `origin master`。
+16) 除權息標題固定：`今晨新增除權息公告`、`1-2 個月內 遠期除權息`。除權息表格最後一欄必須是 `昨日收盤價`，配息/配股數字 3 以上放大、5 以上更大且變紅。
+17) 頁尾禁止中文報紙式收尾如「今日早報完」「午間快報完」；若保留收尾標記，改用英文 `END OF BRIEF`，否則直接省略。
+18) 成功後最終回應只輸出網址。任何失敗只輸出 `NO_REPLY`，不要補發舊訊息。

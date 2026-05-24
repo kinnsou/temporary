@@ -20,6 +20,8 @@ description: Build, update, debug, or manually rerun Mark's one-link Taiwan mark
 - Masthead fixed labels: the large Chinese title is `新聞摘要`; the right-side Edition value is English-only: `Daily Express`.
 - Heading/display typography must stay at `font-weight <= 700`. Do not use 800/900 for masthead, section titles, hero numbers, stats, or other title-like text.
 - In the three-big-block hero layout, the second block is fixed to Taiwan index futures night-session close (`TX Night · 昨夜盤 05:00`, TAIFEX); do not replace it with a world-news summary. Fetch by the brief date itself, because TAIFEX labels the after-hours session by the calendar date it ends at 05:00. The dividend block comes after it.
+- The hero lead is a one-line synthesis, not a copy of World 01 / Taiwan 01 / a topic-voice post. This brief format is intentionally concise, so the same underlying event should appear only once across hero, news cards, and voice cards unless Mark explicitly asks for an expanded feature treatment.
+- International 01–06 and Taiwan 01–03 must each be distinct events; do not split one story into two near-duplicate cards.
 - No `📈 台股焦點` section.
 - The visible page must read like a finished publication. Do not expose workflow terms such as `source-first`, `no filler`, `Filler Removed`, `0段`, `單一 responsive HTML`, or quality/debug notes.
 - All visible Chinese copy must be 繁體中文 / Traditional Chinese (`zh-Hant`). Convert Simplified snippets from sources/model output before rendering; e.g. `炼油廠` must become `煉油廠`.
@@ -36,6 +38,7 @@ description: Build, update, debug, or manually rerun Mark's one-link Taiwan mark
 4. Verify it does not contain old-layout markers or forbidden text: `story-item`, `source-links`, `台股焦點`, `source-first`, `Filler Removed`, `午間快報`.
 4a. Verify visible Chinese is 繁體中文 / Traditional Chinese; spot-check common Simplified chars such as `炼`, `厂`, `后`, `发`, `国`, `际`, `与`, `关`, `联`, `战`, `风`, `险`, `经`, `济`, `财`, `务`, `办`, `会`, `议`, `数`, `据`, `价`, `场`, `业`, `产`, `万`, `亿`, `报`, `涨`, `盘`, `开`, `预`, `计`.
 5. Verify masthead / hero requirements: `<h1>新聞摘要</h1>`, `Edition` = `Daily Express`, heading/display `font-weight` never exceeds 700, and the second hero stat is `TX Night · 昨夜盤 05:00` with a TAIFEX source.
+5a. Verify the hero lead is not the same underlying story as World 01, and spot-check that World/Taiwan cards are not near-duplicates of each other.
 6. Commit only relevant market-brief files and push `origin master`.
 
 ## Persistent update rule
