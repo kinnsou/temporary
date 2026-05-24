@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-05-23T11:00:53Z",
-    "sourceCount": 209,
-    "includedCount": 201
+    "updatedAt": "2026-05-24T11:00:54Z",
+    "sourceCount": 212,
+    "includedCount": 204
   },
   "words": [
+    {
+      "word": "dollar",
+      "meaning": "美元；（泛指）元",
+      "example": "This book costs ten dollars.",
+      "translation": "這本書要十元（十美元）。",
+      "firstSeen": "2026-05-24",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "jacket",
+      "meaning": "外套；夾克",
+      "example": "I forgot my jacket at school.",
+      "translation": "我把外套忘在學校了。",
+      "firstSeen": "2026-05-24",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "though",
+      "meaning": "雖然；不過",
+      "example": "I was tired, but I finished my homework though.",
+      "translation": "我很累，不過我還是把作業寫完了。",
+      "firstSeen": "2026-05-24",
+      "pos": [
+        "conj",
+        "adv"
+      ]
+    },
     {
       "word": "fruit",
       "meaning": "水果",

@@ -3,7 +3,7 @@
     "newWordsMustBeUniqueUntilExhausted": true,
     "reviewFormat": "guided_cloze_with_grammar_chunking",
     "sourceScope": "台灣普遍認定國中必會1000單",
-    "updatedAt": "2026-05-23T11:00:50Z"
+    "updatedAt": "2026-05-24T11:00:51Z"
   },
   "words": {
     "about": {
@@ -458,6 +458,16 @@
       "pos": "n",
       "translation": "醫生會幫助生病的人。"
     },
+    "dollar": {
+      "example_sentence": "This book costs ten dollars.",
+      "first_seen": "2026-05-24",
+      "last_seen": "2026-05-24",
+      "meanings": [
+        "美元；（泛指）元"
+      ],
+      "pos": "n",
+      "translation": "這本書要十元（十美元）。"
+    },
     "dragon": {
       "example_sentence": "The dragon in the story is very strong.",
       "first_seen": "2026-04-20",
@@ -656,13 +666,13 @@
       "translation": "我們的新同學非常友善。"
     },
     "fruit": {
+      "example_sentence": "I eat fruit after dinner.",
       "first_seen": "2026-05-23",
       "last_seen": "2026-05-23",
       "meanings": [
         "水果"
       ],
       "pos": "n",
-      "example_sentence": "I eat fruit after dinner.",
       "translation": "我晚餐後會吃水果。"
     },
     "fun": {
@@ -934,6 +944,16 @@
         "邀請"
       ],
       "translation": "我想邀請我的朋友來參加派對。"
+    },
+    "jacket": {
+      "example_sentence": "I forgot my jacket at school.",
+      "first_seen": "2026-05-24",
+      "last_seen": "2026-05-24",
+      "meanings": [
+        "外套；夾克"
+      ],
+      "pos": "n",
+      "translation": "我把外套忘在學校了。"
     },
     "joke": {
       "example_sentence": "That joke is funny.",
@@ -1276,6 +1296,7 @@
       ]
     },
     "phone": {
+      "example_sentence": "My phone is on the table.",
       "first_seen": "2026-05-23",
       "last_seen": "2026-05-23",
       "meanings": [
@@ -1283,7 +1304,6 @@
         "手機"
       ],
       "pos": "n",
-      "example_sentence": "My phone is on the table.",
       "translation": "我的手機在桌上。"
     },
     "picnic": {
@@ -1779,6 +1799,19 @@
       "pos": "adj",
       "translation": "這本書很厚。"
     },
+    "though": {
+      "example_sentence": "I was tired, but I finished my homework though.",
+      "first_seen": "2026-05-24",
+      "last_seen": "2026-05-24",
+      "meanings": [
+        "雖然；不過"
+      ],
+      "pos": [
+        "conj",
+        "adv"
+      ],
+      "translation": "我很累，不過我還是把作業寫完了。"
+    },
     "ticket": {
       "example_sentence": "I bought a ticket for the train.",
       "first_seen": "2026-03-23",
@@ -1883,6 +1916,7 @@
       "translation": "在這裡等我回來。"
     },
     "vacation": {
+      "example_sentence": "We are on vacation next week.",
       "first_seen": "2026-05-23",
       "last_seen": "2026-05-23",
       "meanings": [
@@ -1890,7 +1924,6 @@
         "度假"
       ],
       "pos": "n",
-      "example_sentence": "We are on vacation next week.",
       "translation": "我們下週要去度假。"
     },
     "vegetable": {
