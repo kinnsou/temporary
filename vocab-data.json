@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-05-24T11:00:54Z",
-    "sourceCount": 212,
-    "includedCount": 204
+    "updatedAt": "2026-05-25T11:00:54Z",
+    "sourceCount": 215,
+    "includedCount": 207
   },
   "words": [
+    {
+      "word": "truck",
+      "meaning": "卡車；貨車",
+      "example": "The truck is big.",
+      "translation": "那台卡車很大。",
+      "firstSeen": "2026-05-25",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "have",
+      "meaning": "有；擁有",
+      "example": "I have a red pencil.",
+      "translation": "我有一枝紅色的鉛筆。",
+      "firstSeen": "2026-05-25",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "become",
+      "meaning": "變成；變得",
+      "example": "The weather became cold.",
+      "translation": "天氣變冷了。",
+      "firstSeen": "2026-05-25",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "dollar",
       "meaning": "美元；（泛指）元",

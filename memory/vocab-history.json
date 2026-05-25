@@ -2063,6 +2063,36 @@
         "黃色（的）"
       ],
       "translation": "我有一件黃色的雨衣。"
+    },
+    "truck": {
+      "first_seen": "2026-05-25",
+      "last_seen": "2026-05-25",
+      "meanings": [
+        "卡車；貨車"
+      ],
+      "pos": "n",
+      "example_sentence": "The truck is big.",
+      "translation": "那台卡車很大。"
+    },
+    "have": {
+      "first_seen": "2026-05-25",
+      "last_seen": "2026-05-25",
+      "meanings": [
+        "有；擁有"
+      ],
+      "pos": "v",
+      "example_sentence": "I have a red pencil.",
+      "translation": "我有一枝紅色的鉛筆。"
+    },
+    "become": {
+      "first_seen": "2026-05-25",
+      "last_seen": "2026-05-25",
+      "meanings": [
+        "變成；變得"
+      ],
+      "pos": "v",
+      "example_sentence": "The weather became cold.",
+      "translation": "天氣變冷了。"
     }
   }
 }
