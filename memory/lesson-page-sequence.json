@@ -4,28 +4,28 @@
   "stopAfterLesson": 18,
   "next": {
     "lesson": 15,
-    "day": "周一"
+    "day": "周三"
   },
   "lastBuilt": {
-    "weekTag": "202605w3",
-    "builtAt": "2026-05-20T06:32:09.373660+08:00",
+    "weekTag": "202605w4",
+    "builtAt": "2026-05-27T06:30:15.107861+08:00",
     "wednesday": {
       "kind": "wednesday",
-      "lesson": 14,
-      "day": "周六",
-      "title": "以撒婚姻的预表─基督与召会",
-      "file": "lesson14-202605w3.html",
-      "url": "https://kinnsou.github.io/temporary/lesson14-202605w3.html",
-      "sourceUrl": "https://ezoe.work/books/2/2264-1-14.html"
+      "lesson": 15,
+      "day": "周一",
+      "title": "雅各的出生",
+      "file": "lesson15-202605w4.html",
+      "url": "https://kinnsou.github.io/temporary/lesson15-202605w4.html",
+      "sourceUrl": "https://ezoe.work/books/2/2264-1-15.html"
     },
     "sunday": {
       "kind": "sunday",
-      "lesson": 14,
-      "day": "主日",
-      "title": "以撒的特点",
-      "file": "lesson14-202605w3-sun.html",
-      "url": "https://kinnsou.github.io/temporary/lesson14-202605w3-sun.html",
-      "sourceUrl": "https://ezoe.work/books/2/2264-1-14.html"
+      "lesson": 15,
+      "day": "周二",
+      "title": "雅各在父家",
+      "file": "lesson15-202605w4-sun.html",
+      "url": "https://kinnsou.github.io/temporary/lesson15-202605w4-sun.html",
+      "sourceUrl": "https://ezoe.work/books/2/2264-1-15.html"
     }
   }
 }
