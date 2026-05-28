@@ -1,18 +1,108 @@
 {
   "meta": {
-    "updatedAt": "2026-05-25T11:00:54Z",
-    "sourceCount": 215,
-    "includedCount": 207
+    "updatedAt": "2026-05-28T11:00:54Z",
+    "sourceCount": 224,
+    "includedCount": 216
   },
   "words": [
     {
-      "word": "truck",
-      "meaning": "卡車；貨車",
-      "example": "The truck is big.",
-      "translation": "那台卡車很大。",
-      "firstSeen": "2026-05-25",
+      "word": "healthy",
+      "meaning": "健康的；有益健康的",
+      "example": "Eating vegetables keeps you healthy.",
+      "translation": "吃蔬菜能讓你保持健康。",
+      "firstSeen": "2026-05-28",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "soon",
+      "meaning": "很快；不久",
+      "example": "We will leave soon.",
+      "translation": "我們很快就要出發了。",
+      "firstSeen": "2026-05-28",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "student",
+      "meaning": "學生",
+      "example": "The student asks a question.",
+      "translation": "那位學生問了一個問題。",
+      "firstSeen": "2026-05-28",
       "pos": [
         "n"
+      ]
+    },
+    {
+      "word": "appear",
+      "meaning": "出現",
+      "example": "Stars appear in the sky at night.",
+      "translation": "星星會在夜晚出現在天空中。",
+      "firstSeen": "2026-05-27",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "clock",
+      "meaning": "時鐘；鐘",
+      "example": "The clock on the wall is fast.",
+      "translation": "牆上的時鐘走得比較快。",
+      "firstSeen": "2026-05-27",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "fight",
+      "meaning": "打架；爭吵",
+      "example": "The two boys fight over the toy every day.",
+      "translation": "那兩個男孩每天都會為了那個玩具吵架。",
+      "firstSeen": "2026-05-27",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "boat",
+      "meaning": "船；小船",
+      "example": "The boat is on the lake.",
+      "translation": "那艘小船在湖上。",
+      "firstSeen": "2026-05-26",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "climb",
+      "meaning": "爬；攀爬",
+      "example": "The boy climbs the tree every afternoon.",
+      "translation": "那個男孩每天下午都會爬樹。",
+      "firstSeen": "2026-05-26",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "study",
+      "meaning": "讀書；學習",
+      "example": "She studies English after dinner.",
+      "translation": "她晚餐後讀英文。",
+      "firstSeen": "2026-05-26",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "become",
+      "meaning": "變成；變得",
+      "example": "The weather became cold.",
+      "translation": "天氣變冷了。",
+      "firstSeen": "2026-05-25",
+      "pos": [
+        "v"
       ]
     },
     {
@@ -26,13 +116,13 @@
       ]
     },
     {
-      "word": "become",
-      "meaning": "變成；變得",
-      "example": "The weather became cold.",
-      "translation": "天氣變冷了。",
+      "word": "truck",
+      "meaning": "卡車；貨車",
+      "example": "The truck is big.",
+      "translation": "那台卡車很大。",
       "firstSeen": "2026-05-25",
       "pos": [
-        "v"
+        "n"
       ]
     },
     {

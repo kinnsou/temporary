@@ -65,6 +65,16 @@
       "pos": "adv",
       "translation": "她總是會吃早餐。"
     },
+    "appear": {
+      "example_sentence": "Stars appear in the sky at night.",
+      "first_seen": "2026-05-27",
+      "last_seen": "2026-05-27",
+      "meanings": [
+        "出現"
+      ],
+      "pos": "v",
+      "translation": "星星會在夜晚出現在天空中。"
+    },
     "arrive": {
       "example_sentence": "We will arrive at school before eight.",
       "first_seen": "2026-03-08",
@@ -103,6 +113,16 @@
       ],
       "pos": "adj",
       "translation": "今天的天空很美。"
+    },
+    "become": {
+      "example_sentence": "The weather became cold.",
+      "first_seen": "2026-05-25",
+      "last_seen": "2026-05-25",
+      "meanings": [
+        "變成；變得"
+      ],
+      "pos": "v",
+      "translation": "天氣變冷了。"
     },
     "behind": {
       "example_sentence": "The cat is behind the chair.",
@@ -153,6 +173,16 @@
         "吹；吹氣；吹風"
       ],
       "translation": "請對湯吹一吹，它很燙。"
+    },
+    "boat": {
+      "example_sentence": "The boat is on the lake.",
+      "first_seen": "2026-05-26",
+      "last_seen": "2026-05-26",
+      "meanings": [
+        "船；小船"
+      ],
+      "pos": "n",
+      "translation": "那艘小船在湖上。"
     },
     "borrow": {
       "example_sentence": "Can I borrow your pencil?",
@@ -303,6 +333,26 @@
         "聰明的"
       ],
       "translation": "那個聰明的男孩很快解開了謎題。"
+    },
+    "climb": {
+      "example_sentence": "The boy climbs the tree every afternoon.",
+      "first_seen": "2026-05-26",
+      "last_seen": "2026-05-26",
+      "meanings": [
+        "爬；攀爬"
+      ],
+      "pos": "v",
+      "translation": "那個男孩每天下午都會爬樹。"
+    },
+    "clock": {
+      "example_sentence": "The clock on the wall is fast.",
+      "first_seen": "2026-05-27",
+      "last_seen": "2026-05-27",
+      "meanings": [
+        "時鐘；鐘"
+      ],
+      "pos": "n",
+      "translation": "牆上的時鐘走得比較快。"
     },
     "close": {
       "example_sentence": "Please close the door.",
@@ -593,6 +643,16 @@
       ],
       "translation": "放學後我覺得很累。"
     },
+    "fight": {
+      "example_sentence": "The two boys fight over the toy every day.",
+      "first_seen": "2026-05-27",
+      "last_seen": "2026-05-27",
+      "meanings": [
+        "打架；爭吵"
+      ],
+      "pos": "v",
+      "translation": "那兩個男孩每天都會為了那個玩具吵架。"
+    },
     "finish": {
       "example_sentence": "I will finish my homework before dinner.",
       "first_seen": "2026-05-19",
@@ -781,6 +841,27 @@
       ],
       "pos": "v",
       "translation": "我討厭蜘蛛。"
+    },
+    "have": {
+      "example_sentence": "I have a red pencil.",
+      "first_seen": "2026-05-25",
+      "last_seen": "2026-05-25",
+      "meanings": [
+        "有；擁有"
+      ],
+      "pos": "v",
+      "translation": "我有一枝紅色的鉛筆。"
+    },
+    "healthy": {
+      "example_sentence": "Eating vegetables keeps you healthy.",
+      "first_seen": "2026-05-28",
+      "last_seen": "2026-05-28",
+      "meanings": [
+        "健康的",
+        "有益健康的"
+      ],
+      "pos": "adj",
+      "translation": "吃蔬菜能讓你保持健康。"
     },
     "heavy": {
       "example_sentence": "This bag is heavy.",
@@ -1667,6 +1748,16 @@
       ],
       "translation": "我兒子放學後打籃球。"
     },
+    "soon": {
+      "example_sentence": "We will leave soon.",
+      "first_seen": "2026-05-28",
+      "last_seen": "2026-05-28",
+      "meanings": [
+        "很快；不久"
+      ],
+      "pos": "adv",
+      "translation": "我們很快就要出發了。"
+    },
     "sorry": {
       "example_sentence": "I'm sorry I'm late.",
       "first_seen": "2026-03-28",
@@ -1731,6 +1822,26 @@
         "街道；馬路"
       ],
       "translation": "不要在馬路上玩。"
+    },
+    "student": {
+      "example_sentence": "The student asks a question.",
+      "first_seen": "2026-05-28",
+      "last_seen": "2026-05-28",
+      "meanings": [
+        "學生"
+      ],
+      "pos": "n",
+      "translation": "那位學生問了一個問題。"
+    },
+    "study": {
+      "example_sentence": "She studies English after dinner.",
+      "first_seen": "2026-05-26",
+      "last_seen": "2026-05-26",
+      "meanings": [
+        "讀書；學習"
+      ],
+      "pos": "v",
+      "translation": "她晚餐後讀英文。"
     },
     "sugar": {
       "example_sentence": "Don't put too much sugar in your tea.",
@@ -1882,6 +1993,16 @@
       ],
       "pos": "n",
       "translation": "我們去動物園的旅行很有趣。"
+    },
+    "truck": {
+      "example_sentence": "The truck is big.",
+      "first_seen": "2026-05-25",
+      "last_seen": "2026-05-25",
+      "meanings": [
+        "卡車；貨車"
+      ],
+      "pos": "n",
+      "translation": "那台卡車很大。"
     },
     "typhoon": {
       "example_sentence": "A typhoon is coming.",
@@ -2063,36 +2184,6 @@
         "黃色（的）"
       ],
       "translation": "我有一件黃色的雨衣。"
-    },
-    "truck": {
-      "first_seen": "2026-05-25",
-      "last_seen": "2026-05-25",
-      "meanings": [
-        "卡車；貨車"
-      ],
-      "pos": "n",
-      "example_sentence": "The truck is big.",
-      "translation": "那台卡車很大。"
-    },
-    "have": {
-      "first_seen": "2026-05-25",
-      "last_seen": "2026-05-25",
-      "meanings": [
-        "有；擁有"
-      ],
-      "pos": "v",
-      "example_sentence": "I have a red pencil.",
-      "translation": "我有一枝紅色的鉛筆。"
-    },
-    "become": {
-      "first_seen": "2026-05-25",
-      "last_seen": "2026-05-25",
-      "meanings": [
-        "變成；變得"
-      ],
-      "pos": "v",
-      "example_sentence": "The weather became cold.",
-      "translation": "天氣變冷了。"
     }
   }
 }
