@@ -420,6 +420,20 @@
       ],
       "translation": "下課後我們聊了很久。"
     },
+    "copy": {
+      "example_sentence": "Please copy this sentence into your notebook.",
+      "first_seen": "2026-05-29",
+      "last_seen": "2026-05-29",
+      "meanings": [
+        "複製；抄寫",
+        "副本"
+      ],
+      "pos": [
+        "v",
+        "n"
+      ],
+      "translation": "請把這句話抄到你的筆記本裡。"
+    },
     "correctly": {
       "example_sentence": "Please write your name correctly.",
       "first_seen": "2026-04-28",
@@ -579,6 +593,16 @@
       ],
       "pos": "n",
       "translation": "這台車的引擎很大聲。"
+    },
+    "especially": {
+      "example_sentence": "I like fruit, especially apples.",
+      "first_seen": "2026-05-29",
+      "last_seen": "2026-05-29",
+      "meanings": [
+        "特別是；尤其是"
+      ],
+      "pos": "adv",
+      "translation": "我喜歡水果，尤其是蘋果。"
     },
     "every": {
       "example_sentence": "I brush my teeth every night.",
@@ -789,6 +813,16 @@
         "手套"
       ],
       "translation": "這隻手套對我的手來說太大了。"
+    },
+    "go": {
+      "example_sentence": "I go to school by bus.",
+      "first_seen": "2026-05-29",
+      "last_seen": "2026-05-29",
+      "meanings": [
+        "去；走；前往"
+      ],
+      "pos": "v",
+      "translation": "我搭公車去上學。"
     },
     "gray": {
       "example_sentence": "The sky is gray today.",

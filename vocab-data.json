@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-05-28T11:00:54Z",
-    "sourceCount": 224,
-    "includedCount": 216
+    "updatedAt": "2026-05-29T11:00:48Z",
+    "sourceCount": 227,
+    "includedCount": 219
   },
   "words": [
+    {
+      "word": "copy",
+      "meaning": "複製；抄寫；副本",
+      "example": "Please copy this sentence into your notebook.",
+      "translation": "請把這句話抄到你的筆記本裡。",
+      "firstSeen": "2026-05-29",
+      "pos": [
+        "v",
+        "n"
+      ]
+    },
+    {
+      "word": "especially",
+      "meaning": "特別是；尤其是",
+      "example": "I like fruit, especially apples.",
+      "translation": "我喜歡水果，尤其是蘋果。",
+      "firstSeen": "2026-05-29",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "go",
+      "meaning": "去；走；前往",
+      "example": "I go to school by bus.",
+      "translation": "我搭公車去上學。",
+      "firstSeen": "2026-05-29",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "healthy",
       "meaning": "健康的；有益健康的",
