@@ -3,7 +3,7 @@
     "newWordsMustBeUniqueUntilExhausted": true,
     "reviewFormat": "guided_cloze_with_grammar_chunking",
     "sourceScope": "台灣普遍認定國中必會1000單",
-    "updatedAt": "2026-05-24T11:00:51Z"
+    "updatedAt": "2026-05-30T11:00:00Z"
   },
   "words": {
     "about": {
@@ -1277,6 +1277,20 @@
       ],
       "translation": "我放學後要去見我的朋友。"
     },
+    "mind": {
+      "example_sentence": "I changed my mind.",
+      "first_seen": "2026-05-30",
+      "last_seen": "2026-05-30",
+      "meanings": [
+        "想法；主意",
+        "心；心思"
+      ],
+      "pos": [
+        "n",
+        "v"
+      ],
+      "translation": "我改變主意了。"
+    },
     "mirror": {
       "example_sentence": "I looked at myself in the mirror.",
       "first_seen": "2026-03-07",
@@ -1714,6 +1728,17 @@
       ],
       "pos": "v",
       "translation": "我想跟你分享我的點心。"
+    },
+    "sharp": {
+      "example_sentence": "Be careful. The knife is sharp.",
+      "first_seen": "2026-05-30",
+      "last_seen": "2026-05-30",
+      "meanings": [
+        "鋒利的",
+        "尖銳的"
+      ],
+      "pos": "adj",
+      "translation": "要小心，這把刀很鋒利。"
     },
     "shine": {
       "example_sentence": "The sun shines in the morning.",
@@ -2180,6 +2205,16 @@
       ],
       "pos": "n",
       "translation": "窗戶是開著的。"
+    },
+    "without": {
+      "example_sentence": "I can't go out without my umbrella.",
+      "first_seen": "2026-05-30",
+      "last_seen": "2026-05-30",
+      "meanings": [
+        "沒有；缺少（…就不行）"
+      ],
+      "pos": "prep",
+      "translation": "沒有雨傘我沒辦法出門。"
     },
     "wizard": {
       "example_sentence": "The wizard lives in a tall tower.",

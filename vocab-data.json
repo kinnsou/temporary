@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-05-29T11:00:48Z",
-    "sourceCount": 227,
-    "includedCount": 219
+    "updatedAt": "2026-05-30T11:00:47Z",
+    "sourceCount": 230,
+    "includedCount": 222
   },
   "words": [
+    {
+      "word": "mind",
+      "meaning": "想法；主意；心；心思",
+      "example": "I changed my mind.",
+      "translation": "我改變主意了。",
+      "firstSeen": "2026-05-30",
+      "pos": [
+        "n",
+        "v"
+      ]
+    },
+    {
+      "word": "sharp",
+      "meaning": "鋒利的；尖銳的",
+      "example": "Be careful. The knife is sharp.",
+      "translation": "要小心，這把刀很鋒利。",
+      "firstSeen": "2026-05-30",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "without",
+      "meaning": "沒有；缺少（…就不行）",
+      "example": "I can't go out without my umbrella.",
+      "translation": "沒有雨傘我沒辦法出門。",
+      "firstSeen": "2026-05-30",
+      "pos": [
+        "prep"
+      ]
+    },
     {
       "word": "copy",
       "meaning": "複製；抄寫；副本",
