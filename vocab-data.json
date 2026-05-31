@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-05-30T11:00:47Z",
-    "sourceCount": 230,
-    "includedCount": 222
+    "updatedAt": "2026-05-31T11:01:10Z",
+    "sourceCount": 233,
+    "includedCount": 225
   },
   "words": [
+    {
+      "word": "quick",
+      "meaning": "快的；迅速的",
+      "example": "She is quick to learn new words.",
+      "translation": "她學新單字學得很快。",
+      "firstSeen": "2026-05-31",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "river",
+      "meaning": "河；河流",
+      "example": "We saw fish in the river.",
+      "translation": "我們在河裡看到魚。",
+      "firstSeen": "2026-05-31",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "tooth",
+      "meaning": "牙齒",
+      "example": "I have a loose tooth.",
+      "translation": "我有一顆快掉下來的牙齒。",
+      "firstSeen": "2026-05-31",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "mind",
       "meaning": "想法；主意；心；心思",
