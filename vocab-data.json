@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-05-31T11:01:10Z",
-    "sourceCount": 233,
-    "includedCount": 225
+    "updatedAt": "2026-06-01T11:00:49Z",
+    "sourceCount": 236,
+    "includedCount": 228
   },
   "words": [
+    {
+      "word": "fresh",
+      "meaning": "新鮮的",
+      "example": "The bread is fresh today.",
+      "translation": "今天的麵包很新鮮。",
+      "firstSeen": "2026-06-01",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "luckily",
+      "meaning": "幸好；幸運地",
+      "example": "Luckily, we got home before the rain.",
+      "translation": "幸好我們在下雨前回到家。",
+      "firstSeen": "2026-06-01",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "make",
+      "meaning": "做；製作；使得",
+      "example": "I make my bed every morning.",
+      "translation": "我每天早上都會整理床鋪。",
+      "firstSeen": "2026-06-01",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "quick",
       "meaning": "快的；迅速的",

@@ -740,6 +740,16 @@
       "pos": "v",
       "translation": "水在冬天會結冰。"
     },
+    "fresh": {
+      "example_sentence": "The bread is fresh today.",
+      "first_seen": "2026-06-01",
+      "last_seen": "2026-06-01",
+      "meanings": [
+        "新鮮的"
+      ],
+      "pos": "adj",
+      "translation": "今天的麵包很新鮮。"
+    },
     "friendly": {
       "example_sentence": "Our new classmate is very friendly.",
       "first_seen": "2026-03-02",
@@ -1259,6 +1269,27 @@
       ],
       "translation": "考試加油，祝你好運！"
     },
+    "luckily": {
+      "example_sentence": "Luckily, we got home before the rain.",
+      "first_seen": "2026-06-01",
+      "last_seen": "2026-06-01",
+      "meanings": [
+        "幸好；幸運地"
+      ],
+      "pos": "adv",
+      "translation": "幸好我們在下雨前回到家。"
+    },
+    "make": {
+      "example_sentence": "I make my bed every morning.",
+      "first_seen": "2026-06-01",
+      "last_seen": "2026-06-01",
+      "meanings": [
+        "做；製作",
+        "使得"
+      ],
+      "pos": "v",
+      "translation": "我每天早上都會整理床鋪。"
+    },
     "mean": {
       "example_sentence": "What does this word mean?",
       "first_seen": "2026-04-12",
@@ -1583,6 +1614,16 @@
       ],
       "translation": "樹木有助於保護地球。"
     },
+    "quick": {
+      "example_sentence": "She is quick to learn new words.",
+      "first_seen": "2026-05-31",
+      "last_seen": "2026-05-31",
+      "meanings": [
+        "快的；迅速的"
+      ],
+      "pos": "adj",
+      "translation": "她學新單字學得很快。"
+    },
     "quiet": {
       "example_sentence": "Please be quiet in the library.",
       "first_seen": "2026-03-07",
@@ -1601,16 +1642,6 @@
       ],
       "pos": "adv",
       "translation": "今天蠻冷的。"
-    },
-    "quick": {
-      "example_sentence": "She is quick to learn new words.",
-      "first_seen": "2026-05-31",
-      "last_seen": "2026-05-31",
-      "meanings": [
-        "快的；迅速的"
-      ],
-      "pos": "adj",
-      "translation": "她學新單字學得很快。"
     },
     "rainbow": {
       "example_sentence": "I can see a rainbow after the rain.",
@@ -1676,16 +1707,6 @@
       ],
       "translation": "我騎腳踏車去上學。"
     },
-    "river": {
-      "example_sentence": "We saw fish in the river.",
-      "first_seen": "2026-05-31",
-      "last_seen": "2026-05-31",
-      "meanings": [
-        "河；河流"
-      ],
-      "pos": "n",
-      "translation": "我們在河裡看到魚。"
-    },
     "ring": {
       "example_sentence": "She wears a ring on her finger.",
       "first_seen": "2026-05-06",
@@ -1695,6 +1716,16 @@
       ],
       "pos": "n",
       "translation": "她手指上戴著一枚戒指。"
+    },
+    "river": {
+      "example_sentence": "We saw fish in the river.",
+      "first_seen": "2026-05-31",
+      "last_seen": "2026-05-31",
+      "meanings": [
+        "河；河流"
+      ],
+      "pos": "n",
+      "translation": "我們在河裡看到魚。"
     },
     "rush": {
       "example_sentence": "Don't rush. We have enough time.",
