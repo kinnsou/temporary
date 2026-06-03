@@ -183,6 +183,7 @@ Reference implementation: 2026-04-25 cleanup pass — see Changelog below for co
 
 Newest first. Format: `YYYY-MM-DD [agent] commit `hash` — one-line summary`.
 
+- 2026-06-03 [OpenClaw] `37766b9` — JP N3 classroom pet selection fix: switched JP data to `jpN3_`-prefixed docs under existing allowed top-level Firestore collections and refreshed profile after pet claim.
 - 2026-04-28 [OpenClaw] `f76e47c` — Moved feed-heart moodlets into the feed modal pet, hid Boy/Girl voice-source text, added answer-time TTS, and added sentence-order quiz with pet first-3-word hint.
 - 2026-04-27 [OpenClaw] `c9eb9a0` — Restored level-based study path: LV1 gets 15 easiest ranked words plus today's 3; each level unlocks +5; quiz prioritizes daily focus; totalExp is persisted and shown on the home pet card.
 - 2026-04-28 [Claude Code] `b7ca2a9` — pet emoji moodlets on PetCard (animation-free, same absolute-overlay pattern as the quiz hint badge). Feeding success → 2x ❤️ to the pet's left, offset (large 20px at left:-12 top:-2, small 13px at left:-18 top:22) so they don't line up; auto-clears 1.6s. HP in (0,20) → 😢 at right:0 bottom:6 (under the right-eye region). Both wrapped in overflow:visible button with pointer-events:none on the spans so the tap-to-charselect click still works.
