@@ -756,6 +756,13 @@ function OnboardingScreen({onDone,pc}){
     try{
       const switched=await window.FB.ops.switchPlayerByName(name.trim());
       await window.FB.ops.claimPet(switched.uid,selectedPetId);
+      if(window.FB?.ops?.refreshProfile){
+        const fresh=await window.FB.ops.refreshProfile(switched.uid);
+        window.FB.uid=switched.uid;
+        window.FB.playerId=switched.uid;
+        window.FB.profile=fresh;
+        window.dispatchEvent(new Event('fbready'));
+      }
       const idx=petIdxFromId(selectedPetId)??0;
       const profile={name:name.trim(),charIdx:idx,petId:selectedPetId};
       saveProfile(profile);onDone(profile);setStep(3);
@@ -2266,13 +2273,25 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const CLASSROOM_ID = 'jp-n3';
-const userDoc = uid => doc(db, 'classrooms', CLASSROOM_ID, 'users', uid);
-const petDoc = petId => doc(db, 'classrooms', CLASSROOM_ID, 'pets', petId);
-const leaderboardDoc = uid => doc(db, 'classrooms', CLASSROOM_ID, 'leaderboard', uid);
-const mapStageDoc = stage => doc(db, 'classrooms', CLASSROOM_ID, 'mapStages', mapStageDocId(stage));
-const petsCol = () => collection(db, 'classrooms', CLASSROOM_ID, 'pets');
-const leaderboardCol = () => collection(db, 'classrooms', CLASSROOM_ID, 'leaderboard');
-const mapStagesCol = () => collection(db, 'classrooms', CLASSROOM_ID, 'mapStages');
+const CLASSROOM_DOC_PREFIX = 'jpN3_';
+function classroomDocId(id) {
+  const raw = String(id || '');
+  return raw.startsWith(CLASSROOM_DOC_PREFIX) ? raw : CLASSROOM_DOC_PREFIX + raw;
+}
+function classroomLogicalId(id) {
+  const raw = String(id || '');
+  return raw.startsWith(CLASSROOM_DOC_PREFIX) ? raw.slice(CLASSROOM_DOC_PREFIX.length) : raw;
+}
+function isClassroomDoc(docSnap) {
+  return String(docSnap?.id || '').startsWith(CLASSROOM_DOC_PREFIX);
+}
+const userDoc = uid => doc(db, 'users', classroomDocId(uid));
+const petDoc = petId => doc(db, 'pets', classroomDocId(petId));
+const leaderboardDoc = uid => doc(db, 'leaderboard', classroomDocId(uid));
+const mapStageDoc = stage => doc(db, 'mapStages', classroomDocId(mapStageDocId(stage)));
+const petsCol = () => collection(db, 'pets');
+const leaderboardCol = () => collection(db, 'leaderboard');
+const mapStagesCol = () => collection(db, 'mapStages');
 
 function calcCurrentHp(pet, now = Date.now()) {
   if (!pet) return 0;
@@ -2296,6 +2315,7 @@ async function ensureUserProfile(uid, defaultName, legacyUid = null) {
     if (existing.level === undefined || existing.level === null) { patch.level = 1; patch.pendingLevelUp = 0; }
     if (existing.pendingLevelUp === undefined || existing.pendingLevelUp === null) patch.pendingLevelUp = 0;
     if (existing.knownWords === undefined || existing.knownWords === null) patch.knownWords = [];
+    if (existing.classroom !== CLASSROOM_ID) patch.classroom = CLASSROOM_ID;
     if (existing.mapStage === undefined || existing.mapStage === null) patch.mapStage = Math.max(1, Number(existing.level || 1));
     if (existing.mapBestStage === undefined || existing.mapBestStage === null) patch.mapBestStage = Math.max(0, Number((patch.mapStage || existing.mapStage || 1) - 1));
     if (existing.mapFoodBonuses === undefined || existing.mapFoodBonuses === null) patch.mapFoodBonuses = [];
@@ -2316,11 +2336,12 @@ async function ensureUserProfile(uid, defaultName, legacyUid = null) {
     try {
       const legacySnap = await getDoc(userDoc(legacyUid));
       if (legacySnap.exists()) {
-        data = { ...legacySnap.data(), name: normalizePlayerName(defaultName), playerId: uid, migratedFromAuthUid: legacyUid, updatedAt: now };
+        data = { ...legacySnap.data(), classroom: CLASSROOM_ID, name: normalizePlayerName(defaultName), playerId: uid, migratedFromAuthUid: legacyUid, updatedAt: now };
       }
     } catch (e) { console.warn('[FB] legacy profile copy failed', e); }
   }
   if (!data) data = {
+    classroom: CLASSROOM_ID,
     name: normalizePlayerName(defaultName),
     playerId: uid,
     currentPetId: null,
@@ -2357,6 +2378,7 @@ async function migrateLocalStats(uid, profile) {
   try { old = JSON.parse(localStorage.getItem('jpN3Stats3') || 'null'); } catch {}
   if (!old) return false;
   const patch = {
+    classroom: CLASSROOM_ID,
     streakCur: Number(old.streak || 0),
     streakBest: Math.max(Number(old.streak || 0), Number(old.streakBest || 0)),
     bestScore: Number(old.best || 0),
@@ -2379,6 +2401,7 @@ async function seedPets() {
     if (snap.exists()) continue;
     const now = Date.now();
     await setDoc(ref, {
+      classroom: CLASSROOM_ID,
       type: p.type, name: p.name, desc: p.desc, img: p.img,
       ownerUid: null, ownerName: null, status: 'available',
       hp: 100, lastHpUpdate: now,
@@ -2430,9 +2453,11 @@ async function mergePetsByOwnerName(name, playerId) {
   const now = Date.now();
   const writes = [];
   snap.forEach(d => {
+    if (!isClassroomDoc(d)) return;
+    const petId = classroomLogicalId(d.id);
     const pet = d.data();
     if (normalizePlayerName(pet.ownerName || '') === clean && pet.ownerUid !== playerId) {
-      merged.push(d.id);
+      merged.push(petId);
       writes.push(updateDoc(d.ref, { ownerUid: playerId, updatedAt: now }).catch(e => console.warn('[FB] merge ownerName pet failed', d.id, e)));
     }
   });
@@ -2464,30 +2489,33 @@ async function switchPlayerByName(name) {
 async function listPets() {
   const now = Date.now();
   let snap = await getDocs(petsCol());
-  if (snap.empty) {
+  let docs = snap.docs.filter(isClassroomDoc);
+  if (!docs.length) {
     try {
       await seedPets();
       snap = await getDocs(petsCol());
+      docs = snap.docs.filter(isClassroomDoc);
     } catch (e) {
       console.warn('[FB] seed on listPets failed; showing seed fallback', e);
       return seedPetList(now);
     }
-    if (snap.empty) return seedPetList(now);
+    if (!docs.length) return seedPetList(now);
   }
   const out = [];
   const reborn = [];
   const usersToClear = new Set();
-  snap.forEach(d => {
+  docs.forEach(d => {
+    const petId = classroomLogicalId(d.id);
     const pet = d.data();
     const hp = calcCurrentHp(pet, now);
     if (hp <= 0 && (pet.ownerUid || pet.status === 'disabled')) {
       // Starved or legacy-disabled → auto-release and reset to a fresh available pet
       // so abandoned accounts don't lock pets forever.
-      reborn.push({ id: d.id, ref: d.ref, prevOwner: pet.ownerUid || null });
+      reborn.push({ id: petId, ref: d.ref, prevOwner: pet.ownerUid || null });
       if (pet.ownerUid) usersToClear.add(pet.ownerUid);
-      out.push({ id: d.id, ...pet, hp:100, status:'available', ownerUid:null, ownerName:null });
+      out.push({ id: petId, ...pet, hp:100, status:'available', ownerUid:null, ownerName:null });
     } else {
-      out.push({ id: d.id, ...pet, hp, status: pet.status || 'available' });
+      out.push({ id: petId, ...pet, hp, status: pet.status || 'available' });
     }
   });
   await Promise.all(reborn.map(p => updateDoc(p.ref, { hp:100, status:'available', ownerUid:null, ownerName:null, lastHpUpdate: now, updatedAt: now }).catch(()=>{})));
@@ -2545,9 +2573,9 @@ async function claimPet(uid, petId) {
       hp: claimHp, lastHpUpdate: now, updatedAt: now,
     };
     if (petSnap.exists()) tx.update(petRef, claimPatch);
-    else tx.set(petRef, { ...pet, ...claimPatch, createdAt: now });
+    else tx.set(petRef, { ...pet, ...claimPatch, classroom: CLASSROOM_ID, createdAt: now });
     tx.update(userRef, { currentPetId: petId, updatedAt: now });
-    tx.set(leaderboardDoc(uid), { uid, avatarId: petId, name: user.name || '匿名玩家', updatedAt: new Date(now).toISOString() }, { merge: true });
+    tx.set(leaderboardDoc(uid), { classroom: CLASSROOM_ID, uid, avatarId: petId, name: user.name || '匿名玩家', updatedAt: new Date(now).toISOString() }, { merge: true });
     return { id: petId, ...pet, hp: claimHp, ownerUid: uid, ownerName: user.name || '匿名玩家', status: 'owned' };
   });
 }
@@ -2725,7 +2753,10 @@ async function markWordUnknown(uid, word) {
 async function listMapStages(maxRows = 60) {
   const snap = await getDocs(mapStagesCol());
   const out = [];
-  snap.forEach(d => out.push({ id: d.id, ...d.data() }));
+  snap.forEach(d => {
+    if (!isClassroomDoc(d)) return;
+    out.push({ id: classroomLogicalId(d.id), ...d.data() });
+  });
   return out
     .filter(r => Number(r.stage || 0) > 0 && Number(r.stage || 0) <= maxRows)
     .sort((a,b) => Number(a.stage || 0) - Number(b.stage || 0));
@@ -2758,6 +2789,7 @@ async function clearMapStage(uid, run = {}) {
     const stars = mapStarsForScoreModule(run.clearScore ?? run.score, run.total || 15);
     const prevStars = (user.mapStars && typeof user.mapStars === 'object') ? user.mapStars : {};
     const userPatch = {
+      classroom: CLASSROOM_ID,
       mapStage: nextMap,
       mapBestStage: Math.max(Number(user.mapBestStage || 0), passed ? stage : 0),
       mapLastRun: { stage, passed, score: run.score | 0, clearScore: run.clearScore | 0, total: run.total | 0, pct: Number(run.pct || 0), isBoss: !!run.isBoss, clearWins: run.clearWins | 0, speedWins: run.speedWins | 0, avgSec, bossClearSec: Number(run.bossClearSec || 0), stars, at: now },
@@ -2773,10 +2805,10 @@ async function clearMapStage(uid, run = {}) {
     }
     if (passed && stage >= curMap) userPatch.mapClears = (user.mapClears || 0) + 1;
     tx.set(userRef, userPatch, { merge: true });
-    tx.set(lbRef, { uid, name: cleanName, avatarId: run.avatarId || user.currentPetId || 'pet_001', mapStage: nextMap, mapBestStage: userPatch.mapBestStage, updatedAt: new Date(now).toISOString() }, { merge: true });
+    tx.set(lbRef, { classroom: CLASSROOM_ID, uid, name: cleanName, avatarId: run.avatarId || user.currentPetId || 'pet_001', mapStage: nextMap, mapBestStage: userPatch.mapBestStage, updatedAt: new Date(now).toISOString() }, { merge: true });
 
     const prev = stageSnap.exists() ? stageSnap.data() : {};
-    const stagePatch = { stage, updatedAt: now };
+    const stagePatch = { classroom: CLASSROOM_ID, stage, updatedAt: now };
     if (passed && !prev.firstClearerUid) {
       stagePatch.firstClearerUid = uid;
       stagePatch.firstClearerName = cleanName;
@@ -2825,15 +2857,20 @@ function nextStreak(base) {
 
 async function getLeaderboardEntry(uid) {
   const snap = await getDoc(leaderboardDoc(uid));
-  return snap.exists() ? { uid, ...snap.data() } : null;
+  return snap.exists() ? { ...snap.data(), uid } : null;
 }
 
 async function listLeaderboard(orderField = 'bestScore', maxRows = 80) {
-  const q = query(leaderboardCol(), orderBy(orderField, 'desc'), limit(maxRows));
-  const snap = await getDocs(q);
+  const snap = await getDocs(leaderboardCol());
   const out = [];
-  snap.forEach(d => out.push({ uid: d.id, ...d.data() }));
-  return out;
+  snap.forEach(d => {
+    if (!isClassroomDoc(d)) return;
+    const data = d.data();
+    out.push({ ...data, uid: data.uid || classroomLogicalId(d.id) });
+  });
+  return out
+    .sort((a,b) => Number(b?.[orderField] || 0) - Number(a?.[orderField] || 0))
+    .slice(0, maxRows);
 }
 
 async function upsertLeaderboardScore(uid, name, avatarId, score, total = 20) {
@@ -2858,6 +2895,7 @@ async function upsertLeaderboardScore(uid, name, avatarId, score, total = 20) {
     const prevTodayDate = String(user.todayQuizDate || '');
     const todayQuizCount = (prevTodayDate === today ? (user.todayQuizCount || 0) : 0) + totalInt;
     const entry = {
+      classroom: CLASSROOM_ID,
       uid,
       name: String(name || user.name || '匿名玩家').trim().slice(0, 40),
       avatarId: user.currentPetId || avatarId || prev.avatarId || 'pet_001',
@@ -2877,6 +2915,7 @@ async function upsertLeaderboardScore(uid, name, avatarId, score, total = 20) {
     };
     tx.set(lbRef, entry, { merge: true });
     tx.set(userRef, {
+      classroom: CLASSROOM_ID,
       name: entry.name,
       bestScore: entry.bestScore,
       avgScore,
