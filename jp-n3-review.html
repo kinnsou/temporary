@@ -479,7 +479,7 @@ function buildQuizItems(pool,total,knownSet=new Set()){
       built=buildParticleQuestion(w);
       if(built)particleBudget--;
     }
-    if(orderBudget>0&&w.en&&(items.length%5===1||Math.random()<0.35)){
+    if(!built&&orderBudget>0&&w.en&&(items.length%5===1||Math.random()<0.35)){
       built=buildOrderQuestion(w);
       if(built)orderBudget--;
     }
