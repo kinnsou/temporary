@@ -1,0 +1,3814 @@
+{
+  "meta": {
+    "updatedAt": "2026-06-03T08:02:13Z",
+    "classroom": "jp-n3",
+    "policy": "N5 excluded; N4 base is treated as already appeared; N3 seed releases 5 words per day.",
+    "counts": {
+      "n4Base": 80,
+      "n3Seed": 300,
+      "releasedN3Today": 5
+    }
+  },
+  "words": {
+    "空港": {
+      "reading": "くうこう",
+      "meaning": "機場",
+      "pos": "n",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "空港について話しました。",
+      "translation": "談到了機場。"
+    },
+    "旅館": {
+      "reading": "りょかん",
+      "meaning": "旅館",
+      "pos": "n",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "旅館について話しました。",
+      "translation": "談到了旅館。"
+    },
+    "交通": {
+      "reading": "こうつう",
+      "meaning": "交通",
+      "pos": "n",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "交通について話しました。",
+      "translation": "談到了交通。"
+    },
+    "道具": {
+      "reading": "どうぐ",
+      "meaning": "工具",
+      "pos": "n",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "道具について話しました。",
+      "translation": "談到了工具。"
+    },
+    "生活": {
+      "reading": "せいかつ",
+      "meaning": "生活",
+      "pos": "n",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "生活について話しました。",
+      "translation": "談到了生活。"
+    },
+    "習慣": {
+      "reading": "しゅうかん",
+      "meaning": "習慣",
+      "pos": "n",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "習慣について話しました。",
+      "translation": "談到了習慣。"
+    },
+    "趣味": {
+      "reading": "しゅみ",
+      "meaning": "興趣",
+      "pos": "n",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "趣味について話しました。",
+      "translation": "談到了興趣。"
+    },
+    "理由": {
+      "reading": "りゆう",
+      "meaning": "理由",
+      "pos": "n",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "理由について話しました。",
+      "translation": "談到了理由。"
+    },
+    "意味": {
+      "reading": "いみ",
+      "meaning": "意思",
+      "pos": "n",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "意味について話しました。",
+      "translation": "談到了意思。"
+    },
+    "意見": {
+      "reading": "いけん",
+      "meaning": "意見",
+      "pos": "n",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "意見について話しました。",
+      "translation": "談到了意見。"
+    },
+    "場所": {
+      "reading": "ばしょ",
+      "meaning": "地點",
+      "pos": "n",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "場所について話しました。",
+      "translation": "談到了地點。"
+    },
+    "住所": {
+      "reading": "じゅうしょ",
+      "meaning": "地址",
+      "pos": "n",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "住所について話しました。",
+      "translation": "談到了地址。"
+    },
+    "名前": {
+      "reading": "なまえ",
+      "meaning": "名字",
+      "pos": "n",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "名前について話しました。",
+      "translation": "談到了名字。"
+    },
+    "番号": {
+      "reading": "ばんごう",
+      "meaning": "號碼",
+      "pos": "n",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "番号について話しました。",
+      "translation": "談到了號碼。"
+    },
+    "直接": {
+      "reading": "ちょくせつ",
+      "meaning": "直接",
+      "pos": "adv",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "彼は直接話しました。",
+      "translation": "他以「直接」的方式說話。"
+    },
+    "特別": {
+      "reading": "とくべつ",
+      "meaning": "特別",
+      "pos": "adj-na",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "特別な説明でした。",
+      "translation": "這是特別的說明。"
+    },
+    "準備": {
+      "reading": "じゅんび",
+      "meaning": "準備",
+      "pos": "suru",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "準備をしました。",
+      "translation": "進行了準備。"
+    },
+    "説明": {
+      "reading": "せつめい",
+      "meaning": "說明",
+      "pos": "suru",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "説明をしました。",
+      "translation": "進行了說明。"
+    },
+    "約束": {
+      "reading": "やくそく",
+      "meaning": "約定",
+      "pos": "suru",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "約束をしました。",
+      "translation": "進行了約定。"
+    },
+    "相談": {
+      "reading": "そうだん",
+      "meaning": "商量",
+      "pos": "suru",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "相談をしました。",
+      "translation": "進行了商量。"
+    },
+    "復習": {
+      "reading": "ふくしゅう",
+      "meaning": "複習",
+      "pos": "suru",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "復習をしました。",
+      "translation": "進行了複習。"
+    },
+    "予習": {
+      "reading": "よしゅう",
+      "meaning": "預習",
+      "pos": "suru",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "予習をしました。",
+      "translation": "進行了預習。"
+    },
+    "練習": {
+      "reading": "れんしゅう",
+      "meaning": "練習",
+      "pos": "suru",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "練習をしました。",
+      "translation": "進行了練習。"
+    },
+    "注意": {
+      "reading": "ちゅうい",
+      "meaning": "注意",
+      "pos": "suru",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "注意をしました。",
+      "translation": "進行了注意。"
+    },
+    "紹介": {
+      "reading": "しょうかい",
+      "meaning": "介紹",
+      "pos": "suru",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "紹介をしました。",
+      "translation": "進行了介紹。"
+    },
+    "案内": {
+      "reading": "あんない",
+      "meaning": "嚮導",
+      "pos": "suru",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "案内をしました。",
+      "translation": "進行了嚮導。"
+    },
+    "利用": {
+      "reading": "りよう",
+      "meaning": "利用",
+      "pos": "suru",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "利用をしました。",
+      "translation": "進行了利用。"
+    },
+    "計画": {
+      "reading": "けいかく",
+      "meaning": "計畫",
+      "pos": "suru",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "計画をしました。",
+      "translation": "進行了計畫。"
+    },
+    "連絡": {
+      "reading": "れんらく",
+      "meaning": "聯絡",
+      "pos": "suru",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "連絡をしました。",
+      "translation": "進行了聯絡。"
+    },
+    "故障": {
+      "reading": "こしょう",
+      "meaning": "故障",
+      "pos": "suru",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "故障をしました。",
+      "translation": "進行了故障。"
+    },
+    "修理": {
+      "reading": "しゅうり",
+      "meaning": "修理",
+      "pos": "suru",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "修理をしました。",
+      "translation": "進行了修理。"
+    },
+    "出席": {
+      "reading": "しゅっせき",
+      "meaning": "出席",
+      "pos": "suru",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "出席をしました。",
+      "translation": "進行了出席。"
+    },
+    "欠席": {
+      "reading": "けっせき",
+      "meaning": "缺席",
+      "pos": "suru",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "欠席をしました。",
+      "translation": "進行了缺席。"
+    },
+    "出張": {
+      "reading": "しゅっちょう",
+      "meaning": "出差",
+      "pos": "suru",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "出張をしました。",
+      "translation": "進行了出差。"
+    },
+    "合格": {
+      "reading": "ごうかく",
+      "meaning": "及格",
+      "pos": "suru",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "合格をしました。",
+      "translation": "進行了及格。"
+    },
+    "反対": {
+      "reading": "はんたい",
+      "meaning": "反對",
+      "pos": "suru",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "反対をしました。",
+      "translation": "進行了反對。"
+    },
+    "賛成": {
+      "reading": "さんせい",
+      "meaning": "贊成",
+      "pos": "suru",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "賛成をしました。",
+      "translation": "進行了贊成。"
+    },
+    "安心": {
+      "reading": "あんしん",
+      "meaning": "放心",
+      "pos": "suru",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "安心をしました。",
+      "translation": "進行了放心。"
+    },
+    "心配": {
+      "reading": "しんぱい",
+      "meaning": "擔心",
+      "pos": "suru",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "心配をしました。",
+      "translation": "進行了擔心。"
+    },
+    "経験": {
+      "reading": "けいけん",
+      "meaning": "經驗",
+      "pos": "suru",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "経験をしました。",
+      "translation": "進行了經驗。"
+    },
+    "運ぶ": {
+      "reading": "はこぶ",
+      "meaning": "運送",
+      "pos": "v",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "運ぶことがあります。",
+      "translation": "有時會運送。"
+    },
+    "借りる": {
+      "reading": "かりる",
+      "meaning": "借入",
+      "pos": "v",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "借りることがあります。",
+      "translation": "有時會借入。"
+    },
+    "貸す": {
+      "reading": "かす",
+      "meaning": "借出",
+      "pos": "v",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "貸すことがあります。",
+      "translation": "有時會借出。"
+    },
+    "返す": {
+      "reading": "かえす",
+      "meaning": "歸還",
+      "pos": "v",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "返すことがあります。",
+      "translation": "有時會歸還。"
+    },
+    "始める": {
+      "reading": "はじめる",
+      "meaning": "開始",
+      "pos": "v",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "始めることがあります。",
+      "translation": "有時會開始。"
+    },
+    "終わる": {
+      "reading": "おわる",
+      "meaning": "結束",
+      "pos": "v",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "終わることがあります。",
+      "translation": "有時會結束。"
+    },
+    "考える": {
+      "reading": "かんがえる",
+      "meaning": "思考",
+      "pos": "v",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "考えることがあります。",
+      "translation": "有時會思考。"
+    },
+    "思い出す": {
+      "reading": "おもいだす",
+      "meaning": "想起",
+      "pos": "v",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "思い出すことがあります。",
+      "translation": "有時會想起。"
+    },
+    "伝える": {
+      "reading": "つたえる",
+      "meaning": "傳達",
+      "pos": "v",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "伝えることがあります。",
+      "translation": "有時會傳達。"
+    },
+    "調べる": {
+      "reading": "しらべる",
+      "meaning": "調查",
+      "pos": "v",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "調べることがあります。",
+      "translation": "有時會調查。"
+    },
+    "忘れる": {
+      "reading": "わすれる",
+      "meaning": "忘記",
+      "pos": "v",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "忘れることがあります。",
+      "translation": "有時會忘記。"
+    },
+    "決める": {
+      "reading": "きめる",
+      "meaning": "決定",
+      "pos": "v",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "決めることがあります。",
+      "translation": "有時會決定。"
+    },
+    "集める": {
+      "reading": "あつめる",
+      "meaning": "收集",
+      "pos": "v",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "集めることがあります。",
+      "translation": "有時會收集。"
+    },
+    "知らせる": {
+      "reading": "しらせる",
+      "meaning": "通知",
+      "pos": "v",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "知らせることがあります。",
+      "translation": "有時會通知。"
+    },
+    "慣れる": {
+      "reading": "なれる",
+      "meaning": "習慣",
+      "pos": "v",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "慣れることがあります。",
+      "translation": "有時會習慣。"
+    },
+    "比べる": {
+      "reading": "くらべる",
+      "meaning": "比較",
+      "pos": "v",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "比べることがあります。",
+      "translation": "有時會比較。"
+    },
+    "厚い": {
+      "reading": "あつい",
+      "meaning": "厚的",
+      "pos": "adj-i",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "厚い日でした。",
+      "translation": "是厚的的一天。"
+    },
+    "薄い": {
+      "reading": "うすい",
+      "meaning": "薄的",
+      "pos": "adj-i",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "薄い日でした。",
+      "translation": "是薄的的一天。"
+    },
+    "甘い": {
+      "reading": "あまい",
+      "meaning": "甜的",
+      "pos": "adj-i",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "甘い日でした。",
+      "translation": "是甜的的一天。"
+    },
+    "苦い": {
+      "reading": "にがい",
+      "meaning": "苦的",
+      "pos": "adj-i",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "苦い日でした。",
+      "translation": "是苦的的一天。"
+    },
+    "辛い": {
+      "reading": "からい",
+      "meaning": "辣的",
+      "pos": "adj-i",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "辛い日でした。",
+      "translation": "是辣的的一天。"
+    },
+    "痛い": {
+      "reading": "いたい",
+      "meaning": "痛的",
+      "pos": "adj-i",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "痛い日でした。",
+      "translation": "是痛的的一天。"
+    },
+    "眠い": {
+      "reading": "ねむい",
+      "meaning": "睏的",
+      "pos": "adj-i",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "眠い日でした。",
+      "translation": "是睏的的一天。"
+    },
+    "怖い": {
+      "reading": "こわい",
+      "meaning": "害怕的",
+      "pos": "adj-i",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "怖い日でした。",
+      "translation": "是害怕的的一天。"
+    },
+    "寂しい": {
+      "reading": "さびしい",
+      "meaning": "寂寞的",
+      "pos": "adj-i",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "寂しい日でした。",
+      "translation": "是寂寞的的一天。"
+    },
+    "正しい": {
+      "reading": "ただしい",
+      "meaning": "正確的",
+      "pos": "adj-i",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "正しい日でした。",
+      "translation": "是正確的的一天。"
+    },
+    "珍しい": {
+      "reading": "めずらしい",
+      "meaning": "罕見的",
+      "pos": "adj-i",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "珍しい日でした。",
+      "translation": "是罕見的的一天。"
+    },
+    "安全": {
+      "reading": "あんぜん",
+      "meaning": "安全的",
+      "pos": "adj-na",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "安全な説明でした。",
+      "translation": "這是安全的的說明。"
+    },
+    "不便": {
+      "reading": "ふべん",
+      "meaning": "不便的",
+      "pos": "adj-na",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "不便な説明でした。",
+      "translation": "這是不便的的說明。"
+    },
+    "複雑": {
+      "reading": "ふくざつ",
+      "meaning": "複雜的",
+      "pos": "adj-na",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "複雑な説明でした。",
+      "translation": "這是複雜的的說明。"
+    },
+    "必要": {
+      "reading": "ひつよう",
+      "meaning": "必要的",
+      "pos": "adj-na",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "必要な説明でした。",
+      "translation": "這是必要的的說明。"
+    },
+    "親切": {
+      "reading": "しんせつ",
+      "meaning": "親切的",
+      "pos": "adj-na",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "親切な説明でした。",
+      "translation": "這是親切的的說明。"
+    },
+    "大切": {
+      "reading": "たいせつ",
+      "meaning": "重要的",
+      "pos": "adj-na",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "大切な説明でした。",
+      "translation": "這是重要的的說明。"
+    },
+    "丁寧": {
+      "reading": "ていねい",
+      "meaning": "有禮貌",
+      "pos": "adj-na",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "丁寧な説明でした。",
+      "translation": "這是有禮貌的說明。"
+    },
+    "残念": {
+      "reading": "ざんねん",
+      "meaning": "可惜",
+      "pos": "adj-na",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "残念な説明でした。",
+      "translation": "這是可惜的說明。"
+    },
+    "全然": {
+      "reading": "ぜんぜん",
+      "meaning": "完全不",
+      "pos": "adv",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "彼は全然話しました。",
+      "translation": "他以「完全不」的方式說話。"
+    },
+    "決して": {
+      "reading": "けっして",
+      "meaning": "絕不",
+      "pos": "adv",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "彼は決して話しました。",
+      "translation": "他以「絕不」的方式說話。"
+    },
+    "多分": {
+      "reading": "たぶん",
+      "meaning": "大概",
+      "pos": "adv",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "彼は多分話しました。",
+      "translation": "他以「大概」的方式說話。"
+    },
+    "大体": {
+      "reading": "だいたい",
+      "meaning": "大約",
+      "pos": "adv",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "彼は大体話しました。",
+      "translation": "他以「大約」的方式說話。"
+    },
+    "急に": {
+      "reading": "きゅうに",
+      "meaning": "突然",
+      "pos": "adv",
+      "tier": "N4_BASE",
+      "released": true,
+      "first_seen": "2026-05-01",
+      "example": "彼は急に話しました。",
+      "translation": "他以「突然」的方式說話。"
+    },
+    "解決": {
+      "reading": "かいけつ",
+      "meaning": "解決",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": true,
+      "first_seen": "2026-06-03",
+      "example": "問題を解決しました。",
+      "translation": "解決了問題。"
+    },
+    "影響": {
+      "reading": "えいきょう",
+      "meaning": "影響",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": true,
+      "first_seen": "2026-06-03",
+      "example": "台風が交通に影響しました。",
+      "translation": "颱風影響了交通。"
+    },
+    "期待": {
+      "reading": "きたい",
+      "meaning": "期待",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": true,
+      "first_seen": "2026-06-03",
+      "example": "良い結果を期待しました。",
+      "translation": "期待好的結果。"
+    },
+    "成功": {
+      "reading": "せいこう",
+      "meaning": "成功",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": true,
+      "first_seen": "2026-06-03",
+      "example": "新しい計画が成功しました。",
+      "translation": "新的計畫成功了。"
+    },
+    "失敗": {
+      "reading": "しっぱい",
+      "meaning": "失敗",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": true,
+      "first_seen": "2026-06-03",
+      "example": "試験に失敗しました。",
+      "translation": "考試失敗了。"
+    },
+    "報告": {
+      "reading": "ほうこく",
+      "meaning": "報告",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "報告をしました。",
+      "translation": "進行了報告。"
+    },
+    "決定": {
+      "reading": "けってい",
+      "meaning": "決定",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "決定をしました。",
+      "translation": "進行了決定。"
+    },
+    "変化": {
+      "reading": "へんか",
+      "meaning": "變化",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "変化をしました。",
+      "translation": "進行了變化。"
+    },
+    "成長": {
+      "reading": "せいちょう",
+      "meaning": "成長",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "成長をしました。",
+      "translation": "進行了成長。"
+    },
+    "感謝": {
+      "reading": "かんしゃ",
+      "meaning": "感謝",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "感謝をしました。",
+      "translation": "進行了感謝。"
+    },
+    "反省": {
+      "reading": "はんせい",
+      "meaning": "反省",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "反省をしました。",
+      "translation": "進行了反省。"
+    },
+    "集中": {
+      "reading": "しゅうちゅう",
+      "meaning": "集中",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "集中をしました。",
+      "translation": "進行了集中。"
+    },
+    "活躍": {
+      "reading": "かつやく",
+      "meaning": "活躍",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "活躍をしました。",
+      "translation": "進行了活躍。"
+    },
+    "努力": {
+      "reading": "どりょく",
+      "meaning": "努力",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "努力をしました。",
+      "translation": "進行了努力。"
+    },
+    "協力": {
+      "reading": "きょうりょく",
+      "meaning": "協力",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "協力をしました。",
+      "translation": "進行了協力。"
+    },
+    "希望": {
+      "reading": "きぼう",
+      "meaning": "希望",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "希望をしました。",
+      "translation": "進行了希望。"
+    },
+    "調査": {
+      "reading": "ちょうさ",
+      "meaning": "調查",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "調査をしました。",
+      "translation": "進行了調查。"
+    },
+    "表現": {
+      "reading": "ひょうげん",
+      "meaning": "表達、表現",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "表現をしました。",
+      "translation": "進行了表達、表現。"
+    },
+    "想像": {
+      "reading": "そうぞう",
+      "meaning": "想像",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "想像をしました。",
+      "translation": "進行了想像。"
+    },
+    "理解": {
+      "reading": "りかい",
+      "meaning": "理解",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "理解をしました。",
+      "translation": "進行了理解。"
+    },
+    "比較": {
+      "reading": "ひかく",
+      "meaning": "比較",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "比較をしました。",
+      "translation": "進行了比較。"
+    },
+    "改善": {
+      "reading": "かいぜん",
+      "meaning": "改善",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "改善をしました。",
+      "translation": "進行了改善。"
+    },
+    "検討": {
+      "reading": "けんとう",
+      "meaning": "探討、研究",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "検討をしました。",
+      "translation": "進行了探討、研究。"
+    },
+    "記録": {
+      "reading": "きろく",
+      "meaning": "紀錄",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "記録をしました。",
+      "translation": "進行了紀錄。"
+    },
+    "存在": {
+      "reading": "そんざい",
+      "meaning": "存在",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "存在をしました。",
+      "translation": "進行了存在。"
+    },
+    "構成": {
+      "reading": "こうせい",
+      "meaning": "構成",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "構成をしました。",
+      "translation": "進行了構成。"
+    },
+    "維持": {
+      "reading": "いじ",
+      "meaning": "維持",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "維持をしました。",
+      "translation": "進行了維持。"
+    },
+    "管理": {
+      "reading": "かんり",
+      "meaning": "管理",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "管理をしました。",
+      "translation": "進行了管理。"
+    },
+    "運営": {
+      "reading": "うんえい",
+      "meaning": "營運",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "運営をしました。",
+      "translation": "進行了營運。"
+    },
+    "活用": {
+      "reading": "かつよう",
+      "meaning": "活用",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "活用をしました。",
+      "translation": "進行了活用。"
+    },
+    "安定": {
+      "reading": "あんてい",
+      "meaning": "安定",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "安定をしました。",
+      "translation": "進行了安定。"
+    },
+    "信頼": {
+      "reading": "しんらい",
+      "meaning": "信賴",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "信頼をしました。",
+      "translation": "進行了信賴。"
+    },
+    "尊重": {
+      "reading": "そんちょう",
+      "meaning": "尊重",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "尊重をしました。",
+      "translation": "進行了尊重。"
+    },
+    "誤解": {
+      "reading": "ごかい",
+      "meaning": "誤解",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "誤解をしました。",
+      "translation": "進行了誤解。"
+    },
+    "延長": {
+      "reading": "えんちょう",
+      "meaning": "延長",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "延長をしました。",
+      "translation": "進行了延長。"
+    },
+    "短縮": {
+      "reading": "たんしゅく",
+      "meaning": "縮短",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "短縮をしました。",
+      "translation": "進行了縮短。"
+    },
+    "宣伝": {
+      "reading": "せんでん",
+      "meaning": "宣傳",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "宣伝をしました。",
+      "translation": "進行了宣傳。"
+    },
+    "実現": {
+      "reading": "じつげん",
+      "meaning": "實現",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "実現をしました。",
+      "translation": "進行了實現。"
+    },
+    "継続": {
+      "reading": "けいぞく",
+      "meaning": "繼續",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "継続をしました。",
+      "translation": "進行了繼續。"
+    },
+    "終了": {
+      "reading": "しゅうりょう",
+      "meaning": "結束",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "終了をしました。",
+      "translation": "進行了結束。"
+    },
+    "開始": {
+      "reading": "かいし",
+      "meaning": "開始",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "開始をしました。",
+      "translation": "進行了開始。"
+    },
+    "停止": {
+      "reading": "ていし",
+      "meaning": "停止",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "停止をしました。",
+      "translation": "進行了停止。"
+    },
+    "禁止": {
+      "reading": "きんし",
+      "meaning": "禁止",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "禁止をしました。",
+      "translation": "進行了禁止。"
+    },
+    "許可": {
+      "reading": "きょか",
+      "meaning": "許可",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "許可をしました。",
+      "translation": "進行了許可。"
+    },
+    "証明": {
+      "reading": "しょうめい",
+      "meaning": "證明",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "証明をしました。",
+      "translation": "進行了證明。"
+    },
+    "計算": {
+      "reading": "けいさん",
+      "meaning": "計算",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "計算をしました。",
+      "translation": "進行了計算。"
+    },
+    "予約": {
+      "reading": "よやく",
+      "meaning": "預約",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "予約をしました。",
+      "translation": "進行了預約。"
+    },
+    "修正": {
+      "reading": "しゅうせい",
+      "meaning": "修正",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "修正をしました。",
+      "translation": "進行了修正。"
+    },
+    "保存": {
+      "reading": "ほぞん",
+      "meaning": "保存",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "保存をしました。",
+      "translation": "進行了保存。"
+    },
+    "発達": {
+      "reading": "はったつ",
+      "meaning": "發達",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "発達をしました。",
+      "translation": "進行了發達。"
+    },
+    "発見": {
+      "reading": "はっけん",
+      "meaning": "發現",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "発見をしました。",
+      "translation": "進行了發現。"
+    },
+    "発明": {
+      "reading": "はつめい",
+      "meaning": "發明",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "発明をしました。",
+      "translation": "進行了發明。"
+    },
+    "整理": {
+      "reading": "せいり",
+      "meaning": "整理",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "整理をしました。",
+      "translation": "進行了整理。"
+    },
+    "分析": {
+      "reading": "ぶんせき",
+      "meaning": "分析",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "分析をしました。",
+      "translation": "進行了分析。"
+    },
+    "回復": {
+      "reading": "かいふく",
+      "meaning": "恢復",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "回復をしました。",
+      "translation": "進行了恢復。"
+    },
+    "完了": {
+      "reading": "かんりょう",
+      "meaning": "完成",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "完了をしました。",
+      "translation": "進行了完成。"
+    },
+    "指導": {
+      "reading": "しどう",
+      "meaning": "指導",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "指導をしました。",
+      "translation": "進行了指導。"
+    },
+    "応援": {
+      "reading": "おうえん",
+      "meaning": "應援、支持",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "応援をしました。",
+      "translation": "進行了應援、支持。"
+    },
+    "訓練": {
+      "reading": "くんれん",
+      "meaning": "訓練",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "訓練をしました。",
+      "translation": "進行了訓練。"
+    },
+    "移動": {
+      "reading": "いどう",
+      "meaning": "移動",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "移動をしました。",
+      "translation": "進行了移動。"
+    },
+    "交代": {
+      "reading": "こうたい",
+      "meaning": "輪換、更替",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "交代をしました。",
+      "translation": "進行了輪換、更替。"
+    },
+    "衝突": {
+      "reading": "しょうとつ",
+      "meaning": "衝突",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "衝突をしました。",
+      "translation": "進行了衝突。"
+    },
+    "混雑": {
+      "reading": "こんざつ",
+      "meaning": "擁擠",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "混雑をしました。",
+      "translation": "進行了擁擠。"
+    },
+    "集合": {
+      "reading": "しゅうごう",
+      "meaning": "集合",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "集合をしました。",
+      "translation": "進行了集合。"
+    },
+    "解散": {
+      "reading": "かいさん",
+      "meaning": "解散",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "解散をしました。",
+      "translation": "進行了解散。"
+    },
+    "出発": {
+      "reading": "しゅっぱつ",
+      "meaning": "出發",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "出発をしました。",
+      "translation": "進行了出發。"
+    },
+    "到着": {
+      "reading": "とうちゃく",
+      "meaning": "到達",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "到着をしました。",
+      "translation": "進行了到達。"
+    },
+    "提案": {
+      "reading": "ていあん",
+      "meaning": "提案",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "提案をしました。",
+      "translation": "進行了提案。"
+    },
+    "主張": {
+      "reading": "しゅちょう",
+      "meaning": "主張",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "主張をしました。",
+      "translation": "進行了主張。"
+    },
+    "採用": {
+      "reading": "さいよう",
+      "meaning": "採用、錄用",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "採用をしました。",
+      "translation": "進行了採用、錄用。"
+    },
+    "適用": {
+      "reading": "てきよう",
+      "meaning": "適用",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "適用をしました。",
+      "translation": "進行了適用。"
+    },
+    "原因": {
+      "reading": "げんいん",
+      "meaning": "原因",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "原因について話しました。",
+      "translation": "談到了原因。"
+    },
+    "結果": {
+      "reading": "けっか",
+      "meaning": "結果",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "結果について話しました。",
+      "translation": "談到了結果。"
+    },
+    "目的": {
+      "reading": "もくてき",
+      "meaning": "目的",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "目的について話しました。",
+      "translation": "談到了目的。"
+    },
+    "目標": {
+      "reading": "もくひょう",
+      "meaning": "目標",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "目標について話しました。",
+      "translation": "談到了目標。"
+    },
+    "方法": {
+      "reading": "ほうほう",
+      "meaning": "方法",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "方法について話しました。",
+      "translation": "談到了方法。"
+    },
+    "手段": {
+      "reading": "しゅだん",
+      "meaning": "手段",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "手段について話しました。",
+      "translation": "談到了手段。"
+    },
+    "権利": {
+      "reading": "けんり",
+      "meaning": "權利",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "権利について話しました。",
+      "translation": "談到了權利。"
+    },
+    "義務": {
+      "reading": "ぎむ",
+      "meaning": "義務",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "義務について話しました。",
+      "translation": "談到了義務。"
+    },
+    "責任": {
+      "reading": "せきにん",
+      "meaning": "責任",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "責任について話しました。",
+      "translation": "談到了責任。"
+    },
+    "事情": {
+      "reading": "じじょう",
+      "meaning": "事情、原委",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "事情について話しました。",
+      "translation": "談到了事情、原委。"
+    },
+    "状況": {
+      "reading": "じょうきょう",
+      "meaning": "狀況",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "状況について話しました。",
+      "translation": "談到了狀況。"
+    },
+    "環境": {
+      "reading": "かんきょう",
+      "meaning": "環境",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "環境について話しました。",
+      "translation": "談到了環境。"
+    },
+    "条件": {
+      "reading": "じょうけん",
+      "meaning": "條件",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "条件について話しました。",
+      "translation": "談到了條件。"
+    },
+    "内容": {
+      "reading": "ないよう",
+      "meaning": "內容",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "内容について話しました。",
+      "translation": "談到了內容。"
+    },
+    "程度": {
+      "reading": "ていど",
+      "meaning": "程度",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "程度について話しました。",
+      "translation": "談到了程度。"
+    },
+    "限界": {
+      "reading": "げんかい",
+      "meaning": "極限",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "限界について話しました。",
+      "translation": "談到了極限。"
+    },
+    "範囲": {
+      "reading": "はんい",
+      "meaning": "範圍",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "範囲について話しました。",
+      "translation": "談到了範圍。"
+    },
+    "規模": {
+      "reading": "きぼ",
+      "meaning": "規模",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "規模について話しました。",
+      "translation": "談到了規模。"
+    },
+    "形式": {
+      "reading": "けいしき",
+      "meaning": "形式",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "形式について話しました。",
+      "translation": "談到了形式。"
+    },
+    "機能": {
+      "reading": "きのう",
+      "meaning": "功能",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "機能について話しました。",
+      "translation": "談到了功能。"
+    },
+    "職務": {
+      "reading": "しょくむ",
+      "meaning": "職務",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "職務について話しました。",
+      "translation": "談到了職務。"
+    },
+    "法律": {
+      "reading": "ほうりつ",
+      "meaning": "法律",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "法律について話しました。",
+      "translation": "談到了法律。"
+    },
+    "契約": {
+      "reading": "けいやく",
+      "meaning": "契約",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "契約をしました。",
+      "translation": "進行了契約。"
+    },
+    "昇進": {
+      "reading": "しょうしん",
+      "meaning": "晉升",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "昇進をしました。",
+      "translation": "進行了晉升。"
+    },
+    "転職": {
+      "reading": "てんしょく",
+      "meaning": "換工作",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "転職をしました。",
+      "translation": "進行了換工作。"
+    },
+    "残業": {
+      "reading": "ざんぎょう",
+      "meaning": "加班",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "残業をしました。",
+      "translation": "進行了加班。"
+    },
+    "経営": {
+      "reading": "けいえい",
+      "meaning": "經營",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "経営をしました。",
+      "translation": "進行了經營。"
+    },
+    "景気": {
+      "reading": "けいき",
+      "meaning": "景氣",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "景気について話しました。",
+      "translation": "談到了景氣。"
+    },
+    "予算": {
+      "reading": "よさん",
+      "meaning": "預算",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "予算について話しました。",
+      "translation": "談到了預算。"
+    },
+    "企画": {
+      "reading": "きかく",
+      "meaning": "企劃",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "企画をしました。",
+      "translation": "進行了企劃。"
+    },
+    "尊敬": {
+      "reading": "そんけい",
+      "meaning": "尊敬",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "尊敬をしました。",
+      "translation": "進行了尊敬。"
+    },
+    "謙譲": {
+      "reading": "けんじょう",
+      "meaning": "謙遜",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "謙譲について話しました。",
+      "translation": "談到了謙遜。"
+    },
+    "放送": {
+      "reading": "ほうそう",
+      "meaning": "廣播",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "放送をしました。",
+      "translation": "進行了廣播。"
+    },
+    "記事": {
+      "reading": "きじ",
+      "meaning": "報導",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "記事について話しました。",
+      "translation": "談到了報導。"
+    },
+    "広告": {
+      "reading": "こうこく",
+      "meaning": "廣告",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "広告について話しました。",
+      "translation": "談到了廣告。"
+    },
+    "通信": {
+      "reading": "つうしん",
+      "meaning": "通訊",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "通信をしました。",
+      "translation": "進行了通訊。"
+    },
+    "情報": {
+      "reading": "じょうほう",
+      "meaning": "資訊",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "情報について話しました。",
+      "translation": "談到了資訊。"
+    },
+    "普及": {
+      "reading": "ふきゅう",
+      "meaning": "普及",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "普及をしました。",
+      "translation": "進行了普及。"
+    },
+    "世論": {
+      "reading": "よろん",
+      "meaning": "輿論",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "世論について話しました。",
+      "translation": "談到了輿論。"
+    },
+    "番組": {
+      "reading": "ばんぐみ",
+      "meaning": "節目",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "番組について話しました。",
+      "translation": "談到了節目。"
+    },
+    "編集": {
+      "reading": "へんしゅう",
+      "meaning": "編輯",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "編集をしました。",
+      "translation": "進行了編輯。"
+    },
+    "出版": {
+      "reading": "しゅっぱん",
+      "meaning": "出版",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "出版をしました。",
+      "translation": "進行了出版。"
+    },
+    "購読": {
+      "reading": "こうどく",
+      "meaning": "訂閱",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "購読をしました。",
+      "translation": "進行了訂閱。"
+    },
+    "専門": {
+      "reading": "せんもん",
+      "meaning": "專業",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "専門について話しました。",
+      "translation": "談到了專業。"
+    },
+    "応用": {
+      "reading": "おうよう",
+      "meaning": "應用",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "応用をしました。",
+      "translation": "進行了應用。"
+    },
+    "理論": {
+      "reading": "りろん",
+      "meaning": "理論",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "理論について話しました。",
+      "translation": "談到了理論。"
+    },
+    "研究": {
+      "reading": "けんきゅう",
+      "meaning": "研究",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "研究をしました。",
+      "translation": "進行了研究。"
+    },
+    "奨学金": {
+      "reading": "しょうがくきん",
+      "meaning": "獎學金",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "奨学金について話しました。",
+      "translation": "談到了獎學金。"
+    },
+    "講義": {
+      "reading": "こうぎ",
+      "meaning": "講義",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "講義をしました。",
+      "translation": "進行了講義。"
+    },
+    "基礎": {
+      "reading": "きそ",
+      "meaning": "基礎",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "基礎について話しました。",
+      "translation": "談到了基礎。"
+    },
+    "知識": {
+      "reading": "ちしき",
+      "meaning": "知識",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "知識について話しました。",
+      "translation": "談到了知識。"
+    },
+    "観光": {
+      "reading": "かんこう",
+      "meaning": "觀光",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "観光をしました。",
+      "translation": "進行了觀光。"
+    },
+    "宿泊": {
+      "reading": "しゅくはく",
+      "meaning": "住宿",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "宿泊をしました。",
+      "translation": "進行了住宿。"
+    },
+    "延期": {
+      "reading": "えんき",
+      "meaning": "延期",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "延期をしました。",
+      "translation": "進行了延期。"
+    },
+    "中止": {
+      "reading": "ちゅうし",
+      "meaning": "中止",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "中止をしました。",
+      "translation": "進行了中止。"
+    },
+    "交渉": {
+      "reading": "こうしょう",
+      "meaning": "交涉",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "交渉をしました。",
+      "translation": "進行了交涉。"
+    },
+    "調整": {
+      "reading": "ちょうせい",
+      "meaning": "調整",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "調整をしました。",
+      "translation": "進行了調整。"
+    },
+    "行事": {
+      "reading": "ぎょうじ",
+      "meaning": "活動",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "行事について話しました。",
+      "translation": "談到了活動。"
+    },
+    "近所": {
+      "reading": "きんじょ",
+      "meaning": "附近",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "近所について話しました。",
+      "translation": "談到了附近。"
+    },
+    "健康": {
+      "reading": "けんこう",
+      "meaning": "健康",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "健康について話しました。",
+      "translation": "談到了健康。"
+    },
+    "予防": {
+      "reading": "よぼう",
+      "meaning": "預防",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "予防をしました。",
+      "translation": "進行了預防。"
+    },
+    "診察": {
+      "reading": "しんさつ",
+      "meaning": "診察",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "診察をしました。",
+      "translation": "進行了診察。"
+    },
+    "栄養": {
+      "reading": "えいよう",
+      "meaning": "營養",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "栄養について話しました。",
+      "translation": "談到了營養。"
+    },
+    "睡眠": {
+      "reading": "すいみん",
+      "meaning": "睡眠",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "睡眠について話しました。",
+      "translation": "談到了睡眠。"
+    },
+    "休憩": {
+      "reading": "きゅうけい",
+      "meaning": "休息",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "休憩をしました。",
+      "translation": "進行了休息。"
+    },
+    "症状": {
+      "reading": "しょうじょう",
+      "meaning": "症狀",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "症状について話しました。",
+      "translation": "談到了症狀。"
+    },
+    "診断": {
+      "reading": "しんだん",
+      "meaning": "診斷",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "診断をしました。",
+      "translation": "進行了診斷。"
+    },
+    "手術": {
+      "reading": "しゅじゅつ",
+      "meaning": "手術",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "手術をしました。",
+      "translation": "進行了手術。"
+    },
+    "看護": {
+      "reading": "かんご",
+      "meaning": "看護",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "看護をしました。",
+      "translation": "進行了看護。"
+    },
+    "治療": {
+      "reading": "ちりょう",
+      "meaning": "治療",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "治療をしました。",
+      "translation": "進行了治療。"
+    },
+    "苦労": {
+      "reading": "くろう",
+      "meaning": "辛苦",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "苦労をしました。",
+      "translation": "進行了辛苦。"
+    },
+    "我慢": {
+      "reading": "がまん",
+      "meaning": "忍耐",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "我慢をしました。",
+      "translation": "進行了忍耐。"
+    },
+    "結論": {
+      "reading": "けつろん",
+      "meaning": "結論",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "結論について話しました。",
+      "translation": "談到了結論。"
+    },
+    "緊張": {
+      "reading": "きんちょう",
+      "meaning": "緊張",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "緊張をしました。",
+      "translation": "進行了緊張。"
+    },
+    "感動": {
+      "reading": "かんどう",
+      "meaning": "感動",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "感動をしました。",
+      "translation": "進行了感動。"
+    },
+    "遠慮": {
+      "reading": "えんりょ",
+      "meaning": "客氣、婉拒",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "遠慮をしました。",
+      "translation": "進行了客氣、婉拒。"
+    },
+    "承知": {
+      "reading": "しょうち",
+      "meaning": "知道、答應",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "承知をしました。",
+      "translation": "進行了知道、答應。"
+    },
+    "募集": {
+      "reading": "ぼしゅう",
+      "meaning": "募集",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "募集をしました。",
+      "translation": "進行了募集。"
+    },
+    "確認": {
+      "reading": "かくにん",
+      "meaning": "確認",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "確認をしました。",
+      "translation": "進行了確認。"
+    },
+    "判断": {
+      "reading": "はんだん",
+      "meaning": "判斷",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "判断をしました。",
+      "translation": "進行了判斷。"
+    },
+    "意識": {
+      "reading": "いしき",
+      "meaning": "意識",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "意識をしました。",
+      "translation": "進行了意識。"
+    },
+    "立場": {
+      "reading": "たちば",
+      "meaning": "立場",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "立場について話しました。",
+      "translation": "談到了立場。"
+    },
+    "価値": {
+      "reading": "かち",
+      "meaning": "價值",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "価値について話しました。",
+      "translation": "談到了價值。"
+    },
+    "政治": {
+      "reading": "せいじ",
+      "meaning": "政治",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "政治について話しました。",
+      "translation": "談到了政治。"
+    },
+    "経済": {
+      "reading": "けいざい",
+      "meaning": "經濟",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "経済について話しました。",
+      "translation": "談到了經濟。"
+    },
+    "文化": {
+      "reading": "ぶんか",
+      "meaning": "文化",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "文化について話しました。",
+      "translation": "談到了文化。"
+    },
+    "現代": {
+      "reading": "げんだい",
+      "meaning": "現代",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "現代について話しました。",
+      "translation": "談到了現代。"
+    },
+    "機会": {
+      "reading": "きかい",
+      "meaning": "機會",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "機会について話しました。",
+      "translation": "談到了機會。"
+    },
+    "効率": {
+      "reading": "こうりつ",
+      "meaning": "效率",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "効率について話しました。",
+      "translation": "談到了效率。"
+    },
+    "制度": {
+      "reading": "せいど",
+      "meaning": "制度",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "制度について話しました。",
+      "translation": "談到了制度。"
+    },
+    "割合": {
+      "reading": "わりあい",
+      "meaning": "比例",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "割合について話しました。",
+      "translation": "談到了比例。"
+    },
+    "平均": {
+      "reading": "へいきん",
+      "meaning": "平均",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "平均をしました。",
+      "translation": "進行了平均。"
+    },
+    "驚く": {
+      "reading": "おどろく",
+      "meaning": "感到驚訝",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "驚くことがあります。",
+      "translation": "有時會感到驚訝。"
+    },
+    "飽きる": {
+      "reading": "あきる",
+      "meaning": "厭倦",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "飽きることがあります。",
+      "translation": "有時會厭倦。"
+    },
+    "預ける": {
+      "reading": "あずける",
+      "meaning": "寄放",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "預けることがあります。",
+      "translation": "有時會寄放。"
+    },
+    "謝る": {
+      "reading": "あやまる",
+      "meaning": "道歉",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "謝ることがあります。",
+      "translation": "有時會道歉。"
+    },
+    "祈る": {
+      "reading": "いのる",
+      "meaning": "祈禱",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "祈ることがあります。",
+      "translation": "有時會祈禱。"
+    },
+    "祝う": {
+      "reading": "いわう",
+      "meaning": "慶祝",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "祝うことがあります。",
+      "translation": "有時會慶祝。"
+    },
+    "疑う": {
+      "reading": "うたがう",
+      "meaning": "懷疑",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "疑うことがあります。",
+      "translation": "有時會懷疑。"
+    },
+    "奪う": {
+      "reading": "うばう",
+      "meaning": "搶奪",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "奪うことがあります。",
+      "translation": "有時會搶奪。"
+    },
+    "敬う": {
+      "reading": "うやまう",
+      "meaning": "尊敬",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "敬うことがあります。",
+      "translation": "有時會尊敬。"
+    },
+    "占う": {
+      "reading": "うらなう",
+      "meaning": "占卜",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "占うことがあります。",
+      "translation": "有時會占卜。"
+    },
+    "補う": {
+      "reading": "おぎなう",
+      "meaning": "補充",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "補うことがあります。",
+      "translation": "有時會補充。"
+    },
+    "贈る": {
+      "reading": "おくる",
+      "meaning": "贈送",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "贈ることがあります。",
+      "translation": "有時會贈送。"
+    },
+    "怠る": {
+      "reading": "おこたる",
+      "meaning": "怠慢",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "怠ることがあります。",
+      "translation": "有時會怠慢。"
+    },
+    "抑える": {
+      "reading": "おさえる",
+      "meaning": "壓抑",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "抑えることがあります。",
+      "translation": "有時會壓抑。"
+    },
+    "教わる": {
+      "reading": "おそわる",
+      "meaning": "受教",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "教わることがあります。",
+      "translation": "有時會受教。"
+    },
+    "訪れる": {
+      "reading": "おとずれる",
+      "meaning": "訪問",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "訪れることがあります。",
+      "translation": "有時會訪問。"
+    },
+    "劣る": {
+      "reading": "おとる",
+      "meaning": "劣於",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "劣ることがあります。",
+      "translation": "有時會劣於。"
+    },
+    "及ぼす": {
+      "reading": "およぼす",
+      "meaning": "波及",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "及ぼすことがあります。",
+      "translation": "有時會波及。"
+    },
+    "輝く": {
+      "reading": "かがやく",
+      "meaning": "閃耀",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "輝くことがあります。",
+      "translation": "有時會閃耀。"
+    },
+    "限る": {
+      "reading": "かぎる",
+      "meaning": "限於",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "限ることがあります。",
+      "translation": "有時會限於。"
+    },
+    "欠ける": {
+      "reading": "かける",
+      "meaning": "欠缺",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "欠けることがあります。",
+      "translation": "有時會欠缺。"
+    },
+    "担ぐ": {
+      "reading": "かつぐ",
+      "meaning": "扛",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "担ぐことがあります。",
+      "translation": "有時會扛。"
+    },
+    "悲しむ": {
+      "reading": "かなしむ",
+      "meaning": "悲傷",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "悲しむことがあります。",
+      "translation": "有時會悲傷。"
+    },
+    "可愛がる": {
+      "reading": "かわいがる",
+      "meaning": "寵愛",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "可愛がることがあります。",
+      "translation": "有時會寵愛。"
+    },
+    "嫌う": {
+      "reading": "きらう",
+      "meaning": "討厭",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "嫌うことがあります。",
+      "translation": "有時會討厭。"
+    },
+    "切れる": {
+      "reading": "きれる",
+      "meaning": "切斷",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "切れることがあります。",
+      "translation": "有時會切斷。"
+    },
+    "加える": {
+      "reading": "くわえる",
+      "meaning": "加上",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "加えることがあります。",
+      "translation": "有時會加上。"
+    },
+    "断る": {
+      "reading": "ことわる",
+      "meaning": "拒絕",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "断ることがあります。",
+      "translation": "有時會拒絕。"
+    },
+    "好む": {
+      "reading": "このむ",
+      "meaning": "喜好",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "好むことがあります。",
+      "translation": "有時會喜好。"
+    },
+    "叫ぶ": {
+      "reading": "さけぶ",
+      "meaning": "呼喊",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "叫ぶことがあります。",
+      "translation": "有時會呼喊。"
+    },
+    "避ける": {
+      "reading": "さける",
+      "meaning": "避開",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "避けることがあります。",
+      "translation": "有時會避開。"
+    },
+    "探る": {
+      "reading": "さぐる",
+      "meaning": "探尋",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "探ることがあります。",
+      "translation": "有時會探尋。"
+    },
+    "妨げる": {
+      "reading": "さまたげる",
+      "meaning": "妨礙",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "妨げることがあります。",
+      "translation": "有時會妨礙。"
+    },
+    "沈む": {
+      "reading": "しずむ",
+      "meaning": "沉沒",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "沈むことがあります。",
+      "translation": "有時會沉沒。"
+    },
+    "従う": {
+      "reading": "したがう",
+      "meaning": "服從",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "従うことがあります。",
+      "translation": "有時會服從。"
+    },
+    "勧める": {
+      "reading": "すすめる",
+      "meaning": "推薦",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "勧めることがあります。",
+      "translation": "有時會推薦。"
+    },
+    "畳む": {
+      "reading": "たたむ",
+      "meaning": "摺疊",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "畳むことがあります。",
+      "translation": "有時會摺疊。"
+    },
+    "確かめる": {
+      "reading": "たしかめる",
+      "meaning": "確認",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "確かめることがあります。",
+      "translation": "有時會確認。"
+    },
+    "励ます": {
+      "reading": "はげます",
+      "meaning": "鼓勵",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "励ますことがあります。",
+      "translation": "有時會鼓勵。"
+    },
+    "間に合う": {
+      "reading": "まニアう",
+      "meaning": "來得及",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "間に合うことがあります。",
+      "translation": "有時會來得及。"
+    },
+    "迎える": {
+      "reading": "むかえる",
+      "meaning": "迎接",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "迎えることがあります。",
+      "translation": "有時會迎接。"
+    },
+    "雇う": {
+      "reading": "やとう",
+      "meaning": "雇用",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "雇うことがあります。",
+      "translation": "有時會雇用。"
+    },
+    "寄る": {
+      "reading": "よる",
+      "meaning": "靠近",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "寄ることがあります。",
+      "translation": "有時會靠近。"
+    },
+    "分ける": {
+      "reading": "わける",
+      "meaning": "分開",
+      "pos": "v",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "分けることがあります。",
+      "translation": "有時會分開。"
+    },
+    "恐ろしい": {
+      "reading": "おそろしい",
+      "meaning": "可怕的",
+      "pos": "adj-i",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "恐ろしい日でした。",
+      "translation": "是可怕的的一天。"
+    },
+    "苦しい": {
+      "reading": "くるしい",
+      "meaning": "痛苦的",
+      "pos": "adj-i",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "苦しい日でした。",
+      "translation": "是痛苦的的一天。"
+    },
+    "詳しい": {
+      "reading": "くわしい",
+      "meaning": "詳細的",
+      "pos": "adj-i",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "詳しい日でした。",
+      "translation": "是詳細的的一天。"
+    },
+    "險しい": {
+      "reading": "けわしい",
+      "meaning": "險峻的",
+      "pos": "adj-i",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "險しい日でした。",
+      "translation": "是險峻的的一天。"
+    },
+    "激しい": {
+      "reading": "はげしい",
+      "meaning": "激烈的",
+      "pos": "adj-i",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "激しい日でした。",
+      "translation": "是激烈的的一天。"
+    },
+    "貧しい": {
+      "reading": "まずしい",
+      "meaning": "貧窮的",
+      "pos": "adj-i",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "貧しい日でした。",
+      "translation": "是貧窮的的一天。"
+    },
+    "眩しい": {
+      "reading": "まぶしい",
+      "meaning": "刺眼的",
+      "pos": "adj-i",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "眩しい日でした。",
+      "translation": "是刺眼的的一天。"
+    },
+    "惜しい": {
+      "reading": "おしい",
+      "meaning": "可惜的",
+      "pos": "adj-i",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "惜しい日でした。",
+      "translation": "是可惜的的一天。"
+    },
+    "懐かしい": {
+      "reading": "なつかしい",
+      "meaning": "令人懷念的",
+      "pos": "adj-i",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "懐かしい日でした。",
+      "translation": "是令人懷念的的一天。"
+    },
+    "鋭い": {
+      "reading": "するどい",
+      "meaning": "尖銳的",
+      "pos": "adj-i",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "鋭い日でした。",
+      "translation": "是尖銳的的一天。"
+    },
+    "鈍い": {
+      "reading": "にぶい",
+      "meaning": "遲鈍的",
+      "pos": "adj-i",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "鈍い日でした。",
+      "translation": "是遲鈍的的一天。"
+    },
+    "幼い": {
+      "reading": "おさない",
+      "meaning": "幼小的",
+      "pos": "adj-i",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "幼い日でした。",
+      "translation": "是幼小的的一天。"
+    },
+    "等しい": {
+      "reading": "ひとしい",
+      "meaning": "相等的",
+      "pos": "adj-i",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "等しい日でした。",
+      "translation": "是相等的的一天。"
+    },
+    "穏やか": {
+      "reading": "おだやか",
+      "meaning": "溫和的",
+      "pos": "adj-na",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "穏やかな説明でした。",
+      "translation": "這是溫和的的說明。"
+    },
+    "盛ん": {
+      "reading": "さかん",
+      "meaning": "盛行的",
+      "pos": "adj-na",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "盛んな説明でした。",
+      "translation": "這是盛行的的說明。"
+    },
+    "新鮮": {
+      "reading": "しんせん",
+      "meaning": "新鮮的",
+      "pos": "adj-na",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "新鮮な説明でした。",
+      "translation": "這是新鮮的的說明。"
+    },
+    "派手": {
+      "reading": "はで",
+      "meaning": "華麗的",
+      "pos": "adj-na",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "派手な説明でした。",
+      "translation": "這是華麗的的說明。"
+    },
+    "地味": {
+      "reading": "じみ",
+      "meaning": "樸素的",
+      "pos": "adj-na",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "地味な説明でした。",
+      "translation": "這是樸素的的說明。"
+    },
+    "余計": {
+      "reading": "よけい",
+      "meaning": "多餘的",
+      "pos": "adj-na",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "余計な説明でした。",
+      "translation": "這是多餘的的說明。"
+    },
+    "真面目": {
+      "reading": "まじめ",
+      "meaning": "認真的",
+      "pos": "adj-na",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "真面目な説明でした。",
+      "translation": "這是認真的的說明。"
+    },
+    "得意": {
+      "reading": "とくい",
+      "meaning": "擅長的",
+      "pos": "adj-na",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "得意な説明でした。",
+      "translation": "這是擅長的的說明。"
+    },
+    "苦手": {
+      "reading": "にがて",
+      "meaning": "不擅長的",
+      "pos": "adj-na",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "苦手な説明でした。",
+      "translation": "這是不擅長的的說明。"
+    },
+    "勝手": {
+      "reading": "かって",
+      "meaning": "任性的",
+      "pos": "adj-na",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "勝手な説明でした。",
+      "translation": "這是任性的的說明。"
+    },
+    "無駄": {
+      "reading": "むだ",
+      "meaning": "徒勞的",
+      "pos": "adj-na",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "無駄な説明でした。",
+      "translation": "這是徒勞的的說明。"
+    },
+    "貴重": {
+      "reading": "きちょう",
+      "meaning": "貴重的",
+      "pos": "adj-na",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "貴重な説明でした。",
+      "translation": "這是貴重的的說明。"
+    },
+    "案外": {
+      "reading": "あんがい",
+      "meaning": "意外地",
+      "pos": "adv",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "彼は案外話しました。",
+      "translation": "他以「意外地」的方式說話。"
+    },
+    "いきなり": {
+      "reading": "いきなり",
+      "meaning": "突然地",
+      "pos": "adv",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "彼はいきなり話しました。",
+      "translation": "他以「突然地」的方式說話。"
+    },
+    "うっかり": {
+      "reading": "うっかり",
+      "meaning": "不留神地",
+      "pos": "adv",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "彼はうっかり話しました。",
+      "translation": "他以「不留神地」的方式說話。"
+    },
+    "思わず": {
+      "reading": "おもわず",
+      "meaning": "不由自主地",
+      "pos": "adv",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "彼は思わず話しました。",
+      "translation": "他以「不由自主地」的方式說話。"
+    },
+    "かなり": {
+      "reading": "かなり",
+      "meaning": "相當地",
+      "pos": "adv",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "彼はかなり話しました。",
+      "translation": "他以「相當地」的方式說話。"
+    },
+    "結局": {
+      "reading": "けっきょく",
+      "meaning": "結果",
+      "pos": "adv",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "彼は結局話しました。",
+      "translation": "他以「結果」的方式說話。"
+    },
+    "さすが": {
+      "reading": "さすが",
+      "meaning": "不愧是",
+      "pos": "adv",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "彼はさすが話しました。",
+      "translation": "他以「不愧是」的方式說話。"
+    },
+    "さっぱり": {
+      "reading": "さっぱり",
+      "meaning": "完全/爽快",
+      "pos": "adv",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "彼はさっぱり話しました。",
+      "translation": "他以「完全/爽快」的方式說話。"
+    },
+    "暫く": {
+      "reading": "しばらく",
+      "meaning": "暫時",
+      "pos": "adv",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "彼は暫く話しました。",
+      "translation": "他以「暫時」的方式說話。"
+    },
+    "隨分": {
+      "reading": "ずいぶん",
+      "meaning": "相當",
+      "pos": "adv",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "彼は隨分話しました。",
+      "translation": "他以「相當」的方式說話。"
+    },
+    "既に": {
+      "reading": "すでに",
+      "meaning": "已經",
+      "pos": "adv",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "彼は既に話しました。",
+      "translation": "他以「已經」的方式說話。"
+    },
+    "全く": {
+      "reading": "まったく",
+      "meaning": "完全地",
+      "pos": "adv",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "彼は全く話しました。",
+      "translation": "他以「完全地」的方式說話。"
+    },
+    "偶に": {
+      "reading": "たまに",
+      "meaning": "偶爾",
+      "pos": "adv",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "彼は偶に話しました。",
+      "translation": "他以「偶爾」的方式說話。"
+    },
+    "遂に": {
+      "reading": "ついに",
+      "meaning": "終於",
+      "pos": "adv",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "彼は遂に話しました。",
+      "translation": "他以「終於」的方式說話。"
+    },
+    "常に": {
+      "reading": "つねに",
+      "meaning": "時常",
+      "pos": "adv",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "彼は常に話しました。",
+      "translation": "他以「時常」的方式說話。"
+    },
+    "漸く": {
+      "reading": "ようやく",
+      "meaning": "好不容易",
+      "pos": "adv",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "彼は漸く話しました。",
+      "translation": "他以「好不容易」的方式說話。"
+    },
+    "依頼": {
+      "reading": "いらい",
+      "meaning": "委託",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "依頼をしました。",
+      "translation": "進行了委託。"
+    },
+    "景色": {
+      "reading": "けしき",
+      "meaning": "景色",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "景色について話しました。",
+      "translation": "談到了景色。"
+    },
+    "自身": {
+      "reading": "じしん",
+      "meaning": "自身",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "自身について話しました。",
+      "translation": "談到了自身。"
+    },
+    "将来": {
+      "reading": "しょうらい",
+      "meaning": "將來",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "将来について話しました。",
+      "translation": "談到了將來。"
+    },
+    "独身": {
+      "reading": "どくしん",
+      "meaning": "單身",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "独身について話しました。",
+      "translation": "談到了單身。"
+    },
+    "秘密": {
+      "reading": "ひみつ",
+      "meaning": "秘密",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "秘密について話しました。",
+      "translation": "談到了秘密。"
+    },
+    "流行": {
+      "reading": "りゅうこう",
+      "meaning": "流行",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "流行について話しました。",
+      "translation": "談到了流行。"
+    },
+    "画面": {
+      "reading": "がめん",
+      "meaning": "畫面",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "画面について話しました。",
+      "translation": "談到了畫面。"
+    },
+    "接続": {
+      "reading": "せつぞく",
+      "meaning": "連接",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "接続をしました。",
+      "translation": "進行了連接。"
+    },
+    "検索": {
+      "reading": "けんさく",
+      "meaning": "檢索",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "検索をしました。",
+      "translation": "進行了檢索。"
+    },
+    "転送": {
+      "reading": "てんそう",
+      "meaning": "轉傳",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "転送をしました。",
+      "translation": "進行了轉傳。"
+    },
+    "更新": {
+      "reading": "こうしん",
+      "meaning": "更新",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "更新をしました。",
+      "translation": "進行了更新。"
+    },
+    "端末": {
+      "reading": "たんまつ",
+      "meaning": "終端裝置",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "端末について話しました。",
+      "translation": "談到了終端裝置。"
+    },
+    "処理": {
+      "reading": "しょり",
+      "meaning": "處理",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "処理をしました。",
+      "translation": "進行了處理。"
+    },
+    "設定": {
+      "reading": "せってい",
+      "meaning": "設定",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "設定をしました。",
+      "translation": "進行了設定。"
+    },
+    "資源": {
+      "reading": "しげん",
+      "meaning": "資源",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "資源について話しました。",
+      "translation": "談到了資源。"
+    },
+    "森林": {
+      "reading": "しんりん",
+      "meaning": "森林",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "森林について話しました。",
+      "translation": "談到了森林。"
+    },
+    "汚染": {
+      "reading": "おせん",
+      "meaning": "污染",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "汚染をしました。",
+      "translation": "進行了污染。"
+    },
+    "乾燥": {
+      "reading": "かんそう",
+      "meaning": "乾燥",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "乾燥をしました。",
+      "translation": "進行了乾燥。"
+    },
+    "温暖": {
+      "reading": "おんだん",
+      "meaning": "温暖",
+      "pos": "adj-na",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "温暖な説明でした。",
+      "translation": "這是温暖的說明。"
+    },
+    "湿度": {
+      "reading": "しつど",
+      "meaning": "濕度",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "湿度について話しました。",
+      "translation": "談到了濕度。"
+    },
+    "気候": {
+      "reading": "きこう",
+      "meaning": "氣候",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "気候について話しました。",
+      "translation": "談到了氣候。"
+    },
+    "風景": {
+      "reading": "ふうけい",
+      "meaning": "風景",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "風景について話しました。",
+      "translation": "談到了風景。"
+    },
+    "災害": {
+      "reading": "さいがい",
+      "meaning": "災害",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "災害について話しました。",
+      "translation": "談到了災害。"
+    },
+    "予報": {
+      "reading": "よほう",
+      "meaning": "預報",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "予報について話しました。",
+      "translation": "談到了預報。"
+    },
+    "公共": {
+      "reading": "こうきょう",
+      "meaning": "公共",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "公共について話しました。",
+      "translation": "談到了公共。"
+    },
+    "施設": {
+      "reading": "しせつ",
+      "meaning": "設施",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "施設について話しました。",
+      "translation": "談到了設施。"
+    },
+    "手続き": {
+      "reading": "てつづき",
+      "meaning": "手續",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "手続きについて話しました。",
+      "translation": "談到了手續。"
+    },
+    "窓口": {
+      "reading": "まどぐち",
+      "meaning": "窗口",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "窓口について話しました。",
+      "translation": "談到了窗口。"
+    },
+    "税金": {
+      "reading": "ぜいきん",
+      "meaning": "稅金",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "税金について話しました。",
+      "translation": "談到了稅金。"
+    },
+    "保険": {
+      "reading": "ほけん",
+      "meaning": "保險",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "保険について話しました。",
+      "translation": "談到了保險。"
+    },
+    "署名": {
+      "reading": "しょめい",
+      "meaning": "簽名",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "署名をしました。",
+      "translation": "進行了簽名。"
+    },
+    "住民": {
+      "reading": "じゅうみん",
+      "meaning": "居民",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "住民について話しました。",
+      "translation": "談到了居民。"
+    },
+    "役所": {
+      "reading": "やくしょ",
+      "meaning": "政府機關",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "役所について話しました。",
+      "translation": "談到了政府機關。"
+    },
+    "愉快": {
+      "reading": "ゆかい",
+      "meaning": "愉快",
+      "pos": "adj-na",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "愉快な説明でした。",
+      "translation": "這是愉快的說明。"
+    },
+    "恐怖": {
+      "reading": "きょうふ",
+      "meaning": "恐怖",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "恐怖について話しました。",
+      "translation": "談到了恐怖。"
+    },
+    "混乱": {
+      "reading": "こんらん",
+      "meaning": "混亂",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "混乱をしました。",
+      "translation": "進行了混亂。"
+    },
+    "悩み": {
+      "reading": "なやみ",
+      "meaning": "煩惱",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "悩みについて話しました。",
+      "translation": "談到了煩惱。"
+    },
+    "不安": {
+      "reading": "ふあん",
+      "meaning": "不安",
+      "pos": "adj-na",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "不安な説明でした。",
+      "translation": "這是不安的說明。"
+    },
+    "自慢": {
+      "reading": "じまん",
+      "meaning": "自誇",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "自慢をしました。",
+      "translation": "進行了自誇。"
+    },
+    "後悔": {
+      "reading": "こうかい",
+      "meaning": "後悔",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "後悔をしました。",
+      "translation": "進行了後悔。"
+    },
+    "苦情": {
+      "reading": "くじょう",
+      "meaning": "投訴",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "苦情について話しました。",
+      "translation": "談到了投訴。"
+    },
+    "政策": {
+      "reading": "せいさく",
+      "meaning": "政策",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "政策について話しました。",
+      "translation": "談到了政策。"
+    },
+    "会議": {
+      "reading": "かいぎ",
+      "meaning": "會議",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "会議について話しました。",
+      "translation": "談到了會議。"
+    },
+    "規則": {
+      "reading": "きそく",
+      "meaning": "規則",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "規則について話しました。",
+      "translation": "談到了規則。"
+    },
+    "投票": {
+      "reading": "とうひょう",
+      "meaning": "投票",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "投票をしました。",
+      "translation": "進行了投票。"
+    },
+    "行政": {
+      "reading": "ぎょうせい",
+      "meaning": "行政",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "行政について話しました。",
+      "translation": "談到了行政。"
+    },
+    "討論": {
+      "reading": "とうろん",
+      "meaning": "討論",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "討論をしました。",
+      "translation": "進行了討論。"
+    },
+    "実行": {
+      "reading": "じっこう",
+      "meaning": "執行",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "実行をしました。",
+      "translation": "進行了執行。"
+    },
+    "創作": {
+      "reading": "そうさく",
+      "meaning": "創作",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "創作をしました。",
+      "translation": "進行了創作。"
+    },
+    "演奏": {
+      "reading": "えんそう",
+      "meaning": "演奏",
+      "pos": "suru",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "演奏をしました。",
+      "translation": "進行了演奏。"
+    },
+    "彫刻": {
+      "reading": "ちょうこく",
+      "meaning": "雕刻",
+      "pos": "n",
+      "tier": "N3_SEED",
+      "released": false,
+      "first_seen": "",
+      "example": "彫刻について話しました。",
+      "translation": "談到了雕刻。"
+    }
+  }
+}
