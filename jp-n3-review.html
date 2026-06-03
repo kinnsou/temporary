@@ -402,6 +402,32 @@ function tokenizeSentence(sentence, targetWord = '') {
   return tokens;
 }
 
+const JP_PARTICLES=['を','が','に','と','で','は','も','へ'];
+const JP_LETTER_RE=/[\u3040-\u30ff\u3400-\u9fff]/;
+const JP_PUNCT_RE=/[。、！？!?\s]/;
+function particleScore(chars,i){
+  const ch=chars[i],prev=chars[i-1],next=chars[i+1];
+  if(!JP_PARTICLES.includes(ch)||!prev||!next)return -1;
+  if(JP_PUNCT_RE.test(prev)||JP_PUNCT_RE.test(next))return -1;
+  if(!JP_LETTER_RE.test(prev)||!JP_LETTER_RE.test(next))return -1;
+  let score=0;
+  if(/[一-龯々]/.test(prev))score+=3;
+  if(/[ぁ-んァ-ン]/.test(prev))score+=2;
+  if(JP_LETTER_RE.test(next))score+=2;
+  if(['を','が','に','で'].includes(ch))score+=2;
+  if(ch==='は'||ch==='も')score+=1;
+  if(/[ぁ-ん]/.test(prev)&&/[ぁ-ん]/.test(next))score-=1;
+  return score;
+}
+function splitAroundParticle(sentence){
+  const chars=Array.from(String(sentence||'').trim());
+  const candidates=chars.map((ch,i)=>({ch,i,score:particleScore(chars,i)})).filter(c=>c.score>=0);
+  if(!candidates.length)return null;
+  candidates.sort((a,b)=>b.score-a.score||a.i-b.i);
+  const pick=candidates[0];
+  return{before:chars.slice(0,pick.i).join(''),particle:pick.ch,after:chars.slice(pick.i+1).join('')};
+}
+
 /* Build a sentence-order question. Returns {type,correct,answerTokens,tokens,zh2,zh}. */
 function buildOrderQuestion(w){
   if(!w.en)return null;
@@ -413,10 +439,29 @@ function buildOrderQuestion(w){
   return{type:'order',correct:answerTokens.join(' '),sentence:w.en,answerTokens,tokens:shuffled,zh2:w.zh2||'',zh:w.zh||''};
 }
 
-/* Build mixed quiz items. Cap cloze at MAX_CLOZE. Prefer tense for detected verbs.
+/* Build a particle fill-in question for grammar practice. */
+function buildParticleQuestion(w){
+  if(!w.en)return null;
+  const split=splitAroundParticle(w.en);
+  if(!split)return null;
+  const distractors=shuffle(JP_PARTICLES.filter(p=>p!==split.particle)).slice(0,3);
+  return{
+    type:'particle',
+    correct:split.particle,
+    options:shuffle([split.particle,...distractors]),
+    before:split.before,
+    after:split.after,
+    sentence:w.en,
+    zh2:w.zh2||'',
+    zh:w.zh||'',
+  };
+}
+
+/* Build mixed quiz items. Cap cloze/order/particle types so the quiz stays varied.
    knownSet: Set of words the player has marked "我會了"; sampled last so unfamiliar words dominate. */
 const MAX_CLOZE=3;
 const MAX_ORDER=3;
+const MAX_PARTICLE=3;
 function buildQuizItems(pool,total,knownSet=new Set()){
   const focus=shuffle(pool.filter(w=>w.isDailyFocus));
   const focusWords=new Set(focus.map(w=>w.word));
@@ -426,9 +471,14 @@ function buildQuizItems(pool,total,knownSet=new Set()){
   let clozeBudget=Math.min(MAX_CLOZE,Math.floor(total/4));
   if(clozeBudget<2&&total>=8)clozeBudget=2;
   let orderBudget=Math.min(MAX_ORDER,Math.floor(total/5)||1);
+  let particleBudget=Math.min(MAX_PARTICLE,Math.floor(total/5)||1);
   const items=[];
   for(const w of chosen){
     let built=null;
+    if(particleBudget>0&&w.en&&(items.length%5===0||Math.random()<0.32)){
+      built=buildParticleQuestion(w);
+      if(built)particleBudget--;
+    }
     if(orderBudget>0&&w.en&&(items.length%5===1||Math.random()<0.35)){
       built=buildOrderQuestion(w);
       if(built)orderBudget--;
@@ -926,12 +976,12 @@ function HomeScreen({charSrc,charName,studentName,stats,todaySet,dateLabel,onNav
                     {w.visual||<span style={{fontSize:12,fontWeight:900,color:bg,lineHeight:1.15,textAlign:'center'}}>{catLabel(w.cat)}</span>}
                   </div>
                   <div style={{flex:1,minWidth:0}}>
-                    <div style={{fontSize:9,color:'#94a3b8',fontWeight:900,letterSpacing:1,marginBottom:2}}>日文漢字</div>
+                    <div style={{fontSize:9,color:'#94a3b8',fontWeight:900,letterSpacing:1,marginBottom:2}}>平假名讀音</div>
                     <div style={{display:'flex',alignItems:'center',gap:7,minWidth:0}}>
-                      <div style={{fontSize:20,fontWeight:900,color:'#1a1a2e',letterSpacing:1,overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap'}}>{w.word}</div>
+                      <div style={{fontSize:22,fontWeight:900,color:'#1a1a2e',letterSpacing:1,overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap'}}>{w.reading&&w.reading!==w.word?w.reading:w.word}</div>
                       <SpeakButton text={w.word} color={bg} size={27} title={`播放 ${w.word} 發音`}/>
                     </div>
-                    {w.reading&&w.reading!==w.word&&<div style={{fontSize:12,color:'#64748b',fontWeight:900,letterSpacing:1,marginTop:1}}><span style={{fontSize:9,color:'#94a3b8',letterSpacing:0,marginRight:5}}>讀音</span>{w.reading}</div>}
+                    {w.reading&&w.reading!==w.word&&<div style={{fontSize:12,color:'#64748b',fontWeight:900,letterSpacing:1,marginTop:1}}><span style={{fontSize:9,color:'#94a3b8',letterSpacing:0,marginRight:5}}>漢字</span>{w.word}</div>}
                     <div style={{fontSize:13,color:bg,fontWeight:800,marginTop:2}}><span style={{fontSize:9,color:'#94a3b8',letterSpacing:0,marginRight:5}}>中文</span>{w.zh}</div>
                   </div>
                   <div style={{fontSize:14,color:'#ccc',transform:isOpen?'rotate(180deg)':'rotate(0)',transition:'transform 0.2s'}}>▼</div>
@@ -1164,11 +1214,11 @@ function FlashScreen({charSrc,flashAll,knownWords,refreshFb,onNav,pc,voiceGender
         <div style={{fontSize:11,fontWeight:800,color:catColor,letterSpacing:1,opacity:0.8}}>{catLabel(card.cat)}</div>
         {!flipped?(
           <>
-            <div style={{fontSize:10,color:'#94a3b8',fontWeight:900,letterSpacing:1}}>日文漢字</div>
-            <div style={{fontSize:34,fontWeight:900,color:'#1a1a2e',letterSpacing:2,textAlign:'center',wordBreak:'break-word',maxWidth:'100%'}}>{card.word}</div>
+            <div style={{fontSize:10,color:'#94a3b8',fontWeight:900,letterSpacing:1}}>平假名讀音</div>
+            <div style={{fontSize:36,fontWeight:900,color:'#1a1a2e',letterSpacing:2,textAlign:'center',wordBreak:'break-word',maxWidth:'100%'}}>{card.reading&&card.reading!==card.word?card.reading:card.word}</div>
             {card.reading&&card.reading!==card.word&&<div style={{display:'flex',alignItems:'center',gap:7,background:'#f8fafc',borderRadius:14,padding:'5px 12px',maxWidth:'100%'}}>
-              <span style={{fontSize:10,color:'#94a3b8',fontWeight:900,letterSpacing:1,whiteSpace:'nowrap'}}>讀音</span>
-              <span style={{fontSize:16,fontWeight:900,color:'#64748b',letterSpacing:1,wordBreak:'break-all'}}>{card.reading}</span>
+              <span style={{fontSize:10,color:'#94a3b8',fontWeight:900,letterSpacing:1,whiteSpace:'nowrap'}}>漢字</span>
+              <span style={{fontSize:16,fontWeight:900,color:'#64748b',letterSpacing:1,wordBreak:'break-all'}}>{card.word}</span>
             </div>}
             <div style={{border:`1.5px dashed ${catColor}66`,background:`${catColor}10`,borderRadius:18,padding:'9px 16px',fontSize:17,fontWeight:900,color:catColor,lineHeight:1.35,textAlign:'center',maxWidth:'100%'}}>
               <div style={{fontSize:10,color:'#94a3b8',fontWeight:900,letterSpacing:1,marginBottom:2}}>中文意思</div>
@@ -1342,6 +1392,7 @@ function MapScreen({profile,uid,studentName,charSrc,pc,onNav,onStartStage,cloudE
 const Q_THEME={
   zh2en:{color:'#61c2ff',icon:'🎯',label:'選出正確解釋'},
   reading:{color:'#22c55e',icon:'かな',label:'選出正確讀音'},
+  particle:{color:'#f472b6',icon:'助',label:'填入正確助詞'},
   cloze:{color:'#FF9800',icon:'✏️',label:'拼出正確語彙'},
   tense:{color:'#38bdf8',icon:'⏱',label:'選出正確時態'},
   order:{color:'#a78bfa',icon:'🧩',label:'排出完整句子'},
@@ -1436,6 +1487,11 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,onAnswe
       const drop=shuffle(wrongs).slice(0,2).map(o=>o.word);
       if(drop.length===0)return;
       setHiddenOpts(new Set(drop));
+    }else if(cur.type==='particle'){
+      const wrongs=cur.options.filter(o=>normalizeAnswer(o)!==normalizeAnswer(cur.correct));
+      const drop=shuffle(wrongs).slice(0,2);
+      if(drop.length===0)return;
+      setHiddenOpts(new Set(drop));
     }else if(cur.type==='cloze'){
       const first3=(cur.letterTokens||[]).filter(t=>t.idx<3).sort((a,b)=>a.idx-b.idx).map(t=>t.id);
       if(first3.length===0)return;
@@ -1472,6 +1528,7 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,onAnswe
     if(qq.type==='order')return qq.sentence||qq.correct||qq.vocab?.en||'';
     if(qq.type==='cloze')return `${qq.before||''}${qq.correct||''}${qq.after||''}`.trim();
     if(qq.type==='tense')return `${qq.before||''}${qq.correct||''}${qq.after||''}`.trim();
+    if(qq.type==='particle')return `${qq.before||''}${qq.correct||''}${qq.after||''}`.trim();
     return qq.vocab?.word||qq.correct||'';
   };
   const speakAfterAnswer=(qq)=>{
@@ -1511,8 +1568,8 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,onAnswe
       setCombo(0);
       setShaking(true);setTimeout(()=>setShaking(false),500);
     }
-    // For cloze we linger a bit longer so kids can read the correct answer
-    const delay=(q.type==='cloze'||q.type==='tense'||q.type==='order')?1700:1100;
+    // Sentence-based questions linger a bit longer so kids can read the answer.
+    const delay=(q.type==='cloze'||q.type==='tense'||q.type==='order'||q.type==='particle')?1700:1100;
     setTimeout(()=>{
       setSel(null);setClozePicked([]);setClozeResult(null);setOrderPicked([]);setOrderResult(null);
       if(idx+1>=TOTAL){
@@ -1598,13 +1655,16 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,onAnswe
   if(q.type==='zh2en'){
     const correct=vocab;
     const catColor=CAT[correct.cat]||'#94a3b8';
+    const primaryText=correct.reading&&correct.reading!==correct.word?correct.reading:correct.word;
+    const hasKanji=correct.reading&&correct.reading!==correct.word;
     questionCard=(
       <div style={{background:'#fff',borderRadius:22,padding:'14px 20px',textAlign:'center',boxShadow:'0 4px 18px rgba(0,0,0,0.07)',marginBottom:12,flexShrink:0,animation:shaking?'shake 0.4s ease-in-out':'pop 0.2s ease-out',display:'flex',flexDirection:'column',alignItems:'center',gap:6,position:'relative',overflow:'hidden'}}>
         <div style={{position:'absolute',top:0,left:0,right:0,height:3,background:`linear-gradient(90deg,${catColor},${catColor}44)`}}/>
         <div style={{fontSize:11,fontWeight:800,color:theme.color,background:`${theme.color}18`,padding:'3px 12px',borderRadius:20,letterSpacing:0.5}}>{theme.icon} {theme.label}</div>
         {correct.visual&&<span style={{fontSize:44,lineHeight:1,marginTop:4}}>{correct.visual}</span>}
-        <div style={{fontSize:28,fontWeight:900,color:'#1a1a2e',letterSpacing:2,wordBreak:'break-word'}}>{correct.word}</div>
-        {correct.reading&&correct.reading!==correct.word&&<div style={{fontSize:15,color:'#64748b',fontWeight:900,letterSpacing:1}}>{correct.reading}</div>}
+        <div style={{fontSize:10,color:'#94a3b8',fontWeight:900,letterSpacing:1}}>平假名讀音</div>
+        <div style={{fontSize:30,fontWeight:900,color:'#1a1a2e',letterSpacing:2,wordBreak:'break-word'}}>{primaryText}</div>
+        {hasKanji&&<div style={{fontSize:14,color:'#64748b',fontWeight:900,letterSpacing:1}}><span style={{fontSize:10,color:'#94a3b8',marginRight:5}}>漢字</span>{correct.word}</div>}
         <div style={{fontSize:10,color:catColor,fontWeight:800,background:`${catColor}18`,padding:'2px 10px',borderRadius:20}}>{correct.cat}</div>
       </div>
     );
@@ -1639,6 +1699,38 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,onAnswe
             <span style={{lineHeight:1.3,wordBreak:'break-word'}}>{opt}</span>
             {selected&&normalizeAnswer(opt)===normalizeAnswer(q.correct)&&<span style={{fontSize:16,flexShrink:0}}>✓</span>}
             {selected&&normalizeAnswer(opt)===normalizeAnswer(selected)&&normalizeAnswer(opt)!==normalizeAnswer(q.correct)&&<span style={{fontSize:16,flexShrink:0}}>✗</span>}
+          </button>
+        ))}
+        {giveUpBtn}
+      </div>
+    );
+  } else if(q.type==='particle'){
+    const catColor=CAT[vocab.cat]||'#94a3b8';
+    questionCard=(
+      <div style={{background:'#fff',borderRadius:22,padding:'16px 20px',boxShadow:'0 4px 18px rgba(0,0,0,0.07)',marginBottom:12,flexShrink:0,animation:shaking?'shake 0.4s ease-in-out':'pop 0.2s ease-out',display:'flex',flexDirection:'column',gap:10,position:'relative',overflow:'hidden'}}>
+        <div style={{position:'absolute',top:0,left:0,right:0,height:3,background:`linear-gradient(90deg,${theme.color},${theme.color}44)`}}/>
+        <div style={{textAlign:'center'}}>
+          <span style={{fontSize:11,fontWeight:800,color:theme.color,background:`${theme.color}18`,padding:'4px 12px',borderRadius:20,letterSpacing:0.5}}>{theme.icon} {theme.label}</span>
+        </div>
+        <div style={{fontSize:12,color:'#aaa',fontWeight:700,textAlign:'center'}}>選出這句裡最自然的助詞。</div>
+        <div style={{fontSize:18,fontWeight:800,color:'#1a1a2e',lineHeight:1.9,textAlign:'left',padding:'4px 0'}}>
+          <span>{q.before}</span>
+          <Blank width={42} color={selected?'#4CAF82':theme.color} filled={selected?q.correct:null}/>
+          <span>{q.after}</span>
+        </div>
+        {q.zh2&&<div style={QUIZ_ZH_SENTENCE_STYLE}>「{q.zh2}」</div>}
+        <div style={{fontSize:12,color:'#64748b',fontWeight:800,background:`${catColor}12`,padding:'6px 10px',borderRadius:14,textAlign:'center'}}>
+          語彙：{vocab.reading&&vocab.reading!==vocab.word?vocab.reading:vocab.word}{vocab.reading&&vocab.reading!==vocab.word?`（${vocab.word}）`:''}・{vocab.zh}
+        </div>
+      </div>
+    );
+    answerArea=(
+      <div className="scroll-body" style={{display:'flex',flexDirection:'column',gap:8,paddingBottom:8}}>
+        {q.options.filter(opt=>!hiddenOpts.has(opt)).map((opt,i)=>(
+          <button key={opt+i} onClick={()=>answerChoice(opt)} style={{width:'100%',padding:'13px 16px',borderRadius:16,border:bdrBtn(opt,q.correct),background:bgBtn(opt,q.correct),color:colBtn(opt,q.correct),fontSize:22,fontWeight:900,cursor:'pointer',textAlign:'center',boxShadow:selected&&normalizeAnswer(opt)===normalizeAnswer(q.correct)?'0 4px 14px #4CAF8244':'0 2px 6px rgba(0,0,0,0.04)',transition:'all 0.15s',animation:`slideUp 0.2s ${i*0.04}s both`,opacity:selected&&normalizeAnswer(opt)!==normalizeAnswer(q.correct)&&normalizeAnswer(opt)!==normalizeAnswer(selected)?0.4:1,fontFamily:'inherit',flexShrink:0}}>
+            {opt}
+            {selected&&normalizeAnswer(opt)===normalizeAnswer(q.correct)&&<span style={{fontSize:16,marginLeft:8}}>✓</span>}
+            {selected&&normalizeAnswer(opt)===normalizeAnswer(selected)&&normalizeAnswer(opt)!==normalizeAnswer(q.correct)&&<span style={{fontSize:16,marginLeft:8}}>✗</span>}
           </button>
         ))}
         {giveUpBtn}
