@@ -356,19 +356,61 @@ function buildTenseQuestion(w,_otherVerbs){
   return{type:'tense',correct,options:shuffle(forms),baseWord:base,before,after,zh2:w.zh2||'',zh:w.zh||'',tenseHint:tenseHintText(correct,base)};
 }
 
-function tokenizeSentence(sentence){
-  return String(sentence||'').trim().replace(/\s+/g,' ').split(' ').filter(Boolean);
+function pushJapaneseToken(tokens, token) {
+  const t = String(token || '').trim();
+  if (!t) return;
+  if (/^[。、！？!?]+$/.test(t) && tokens.length) tokens[tokens.length - 1] += t;
+  else tokens.push(t);
+}
+function splitJapaneseChunk(text) {
+  const tokens = [];
+  let buf = '';
+  const suffixes = ['ください', 'ました', 'ません', 'です', 'ます', 'でした', 'ないで', 'ない', 'たい'];
+  const particles = new Set(['は', 'が', 'を', 'に', 'へ', 'と', 'で', 'も']);
+  for (const ch of Array.from(String(text || '').replace(/\s+/g, ''))) {
+    if (/[。、！？!?]/.test(ch)) {
+      pushJapaneseToken(tokens, buf);
+      buf = '';
+      pushJapaneseToken(tokens, ch);
+      continue;
+    }
+    buf += ch;
+    if (particles.has(ch) && buf.length >= 2) {
+      pushJapaneseToken(tokens, buf);
+      buf = '';
+      continue;
+    }
+    if (suffixes.some(s => buf.endsWith(s))) {
+      pushJapaneseToken(tokens, buf);
+      buf = '';
+    }
+  }
+  pushJapaneseToken(tokens, buf);
+  return tokens;
+}
+function tokenizeSentence(sentence, targetWord = '') {
+  const src = String(sentence || '').trim();
+  const target = String(targetWord || '').trim();
+  if (!src) return [];
+  if (!target || !src.includes(target)) return splitJapaneseChunk(src);
+  const tokens = [];
+  const parts = src.split(target);
+  parts.forEach((part, i) => {
+    splitJapaneseChunk(part).forEach(t => pushJapaneseToken(tokens, t));
+    if (i < parts.length - 1) pushJapaneseToken(tokens, target);
+  });
+  return tokens;
 }
 
 /* Build a sentence-order question. Returns {type,correct,answerTokens,tokens,zh2,zh}. */
 function buildOrderQuestion(w){
   if(!w.en)return null;
-  const answerTokens=tokenizeSentence(w.en);
-  if(answerTokens.length<4||answerTokens.length>10)return null;
+  const answerTokens=tokenizeSentence(w.en,w.word);
+  if(answerTokens.length<3||answerTokens.length>10)return null;
   const tokens=answerTokens.map((text,i)=>({id:`${i}:${text}`,text,idx:i}));
   let shuffled=shuffle(tokens);
   if(shuffled.map(t=>t.id).join('|')===tokens.map(t=>t.id).join('|'))shuffled=shuffle(tokens.slice().reverse());
-  return{type:'order',correct:answerTokens.join(' '),answerTokens,tokens:shuffled,zh2:w.zh2||'',zh:w.zh||''};
+  return{type:'order',correct:answerTokens.join(' '),sentence:w.en,answerTokens,tokens:shuffled,zh2:w.zh2||'',zh:w.zh||''};
 }
 
 /* Build mixed quiz items. Cap cloze at MAX_CLOZE. Prefer tense for detected verbs.
@@ -383,10 +425,15 @@ function buildQuizItems(pool,total,knownSet=new Set()){
   const chosen=[...focus,...unknown,...known].slice(0,total);
   let clozeBudget=Math.min(MAX_CLOZE,Math.floor(total/4));
   if(clozeBudget<2&&total>=8)clozeBudget=2;
+  let orderBudget=Math.min(MAX_ORDER,Math.floor(total/5)||1);
   const items=[];
   for(const w of chosen){
     let built=null;
-    if(w.reading&&w.reading!==w.word&&Math.random()<0.42){
+    if(orderBudget>0&&w.en&&(items.length%5===1||Math.random()<0.35)){
+      built=buildOrderQuestion(w);
+      if(built)orderBudget--;
+    }
+    if(!built&&w.reading&&w.reading!==w.word&&Math.random()<0.42){
       built=buildReadingQuestion(w,pool);
     }
     if(!built&&clozeBudget>0&&w.en&&Math.random()<0.45){
@@ -879,12 +926,13 @@ function HomeScreen({charSrc,charName,studentName,stats,todaySet,dateLabel,onNav
                     {w.visual||<span style={{fontSize:12,fontWeight:900,color:bg,lineHeight:1.15,textAlign:'center'}}>{catLabel(w.cat)}</span>}
                   </div>
                   <div style={{flex:1,minWidth:0}}>
+                    <div style={{fontSize:9,color:'#94a3b8',fontWeight:900,letterSpacing:1,marginBottom:2}}>日文漢字</div>
                     <div style={{display:'flex',alignItems:'center',gap:7,minWidth:0}}>
                       <div style={{fontSize:20,fontWeight:900,color:'#1a1a2e',letterSpacing:1,overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap'}}>{w.word}</div>
                       <SpeakButton text={w.word} color={bg} size={27} title={`播放 ${w.word} 發音`}/>
                     </div>
-                    {w.reading&&w.reading!==w.word&&<div style={{fontSize:12,color:'#64748b',fontWeight:900,letterSpacing:1,marginTop:1}}>{w.reading}</div>}
-                    <div style={{fontSize:13,color:bg,fontWeight:800}}>{w.zh}</div>
+                    {w.reading&&w.reading!==w.word&&<div style={{fontSize:12,color:'#64748b',fontWeight:900,letterSpacing:1,marginTop:1}}><span style={{fontSize:9,color:'#94a3b8',letterSpacing:0,marginRight:5}}>讀音</span>{w.reading}</div>}
+                    <div style={{fontSize:13,color:bg,fontWeight:800,marginTop:2}}><span style={{fontSize:9,color:'#94a3b8',letterSpacing:0,marginRight:5}}>中文</span>{w.zh}</div>
                   </div>
                   <div style={{fontSize:14,color:'#ccc',transform:isOpen?'rotate(180deg)':'rotate(0)',transition:'transform 0.2s'}}>▼</div>
                 </div>
@@ -1116,9 +1164,16 @@ function FlashScreen({charSrc,flashAll,knownWords,refreshFb,onNav,pc,voiceGender
         <div style={{fontSize:11,fontWeight:800,color:catColor,letterSpacing:1,opacity:0.8}}>{catLabel(card.cat)}</div>
         {!flipped?(
           <>
-            <div style={{border:`1.5px dashed ${catColor}66`,background:`${catColor}10`,borderRadius:18,padding:'10px 18px',fontSize:18,fontWeight:900,color:catColor,lineHeight:1.35,textAlign:'center',maxWidth:'100%'}}>{card.zh}</div>
-            <div style={{fontSize:30,fontWeight:900,color:'#1a1a2e',letterSpacing:2,textAlign:'center',wordBreak:'break-word',maxWidth:'100%'}}>{card.word}</div>
-            {card.reading&&card.reading!==card.word&&<div style={{fontSize:16,fontWeight:900,color:'#64748b',letterSpacing:1}}>{card.reading}</div>}
+            <div style={{fontSize:10,color:'#94a3b8',fontWeight:900,letterSpacing:1}}>日文漢字</div>
+            <div style={{fontSize:34,fontWeight:900,color:'#1a1a2e',letterSpacing:2,textAlign:'center',wordBreak:'break-word',maxWidth:'100%'}}>{card.word}</div>
+            {card.reading&&card.reading!==card.word&&<div style={{display:'flex',alignItems:'center',gap:7,background:'#f8fafc',borderRadius:14,padding:'5px 12px',maxWidth:'100%'}}>
+              <span style={{fontSize:10,color:'#94a3b8',fontWeight:900,letterSpacing:1,whiteSpace:'nowrap'}}>讀音</span>
+              <span style={{fontSize:16,fontWeight:900,color:'#64748b',letterSpacing:1,wordBreak:'break-all'}}>{card.reading}</span>
+            </div>}
+            <div style={{border:`1.5px dashed ${catColor}66`,background:`${catColor}10`,borderRadius:18,padding:'9px 16px',fontSize:17,fontWeight:900,color:catColor,lineHeight:1.35,textAlign:'center',maxWidth:'100%'}}>
+              <div style={{fontSize:10,color:'#94a3b8',fontWeight:900,letterSpacing:1,marginBottom:2}}>中文意思</div>
+              {card.zh}
+            </div>
             <div style={{fontSize:12,color:'#ccc',marginTop:4}}>👆 點擊看例句</div>
           </>
         ):(()=>{
@@ -1126,6 +1181,7 @@ function FlashScreen({charSrc,flashAll,knownWords,refreshFb,onNav,pc,voiceGender
           const wIdx=card.word&&sentence?sentence.toLowerCase().indexOf(card.word.toLowerCase()):-1;
           const sentenceNode=sentence?(
             <div style={{width:'100%',padding:'4px 2px'}}>
+              <div style={{fontSize:10,color:'#94a3b8',fontWeight:900,letterSpacing:1,textAlign:'center',marginBottom:4}}>日文例句</div>
               <div style={{fontSize:18,color:'#555',textAlign:'center',lineHeight:1.6,fontStyle:'italic'}}>
                 {wIdx>=0?(<>"{sentence.slice(0,wIdx)}<span style={{color:catColor,fontWeight:900,fontStyle:'normal'}}>{sentence.slice(wIdx,wIdx+card.word.length)}</span>{sentence.slice(wIdx+card.word.length)}"</>):`"${sentence}"`}
               </div>
@@ -1135,7 +1191,7 @@ function FlashScreen({charSrc,flashAll,knownWords,refreshFb,onNav,pc,voiceGender
           );
           return(<>
             {sentenceNode}
-            {(card.zh2||card.zh)&&<div style={{borderTop:'1px dashed #e8e0e0',width:'100%',marginTop:6,paddingTop:10,fontSize:14,color:'#333',textAlign:'center',fontWeight:700}}>「{card.zh2||card.zh}」</div>}
+            {(card.zh2||card.zh)&&<div style={{borderTop:'1px dashed #e8e0e0',width:'100%',marginTop:6,paddingTop:10,fontSize:14,color:'#333',textAlign:'center',fontWeight:700}}><span style={{display:'block',fontSize:10,color:'#94a3b8',fontWeight:900,letterSpacing:1,marginBottom:3}}>中文句意</span>「{card.zh2||card.zh}」</div>}
           </>);
         })()}
       </div>
@@ -1413,7 +1469,7 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,onAnswe
 
   const sentenceForQuestion=(qq)=>{
     if(!qq)return '';
-    if(qq.type==='order')return qq.correct||qq.vocab?.en||'';
+    if(qq.type==='order')return qq.sentence||qq.correct||qq.vocab?.en||'';
     if(qq.type==='cloze')return `${qq.before||''}${qq.correct||''}${qq.after||''}`.trim();
     if(qq.type==='tense')return `${qq.before||''}${qq.correct||''}${qq.after||''}`.trim();
     return qq.vocab?.word||qq.correct||'';
@@ -1679,7 +1735,7 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,onAnswe
             <button key={t.id} onClick={()=>removeOrderToken(t.id)} disabled={locked} style={{padding:'8px 10px',borderRadius:13,border:'none',background:locked?'#fff':'#fff',color:'#1a1a2e',fontSize:14,fontWeight:900,fontFamily:'inherit',boxShadow:'0 2px 7px rgba(0,0,0,0.08)',cursor:locked?'default':'pointer'}}>{t.text}<span style={{marginLeft:5,color:'#cbd5e1',fontSize:11}}>{i+1}</span></button>
           ))}
         </div>
-        {locked&&<div style={{fontSize:12,fontWeight:800,color:isCorrect?'#4CAF82':'#FF4D6D',textAlign:'center'}}>{isCorrect?'✓ 句子排對了！':`✗ 正確句子：${q.correct}`}</div>}
+        {locked&&<div style={{fontSize:12,fontWeight:800,color:isCorrect?'#4CAF82':'#FF4D6D',textAlign:'center'}}>{isCorrect?'✓ 句子排對了！':`✗ 正確句子：${q.sentence||q.correct}`}</div>}
       </div>
     );
     answerArea=(
