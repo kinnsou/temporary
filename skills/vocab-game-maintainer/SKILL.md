@@ -183,6 +183,7 @@ Reference implementation: 2026-04-25 cleanup pass — see Changelog below for co
 
 Newest first. Format: `YYYY-MM-DD [agent] commit `hash` — one-line summary`.
 
+- 2026-06-03 [OpenClaw] `7ad9a7d` — JP N3 classroom now builds Japanese sentence-order questions from phrase chunks and labels flashcards/home cards as 日文漢字・讀音・中文意思.
 - 2026-06-03 [OpenClaw] `37766b9` — JP N3 classroom pet selection fix: switched JP data to `jpN3_`-prefixed docs under existing allowed top-level Firestore collections and refreshed profile after pet claim.
 - 2026-04-28 [OpenClaw] `f76e47c` — Moved feed-heart moodlets into the feed modal pet, hid Boy/Girl voice-source text, added answer-time TTS, and added sentence-order quiz with pet first-3-word hint.
 - 2026-04-27 [OpenClaw] `c9eb9a0` — Restored level-based study path: LV1 gets 15 easiest ranked words plus today's 3; each level unlocks +5; quiz prioritizes daily focus; totalExp is persisted and shown on the home pet card.
