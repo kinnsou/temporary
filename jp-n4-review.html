@@ -47,27 +47,27 @@ const {useState,useEffect,useRef,useMemo,useCallback}=React;
 
 /* ══ Characters ══════════════════════════════════════════ */
 const CHARACTERS=[
-  {id:'newcha1',img:'Claw_ENG/design_handoff/assets/newcha1.png',name:'奶油貓',desc:'愛撒嬌的貓咪'},
-  {id:'newcha2',img:'Claw_ENG/design_handoff/assets/newcha2.png',name:'布丁狗',desc:'忠心的好夥伴'},
-  {id:'newcha3',img:'Claw_ENG/design_handoff/assets/newcha3.png',name:'胖河馬',desc:'萌萌的大塊頭'},
-  {id:'newcha4',img:'Claw_ENG/design_handoff/assets/newcha4.png',name:'泡泡魚',desc:'藍藍的海洋寶'},
-  {id:'newcha5',img:'Claw_ENG/design_handoff/assets/newcha5.png',name:'點點獸',desc:'斑點小可愛'},
-  {id:'newcha6',img:'Claw_ENG/design_handoff/assets/newcha6.png',name:'圓滾雞',desc:'圓圓愛學習'},
-  {id:'newcha7',img:'Claw_ENG/design_handoff/assets/newcha7.png',name:'六角龍',desc:'粉紅小精靈'},
-  {id:'newcha8',img:'Claw_ENG/design_handoff/assets/newcha8.png',name:'豹豹',  desc:'威風的小獵豹'},
-  {id:'newcha9',img:'Claw_ENG/design_handoff/assets/newcha9.png',name:'嫩芽龍',desc:'青嫩嫩的小恐龍'},
-  {id:'newcha10',img:'Claw_ENG/design_handoff/assets/newcha10.png',name:'橄欖鸚',desc:'藍尾巴的小鸚鵡'},
-  {id:'newcha11',img:'Claw_ENG/design_handoff/assets/newcha11.png',name:'繁星鯊',desc:'身上有點點的鯨鯊'},
-  {id:'newcha12',img:'Claw_ENG/design_handoff/assets/newcha12.png',name:'湯圓貓熊',desc:'黑白圓圓的小糰子'},
-  {id:'newcha13',img:'Claw_ENG/design_handoff/assets/newcha13.png',name:'冰棒企鵝',desc:'搖搖晃晃的小傢伙'},
-  {id:'newcha14',img:'Claw_ENG/design_handoff/assets/newcha14.png',name:'雲朵樹熊',desc:'慢慢抱住每個單字'},
-  {id:'newcha15',img:'Claw_ENG/design_handoff/assets/newcha15.png',name:'奶茶鼠',desc:'圓滾滾的倉鼠寶'},
-  {id:'newcha16',img:'Claw_ENG/design_handoff/assets/newcha16.png',name:'棉花羊駝',desc:'蓬鬆又溫柔'},
-  {id:'newcha17',img:'Claw_ENG/design_handoff/assets/newcha17.png',name:'蜜糖鼯',desc:'大耳朵會滑翔'},
-  {id:'newcha18',img:'Claw_ENG/design_handoff/assets/newcha18.png',name:'可可哈奇',desc:'毛茸茸的小哈奇'},
-  {id:'newcha19',img:'Claw_ENG/design_handoff/assets/newcha19.png',name:'橘虎貓',desc:'有虎斑紋的小橘貓'},
-  {id:'newcha20',img:'Claw_ENG/design_handoff/assets/newcha20.png',name:'可可熊',desc:'溫柔圓耳的小熊'},
-  {id:'newcha21',img:'Claw_ENG/design_handoff/assets/newcha21.png',name:'金鬃獅',desc:'蓬鬆鬃毛的小獅子'},
+  {id:'newcha1',img:'Claw_JP_N4/design_handoff/assets/newcha1.png',name:'奶油貓',desc:'愛撒嬌的貓咪'},
+  {id:'newcha2',img:'Claw_JP_N4/design_handoff/assets/newcha2.png',name:'布丁狗',desc:'忠心的好夥伴'},
+  {id:'newcha3',img:'Claw_JP_N4/design_handoff/assets/newcha3.png',name:'胖河馬',desc:'萌萌的大塊頭'},
+  {id:'newcha4',img:'Claw_JP_N4/design_handoff/assets/newcha4.png',name:'泡泡魚',desc:'藍藍的海洋寶'},
+  {id:'newcha5',img:'Claw_JP_N4/design_handoff/assets/newcha5.png',name:'點點獸',desc:'斑點小可愛'},
+  {id:'newcha6',img:'Claw_JP_N4/design_handoff/assets/newcha6.png',name:'圓滾雞',desc:'圓圓愛學習'},
+  {id:'newcha7',img:'Claw_JP_N4/design_handoff/assets/newcha7.png',name:'六角龍',desc:'粉紅小精靈'},
+  {id:'newcha8',img:'Claw_JP_N4/design_handoff/assets/newcha8.png',name:'豹豹',  desc:'威風的小獵豹'},
+  {id:'newcha9',img:'Claw_JP_N4/design_handoff/assets/newcha9.png',name:'嫩芽龍',desc:'青嫩嫩的小恐龍'},
+  {id:'newcha10',img:'Claw_JP_N4/design_handoff/assets/newcha10.png',name:'橄欖鸚',desc:'藍尾巴的小鸚鵡'},
+  {id:'newcha11',img:'Claw_JP_N4/design_handoff/assets/newcha11.png',name:'繁星鯊',desc:'身上有點點的鯨鯊'},
+  {id:'newcha12',img:'Claw_JP_N4/design_handoff/assets/newcha12.png',name:'湯圓貓熊',desc:'黑白圓圓的小糰子'},
+  {id:'newcha13',img:'Claw_JP_N4/design_handoff/assets/newcha13.png',name:'冰棒企鵝',desc:'搖搖晃晃的小傢伙'},
+  {id:'newcha14',img:'Claw_JP_N4/design_handoff/assets/newcha14.png',name:'雲朵樹熊',desc:'慢慢抱住每個單字'},
+  {id:'newcha15',img:'Claw_JP_N4/design_handoff/assets/newcha15.png',name:'奶茶鼠',desc:'圓滾滾的倉鼠寶'},
+  {id:'newcha16',img:'Claw_JP_N4/design_handoff/assets/newcha16.png',name:'棉花羊駝',desc:'蓬鬆又溫柔'},
+  {id:'newcha17',img:'Claw_JP_N4/design_handoff/assets/newcha17.png',name:'蜜糖鼯',desc:'大耳朵會滑翔'},
+  {id:'newcha18',img:'Claw_JP_N4/design_handoff/assets/newcha18.png',name:'可可哈奇',desc:'毛茸茸的小哈奇'},
+  {id:'newcha19',img:'Claw_JP_N4/design_handoff/assets/newcha19.png',name:'橘虎貓',desc:'有虎斑紋的小橘貓'},
+  {id:'newcha20',img:'Claw_JP_N4/design_handoff/assets/newcha20.png',name:'可可熊',desc:'溫柔圓耳的小熊'},
+  {id:'newcha21',img:'Claw_JP_N4/design_handoff/assets/newcha21.png',name:'金鬃獅',desc:'蓬鬆鬃毛的小獅子'},
 ];
 const CHAR_MAP=Object.fromEntries(CHARACTERS.map((c,i)=>[c.id,{...c,idx:i}]));
 const DEFAULT_AVATAR='newcha1';
@@ -2218,7 +2218,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
 
 <!-- ════════════════════════════════════════════════════════════════
      Firebase Pet MVP — Phase 1: backend wiring (anon auth + seeds)
-     Spec: Claw_ENG/design_handoff/firebase_pet_mvp_spec.md
+     Spec: Claw_JP_N4/design_handoff/firebase_pet_mvp_spec.md
      UI integration happens in Phase 2/3.
      ════════════════════════════════════════════════════════════════ -->
 <script type="module">
@@ -2237,27 +2237,27 @@ const firebaseConfig = {
 // Append new entries here — seedPets() will create any missing on next page load.
 const HP_DECAY_MS = 30 * 60 * 1000; // 30 min per HP point => 100 hp ~= 50h
 const SEED_PETS = [
-  { id:'pet_001', type:'cat',     name:'奶油貓', desc:'愛撒嬌的貓咪', img:'Claw_ENG/design_handoff/assets/newcha1.png' },
-  { id:'pet_002', type:'dog',     name:'布丁狗', desc:'忠心的好夥伴', img:'Claw_ENG/design_handoff/assets/newcha2.png' },
-  { id:'pet_003', type:'hippo',   name:'胖河馬', desc:'萌萌的大塊頭', img:'Claw_ENG/design_handoff/assets/newcha3.png' },
-  { id:'pet_004', type:'fish',    name:'泡泡魚', desc:'藍藍的海洋寶', img:'Claw_ENG/design_handoff/assets/newcha4.png' },
-  { id:'pet_005', type:'spotted', name:'點點獸', desc:'斑點小可愛',   img:'Claw_ENG/design_handoff/assets/newcha5.png' },
-  { id:'pet_006', type:'chick',   name:'圓滾雞', desc:'圓圓愛學習',   img:'Claw_ENG/design_handoff/assets/newcha6.png' },
-  { id:'pet_007', type:'dragon',  name:'六角龍', desc:'粉紅小精靈',   img:'Claw_ENG/design_handoff/assets/newcha7.png' },
-  { id:'pet_008', type:'cheetah',     name:'豹豹',     desc:'威風的小獵豹',     img:'Claw_ENG/design_handoff/assets/newcha8.png' },
-  { id:'pet_009', type:'dragon-green',name:'嫩芽龍',   desc:'青嫩嫩的小恐龍',   img:'Claw_ENG/design_handoff/assets/newcha9.png' },
-  { id:'pet_010', type:'parrot',      name:'橄欖鸚',   desc:'藍尾巴的小鸚鵡',   img:'Claw_ENG/design_handoff/assets/newcha10.png' },
-  { id:'pet_011', type:'whaleshark',  name:'繁星鯊',   desc:'身上有點點的鯨鯊', img:'Claw_ENG/design_handoff/assets/newcha11.png' },
-  { id:'pet_012', type:'panda',       name:'湯圓貓熊', desc:'黑白圓圓的小糰子', img:'Claw_ENG/design_handoff/assets/newcha12.png' },
-  { id:'pet_013', type:'penguin',     name:'冰棒企鵝', desc:'搖搖晃晃的小傢伙', img:'Claw_ENG/design_handoff/assets/newcha13.png' },
-  { id:'pet_014', type:'koala',       name:'雲朵樹熊', desc:'慢慢抱住每個單字', img:'Claw_ENG/design_handoff/assets/newcha14.png' },
-  { id:'pet_015', type:'hamster',     name:'奶茶鼠',   desc:'圓滾滾的倉鼠寶',   img:'Claw_ENG/design_handoff/assets/newcha15.png' },
-  { id:'pet_016', type:'alpaca',      name:'棉花羊駝', desc:'蓬鬆又溫柔',       img:'Claw_ENG/design_handoff/assets/newcha16.png' },
-  { id:'pet_017', type:'sugarglider', name:'蜜糖鼯',   desc:'大耳朵會滑翔',     img:'Claw_ENG/design_handoff/assets/newcha17.png' },
-  { id:'pet_018', type:'husky',       name:'可可哈奇', desc:'毛茸茸的小哈奇',   img:'Claw_ENG/design_handoff/assets/newcha18.png' },
-  { id:'pet_019', type:'orange-tabby', name:'橘虎貓',   desc:'有虎斑紋的小橘貓', img:'Claw_ENG/design_handoff/assets/newcha19.png' },
-  { id:'pet_020', type:'bear',         name:'可可熊',   desc:'溫柔圓耳的小熊',   img:'Claw_ENG/design_handoff/assets/newcha20.png' },
-  { id:'pet_021', type:'lion',         name:'金鬃獅',   desc:'蓬鬆鬃毛的小獅子', img:'Claw_ENG/design_handoff/assets/newcha21.png' },
+  { id:'pet_001', type:'cat',     name:'奶油貓', desc:'愛撒嬌的貓咪', img:'Claw_JP_N4/design_handoff/assets/newcha1.png' },
+  { id:'pet_002', type:'dog',     name:'布丁狗', desc:'忠心的好夥伴', img:'Claw_JP_N4/design_handoff/assets/newcha2.png' },
+  { id:'pet_003', type:'hippo',   name:'胖河馬', desc:'萌萌的大塊頭', img:'Claw_JP_N4/design_handoff/assets/newcha3.png' },
+  { id:'pet_004', type:'fish',    name:'泡泡魚', desc:'藍藍的海洋寶', img:'Claw_JP_N4/design_handoff/assets/newcha4.png' },
+  { id:'pet_005', type:'spotted', name:'點點獸', desc:'斑點小可愛',   img:'Claw_JP_N4/design_handoff/assets/newcha5.png' },
+  { id:'pet_006', type:'chick',   name:'圓滾雞', desc:'圓圓愛學習',   img:'Claw_JP_N4/design_handoff/assets/newcha6.png' },
+  { id:'pet_007', type:'dragon',  name:'六角龍', desc:'粉紅小精靈',   img:'Claw_JP_N4/design_handoff/assets/newcha7.png' },
+  { id:'pet_008', type:'cheetah',     name:'豹豹',     desc:'威風的小獵豹',     img:'Claw_JP_N4/design_handoff/assets/newcha8.png' },
+  { id:'pet_009', type:'dragon-green',name:'嫩芽龍',   desc:'青嫩嫩的小恐龍',   img:'Claw_JP_N4/design_handoff/assets/newcha9.png' },
+  { id:'pet_010', type:'parrot',      name:'橄欖鸚',   desc:'藍尾巴的小鸚鵡',   img:'Claw_JP_N4/design_handoff/assets/newcha10.png' },
+  { id:'pet_011', type:'whaleshark',  name:'繁星鯊',   desc:'身上有點點的鯨鯊', img:'Claw_JP_N4/design_handoff/assets/newcha11.png' },
+  { id:'pet_012', type:'panda',       name:'湯圓貓熊', desc:'黑白圓圓的小糰子', img:'Claw_JP_N4/design_handoff/assets/newcha12.png' },
+  { id:'pet_013', type:'penguin',     name:'冰棒企鵝', desc:'搖搖晃晃的小傢伙', img:'Claw_JP_N4/design_handoff/assets/newcha13.png' },
+  { id:'pet_014', type:'koala',       name:'雲朵樹熊', desc:'慢慢抱住每個單字', img:'Claw_JP_N4/design_handoff/assets/newcha14.png' },
+  { id:'pet_015', type:'hamster',     name:'奶茶鼠',   desc:'圓滾滾的倉鼠寶',   img:'Claw_JP_N4/design_handoff/assets/newcha15.png' },
+  { id:'pet_016', type:'alpaca',      name:'棉花羊駝', desc:'蓬鬆又溫柔',       img:'Claw_JP_N4/design_handoff/assets/newcha16.png' },
+  { id:'pet_017', type:'sugarglider', name:'蜜糖鼯',   desc:'大耳朵會滑翔',     img:'Claw_JP_N4/design_handoff/assets/newcha17.png' },
+  { id:'pet_018', type:'husky',       name:'可可哈奇', desc:'毛茸茸的小哈奇',   img:'Claw_JP_N4/design_handoff/assets/newcha18.png' },
+  { id:'pet_019', type:'orange-tabby', name:'橘虎貓',   desc:'有虎斑紋的小橘貓', img:'Claw_JP_N4/design_handoff/assets/newcha19.png' },
+  { id:'pet_020', type:'bear',         name:'可可熊',   desc:'溫柔圓耳的小熊',   img:'Claw_JP_N4/design_handoff/assets/newcha20.png' },
+  { id:'pet_021', type:'lion',         name:'金鬃獅',   desc:'蓬鬆鬃毛的小獅子', img:'Claw_JP_N4/design_handoff/assets/newcha21.png' },
 ];
 
 const SEED_PET_MAP = Object.fromEntries(SEED_PETS.map(p => [p.id, p]));
