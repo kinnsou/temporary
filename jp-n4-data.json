@@ -1,0 +1,6335 @@
+{
+  "meta": {
+    "updatedAt": "2026-06-04T04:48:49Z",
+    "sourceCount": 104,
+    "releasedCount": 104,
+    "classroom": "jp-n4",
+    "jlpt": "N4",
+    "levelUnlock": {
+      "initial": 5,
+      "increment": 5
+    },
+    "notes": "N5 assumed known; N4 words unlock by player level, five per level."
+  },
+  "words": [
+    {
+      "id": "n4_0001",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "大変",
+      "kana": "たいへん",
+      "reading": "たいへん",
+      "kanji": "大変",
+      "meaning": "很、非常；辛苦、不得了",
+      "meaning_zh": "很、非常；辛苦、不得了",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 1,
+      "example": "昨日の宿題は大変でした。",
+      "example_ja": "昨日の宿題は大変でした。",
+      "example_kana": "きのうの しゅくだいは たいへんでした。",
+      "translation": "昨天的作業很辛苦。",
+      "translation_zh": "昨天的作業很辛苦。",
+      "audioText": "昨日の宿題は大変でした。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "昨日の宿題",
+          "answer": "は",
+          "after": "大変でした。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "too_na",
+        "prompt_zh": "表達「太很、非常；辛苦、不得了」時，選出正確形式。",
+        "before": "この説明は大変",
+        "answer": "すぎます",
+        "after": "。",
+        "choices": [
+          "すぎます",
+          "そうです",
+          "になります",
+          "でした"
+        ],
+        "explanation": "な形容詞直接接「すぎます」，表示太過於某種狀態。",
+        "hintChunks": [
+          "この説明は",
+          "大変すぎます。"
+        ]
+      },
+      "chunks": [
+        "昨日の宿題は",
+        "大変",
+        "でした。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0002",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "必要",
+      "kana": "ひつよう",
+      "reading": "ひつよう",
+      "kanji": "必要",
+      "meaning": "必要的",
+      "meaning_zh": "必要的",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 2,
+      "example": "試験には鉛筆が必要です。",
+      "example_ja": "試験には鉛筆が必要です。",
+      "example_kana": "しけんには えんぴつが ひつようです。",
+      "translation": "考試需要鉛筆。",
+      "translation_zh": "考試需要鉛筆。",
+      "audioText": "試験には鉛筆が必要です。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "試験",
+          "answer": "に",
+          "after": "は鉛筆が必要です。",
+          "choices": [
+            "に",
+            "を",
+            "が",
+            "と"
+          ],
+          "explanation": "這裡用「に」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "too_na",
+        "prompt_zh": "表達「太必要的」時，選出正確形式。",
+        "before": "この説明は必要",
+        "answer": "すぎます",
+        "after": "。",
+        "choices": [
+          "すぎます",
+          "そうです",
+          "になります",
+          "でした"
+        ],
+        "explanation": "な形容詞直接接「すぎます」，表示太過於某種狀態。",
+        "hintChunks": [
+          "この説明は",
+          "必要すぎます。"
+        ]
+      },
+      "chunks": [
+        "試験には",
+        "鉛筆が",
+        "必要です。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0003",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "便利",
+      "kana": "べんり",
+      "reading": "べんり",
+      "kanji": "便利",
+      "meaning": "方便的",
+      "meaning_zh": "方便的",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 3,
+      "example": "このアプリはとても便利です。",
+      "example_ja": "このアプリはとても便利です。",
+      "example_kana": "この アプリは とても べんりです。",
+      "translation": "這個 App 很方便。",
+      "translation_zh": "這個 App 很方便。",
+      "audioText": "このアプリはとても便利です。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "このアプリ",
+          "answer": "は",
+          "after": "とても便利です。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "too_na",
+        "prompt_zh": "表達「太方便的」時，選出正確形式。",
+        "before": "この説明は便利",
+        "answer": "すぎます",
+        "after": "。",
+        "choices": [
+          "すぎます",
+          "そうです",
+          "になります",
+          "でした"
+        ],
+        "explanation": "な形容詞直接接「すぎます」，表示太過於某種狀態。",
+        "hintChunks": [
+          "この説明は",
+          "便利すぎます。"
+        ]
+      },
+      "chunks": [
+        "このアプリは",
+        "とても",
+        "便利です。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0004",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "間に合う",
+      "kana": "まにあう",
+      "reading": "まにあう",
+      "kanji": "間に合う",
+      "meaning": "來得及",
+      "meaning_zh": "來得及",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 4,
+      "example": "電車に間に合うように早く出ます。",
+      "example_ja": "電車に間に合うように早く出ます。",
+      "example_kana": "でんしゃに まにあうように はやく でます。",
+      "translation": "為了趕上電車，我會早點出門。",
+      "translation_zh": "為了趕上電車，我會早點出門。",
+      "audioText": "電車に間に合うように早く出ます。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "電車",
+          "answer": "に",
+          "after": "間に合うように早く出ます。",
+          "choices": [
+            "に",
+            "を",
+            "が",
+            "と"
+          ],
+          "explanation": "這裡用「に」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "experience",
+        "prompt_zh": "表達「曾經／有時會來得及」時，選出正確句型。",
+        "before": "私はこの仕事で間に合う",
+        "answer": "ことがあります",
+        "after": "。",
+        "choices": [
+          "ことがあります",
+          "ところです",
+          "ようにします",
+          "なければなりません"
+        ],
+        "explanation": "「動詞辭書形＋ことがあります」表示曾經有過這種經驗。",
+        "hintChunks": [
+          "私は",
+          "この仕事で",
+          "間に"
+        ]
+      },
+      "chunks": [
+        "電車に",
+        "間に合うように",
+        "早く出ます。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0005",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "手伝う",
+      "kana": "てつだう",
+      "reading": "てつだう",
+      "kanji": "手伝う",
+      "meaning": "幫忙",
+      "meaning_zh": "幫忙",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 5,
+      "example": "母の仕事を手伝ったことがあります。",
+      "example_ja": "母の仕事を手伝ったことがあります。",
+      "example_kana": "ははの しごとを てつだったことが あります。",
+      "translation": "我曾經幫忙媽媽的工作。",
+      "translation_zh": "我曾經幫忙媽媽的工作。",
+      "audioText": "母の仕事を手伝ったことがあります。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "母の仕事",
+          "answer": "を",
+          "after": "手伝ったことがあります。",
+          "choices": [
+            "を",
+            "が",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「を」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "experience",
+        "prompt_zh": "表達「曾經／有時會幫忙」時，選出正確句型。",
+        "before": "私はこの仕事で手伝う",
+        "answer": "ことがあります",
+        "after": "。",
+        "choices": [
+          "ことがあります",
+          "ところです",
+          "ようにします",
+          "なければなりません"
+        ],
+        "explanation": "「動詞辭書形＋ことがあります」表示曾經有過這種經驗。",
+        "hintChunks": [
+          "私は",
+          "この仕事で",
+          "手伝うこと"
+        ]
+      },
+      "chunks": [
+        "母の仕事を",
+        "手伝った",
+        "ことがあります。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0006",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "簡単",
+      "kana": "かんたん",
+      "reading": "かんたん",
+      "kanji": "簡単",
+      "meaning": "簡單的",
+      "meaning_zh": "簡單的",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 6,
+      "example": "この問題は簡単すぎます。",
+      "example_ja": "この問題は簡単すぎます。",
+      "example_kana": "この もんだいは かんたんすぎます。",
+      "translation": "這個問題太簡單了。",
+      "translation_zh": "這個問題太簡單了。",
+      "audioText": "この問題は簡単すぎます。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "この問題",
+          "answer": "は",
+          "after": "簡単すぎます。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "too_na",
+        "prompt_zh": "表達「太簡單的」時，選出正確形式。",
+        "before": "この説明は簡単",
+        "answer": "すぎます",
+        "after": "。",
+        "choices": [
+          "すぎます",
+          "そうです",
+          "になります",
+          "でした"
+        ],
+        "explanation": "な形容詞直接接「すぎます」，表示太過於某種狀態。",
+        "hintChunks": [
+          "この説明は",
+          "簡単すぎます。"
+        ]
+      },
+      "chunks": [
+        "この問題は",
+        "簡単すぎます。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0007",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "自由",
+      "kana": "じゆう",
+      "reading": "じゆう",
+      "kanji": "自由",
+      "meaning": "自由的",
+      "meaning_zh": "自由的",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 7,
+      "example": "休みの日は自由に遊んでもいいです。",
+      "example_ja": "休みの日は自由に遊んでもいいです。",
+      "example_kana": "やすみの ひは じゆうに あそんでもいいです。",
+      "translation": "休假日可以自由地玩。",
+      "translation_zh": "休假日可以自由地玩。",
+      "audioText": "休みの日は自由に遊んでもいいです。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "休みの日",
+          "answer": "は",
+          "after": "自由に遊んでもいいです。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "too_na",
+        "prompt_zh": "表達「太自由的」時，選出正確形式。",
+        "before": "この説明は自由",
+        "answer": "すぎます",
+        "after": "。",
+        "choices": [
+          "すぎます",
+          "そうです",
+          "になります",
+          "でした"
+        ],
+        "explanation": "な形容詞直接接「すぎます」，表示太過於某種狀態。",
+        "hintChunks": [
+          "この説明は",
+          "自由すぎます。"
+        ]
+      },
+      "chunks": [
+        "休みの日は",
+        "自由に",
+        "遊んで",
+        "もいいです。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0008",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "無理",
+      "kana": "むり",
+      "reading": "むり",
+      "kanji": "無理",
+      "meaning": "勉強、做不到",
+      "meaning_zh": "勉強、做不到",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 8,
+      "example": "一人で全部するのは無理です。",
+      "example_ja": "一人で全部するのは無理です。",
+      "example_kana": "ひとりで ぜんぶ するのは むりです。",
+      "translation": "一個人全部做完很勉強。",
+      "translation_zh": "一個人全部做完很勉強。",
+      "audioText": "一人で全部するのは無理です。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "一人",
+          "answer": "で",
+          "after": "全部するのは無理です。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "too_na",
+        "prompt_zh": "表達「太勉強、做不到」時，選出正確形式。",
+        "before": "この説明は無理",
+        "answer": "すぎます",
+        "after": "。",
+        "choices": [
+          "すぎます",
+          "そうです",
+          "になります",
+          "でした"
+        ],
+        "explanation": "な形容詞直接接「すぎます」，表示太過於某種狀態。",
+        "hintChunks": [
+          "この説明は",
+          "無理すぎます。"
+        ]
+      },
+      "chunks": [
+        "一人で",
+        "全部するのは",
+        "無理です。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0009",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "急",
+      "kana": "きゅう",
+      "reading": "きゅう",
+      "kanji": "急",
+      "meaning": "突然、緊急",
+      "meaning_zh": "突然、緊急",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 9,
+      "example": "急な用事で出かけました。",
+      "example_ja": "急な用事で出かけました。",
+      "example_kana": "きゅうな ようじで でかけました。",
+      "translation": "因為突然有事就出門了。",
+      "translation_zh": "因為突然有事就出門了。",
+      "audioText": "急な用事で出かけました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "急な用事",
+          "answer": "で",
+          "after": "出かけました。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "too_na",
+        "prompt_zh": "表達「太突然、緊急」時，選出正確形式。",
+        "before": "この説明は急",
+        "answer": "すぎます",
+        "after": "。",
+        "choices": [
+          "すぎます",
+          "そうです",
+          "になります",
+          "でした"
+        ],
+        "explanation": "な形容詞直接接「すぎます」，表示太過於某種狀態。",
+        "hintChunks": [
+          "この説明は",
+          "急すぎます。"
+        ]
+      },
+      "chunks": [
+        "急な用事で",
+        "出かけました。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0010",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "十分",
+      "kana": "じゅうぶん",
+      "reading": "じゅうぶん",
+      "kanji": "十分",
+      "meaning": "足夠、充分",
+      "meaning_zh": "足夠、充分",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 10,
+      "example": "時間は十分あります。",
+      "example_ja": "時間は十分あります。",
+      "example_kana": "じかんは じゅうぶん あります。",
+      "translation": "時間很充足。",
+      "translation_zh": "時間很充足。",
+      "audioText": "時間は十分あります。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "時間",
+          "answer": "は",
+          "after": "十分あります。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "too_na",
+        "prompt_zh": "表達「太足夠、充分」時，選出正確形式。",
+        "before": "この説明は十分",
+        "answer": "すぎます",
+        "after": "。",
+        "choices": [
+          "すぎます",
+          "そうです",
+          "になります",
+          "でした"
+        ],
+        "explanation": "な形容詞直接接「すぎます」，表示太過於某種狀態。",
+        "hintChunks": [
+          "この説明は",
+          "十分すぎます。"
+        ]
+      },
+      "chunks": [
+        "時間は",
+        "十分あります。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0011",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "普通",
+      "kana": "ふつう",
+      "reading": "ふつう",
+      "kanji": "普通",
+      "meaning": "普通、一般",
+      "meaning_zh": "普通、一般",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 11,
+      "example": "普通の生活が一番安心です。",
+      "example_ja": "普通の生活が一番安心です。",
+      "example_kana": "ふつうの せいかつが いちばん あんしんです。",
+      "translation": "普通的生活最安心。",
+      "translation_zh": "普通的生活最安心。",
+      "audioText": "普通の生活が一番安心です。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "普通の生活",
+          "answer": "が",
+          "after": "一番安心です。",
+          "choices": [
+            "が",
+            "を",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「が」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "too_na",
+        "prompt_zh": "表達「太普通、一般」時，選出正確形式。",
+        "before": "この説明は普通",
+        "answer": "すぎます",
+        "after": "。",
+        "choices": [
+          "すぎます",
+          "そうです",
+          "になります",
+          "でした"
+        ],
+        "explanation": "な形容詞直接接「すぎます」，表示太過於某種狀態。",
+        "hintChunks": [
+          "この説明は",
+          "普通すぎます。"
+        ]
+      },
+      "chunks": [
+        "普通の生活が",
+        "一番安心です。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0012",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "以外",
+      "kana": "いがい",
+      "reading": "いがい",
+      "kanji": "以外",
+      "meaning": "以外",
+      "meaning_zh": "以外",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 12,
+      "example": "日曜日以外は毎日練習します。",
+      "example_ja": "日曜日以外は毎日練習します。",
+      "example_kana": "にちようび いがいは まいにち れんしゅうします。",
+      "translation": "星期日以外每天練習。",
+      "translation_zh": "星期日以外每天練習。",
+      "audioText": "日曜日以外は毎日練習します。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "日曜日以外",
+          "answer": "は",
+          "after": "毎日練習します。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle_topic",
+        "prompt_zh": "表達「關於以外」時，選出正確句型。",
+        "before": "先生は以外",
+        "answer": "について",
+        "after": "説明しました。",
+        "choices": [
+          "について",
+          "までに",
+          "ながら",
+          "たことがある"
+        ],
+        "explanation": "「〜について」表示關於某個主題。",
+        "hintChunks": [
+          "先生は",
+          "以外に",
+          "ついて説明しました。"
+        ]
+      },
+      "chunks": [
+        "日曜日以外は",
+        "毎日練習します。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0013",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "以上",
+      "kana": "いじょう",
+      "reading": "いじょう",
+      "kanji": "以上",
+      "meaning": "以上",
+      "meaning_zh": "以上",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 13,
+      "example": "三十分以上待ちました。",
+      "example_ja": "三十分以上待ちました。",
+      "example_kana": "さんじゅっぷん いじょう まちました。",
+      "translation": "等了三十分鐘以上。",
+      "translation_zh": "等了三十分鐘以上。",
+      "audioText": "三十分以上待ちました。",
+      "particles": [],
+      "grammar": {
+        "kind": "particle_topic",
+        "prompt_zh": "表達「關於以上」時，選出正確句型。",
+        "before": "先生は以上",
+        "answer": "について",
+        "after": "説明しました。",
+        "choices": [
+          "について",
+          "までに",
+          "ながら",
+          "たことがある"
+        ],
+        "explanation": "「〜について」表示關於某個主題。",
+        "hintChunks": [
+          "先生は",
+          "以上に",
+          "ついて説明しました。"
+        ]
+      },
+      "chunks": [
+        "三十分以上待ちました。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0014",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "以下",
+      "kana": "いか",
+      "reading": "いか",
+      "kanji": "以下",
+      "meaning": "以下",
+      "meaning_zh": "以下",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 14,
+      "example": "千円以下の物を買います。",
+      "example_ja": "千円以下の物を買います。",
+      "example_kana": "せんえん いかの ものを かいます。",
+      "translation": "買一千日圓以下的東西。",
+      "translation_zh": "買一千日圓以下的東西。",
+      "audioText": "千円以下の物を買います。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "千円以下の物",
+          "answer": "を",
+          "after": "買います。",
+          "choices": [
+            "を",
+            "が",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「を」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle_topic",
+        "prompt_zh": "表達「關於以下」時，選出正確句型。",
+        "before": "先生は以下",
+        "answer": "について",
+        "after": "説明しました。",
+        "choices": [
+          "について",
+          "までに",
+          "ながら",
+          "たことがある"
+        ],
+        "explanation": "「〜について」表示關於某個主題。",
+        "hintChunks": [
+          "先生は",
+          "以下に",
+          "ついて説明しました。"
+        ]
+      },
+      "chunks": [
+        "千円以下の物を",
+        "買います。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0015",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "以内",
+      "kana": "いない",
+      "reading": "いない",
+      "kanji": "以内",
+      "meaning": "以內",
+      "meaning_zh": "以內",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 15,
+      "example": "十日以内に返してください。",
+      "example_ja": "十日以内に返してください。",
+      "example_kana": "とおか いないに かえしてください。",
+      "translation": "請在十天以內歸還。",
+      "translation_zh": "請在十天以內歸還。",
+      "audioText": "十日以内に返してください。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "十日以内",
+          "answer": "に",
+          "after": "返してください。",
+          "choices": [
+            "に",
+            "を",
+            "が",
+            "と"
+          ],
+          "explanation": "這裡用「に」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle_topic",
+        "prompt_zh": "表達「關於以內」時，選出正確句型。",
+        "before": "先生は以内",
+        "answer": "について",
+        "after": "説明しました。",
+        "choices": [
+          "について",
+          "までに",
+          "ながら",
+          "たことがある"
+        ],
+        "explanation": "「〜について」表示關於某個主題。",
+        "hintChunks": [
+          "先生は",
+          "以内に",
+          "ついて説明しました。"
+        ]
+      },
+      "chunks": [
+        "十日以内に",
+        "返してください。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0016",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "申し込む",
+      "kana": "もうしこむ",
+      "reading": "もうしこむ",
+      "kanji": "申し込む",
+      "meaning": "報名、申請",
+      "meaning_zh": "報名、申請",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 16,
+      "example": "日本語の試験に申し込んだことがあります。",
+      "example_ja": "日本語の試験に申し込んだことがあります。",
+      "example_kana": "にほんごの しけんに もうしこんだことが あります。",
+      "translation": "我曾經報名日文考試。",
+      "translation_zh": "我曾經報名日文考試。",
+      "audioText": "日本語の試験に申し込んだことがあります。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "日本語の試験",
+          "answer": "に",
+          "after": "申し込んだことがあります。",
+          "choices": [
+            "に",
+            "を",
+            "が",
+            "と"
+          ],
+          "explanation": "這裡用「に」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "experience",
+        "prompt_zh": "表達「曾經／有時會報名、申請」時，選出正確句型。",
+        "before": "私はこの仕事で申し込む",
+        "answer": "ことがあります",
+        "after": "。",
+        "choices": [
+          "ことがあります",
+          "ところです",
+          "ようにします",
+          "なければなりません"
+        ],
+        "explanation": "「動詞辭書形＋ことがあります」表示曾經有過這種經驗。",
+        "hintChunks": [
+          "私は",
+          "この仕事で",
+          "申し込むこと"
+        ]
+      },
+      "chunks": [
+        "日本語の試験に",
+        "申し込んだこと",
+        "があります。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0017",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "片付ける",
+      "kana": "かたづける",
+      "reading": "かたづける",
+      "kanji": "片付ける",
+      "meaning": "整理、收拾",
+      "meaning_zh": "整理、收拾",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 17,
+      "example": "寝る前に机を片付けなければなりません。",
+      "example_ja": "寝る前に机を片付けなければなりません。",
+      "example_kana": "ねる まえに つくえを かたづけなければなりません。",
+      "translation": "睡覺前必須整理桌子。",
+      "translation_zh": "睡覺前必須整理桌子。",
+      "audioText": "寝る前に机を片付けなければなりません。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "寝る前",
+          "answer": "に",
+          "after": "机を片付けなければなりません。",
+          "choices": [
+            "に",
+            "を",
+            "が",
+            "と"
+          ],
+          "explanation": "這裡用「に」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "experience",
+        "prompt_zh": "表達「曾經／有時會整理、收拾」時，選出正確句型。",
+        "before": "私はこの仕事で片付ける",
+        "answer": "ことがあります",
+        "after": "。",
+        "choices": [
+          "ことがあります",
+          "ところです",
+          "ようにします",
+          "なければなりません"
+        ],
+        "explanation": "「動詞辭書形＋ことがあります」表示曾經有過這種經驗。",
+        "hintChunks": [
+          "私は",
+          "この仕事で",
+          "片付けること"
+        ]
+      },
+      "chunks": [
+        "寝る前に",
+        "机を",
+        "片付けなければなりません。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0018",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "捨てる",
+      "kana": "すてる",
+      "reading": "すてる",
+      "kanji": "捨てる",
+      "meaning": "丟掉",
+      "meaning_zh": "丟掉",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 18,
+      "example": "古い紙を捨ててもいいです。",
+      "example_ja": "古い紙を捨ててもいいです。",
+      "example_kana": "ふるい かみを すてても いいです。",
+      "translation": "可以丟掉舊紙。",
+      "translation_zh": "可以丟掉舊紙。",
+      "audioText": "古い紙を捨ててもいいです。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "古い紙",
+          "answer": "を",
+          "after": "捨ててもいいです。",
+          "choices": [
+            "を",
+            "が",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「を」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "experience",
+        "prompt_zh": "表達「曾經／有時會丟掉」時，選出正確句型。",
+        "before": "私はこの仕事で捨てる",
+        "answer": "ことがあります",
+        "after": "。",
+        "choices": [
+          "ことがあります",
+          "ところです",
+          "ようにします",
+          "なければなりません"
+        ],
+        "explanation": "「動詞辭書形＋ことがあります」表示曾經有過這種經驗。",
+        "hintChunks": [
+          "私は",
+          "この仕事で",
+          "捨てること"
+        ]
+      },
+      "chunks": [
+        "古い紙を",
+        "捨てても",
+        "いいです。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0019",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "遅れる",
+      "kana": "おくれる",
+      "reading": "おくれる",
+      "kanji": "遅れる",
+      "meaning": "遲到、延遲",
+      "meaning_zh": "遲到、延遲",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 19,
+      "example": "バスが遅れることがあります。",
+      "example_ja": "バスが遅れることがあります。",
+      "example_kana": "バスが おくれることが あります。",
+      "translation": "公車有時會延遲。",
+      "translation_zh": "公車有時會延遲。",
+      "audioText": "バスが遅れることがあります。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "バス",
+          "answer": "が",
+          "after": "遅れることがあります。",
+          "choices": [
+            "が",
+            "を",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「が」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "experience",
+        "prompt_zh": "表達「曾經／有時會遲到、延遲」時，選出正確句型。",
+        "before": "私はこの仕事で遅れる",
+        "answer": "ことがあります",
+        "after": "。",
+        "choices": [
+          "ことがあります",
+          "ところです",
+          "ようにします",
+          "なければなりません"
+        ],
+        "explanation": "「動詞辭書形＋ことがあります」表示曾經有過這種經驗。",
+        "hintChunks": [
+          "私は",
+          "この仕事で",
+          "遅れること"
+        ]
+      },
+      "chunks": [
+        "バスが",
+        "遅れること",
+        "があります。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0020",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "壊れる",
+      "kana": "こわれる",
+      "reading": "こわれる",
+      "kanji": "壊れる",
+      "meaning": "壞掉",
+      "meaning_zh": "壞掉",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 20,
+      "example": "古い時計が壊れてしまいました。",
+      "example_ja": "古い時計が壊れてしまいました。",
+      "example_kana": "ふるい とけいが こわれてしまいました。",
+      "translation": "舊時鐘壞掉了。",
+      "translation_zh": "舊時鐘壞掉了。",
+      "audioText": "古い時計が壊れてしまいました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "古い時計",
+          "answer": "が",
+          "after": "壊れてしまいました。",
+          "choices": [
+            "が",
+            "を",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「が」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "experience",
+        "prompt_zh": "表達「曾經／有時會壞掉」時，選出正確句型。",
+        "before": "私はこの仕事で壊れる",
+        "answer": "ことがあります",
+        "after": "。",
+        "choices": [
+          "ことがあります",
+          "ところです",
+          "ようにします",
+          "なければなりません"
+        ],
+        "explanation": "「動詞辭書形＋ことがあります」表示曾經有過這種經驗。",
+        "hintChunks": [
+          "私は",
+          "この仕事で",
+          "壊れること"
+        ]
+      },
+      "chunks": [
+        "古い時計が",
+        "壊れてしまいました。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0021",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "直す",
+      "kana": "なおす",
+      "reading": "なおす",
+      "kanji": "直す",
+      "meaning": "修理、改正",
+      "meaning_zh": "修理、改正",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 21,
+      "example": "間違いを直さなければなりません。",
+      "example_ja": "間違いを直さなければなりません。",
+      "example_kana": "まちがいを なおさなければなりません。",
+      "translation": "必須改正錯誤。",
+      "translation_zh": "必須改正錯誤。",
+      "audioText": "間違いを直さなければなりません。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "間違い",
+          "answer": "を",
+          "after": "直さなければなりません。",
+          "choices": [
+            "を",
+            "が",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「を」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "experience",
+        "prompt_zh": "表達「曾經／有時會修理、改正」時，選出正確句型。",
+        "before": "私はこの仕事で直す",
+        "answer": "ことがあります",
+        "after": "。",
+        "choices": [
+          "ことがあります",
+          "ところです",
+          "ようにします",
+          "なければなりません"
+        ],
+        "explanation": "「動詞辭書形＋ことがあります」表示曾經有過這種經驗。",
+        "hintChunks": [
+          "私は",
+          "この仕事で",
+          "直すこと"
+        ]
+      },
+      "chunks": [
+        "間違いを",
+        "直さなければなりません。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0022",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "確か",
+      "kana": "たしか",
+      "reading": "たしか",
+      "kanji": "確か",
+      "meaning": "確實；我記得",
+      "meaning_zh": "確實；我記得",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 22,
+      "example": "確か明日は休みです。",
+      "example_ja": "確か明日は休みです。",
+      "example_kana": "たしか あしたは やすみです。",
+      "translation": "我記得明天放假。",
+      "translation_zh": "我記得明天放假。",
+      "audioText": "確か明日は休みです。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "確か明日",
+          "answer": "は",
+          "after": "休みです。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "too_na",
+        "prompt_zh": "表達「太確實；我記得」時，選出正確形式。",
+        "before": "この説明は確か",
+        "answer": "すぎます",
+        "after": "。",
+        "choices": [
+          "すぎます",
+          "そうです",
+          "になります",
+          "でした"
+        ],
+        "explanation": "な形容詞直接接「すぎます」，表示太過於某種狀態。",
+        "hintChunks": [
+          "この説明は",
+          "確かすぎます。"
+        ]
+      },
+      "chunks": [
+        "確か明日は",
+        "休みです。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0023",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "ほとんど",
+      "kana": "ほとんど",
+      "reading": "ほとんど",
+      "kanji": "ほとんど",
+      "meaning": "幾乎",
+      "meaning_zh": "幾乎",
+      "pos": "adv",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 23,
+      "example": "宿題はほとんど終わりました。",
+      "example_ja": "宿題はほとんど終わりました。",
+      "example_kana": "しゅくだいは ほとんど おわりました。",
+      "translation": "作業幾乎完成了。",
+      "translation_zh": "作業幾乎完成了。",
+      "audioText": "宿題はほとんど終わりました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "宿題",
+          "answer": "は",
+          "after": "ほとんど終わりました。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "宿題",
+        "answer": "は",
+        "after": "ほとんど終わりました。",
+        "choices": [
+          "は",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "宿題は",
+          "ほと",
+          "んど終わりました。"
+        ]
+      },
+      "chunks": [
+        "宿題は",
+        "ほと",
+        "んど終わりました。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0024",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "ぜひ",
+      "kana": "ぜひ",
+      "reading": "ぜひ",
+      "kanji": "ぜひ",
+      "meaning": "一定、務必",
+      "meaning_zh": "一定、務必",
+      "pos": "adv",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 24,
+      "example": "ぜひ日本へ行きたいです。",
+      "example_ja": "ぜひ日本へ行きたいです。",
+      "example_kana": "ぜひ にほんへ いきたいです。",
+      "translation": "我很想一定去日本。",
+      "translation_zh": "我很想一定去日本。",
+      "audioText": "ぜひ日本へ行きたいです。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "ぜひ日本へ行きたい",
+          "answer": "で",
+          "after": "す。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "ぜひ日本へ行きたい",
+        "answer": "で",
+        "after": "す。",
+        "choices": [
+          "で",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「で」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "ぜひ日本へ",
+          "行きたいです。"
+        ]
+      },
+      "chunks": [
+        "ぜひ日本へ",
+        "行きたいです。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0025",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "もし",
+      "kana": "もし",
+      "reading": "もし",
+      "kanji": "もし",
+      "meaning": "如果",
+      "meaning_zh": "如果",
+      "pos": "adv",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 25,
+      "example": "もし雨なら、家で勉強します。",
+      "example_ja": "もし雨なら、家で勉強します。",
+      "example_kana": "もし あめなら、いえで べんきょうします。",
+      "translation": "如果下雨，就在家讀書。",
+      "translation_zh": "如果下雨，就在家讀書。",
+      "audioText": "もし雨なら、家で勉強します。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "もし雨なら、家",
+          "answer": "で",
+          "after": "勉強します。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "もし雨なら、家",
+        "answer": "で",
+        "after": "勉強します。",
+        "choices": [
+          "で",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「で」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "もし雨なら、",
+          "家で",
+          "勉強します。"
+        ]
+      },
+      "chunks": [
+        "もし雨なら、",
+        "家で",
+        "勉強します。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0026",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "空港",
+      "kana": "くうこう",
+      "reading": "くうこう",
+      "kanji": "空港",
+      "meaning": "機場",
+      "meaning_zh": "機場",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 26,
+      "example": "先生は空港について説明しました。",
+      "example_ja": "先生は空港について説明しました。",
+      "example_kana": "せんせいは くうこうについて せつめいしました。",
+      "translation": "老師說明了關於機場的內容。",
+      "translation_zh": "老師說明了關於機場的內容。",
+      "audioText": "先生は空港について説明しました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "先生",
+          "answer": "は",
+          "after": "空港について説明しました。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle_topic",
+        "prompt_zh": "表達「關於機場」時，選出正確句型。",
+        "before": "先生は空港",
+        "answer": "について",
+        "after": "説明しました。",
+        "choices": [
+          "について",
+          "までに",
+          "ながら",
+          "たことがある"
+        ],
+        "explanation": "「〜について」表示關於某個主題。",
+        "hintChunks": [
+          "先生は",
+          "空港に",
+          "ついて説明しました。"
+        ]
+      },
+      "chunks": [
+        "先生は",
+        "空港に",
+        "ついて説明しました。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0027",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "旅館",
+      "kana": "りょかん",
+      "reading": "りょかん",
+      "kanji": "旅館",
+      "meaning": "旅館",
+      "meaning_zh": "旅館",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 27,
+      "example": "先生は旅館について説明しました。",
+      "example_ja": "先生は旅館について説明しました。",
+      "example_kana": "せんせいは りょかんについて せつめいしました。",
+      "translation": "老師說明了關於旅館的內容。",
+      "translation_zh": "老師說明了關於旅館的內容。",
+      "audioText": "先生は旅館について説明しました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "先生",
+          "answer": "は",
+          "after": "旅館について説明しました。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle_topic",
+        "prompt_zh": "表達「關於旅館」時，選出正確句型。",
+        "before": "先生は旅館",
+        "answer": "について",
+        "after": "説明しました。",
+        "choices": [
+          "について",
+          "までに",
+          "ながら",
+          "たことがある"
+        ],
+        "explanation": "「〜について」表示關於某個主題。",
+        "hintChunks": [
+          "先生は",
+          "旅館に",
+          "ついて説明しました。"
+        ]
+      },
+      "chunks": [
+        "先生は",
+        "旅館に",
+        "ついて説明しました。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0028",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "交通",
+      "kana": "こうつう",
+      "reading": "こうつう",
+      "kanji": "交通",
+      "meaning": "交通",
+      "meaning_zh": "交通",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 28,
+      "example": "先生は交通について説明しました。",
+      "example_ja": "先生は交通について説明しました。",
+      "example_kana": "せんせいは こうつうについて せつめいしました。",
+      "translation": "老師說明了關於交通的內容。",
+      "translation_zh": "老師說明了關於交通的內容。",
+      "audioText": "先生は交通について説明しました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "先生",
+          "answer": "は",
+          "after": "交通について説明しました。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle_topic",
+        "prompt_zh": "表達「關於交通」時，選出正確句型。",
+        "before": "先生は交通",
+        "answer": "について",
+        "after": "説明しました。",
+        "choices": [
+          "について",
+          "までに",
+          "ながら",
+          "たことがある"
+        ],
+        "explanation": "「〜について」表示關於某個主題。",
+        "hintChunks": [
+          "先生は",
+          "交通に",
+          "ついて説明しました。"
+        ]
+      },
+      "chunks": [
+        "先生は",
+        "交通に",
+        "ついて説明しました。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0029",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "道具",
+      "kana": "どうぐ",
+      "reading": "どうぐ",
+      "kanji": "道具",
+      "meaning": "工具",
+      "meaning_zh": "工具",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 29,
+      "example": "先生は道具について説明しました。",
+      "example_ja": "先生は道具について説明しました。",
+      "example_kana": "せんせいは どうぐについて せつめいしました。",
+      "translation": "老師說明了關於工具的內容。",
+      "translation_zh": "老師說明了關於工具的內容。",
+      "audioText": "先生は道具について説明しました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "先生",
+          "answer": "は",
+          "after": "道具について説明しました。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle_topic",
+        "prompt_zh": "表達「關於工具」時，選出正確句型。",
+        "before": "先生は道具",
+        "answer": "について",
+        "after": "説明しました。",
+        "choices": [
+          "について",
+          "までに",
+          "ながら",
+          "たことがある"
+        ],
+        "explanation": "「〜について」表示關於某個主題。",
+        "hintChunks": [
+          "先生は",
+          "道具に",
+          "ついて説明しました。"
+        ]
+      },
+      "chunks": [
+        "先生は",
+        "道具に",
+        "ついて説明しました。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0030",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "生活",
+      "kana": "せいかつ",
+      "reading": "せいかつ",
+      "kanji": "生活",
+      "meaning": "生活",
+      "meaning_zh": "生活",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 30,
+      "example": "先生は生活について説明しました。",
+      "example_ja": "先生は生活について説明しました。",
+      "example_kana": "せんせいは せいかつについて せつめいしました。",
+      "translation": "老師說明了關於生活的內容。",
+      "translation_zh": "老師說明了關於生活的內容。",
+      "audioText": "先生は生活について説明しました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "先生",
+          "answer": "は",
+          "after": "生活について説明しました。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle_topic",
+        "prompt_zh": "表達「關於生活」時，選出正確句型。",
+        "before": "先生は生活",
+        "answer": "について",
+        "after": "説明しました。",
+        "choices": [
+          "について",
+          "までに",
+          "ながら",
+          "たことがある"
+        ],
+        "explanation": "「〜について」表示關於某個主題。",
+        "hintChunks": [
+          "先生は",
+          "生活に",
+          "ついて説明しました。"
+        ]
+      },
+      "chunks": [
+        "先生は",
+        "生活に",
+        "ついて説明しました。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0031",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "習慣",
+      "kana": "しゅうかん",
+      "reading": "しゅうかん",
+      "kanji": "習慣",
+      "meaning": "習慣",
+      "meaning_zh": "習慣",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 31,
+      "example": "先生は習慣について説明しました。",
+      "example_ja": "先生は習慣について説明しました。",
+      "example_kana": "せんせいは しゅうかんについて せつめいしました。",
+      "translation": "老師說明了關於習慣的內容。",
+      "translation_zh": "老師說明了關於習慣的內容。",
+      "audioText": "先生は習慣について説明しました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "先生",
+          "answer": "は",
+          "after": "習慣について説明しました。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle_topic",
+        "prompt_zh": "表達「關於習慣」時，選出正確句型。",
+        "before": "先生は習慣",
+        "answer": "について",
+        "after": "説明しました。",
+        "choices": [
+          "について",
+          "までに",
+          "ながら",
+          "たことがある"
+        ],
+        "explanation": "「〜について」表示關於某個主題。",
+        "hintChunks": [
+          "先生は",
+          "習慣に",
+          "ついて説明しました。"
+        ]
+      },
+      "chunks": [
+        "先生は",
+        "習慣に",
+        "ついて説明しました。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0032",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "趣味",
+      "kana": "しゅみ",
+      "reading": "しゅみ",
+      "kanji": "趣味",
+      "meaning": "興趣",
+      "meaning_zh": "興趣",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 32,
+      "example": "先生は趣味について説明しました。",
+      "example_ja": "先生は趣味について説明しました。",
+      "example_kana": "せんせいは しゅみについて せつめいしました。",
+      "translation": "老師說明了關於興趣的內容。",
+      "translation_zh": "老師說明了關於興趣的內容。",
+      "audioText": "先生は趣味について説明しました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "先生",
+          "answer": "は",
+          "after": "趣味について説明しました。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle_topic",
+        "prompt_zh": "表達「關於興趣」時，選出正確句型。",
+        "before": "先生は趣味",
+        "answer": "について",
+        "after": "説明しました。",
+        "choices": [
+          "について",
+          "までに",
+          "ながら",
+          "たことがある"
+        ],
+        "explanation": "「〜について」表示關於某個主題。",
+        "hintChunks": [
+          "先生は",
+          "趣味に",
+          "ついて説明しました。"
+        ]
+      },
+      "chunks": [
+        "先生は",
+        "趣味に",
+        "ついて説明しました。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0033",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "理由",
+      "kana": "りゆう",
+      "reading": "りゆう",
+      "kanji": "理由",
+      "meaning": "理由",
+      "meaning_zh": "理由",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 33,
+      "example": "先生は理由について説明しました。",
+      "example_ja": "先生は理由について説明しました。",
+      "example_kana": "せんせいは りゆうについて せつめいしました。",
+      "translation": "老師說明了關於理由的內容。",
+      "translation_zh": "老師說明了關於理由的內容。",
+      "audioText": "先生は理由について説明しました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "先生",
+          "answer": "は",
+          "after": "理由について説明しました。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle_topic",
+        "prompt_zh": "表達「關於理由」時，選出正確句型。",
+        "before": "先生は理由",
+        "answer": "について",
+        "after": "説明しました。",
+        "choices": [
+          "について",
+          "までに",
+          "ながら",
+          "たことがある"
+        ],
+        "explanation": "「〜について」表示關於某個主題。",
+        "hintChunks": [
+          "先生は",
+          "理由に",
+          "ついて説明しました。"
+        ]
+      },
+      "chunks": [
+        "先生は",
+        "理由に",
+        "ついて説明しました。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0034",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "意味",
+      "kana": "いみ",
+      "reading": "いみ",
+      "kanji": "意味",
+      "meaning": "意思",
+      "meaning_zh": "意思",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 34,
+      "example": "先生は意味について説明しました。",
+      "example_ja": "先生は意味について説明しました。",
+      "example_kana": "せんせいは いみについて せつめいしました。",
+      "translation": "老師說明了關於意思的內容。",
+      "translation_zh": "老師說明了關於意思的內容。",
+      "audioText": "先生は意味について説明しました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "先生",
+          "answer": "は",
+          "after": "意味について説明しました。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle_topic",
+        "prompt_zh": "表達「關於意思」時，選出正確句型。",
+        "before": "先生は意味",
+        "answer": "について",
+        "after": "説明しました。",
+        "choices": [
+          "について",
+          "までに",
+          "ながら",
+          "たことがある"
+        ],
+        "explanation": "「〜について」表示關於某個主題。",
+        "hintChunks": [
+          "先生は",
+          "意味に",
+          "ついて説明しました。"
+        ]
+      },
+      "chunks": [
+        "先生は",
+        "意味に",
+        "ついて説明しました。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0035",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "意見",
+      "kana": "いけん",
+      "reading": "いけん",
+      "kanji": "意見",
+      "meaning": "意見",
+      "meaning_zh": "意見",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 35,
+      "example": "先生は意見について説明しました。",
+      "example_ja": "先生は意見について説明しました。",
+      "example_kana": "せんせいは いけんについて せつめいしました。",
+      "translation": "老師說明了關於意見的內容。",
+      "translation_zh": "老師說明了關於意見的內容。",
+      "audioText": "先生は意見について説明しました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "先生",
+          "answer": "は",
+          "after": "意見について説明しました。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle_topic",
+        "prompt_zh": "表達「關於意見」時，選出正確句型。",
+        "before": "先生は意見",
+        "answer": "について",
+        "after": "説明しました。",
+        "choices": [
+          "について",
+          "までに",
+          "ながら",
+          "たことがある"
+        ],
+        "explanation": "「〜について」表示關於某個主題。",
+        "hintChunks": [
+          "先生は",
+          "意見に",
+          "ついて説明しました。"
+        ]
+      },
+      "chunks": [
+        "先生は",
+        "意見に",
+        "ついて説明しました。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0036",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "場所",
+      "kana": "ばしょ",
+      "reading": "ばしょ",
+      "kanji": "場所",
+      "meaning": "地點",
+      "meaning_zh": "地點",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 36,
+      "example": "先生は場所について説明しました。",
+      "example_ja": "先生は場所について説明しました。",
+      "example_kana": "せんせいは ばしょについて せつめいしました。",
+      "translation": "老師說明了關於地點的內容。",
+      "translation_zh": "老師說明了關於地點的內容。",
+      "audioText": "先生は場所について説明しました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "先生",
+          "answer": "は",
+          "after": "場所について説明しました。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle_topic",
+        "prompt_zh": "表達「關於地點」時，選出正確句型。",
+        "before": "先生は場所",
+        "answer": "について",
+        "after": "説明しました。",
+        "choices": [
+          "について",
+          "までに",
+          "ながら",
+          "たことがある"
+        ],
+        "explanation": "「〜について」表示關於某個主題。",
+        "hintChunks": [
+          "先生は",
+          "場所に",
+          "ついて説明しました。"
+        ]
+      },
+      "chunks": [
+        "先生は",
+        "場所に",
+        "ついて説明しました。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0037",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "住所",
+      "kana": "じゅうしょ",
+      "reading": "じゅうしょ",
+      "kanji": "住所",
+      "meaning": "地址",
+      "meaning_zh": "地址",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 37,
+      "example": "先生は住所について説明しました。",
+      "example_ja": "先生は住所について説明しました。",
+      "example_kana": "せんせいは じゅうしょについて せつめいしました。",
+      "translation": "老師說明了關於地址的內容。",
+      "translation_zh": "老師說明了關於地址的內容。",
+      "audioText": "先生は住所について説明しました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "先生",
+          "answer": "は",
+          "after": "住所について説明しました。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle_topic",
+        "prompt_zh": "表達「關於地址」時，選出正確句型。",
+        "before": "先生は住所",
+        "answer": "について",
+        "after": "説明しました。",
+        "choices": [
+          "について",
+          "までに",
+          "ながら",
+          "たことがある"
+        ],
+        "explanation": "「〜について」表示關於某個主題。",
+        "hintChunks": [
+          "先生は",
+          "住所に",
+          "ついて説明しました。"
+        ]
+      },
+      "chunks": [
+        "先生は",
+        "住所に",
+        "ついて説明しました。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0038",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "名前",
+      "kana": "なまえ",
+      "reading": "なまえ",
+      "kanji": "名前",
+      "meaning": "名字",
+      "meaning_zh": "名字",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 38,
+      "example": "先生は名前について説明しました。",
+      "example_ja": "先生は名前について説明しました。",
+      "example_kana": "せんせいは なまえについて せつめいしました。",
+      "translation": "老師說明了關於名字的內容。",
+      "translation_zh": "老師說明了關於名字的內容。",
+      "audioText": "先生は名前について説明しました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "先生",
+          "answer": "は",
+          "after": "名前について説明しました。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle_topic",
+        "prompt_zh": "表達「關於名字」時，選出正確句型。",
+        "before": "先生は名前",
+        "answer": "について",
+        "after": "説明しました。",
+        "choices": [
+          "について",
+          "までに",
+          "ながら",
+          "たことがある"
+        ],
+        "explanation": "「〜について」表示關於某個主題。",
+        "hintChunks": [
+          "先生は",
+          "名前に",
+          "ついて説明しました。"
+        ]
+      },
+      "chunks": [
+        "先生は",
+        "名前に",
+        "ついて説明しました。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0039",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "番号",
+      "kana": "ばんごう",
+      "reading": "ばんごう",
+      "kanji": "番号",
+      "meaning": "號碼",
+      "meaning_zh": "號碼",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 39,
+      "example": "先生は番号について説明しました。",
+      "example_ja": "先生は番号について説明しました。",
+      "example_kana": "せんせいは ばんごうについて せつめいしました。",
+      "translation": "老師說明了關於號碼的內容。",
+      "translation_zh": "老師說明了關於號碼的內容。",
+      "audioText": "先生は番号について説明しました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "先生",
+          "answer": "は",
+          "after": "番号について説明しました。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle_topic",
+        "prompt_zh": "表達「關於號碼」時，選出正確句型。",
+        "before": "先生は番号",
+        "answer": "について",
+        "after": "説明しました。",
+        "choices": [
+          "について",
+          "までに",
+          "ながら",
+          "たことがある"
+        ],
+        "explanation": "「〜について」表示關於某個主題。",
+        "hintChunks": [
+          "先生は",
+          "番号に",
+          "ついて説明しました。"
+        ]
+      },
+      "chunks": [
+        "先生は",
+        "番号に",
+        "ついて説明しました。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0040",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "直接",
+      "kana": "ちょくせつ",
+      "reading": "ちょくせつ",
+      "kanji": "直接",
+      "meaning": "直接",
+      "meaning_zh": "直接",
+      "pos": "adv",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 40,
+      "example": "先生に直接聞きました。",
+      "example_ja": "先生に直接聞きました。",
+      "example_kana": "せんせいに ちょくせつ ききました。",
+      "translation": "直接問了老師。",
+      "translation_zh": "直接問了老師。",
+      "audioText": "先生に直接聞きました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "先生",
+          "answer": "に",
+          "after": "直接聞きました。",
+          "choices": [
+            "に",
+            "を",
+            "が",
+            "と"
+          ],
+          "explanation": "這裡用「に」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "先生",
+        "answer": "に",
+        "after": "直接聞きました。",
+        "choices": [
+          "に",
+          "を",
+          "が",
+          "と"
+        ],
+        "explanation": "這裡用「に」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "先生に",
+          "直接聞きました。"
+        ]
+      },
+      "chunks": [
+        "先生に",
+        "直接聞きました。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0041",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "特別",
+      "kana": "とくべつ",
+      "reading": "とくべつ",
+      "kanji": "特別",
+      "meaning": "特別",
+      "meaning_zh": "特別",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 41,
+      "example": "この説明は特別です。",
+      "example_ja": "この説明は特別です。",
+      "example_kana": "この せつめいは とくべつです。",
+      "translation": "這個說明很特別。",
+      "translation_zh": "這個說明很特別。",
+      "audioText": "この説明は特別です。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "この説明",
+          "answer": "は",
+          "after": "特別です。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "too_na",
+        "prompt_zh": "表達「太特別」時，選出正確形式。",
+        "before": "この説明は特別",
+        "answer": "すぎます",
+        "after": "。",
+        "choices": [
+          "すぎます",
+          "そうです",
+          "になります",
+          "でした"
+        ],
+        "explanation": "な形容詞直接接「すぎます」，表示太過於某種狀態。",
+        "hintChunks": [
+          "この説明は",
+          "特別すぎます。"
+        ]
+      },
+      "chunks": [
+        "この説明は",
+        "特別です。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0042",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "準備",
+      "kana": "じゅんび",
+      "reading": "じゅんび",
+      "kanji": "準備",
+      "meaning": "準備",
+      "meaning_zh": "準備",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 42,
+      "example": "明日までに準備しなければなりません。",
+      "example_ja": "明日までに準備しなければなりません。",
+      "example_kana": "あしたまでに じゅんびしなければなりません。",
+      "translation": "明天以前必須準備。",
+      "translation_zh": "明天以前必須準備。",
+      "audioText": "明日までに準備しなければなりません。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "明日ま",
+          "answer": "で",
+          "after": "に準備しなければなりません。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "suru_required",
+        "prompt_zh": "「準備」這件事是必須做的，選出正確句型。",
+        "before": "明日までに準備",
+        "answer": "しなければなりません",
+        "after": "。",
+        "choices": [
+          "しなければなりません",
+          "したことがあります",
+          "してもいいです",
+          "しなくてもいいです"
+        ],
+        "explanation": "「〜なければなりません」表示必須做某事。",
+        "hintChunks": [
+          "明日まで",
+          "に準備しなければなりません。"
+        ]
+      },
+      "chunks": [
+        "明日まで",
+        "に準備しなければなりません。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0043",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "説明",
+      "kana": "せつめい",
+      "reading": "せつめい",
+      "kanji": "説明",
+      "meaning": "說明",
+      "meaning_zh": "說明",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 43,
+      "example": "明日までに説明しなければなりません。",
+      "example_ja": "明日までに説明しなければなりません。",
+      "example_kana": "あしたまでに せつめいしなければなりません。",
+      "translation": "明天以前必須說明。",
+      "translation_zh": "明天以前必須說明。",
+      "audioText": "明日までに説明しなければなりません。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "明日ま",
+          "answer": "で",
+          "after": "に説明しなければなりません。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "suru_required",
+        "prompt_zh": "「說明」這件事是必須做的，選出正確句型。",
+        "before": "明日までに説明",
+        "answer": "しなければなりません",
+        "after": "。",
+        "choices": [
+          "しなければなりません",
+          "したことがあります",
+          "してもいいです",
+          "しなくてもいいです"
+        ],
+        "explanation": "「〜なければなりません」表示必須做某事。",
+        "hintChunks": [
+          "明日まで",
+          "に説明しなければなりません。"
+        ]
+      },
+      "chunks": [
+        "明日まで",
+        "に説明しなければなりません。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0044",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "約束",
+      "kana": "やくそく",
+      "reading": "やくそく",
+      "kanji": "約束",
+      "meaning": "約定",
+      "meaning_zh": "約定",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 44,
+      "example": "明日までに約束しなければなりません。",
+      "example_ja": "明日までに約束しなければなりません。",
+      "example_kana": "あしたまでに やくそくしなければなりません。",
+      "translation": "明天以前必須約定。",
+      "translation_zh": "明天以前必須約定。",
+      "audioText": "明日までに約束しなければなりません。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "明日ま",
+          "answer": "で",
+          "after": "に約束しなければなりません。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "suru_required",
+        "prompt_zh": "「約定」這件事是必須做的，選出正確句型。",
+        "before": "明日までに約束",
+        "answer": "しなければなりません",
+        "after": "。",
+        "choices": [
+          "しなければなりません",
+          "したことがあります",
+          "してもいいです",
+          "しなくてもいいです"
+        ],
+        "explanation": "「〜なければなりません」表示必須做某事。",
+        "hintChunks": [
+          "明日まで",
+          "に約束しなければなりません。"
+        ]
+      },
+      "chunks": [
+        "明日まで",
+        "に約束しなければなりません。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0045",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "相談",
+      "kana": "そうだん",
+      "reading": "そうだん",
+      "kanji": "相談",
+      "meaning": "商量",
+      "meaning_zh": "商量",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 45,
+      "example": "明日までに相談しなければなりません。",
+      "example_ja": "明日までに相談しなければなりません。",
+      "example_kana": "あしたまでに そうだんしなければなりません。",
+      "translation": "明天以前必須商量。",
+      "translation_zh": "明天以前必須商量。",
+      "audioText": "明日までに相談しなければなりません。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "明日ま",
+          "answer": "で",
+          "after": "に相談しなければなりません。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "suru_required",
+        "prompt_zh": "「商量」這件事是必須做的，選出正確句型。",
+        "before": "明日までに相談",
+        "answer": "しなければなりません",
+        "after": "。",
+        "choices": [
+          "しなければなりません",
+          "したことがあります",
+          "してもいいです",
+          "しなくてもいいです"
+        ],
+        "explanation": "「〜なければなりません」表示必須做某事。",
+        "hintChunks": [
+          "明日まで",
+          "に相談しなければなりません。"
+        ]
+      },
+      "chunks": [
+        "明日まで",
+        "に相談しなければなりません。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0046",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "復習",
+      "kana": "ふくしゅう",
+      "reading": "ふくしゅう",
+      "kanji": "復習",
+      "meaning": "複習",
+      "meaning_zh": "複習",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 46,
+      "example": "明日までに復習しなければなりません。",
+      "example_ja": "明日までに復習しなければなりません。",
+      "example_kana": "あしたまでに ふくしゅうしなければなりません。",
+      "translation": "明天以前必須複習。",
+      "translation_zh": "明天以前必須複習。",
+      "audioText": "明日までに復習しなければなりません。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "明日ま",
+          "answer": "で",
+          "after": "に復習しなければなりません。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "suru_required",
+        "prompt_zh": "「複習」這件事是必須做的，選出正確句型。",
+        "before": "明日までに復習",
+        "answer": "しなければなりません",
+        "after": "。",
+        "choices": [
+          "しなければなりません",
+          "したことがあります",
+          "してもいいです",
+          "しなくてもいいです"
+        ],
+        "explanation": "「〜なければなりません」表示必須做某事。",
+        "hintChunks": [
+          "明日まで",
+          "に復習しなければなりません。"
+        ]
+      },
+      "chunks": [
+        "明日まで",
+        "に復習しなければなりません。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0047",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "予習",
+      "kana": "よしゅう",
+      "reading": "よしゅう",
+      "kanji": "予習",
+      "meaning": "預習",
+      "meaning_zh": "預習",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 47,
+      "example": "明日までに予習しなければなりません。",
+      "example_ja": "明日までに予習しなければなりません。",
+      "example_kana": "あしたまでに よしゅうしなければなりません。",
+      "translation": "明天以前必須預習。",
+      "translation_zh": "明天以前必須預習。",
+      "audioText": "明日までに予習しなければなりません。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "明日ま",
+          "answer": "で",
+          "after": "に予習しなければなりません。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "suru_required",
+        "prompt_zh": "「預習」這件事是必須做的，選出正確句型。",
+        "before": "明日までに予習",
+        "answer": "しなければなりません",
+        "after": "。",
+        "choices": [
+          "しなければなりません",
+          "したことがあります",
+          "してもいいです",
+          "しなくてもいいです"
+        ],
+        "explanation": "「〜なければなりません」表示必須做某事。",
+        "hintChunks": [
+          "明日まで",
+          "に予習しなければなりません。"
+        ]
+      },
+      "chunks": [
+        "明日まで",
+        "に予習しなければなりません。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0048",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "練習",
+      "kana": "れんしゅう",
+      "reading": "れんしゅう",
+      "kanji": "練習",
+      "meaning": "練習",
+      "meaning_zh": "練習",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 48,
+      "example": "明日までに練習しなければなりません。",
+      "example_ja": "明日までに練習しなければなりません。",
+      "example_kana": "あしたまでに れんしゅうしなければなりません。",
+      "translation": "明天以前必須練習。",
+      "translation_zh": "明天以前必須練習。",
+      "audioText": "明日までに練習しなければなりません。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "明日ま",
+          "answer": "で",
+          "after": "に練習しなければなりません。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "suru_required",
+        "prompt_zh": "「練習」這件事是必須做的，選出正確句型。",
+        "before": "明日までに練習",
+        "answer": "しなければなりません",
+        "after": "。",
+        "choices": [
+          "しなければなりません",
+          "したことがあります",
+          "してもいいです",
+          "しなくてもいいです"
+        ],
+        "explanation": "「〜なければなりません」表示必須做某事。",
+        "hintChunks": [
+          "明日まで",
+          "に練習しなければなりません。"
+        ]
+      },
+      "chunks": [
+        "明日まで",
+        "に練習しなければなりません。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0049",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "注意",
+      "kana": "ちゅうい",
+      "reading": "ちゅうい",
+      "kanji": "注意",
+      "meaning": "注意",
+      "meaning_zh": "注意",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 49,
+      "example": "明日までに注意しなければなりません。",
+      "example_ja": "明日までに注意しなければなりません。",
+      "example_kana": "あしたまでに ちゅういしなければなりません。",
+      "translation": "明天以前必須注意。",
+      "translation_zh": "明天以前必須注意。",
+      "audioText": "明日までに注意しなければなりません。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "明日ま",
+          "answer": "で",
+          "after": "に注意しなければなりません。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "suru_required",
+        "prompt_zh": "「注意」這件事是必須做的，選出正確句型。",
+        "before": "明日までに注意",
+        "answer": "しなければなりません",
+        "after": "。",
+        "choices": [
+          "しなければなりません",
+          "したことがあります",
+          "してもいいです",
+          "しなくてもいいです"
+        ],
+        "explanation": "「〜なければなりません」表示必須做某事。",
+        "hintChunks": [
+          "明日まで",
+          "に注意しなければなりません。"
+        ]
+      },
+      "chunks": [
+        "明日まで",
+        "に注意しなければなりません。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0050",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "紹介",
+      "kana": "しょうかい",
+      "reading": "しょうかい",
+      "kanji": "紹介",
+      "meaning": "介紹",
+      "meaning_zh": "介紹",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 50,
+      "example": "明日までに紹介しなければなりません。",
+      "example_ja": "明日までに紹介しなければなりません。",
+      "example_kana": "あしたまでに しょうかいしなければなりません。",
+      "translation": "明天以前必須介紹。",
+      "translation_zh": "明天以前必須介紹。",
+      "audioText": "明日までに紹介しなければなりません。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "明日ま",
+          "answer": "で",
+          "after": "に紹介しなければなりません。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "suru_required",
+        "prompt_zh": "「介紹」這件事是必須做的，選出正確句型。",
+        "before": "明日までに紹介",
+        "answer": "しなければなりません",
+        "after": "。",
+        "choices": [
+          "しなければなりません",
+          "したことがあります",
+          "してもいいです",
+          "しなくてもいいです"
+        ],
+        "explanation": "「〜なければなりません」表示必須做某事。",
+        "hintChunks": [
+          "明日まで",
+          "に紹介しなければなりません。"
+        ]
+      },
+      "chunks": [
+        "明日まで",
+        "に紹介しなければなりません。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0051",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "案内",
+      "kana": "あんない",
+      "reading": "あんない",
+      "kanji": "案内",
+      "meaning": "嚮導",
+      "meaning_zh": "嚮導",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 51,
+      "example": "明日までに案内しなければなりません。",
+      "example_ja": "明日までに案内しなければなりません。",
+      "example_kana": "あしたまでに あんないしなければなりません。",
+      "translation": "明天以前必須嚮導。",
+      "translation_zh": "明天以前必須嚮導。",
+      "audioText": "明日までに案内しなければなりません。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "明日ま",
+          "answer": "で",
+          "after": "に案内しなければなりません。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "suru_required",
+        "prompt_zh": "「嚮導」這件事是必須做的，選出正確句型。",
+        "before": "明日までに案内",
+        "answer": "しなければなりません",
+        "after": "。",
+        "choices": [
+          "しなければなりません",
+          "したことがあります",
+          "してもいいです",
+          "しなくてもいいです"
+        ],
+        "explanation": "「〜なければなりません」表示必須做某事。",
+        "hintChunks": [
+          "明日まで",
+          "に案内しなければなりません。"
+        ]
+      },
+      "chunks": [
+        "明日まで",
+        "に案内しなければなりません。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0052",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "利用",
+      "kana": "りよう",
+      "reading": "りよう",
+      "kanji": "利用",
+      "meaning": "利用",
+      "meaning_zh": "利用",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 52,
+      "example": "明日までに利用しなければなりません。",
+      "example_ja": "明日までに利用しなければなりません。",
+      "example_kana": "あしたまでに りようしなければなりません。",
+      "translation": "明天以前必須利用。",
+      "translation_zh": "明天以前必須利用。",
+      "audioText": "明日までに利用しなければなりません。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "明日ま",
+          "answer": "で",
+          "after": "に利用しなければなりません。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "suru_required",
+        "prompt_zh": "「利用」這件事是必須做的，選出正確句型。",
+        "before": "明日までに利用",
+        "answer": "しなければなりません",
+        "after": "。",
+        "choices": [
+          "しなければなりません",
+          "したことがあります",
+          "してもいいです",
+          "しなくてもいいです"
+        ],
+        "explanation": "「〜なければなりません」表示必須做某事。",
+        "hintChunks": [
+          "明日まで",
+          "に利用しなければなりません。"
+        ]
+      },
+      "chunks": [
+        "明日まで",
+        "に利用しなければなりません。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0053",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "計画",
+      "kana": "けいかく",
+      "reading": "けいかく",
+      "kanji": "計画",
+      "meaning": "計畫",
+      "meaning_zh": "計畫",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 53,
+      "example": "明日までに計画しなければなりません。",
+      "example_ja": "明日までに計画しなければなりません。",
+      "example_kana": "あしたまでに けいかくしなければなりません。",
+      "translation": "明天以前必須計畫。",
+      "translation_zh": "明天以前必須計畫。",
+      "audioText": "明日までに計画しなければなりません。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "明日ま",
+          "answer": "で",
+          "after": "に計画しなければなりません。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "suru_required",
+        "prompt_zh": "「計畫」這件事是必須做的，選出正確句型。",
+        "before": "明日までに計画",
+        "answer": "しなければなりません",
+        "after": "。",
+        "choices": [
+          "しなければなりません",
+          "したことがあります",
+          "してもいいです",
+          "しなくてもいいです"
+        ],
+        "explanation": "「〜なければなりません」表示必須做某事。",
+        "hintChunks": [
+          "明日まで",
+          "に計画しなければなりません。"
+        ]
+      },
+      "chunks": [
+        "明日まで",
+        "に計画しなければなりません。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0054",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "連絡",
+      "kana": "れんらく",
+      "reading": "れんらく",
+      "kanji": "連絡",
+      "meaning": "聯絡",
+      "meaning_zh": "聯絡",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 54,
+      "example": "明日までに連絡しなければなりません。",
+      "example_ja": "明日までに連絡しなければなりません。",
+      "example_kana": "あしたまでに れんらくしなければなりません。",
+      "translation": "明天以前必須聯絡。",
+      "translation_zh": "明天以前必須聯絡。",
+      "audioText": "明日までに連絡しなければなりません。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "明日ま",
+          "answer": "で",
+          "after": "に連絡しなければなりません。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "suru_required",
+        "prompt_zh": "「聯絡」這件事是必須做的，選出正確句型。",
+        "before": "明日までに連絡",
+        "answer": "しなければなりません",
+        "after": "。",
+        "choices": [
+          "しなければなりません",
+          "したことがあります",
+          "してもいいです",
+          "しなくてもいいです"
+        ],
+        "explanation": "「〜なければなりません」表示必須做某事。",
+        "hintChunks": [
+          "明日まで",
+          "に連絡しなければなりません。"
+        ]
+      },
+      "chunks": [
+        "明日まで",
+        "に連絡しなければなりません。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0055",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "故障",
+      "kana": "こしょう",
+      "reading": "こしょう",
+      "kanji": "故障",
+      "meaning": "故障",
+      "meaning_zh": "故障",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 55,
+      "example": "明日までに故障しなければなりません。",
+      "example_ja": "明日までに故障しなければなりません。",
+      "example_kana": "あしたまでに こしょうしなければなりません。",
+      "translation": "明天以前必須故障。",
+      "translation_zh": "明天以前必須故障。",
+      "audioText": "明日までに故障しなければなりません。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "明日ま",
+          "answer": "で",
+          "after": "に故障しなければなりません。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "suru_required",
+        "prompt_zh": "「故障」這件事是必須做的，選出正確句型。",
+        "before": "明日までに故障",
+        "answer": "しなければなりません",
+        "after": "。",
+        "choices": [
+          "しなければなりません",
+          "したことがあります",
+          "してもいいです",
+          "しなくてもいいです"
+        ],
+        "explanation": "「〜なければなりません」表示必須做某事。",
+        "hintChunks": [
+          "明日まで",
+          "に故障しなければなりません。"
+        ]
+      },
+      "chunks": [
+        "明日まで",
+        "に故障しなければなりません。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0056",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "修理",
+      "kana": "しゅうり",
+      "reading": "しゅうり",
+      "kanji": "修理",
+      "meaning": "修理",
+      "meaning_zh": "修理",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 56,
+      "example": "明日までに修理しなければなりません。",
+      "example_ja": "明日までに修理しなければなりません。",
+      "example_kana": "あしたまでに しゅうりしなければなりません。",
+      "translation": "明天以前必須修理。",
+      "translation_zh": "明天以前必須修理。",
+      "audioText": "明日までに修理しなければなりません。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "明日ま",
+          "answer": "で",
+          "after": "に修理しなければなりません。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "suru_required",
+        "prompt_zh": "「修理」這件事是必須做的，選出正確句型。",
+        "before": "明日までに修理",
+        "answer": "しなければなりません",
+        "after": "。",
+        "choices": [
+          "しなければなりません",
+          "したことがあります",
+          "してもいいです",
+          "しなくてもいいです"
+        ],
+        "explanation": "「〜なければなりません」表示必須做某事。",
+        "hintChunks": [
+          "明日まで",
+          "に修理しなければなりません。"
+        ]
+      },
+      "chunks": [
+        "明日まで",
+        "に修理しなければなりません。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0057",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "出席",
+      "kana": "しゅっせき",
+      "reading": "しゅっせき",
+      "kanji": "出席",
+      "meaning": "出席",
+      "meaning_zh": "出席",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 57,
+      "example": "明日までに出席しなければなりません。",
+      "example_ja": "明日までに出席しなければなりません。",
+      "example_kana": "あしたまでに しゅっせきしなければなりません。",
+      "translation": "明天以前必須出席。",
+      "translation_zh": "明天以前必須出席。",
+      "audioText": "明日までに出席しなければなりません。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "明日ま",
+          "answer": "で",
+          "after": "に出席しなければなりません。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "suru_required",
+        "prompt_zh": "「出席」這件事是必須做的，選出正確句型。",
+        "before": "明日までに出席",
+        "answer": "しなければなりません",
+        "after": "。",
+        "choices": [
+          "しなければなりません",
+          "したことがあります",
+          "してもいいです",
+          "しなくてもいいです"
+        ],
+        "explanation": "「〜なければなりません」表示必須做某事。",
+        "hintChunks": [
+          "明日まで",
+          "に出席しなければなりません。"
+        ]
+      },
+      "chunks": [
+        "明日まで",
+        "に出席しなければなりません。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0058",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "欠席",
+      "kana": "けっせき",
+      "reading": "けっせき",
+      "kanji": "欠席",
+      "meaning": "缺席",
+      "meaning_zh": "缺席",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 58,
+      "example": "明日までに欠席しなければなりません。",
+      "example_ja": "明日までに欠席しなければなりません。",
+      "example_kana": "あしたまでに けっせきしなければなりません。",
+      "translation": "明天以前必須缺席。",
+      "translation_zh": "明天以前必須缺席。",
+      "audioText": "明日までに欠席しなければなりません。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "明日ま",
+          "answer": "で",
+          "after": "に欠席しなければなりません。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "suru_required",
+        "prompt_zh": "「缺席」這件事是必須做的，選出正確句型。",
+        "before": "明日までに欠席",
+        "answer": "しなければなりません",
+        "after": "。",
+        "choices": [
+          "しなければなりません",
+          "したことがあります",
+          "してもいいです",
+          "しなくてもいいです"
+        ],
+        "explanation": "「〜なければなりません」表示必須做某事。",
+        "hintChunks": [
+          "明日まで",
+          "に欠席しなければなりません。"
+        ]
+      },
+      "chunks": [
+        "明日まで",
+        "に欠席しなければなりません。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0059",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "出張",
+      "kana": "しゅっちょう",
+      "reading": "しゅっちょう",
+      "kanji": "出張",
+      "meaning": "出差",
+      "meaning_zh": "出差",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 59,
+      "example": "明日までに出張しなければなりません。",
+      "example_ja": "明日までに出張しなければなりません。",
+      "example_kana": "あしたまでに しゅっちょうしなければなりません。",
+      "translation": "明天以前必須出差。",
+      "translation_zh": "明天以前必須出差。",
+      "audioText": "明日までに出張しなければなりません。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "明日ま",
+          "answer": "で",
+          "after": "に出張しなければなりません。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "suru_required",
+        "prompt_zh": "「出差」這件事是必須做的，選出正確句型。",
+        "before": "明日までに出張",
+        "answer": "しなければなりません",
+        "after": "。",
+        "choices": [
+          "しなければなりません",
+          "したことがあります",
+          "してもいいです",
+          "しなくてもいいです"
+        ],
+        "explanation": "「〜なければなりません」表示必須做某事。",
+        "hintChunks": [
+          "明日まで",
+          "に出張しなければなりません。"
+        ]
+      },
+      "chunks": [
+        "明日まで",
+        "に出張しなければなりません。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0060",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "合格",
+      "kana": "ごうかく",
+      "reading": "ごうかく",
+      "kanji": "合格",
+      "meaning": "及格",
+      "meaning_zh": "及格",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 60,
+      "example": "明日までに合格しなければなりません。",
+      "example_ja": "明日までに合格しなければなりません。",
+      "example_kana": "あしたまでに ごうかくしなければなりません。",
+      "translation": "明天以前必須及格。",
+      "translation_zh": "明天以前必須及格。",
+      "audioText": "明日までに合格しなければなりません。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "明日ま",
+          "answer": "で",
+          "after": "に合格しなければなりません。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "suru_required",
+        "prompt_zh": "「及格」這件事是必須做的，選出正確句型。",
+        "before": "明日までに合格",
+        "answer": "しなければなりません",
+        "after": "。",
+        "choices": [
+          "しなければなりません",
+          "したことがあります",
+          "してもいいです",
+          "しなくてもいいです"
+        ],
+        "explanation": "「〜なければなりません」表示必須做某事。",
+        "hintChunks": [
+          "明日まで",
+          "に合格しなければなりません。"
+        ]
+      },
+      "chunks": [
+        "明日まで",
+        "に合格しなければなりません。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0061",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "反対",
+      "kana": "はんたい",
+      "reading": "はんたい",
+      "kanji": "反対",
+      "meaning": "反對",
+      "meaning_zh": "反對",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 61,
+      "example": "明日までに反対しなければなりません。",
+      "example_ja": "明日までに反対しなければなりません。",
+      "example_kana": "あしたまでに はんたいしなければなりません。",
+      "translation": "明天以前必須反對。",
+      "translation_zh": "明天以前必須反對。",
+      "audioText": "明日までに反対しなければなりません。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "明日ま",
+          "answer": "で",
+          "after": "に反対しなければなりません。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "suru_required",
+        "prompt_zh": "「反對」這件事是必須做的，選出正確句型。",
+        "before": "明日までに反対",
+        "answer": "しなければなりません",
+        "after": "。",
+        "choices": [
+          "しなければなりません",
+          "したことがあります",
+          "してもいいです",
+          "しなくてもいいです"
+        ],
+        "explanation": "「〜なければなりません」表示必須做某事。",
+        "hintChunks": [
+          "明日まで",
+          "に反対しなければなりません。"
+        ]
+      },
+      "chunks": [
+        "明日まで",
+        "に反対しなければなりません。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0062",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "賛成",
+      "kana": "さんせい",
+      "reading": "さんせい",
+      "kanji": "賛成",
+      "meaning": "贊成",
+      "meaning_zh": "贊成",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 62,
+      "example": "明日までに賛成しなければなりません。",
+      "example_ja": "明日までに賛成しなければなりません。",
+      "example_kana": "あしたまでに さんせいしなければなりません。",
+      "translation": "明天以前必須贊成。",
+      "translation_zh": "明天以前必須贊成。",
+      "audioText": "明日までに賛成しなければなりません。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "明日ま",
+          "answer": "で",
+          "after": "に賛成しなければなりません。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "suru_required",
+        "prompt_zh": "「贊成」這件事是必須做的，選出正確句型。",
+        "before": "明日までに賛成",
+        "answer": "しなければなりません",
+        "after": "。",
+        "choices": [
+          "しなければなりません",
+          "したことがあります",
+          "してもいいです",
+          "しなくてもいいです"
+        ],
+        "explanation": "「〜なければなりません」表示必須做某事。",
+        "hintChunks": [
+          "明日まで",
+          "に賛成しなければなりません。"
+        ]
+      },
+      "chunks": [
+        "明日まで",
+        "に賛成しなければなりません。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0063",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "安心",
+      "kana": "あんしん",
+      "reading": "あんしん",
+      "kanji": "安心",
+      "meaning": "放心",
+      "meaning_zh": "放心",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 63,
+      "example": "明日までに安心しなければなりません。",
+      "example_ja": "明日までに安心しなければなりません。",
+      "example_kana": "あしたまでに あんしんしなければなりません。",
+      "translation": "明天以前必須放心。",
+      "translation_zh": "明天以前必須放心。",
+      "audioText": "明日までに安心しなければなりません。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "明日ま",
+          "answer": "で",
+          "after": "に安心しなければなりません。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "suru_required",
+        "prompt_zh": "「放心」這件事是必須做的，選出正確句型。",
+        "before": "明日までに安心",
+        "answer": "しなければなりません",
+        "after": "。",
+        "choices": [
+          "しなければなりません",
+          "したことがあります",
+          "してもいいです",
+          "しなくてもいいです"
+        ],
+        "explanation": "「〜なければなりません」表示必須做某事。",
+        "hintChunks": [
+          "明日まで",
+          "に安心しなければなりません。"
+        ]
+      },
+      "chunks": [
+        "明日まで",
+        "に安心しなければなりません。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0064",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "心配",
+      "kana": "しんぱい",
+      "reading": "しんぱい",
+      "kanji": "心配",
+      "meaning": "擔心",
+      "meaning_zh": "擔心",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 64,
+      "example": "明日までに心配しなければなりません。",
+      "example_ja": "明日までに心配しなければなりません。",
+      "example_kana": "あしたまでに しんぱいしなければなりません。",
+      "translation": "明天以前必須擔心。",
+      "translation_zh": "明天以前必須擔心。",
+      "audioText": "明日までに心配しなければなりません。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "明日ま",
+          "answer": "で",
+          "after": "に心配しなければなりません。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "suru_required",
+        "prompt_zh": "「擔心」這件事是必須做的，選出正確句型。",
+        "before": "明日までに心配",
+        "answer": "しなければなりません",
+        "after": "。",
+        "choices": [
+          "しなければなりません",
+          "したことがあります",
+          "してもいいです",
+          "しなくてもいいです"
+        ],
+        "explanation": "「〜なければなりません」表示必須做某事。",
+        "hintChunks": [
+          "明日まで",
+          "に心配しなければなりません。"
+        ]
+      },
+      "chunks": [
+        "明日まで",
+        "に心配しなければなりません。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0065",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "経験",
+      "kana": "けいけん",
+      "reading": "けいけん",
+      "kanji": "経験",
+      "meaning": "經驗",
+      "meaning_zh": "經驗",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 65,
+      "example": "明日までに経験しなければなりません。",
+      "example_ja": "明日までに経験しなければなりません。",
+      "example_kana": "あしたまでに けいけんしなければなりません。",
+      "translation": "明天以前必須經驗。",
+      "translation_zh": "明天以前必須經驗。",
+      "audioText": "明日までに経験しなければなりません。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "明日ま",
+          "answer": "で",
+          "after": "に経験しなければなりません。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "suru_required",
+        "prompt_zh": "「經驗」這件事是必須做的，選出正確句型。",
+        "before": "明日までに経験",
+        "answer": "しなければなりません",
+        "after": "。",
+        "choices": [
+          "しなければなりません",
+          "したことがあります",
+          "してもいいです",
+          "しなくてもいいです"
+        ],
+        "explanation": "「〜なければなりません」表示必須做某事。",
+        "hintChunks": [
+          "明日まで",
+          "に経験しなければなりません。"
+        ]
+      },
+      "chunks": [
+        "明日まで",
+        "に経験しなければなりません。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0066",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "運ぶ",
+      "kana": "はこぶ",
+      "reading": "はこぶ",
+      "kanji": "運ぶ",
+      "meaning": "運送",
+      "meaning_zh": "運送",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 66,
+      "example": "私はこの仕事で運ぶことがあります。",
+      "example_ja": "私はこの仕事で運ぶことがあります。",
+      "example_kana": "わたしは この しごとで はこぶことが あります。",
+      "translation": "我曾經運送。",
+      "translation_zh": "我曾經運送。",
+      "audioText": "私はこの仕事で運ぶことがあります。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "私",
+          "answer": "は",
+          "after": "この仕事で運ぶことがあります。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "experience",
+        "prompt_zh": "表達「曾經／有時會運送」時，選出正確句型。",
+        "before": "私はこの仕事で運ぶ",
+        "answer": "ことがあります",
+        "after": "。",
+        "choices": [
+          "ことがあります",
+          "ところです",
+          "ようにします",
+          "なければなりません"
+        ],
+        "explanation": "「動詞辭書形＋ことがあります」表示曾經有過這種經驗。",
+        "hintChunks": [
+          "私は",
+          "この仕事で",
+          "運ぶこと"
+        ]
+      },
+      "chunks": [
+        "私は",
+        "この仕事で",
+        "運ぶこと",
+        "があります。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0067",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "借りる",
+      "kana": "かりる",
+      "reading": "かりる",
+      "kanji": "借りる",
+      "meaning": "借入",
+      "meaning_zh": "借入",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 67,
+      "example": "私はこの仕事で借りることがあります。",
+      "example_ja": "私はこの仕事で借りることがあります。",
+      "example_kana": "わたしは この しごとで かりることが あります。",
+      "translation": "我曾經借入。",
+      "translation_zh": "我曾經借入。",
+      "audioText": "私はこの仕事で借りることがあります。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "私",
+          "answer": "は",
+          "after": "この仕事で借りることがあります。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "experience",
+        "prompt_zh": "表達「曾經／有時會借入」時，選出正確句型。",
+        "before": "私はこの仕事で借りる",
+        "answer": "ことがあります",
+        "after": "。",
+        "choices": [
+          "ことがあります",
+          "ところです",
+          "ようにします",
+          "なければなりません"
+        ],
+        "explanation": "「動詞辭書形＋ことがあります」表示曾經有過這種經驗。",
+        "hintChunks": [
+          "私は",
+          "この仕事で",
+          "借りること"
+        ]
+      },
+      "chunks": [
+        "私は",
+        "この仕事で",
+        "借りること",
+        "があります。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0068",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "貸す",
+      "kana": "かす",
+      "reading": "かす",
+      "kanji": "貸す",
+      "meaning": "借出",
+      "meaning_zh": "借出",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 68,
+      "example": "私はこの仕事で貸すことがあります。",
+      "example_ja": "私はこの仕事で貸すことがあります。",
+      "example_kana": "わたしは この しごとで かすことが あります。",
+      "translation": "我曾經借出。",
+      "translation_zh": "我曾經借出。",
+      "audioText": "私はこの仕事で貸すことがあります。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "私",
+          "answer": "は",
+          "after": "この仕事で貸すことがあります。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "experience",
+        "prompt_zh": "表達「曾經／有時會借出」時，選出正確句型。",
+        "before": "私はこの仕事で貸す",
+        "answer": "ことがあります",
+        "after": "。",
+        "choices": [
+          "ことがあります",
+          "ところです",
+          "ようにします",
+          "なければなりません"
+        ],
+        "explanation": "「動詞辭書形＋ことがあります」表示曾經有過這種經驗。",
+        "hintChunks": [
+          "私は",
+          "この仕事で",
+          "貸すこと"
+        ]
+      },
+      "chunks": [
+        "私は",
+        "この仕事で",
+        "貸すこと",
+        "があります。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0069",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "返す",
+      "kana": "かえす",
+      "reading": "かえす",
+      "kanji": "返す",
+      "meaning": "歸還",
+      "meaning_zh": "歸還",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 69,
+      "example": "私はこの仕事で返すことがあります。",
+      "example_ja": "私はこの仕事で返すことがあります。",
+      "example_kana": "わたしは この しごとで かえすことが あります。",
+      "translation": "我曾經歸還。",
+      "translation_zh": "我曾經歸還。",
+      "audioText": "私はこの仕事で返すことがあります。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "私",
+          "answer": "は",
+          "after": "この仕事で返すことがあります。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "experience",
+        "prompt_zh": "表達「曾經／有時會歸還」時，選出正確句型。",
+        "before": "私はこの仕事で返す",
+        "answer": "ことがあります",
+        "after": "。",
+        "choices": [
+          "ことがあります",
+          "ところです",
+          "ようにします",
+          "なければなりません"
+        ],
+        "explanation": "「動詞辭書形＋ことがあります」表示曾經有過這種經驗。",
+        "hintChunks": [
+          "私は",
+          "この仕事で",
+          "返すこと"
+        ]
+      },
+      "chunks": [
+        "私は",
+        "この仕事で",
+        "返すこと",
+        "があります。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0070",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "始める",
+      "kana": "はじめる",
+      "reading": "はじめる",
+      "kanji": "始める",
+      "meaning": "開始",
+      "meaning_zh": "開始",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 70,
+      "example": "私はこの仕事で始めることがあります。",
+      "example_ja": "私はこの仕事で始めることがあります。",
+      "example_kana": "わたしは この しごとで はじめることが あります。",
+      "translation": "我曾經開始。",
+      "translation_zh": "我曾經開始。",
+      "audioText": "私はこの仕事で始めることがあります。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "私",
+          "answer": "は",
+          "after": "この仕事で始めることがあります。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "experience",
+        "prompt_zh": "表達「曾經／有時會開始」時，選出正確句型。",
+        "before": "私はこの仕事で始める",
+        "answer": "ことがあります",
+        "after": "。",
+        "choices": [
+          "ことがあります",
+          "ところです",
+          "ようにします",
+          "なければなりません"
+        ],
+        "explanation": "「動詞辭書形＋ことがあります」表示曾經有過這種經驗。",
+        "hintChunks": [
+          "私は",
+          "この仕事で",
+          "始めること"
+        ]
+      },
+      "chunks": [
+        "私は",
+        "この仕事で",
+        "始めること",
+        "があります。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0071",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "終わる",
+      "kana": "おわる",
+      "reading": "おわる",
+      "kanji": "終わる",
+      "meaning": "結束",
+      "meaning_zh": "結束",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 71,
+      "example": "私はこの仕事で終わることがあります。",
+      "example_ja": "私はこの仕事で終わることがあります。",
+      "example_kana": "わたしは この しごとで おわることが あります。",
+      "translation": "我曾經結束。",
+      "translation_zh": "我曾經結束。",
+      "audioText": "私はこの仕事で終わることがあります。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "私",
+          "answer": "は",
+          "after": "この仕事で終わることがあります。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "experience",
+        "prompt_zh": "表達「曾經／有時會結束」時，選出正確句型。",
+        "before": "私はこの仕事で終わる",
+        "answer": "ことがあります",
+        "after": "。",
+        "choices": [
+          "ことがあります",
+          "ところです",
+          "ようにします",
+          "なければなりません"
+        ],
+        "explanation": "「動詞辭書形＋ことがあります」表示曾經有過這種經驗。",
+        "hintChunks": [
+          "私は",
+          "この仕事で",
+          "終わること"
+        ]
+      },
+      "chunks": [
+        "私は",
+        "この仕事で",
+        "終わること",
+        "があります。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0072",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "考える",
+      "kana": "かんがえる",
+      "reading": "かんがえる",
+      "kanji": "考える",
+      "meaning": "思考",
+      "meaning_zh": "思考",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 72,
+      "example": "私はこの仕事で考えることがあります。",
+      "example_ja": "私はこの仕事で考えることがあります。",
+      "example_kana": "わたしは この しごとで かんがえることが あります。",
+      "translation": "我曾經思考。",
+      "translation_zh": "我曾經思考。",
+      "audioText": "私はこの仕事で考えることがあります。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "私",
+          "answer": "は",
+          "after": "この仕事で考えることがあります。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "experience",
+        "prompt_zh": "表達「曾經／有時會思考」時，選出正確句型。",
+        "before": "私はこの仕事で考える",
+        "answer": "ことがあります",
+        "after": "。",
+        "choices": [
+          "ことがあります",
+          "ところです",
+          "ようにします",
+          "なければなりません"
+        ],
+        "explanation": "「動詞辭書形＋ことがあります」表示曾經有過這種經驗。",
+        "hintChunks": [
+          "私は",
+          "この仕事で",
+          "考えること"
+        ]
+      },
+      "chunks": [
+        "私は",
+        "この仕事で",
+        "考えること",
+        "があります。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0073",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "思い出す",
+      "kana": "おもいだす",
+      "reading": "おもいだす",
+      "kanji": "思い出す",
+      "meaning": "想起",
+      "meaning_zh": "想起",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 73,
+      "example": "私はこの仕事で思い出すことがあります。",
+      "example_ja": "私はこの仕事で思い出すことがあります。",
+      "example_kana": "わたしは この しごとで おもいだすことが あります。",
+      "translation": "我曾經想起。",
+      "translation_zh": "我曾經想起。",
+      "audioText": "私はこの仕事で思い出すことがあります。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "私",
+          "answer": "は",
+          "after": "この仕事で思い出すことがあります。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "experience",
+        "prompt_zh": "表達「曾經／有時會想起」時，選出正確句型。",
+        "before": "私はこの仕事で思い出す",
+        "answer": "ことがあります",
+        "after": "。",
+        "choices": [
+          "ことがあります",
+          "ところです",
+          "ようにします",
+          "なければなりません"
+        ],
+        "explanation": "「動詞辭書形＋ことがあります」表示曾經有過這種經驗。",
+        "hintChunks": [
+          "私は",
+          "この仕事で",
+          "思い出すこと"
+        ]
+      },
+      "chunks": [
+        "私は",
+        "この仕事で",
+        "思い出すこと",
+        "があります。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0074",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "伝える",
+      "kana": "つたえる",
+      "reading": "つたえる",
+      "kanji": "伝える",
+      "meaning": "傳達",
+      "meaning_zh": "傳達",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 74,
+      "example": "私はこの仕事で伝えることがあります。",
+      "example_ja": "私はこの仕事で伝えることがあります。",
+      "example_kana": "わたしは この しごとで つたえることが あります。",
+      "translation": "我曾經傳達。",
+      "translation_zh": "我曾經傳達。",
+      "audioText": "私はこの仕事で伝えることがあります。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "私",
+          "answer": "は",
+          "after": "この仕事で伝えることがあります。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "experience",
+        "prompt_zh": "表達「曾經／有時會傳達」時，選出正確句型。",
+        "before": "私はこの仕事で伝える",
+        "answer": "ことがあります",
+        "after": "。",
+        "choices": [
+          "ことがあります",
+          "ところです",
+          "ようにします",
+          "なければなりません"
+        ],
+        "explanation": "「動詞辭書形＋ことがあります」表示曾經有過這種經驗。",
+        "hintChunks": [
+          "私は",
+          "この仕事で",
+          "伝えること"
+        ]
+      },
+      "chunks": [
+        "私は",
+        "この仕事で",
+        "伝えること",
+        "があります。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0075",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "調べる",
+      "kana": "しらべる",
+      "reading": "しらべる",
+      "kanji": "調べる",
+      "meaning": "調查",
+      "meaning_zh": "調查",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 75,
+      "example": "私はこの仕事で調べることがあります。",
+      "example_ja": "私はこの仕事で調べることがあります。",
+      "example_kana": "わたしは この しごとで しらべることが あります。",
+      "translation": "我曾經調查。",
+      "translation_zh": "我曾經調查。",
+      "audioText": "私はこの仕事で調べることがあります。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "私",
+          "answer": "は",
+          "after": "この仕事で調べることがあります。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "experience",
+        "prompt_zh": "表達「曾經／有時會調查」時，選出正確句型。",
+        "before": "私はこの仕事で調べる",
+        "answer": "ことがあります",
+        "after": "。",
+        "choices": [
+          "ことがあります",
+          "ところです",
+          "ようにします",
+          "なければなりません"
+        ],
+        "explanation": "「動詞辭書形＋ことがあります」表示曾經有過這種經驗。",
+        "hintChunks": [
+          "私は",
+          "この仕事で",
+          "調べること"
+        ]
+      },
+      "chunks": [
+        "私は",
+        "この仕事で",
+        "調べること",
+        "があります。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0076",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "忘れる",
+      "kana": "わすれる",
+      "reading": "わすれる",
+      "kanji": "忘れる",
+      "meaning": "忘記",
+      "meaning_zh": "忘記",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 76,
+      "example": "私はこの仕事で忘れることがあります。",
+      "example_ja": "私はこの仕事で忘れることがあります。",
+      "example_kana": "わたしは この しごとで わすれることが あります。",
+      "translation": "我曾經忘記。",
+      "translation_zh": "我曾經忘記。",
+      "audioText": "私はこの仕事で忘れることがあります。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "私",
+          "answer": "は",
+          "after": "この仕事で忘れることがあります。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "experience",
+        "prompt_zh": "表達「曾經／有時會忘記」時，選出正確句型。",
+        "before": "私はこの仕事で忘れる",
+        "answer": "ことがあります",
+        "after": "。",
+        "choices": [
+          "ことがあります",
+          "ところです",
+          "ようにします",
+          "なければなりません"
+        ],
+        "explanation": "「動詞辭書形＋ことがあります」表示曾經有過這種經驗。",
+        "hintChunks": [
+          "私は",
+          "この仕事で",
+          "忘れること"
+        ]
+      },
+      "chunks": [
+        "私は",
+        "この仕事で",
+        "忘れること",
+        "があります。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0077",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "決める",
+      "kana": "きめる",
+      "reading": "きめる",
+      "kanji": "決める",
+      "meaning": "決定",
+      "meaning_zh": "決定",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 77,
+      "example": "私はこの仕事で決めることがあります。",
+      "example_ja": "私はこの仕事で決めることがあります。",
+      "example_kana": "わたしは この しごとで きめることが あります。",
+      "translation": "我曾經決定。",
+      "translation_zh": "我曾經決定。",
+      "audioText": "私はこの仕事で決めることがあります。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "私",
+          "answer": "は",
+          "after": "この仕事で決めることがあります。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "experience",
+        "prompt_zh": "表達「曾經／有時會決定」時，選出正確句型。",
+        "before": "私はこの仕事で決める",
+        "answer": "ことがあります",
+        "after": "。",
+        "choices": [
+          "ことがあります",
+          "ところです",
+          "ようにします",
+          "なければなりません"
+        ],
+        "explanation": "「動詞辭書形＋ことがあります」表示曾經有過這種經驗。",
+        "hintChunks": [
+          "私は",
+          "この仕事で",
+          "決めること"
+        ]
+      },
+      "chunks": [
+        "私は",
+        "この仕事で",
+        "決めること",
+        "があります。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0078",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "集める",
+      "kana": "あつめる",
+      "reading": "あつめる",
+      "kanji": "集める",
+      "meaning": "收集",
+      "meaning_zh": "收集",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 78,
+      "example": "私はこの仕事で集めることがあります。",
+      "example_ja": "私はこの仕事で集めることがあります。",
+      "example_kana": "わたしは この しごとで あつめることが あります。",
+      "translation": "我曾經收集。",
+      "translation_zh": "我曾經收集。",
+      "audioText": "私はこの仕事で集めることがあります。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "私",
+          "answer": "は",
+          "after": "この仕事で集めることがあります。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "experience",
+        "prompt_zh": "表達「曾經／有時會收集」時，選出正確句型。",
+        "before": "私はこの仕事で集める",
+        "answer": "ことがあります",
+        "after": "。",
+        "choices": [
+          "ことがあります",
+          "ところです",
+          "ようにします",
+          "なければなりません"
+        ],
+        "explanation": "「動詞辭書形＋ことがあります」表示曾經有過這種經驗。",
+        "hintChunks": [
+          "私は",
+          "この仕事で",
+          "集めること"
+        ]
+      },
+      "chunks": [
+        "私は",
+        "この仕事で",
+        "集めること",
+        "があります。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0079",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "知らせる",
+      "kana": "しらせる",
+      "reading": "しらせる",
+      "kanji": "知らせる",
+      "meaning": "通知",
+      "meaning_zh": "通知",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 79,
+      "example": "私はこの仕事で知らせることがあります。",
+      "example_ja": "私はこの仕事で知らせることがあります。",
+      "example_kana": "わたしは この しごとで しらせることが あります。",
+      "translation": "我曾經通知。",
+      "translation_zh": "我曾經通知。",
+      "audioText": "私はこの仕事で知らせることがあります。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "私",
+          "answer": "は",
+          "after": "この仕事で知らせることがあります。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "experience",
+        "prompt_zh": "表達「曾經／有時會通知」時，選出正確句型。",
+        "before": "私はこの仕事で知らせる",
+        "answer": "ことがあります",
+        "after": "。",
+        "choices": [
+          "ことがあります",
+          "ところです",
+          "ようにします",
+          "なければなりません"
+        ],
+        "explanation": "「動詞辭書形＋ことがあります」表示曾經有過這種經驗。",
+        "hintChunks": [
+          "私は",
+          "この仕事で",
+          "知らせること"
+        ]
+      },
+      "chunks": [
+        "私は",
+        "この仕事で",
+        "知らせること",
+        "があります。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0080",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "慣れる",
+      "kana": "なれる",
+      "reading": "なれる",
+      "kanji": "慣れる",
+      "meaning": "習慣",
+      "meaning_zh": "習慣",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 80,
+      "example": "私はこの仕事で慣れることがあります。",
+      "example_ja": "私はこの仕事で慣れることがあります。",
+      "example_kana": "わたしは この しごとで なれることが あります。",
+      "translation": "我曾經習慣。",
+      "translation_zh": "我曾經習慣。",
+      "audioText": "私はこの仕事で慣れることがあります。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "私",
+          "answer": "は",
+          "after": "この仕事で慣れることがあります。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "experience",
+        "prompt_zh": "表達「曾經／有時會習慣」時，選出正確句型。",
+        "before": "私はこの仕事で慣れる",
+        "answer": "ことがあります",
+        "after": "。",
+        "choices": [
+          "ことがあります",
+          "ところです",
+          "ようにします",
+          "なければなりません"
+        ],
+        "explanation": "「動詞辭書形＋ことがあります」表示曾經有過這種經驗。",
+        "hintChunks": [
+          "私は",
+          "この仕事で",
+          "慣れること"
+        ]
+      },
+      "chunks": [
+        "私は",
+        "この仕事で",
+        "慣れること",
+        "があります。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0081",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "比べる",
+      "kana": "くらべる",
+      "reading": "くらべる",
+      "kanji": "比べる",
+      "meaning": "比較",
+      "meaning_zh": "比較",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 81,
+      "example": "私はこの仕事で比べることがあります。",
+      "example_ja": "私はこの仕事で比べることがあります。",
+      "example_kana": "わたしは この しごとで くらべることが あります。",
+      "translation": "我曾經比較。",
+      "translation_zh": "我曾經比較。",
+      "audioText": "私はこの仕事で比べることがあります。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "私",
+          "answer": "は",
+          "after": "この仕事で比べることがあります。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "experience",
+        "prompt_zh": "表達「曾經／有時會比較」時，選出正確句型。",
+        "before": "私はこの仕事で比べる",
+        "answer": "ことがあります",
+        "after": "。",
+        "choices": [
+          "ことがあります",
+          "ところです",
+          "ようにします",
+          "なければなりません"
+        ],
+        "explanation": "「動詞辭書形＋ことがあります」表示曾經有過這種經驗。",
+        "hintChunks": [
+          "私は",
+          "この仕事で",
+          "比べること"
+        ]
+      },
+      "chunks": [
+        "私は",
+        "この仕事で",
+        "比べること",
+        "があります。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0082",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "厚い",
+      "kana": "あつい",
+      "reading": "あつい",
+      "kanji": "厚い",
+      "meaning": "厚的",
+      "meaning_zh": "厚的",
+      "pos": "adj-i",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 82,
+      "example": "この本は厚いです。",
+      "example_ja": "この本は厚いです。",
+      "example_kana": "この ほんは あついです。",
+      "translation": "這本書很厚。",
+      "translation_zh": "這本書很厚。",
+      "audioText": "この本は厚いです。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "この本",
+          "answer": "は",
+          "after": "厚いです。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "too_i",
+        "prompt_zh": "表達「太厚的」時，選出正確形式。",
+        "before": "この料理は厚",
+        "answer": "すぎます",
+        "after": "。",
+        "choices": [
+          "すぎます",
+          "そうです",
+          "くなります",
+          "かったです"
+        ],
+        "explanation": "い形容詞去掉「い」＋すぎます，表示太過於某種狀態。",
+        "hintChunks": [
+          "この料理は",
+          "厚すぎます。"
+        ]
+      },
+      "chunks": [
+        "この本は",
+        "厚いです。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0083",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "薄い",
+      "kana": "うすい",
+      "reading": "うすい",
+      "kanji": "薄い",
+      "meaning": "薄的",
+      "meaning_zh": "薄的",
+      "pos": "adj-i",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 83,
+      "example": "この紙は薄いです。",
+      "example_ja": "この紙は薄いです。",
+      "example_kana": "この かみは うすいです。",
+      "translation": "這張紙很薄。",
+      "translation_zh": "這張紙很薄。",
+      "audioText": "この紙は薄いです。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "この紙",
+          "answer": "は",
+          "after": "薄いです。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "too_i",
+        "prompt_zh": "表達「太薄的」時，選出正確形式。",
+        "before": "この料理は薄",
+        "answer": "すぎます",
+        "after": "。",
+        "choices": [
+          "すぎます",
+          "そうです",
+          "くなります",
+          "かったです"
+        ],
+        "explanation": "い形容詞去掉「い」＋すぎます，表示太過於某種狀態。",
+        "hintChunks": [
+          "この料理は",
+          "薄すぎます。"
+        ]
+      },
+      "chunks": [
+        "この紙は",
+        "薄いです。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0084",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "甘い",
+      "kana": "あまい",
+      "reading": "あまい",
+      "kanji": "甘い",
+      "meaning": "甜的",
+      "meaning_zh": "甜的",
+      "pos": "adj-i",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 84,
+      "example": "このケーキは甘いです。",
+      "example_ja": "このケーキは甘いです。",
+      "example_kana": "この ケーキは あまいです。",
+      "translation": "這個蛋糕很甜。",
+      "translation_zh": "這個蛋糕很甜。",
+      "audioText": "このケーキは甘いです。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "このケーキ",
+          "answer": "は",
+          "after": "甘いです。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "too_i",
+        "prompt_zh": "表達「太甜的」時，選出正確形式。",
+        "before": "この料理は甘",
+        "answer": "すぎます",
+        "after": "。",
+        "choices": [
+          "すぎます",
+          "そうです",
+          "くなります",
+          "かったです"
+        ],
+        "explanation": "い形容詞去掉「い」＋すぎます，表示太過於某種狀態。",
+        "hintChunks": [
+          "この料理は",
+          "甘すぎます。"
+        ]
+      },
+      "chunks": [
+        "このケーキは",
+        "甘いです。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0085",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "苦い",
+      "kana": "にがい",
+      "reading": "にがい",
+      "kanji": "苦い",
+      "meaning": "苦的",
+      "meaning_zh": "苦的",
+      "pos": "adj-i",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 85,
+      "example": "この薬は苦いです。",
+      "example_ja": "この薬は苦いです。",
+      "example_kana": "この くすりは にがいです。",
+      "translation": "這個藥很苦。",
+      "translation_zh": "這個藥很苦。",
+      "audioText": "この薬は苦いです。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "この薬",
+          "answer": "は",
+          "after": "苦いです。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "too_i",
+        "prompt_zh": "表達「太苦的」時，選出正確形式。",
+        "before": "この料理は苦",
+        "answer": "すぎます",
+        "after": "。",
+        "choices": [
+          "すぎます",
+          "そうです",
+          "くなります",
+          "かったです"
+        ],
+        "explanation": "い形容詞去掉「い」＋すぎます，表示太過於某種狀態。",
+        "hintChunks": [
+          "この料理は",
+          "苦すぎます。"
+        ]
+      },
+      "chunks": [
+        "この薬は",
+        "苦いです。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0086",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "辛い",
+      "kana": "からい",
+      "reading": "からい",
+      "kanji": "辛い",
+      "meaning": "辣的",
+      "meaning_zh": "辣的",
+      "pos": "adj-i",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 86,
+      "example": "このカレーは辛いです。",
+      "example_ja": "このカレーは辛いです。",
+      "example_kana": "この カレーは からいです。",
+      "translation": "這個咖哩很辣。",
+      "translation_zh": "這個咖哩很辣。",
+      "audioText": "このカレーは辛いです。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "このカレー",
+          "answer": "は",
+          "after": "辛いです。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "too_i",
+        "prompt_zh": "表達「太辣的」時，選出正確形式。",
+        "before": "この料理は辛",
+        "answer": "すぎます",
+        "after": "。",
+        "choices": [
+          "すぎます",
+          "そうです",
+          "くなります",
+          "かったです"
+        ],
+        "explanation": "い形容詞去掉「い」＋すぎます，表示太過於某種狀態。",
+        "hintChunks": [
+          "この料理は",
+          "辛すぎます。"
+        ]
+      },
+      "chunks": [
+        "このカレーは",
+        "辛いです。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0087",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "痛い",
+      "kana": "いたい",
+      "reading": "いたい",
+      "kanji": "痛い",
+      "meaning": "痛的",
+      "meaning_zh": "痛的",
+      "pos": "adj-i",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 87,
+      "example": "朝から足が痛いです。",
+      "example_ja": "朝から足が痛いです。",
+      "example_kana": "あさから あしが いたいです。",
+      "translation": "從早上開始腳很痛。",
+      "translation_zh": "從早上開始腳很痛。",
+      "audioText": "朝から足が痛いです。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "朝から足",
+          "answer": "が",
+          "after": "痛いです。",
+          "choices": [
+            "が",
+            "を",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「が」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "too_i",
+        "prompt_zh": "表達「太痛的」時，選出正確形式。",
+        "before": "この料理は痛",
+        "answer": "すぎます",
+        "after": "。",
+        "choices": [
+          "すぎます",
+          "そうです",
+          "くなります",
+          "かったです"
+        ],
+        "explanation": "い形容詞去掉「い」＋すぎます，表示太過於某種狀態。",
+        "hintChunks": [
+          "この料理は",
+          "痛すぎます。"
+        ]
+      },
+      "chunks": [
+        "朝から足が",
+        "痛いです。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0088",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "眠い",
+      "kana": "ねむい",
+      "reading": "ねむい",
+      "kanji": "眠い",
+      "meaning": "睏的",
+      "meaning_zh": "睏的",
+      "pos": "adj-i",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 88,
+      "example": "朝はとても眠いです。",
+      "example_ja": "朝はとても眠いです。",
+      "example_kana": "あさは とても ねむいです。",
+      "translation": "早上非常想睡。",
+      "translation_zh": "早上非常想睡。",
+      "audioText": "朝はとても眠いです。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "朝",
+          "answer": "は",
+          "after": "とても眠いです。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "too_i",
+        "prompt_zh": "表達「太睏的」時，選出正確形式。",
+        "before": "この料理は眠",
+        "answer": "すぎます",
+        "after": "。",
+        "choices": [
+          "すぎます",
+          "そうです",
+          "くなります",
+          "かったです"
+        ],
+        "explanation": "い形容詞去掉「い」＋すぎます，表示太過於某種狀態。",
+        "hintChunks": [
+          "この料理は",
+          "眠すぎます。"
+        ]
+      },
+      "chunks": [
+        "朝は",
+        "とても",
+        "眠いです。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0089",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "怖い",
+      "kana": "こわい",
+      "reading": "こわい",
+      "kanji": "怖い",
+      "meaning": "害怕的",
+      "meaning_zh": "害怕的",
+      "pos": "adj-i",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 89,
+      "example": "暗い道は怖いです。",
+      "example_ja": "暗い道は怖いです。",
+      "example_kana": "くらい みちは こわいです。",
+      "translation": "昏暗的路很可怕。",
+      "translation_zh": "昏暗的路很可怕。",
+      "audioText": "暗い道は怖いです。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "暗い道",
+          "answer": "は",
+          "after": "怖いです。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "too_i",
+        "prompt_zh": "表達「太害怕的」時，選出正確形式。",
+        "before": "この料理は怖",
+        "answer": "すぎます",
+        "after": "。",
+        "choices": [
+          "すぎます",
+          "そうです",
+          "くなります",
+          "かったです"
+        ],
+        "explanation": "い形容詞去掉「い」＋すぎます，表示太過於某種狀態。",
+        "hintChunks": [
+          "この料理は",
+          "怖すぎます。"
+        ]
+      },
+      "chunks": [
+        "暗い道は",
+        "怖いです。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0090",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "寂しい",
+      "kana": "さびしい",
+      "reading": "さびしい",
+      "kanji": "寂しい",
+      "meaning": "寂寞的",
+      "meaning_zh": "寂寞的",
+      "pos": "adj-i",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 90,
+      "example": "一人でいると寂しいです。",
+      "example_ja": "一人でいると寂しいです。",
+      "example_kana": "ひとりで いると さびしいです。",
+      "translation": "一個人時會覺得寂寞。",
+      "translation_zh": "一個人時會覺得寂寞。",
+      "audioText": "一人でいると寂しいです。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "一人",
+          "answer": "で",
+          "after": "いると寂しいです。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "too_i",
+        "prompt_zh": "表達「太寂寞的」時，選出正確形式。",
+        "before": "この料理は寂し",
+        "answer": "すぎます",
+        "after": "。",
+        "choices": [
+          "すぎます",
+          "そうです",
+          "くなります",
+          "かったです"
+        ],
+        "explanation": "い形容詞去掉「い」＋すぎます，表示太過於某種狀態。",
+        "hintChunks": [
+          "この料理は",
+          "寂しすぎます。"
+        ]
+      },
+      "chunks": [
+        "一人で",
+        "いると",
+        "寂しいです。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0091",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "正しい",
+      "kana": "ただしい",
+      "reading": "ただしい",
+      "kanji": "正しい",
+      "meaning": "正確的",
+      "meaning_zh": "正確的",
+      "pos": "adj-i",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 91,
+      "example": "この答えは正しいです。",
+      "example_ja": "この答えは正しいです。",
+      "example_kana": "この こたえは ただしいです。",
+      "translation": "這個答案是正確的。",
+      "translation_zh": "這個答案是正確的。",
+      "audioText": "この答えは正しいです。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "この答え",
+          "answer": "は",
+          "after": "正しいです。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "too_i",
+        "prompt_zh": "表達「太正確的」時，選出正確形式。",
+        "before": "この料理は正し",
+        "answer": "すぎます",
+        "after": "。",
+        "choices": [
+          "すぎます",
+          "そうです",
+          "くなります",
+          "かったです"
+        ],
+        "explanation": "い形容詞去掉「い」＋すぎます，表示太過於某種狀態。",
+        "hintChunks": [
+          "この料理は",
+          "正しすぎます。"
+        ]
+      },
+      "chunks": [
+        "この答えは",
+        "正しいです。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0092",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "珍しい",
+      "kana": "めずらしい",
+      "reading": "めずらしい",
+      "kanji": "珍しい",
+      "meaning": "罕見的",
+      "meaning_zh": "罕見的",
+      "pos": "adj-i",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 92,
+      "example": "珍しい花を見ました。",
+      "example_ja": "珍しい花を見ました。",
+      "example_kana": "めずらしい はなを みました。",
+      "translation": "看到了罕見的花。",
+      "translation_zh": "看到了罕見的花。",
+      "audioText": "珍しい花を見ました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "珍しい花",
+          "answer": "を",
+          "after": "見ました。",
+          "choices": [
+            "を",
+            "が",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「を」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "too_i",
+        "prompt_zh": "表達「太罕見的」時，選出正確形式。",
+        "before": "この料理は珍し",
+        "answer": "すぎます",
+        "after": "。",
+        "choices": [
+          "すぎます",
+          "そうです",
+          "くなります",
+          "かったです"
+        ],
+        "explanation": "い形容詞去掉「い」＋すぎます，表示太過於某種狀態。",
+        "hintChunks": [
+          "この料理は",
+          "珍しすぎます。"
+        ]
+      },
+      "chunks": [
+        "珍しい花を",
+        "見ました。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0093",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "安全",
+      "kana": "あんぜん",
+      "reading": "あんぜん",
+      "kanji": "安全",
+      "meaning": "安全的",
+      "meaning_zh": "安全的",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 93,
+      "example": "この説明は安全です。",
+      "example_ja": "この説明は安全です。",
+      "example_kana": "この せつめいは あんぜんです。",
+      "translation": "這個說明很安全的。",
+      "translation_zh": "這個說明很安全的。",
+      "audioText": "この説明は安全です。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "この説明",
+          "answer": "は",
+          "after": "安全です。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "too_na",
+        "prompt_zh": "表達「太安全的」時，選出正確形式。",
+        "before": "この説明は安全",
+        "answer": "すぎます",
+        "after": "。",
+        "choices": [
+          "すぎます",
+          "そうです",
+          "になります",
+          "でした"
+        ],
+        "explanation": "な形容詞直接接「すぎます」，表示太過於某種狀態。",
+        "hintChunks": [
+          "この説明は",
+          "安全すぎます。"
+        ]
+      },
+      "chunks": [
+        "この説明は",
+        "安全です。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0094",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "不便",
+      "kana": "ふべん",
+      "reading": "ふべん",
+      "kanji": "不便",
+      "meaning": "不便的",
+      "meaning_zh": "不便的",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 94,
+      "example": "この説明は不便です。",
+      "example_ja": "この説明は不便です。",
+      "example_kana": "この せつめいは ふべんです。",
+      "translation": "這個說明很不便的。",
+      "translation_zh": "這個說明很不便的。",
+      "audioText": "この説明は不便です。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "この説明",
+          "answer": "は",
+          "after": "不便です。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "too_na",
+        "prompt_zh": "表達「太不便的」時，選出正確形式。",
+        "before": "この説明は不便",
+        "answer": "すぎます",
+        "after": "。",
+        "choices": [
+          "すぎます",
+          "そうです",
+          "になります",
+          "でした"
+        ],
+        "explanation": "な形容詞直接接「すぎます」，表示太過於某種狀態。",
+        "hintChunks": [
+          "この説明は",
+          "不便すぎます。"
+        ]
+      },
+      "chunks": [
+        "この説明は",
+        "不便です。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0095",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "複雑",
+      "kana": "ふくざつ",
+      "reading": "ふくざつ",
+      "kanji": "複雑",
+      "meaning": "複雜的",
+      "meaning_zh": "複雜的",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 95,
+      "example": "この説明は複雑です。",
+      "example_ja": "この説明は複雑です。",
+      "example_kana": "この せつめいは ふくざつです。",
+      "translation": "這個說明很複雜的。",
+      "translation_zh": "這個說明很複雜的。",
+      "audioText": "この説明は複雑です。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "この説明",
+          "answer": "は",
+          "after": "複雑です。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "too_na",
+        "prompt_zh": "表達「太複雜的」時，選出正確形式。",
+        "before": "この説明は複雑",
+        "answer": "すぎます",
+        "after": "。",
+        "choices": [
+          "すぎます",
+          "そうです",
+          "になります",
+          "でした"
+        ],
+        "explanation": "な形容詞直接接「すぎます」，表示太過於某種狀態。",
+        "hintChunks": [
+          "この説明は",
+          "複雑すぎます。"
+        ]
+      },
+      "chunks": [
+        "この説明は",
+        "複雑です。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0096",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "親切",
+      "kana": "しんせつ",
+      "reading": "しんせつ",
+      "kanji": "親切",
+      "meaning": "親切的",
+      "meaning_zh": "親切的",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 96,
+      "example": "この説明は親切です。",
+      "example_ja": "この説明は親切です。",
+      "example_kana": "この せつめいは しんせつです。",
+      "translation": "這個說明很親切的。",
+      "translation_zh": "這個說明很親切的。",
+      "audioText": "この説明は親切です。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "この説明",
+          "answer": "は",
+          "after": "親切です。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "too_na",
+        "prompt_zh": "表達「太親切的」時，選出正確形式。",
+        "before": "この説明は親切",
+        "answer": "すぎます",
+        "after": "。",
+        "choices": [
+          "すぎます",
+          "そうです",
+          "になります",
+          "でした"
+        ],
+        "explanation": "な形容詞直接接「すぎます」，表示太過於某種狀態。",
+        "hintChunks": [
+          "この説明は",
+          "親切すぎます。"
+        ]
+      },
+      "chunks": [
+        "この説明は",
+        "親切です。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0097",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "大切",
+      "kana": "たいせつ",
+      "reading": "たいせつ",
+      "kanji": "大切",
+      "meaning": "重要的",
+      "meaning_zh": "重要的",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 97,
+      "example": "この説明は大切です。",
+      "example_ja": "この説明は大切です。",
+      "example_kana": "この せつめいは たいせつです。",
+      "translation": "這個說明很重要的。",
+      "translation_zh": "這個說明很重要的。",
+      "audioText": "この説明は大切です。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "この説明",
+          "answer": "は",
+          "after": "大切です。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "too_na",
+        "prompt_zh": "表達「太重要的」時，選出正確形式。",
+        "before": "この説明は大切",
+        "answer": "すぎます",
+        "after": "。",
+        "choices": [
+          "すぎます",
+          "そうです",
+          "になります",
+          "でした"
+        ],
+        "explanation": "な形容詞直接接「すぎます」，表示太過於某種狀態。",
+        "hintChunks": [
+          "この説明は",
+          "大切すぎます。"
+        ]
+      },
+      "chunks": [
+        "この説明は",
+        "大切です。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0098",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "丁寧",
+      "kana": "ていねい",
+      "reading": "ていねい",
+      "kanji": "丁寧",
+      "meaning": "有禮貌",
+      "meaning_zh": "有禮貌",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 98,
+      "example": "この説明は丁寧です。",
+      "example_ja": "この説明は丁寧です。",
+      "example_kana": "この せつめいは ていねいです。",
+      "translation": "這個說明很有禮貌。",
+      "translation_zh": "這個說明很有禮貌。",
+      "audioText": "この説明は丁寧です。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "この説明",
+          "answer": "は",
+          "after": "丁寧です。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "too_na",
+        "prompt_zh": "表達「太有禮貌」時，選出正確形式。",
+        "before": "この説明は丁寧",
+        "answer": "すぎます",
+        "after": "。",
+        "choices": [
+          "すぎます",
+          "そうです",
+          "になります",
+          "でした"
+        ],
+        "explanation": "な形容詞直接接「すぎます」，表示太過於某種狀態。",
+        "hintChunks": [
+          "この説明は",
+          "丁寧すぎます。"
+        ]
+      },
+      "chunks": [
+        "この説明は",
+        "丁寧です。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0099",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "残念",
+      "kana": "ざんねん",
+      "reading": "ざんねん",
+      "kanji": "残念",
+      "meaning": "可惜",
+      "meaning_zh": "可惜",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 99,
+      "example": "この説明は残念です。",
+      "example_ja": "この説明は残念です。",
+      "example_kana": "この せつめいは ざんねんです。",
+      "translation": "這個說明很可惜。",
+      "translation_zh": "這個說明很可惜。",
+      "audioText": "この説明は残念です。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "この説明",
+          "answer": "は",
+          "after": "残念です。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "too_na",
+        "prompt_zh": "表達「太可惜」時，選出正確形式。",
+        "before": "この説明は残念",
+        "answer": "すぎます",
+        "after": "。",
+        "choices": [
+          "すぎます",
+          "そうです",
+          "になります",
+          "でした"
+        ],
+        "explanation": "な形容詞直接接「すぎます」，表示太過於某種狀態。",
+        "hintChunks": [
+          "この説明は",
+          "残念すぎます。"
+        ]
+      },
+      "chunks": [
+        "この説明は",
+        "残念です。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0100",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "全然",
+      "kana": "ぜんぜん",
+      "reading": "ぜんぜん",
+      "kanji": "全然",
+      "meaning": "完全不",
+      "meaning_zh": "完全不",
+      "pos": "adv",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 100,
+      "example": "この問題は全然わかりません。",
+      "example_ja": "この問題は全然わかりません。",
+      "example_kana": "この もんだいは ぜんぜん わかりません。",
+      "translation": "這題完全不懂。",
+      "translation_zh": "這題完全不懂。",
+      "audioText": "この問題は全然わかりません。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "この問題",
+          "answer": "は",
+          "after": "全然わかりません。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "この問題",
+        "answer": "は",
+        "after": "全然わかりません。",
+        "choices": [
+          "は",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "この問題は",
+          "全然わかりません。"
+        ]
+      },
+      "chunks": [
+        "この問題は",
+        "全然わかりません。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0101",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "決して",
+      "kana": "けっして",
+      "reading": "けっして",
+      "kanji": "決して",
+      "meaning": "絕不",
+      "meaning_zh": "絕不",
+      "pos": "adv",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 101,
+      "example": "決してあきらめません。",
+      "example_ja": "決してあきらめません。",
+      "example_kana": "けっして あきらめません。",
+      "translation": "絕不放棄。",
+      "translation_zh": "絕不放棄。",
+      "audioText": "決してあきらめません。",
+      "particles": [],
+      "grammar": {
+        "kind": "particle_topic",
+        "prompt_zh": "表達「關於絕不」時，選出正確句型。",
+        "before": "先生は決して",
+        "answer": "について",
+        "after": "説明しました。",
+        "choices": [
+          "について",
+          "までに",
+          "ながら",
+          "たことがある"
+        ],
+        "explanation": "「〜について」表示關於某個主題。",
+        "hintChunks": [
+          "先生は",
+          "決してに",
+          "ついて説明しました。"
+        ]
+      },
+      "chunks": [
+        "決してあきらめません。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0102",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "多分",
+      "kana": "たぶん",
+      "reading": "たぶん",
+      "kanji": "多分",
+      "meaning": "大概",
+      "meaning_zh": "大概",
+      "pos": "adv",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 102,
+      "example": "多分明日は雨です。",
+      "example_ja": "多分明日は雨です。",
+      "example_kana": "たぶん あしたは あめです。",
+      "translation": "明天大概會下雨。",
+      "translation_zh": "明天大概會下雨。",
+      "audioText": "多分明日は雨です。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "多分明日",
+          "answer": "は",
+          "after": "雨です。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "多分明日",
+        "answer": "は",
+        "after": "雨です。",
+        "choices": [
+          "は",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "多分明日は",
+          "雨です。"
+        ]
+      },
+      "chunks": [
+        "多分明日は",
+        "雨です。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0103",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "大体",
+      "kana": "だいたい",
+      "reading": "だいたい",
+      "kanji": "大体",
+      "meaning": "大約",
+      "meaning_zh": "大約",
+      "pos": "adv",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 103,
+      "example": "内容は大体わかりました。",
+      "example_ja": "内容は大体わかりました。",
+      "example_kana": "ないようは だいたい わかりました。",
+      "translation": "內容大致了解了。",
+      "translation_zh": "內容大致了解了。",
+      "audioText": "内容は大体わかりました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "内容",
+          "answer": "は",
+          "after": "大体わかりました。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "内容",
+        "answer": "は",
+        "after": "大体わかりました。",
+        "choices": [
+          "は",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "内容は",
+          "大体わかりました。"
+        ]
+      },
+      "chunks": [
+        "内容は",
+        "大体わかりました。"
+      ],
+      "distractors": []
+    },
+    {
+      "id": "n4_0104",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "急に",
+      "kana": "きゅうに",
+      "reading": "きゅうに",
+      "kanji": "急に",
+      "meaning": "突然",
+      "meaning_zh": "突然",
+      "pos": "adv",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 104,
+      "example": "急に雨が降りました。",
+      "example_ja": "急に雨が降りました。",
+      "example_kana": "きゅうに あめが ふりました。",
+      "translation": "突然下雨了。",
+      "translation_zh": "突然下雨了。",
+      "audioText": "急に雨が降りました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "急",
+          "answer": "に",
+          "after": "雨が降りました。",
+          "choices": [
+            "に",
+            "を",
+            "が",
+            "と"
+          ],
+          "explanation": "這裡用「に」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "急",
+        "answer": "に",
+        "after": "雨が降りました。",
+        "choices": [
+          "に",
+          "を",
+          "が",
+          "と"
+        ],
+        "explanation": "這裡用「に」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "急に",
+          "雨が",
+          "降りました。"
+        ]
+      },
+      "chunks": [
+        "急に",
+        "雨が",
+        "降りました。"
+      ],
+      "distractors": []
+    }
+  ]
+}
