@@ -24,6 +24,7 @@ DIFFICULTY_OUTPUT = REPO_ROOT / "jp-n4-difficulty.json"
 
 POS_ALLOWED = {"n", "suru", "v", "adj-i", "adj-na", "adv"}
 PARTICLES = ["を", "が", "に", "と", "で", "は", "も", "へ", "から", "まで"]
+ORDER_PARTICLES = {"を", "が", "に", "と", "で", "は", "も", "へ"}
 GRAMMAR_CHOICES = {
     "suru_required": ["しなければなりません", "したことがあります", "してもいいです", "しなくてもいいです"],
     "experience": ["ことがあります", "ところです", "ようにします", "なければなりません"],
@@ -31,6 +32,45 @@ GRAMMAR_CHOICES = {
     "too_na": ["すぎます", "そうです", "になります", "でした"],
     "particle_topic": ["について", "までに", "ながら", "たことがある"],
     "adverb": ["は", "を", "に", "で"],
+}
+N4_GRAMMAR_PATTERNS = [
+    ("なければなりません", ["なければなりません", "てもいいです", "ことがあります", "すぎます"], "「〜なければなりません」表示必須做某事。"),
+    ("ことがあります", ["ことがあります", "ところです", "ようにします", "なければなりません"], "「〜ことがあります」表示曾經有過這種經驗。"),
+    ("てもいいです", ["てもいいです", "なければなりません", "ことがあります", "すぎます"], "「〜てもいいです」表示可以做某事。"),
+    ("なくてもいいです", ["なくてもいいです", "なければなりません", "てもいいです", "ことがあります"], "「〜なくてもいいです」表示不做也可以。"),
+    ("すぎます", ["すぎます", "そうです", "くなります", "でした"], "「〜すぎます」表示太過於某種狀態。"),
+    ("ように", ["ように", "ことが", "ためで", "ながら"], "「〜ように」表示為了達成某個目的。"),
+    ("てしまいました", ["てしまいました", "てもいいです", "てあります", "てください"], "「〜てしまいました」常表示事情已經發生，帶有遺憾或完成感。"),
+    ("までに", ["までに", "から", "より", "ながら"], "「〜までに」表示在某個期限之前。"),
+    ("以内に", ["以内に", "以上に", "以外に", "以下に"], "「〜以内に」表示在範圍或期限之內。"),
+]
+SYNONYM_OVERRIDES = {
+    "たいへん": {"answer": "とても", "choices": ["とても", "少し", "全然", "多分"], "explanation": "「大変」可表示程度很高，接近「とても」。"},
+    "ひつよう": {"answer": "いります", "choices": ["いります", "なくします", "遅れます", "壊れます"], "explanation": "「必要」表示需要某物或某事。"},
+    "べんり": {"answer": "役に立ちます", "choices": ["役に立ちます", "困ります", "遅れます", "反対します"], "explanation": "「便利」表示好用、派得上用場。"},
+    "まにあう": {"answer": "遅れません", "choices": ["遅れません", "忘れます", "壊れます", "捨てます"], "explanation": "「間に合う」表示沒有遲到，趕得上。"},
+    "てつだう": {"answer": "助けます", "choices": ["助けます", "借ります", "忘れます", "決めます"], "explanation": "「手伝う」就是幫忙做某件事。"},
+    "かんたん": {"answer": "やさしい", "choices": ["やさしい", "難しい", "危ない", "寂しい"], "explanation": "「簡単」表示不難，接近「やさしい」。"},
+    "じゆう": {"answer": "好きなようにできます", "choices": ["好きなようにできます", "急にします", "全部だめです", "心配します"], "explanation": "「自由」表示可以照自己的意思做。"},
+    "むり": {"answer": "できません", "choices": ["できません", "足ります", "直ります", "慣れます"], "explanation": "「無理」表示做不到或勉強。"},
+    "きゅう": {"answer": "突然", "choices": ["突然", "普通", "十分", "丁寧"], "explanation": "「急」常表示突然或緊急。"},
+    "じゅうぶん": {"answer": "足ります", "choices": ["足ります", "足りません", "壊れます", "遅れます"], "explanation": "「十分」表示數量或程度已經夠了。"},
+    "ふつう": {"answer": "いつも通り", "choices": ["いつも通り", "特別", "急に", "全然"], "explanation": "「普通」表示一般、和平常差不多。"},
+    "いがい": {"answer": "ほか", "choices": ["ほか", "全部", "前", "中"], "explanation": "「以外」表示某個範圍之外的其他部分。"},
+    "いじょう": {"answer": "それより多い", "choices": ["それより多い", "それより少ない", "その外", "その前"], "explanation": "「以上」表示包含基準在內，或比基準更多。"},
+    "いか": {"answer": "それより少ない", "choices": ["それより少ない", "それより多い", "その外", "その後"], "explanation": "「以下」表示包含基準在內，或比基準更少。"},
+    "いない": {"answer": "その範囲の中", "choices": ["その範囲の中", "その範囲の外", "急な予定", "別の理由"], "explanation": "「以内」表示在時間、數量或範圍裡面。"},
+    "なおす": {"answer": "修理します", "choices": ["修理します", "捨てます", "忘れます", "借ります"], "explanation": "「直す」表示修理或改正。"},
+    "こしょう": {"answer": "壊れています", "choices": ["壊れています", "安心です", "十分です", "普通です"], "explanation": "「故障」表示機器等壞掉。"},
+    "しゅうり": {"answer": "直します", "choices": ["直します", "捨てます", "忘れます", "集めます"], "explanation": "「修理」表示把壞掉的東西修好。"},
+    "あんしん": {"answer": "心配しません", "choices": ["心配しません", "反対します", "遅れます", "壊れます"], "explanation": "「安心」表示不擔心、放心。"},
+    "しんぱい": {"answer": "不安です", "choices": ["不安です", "安全です", "自由です", "簡単です"], "explanation": "「心配」表示擔心、不安。"},
+    "あんぜん": {"answer": "危なくない", "choices": ["危なくない", "便利ではない", "足りない", "普通ではない"], "explanation": "「安全」表示沒有危險。"},
+    "ふべん": {"answer": "便利ではない", "choices": ["便利ではない", "危なくない", "十分ある", "急にする"], "explanation": "「不便」表示不好用、不方便。"},
+    "たいせつ": {"answer": "重要", "choices": ["重要", "普通", "急", "無理"], "explanation": "「大切」表示重要、需要珍惜。"},
+    "ぜんぜん": {"answer": "まったく", "choices": ["まったく", "たぶん", "だいたい", "ぜひ"], "explanation": "「全然」接否定時接近「まったく」。"},
+    "たぶん": {"answer": "おそらく", "choices": ["おそらく", "決して", "直接", "十分"], "explanation": "「多分」表示大概、可能。"},
+    "きゅうに": {"answer": "突然", "choices": ["突然", "普通に", "丁寧に", "安全に"], "explanation": "「急に」表示突然發生。"},
 }
 
 
@@ -90,8 +130,22 @@ def split_japanese_chunks(sentence: str) -> list[str]:
             push_token(tokens, buf)
             buf = ""
             continue
-        if ch in particle_set and len(buf) >= 2 and not (ch == "で" and next_ch in {"す", "し"}) and not (ch == "に" and next_ch == "は"):
-            push_token(tokens, buf)
+        prev_ch = chars[idx - 1] if idx > 0 else ""
+        prev2 = "".join(chars[max(0, idx - 2):idx + 1])
+        if (
+            ch in ORDER_PARTICLES
+            and not (ch == "で" and next_ch in {"す", "し"})
+            and not (ch == "で" and "".join(chars[idx:idx + 4]) == "でもいい")
+            and not (ch == "に" and prev_ch == "間" and next_ch == "合")
+            and not (ch == "と" and "".join(chars[idx:idx + 3]) == "とても")
+            and not (ch == "と" and prev_ch == "こ")
+            and not (ch == "と" and prev_ch == "ほ" and next_ch == "ん")
+            and not (ch == "も" and prev2 == "とても")
+            and not (ch == "も" and next_ch == "し" and not prev_ch)
+        ):
+            content = buf[:-1]
+            push_token(tokens, content)
+            push_token(tokens, ch)
             buf = ""
     push_token(tokens, buf)
     return [token for token in tokens if token]
@@ -113,6 +167,22 @@ def detect_particle_question(sentence: str) -> dict | None:
         prev = chars[i - 1] if i > 0 else ""
         nxt = chars[i + 1] if i + 1 < len(chars) else ""
         if not prev or not nxt or re.match(r"[。、！？!?\s]", prev + nxt):
+            continue
+        if ch == "で" and nxt in {"す", "し"}:
+            continue
+        if ch == "で" and "".join(chars[i:i + 4]) == "でもいい":
+            continue
+        if ch == "に" and prev == "間" and nxt == "合":
+            continue
+        if ch == "と" and "".join(chars[i:i + 3]) == "とても":
+            continue
+        if ch == "と" and prev == "こ":
+            continue
+        if ch == "と" and prev == "ほ" and nxt == "ん":
+            continue
+        if ch == "も" and nxt == "し" and not prev:
+            continue
+        if ch == "も" and "".join(chars[max(0, i - 2):i + 1]) == "とても":
             continue
         score = 1
         if ch in {"を", "が", "に", "で", "は"}:
@@ -139,68 +209,42 @@ def grammar_for_item(item: dict) -> dict:
     if isinstance(item.get("grammar"), dict) and item["grammar"].get("answer"):
         return item["grammar"]
 
-    word = item.get("kanji") or item["kana"]
-    meaning = item["meaning_zh"]
-    pos = item.get("pos", "n")
     sentence = item["example_ja"]
-
-    if pos == "suru":
-        answer = "しなければなりません"
-        text = f"明日までに{word}{answer}。"
-        return {
-            "kind": "suru_required",
-            "prompt_zh": f"「{meaning}」這件事是必須做的，選出正確句型。",
-            **split_around(text, answer),
-            "choices": GRAMMAR_CHOICES["suru_required"],
-            "explanation": "「〜なければなりません」表示必須做某事。",
-        }
-    if pos == "v":
-        answer = "ことがあります"
-        text = f"私はこの仕事で{word}{answer}。"
-        return {
-            "kind": "experience",
-            "prompt_zh": f"表達「曾經／有時會{meaning}」時，選出正確句型。",
-            **split_around(text, answer),
-            "choices": GRAMMAR_CHOICES["experience"],
-            "explanation": "「動詞辭書形＋ことがあります」表示曾經有過這種經驗。",
-        }
-    if pos == "adj-i":
-        stem = word[:-1] if word.endswith("い") else word
-        answer = "すぎます"
-        text = f"この料理は{stem}{answer}。"
-        return {
-            "kind": "too_i",
-            "prompt_zh": f"表達「太{meaning}」時，選出正確形式。",
-            **split_around(text, answer),
-            "choices": GRAMMAR_CHOICES["too_i"],
-            "explanation": "い形容詞去掉「い」＋すぎます，表示太過於某種狀態。",
-        }
-    if pos == "adj-na":
-        answer = "すぎます"
-        text = f"この説明は{word}{answer}。"
-        return {
-            "kind": "too_na",
-            "prompt_zh": f"表達「太{meaning}」時，選出正確形式。",
-            **split_around(text, answer),
-            "choices": GRAMMAR_CHOICES["too_na"],
-            "explanation": "な形容詞直接接「すぎます」，表示太過於某種狀態。",
-        }
-    if pos == "adv":
-        particle = detect_particle_question(sentence)
-        if particle:
-            return particle | {
-                "prompt_zh": f"看例句選出最自然的助詞。",
+    for answer, choices, explanation in N4_GRAMMAR_PATTERNS:
+        split = split_around(sentence, answer)
+        if split:
+            return {
+                "kind": "grammar_from_example",
+                "prompt_zh": "從同一句例句中選出最自然的文法形式。",
+                **split,
+                "choices": choices,
+                "explanation": explanation,
             }
 
-    answer = "について"
-    text = f"先生は{word}{answer}説明しました。"
-    return {
-        "kind": "particle_topic",
-        "prompt_zh": f"表達「關於{meaning}」時，選出正確句型。",
-        **split_around(text, answer),
-        "choices": GRAMMAR_CHOICES["particle_topic"],
-        "explanation": "「〜について」表示關於某個主題。",
-    }
+    particle = detect_particle_question(sentence)
+    if particle:
+        return particle | {
+            "prompt_zh": "看例句選出最自然的助詞。",
+        }
+
+    return {}
+
+
+def synonym_for_item(item: dict) -> list[dict]:
+    raw = item.get("synonyms")
+    if isinstance(raw, list):
+        return [x for x in raw if isinstance(x, dict) and x.get("answer")]
+    spec = SYNONYM_OVERRIDES.get(item.get("kana", ""))
+    if not spec:
+        return []
+    source = item.get("kanji") or item["kana"]
+    return [{
+        "source": source,
+        "prompt_zh": f"選出和「{source}」意思最接近的說法。",
+        "answer": spec["answer"],
+        "choices": spec["choices"],
+        "explanation": spec["explanation"],
+    }]
 
 
 def normalize_item(item: dict) -> dict:
@@ -209,23 +253,25 @@ def normalize_item(item: dict) -> dict:
     kana = str(item["kana"]).strip()
     sentence = str(item["example_ja"]).strip()
     grammar = grammar_for_item(item)
-    chunks = item.get("chunks") if isinstance(item.get("chunks"), list) else split_japanese_chunks(sentence)
+    chunks = item.get("chunks") if isinstance(item.get("chunks"), list) else [sentence]
+    chunks = [token for chunk in chunks for token in split_japanese_chunks(str(chunk))]
     particles = item.get("particles") if isinstance(item.get("particles"), list) else []
     if not particles:
         particle = detect_particle_question(sentence)
         if particle:
             particles = [particle]
-    choices = list(dict.fromkeys(str(x) for x in grammar.get("choices", []) if str(x).strip()))
-    if grammar.get("answer") and grammar["answer"] not in choices:
-        choices.insert(0, grammar["answer"])
-    if len(choices) < 4:
-        for choice in ["は", "が", "を", "に", "ことがあります", "しなければなりません", "すぎます"]:
-            if choice != grammar.get("answer") and choice not in choices:
-                choices.append(choice)
-            if len(choices) >= 4:
-                break
-    grammar["choices"] = choices[:4]
-    grammar["hintChunks"] = split_japanese_chunks(f"{grammar.get('before', '')}{grammar.get('answer', '')}{grammar.get('after', '')}")[:3]
+    if grammar.get("answer"):
+        choices = list(dict.fromkeys(str(x) for x in grammar.get("choices", []) if str(x).strip()))
+        if grammar["answer"] not in choices:
+            choices.insert(0, grammar["answer"])
+        if len(choices) < 4:
+            for choice in ["は", "が", "を", "に", "ことがあります", "しなければなりません", "すぎます"]:
+                if choice != grammar.get("answer") and choice not in choices:
+                    choices.append(choice)
+                if len(choices) >= 4:
+                    break
+        grammar["choices"] = choices[:4]
+        grammar["hintChunks"] = split_japanese_chunks(f"{grammar.get('before', '')}{grammar.get('answer', '')}{grammar.get('after', '')}")[:3]
 
     return {
         "id": item["id"],
@@ -252,6 +298,7 @@ def normalize_item(item: dict) -> dict:
         "grammar": grammar,
         "chunks": chunks,
         "distractors": item.get("distractors", []),
+        "synonyms": synonym_for_item(item),
     }
 
 
@@ -272,8 +319,8 @@ def main() -> None:
             "releasedCount": len(words),
             "classroom": "jp-n4",
             "jlpt": "N4",
-            "levelUnlock": {"initial": 5, "increment": 5},
-            "notes": "N5 assumed known; N4 words unlock by player level, five per level.",
+            "levelUnlock": {"initial": 15, "increment": 5},
+            "notes": "N5 assumed known; N4 words unlock by player level, fifteen at LV1 and five more per level.",
         },
         "words": words,
     }
@@ -284,7 +331,7 @@ def main() -> None:
             "updatedAt": now,
             "classroom": "jp-n4",
             "jlpt": "N4",
-            "perLevel": {"lv1Size": 5, "lvIncrement": 5},
+            "perLevel": {"lv1Size": 15, "lvIncrement": 5},
         },
         "order": [w["word"] for w in words],
     }

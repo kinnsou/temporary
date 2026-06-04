@@ -11,13 +11,13 @@
 <link rel="apple-touch-icon" href="icon-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+TC:wght@500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Sans+TC:wght@500;700;900&display=swap" rel="stylesheet">
 <script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
-html,body{height:100%;background:#1a1a2e;font-family:'Nunito','Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;-webkit-font-smoothing:antialiased;}
+html,body{height:100%;background:#1a1a2e;font-family:'Nunito','Noto Sans JP','Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;-webkit-font-smoothing:antialiased;font-synthesis-weight:none;text-rendering:optimizeLegibility;}
 body{display:flex;justify-content:center;align-items:center;overscroll-behavior:none;}
 #root{width:390px;height:844px;position:relative;overflow:hidden;border-radius:44px;box-shadow:0 32px 80px rgba(0,0,0,0.6);background:#fff;}
 @media(max-height:900px){body{align-items:flex-start;padding:8px 0;}#root{border-radius:32px;}}
@@ -133,6 +133,7 @@ function normalizeVocab(raw){
       particles:Array.isArray(raw.particles)?raw.particles:[],
       grammar:raw.grammar||null,
       distractors:Array.isArray(raw.distractors)?raw.distractors:[],
+      synonyms:Array.isArray(raw.synonyms)?raw.synonyms:[],
       audioText:raw.audioText||raw.example_ja||raw.example||word,
     };
   }
@@ -144,9 +145,9 @@ function normalizeVocab(raw){
 
 /* ══ Fallback tiny dataset (in case jp-n4-data.json fails) ═ */
 const FALLBACK_WORDS=[
-  {id:'fallback_1',word:'大変',reading:'たいへん',kana:'たいへん',kanji:'大変',zh:'很、非常；辛苦',cat:'形容詞',hint:'たいへん',en:'昨日の宿題は大変でした。',zh2:'昨天的作業很辛苦。',date:'2026-06-04',level:'N4',tier:'n4_level_path',chunks:['昨日の宿題は','大変でした。'],grammar:{before:'この説明は大変',answer:'すぎます',after:'。',choices:['すぎます','そうです','になります','でした'],hintChunks:['この説明は','大変','すぎます。']},audioText:'昨日の宿題は大変でした。'},
-  {id:'fallback_2',word:'必要',reading:'ひつよう',kana:'ひつよう',kanji:'必要',zh:'必要的',cat:'形容詞',hint:'ひつよう',en:'試験には鉛筆が必要です。',zh2:'考試需要鉛筆。',date:'2026-06-04',level:'N4',tier:'n4_level_path',chunks:['試験には','鉛筆が','必要です。'],grammar:{before:'この説明は必要',answer:'すぎます',after:'。',choices:['すぎます','そうです','になります','でした'],hintChunks:['この説明は','必要','すぎます。']},audioText:'試験には鉛筆が必要です。'},
-  {id:'fallback_3',word:'便利',reading:'べんり',kana:'べんり',kanji:'便利',zh:'方便的',cat:'形容詞',hint:'べんり',en:'このアプリはとても便利です。',zh2:'這個 App 很方便。',date:'2026-06-04',level:'N4',tier:'n4_level_path',chunks:['このアプリは','とても','便利です。'],grammar:{before:'この説明は便利',answer:'すぎます',after:'。',choices:['すぎます','そうです','になります','でした'],hintChunks:['この説明は','便利','すぎます。']},audioText:'このアプリはとても便利です。'},
+  {id:'fallback_1',word:'大変',reading:'たいへん',kana:'たいへん',kanji:'大変',zh:'很、非常；辛苦',cat:'形容詞',hint:'たいへん',en:'昨日の宿題は大変でした。',zh2:'昨天的作業很辛苦。',date:'2026-06-04',level:'N4',tier:'n4_level_path',chunks:['昨日の宿題','は','大変','でした。'],grammar:{before:'昨日の宿題',answer:'は',after:'大変でした。',choices:['は','が','を','に'],hintChunks:['昨日の宿題','は','大変でした。']},synonyms:[{source:'大変',answer:'とても',choices:['とても','少し','全然','多分'],explanation:'「大変」可表示程度很高，接近「とても」。'}],audioText:'昨日の宿題は大変でした。'},
+  {id:'fallback_2',word:'必要',reading:'ひつよう',kana:'ひつよう',kanji:'必要',zh:'必要的',cat:'形容詞',hint:'ひつよう',en:'試験には鉛筆が必要です。',zh2:'考試需要鉛筆。',date:'2026-06-04',level:'N4',tier:'n4_level_path',chunks:['試験','に','は','鉛筆','が','必要です。'],grammar:{before:'試験には鉛筆',answer:'が',after:'必要です。',choices:['が','を','に','で'],hintChunks:['試験には鉛筆','が','必要です。']},synonyms:[{source:'必要',answer:'いります',choices:['いります','なくします','遅れます','壊れます'],explanation:'「必要」表示需要某物或某事。'}],audioText:'試験には鉛筆が必要です。'},
+  {id:'fallback_3',word:'便利',reading:'べんり',kana:'べんり',kanji:'便利',zh:'方便的',cat:'形容詞',hint:'べんり',en:'このアプリはとても便利です。',zh2:'這個 App 很方便。',date:'2026-06-04',level:'N4',tier:'n4_level_path',chunks:['このアプリ','は','とても','便利です。'],grammar:{before:'このアプリ',answer:'は',after:'とても便利です。',choices:['は','が','を','に'],hintChunks:['このアプリ','は','とても便利です。']},synonyms:[{source:'便利',answer:'役に立ちます',choices:['役に立ちます','困ります','遅れます','反対します'],explanation:'「便利」表示好用、派得上用場。'}],audioText:'このアプリはとても便利です。'},
 ].map(normalizeVocab);
 
 /* ══ English number words (for food count display) ══════ */
@@ -159,9 +160,9 @@ function numToEnglish(n){
 }
 
 /* ══ Level / unlock helpers ══════════════════════════════ */
-const LV1_SIZE=5;
+const LV1_SIZE=15;
 const LV_INCREMENT=5;
-const DAILY_FOCUS_COUNT=5;
+const DAILY_FOCUS_COUNT=15;
 function unlockedCountForLevel(level){
   const lv=Math.max(1,level|0);
   return LV1_SIZE+(lv-1)*LV_INCREMENT;
@@ -213,11 +214,14 @@ function estimateTotalExpForLevel(level,exp=0){
 /* ══ LocalStorage ════════════════════════════════════════ */
 const LS_PROFILE='jpN4Profile';
 const LS_STATS='jpN4Stats3';
+const LS_MAP_SILENT='jpN4MapSilentMode';
 const loadProfile=()=>{try{const p=localStorage.getItem(LS_PROFILE);return p?JSON.parse(p):null;}catch{return null;}};
 const saveProfile=p=>{try{localStorage.setItem(LS_PROFILE,JSON.stringify(p));}catch{}};
 const defaultStats={streak:0,xp:0,avgScore:0,best:0,totalGames:0,todayQuiz:0,todayQuizDate:''};
 const loadStats=()=>{try{return{...defaultStats,...JSON.parse(localStorage.getItem(LS_STATS)||'{}')};}catch{return{...defaultStats};}};
 const saveStats=s=>{try{localStorage.setItem(LS_STATS,JSON.stringify(s));}catch{}};
+const loadMapSilent=()=>{try{return localStorage.getItem(LS_MAP_SILENT)==='1';}catch{return false;}};
+const saveMapSilent=v=>{try{localStorage.setItem(LS_MAP_SILENT,v?'1':'0');}catch{}};
 
 /* ══ Firebase leaderboard (SDK via window.FB) ═══════════════ */
 async function cloudRunQuery(orderField,limit=80){
@@ -313,8 +317,22 @@ function splitJapaneseChunk(text) {
       buf = '';
       continue;
     }
-    if (particles.has(ch) && buf.length >= 2 && !(ch==='で'&&/[すし]/.test(next))) {
-      pushJapaneseToken(tokens, buf);
+    const prev=chars[idx-1]||'';
+    const prev2=chars.slice(Math.max(0,idx-2),idx+1).join('');
+    if (
+      particles.has(ch) &&
+      !(ch==='で'&&/[すし]/.test(next)) &&
+      !(ch==='で'&&chars.slice(idx,idx+4).join('')==='でもいい') &&
+      !(ch==='に'&&prev==='間'&&next==='合') &&
+      !(ch==='と'&&chars.slice(idx,idx+3).join('')==='とても') &&
+      !(ch==='と'&&prev==='こ') &&
+      !(ch==='と'&&prev==='ほ'&&next==='ん') &&
+      !(ch==='も'&&prev2==='とても') &&
+      !(ch==='も'&&next==='し'&&!prev)
+    ) {
+      const content=buf.slice(0,-1);
+      pushJapaneseToken(tokens, content);
+      pushJapaneseToken(tokens, ch);
       buf = '';
     }
   }
@@ -351,14 +369,33 @@ function buildGrammarQuestion(w){
     zh:w.zh||'',
   };
 }
+function buildSynonymQuestion(w,pool){
+  const syn=Array.isArray(w.synonyms)?w.synonyms.find(s=>s&&s.answer):null;
+  if(!syn)return null;
+  const choices=[...new Set([syn.answer,...(Array.isArray(syn.choices)?syn.choices:[])].filter(Boolean))].slice(0,4);
+  if(choices.length<4)return null;
+  return{
+    type:'synonym',
+    n4Kind:'paraphrase',
+    correct:syn.answer,
+    options:shuffle(choices),
+    source:syn.source||w.word,
+    promptZh:syn.prompt_zh||`選出和「${syn.source||w.word}」意思最接近的說法。`,
+    explanation:syn.explanation||'這兩個說法意思接近。',
+    zh2:w.zh2||'',
+    zh:w.zh||'',
+  };
+}
 const N4_TYPE_BUILDERS={
   cloze:buildWordOrderQuestion,
   listening:buildListeningQuestion,
   order:buildOrderQuestion,
   particle:buildGrammarQuestion,
+  synonym:buildSynonymQuestion,
 };
-const N4_TYPE_CYCLE=['cloze','listening','order','particle'];
-function buildQuizItems(pool,total,knownSet=new Set()){
+const N4_TYPE_CYCLE=['cloze','listening','order','particle','synonym'];
+function buildQuizItems(pool,total,knownSet=new Set(),settings={}){
+  const cycle=N4_TYPE_CYCLE.filter(type=>!(settings.disableListening&&type==='listening'));
   const focus=shuffle(pool.filter(w=>w.isDailyFocus));
   const focusWords=new Set(focus.map(w=>w.word));
   const unknown=shuffle(pool.filter(w=>!focusWords.has(w.word)&&!knownSet.has(w.word)));
@@ -366,12 +403,12 @@ function buildQuizItems(pool,total,knownSet=new Set()){
   const chosen=[...focus,...unknown,...known];
   if(!chosen.length)return[];
   const typePlan=[];
-  while(typePlan.length<total)typePlan.push(...shuffle(N4_TYPE_CYCLE));
+  while(typePlan.length<total)typePlan.push(...shuffle(cycle.length?cycle:N4_TYPE_CYCLE));
   const items=[];
   for(let i=0;i<total;i++){
     const preferred=typePlan[i];
     const word=chosen[i%chosen.length];
-    const attempts=[preferred,...shuffle(N4_TYPE_CYCLE.filter(t=>t!==preferred))];
+    const attempts=[preferred,...shuffle((cycle.length?cycle:N4_TYPE_CYCLE).filter(t=>t!==preferred))];
     let built=null;
     for(const type of attempts){
       built=N4_TYPE_BUILDERS[type]?.(word,pool);
@@ -1160,7 +1197,7 @@ function FlashScreen({charSrc,flashAll,knownWords,refreshFb,onNav,pc,voiceGender
 
 
 /* ══ MAP QUEST ═══════════════════════════════════════════ */
-function MapScreen({profile,uid,studentName,charSrc,pc,onNav,onStartStage,cloudEntries,stageRecords,onRefreshMap}){
+function MapScreen({profile,uid,studentName,charSrc,pc,onNav,onStartStage,cloudEntries,stageRecords,onRefreshMap,silentMode,onToggleSilent}){
   const scrollRef=useRef(null);
   const currentNodeRef=useRef(null);
   const currentStage=Math.min(MAP_STAGE_COUNT,getPlayerMapStage(profile));
@@ -1243,9 +1280,10 @@ function MapScreen({profile,uid,studentName,charSrc,pc,onNav,onStartStage,cloudE
   const foodBonuses=MAP_FOOD_BONUS_STAGES.map(stage=>{const p=pointByStage.get(stage);if(!p)return null;const side=p.x>50?-1:1;const got=stage<currentStage;return(<div key={`food-${stage}`} style={{position:'absolute',left:`${p.x+side*30}%`,top:p.y-78,transform:'translate(-50%,-50%)',zIndex:3,textAlign:'center',opacity:got?0.42:1}}><div title={`通過第 ${stage} 關獲得肉塊 ×${MAP_FOOD_BONUS}`} style={{width:38,height:38,borderRadius:13,background:'#fff8',border:'2px dashed #fff',display:'flex',alignItems:'center',justifyContent:'center',fontSize:22,boxShadow:'0 3px 10px rgba(0,0,0,.09)'}}>🍖</div><div style={{fontSize:9,fontWeight:900,color:'#111827',textShadow:'0 1px 2px rgba(255,255,255,.75)',marginTop:1}}>+{MAP_FOOD_BONUS}</div><div style={{height:2,width:34,background:'repeating-linear-gradient(90deg,#fff 0 5px,transparent 5px 10px)',transform:`translate(${side*-12}px,22px) rotate(${side*24}deg)`}}/></div>);});
   return(<div className="screen" style={{background:'linear-gradient(170deg,#fafeff 0%,#f0fdf8 100%)'}}>
     <div style={{padding:'42px 18px 10px',background:'linear-gradient(180deg,#ffffff,#f8fdff)',boxShadow:'0 2px 12px rgba(0,0,0,.04)',zIndex:10}}>
-      <div style={{display:'flex',alignItems:'center',gap:12}}>
+      <div style={{display:'flex',alignItems:'center',gap:10}}>
         <div style={{width:50,height:50,borderRadius:18,background:'#fff',display:'flex',alignItems:'center',justifyContent:'center',boxShadow:'0 3px 12px rgba(0,0,0,0.07)'}}><img src={charSrc} alt="" style={{width:43,height:43,objectFit:'contain'}}/></div>
         <div style={{flex:1,minWidth:0}}><div style={{fontSize:20,fontWeight:900,color:'#1a1a2e'}}>世界地圖闖關</div><div style={{fontSize:12,color:'#94a3b8',fontWeight:800}}>{studentName}：第 {currentStage} 關・下一魔王第 {nextBoss} 關</div></div>
+        <button onClick={onToggleSilent} aria-pressed={!!silentMode} title={silentMode?'靜音模式：不出聽力題':'聽力題開啟'} style={{border:'none',background:silentMode?'#1a1a2e':'#fff',color:silentMode?'#fff':'#1a1a2e',borderRadius:14,padding:'9px 10px',fontSize:12,cursor:'pointer',boxShadow:'0 2px 10px rgba(0,0,0,0.06)',fontWeight:900,fontFamily:'inherit',minWidth:48}}>{silentMode?'靜音':'聽力'}</button>
         <button onClick={onRefreshMap} style={{border:'none',background:'#fff',borderRadius:14,padding:'10px 12px',fontSize:16,cursor:'pointer',boxShadow:'0 2px 10px rgba(0,0,0,0.06)'}}>↻</button>
       </div>
       <div style={{height:9,background:'#eef2f7',borderRadius:999,overflow:'hidden',marginTop:12}}><div style={{height:'100%',width:`${Math.min(100,cleared/MAP_STAGE_COUNT*100)}%`,background:'linear-gradient(90deg,#61c2ff,#22c55e,#ffb703)',borderRadius:999}}/></div>
@@ -1278,6 +1316,7 @@ const Q_THEME={
   zh2en:{color:'#61c2ff',icon:'🎯',label:'選出正確解釋'},
   listening:{color:'#22c55e',icon:'🔊',label:'聽例句選單字'},
   particle:{color:'#f472b6',icon:'文',label:'文法形式選擇'},
+  synonym:{color:'#14b8a6',icon:'≈',label:'同義替換'},
   cloze:{color:'#FF9800',icon:'✏️',label:'單字重排'},
   order:{color:'#a78bfa',icon:'🧩',label:'排出完整句子'},
 };
@@ -1290,7 +1329,7 @@ function Blank({width=78,color='#555',filled}){
 function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,onAnsweredChange,pc,refreshFb,voiceGender='female',quest=null}){
   const TOTAL=Math.min(15,quizPool.length);
   const knownSet=useMemo(()=>new Set(knownWords||[]),[knownWords]);
-  const [questions]=useState(()=>buildQuizItems(quizPool,TOTAL,knownSet));
+  const [questions]=useState(()=>buildQuizItems(quizPool,TOTAL,knownSet,{disableListening:!!quest?.silentMode}));
   const HINT_BUDGET=3;
   const [idx,setIdx]=useState(0);
   const [selected,setSel]=useState(null);   // chosen option string
@@ -1355,7 +1394,7 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,onAnswe
 
   useEffect(()=>{
     const cur=questions[idx];
-    if(!cur||cur.type!=='listening'||selected||clozeResult||orderResult)return;
+    if(!cur||quest?.silentMode||cur.type!=='listening'||selected||clozeResult||orderResult)return;
     const t=setTimeout(()=>speakText(cur.sentence||cur.vocab?.audioText||cur.vocab?.en,{gender:voiceGender}),320);
     return()=>clearTimeout(t);
   },[idx,questions,voiceGender,selected,clozeResult,orderResult]);
@@ -1378,12 +1417,12 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,onAnswe
       const drop=shuffle(wrongs).slice(0,2).map(o=>o.word);
       if(drop.length===0)return;
       setHiddenOpts(new Set(drop));
-    }else if(cur.type==='particle'){
+    }else if(cur.type==='particle'||cur.type==='synonym'){
       const wrongs=cur.options.filter(o=>normalizeAnswer(o)!==normalizeAnswer(cur.correct));
       const drop=shuffle(wrongs).slice(0,2);
       if(drop.length===0)return;
       setHiddenOpts(new Set(drop));
-      if(cur.hintChunks?.length)setHintRevealed(true);
+      if(cur.type==='particle'&&cur.hintChunks?.length)setHintRevealed(true);
     }else if(cur.type==='cloze'){
       const first3=(cur.letterTokens||[]).filter(t=>t.idx<3).sort((a,b)=>a.idx-b.idx).map(t=>t.id);
       if(first3.length===0)return;
@@ -1419,9 +1458,11 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,onAnswe
     if(qq.type==='order')return qq.sentence||qq.correct||qq.vocab?.en||'';
     if(qq.type==='cloze')return qq.vocab?.word||qq.correct||'';
     if(qq.type==='particle')return `${qq.before||''}${qq.correct||''}${qq.after||''}`.trim();
+    if(qq.type==='synonym')return qq.source||qq.vocab?.word||qq.correct||'';
     return qq.vocab?.word||qq.correct||'';
   };
   const speakAfterAnswer=(qq)=>{
+    if(quest?.silentMode)return;
     const text=sentenceForQuestion(qq);
     if(text)try{speakText(text,{gender:voiceGender});}catch(e){console.warn('speak failed',e);}
   };
@@ -1459,7 +1500,7 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,onAnswe
       setShaking(true);setTimeout(()=>setShaking(false),500);
     }
     // Sentence-based questions linger a bit longer so kids can read the answer.
-    const delay=(q.type==='cloze'||q.type==='listening'||q.type==='order'||q.type==='particle')?1700:1100;
+    const delay=(q.type==='cloze'||q.type==='listening'||q.type==='order'||q.type==='particle'||q.type==='synonym')?1700:1100;
     setTimeout(()=>{
       setSel(null);setClozePicked([]);setClozeResult(null);setOrderPicked([]);setOrderResult(null);
       if(idx+1>=TOTAL){
@@ -1631,6 +1672,34 @@ function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,onAnswe
       <div className="scroll-body" style={{display:'flex',flexDirection:'column',gap:8,paddingBottom:8}}>
         {q.options.filter(opt=>!hiddenOpts.has(opt)).map((opt,i)=>(
           <button key={opt+i} onClick={()=>answerChoice(opt)} style={{width:'100%',padding:'13px 16px',borderRadius:16,border:bdrBtn(opt,q.correct),background:bgBtn(opt,q.correct),color:colBtn(opt,q.correct),fontSize:String(opt).length>8?16:20,fontWeight:900,cursor:'pointer',textAlign:'center',boxShadow:selected&&normalizeAnswer(opt)===normalizeAnswer(q.correct)?'0 4px 14px #4CAF8244':'0 2px 6px rgba(0,0,0,0.04)',transition:'all 0.15s',animation:`slideUp 0.2s ${i*0.04}s both`,opacity:selected&&normalizeAnswer(opt)!==normalizeAnswer(q.correct)&&normalizeAnswer(opt)!==normalizeAnswer(selected)?0.4:1,fontFamily:'inherit',flexShrink:0,lineHeight:1.35,wordBreak:'keep-all'}}>
+            {opt}
+            {selected&&normalizeAnswer(opt)===normalizeAnswer(q.correct)&&<span style={{fontSize:16,marginLeft:8}}>✓</span>}
+            {selected&&normalizeAnswer(opt)===normalizeAnswer(selected)&&normalizeAnswer(opt)!==normalizeAnswer(q.correct)&&<span style={{fontSize:16,marginLeft:8}}>✗</span>}
+          </button>
+        ))}
+        {giveUpBtn}
+      </div>
+    );
+  } else if(q.type==='synonym'){
+    const catColor=CAT[vocab.cat]||'#94a3b8';
+    questionCard=(
+      <div style={{background:'#fff',borderRadius:22,padding:'16px 20px',boxShadow:'0 4px 18px rgba(0,0,0,0.07)',marginBottom:12,flexShrink:0,animation:shaking?'shake 0.4s ease-in-out':'pop 0.2s ease-out',display:'flex',flexDirection:'column',gap:10,position:'relative',overflow:'hidden'}}>
+        <div style={{position:'absolute',top:0,left:0,right:0,height:3,background:`linear-gradient(90deg,${theme.color},${theme.color}44)`}}/>
+        <div style={{textAlign:'center'}}>
+          <span style={{fontSize:11,fontWeight:800,color:theme.color,background:`${theme.color}18`,padding:'4px 12px',borderRadius:20,letterSpacing:0.5}}>{theme.icon} {theme.label}</span>
+        </div>
+        <div style={{fontSize:12,color:'#aaa',fontWeight:700,textAlign:'center'}}>{q.promptZh||'選出意思最接近的說法。'}</div>
+        <div style={{fontSize:32,fontWeight:900,color:'#1a1a2e',lineHeight:1.35,textAlign:'center',padding:'2px 0',letterSpacing:0}}>{q.source}</div>
+        <div style={{fontSize:12,color:'#64748b',fontWeight:800,background:`${catColor}12`,padding:'6px 10px',borderRadius:14,textAlign:'center'}}>
+          語彙：{vocab.reading&&vocab.reading!==vocab.word?vocab.reading:vocab.word}{vocab.reading&&vocab.reading!==vocab.word?`（${vocab.word}）`:''}・{vocab.zh}
+        </div>
+        {selected&&q.explanation&&<div style={{fontSize:12,color:'#475569',fontWeight:800,background:'#f8fafc',padding:'7px 10px',borderRadius:14,lineHeight:1.45}}>解說：{q.explanation}</div>}
+      </div>
+    );
+    answerArea=(
+      <div className="scroll-body" style={{display:'flex',flexDirection:'column',gap:8,paddingBottom:8}}>
+        {q.options.filter(opt=>!hiddenOpts.has(opt)).map((opt,i)=>(
+          <button key={opt+i} onClick={()=>answerChoice(opt)} style={{width:'100%',padding:'13px 16px',borderRadius:16,border:bdrBtn(opt,q.correct),background:bgBtn(opt,q.correct),color:colBtn(opt,q.correct),fontSize:String(opt).length>8?15:19,fontWeight:900,cursor:'pointer',textAlign:'center',boxShadow:selected&&normalizeAnswer(opt)===normalizeAnswer(q.correct)?'0 4px 14px #4CAF8244':'0 2px 6px rgba(0,0,0,0.04)',transition:'all 0.15s',animation:`slideUp 0.2s ${i*0.04}s both`,opacity:selected&&normalizeAnswer(opt)!==normalizeAnswer(q.correct)&&normalizeAnswer(opt)!==normalizeAnswer(selected)?0.4:1,fontFamily:'inherit',flexShrink:0,lineHeight:1.35,wordBreak:'keep-all'}}>
             {opt}
             {selected&&normalizeAnswer(opt)===normalizeAnswer(q.correct)&&<span style={{fontSize:16,marginLeft:8}}>✓</span>}
             {selected&&normalizeAnswer(opt)===normalizeAnswer(selected)&&normalizeAnswer(opt)!==normalizeAnswer(q.correct)&&<span style={{fontSize:16,marginLeft:8}}>✗</span>}
@@ -1991,6 +2060,7 @@ function App(){
   const [activeQuest,setActiveQuest]=useState(null);
   const [quizAnswered,setQuizAnswered]=useState(0);
   const [pendingNav,setPendingNav]=useState(null);
+  const [mapSilentMode,setMapSilentMode]=useState(loadMapSilent);
   const [fb,refreshFb]=useFb();
   const claimAttempted=useRef(false);
   useEffect(()=>{
@@ -2113,6 +2183,9 @@ function App(){
     if(screen==='quiz'&&s!=='quiz'&&quizAnswered>0){setPendingNav(s);return;}
     goScreen(s);
   };
+  const toggleMapSilent=useCallback(()=>{
+    setMapSilentMode(v=>{const next=!v;saveMapSilent(next);return next;});
+  },[]);
   const confirmExitQuiz=()=>{
     const s=pendingNav||'home';
     setPendingNav(null);
@@ -2204,7 +2277,7 @@ function App(){
       setScreen('home');
     }} onBack={()=>setScreen('home')} pc={pc}/>}
     {screen==='flash'&&<FlashScreen charSrc={charSrc} flashAll={quizPool} knownWords={fb?.profile?.knownWords||[]} refreshFb={refreshFb} onNav={nav} pc={pc} voiceGender={fb?.pet?.voiceGender==='male'?'male':'female'}/>}
-    {screen==='map'&&<MapScreen profile={fb?.profile||displayStats} uid={fb?.uid} studentName={studentName} charSrc={charSrc} pc={pc} onNav={nav} cloudEntries={cloudEntries} stageRecords={stageRecords} onRefreshMap={()=>{refreshLeaderboard();refreshMapStages();}} onStartStage={q=>{setActiveQuest(q);setResult(null);setQuizAnswered(0);setScreen('quiz');}}/>}
+    {screen==='map'&&<MapScreen profile={fb?.profile||displayStats} uid={fb?.uid} studentName={studentName} charSrc={charSrc} pc={pc} onNav={nav} cloudEntries={cloudEntries} stageRecords={stageRecords} onRefreshMap={()=>{refreshLeaderboard();refreshMapStages();}} silentMode={mapSilentMode} onToggleSilent={toggleMapSilent} onStartStage={q=>{setActiveQuest({...q,silentMode:mapSilentMode});setResult(null);setQuizAnswered(0);setScreen('quiz');}}/>}
     {screen==='quiz'&&<QuizScreen charSrc={charSrc} charName={charName} quizPool={quizPool} knownWords={fb?.profile?.knownWords||[]} onFinish={handleFinish} onNav={nav} onAnsweredChange={setQuizAnswered} pc={pc} refreshFb={refreshFb} voiceGender={fb?.pet?.voiceGender==='male'?'male':'female'} quest={activeQuest}/>}
     {screen==='result'&&result&&<ResultScreen {...result} charSrc={charSrc} charName={charName} onRetry={()=>setScreen('map')} onHome={()=>setScreen('home')} pc={pc}/>}
     {screen==='rank'&&<RankScreen uid={fb?.uid} studentName={studentName} charIdx={charIdx} stats={displayStats} onNav={nav} pc={pc} cloudEntries={cloudEntries} cloudStreakEntries={cloudStreakEntries} cloudStatus={cloudStatus} onRefresh={refreshLeaderboard}/>}
