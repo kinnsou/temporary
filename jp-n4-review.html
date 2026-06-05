@@ -5,10 +5,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <title>CLAW JP N4 日語小教室</title>
-<link rel="manifest" href="manifest.json">
+<link rel="manifest" href="jp-n4-manifest.json">
+<meta name="application-name" content="CLAW JP N4">
+<meta name="theme-color" content="#61c2ff">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<link rel="apple-touch-icon" href="icon-512.png">
+<meta name="apple-mobile-web-app-title" content="CLAW JP N4">
+<link rel="apple-touch-icon" href="jp-n4-icon-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Sans+TC:wght@500;700;900&display=swap" rel="stylesheet">
@@ -215,8 +218,11 @@ function estimateTotalExpForLevel(level,exp=0){
 const LS_PROFILE='jpN4Profile';
 const LS_STATS='jpN4Stats3';
 const LS_MAP_SILENT='jpN4MapSilentMode';
+const LS_PENDING_NAME='jpN4PendingName';
 const loadProfile=()=>{try{const p=localStorage.getItem(LS_PROFILE);return p?JSON.parse(p):null;}catch{return null;}};
 const saveProfile=p=>{try{localStorage.setItem(LS_PROFILE,JSON.stringify(p));}catch{}};
+const loadPendingName=()=>{try{return String(localStorage.getItem(LS_PENDING_NAME)||'').slice(0,10);}catch{return'';}};
+const savePendingName=name=>{try{const clean=String(name||'').trim().slice(0,10);if(clean)localStorage.setItem(LS_PENDING_NAME,clean);else localStorage.removeItem(LS_PENDING_NAME);}catch{}};
 const defaultStats={streak:0,xp:0,avgScore:0,best:0,totalGames:0,todayQuiz:0,todayQuizDate:''};
 const loadStats=()=>{try{return{...defaultStats,...JSON.parse(localStorage.getItem(LS_STATS)||'{}')};}catch{return{...defaultStats};}};
 const saveStats=s=>{try{localStorage.setItem(LS_STATS,JSON.stringify(s));}catch{}};
@@ -739,7 +745,7 @@ function PetGridButton({pet,pc,selected,onClick,disabled,tag}){
 /* ══ ONBOARDING ══════════════════════════════════════════ */
 function OnboardingScreen({onDone,pc}){
   const [step,setStep]=useState(1);
-  const [name,setName]=useState('');
+  const [name,setName]=useState(loadPendingName);
   const [nameErr,setNameErr]=useState('');
   const [pets,setPets]=useState([]);
   const [loading,setLoading]=useState(false);
@@ -759,6 +765,7 @@ function OnboardingScreen({onDone,pc}){
   const goStep2=async()=>{
     if(!name.trim()){setNameErr('請輸入你的名字！');return;}
     if(name.trim().length>10){setNameErr('名字最多10個字喔！');return;}
+    savePendingName(name);
     setNameErr('');setErr('');
     try{
       if(window.FB?.ops?.switchPlayerByName) await window.FB.ops.switchPlayerByName(name.trim());
@@ -784,7 +791,7 @@ function OnboardingScreen({onDone,pc}){
       }
       const idx=petIdxFromId(selectedPetId)??0;
       const profile={name:name.trim(),charIdx:idx,petId:selectedPetId};
-      saveProfile(profile);onDone(profile);setStep(3);
+      saveProfile(profile);savePendingName('');onDone(profile);setStep(3);
     }catch(e){
       const msgs={'pet-taken':'這隻已經被別人帶走了！','pet-disabled':'這隻寵物餓壞了，不能選 😢','pet-not-found':'找不到這隻寵物'};
       setErr(msgs[e.message]||`選寵失敗：${e.message}`);await loadPets();
@@ -801,7 +808,7 @@ function OnboardingScreen({onDone,pc}){
         <div style={{fontSize:13,color:'#aaa',marginTop:6}}>先告訴我你的名字吧 😊</div>
       </div>
       <div style={{width:'100%'}}>
-        <input type="text" placeholder="輸入你的名字…" value={name} onChange={e=>{setName(e.target.value);setNameErr('');}} onKeyDown={e=>e.key==='Enter'&&goStep2()} maxLength={10}
+        <input type="text" placeholder="輸入你的名字…" value={name} onChange={e=>{setName(e.target.value);savePendingName(e.target.value);setNameErr('');}} onKeyDown={e=>e.key==='Enter'&&goStep2()} maxLength={10}
           style={{width:'100%',padding:'16px 20px',borderRadius:18,border:`2px solid ${nameErr?'#FF4D6D':name?pc:'#e8e0f8'}`,fontSize:18,fontWeight:800,color:'#1a1a2e',outline:'none',fontFamily:'inherit',background:'#fff',boxShadow:`0 2px 12px ${pc}22`,transition:'border 0.2s'}}/>
         {nameErr&&<div style={{fontSize:12,color:'#FF4D6D',fontWeight:700,marginTop:6,paddingLeft:4}}>{nameErr}</div>}
       </div>
@@ -3034,6 +3041,10 @@ onAuthStateChanged(auth, async (user) => {
     try {
       const p = JSON.parse(localStorage.getItem('jpN4Profile') || 'null');
       if (p && p.name) lpName = String(p.name).slice(0, 40);
+      else {
+        const pendingName = String(localStorage.getItem('jpN4PendingName') || '').trim();
+        if (pendingName) lpName = pendingName.slice(0, 40);
+      }
       if (p && typeof p.charIdx === 'number' && !Object.prototype.hasOwnProperty.call(p,'petId')) lpCharIdx = p.charIdx;
     } catch {}
 
