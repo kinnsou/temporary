@@ -1,6 +1,6 @@
 {
   "meta": {
-    "updatedAt": "2026-06-03T08:02:13Z",
+    "updatedAt": "2026-06-05T11:05:15Z",
     "classroom": "jp-n3",
     "policy": "N5 excluded; N4 base is treated as already appeared; N3 seed releases 5 words per day.",
     "counts": {
@@ -865,8 +865,8 @@
       "meaning": "報告",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-05",
       "example": "報告をしました。",
       "translation": "進行了報告。"
     },
@@ -875,8 +875,8 @@
       "meaning": "決定",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-05",
       "example": "決定をしました。",
       "translation": "進行了決定。"
     },
@@ -885,8 +885,8 @@
       "meaning": "變化",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-05",
       "example": "変化をしました。",
       "translation": "進行了變化。"
     },
@@ -895,8 +895,8 @@
       "meaning": "成長",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-05",
       "example": "成長をしました。",
       "translation": "進行了成長。"
     },
@@ -905,8 +905,8 @@
       "meaning": "感謝",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-05",
       "example": "感謝をしました。",
       "translation": "進行了感謝。"
     },

@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-06-03T08:09:48Z",
+    "updatedAt": "2026-06-05T11:05:16Z",
     "sourceCount": 380,
-    "releasedCount": 85,
+    "releasedCount": 90,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "決定",
+      "reading": "けってい",
+      "meaning": "決定",
+      "example": "決定をしました。",
+      "translation": "進行了決定。",
+      "firstSeen": "2026-06-05",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "成長",
+      "reading": "せいちょう",
+      "meaning": "成長",
+      "example": "成長をしました。",
+      "translation": "進行了成長。",
+      "firstSeen": "2026-06-05",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "感謝",
+      "reading": "かんしゃ",
+      "meaning": "感謝",
+      "example": "感謝をしました。",
+      "translation": "進行了感謝。",
+      "firstSeen": "2026-06-05",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "変化",
+      "reading": "へんか",
+      "meaning": "變化",
+      "example": "変化をしました。",
+      "translation": "進行了變化。",
+      "firstSeen": "2026-06-05",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "報告",
+      "reading": "ほうこく",
+      "meaning": "報告",
+      "example": "報告をしました。",
+      "translation": "進行了報告。",
+      "firstSeen": "2026-06-05",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "解決",
       "reading": "かいけつ",
