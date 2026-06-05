@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-06-01T11:00:49Z",
-    "sourceCount": 236,
-    "includedCount": 228
+    "updatedAt": "2026-06-05T01:46:58Z",
+    "sourceCount": 239,
+    "includedCount": 231
   },
   "words": [
+    {
+      "word": "deeply",
+      "meaning": "深深地；非常",
+      "example": "She cares deeply about her family.",
+      "translation": "她非常關心她的家人。",
+      "firstSeen": "2026-06-05",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "road",
+      "meaning": "路；道路",
+      "example": "The road is wet after the rain.",
+      "translation": "下雨後道路是濕的。",
+      "firstSeen": "2026-06-05",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "write",
+      "meaning": "寫；書寫",
+      "example": "I write my name on the paper.",
+      "translation": "我把我的名字寫在紙上。",
+      "firstSeen": "2026-06-05",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "fresh",
       "meaning": "新鮮的",

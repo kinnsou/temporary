@@ -2032,7 +2032,6 @@ function App(){
     const allDates=[...byDate.keys()].sort();
     const latest=allDates[allDates.length-1]||'';
     const todayWords=byDate.get(today)||[];
-    const displayDate=todayWords.length?today:latest;
     const displaySet=(todayWords.length?todayWords:(byDate.get(latest)||[])).slice(0,3);
     const focusWords=new Set(displaySet.map(w=>w.word));
     const pathWords=vocabAll.filter(w=>!focusWords.has(w.word));
@@ -2041,7 +2040,7 @@ function App(){
     return{
       todaySet:displaySet,
       quizPool:studyPool.length?studyPool:vocabAll,
-      dateLabel:formatDate(displayDate||today),
+      dateLabel:formatDate(today),
     };
   },[vocabAll,difficultyOrder,today,displayStats.level]);
 

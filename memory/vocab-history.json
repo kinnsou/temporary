@@ -3,7 +3,7 @@
     "newWordsMustBeUniqueUntilExhausted": true,
     "reviewFormat": "guided_cloze_with_grammar_chunking",
     "sourceScope": "台灣普遍認定國中必會1000單",
-    "updatedAt": "2026-05-31T11:00:00Z"
+    "updatedAt": "2026-06-05T01:46:50Z"
   },
   "words": {
     "about": {
@@ -476,6 +476,16 @@
         "黑暗的；暗的"
       ],
       "translation": "外面很暗。"
+    },
+    "deeply": {
+      "example_sentence": "She cares deeply about her family.",
+      "first_seen": "2026-06-05",
+      "last_seen": "2026-06-05",
+      "meanings": [
+        "深深地；非常"
+      ],
+      "pos": "adv",
+      "translation": "她非常關心她的家人。"
     },
     "desk": {
       "example_sentence": "Please put your books on the desk.",
@@ -1727,6 +1737,16 @@
       "pos": "n",
       "translation": "我們在河裡看到魚。"
     },
+    "road": {
+      "example_sentence": "The road is wet after the rain.",
+      "first_seen": "2026-06-05",
+      "last_seen": "2026-06-05",
+      "meanings": [
+        "路；道路"
+      ],
+      "pos": "n",
+      "translation": "下雨後道路是濕的。"
+    },
     "rush": {
       "example_sentence": "Don't rush. We have enough time.",
       "first_seen": "2026-05-03",
@@ -2305,6 +2325,16 @@
       ],
       "pos": "n",
       "translation": "這張桌子是木頭做的。"
+    },
+    "write": {
+      "example_sentence": "I write my name on the paper.",
+      "first_seen": "2026-06-05",
+      "last_seen": "2026-06-05",
+      "meanings": [
+        "寫；書寫"
+      ],
+      "pos": "v",
+      "translation": "我把我的名字寫在紙上。"
     },
     "yellow": {
       "example_sentence": "I have a yellow raincoat.",
