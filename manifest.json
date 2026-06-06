@@ -1,7 +1,9 @@
 {
+  "id": "./vocab-review.html",
   "name": "CLAW ENG 單字小教室",
   "short_name": "CLAW單字",
   "start_url": "./vocab-review.html",
+  "scope": "./vocab-review.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#333333",

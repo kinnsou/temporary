@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <title>CLAW ENG 單字複習小教室</title>
-<link rel="manifest" href="manifest.json">
+<link rel="manifest" href="manifest.json?v=20260606-2">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="apple-touch-icon" href="icon-512.png">
@@ -2203,6 +2203,12 @@ const SEED_PETS = [
 ];
 
 const SEED_PET_MAP = Object.fromEntries(SEED_PETS.map(p => [p.id, p]));
+function isEnglishClassroomDoc(docSnap) {
+  return !String(docSnap?.id || '').startsWith('jpN4_') && docSnap?.data()?.classroom !== 'jp-n4';
+}
+function isEnglishPetDoc(docSnap) {
+  return isEnglishClassroomDoc(docSnap) && Object.prototype.hasOwnProperty.call(SEED_PET_MAP, docSnap.id);
+}
 function seedPetDoc(id, now = Date.now()) {
   const p = SEED_PET_MAP[id];
   if (!p) return null;
@@ -2388,6 +2394,7 @@ async function mergePetsByOwnerName(name, playerId) {
   const now = Date.now();
   const writes = [];
   snap.forEach(d => {
+    if (!isEnglishPetDoc(d)) return;
     const pet = d.data();
     if (normalizePlayerName(pet.ownerName || '') === clean && pet.ownerUid !== playerId) {
       merged.push(d.id);
@@ -2422,20 +2429,22 @@ async function switchPlayerByName(name) {
 async function listPets() {
   const now = Date.now();
   let snap = await getDocs(collection(db, 'pets'));
-  if (snap.empty) {
+  let docs = snap.docs.filter(isEnglishPetDoc);
+  if (!docs.length) {
     try {
       await seedPets();
       snap = await getDocs(collection(db, 'pets'));
+      docs = snap.docs.filter(isEnglishPetDoc);
     } catch (e) {
       console.warn('[FB] seed on listPets failed; showing seed fallback', e);
       return seedPetList(now);
     }
-    if (snap.empty) return seedPetList(now);
+    if (!docs.length) return seedPetList(now);
   }
   const out = [];
   const reborn = [];
   const usersToClear = new Set();
-  snap.forEach(d => {
+  docs.forEach(d => {
     const pet = d.data();
     const hp = calcCurrentHp(pet, now);
     if (hp <= 0 && (pet.ownerUid || pet.status === 'disabled')) {
@@ -2683,7 +2692,9 @@ async function markWordUnknown(uid, word) {
 async function listMapStages(maxRows = 60) {
   const snap = await getDocs(collection(db, 'mapStages'));
   const out = [];
-  snap.forEach(d => out.push({ id: d.id, ...d.data() }));
+  snap.forEach(d => {
+    if (isEnglishClassroomDoc(d)) out.push({ id: d.id, ...d.data() });
+  });
   return out
     .filter(r => Number(r.stage || 0) > 0 && Number(r.stage || 0) <= maxRows)
     .sort((a,b) => Number(a.stage || 0) - Number(b.stage || 0));
@@ -2790,7 +2801,9 @@ async function listLeaderboard(orderField = 'bestScore', maxRows = 80) {
   const q = query(collection(db, 'leaderboard'), orderBy(orderField, 'desc'), limit(maxRows));
   const snap = await getDocs(q);
   const out = [];
-  snap.forEach(d => out.push({ uid: d.id, ...d.data() }));
+  snap.forEach(d => {
+    if (isEnglishClassroomDoc(d)) out.push({ uid: d.id, ...d.data() });
+  });
   return out;
 }
 

@@ -5,7 +5,7 @@
   "description": "CLAW JP N4 日語單字、文法與闖關小教室",
   "lang": "zh-TW",
   "start_url": "./jp-n4-review.html",
-  "scope": "./",
+  "scope": "./jp-n4-review.html",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#ffffff",
