@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-06-05T11:05:16Z",
+    "updatedAt": "2026-06-06T11:05:12Z",
     "sourceCount": 380,
-    "releasedCount": 90,
+    "releasedCount": 95,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "集中",
+      "reading": "しゅうちゅう",
+      "meaning": "集中",
+      "example": "集中をしました。",
+      "translation": "進行了集中。",
+      "firstSeen": "2026-06-06",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "活躍",
+      "reading": "かつやく",
+      "meaning": "活躍",
+      "example": "活躍をしました。",
+      "translation": "進行了活躍。",
+      "firstSeen": "2026-06-06",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "反省",
+      "reading": "はんせい",
+      "meaning": "反省",
+      "example": "反省をしました。",
+      "translation": "進行了反省。",
+      "firstSeen": "2026-06-06",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "協力",
+      "reading": "きょうりょく",
+      "meaning": "協力",
+      "example": "協力をしました。",
+      "translation": "進行了協力。",
+      "firstSeen": "2026-06-06",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "努力",
+      "reading": "どりょく",
+      "meaning": "努力",
+      "example": "努力をしました。",
+      "translation": "進行了努力。",
+      "firstSeen": "2026-06-06",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "決定",
       "reading": "けってい",

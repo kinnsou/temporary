@@ -1,6 +1,6 @@
 {
   "meta": {
-    "updatedAt": "2026-06-05T11:05:15Z",
+    "updatedAt": "2026-06-06T11:05:12Z",
     "classroom": "jp-n3",
     "policy": "N5 excluded; N4 base is treated as already appeared; N3 seed releases 5 words per day.",
     "counts": {
@@ -915,8 +915,8 @@
       "meaning": "反省",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-06",
       "example": "反省をしました。",
       "translation": "進行了反省。"
     },
@@ -925,8 +925,8 @@
       "meaning": "集中",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-06",
       "example": "集中をしました。",
       "translation": "進行了集中。"
     },
@@ -935,8 +935,8 @@
       "meaning": "活躍",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-06",
       "example": "活躍をしました。",
       "translation": "進行了活躍。"
     },
@@ -945,8 +945,8 @@
       "meaning": "努力",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-06",
       "example": "努力をしました。",
       "translation": "進行了努力。"
     },
@@ -955,8 +955,8 @@
       "meaning": "協力",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-06",
       "example": "協力をしました。",
       "translation": "進行了協力。"
     },
