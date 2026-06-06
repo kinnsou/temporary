@@ -183,6 +183,7 @@ Reference implementation: 2026-04-25 cleanup pass — see Changelog below for co
 
 Newest first. Format: `YYYY-MM-DD [agent] commit `hash` — one-line summary`.
 
+- 2026-06-06 [OpenClaw] `7835ba4` — Isolated English/N4 PWA manifest scopes and filtered English Firestore collection reads so `jpN4_` pets, map stages, and leaderboard rows no longer appear in CLAW ENG.
 - 2026-06-05 [OpenClaw] `677d424` — Fixed stale home date label by decoupling it from latest vocab-data date, manually updated 2026-06-05 words (`write`/`deeply`/`road`), and rebuilt `vocab-data.json`.
 - 2026-06-03 [OpenClaw] `9261c25` — JP N3 cards now show kana primary / kanji secondary / Chinese meaning separate, quiz adds particle fill-in questions, and particle items are protected from sentence-order override.
 - 2026-06-03 [OpenClaw] `7ad9a7d` — JP N3 classroom now builds Japanese sentence-order questions from phrase chunks and labels flashcards/home cards as 日文漢字・讀音・中文意思.
