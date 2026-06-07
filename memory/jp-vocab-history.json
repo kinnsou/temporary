@@ -1,6 +1,6 @@
 {
   "meta": {
-    "updatedAt": "2026-06-06T11:05:12Z",
+    "updatedAt": "2026-06-07T11:05:13Z",
     "classroom": "jp-n3",
     "policy": "N5 excluded; N4 base is treated as already appeared; N3 seed releases 5 words per day.",
     "counts": {
@@ -965,8 +965,8 @@
       "meaning": "希望",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-07",
       "example": "希望をしました。",
       "translation": "進行了希望。"
     },
@@ -975,8 +975,8 @@
       "meaning": "調查",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-07",
       "example": "調査をしました。",
       "translation": "進行了調查。"
     },
@@ -985,8 +985,8 @@
       "meaning": "表達、表現",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-07",
       "example": "表現をしました。",
       "translation": "進行了表達、表現。"
     },
@@ -995,8 +995,8 @@
       "meaning": "想像",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-07",
       "example": "想像をしました。",
       "translation": "進行了想像。"
     },
@@ -1005,8 +1005,8 @@
       "meaning": "理解",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-07",
       "example": "理解をしました。",
       "translation": "進行了理解。"
     },

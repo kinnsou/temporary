@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-06-06T11:05:12Z",
+    "updatedAt": "2026-06-07T11:05:13Z",
     "sourceCount": 380,
-    "releasedCount": 95,
+    "releasedCount": 100,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "調査",
+      "reading": "ちょうさ",
+      "meaning": "調查",
+      "example": "調査をしました。",
+      "translation": "進行了調查。",
+      "firstSeen": "2026-06-07",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "表現",
+      "reading": "ひょうげん",
+      "meaning": "表達、表現",
+      "example": "表現をしました。",
+      "translation": "進行了表達、表現。",
+      "firstSeen": "2026-06-07",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "理解",
+      "reading": "りかい",
+      "meaning": "理解",
+      "example": "理解をしました。",
+      "translation": "進行了理解。",
+      "firstSeen": "2026-06-07",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "想像",
+      "reading": "そうぞう",
+      "meaning": "想像",
+      "example": "想像をしました。",
+      "translation": "進行了想像。",
+      "firstSeen": "2026-06-07",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "希望",
+      "reading": "きぼう",
+      "meaning": "希望",
+      "example": "希望をしました。",
+      "translation": "進行了希望。",
+      "firstSeen": "2026-06-07",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "集中",
       "reading": "しゅうちゅう",
