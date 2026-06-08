@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-06-07T11:05:13Z",
+    "updatedAt": "2026-06-08T11:05:14Z",
     "sourceCount": 380,
-    "releasedCount": 100,
+    "releasedCount": 105,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "記録",
+      "reading": "きろく",
+      "meaning": "紀錄",
+      "example": "記録をしました。",
+      "translation": "進行了紀錄。",
+      "firstSeen": "2026-06-08",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "比較",
+      "reading": "ひかく",
+      "meaning": "比較",
+      "example": "比較をしました。",
+      "translation": "進行了比較。",
+      "firstSeen": "2026-06-08",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "検討",
+      "reading": "けんとう",
+      "meaning": "探討、研究",
+      "example": "検討をしました。",
+      "translation": "進行了探討、研究。",
+      "firstSeen": "2026-06-08",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "改善",
+      "reading": "かいぜん",
+      "meaning": "改善",
+      "example": "改善をしました。",
+      "translation": "進行了改善。",
+      "firstSeen": "2026-06-08",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "存在",
+      "reading": "そんざい",
+      "meaning": "存在",
+      "example": "存在をしました。",
+      "translation": "進行了存在。",
+      "firstSeen": "2026-06-08",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "調査",
       "reading": "ちょうさ",

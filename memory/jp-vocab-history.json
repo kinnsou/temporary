@@ -1,6 +1,6 @@
 {
   "meta": {
-    "updatedAt": "2026-06-07T11:05:13Z",
+    "updatedAt": "2026-06-08T11:05:14Z",
     "classroom": "jp-n3",
     "policy": "N5 excluded; N4 base is treated as already appeared; N3 seed releases 5 words per day.",
     "counts": {
@@ -1015,8 +1015,8 @@
       "meaning": "比較",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-08",
       "example": "比較をしました。",
       "translation": "進行了比較。"
     },
@@ -1025,8 +1025,8 @@
       "meaning": "改善",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-08",
       "example": "改善をしました。",
       "translation": "進行了改善。"
     },
@@ -1035,8 +1035,8 @@
       "meaning": "探討、研究",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-08",
       "example": "検討をしました。",
       "translation": "進行了探討、研究。"
     },
@@ -1045,8 +1045,8 @@
       "meaning": "紀錄",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-08",
       "example": "記録をしました。",
       "translation": "進行了紀錄。"
     },
@@ -1055,8 +1055,8 @@
       "meaning": "存在",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-08",
       "example": "存在をしました。",
       "translation": "進行了存在。"
     },
