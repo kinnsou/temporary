@@ -1,6 +1,6 @@
 {
   "meta": {
-    "updatedAt": "2026-06-04T09:18:10Z",
+    "updatedAt": "2026-06-08T12:38:33Z",
     "sourceCount": 104,
     "releasedCount": 104,
     "classroom": "jp-n4",
@@ -1801,52 +1801,52 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 26,
-      "example": "先生は空港について説明しました。",
-      "example_ja": "先生は空港について説明しました。",
-      "example_kana": "せんせいは くうこうについて せつめいしました。",
-      "translation": "老師說明了關於機場的內容。",
-      "translation_zh": "老師說明了關於機場的內容。",
-      "audioText": "先生は空港について説明しました。",
+      "example": "空港で友達を待っています。",
+      "example_ja": "空港で友達を待っています。",
+      "example_kana": "くうこうで ともだちを まっています。",
+      "translation": "我正在機場等朋友。",
+      "translation_zh": "我正在機場等朋友。",
+      "audioText": "空港で友達を待っています。",
       "particles": [
         {
           "kind": "particle",
-          "before": "先生",
-          "answer": "は",
-          "after": "空港について説明しました。",
+          "before": "空港",
+          "answer": "で",
+          "after": "友達を待っています。",
           "choices": [
-            "は",
+            "で",
             "を",
             "が",
             "に"
           ],
-          "explanation": "這裡用「は」讓句子自然連接。"
+          "explanation": "這裡用「で」讓句子自然連接。"
         }
       ],
       "grammar": {
         "kind": "particle",
-        "before": "先生",
-        "answer": "は",
-        "after": "空港について説明しました。",
+        "before": "空港",
+        "answer": "で",
+        "after": "友達を待っています。",
         "choices": [
-          "は",
+          "で",
           "を",
           "が",
           "に"
         ],
-        "explanation": "這裡用「は」讓句子自然連接。",
+        "explanation": "這裡用「で」讓句子自然連接。",
         "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "先生",
-          "は",
-          "空港"
+          "空港",
+          "で",
+          "友達"
         ]
       },
       "chunks": [
-        "先生",
-        "は",
         "空港",
-        "に",
-        "ついて説明しました。"
+        "で",
+        "友達",
+        "を",
+        "待っています。"
       ],
       "distractors": [],
       "synonyms": []
@@ -1866,52 +1866,50 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 27,
-      "example": "先生は旅館について説明しました。",
-      "example_ja": "先生は旅館について説明しました。",
-      "example_kana": "せんせいは りょかんについて せつめいしました。",
-      "translation": "老師說明了關於旅館的內容。",
-      "translation_zh": "老師說明了關於旅館的內容。",
-      "audioText": "先生は旅館について説明しました。",
+      "example": "温泉のある旅館に泊まりました。",
+      "example_ja": "温泉のある旅館に泊まりました。",
+      "example_kana": "おんせんの ある りょかんに とまりました。",
+      "translation": "住在有溫泉的日式旅館。",
+      "translation_zh": "住在有溫泉的日式旅館。",
+      "audioText": "温泉のある旅館に泊まりました。",
       "particles": [
         {
           "kind": "particle",
-          "before": "先生",
-          "answer": "は",
-          "after": "旅館について説明しました。",
+          "before": "温泉のある旅館",
+          "answer": "に",
+          "after": "泊まりました。",
           "choices": [
-            "は",
+            "に",
             "を",
             "が",
-            "に"
+            "と"
           ],
-          "explanation": "這裡用「は」讓句子自然連接。"
+          "explanation": "這裡用「に」讓句子自然連接。"
         }
       ],
       "grammar": {
         "kind": "particle",
-        "before": "先生",
-        "answer": "は",
-        "after": "旅館について説明しました。",
+        "before": "温泉のある旅館",
+        "answer": "に",
+        "after": "泊まりました。",
         "choices": [
-          "は",
+          "に",
           "を",
           "が",
-          "に"
+          "と"
         ],
-        "explanation": "這裡用「は」讓句子自然連接。",
+        "explanation": "這裡用「に」讓句子自然連接。",
         "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "先生",
-          "は",
-          "旅館"
+          "温泉のある旅館",
+          "に",
+          "泊まりました。"
         ]
       },
       "chunks": [
-        "先生",
-        "は",
-        "旅館",
+        "温泉のある旅館",
         "に",
-        "ついて説明しました。"
+        "泊まりました。"
       ],
       "distractors": [],
       "synonyms": []
@@ -1931,18 +1929,18 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 28,
-      "example": "先生は交通について説明しました。",
-      "example_ja": "先生は交通について説明しました。",
-      "example_kana": "せんせいは こうつうについて せつめいしました。",
-      "translation": "老師說明了關於交通的內容。",
-      "translation_zh": "老師說明了關於交通的內容。",
-      "audioText": "先生は交通について説明しました。",
+      "example": "この町は交通が便利です。",
+      "example_ja": "この町は交通が便利です。",
+      "example_kana": "この まちは こうつうが べんりです。",
+      "translation": "這個城鎮交通很方便。",
+      "translation_zh": "這個城鎮交通很方便。",
+      "audioText": "この町は交通が便利です。",
       "particles": [
         {
           "kind": "particle",
-          "before": "先生",
+          "before": "この町",
           "answer": "は",
-          "after": "交通について説明しました。",
+          "after": "交通が便利です。",
           "choices": [
             "は",
             "を",
@@ -1954,9 +1952,9 @@
       ],
       "grammar": {
         "kind": "particle",
-        "before": "先生",
+        "before": "この町",
         "answer": "は",
-        "after": "交通について説明しました。",
+        "after": "交通が便利です。",
         "choices": [
           "は",
           "を",
@@ -1966,17 +1964,17 @@
         "explanation": "這裡用「は」讓句子自然連接。",
         "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "先生",
+          "この町",
           "は",
           "交通"
         ]
       },
       "chunks": [
-        "先生",
+        "この町",
         "は",
         "交通",
-        "に",
-        "ついて説明しました。"
+        "が",
+        "便利です。"
       ],
       "distractors": [],
       "synonyms": []
@@ -1996,52 +1994,52 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 29,
-      "example": "先生は道具について説明しました。",
-      "example_ja": "先生は道具について説明しました。",
-      "example_kana": "せんせいは どうぐについて せつめいしました。",
-      "translation": "老師說明了關於工具的內容。",
-      "translation_zh": "老師說明了關於工具的內容。",
-      "audioText": "先生は道具について説明しました。",
+      "example": "料理に使う道具を洗いました。",
+      "example_ja": "料理に使う道具を洗いました。",
+      "example_kana": "りょうりに つかう どうぐを あらいました。",
+      "translation": "洗了做菜用的工具。",
+      "translation_zh": "洗了做菜用的工具。",
+      "audioText": "料理に使う道具を洗いました。",
       "particles": [
         {
           "kind": "particle",
-          "before": "先生",
-          "answer": "は",
-          "after": "道具について説明しました。",
+          "before": "料理",
+          "answer": "に",
+          "after": "使う道具を洗いました。",
           "choices": [
-            "は",
+            "に",
             "を",
             "が",
-            "に"
+            "と"
           ],
-          "explanation": "這裡用「は」讓句子自然連接。"
+          "explanation": "這裡用「に」讓句子自然連接。"
         }
       ],
       "grammar": {
         "kind": "particle",
-        "before": "先生",
-        "answer": "は",
-        "after": "道具について説明しました。",
+        "before": "料理",
+        "answer": "に",
+        "after": "使う道具を洗いました。",
         "choices": [
-          "は",
+          "に",
           "を",
           "が",
-          "に"
+          "と"
         ],
-        "explanation": "這裡用「は」讓句子自然連接。",
+        "explanation": "這裡用「に」讓句子自然連接。",
         "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "先生",
-          "は",
-          "道具"
+          "料理",
+          "に",
+          "使う道具"
         ]
       },
       "chunks": [
-        "先生",
-        "は",
-        "道具",
+        "料理",
         "に",
-        "ついて説明しました。"
+        "使う道具",
+        "を",
+        "洗いました。"
       ],
       "distractors": [],
       "synonyms": []
@@ -2061,52 +2059,50 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 30,
-      "example": "先生は生活について説明しました。",
-      "example_ja": "先生は生活について説明しました。",
-      "example_kana": "せんせいは せいかつについて せつめいしました。",
-      "translation": "老師說明了關於生活的內容。",
-      "translation_zh": "老師說明了關於生活的內容。",
-      "audioText": "先生は生活について説明しました。",
+      "example": "日本の生活に少し慣れました。",
+      "example_ja": "日本の生活に少し慣れました。",
+      "example_kana": "にほんの せいかつに すこし なれました。",
+      "translation": "稍微習慣日本的生活了。",
+      "translation_zh": "稍微習慣日本的生活了。",
+      "audioText": "日本の生活に少し慣れました。",
       "particles": [
         {
           "kind": "particle",
-          "before": "先生",
-          "answer": "は",
-          "after": "生活について説明しました。",
+          "before": "日本の生活",
+          "answer": "に",
+          "after": "少し慣れました。",
           "choices": [
-            "は",
+            "に",
             "を",
             "が",
-            "に"
+            "と"
           ],
-          "explanation": "這裡用「は」讓句子自然連接。"
+          "explanation": "這裡用「に」讓句子自然連接。"
         }
       ],
       "grammar": {
         "kind": "particle",
-        "before": "先生",
-        "answer": "は",
-        "after": "生活について説明しました。",
+        "before": "日本の生活",
+        "answer": "に",
+        "after": "少し慣れました。",
         "choices": [
-          "は",
+          "に",
           "を",
           "が",
-          "に"
+          "と"
         ],
-        "explanation": "這裡用「は」讓句子自然連接。",
+        "explanation": "這裡用「に」讓句子自然連接。",
         "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "先生",
-          "は",
-          "生活"
+          "日本の生活",
+          "に",
+          "少し慣れました。"
         ]
       },
       "chunks": [
-        "先生",
-        "は",
-        "生活",
+        "日本の生活",
         "に",
-        "ついて説明しました。"
+        "少し慣れました。"
       ],
       "distractors": [],
       "synonyms": []
@@ -2126,52 +2122,50 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 31,
-      "example": "先生は習慣について説明しました。",
-      "example_ja": "先生は習慣について説明しました。",
-      "example_kana": "せんせいは しゅうかんについて せつめいしました。",
-      "translation": "老師說明了關於習慣的內容。",
-      "translation_zh": "老師說明了關於習慣的內容。",
-      "audioText": "先生は習慣について説明しました。",
+      "example": "毎朝散歩するのが父の習慣です。",
+      "example_ja": "毎朝散歩するのが父の習慣です。",
+      "example_kana": "まいあさ さんぽするのが ちちの しゅうかんです。",
+      "translation": "每天早上散步是爸爸的習慣。",
+      "translation_zh": "每天早上散步是爸爸的習慣。",
+      "audioText": "毎朝散歩するのが父の習慣です。",
       "particles": [
         {
           "kind": "particle",
-          "before": "先生",
-          "answer": "は",
-          "after": "習慣について説明しました。",
+          "before": "毎朝散歩するの",
+          "answer": "が",
+          "after": "父の習慣です。",
           "choices": [
-            "は",
-            "を",
             "が",
-            "に"
+            "を",
+            "に",
+            "と"
           ],
-          "explanation": "這裡用「は」讓句子自然連接。"
+          "explanation": "這裡用「が」讓句子自然連接。"
         }
       ],
       "grammar": {
         "kind": "particle",
-        "before": "先生",
-        "answer": "は",
-        "after": "習慣について説明しました。",
+        "before": "毎朝散歩するの",
+        "answer": "が",
+        "after": "父の習慣です。",
         "choices": [
-          "は",
-          "を",
           "が",
-          "に"
+          "を",
+          "に",
+          "と"
         ],
-        "explanation": "這裡用「は」讓句子自然連接。",
+        "explanation": "這裡用「が」讓句子自然連接。",
         "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "先生",
-          "は",
-          "習慣"
+          "毎朝散歩するの",
+          "が",
+          "父の習慣です。"
         ]
       },
       "chunks": [
-        "先生",
-        "は",
-        "習慣",
-        "に",
-        "ついて説明しました。"
+        "毎朝散歩するの",
+        "が",
+        "父の習慣です。"
       ],
       "distractors": [],
       "synonyms": []
@@ -2191,18 +2185,18 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 32,
-      "example": "先生は趣味について説明しました。",
-      "example_ja": "先生は趣味について説明しました。",
-      "example_kana": "せんせいは しゅみについて せつめいしました。",
-      "translation": "老師說明了關於興趣的內容。",
-      "translation_zh": "老師說明了關於興趣的內容。",
-      "audioText": "先生は趣味について説明しました。",
+      "example": "私の趣味は写真を撮ることです。",
+      "example_ja": "私の趣味は写真を撮ることです。",
+      "example_kana": "わたしの しゅみは しゃしんを とることです。",
+      "translation": "我的興趣是拍照。",
+      "translation_zh": "我的興趣是拍照。",
+      "audioText": "私の趣味は写真を撮ることです。",
       "particles": [
         {
           "kind": "particle",
-          "before": "先生",
+          "before": "私の趣味",
           "answer": "は",
-          "after": "趣味について説明しました。",
+          "after": "写真を撮ることです。",
           "choices": [
             "は",
             "を",
@@ -2214,9 +2208,9 @@
       ],
       "grammar": {
         "kind": "particle",
-        "before": "先生",
+        "before": "私の趣味",
         "answer": "は",
-        "after": "趣味について説明しました。",
+        "after": "写真を撮ることです。",
         "choices": [
           "は",
           "を",
@@ -2226,17 +2220,17 @@
         "explanation": "這裡用「は」讓句子自然連接。",
         "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "先生",
+          "私の趣味",
           "は",
-          "趣味"
+          "写真"
         ]
       },
       "chunks": [
-        "先生",
+        "私の趣味",
         "は",
-        "趣味",
-        "に",
-        "ついて説明しました。"
+        "写真",
+        "を",
+        "撮ることです。"
       ],
       "distractors": [],
       "synonyms": []
@@ -2256,52 +2250,50 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 33,
-      "example": "先生は理由について説明しました。",
-      "example_ja": "先生は理由について説明しました。",
-      "example_kana": "せんせいは りゆうについて せつめいしました。",
-      "translation": "老師說明了關於理由的內容。",
-      "translation_zh": "老師說明了關於理由的內容。",
-      "audioText": "先生は理由について説明しました。",
+      "example": "遅れた理由を教えてください。",
+      "example_ja": "遅れた理由を教えてください。",
+      "example_kana": "おくれた りゆうを おしえてください。",
+      "translation": "請告訴我遲到的理由。",
+      "translation_zh": "請告訴我遲到的理由。",
+      "audioText": "遅れた理由を教えてください。",
       "particles": [
         {
           "kind": "particle",
-          "before": "先生",
-          "answer": "は",
-          "after": "理由について説明しました。",
+          "before": "遅れた理由",
+          "answer": "を",
+          "after": "教えてください。",
           "choices": [
-            "は",
             "を",
             "が",
-            "に"
+            "に",
+            "と"
           ],
-          "explanation": "這裡用「は」讓句子自然連接。"
+          "explanation": "這裡用「を」讓句子自然連接。"
         }
       ],
       "grammar": {
         "kind": "particle",
-        "before": "先生",
-        "answer": "は",
-        "after": "理由について説明しました。",
+        "before": "遅れた理由",
+        "answer": "を",
+        "after": "教えてください。",
         "choices": [
-          "は",
           "を",
           "が",
-          "に"
+          "に",
+          "と"
         ],
-        "explanation": "這裡用「は」讓句子自然連接。",
+        "explanation": "這裡用「を」讓句子自然連接。",
         "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "先生",
-          "は",
-          "理由"
+          "遅れた理由",
+          "を",
+          "教えてください。"
         ]
       },
       "chunks": [
-        "先生",
-        "は",
-        "理由",
-        "に",
-        "ついて説明しました。"
+        "遅れた理由",
+        "を",
+        "教えてください。"
       ],
       "distractors": [],
       "synonyms": []
@@ -2321,52 +2313,50 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 34,
-      "example": "先生は意味について説明しました。",
-      "example_ja": "先生は意味について説明しました。",
-      "example_kana": "せんせいは いみについて せつめいしました。",
-      "translation": "老師說明了關於意思的內容。",
-      "translation_zh": "老師說明了關於意思的內容。",
-      "audioText": "先生は意味について説明しました。",
+      "example": "この言葉の意味がわかりません。",
+      "example_ja": "この言葉の意味がわかりません。",
+      "example_kana": "この ことばの いみが わかりません。",
+      "translation": "我不懂這個詞的意思。",
+      "translation_zh": "我不懂這個詞的意思。",
+      "audioText": "この言葉の意味がわかりません。",
       "particles": [
         {
           "kind": "particle",
-          "before": "先生",
-          "answer": "は",
-          "after": "意味について説明しました。",
+          "before": "この言葉の意味",
+          "answer": "が",
+          "after": "わかりません。",
           "choices": [
-            "は",
-            "を",
             "が",
-            "に"
+            "を",
+            "に",
+            "と"
           ],
-          "explanation": "這裡用「は」讓句子自然連接。"
+          "explanation": "這裡用「が」讓句子自然連接。"
         }
       ],
       "grammar": {
         "kind": "particle",
-        "before": "先生",
-        "answer": "は",
-        "after": "意味について説明しました。",
+        "before": "この言葉の意味",
+        "answer": "が",
+        "after": "わかりません。",
         "choices": [
-          "は",
-          "を",
           "が",
-          "に"
+          "を",
+          "に",
+          "と"
         ],
-        "explanation": "這裡用「は」讓句子自然連接。",
+        "explanation": "這裡用「が」讓句子自然連接。",
         "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "先生",
-          "は",
-          "意味"
+          "この言葉の意味",
+          "が",
+          "わかりません。"
         ]
       },
       "chunks": [
-        "先生",
-        "は",
-        "意味",
-        "に",
-        "ついて説明しました。"
+        "この言葉の意味",
+        "が",
+        "わかりません。"
       ],
       "distractors": [],
       "synonyms": []
@@ -2386,52 +2376,52 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 35,
-      "example": "先生は意見について説明しました。",
-      "example_ja": "先生は意見について説明しました。",
-      "example_kana": "せんせいは いけんについて せつめいしました。",
-      "translation": "老師說明了關於意見的內容。",
-      "translation_zh": "老師說明了關於意見的內容。",
-      "audioText": "先生は意見について説明しました。",
+      "example": "家族に自分の意見を話しました。",
+      "example_ja": "家族に自分の意見を話しました。",
+      "example_kana": "かぞくに じぶんの いけんを はなしました。",
+      "translation": "向家人說了自己的意見。",
+      "translation_zh": "向家人說了自己的意見。",
+      "audioText": "家族に自分の意見を話しました。",
       "particles": [
         {
           "kind": "particle",
-          "before": "先生",
-          "answer": "は",
-          "after": "意見について説明しました。",
+          "before": "家族",
+          "answer": "に",
+          "after": "自分の意見を話しました。",
           "choices": [
-            "は",
+            "に",
             "を",
             "が",
-            "に"
+            "と"
           ],
-          "explanation": "這裡用「は」讓句子自然連接。"
+          "explanation": "這裡用「に」讓句子自然連接。"
         }
       ],
       "grammar": {
         "kind": "particle",
-        "before": "先生",
-        "answer": "は",
-        "after": "意見について説明しました。",
+        "before": "家族",
+        "answer": "に",
+        "after": "自分の意見を話しました。",
         "choices": [
-          "は",
+          "に",
           "を",
           "が",
-          "に"
+          "と"
         ],
-        "explanation": "這裡用「は」讓句子自然連接。",
+        "explanation": "這裡用「に」讓句子自然連接。",
         "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "先生",
-          "は",
-          "意見"
+          "家族",
+          "に",
+          "自分の意見"
         ]
       },
       "chunks": [
-        "先生",
-        "は",
-        "意見",
+        "家族",
         "に",
-        "ついて説明しました。"
+        "自分の意見",
+        "を",
+        "話しました。"
       ],
       "distractors": [],
       "synonyms": []
@@ -2451,52 +2441,52 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 36,
-      "example": "先生は場所について説明しました。",
-      "example_ja": "先生は場所について説明しました。",
-      "example_kana": "せんせいは ばしょについて せつめいしました。",
-      "translation": "老師說明了關於地點的內容。",
-      "translation_zh": "老師說明了關於地點的內容。",
-      "audioText": "先生は場所について説明しました。",
+      "example": "駅の近くで静かな場所を見つけました。",
+      "example_ja": "駅の近くで静かな場所を見つけました。",
+      "example_kana": "えきの ちかくで しずかな ばしょを みつけました。",
+      "translation": "在車站附近找到了一個安靜的地方。",
+      "translation_zh": "在車站附近找到了一個安靜的地方。",
+      "audioText": "駅の近くで静かな場所を見つけました。",
       "particles": [
         {
           "kind": "particle",
-          "before": "先生",
-          "answer": "は",
-          "after": "場所について説明しました。",
+          "before": "駅の近く",
+          "answer": "で",
+          "after": "静かな場所を見つけました。",
           "choices": [
-            "は",
+            "で",
             "を",
             "が",
             "に"
           ],
-          "explanation": "這裡用「は」讓句子自然連接。"
+          "explanation": "這裡用「で」讓句子自然連接。"
         }
       ],
       "grammar": {
         "kind": "particle",
-        "before": "先生",
-        "answer": "は",
-        "after": "場所について説明しました。",
+        "before": "駅の近く",
+        "answer": "で",
+        "after": "静かな場所を見つけました。",
         "choices": [
-          "は",
+          "で",
           "を",
           "が",
           "に"
         ],
-        "explanation": "這裡用「は」讓句子自然連接。",
+        "explanation": "這裡用「で」讓句子自然連接。",
         "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "先生",
-          "は",
-          "場所"
+          "駅の近く",
+          "で",
+          "静かな場所"
         ]
       },
       "chunks": [
-        "先生",
-        "は",
-        "場所",
-        "に",
-        "ついて説明しました。"
+        "駅の近く",
+        "で",
+        "静かな場所",
+        "を",
+        "見つけました。"
       ],
       "distractors": [],
       "synonyms": []
@@ -2516,52 +2506,52 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 37,
-      "example": "先生は住所について説明しました。",
-      "example_ja": "先生は住所について説明しました。",
-      "example_kana": "せんせいは じゅうしょについて せつめいしました。",
-      "translation": "老師說明了關於地址的內容。",
-      "translation_zh": "老師說明了關於地址的內容。",
-      "audioText": "先生は住所について説明しました。",
+      "example": "ここに住所を書いてください。",
+      "example_ja": "ここに住所を書いてください。",
+      "example_kana": "ここに じゅうしょを かいてください。",
+      "translation": "請在這裡寫地址。",
+      "translation_zh": "請在這裡寫地址。",
+      "audioText": "ここに住所を書いてください。",
       "particles": [
         {
           "kind": "particle",
-          "before": "先生",
-          "answer": "は",
-          "after": "住所について説明しました。",
+          "before": "ここ",
+          "answer": "に",
+          "after": "住所を書いてください。",
           "choices": [
-            "は",
+            "に",
             "を",
             "が",
-            "に"
+            "と"
           ],
-          "explanation": "這裡用「は」讓句子自然連接。"
+          "explanation": "這裡用「に」讓句子自然連接。"
         }
       ],
       "grammar": {
         "kind": "particle",
-        "before": "先生",
-        "answer": "は",
-        "after": "住所について説明しました。",
+        "before": "ここ",
+        "answer": "に",
+        "after": "住所を書いてください。",
         "choices": [
-          "は",
+          "に",
           "を",
           "が",
-          "に"
+          "と"
         ],
-        "explanation": "這裡用「は」讓句子自然連接。",
+        "explanation": "這裡用「に」讓句子自然連接。",
         "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "先生",
-          "は",
+          "ここ",
+          "に",
           "住所"
         ]
       },
       "chunks": [
-        "先生",
-        "は",
-        "住所",
+        "ここ",
         "に",
-        "ついて説明しました。"
+        "住所",
+        "を",
+        "書いてください。"
       ],
       "distractors": [],
       "synonyms": []
@@ -2581,52 +2571,52 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 38,
-      "example": "先生は名前について説明しました。",
-      "example_ja": "先生は名前について説明しました。",
-      "example_kana": "せんせいは なまえについて せつめいしました。",
-      "translation": "老師說明了關於名字的內容。",
-      "translation_zh": "老師說明了關於名字的內容。",
-      "audioText": "先生は名前について説明しました。",
+      "example": "紙に名前を書いてください。",
+      "example_ja": "紙に名前を書いてください。",
+      "example_kana": "かみに なまえを かいてください。",
+      "translation": "請在紙上寫名字。",
+      "translation_zh": "請在紙上寫名字。",
+      "audioText": "紙に名前を書いてください。",
       "particles": [
         {
           "kind": "particle",
-          "before": "先生",
-          "answer": "は",
-          "after": "名前について説明しました。",
+          "before": "紙",
+          "answer": "に",
+          "after": "名前を書いてください。",
           "choices": [
-            "は",
+            "に",
             "を",
             "が",
-            "に"
+            "と"
           ],
-          "explanation": "這裡用「は」讓句子自然連接。"
+          "explanation": "這裡用「に」讓句子自然連接。"
         }
       ],
       "grammar": {
         "kind": "particle",
-        "before": "先生",
-        "answer": "は",
-        "after": "名前について説明しました。",
+        "before": "紙",
+        "answer": "に",
+        "after": "名前を書いてください。",
         "choices": [
-          "は",
+          "に",
           "を",
           "が",
-          "に"
+          "と"
         ],
-        "explanation": "這裡用「は」讓句子自然連接。",
+        "explanation": "這裡用「に」讓句子自然連接。",
         "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "先生",
-          "は",
+          "紙",
+          "に",
           "名前"
         ]
       },
       "chunks": [
-        "先生",
-        "は",
-        "名前",
+        "紙",
         "に",
-        "ついて説明しました。"
+        "名前",
+        "を",
+        "書いてください。"
       ],
       "distractors": [],
       "synonyms": []
@@ -2646,52 +2636,50 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 39,
-      "example": "先生は番号について説明しました。",
-      "example_ja": "先生は番号について説明しました。",
-      "example_kana": "せんせいは ばんごうについて せつめいしました。",
-      "translation": "老師說明了關於號碼的內容。",
-      "translation_zh": "老師說明了關於號碼的內容。",
-      "audioText": "先生は番号について説明しました。",
+      "example": "予約の番号を見せてください。",
+      "example_ja": "予約の番号を見せてください。",
+      "example_kana": "よやくの ばんごうを みせてください。",
+      "translation": "請出示預約號碼。",
+      "translation_zh": "請出示預約號碼。",
+      "audioText": "予約の番号を見せてください。",
       "particles": [
         {
           "kind": "particle",
-          "before": "先生",
-          "answer": "は",
-          "after": "番号について説明しました。",
+          "before": "予約の番号",
+          "answer": "を",
+          "after": "見せてください。",
           "choices": [
-            "は",
             "を",
             "が",
-            "に"
+            "に",
+            "と"
           ],
-          "explanation": "這裡用「は」讓句子自然連接。"
+          "explanation": "這裡用「を」讓句子自然連接。"
         }
       ],
       "grammar": {
         "kind": "particle",
-        "before": "先生",
-        "answer": "は",
-        "after": "番号について説明しました。",
+        "before": "予約の番号",
+        "answer": "を",
+        "after": "見せてください。",
         "choices": [
-          "は",
           "を",
           "が",
-          "に"
+          "に",
+          "と"
         ],
-        "explanation": "這裡用「は」讓句子自然連接。",
+        "explanation": "這裡用「を」讓句子自然連接。",
         "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "先生",
-          "は",
-          "番号"
+          "予約の番号",
+          "を",
+          "見せてください。"
         ]
       },
       "chunks": [
-        "先生",
-        "は",
-        "番号",
-        "に",
-        "ついて説明しました。"
+        "予約の番号",
+        "を",
+        "見せてください。"
       ],
       "distractors": [],
       "synonyms": []
@@ -2774,50 +2762,52 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 41,
-      "example": "この説明は特別です。",
-      "example_ja": "この説明は特別です。",
-      "example_kana": "この せつめいは とくべつです。",
-      "translation": "這個說明很特別。",
-      "translation_zh": "這個說明很特別。",
-      "audioText": "この説明は特別です。",
+      "example": "誕生日に特別な料理を作りました。",
+      "example_ja": "誕生日に特別な料理を作りました。",
+      "example_kana": "たんじょうびに とくべつな りょうりを つくりました。",
+      "translation": "生日那天做了特別的料理。",
+      "translation_zh": "生日那天做了特別的料理。",
+      "audioText": "誕生日に特別な料理を作りました。",
       "particles": [
         {
           "kind": "particle",
-          "before": "この説明",
-          "answer": "は",
-          "after": "特別です。",
+          "before": "誕生日",
+          "answer": "に",
+          "after": "特別な料理を作りました。",
           "choices": [
-            "は",
+            "に",
             "を",
             "が",
-            "に"
+            "と"
           ],
-          "explanation": "這裡用「は」讓句子自然連接。"
+          "explanation": "這裡用「に」讓句子自然連接。"
         }
       ],
       "grammar": {
         "kind": "particle",
-        "before": "この説明",
-        "answer": "は",
-        "after": "特別です。",
+        "before": "誕生日",
+        "answer": "に",
+        "after": "特別な料理を作りました。",
         "choices": [
-          "は",
+          "に",
           "を",
           "が",
-          "に"
+          "と"
         ],
-        "explanation": "這裡用「は」讓句子自然連接。",
+        "explanation": "這裡用「に」讓句子自然連接。",
         "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "この説明",
-          "は",
-          "特別です。"
+          "誕生日",
+          "に",
+          "特別な料理"
         ]
       },
       "chunks": [
-        "この説明",
-        "は",
-        "特別です。"
+        "誕生日",
+        "に",
+        "特別な料理",
+        "を",
+        "作りました。"
       ],
       "distractors": [],
       "synonyms": []
@@ -2837,51 +2827,53 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 42,
-      "example": "明日までに準備しなければなりません。",
-      "example_ja": "明日までに準備しなければなりません。",
-      "example_kana": "あしたまでに じゅんびしなければなりません。",
-      "translation": "明天以前必須準備。",
-      "translation_zh": "明天以前必須準備。",
-      "audioText": "明日までに準備しなければなりません。",
+      "example": "旅行の準備はもうできました。",
+      "example_ja": "旅行の準備はもうできました。",
+      "example_kana": "りょこうの じゅんびは もう できました。",
+      "translation": "旅行的準備已經完成了。",
+      "translation_zh": "旅行的準備已經完成了。",
+      "audioText": "旅行の準備はもうできました。",
       "particles": [
         {
           "kind": "particle",
-          "before": "明日ま",
-          "answer": "で",
-          "after": "に準備しなければなりません。",
+          "before": "旅行の準備",
+          "answer": "は",
+          "after": "もうできました。",
           "choices": [
-            "で",
+            "は",
             "を",
             "が",
             "に"
           ],
-          "explanation": "這裡用「で」讓句子自然連接。"
+          "explanation": "這裡用「は」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "明日までに準備し",
-        "answer": "なければなりません",
-        "after": "。",
+        "kind": "particle",
+        "before": "旅行の準備",
+        "answer": "は",
+        "after": "もうできました。",
         "choices": [
-          "なければなりません",
-          "てもいいです",
-          "ことがあります",
-          "すぎます"
-        ],
-        "explanation": "「〜なければなりません」表示必須做某事。",
-        "hintChunks": [
-          "明日ま",
-          "で",
+          "は",
+          "を",
+          "が",
           "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "旅行の準備",
+          "は",
+          "も"
         ]
       },
       "chunks": [
-        "明日ま",
+        "旅行の準備",
+        "は",
+        "も",
+        "う",
         "で",
-        "に",
-        "準備しなければなりません。"
+        "きました。"
       ],
       "distractors": [],
       "synonyms": []
@@ -2901,51 +2893,52 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 43,
-      "example": "明日までに説明しなければなりません。",
-      "example_ja": "明日までに説明しなければなりません。",
-      "example_kana": "あしたまでに せつめいしなければなりません。",
-      "translation": "明天以前必須說明。",
-      "translation_zh": "明天以前必須說明。",
-      "audioText": "明日までに説明しなければなりません。",
+      "example": "店員が使い方を説明してくれました。",
+      "example_ja": "店員が使い方を説明してくれました。",
+      "example_kana": "てんいんが つかいかたを せつめいしてくれました。",
+      "translation": "店員向我說明了使用方法。",
+      "translation_zh": "店員向我說明了使用方法。",
+      "audioText": "店員が使い方を説明してくれました。",
       "particles": [
         {
           "kind": "particle",
-          "before": "明日ま",
-          "answer": "で",
-          "after": "に説明しなければなりません。",
+          "before": "店員",
+          "answer": "が",
+          "after": "使い方を説明してくれました。",
           "choices": [
-            "で",
-            "を",
             "が",
-            "に"
+            "を",
+            "に",
+            "と"
           ],
-          "explanation": "這裡用「で」讓句子自然連接。"
+          "explanation": "這裡用「が」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "明日までに説明し",
-        "answer": "なければなりません",
-        "after": "。",
+        "kind": "particle",
+        "before": "店員",
+        "answer": "が",
+        "after": "使い方を説明してくれました。",
         "choices": [
-          "なければなりません",
-          "てもいいです",
-          "ことがあります",
-          "すぎます"
+          "が",
+          "を",
+          "に",
+          "と"
         ],
-        "explanation": "「〜なければなりません」表示必須做某事。",
+        "explanation": "這裡用「が」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "明日ま",
-          "で",
-          "に"
+          "店員",
+          "が",
+          "使い方"
         ]
       },
       "chunks": [
-        "明日ま",
-        "で",
-        "に",
-        "説明しなければなりません。"
+        "店員",
+        "が",
+        "使い方",
+        "を",
+        "説明してくれました。"
       ],
       "distractors": [],
       "synonyms": []
@@ -2965,18 +2958,18 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 44,
-      "example": "明日までに約束しなければなりません。",
-      "example_ja": "明日までに約束しなければなりません。",
-      "example_kana": "あしたまでに やくそくしなければなりません。",
-      "translation": "明天以前必須約定。",
-      "translation_zh": "明天以前必須約定。",
-      "audioText": "明日までに約束しなければなりません。",
+      "example": "友達と駅で会う約束をしました。",
+      "example_ja": "友達と駅で会う約束をしました。",
+      "example_kana": "ともだちと えきで あう やくそくを しました。",
+      "translation": "和朋友約好在車站見面。",
+      "translation_zh": "和朋友約好在車站見面。",
+      "audioText": "友達と駅で会う約束をしました。",
       "particles": [
         {
           "kind": "particle",
-          "before": "明日ま",
+          "before": "友達と駅",
           "answer": "で",
-          "after": "に約束しなければなりません。",
+          "after": "会う約束をしました。",
           "choices": [
             "で",
             "を",
@@ -2987,29 +2980,32 @@
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "明日までに約束し",
-        "answer": "なければなりません",
-        "after": "。",
+        "kind": "particle",
+        "before": "友達と駅",
+        "answer": "で",
+        "after": "会う約束をしました。",
         "choices": [
-          "なければなりません",
-          "てもいいです",
-          "ことがあります",
-          "すぎます"
-        ],
-        "explanation": "「〜なければなりません」表示必須做某事。",
-        "hintChunks": [
-          "明日ま",
           "で",
+          "を",
+          "が",
           "に"
+        ],
+        "explanation": "這裡用「で」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "友達",
+          "と",
+          "駅"
         ]
       },
       "chunks": [
-        "明日ま",
+        "友達",
+        "と",
+        "駅",
         "で",
-        "に",
-        "約束しなければなりません。"
+        "会う約束",
+        "を",
+        "しました。"
       ],
       "distractors": [],
       "synonyms": []
@@ -3029,51 +3025,54 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 45,
-      "example": "明日までに相談しなければなりません。",
-      "example_ja": "明日までに相談しなければなりません。",
-      "example_kana": "あしたまでに そうだんしなければなりません。",
-      "translation": "明天以前必須商量。",
-      "translation_zh": "明天以前必須商量。",
-      "audioText": "明日までに相談しなければなりません。",
+      "example": "困ったときは家族に相談します。",
+      "example_ja": "困ったときは家族に相談します。",
+      "example_kana": "こまった ときは かぞくに そうだんします。",
+      "translation": "遇到困難時會和家人商量。",
+      "translation_zh": "遇到困難時會和家人商量。",
+      "audioText": "困ったときは家族に相談します。",
       "particles": [
         {
           "kind": "particle",
-          "before": "明日ま",
-          "answer": "で",
-          "after": "に相談しなければなりません。",
+          "before": "困ったとき",
+          "answer": "は",
+          "after": "家族に相談します。",
           "choices": [
-            "で",
+            "は",
             "を",
             "が",
             "に"
           ],
-          "explanation": "這裡用「で」讓句子自然連接。"
+          "explanation": "這裡用「は」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "明日までに相談し",
-        "answer": "なければなりません",
-        "after": "。",
+        "kind": "particle",
+        "before": "困ったとき",
+        "answer": "は",
+        "after": "家族に相談します。",
         "choices": [
-          "なければなりません",
-          "てもいいです",
-          "ことがあります",
-          "すぎます"
-        ],
-        "explanation": "「〜なければなりません」表示必須做某事。",
-        "hintChunks": [
-          "明日ま",
-          "で",
+          "は",
+          "を",
+          "が",
           "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "困った",
+          "と",
+          "き"
         ]
       },
       "chunks": [
-        "明日ま",
-        "で",
+        "困った",
+        "と",
+        "き",
+        "は",
+        "家族",
         "に",
-        "相談しなければなりません。"
+        "相談します。"
       ],
       "distractors": [],
       "synonyms": []
@@ -3093,51 +3092,52 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 46,
-      "example": "明日までに復習しなければなりません。",
-      "example_ja": "明日までに復習しなければなりません。",
-      "example_kana": "あしたまでに ふくしゅうしなければなりません。",
-      "translation": "明天以前必須複習。",
-      "translation_zh": "明天以前必須複習。",
-      "audioText": "明日までに復習しなければなりません。",
+      "example": "試験の前に文法を復習しました。",
+      "example_ja": "試験の前に文法を復習しました。",
+      "example_kana": "しけんの まえに ぶんぽうを ふくしゅうしました。",
+      "translation": "考試前複習了文法。",
+      "translation_zh": "考試前複習了文法。",
+      "audioText": "試験の前に文法を復習しました。",
       "particles": [
         {
           "kind": "particle",
-          "before": "明日ま",
-          "answer": "で",
-          "after": "に復習しなければなりません。",
+          "before": "試験の前",
+          "answer": "に",
+          "after": "文法を復習しました。",
           "choices": [
-            "で",
+            "に",
             "を",
             "が",
-            "に"
+            "と"
           ],
-          "explanation": "這裡用「で」讓句子自然連接。"
+          "explanation": "這裡用「に」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "明日までに復習し",
-        "answer": "なければなりません",
-        "after": "。",
+        "kind": "particle",
+        "before": "試験の前",
+        "answer": "に",
+        "after": "文法を復習しました。",
         "choices": [
-          "なければなりません",
-          "てもいいです",
-          "ことがあります",
-          "すぎます"
+          "に",
+          "を",
+          "が",
+          "と"
         ],
-        "explanation": "「〜なければなりません」表示必須做某事。",
+        "explanation": "這裡用「に」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "明日ま",
-          "で",
-          "に"
+          "試験の前",
+          "に",
+          "文法"
         ]
       },
       "chunks": [
-        "明日ま",
-        "で",
+        "試験の前",
         "に",
-        "復習しなければなりません。"
+        "文法",
+        "を",
+        "復習しました。"
       ],
       "distractors": [],
       "synonyms": []
@@ -3157,51 +3157,50 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 47,
-      "example": "明日までに予習しなければなりません。",
-      "example_ja": "明日までに予習しなければなりません。",
-      "example_kana": "あしたまでに よしゅうしなければなりません。",
-      "translation": "明天以前必須預習。",
-      "translation_zh": "明天以前必須預習。",
-      "audioText": "明日までに予習しなければなりません。",
+      "example": "明日の授業を予習しておきます。",
+      "example_ja": "明日の授業を予習しておきます。",
+      "example_kana": "あしたの じゅぎょうを よしゅうしておきます。",
+      "translation": "先預習明天的課。",
+      "translation_zh": "先預習明天的課。",
+      "audioText": "明日の授業を予習しておきます。",
       "particles": [
         {
           "kind": "particle",
-          "before": "明日ま",
-          "answer": "で",
-          "after": "に予習しなければなりません。",
+          "before": "明日の授業",
+          "answer": "を",
+          "after": "予習しておきます。",
           "choices": [
-            "で",
             "を",
             "が",
-            "に"
+            "に",
+            "と"
           ],
-          "explanation": "這裡用「で」讓句子自然連接。"
+          "explanation": "這裡用「を」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "明日までに予習し",
-        "answer": "なければなりません",
-        "after": "。",
+        "kind": "particle",
+        "before": "明日の授業",
+        "answer": "を",
+        "after": "予習しておきます。",
         "choices": [
-          "なければなりません",
-          "てもいいです",
-          "ことがあります",
-          "すぎます"
+          "を",
+          "が",
+          "に",
+          "と"
         ],
-        "explanation": "「〜なければなりません」表示必須做某事。",
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "明日ま",
-          "で",
-          "に"
+          "明日の授業",
+          "を",
+          "予習しておきます。"
         ]
       },
       "chunks": [
-        "明日ま",
-        "で",
-        "に",
-        "予習しなければなりません。"
+        "明日の授業",
+        "を",
+        "予習しておきます。"
       ],
       "distractors": [],
       "synonyms": []
@@ -3221,51 +3220,50 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 48,
-      "example": "明日までに練習しなければなりません。",
-      "example_ja": "明日までに練習しなければなりません。",
-      "example_kana": "あしたまでに れんしゅうしなければなりません。",
-      "translation": "明天以前必須練習。",
-      "translation_zh": "明天以前必須練習。",
-      "audioText": "明日までに練習しなければなりません。",
+      "example": "毎日ピアノを練習しています。",
+      "example_ja": "毎日ピアノを練習しています。",
+      "example_kana": "まいにち ピアノを れんしゅうしています。",
+      "translation": "每天都在練習鋼琴。",
+      "translation_zh": "每天都在練習鋼琴。",
+      "audioText": "毎日ピアノを練習しています。",
       "particles": [
         {
           "kind": "particle",
-          "before": "明日ま",
-          "answer": "で",
-          "after": "に練習しなければなりません。",
+          "before": "毎日ピアノ",
+          "answer": "を",
+          "after": "練習しています。",
           "choices": [
-            "で",
             "を",
             "が",
-            "に"
+            "に",
+            "と"
           ],
-          "explanation": "這裡用「で」讓句子自然連接。"
+          "explanation": "這裡用「を」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "明日までに練習し",
-        "answer": "なければなりません",
-        "after": "。",
+        "kind": "particle",
+        "before": "毎日ピアノ",
+        "answer": "を",
+        "after": "練習しています。",
         "choices": [
-          "なければなりません",
-          "てもいいです",
-          "ことがあります",
-          "すぎます"
+          "を",
+          "が",
+          "に",
+          "と"
         ],
-        "explanation": "「〜なければなりません」表示必須做某事。",
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "明日ま",
-          "で",
-          "に"
+          "毎日ピアノ",
+          "を",
+          "練習しています。"
         ]
       },
       "chunks": [
-        "明日ま",
-        "で",
-        "に",
-        "練習しなければなりません。"
+        "毎日ピアノ",
+        "を",
+        "練習しています。"
       ],
       "distractors": [],
       "synonyms": []
@@ -3285,51 +3283,56 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 49,
-      "example": "明日までに注意しなければなりません。",
-      "example_ja": "明日までに注意しなければなりません。",
-      "example_kana": "あしたまでに ちゅういしなければなりません。",
-      "translation": "明天以前必須注意。",
-      "translation_zh": "明天以前必須注意。",
-      "audioText": "明日までに注意しなければなりません。",
+      "example": "道を渡るときは車に注意してください。",
+      "example_ja": "道を渡るときは車に注意してください。",
+      "example_kana": "みちを わたる ときは くるまに ちゅういしてください。",
+      "translation": "過馬路時請注意車子。",
+      "translation_zh": "過馬路時請注意車子。",
+      "audioText": "道を渡るときは車に注意してください。",
       "particles": [
         {
           "kind": "particle",
-          "before": "明日ま",
-          "answer": "で",
-          "after": "に注意しなければなりません。",
+          "before": "道",
+          "answer": "を",
+          "after": "渡るときは車に注意してください。",
           "choices": [
-            "で",
             "を",
             "が",
-            "に"
+            "に",
+            "と"
           ],
-          "explanation": "這裡用「で」讓句子自然連接。"
+          "explanation": "這裡用「を」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "明日までに注意し",
-        "answer": "なければなりません",
-        "after": "。",
+        "kind": "particle",
+        "before": "道",
+        "answer": "を",
+        "after": "渡るときは車に注意してください。",
         "choices": [
-          "なければなりません",
-          "てもいいです",
-          "ことがあります",
-          "すぎます"
+          "を",
+          "が",
+          "に",
+          "と"
         ],
-        "explanation": "「〜なければなりません」表示必須做某事。",
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "明日ま",
-          "で",
-          "に"
+          "道",
+          "を",
+          "渡る"
         ]
       },
       "chunks": [
-        "明日ま",
-        "で",
+        "道",
+        "を",
+        "渡る",
+        "と",
+        "き",
+        "は",
+        "車",
         "に",
-        "注意しなければなりません。"
+        "注意してください。"
       ],
       "distractors": [],
       "synonyms": []
@@ -3349,51 +3352,52 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 50,
-      "example": "明日までに紹介しなければなりません。",
-      "example_ja": "明日までに紹介しなければなりません。",
-      "example_kana": "あしたまでに しょうかいしなければなりません。",
-      "translation": "明天以前必須介紹。",
-      "translation_zh": "明天以前必須介紹。",
-      "audioText": "明日までに紹介しなければなりません。",
+      "example": "友達に妹を紹介しました。",
+      "example_ja": "友達に妹を紹介しました。",
+      "example_kana": "ともだちに いもうとを しょうかいしました。",
+      "translation": "把妹妹介紹給朋友認識。",
+      "translation_zh": "把妹妹介紹給朋友認識。",
+      "audioText": "友達に妹を紹介しました。",
       "particles": [
         {
           "kind": "particle",
-          "before": "明日ま",
-          "answer": "で",
-          "after": "に紹介しなければなりません。",
+          "before": "友達",
+          "answer": "に",
+          "after": "妹を紹介しました。",
           "choices": [
-            "で",
+            "に",
             "を",
             "が",
-            "に"
+            "と"
           ],
-          "explanation": "這裡用「で」讓句子自然連接。"
+          "explanation": "這裡用「に」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "明日までに紹介し",
-        "answer": "なければなりません",
-        "after": "。",
+        "kind": "particle",
+        "before": "友達",
+        "answer": "に",
+        "after": "妹を紹介しました。",
         "choices": [
-          "なければなりません",
-          "てもいいです",
-          "ことがあります",
-          "すぎます"
+          "に",
+          "を",
+          "が",
+          "と"
         ],
-        "explanation": "「〜なければなりません」表示必須做某事。",
+        "explanation": "這裡用「に」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "明日ま",
-          "で",
-          "に"
+          "友達",
+          "に",
+          "妹"
         ]
       },
       "chunks": [
-        "明日ま",
-        "で",
+        "友達",
         "に",
-        "紹介しなければなりません。"
+        "妹",
+        "を",
+        "紹介しました。"
       ],
       "distractors": [],
       "synonyms": []
@@ -3413,18 +3417,18 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 51,
-      "example": "明日までに案内しなければなりません。",
-      "example_ja": "明日までに案内しなければなりません。",
-      "example_kana": "あしたまでに あんないしなければなりません。",
-      "translation": "明天以前必須嚮導。",
-      "translation_zh": "明天以前必須嚮導。",
-      "audioText": "明日までに案内しなければなりません。",
+      "example": "駅からホテルまで案内します。",
+      "example_ja": "駅からホテルまで案内します。",
+      "example_kana": "えきから ホテルまで あんないします。",
+      "translation": "我會從車站帶你到飯店。",
+      "translation_zh": "我會從車站帶你到飯店。",
+      "audioText": "駅からホテルまで案内します。",
       "particles": [
         {
           "kind": "particle",
-          "before": "明日ま",
+          "before": "駅からホテルま",
           "answer": "で",
-          "after": "に案内しなければなりません。",
+          "after": "案内します。",
           "choices": [
             "で",
             "を",
@@ -3435,29 +3439,28 @@
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "明日までに案内し",
-        "answer": "なければなりません",
-        "after": "。",
+        "kind": "particle",
+        "before": "駅からホテルま",
+        "answer": "で",
+        "after": "案内します。",
         "choices": [
-          "なければなりません",
-          "てもいいです",
-          "ことがあります",
-          "すぎます"
-        ],
-        "explanation": "「〜なければなりません」表示必須做某事。",
-        "hintChunks": [
-          "明日ま",
           "で",
+          "を",
+          "が",
           "に"
+        ],
+        "explanation": "這裡用「で」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "駅からホテルま",
+          "で",
+          "案内します。"
         ]
       },
       "chunks": [
-        "明日ま",
+        "駅からホテルま",
         "で",
-        "に",
-        "案内しなければなりません。"
+        "案内します。"
       ],
       "distractors": [],
       "synonyms": []
@@ -3477,51 +3480,50 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 52,
-      "example": "明日までに利用しなければなりません。",
-      "example_ja": "明日までに利用しなければなりません。",
-      "example_kana": "あしたまでに りようしなければなりません。",
-      "translation": "明天以前必須利用。",
-      "translation_zh": "明天以前必須利用。",
-      "audioText": "明日までに利用しなければなりません。",
+      "example": "毎朝このバスを利用しています。",
+      "example_ja": "毎朝このバスを利用しています。",
+      "example_kana": "まいあさ この バスを りようしています。",
+      "translation": "每天早上都搭這班公車。",
+      "translation_zh": "每天早上都搭這班公車。",
+      "audioText": "毎朝このバスを利用しています。",
       "particles": [
         {
           "kind": "particle",
-          "before": "明日ま",
-          "answer": "で",
-          "after": "に利用しなければなりません。",
+          "before": "毎朝このバス",
+          "answer": "を",
+          "after": "利用しています。",
           "choices": [
-            "で",
             "を",
             "が",
-            "に"
+            "に",
+            "と"
           ],
-          "explanation": "這裡用「で」讓句子自然連接。"
+          "explanation": "這裡用「を」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "明日までに利用し",
-        "answer": "なければなりません",
-        "after": "。",
+        "kind": "particle",
+        "before": "毎朝このバス",
+        "answer": "を",
+        "after": "利用しています。",
         "choices": [
-          "なければなりません",
-          "てもいいです",
-          "ことがあります",
-          "すぎます"
+          "を",
+          "が",
+          "に",
+          "と"
         ],
-        "explanation": "「〜なければなりません」表示必須做某事。",
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "明日ま",
-          "で",
-          "に"
+          "毎朝このバス",
+          "を",
+          "利用しています。"
         ]
       },
       "chunks": [
-        "明日ま",
-        "で",
-        "に",
-        "利用しなければなりません。"
+        "毎朝このバス",
+        "を",
+        "利用しています。"
       ],
       "distractors": [],
       "synonyms": []
@@ -3541,51 +3543,50 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 53,
-      "example": "明日までに計画しなければなりません。",
-      "example_ja": "明日までに計画しなければなりません。",
-      "example_kana": "あしたまでに けいかくしなければなりません。",
-      "translation": "明天以前必須計畫。",
-      "translation_zh": "明天以前必須計畫。",
-      "audioText": "明日までに計画しなければなりません。",
+      "example": "夏休みの旅行を計画しています。",
+      "example_ja": "夏休みの旅行を計画しています。",
+      "example_kana": "なつやすみの りょこうを けいかくしています。",
+      "translation": "正在計畫暑假的旅行。",
+      "translation_zh": "正在計畫暑假的旅行。",
+      "audioText": "夏休みの旅行を計画しています。",
       "particles": [
         {
           "kind": "particle",
-          "before": "明日ま",
-          "answer": "で",
-          "after": "に計画しなければなりません。",
+          "before": "夏休みの旅行",
+          "answer": "を",
+          "after": "計画しています。",
           "choices": [
-            "で",
             "を",
             "が",
-            "に"
+            "に",
+            "と"
           ],
-          "explanation": "這裡用「で」讓句子自然連接。"
+          "explanation": "這裡用「を」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "明日までに計画し",
-        "answer": "なければなりません",
-        "after": "。",
+        "kind": "particle",
+        "before": "夏休みの旅行",
+        "answer": "を",
+        "after": "計画しています。",
         "choices": [
-          "なければなりません",
-          "てもいいです",
-          "ことがあります",
-          "すぎます"
+          "を",
+          "が",
+          "に",
+          "と"
         ],
-        "explanation": "「〜なければなりません」表示必須做某事。",
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "明日ま",
-          "で",
-          "に"
+          "夏休みの旅行",
+          "を",
+          "計画しています。"
         ]
       },
       "chunks": [
-        "明日ま",
-        "で",
-        "に",
-        "計画しなければなりません。"
+        "夏休みの旅行",
+        "を",
+        "計画しています。"
       ],
       "distractors": [],
       "synonyms": []
@@ -3605,51 +3606,50 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 54,
-      "example": "明日までに連絡しなければなりません。",
-      "example_ja": "明日までに連絡しなければなりません。",
-      "example_kana": "あしたまでに れんらくしなければなりません。",
-      "translation": "明天以前必須聯絡。",
-      "translation_zh": "明天以前必須聯絡。",
-      "audioText": "明日までに連絡しなければなりません。",
+      "example": "家に着いたら連絡してください。",
+      "example_ja": "家に着いたら連絡してください。",
+      "example_kana": "いえに ついたら れんらくしてください。",
+      "translation": "到家後請聯絡我。",
+      "translation_zh": "到家後請聯絡我。",
+      "audioText": "家に着いたら連絡してください。",
       "particles": [
         {
           "kind": "particle",
-          "before": "明日ま",
-          "answer": "で",
-          "after": "に連絡しなければなりません。",
+          "before": "家",
+          "answer": "に",
+          "after": "着いたら連絡してください。",
           "choices": [
-            "で",
+            "に",
             "を",
             "が",
-            "に"
+            "と"
           ],
-          "explanation": "這裡用「で」讓句子自然連接。"
+          "explanation": "這裡用「に」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "明日までに連絡し",
-        "answer": "なければなりません",
-        "after": "。",
+        "kind": "particle",
+        "before": "家",
+        "answer": "に",
+        "after": "着いたら連絡してください。",
         "choices": [
-          "なければなりません",
-          "てもいいです",
-          "ことがあります",
-          "すぎます"
+          "に",
+          "を",
+          "が",
+          "と"
         ],
-        "explanation": "「〜なければなりません」表示必須做某事。",
+        "explanation": "這裡用「に」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "明日ま",
-          "で",
-          "に"
+          "家",
+          "に",
+          "着いたら連絡してください。"
         ]
       },
       "chunks": [
-        "明日ま",
-        "で",
+        "家",
         "に",
-        "連絡しなければなりません。"
+        "着いたら連絡してください。"
       ],
       "distractors": [],
       "synonyms": []
@@ -3669,51 +3669,52 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 55,
-      "example": "明日までに故障しなければなりません。",
-      "example_ja": "明日までに故障しなければなりません。",
-      "example_kana": "あしたまでに こしょうしなければなりません。",
-      "translation": "明天以前必須故障。",
-      "translation_zh": "明天以前必須故障。",
-      "audioText": "明日までに故障しなければなりません。",
+      "example": "洗濯機が急に故障しました。",
+      "example_ja": "洗濯機が急に故障しました。",
+      "example_kana": "せんたくきが きゅうに こしょうしました。",
+      "translation": "洗衣機突然故障了。",
+      "translation_zh": "洗衣機突然故障了。",
+      "audioText": "洗濯機が急に故障しました。",
       "particles": [
         {
           "kind": "particle",
-          "before": "明日ま",
-          "answer": "で",
-          "after": "に故障しなければなりません。",
+          "before": "洗濯機",
+          "answer": "が",
+          "after": "急に故障しました。",
           "choices": [
-            "で",
-            "を",
             "が",
-            "に"
+            "を",
+            "に",
+            "と"
           ],
-          "explanation": "這裡用「で」讓句子自然連接。"
+          "explanation": "這裡用「が」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "明日までに故障し",
-        "answer": "なければなりません",
-        "after": "。",
+        "kind": "particle",
+        "before": "洗濯機",
+        "answer": "が",
+        "after": "急に故障しました。",
         "choices": [
-          "なければなりません",
-          "てもいいです",
-          "ことがあります",
-          "すぎます"
+          "が",
+          "を",
+          "に",
+          "と"
         ],
-        "explanation": "「〜なければなりません」表示必須做某事。",
+        "explanation": "這裡用「が」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "明日ま",
-          "で",
-          "に"
+          "洗濯機",
+          "が",
+          "急"
         ]
       },
       "chunks": [
-        "明日ま",
-        "で",
+        "洗濯機",
+        "が",
+        "急",
         "に",
-        "故障しなければなりません。"
+        "故障しました。"
       ],
       "distractors": [],
       "synonyms": [
@@ -3746,51 +3747,54 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 56,
-      "example": "明日までに修理しなければなりません。",
-      "example_ja": "明日までに修理しなければなりません。",
-      "example_kana": "あしたまでに しゅうりしなければなりません。",
-      "translation": "明天以前必須修理。",
-      "translation_zh": "明天以前必須修理。",
-      "audioText": "明日までに修理しなければなりません。",
+      "example": "自転車を店で修理してもらいました。",
+      "example_ja": "自転車を店で修理してもらいました。",
+      "example_kana": "じてんしゃを みせで しゅうりしてもらいました。",
+      "translation": "請店家修理了腳踏車。",
+      "translation_zh": "請店家修理了腳踏車。",
+      "audioText": "自転車を店で修理してもらいました。",
       "particles": [
         {
           "kind": "particle",
-          "before": "明日ま",
-          "answer": "で",
-          "after": "に修理しなければなりません。",
+          "before": "自転車",
+          "answer": "を",
+          "after": "店で修理してもらいました。",
           "choices": [
-            "で",
             "を",
             "が",
-            "に"
+            "に",
+            "と"
           ],
-          "explanation": "這裡用「で」讓句子自然連接。"
+          "explanation": "這裡用「を」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "明日までに修理し",
-        "answer": "なければなりません",
-        "after": "。",
+        "kind": "particle",
+        "before": "自転車",
+        "answer": "を",
+        "after": "店で修理してもらいました。",
         "choices": [
-          "なければなりません",
-          "てもいいです",
-          "ことがあります",
-          "すぎます"
+          "を",
+          "が",
+          "に",
+          "と"
         ],
-        "explanation": "「〜なければなりません」表示必須做某事。",
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "明日ま",
-          "で",
-          "に"
+          "自転車",
+          "を",
+          "店"
         ]
       },
       "chunks": [
-        "明日ま",
+        "自転車",
+        "を",
+        "店",
         "で",
-        "に",
-        "修理しなければなりません。"
+        "修理して",
+        "も",
+        "らいました。"
       ],
       "distractors": [],
       "synonyms": [
@@ -3823,51 +3827,50 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 57,
-      "example": "明日までに出席しなければなりません。",
-      "example_ja": "明日までに出席しなければなりません。",
-      "example_kana": "あしたまでに しゅっせきしなければなりません。",
-      "translation": "明天以前必須出席。",
-      "translation_zh": "明天以前必須出席。",
-      "audioText": "明日までに出席しなければなりません。",
+      "example": "明日の会議に出席します。",
+      "example_ja": "明日の会議に出席します。",
+      "example_kana": "あしたの かいぎに しゅっせきします。",
+      "translation": "我會出席明天的會議。",
+      "translation_zh": "我會出席明天的會議。",
+      "audioText": "明日の会議に出席します。",
       "particles": [
         {
           "kind": "particle",
-          "before": "明日ま",
-          "answer": "で",
-          "after": "に出席しなければなりません。",
+          "before": "明日の会議",
+          "answer": "に",
+          "after": "出席します。",
           "choices": [
-            "で",
+            "に",
             "を",
             "が",
-            "に"
+            "と"
           ],
-          "explanation": "這裡用「で」讓句子自然連接。"
+          "explanation": "這裡用「に」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "明日までに出席し",
-        "answer": "なければなりません",
-        "after": "。",
+        "kind": "particle",
+        "before": "明日の会議",
+        "answer": "に",
+        "after": "出席します。",
         "choices": [
-          "なければなりません",
-          "てもいいです",
-          "ことがあります",
-          "すぎます"
+          "に",
+          "を",
+          "が",
+          "と"
         ],
-        "explanation": "「〜なければなりません」表示必須做某事。",
+        "explanation": "這裡用「に」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "明日ま",
-          "で",
-          "に"
+          "明日の会議",
+          "に",
+          "出席します。"
         ]
       },
       "chunks": [
-        "明日ま",
-        "で",
+        "明日の会議",
         "に",
-        "出席しなければなりません。"
+        "出席します。"
       ],
       "distractors": [],
       "synonyms": []
@@ -3887,51 +3890,54 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 58,
-      "example": "明日までに欠席しなければなりません。",
-      "example_ja": "明日までに欠席しなければなりません。",
-      "example_kana": "あしたまでに けっせきしなければなりません。",
-      "translation": "明天以前必須缺席。",
-      "translation_zh": "明天以前必須缺席。",
-      "audioText": "明日までに欠席しなければなりません。",
+      "example": "風邪をひいたので、授業を欠席しました。",
+      "example_ja": "風邪をひいたので、授業を欠席しました。",
+      "example_kana": "かぜを ひいたので、じゅぎょうを けっせきしました。",
+      "translation": "因為感冒，所以缺席了課程。",
+      "translation_zh": "因為感冒，所以缺席了課程。",
+      "audioText": "風邪をひいたので、授業を欠席しました。",
       "particles": [
         {
           "kind": "particle",
-          "before": "明日ま",
-          "answer": "で",
-          "after": "に欠席しなければなりません。",
+          "before": "風邪",
+          "answer": "を",
+          "after": "ひいたので、授業を欠席しました。",
           "choices": [
-            "で",
             "を",
             "が",
-            "に"
+            "に",
+            "と"
           ],
-          "explanation": "這裡用「で」讓句子自然連接。"
+          "explanation": "這裡用「を」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "明日までに欠席し",
-        "answer": "なければなりません",
-        "after": "。",
+        "kind": "particle",
+        "before": "風邪",
+        "answer": "を",
+        "after": "ひいたので、授業を欠席しました。",
         "choices": [
-          "なければなりません",
-          "てもいいです",
-          "ことがあります",
-          "すぎます"
+          "を",
+          "が",
+          "に",
+          "と"
         ],
-        "explanation": "「〜なければなりません」表示必須做某事。",
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "明日ま",
-          "で",
-          "に"
+          "風邪",
+          "を",
+          "ひいたの"
         ]
       },
       "chunks": [
-        "明日ま",
-        "で",
-        "に",
-        "欠席しなければなりません。"
+        "風邪",
+        "を",
+        "ひいたの",
+        "で、",
+        "授業",
+        "を",
+        "欠席しました。"
       ],
       "distractors": [],
       "synonyms": []
@@ -3951,51 +3957,52 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 59,
-      "example": "明日までに出張しなければなりません。",
-      "example_ja": "明日までに出張しなければなりません。",
-      "example_kana": "あしたまでに しゅっちょうしなければなりません。",
-      "translation": "明天以前必須出差。",
-      "translation_zh": "明天以前必須出差。",
-      "audioText": "明日までに出張しなければなりません。",
+      "example": "父は来週大阪へ出張します。",
+      "example_ja": "父は来週大阪へ出張します。",
+      "example_kana": "ちちは らいしゅう おおさかへ しゅっちょうします。",
+      "translation": "爸爸下週要去大阪出差。",
+      "translation_zh": "爸爸下週要去大阪出差。",
+      "audioText": "父は来週大阪へ出張します。",
       "particles": [
         {
           "kind": "particle",
-          "before": "明日ま",
-          "answer": "で",
-          "after": "に出張しなければなりません。",
+          "before": "父",
+          "answer": "は",
+          "after": "来週大阪へ出張します。",
           "choices": [
-            "で",
+            "は",
             "を",
             "が",
             "に"
           ],
-          "explanation": "這裡用「で」讓句子自然連接。"
+          "explanation": "這裡用「は」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "明日までに出張し",
-        "answer": "なければなりません",
-        "after": "。",
+        "kind": "particle",
+        "before": "父",
+        "answer": "は",
+        "after": "来週大阪へ出張します。",
         "choices": [
-          "なければなりません",
-          "てもいいです",
-          "ことがあります",
-          "すぎます"
-        ],
-        "explanation": "「〜なければなりません」表示必須做某事。",
-        "hintChunks": [
-          "明日ま",
-          "で",
+          "は",
+          "を",
+          "が",
           "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "父",
+          "は",
+          "来週大阪"
         ]
       },
       "chunks": [
-        "明日ま",
-        "で",
-        "に",
-        "出張しなければなりません。"
+        "父",
+        "は",
+        "来週大阪",
+        "へ",
+        "出張します。"
       ],
       "distractors": [],
       "synonyms": []
@@ -4015,51 +4022,52 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 60,
-      "example": "明日までに合格しなければなりません。",
-      "example_ja": "明日までに合格しなければなりません。",
-      "example_kana": "あしたまでに ごうかくしなければなりません。",
-      "translation": "明天以前必須及格。",
-      "translation_zh": "明天以前必須及格。",
-      "audioText": "明日までに合格しなければなりません。",
+      "example": "姉は大学の試験に合格しました。",
+      "example_ja": "姉は大学の試験に合格しました。",
+      "example_kana": "あねは だいがくの しけんに ごうかくしました。",
+      "translation": "姊姊通過了大學考試。",
+      "translation_zh": "姊姊通過了大學考試。",
+      "audioText": "姉は大学の試験に合格しました。",
       "particles": [
         {
           "kind": "particle",
-          "before": "明日ま",
-          "answer": "で",
-          "after": "に合格しなければなりません。",
+          "before": "姉",
+          "answer": "は",
+          "after": "大学の試験に合格しました。",
           "choices": [
-            "で",
+            "は",
             "を",
             "が",
             "に"
           ],
-          "explanation": "這裡用「で」讓句子自然連接。"
+          "explanation": "這裡用「は」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "明日までに合格し",
-        "answer": "なければなりません",
-        "after": "。",
+        "kind": "particle",
+        "before": "姉",
+        "answer": "は",
+        "after": "大学の試験に合格しました。",
         "choices": [
-          "なければなりません",
-          "てもいいです",
-          "ことがあります",
-          "すぎます"
-        ],
-        "explanation": "「〜なければなりません」表示必須做某事。",
-        "hintChunks": [
-          "明日ま",
-          "で",
+          "は",
+          "を",
+          "が",
           "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "姉",
+          "は",
+          "大学の試験"
         ]
       },
       "chunks": [
-        "明日ま",
-        "で",
+        "姉",
+        "は",
+        "大学の試験",
         "に",
-        "合格しなければなりません。"
+        "合格しました。"
       ],
       "distractors": [],
       "synonyms": []
@@ -4079,51 +4087,52 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 61,
-      "example": "明日までに反対しなければなりません。",
-      "example_ja": "明日までに反対しなければなりません。",
-      "example_kana": "あしたまでに はんたいしなければなりません。",
-      "translation": "明天以前必須反對。",
-      "translation_zh": "明天以前必須反對。",
-      "audioText": "明日までに反対しなければなりません。",
+      "example": "私はその計画に反対です。",
+      "example_ja": "私はその計画に反対です。",
+      "example_kana": "わたしは その けいかくに はんたいです。",
+      "translation": "我反對那個計畫。",
+      "translation_zh": "我反對那個計畫。",
+      "audioText": "私はその計画に反対です。",
       "particles": [
         {
           "kind": "particle",
-          "before": "明日ま",
-          "answer": "で",
-          "after": "に反対しなければなりません。",
+          "before": "私",
+          "answer": "は",
+          "after": "その計画に反対です。",
           "choices": [
-            "で",
+            "は",
             "を",
             "が",
             "に"
           ],
-          "explanation": "這裡用「で」讓句子自然連接。"
+          "explanation": "這裡用「は」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "明日までに反対し",
-        "answer": "なければなりません",
-        "after": "。",
+        "kind": "particle",
+        "before": "私",
+        "answer": "は",
+        "after": "その計画に反対です。",
         "choices": [
-          "なければなりません",
-          "てもいいです",
-          "ことがあります",
-          "すぎます"
-        ],
-        "explanation": "「〜なければなりません」表示必須做某事。",
-        "hintChunks": [
-          "明日ま",
-          "で",
+          "は",
+          "を",
+          "が",
           "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "私",
+          "は",
+          "その計画"
         ]
       },
       "chunks": [
-        "明日ま",
-        "で",
+        "私",
+        "は",
+        "その計画",
         "に",
-        "反対しなければなりません。"
+        "反対です。"
       ],
       "distractors": [],
       "synonyms": []
@@ -4143,51 +4152,52 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 62,
-      "example": "明日までに賛成しなければなりません。",
-      "example_ja": "明日までに賛成しなければなりません。",
-      "example_kana": "あしたまでに さんせいしなければなりません。",
-      "translation": "明天以前必須贊成。",
-      "translation_zh": "明天以前必須贊成。",
-      "audioText": "明日までに賛成しなければなりません。",
+      "example": "家族はみんな引っ越しに賛成しました。",
+      "example_ja": "家族はみんな引っ越しに賛成しました。",
+      "example_kana": "かぞくは みんな ひっこしに さんせいしました。",
+      "translation": "家人全都贊成搬家。",
+      "translation_zh": "家人全都贊成搬家。",
+      "audioText": "家族はみんな引っ越しに賛成しました。",
       "particles": [
         {
           "kind": "particle",
-          "before": "明日ま",
-          "answer": "で",
-          "after": "に賛成しなければなりません。",
+          "before": "家族",
+          "answer": "は",
+          "after": "みんな引っ越しに賛成しました。",
           "choices": [
-            "で",
+            "は",
             "を",
             "が",
             "に"
           ],
-          "explanation": "這裡用「で」讓句子自然連接。"
+          "explanation": "這裡用「は」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "明日までに賛成し",
-        "answer": "なければなりません",
-        "after": "。",
+        "kind": "particle",
+        "before": "家族",
+        "answer": "は",
+        "after": "みんな引っ越しに賛成しました。",
         "choices": [
-          "なければなりません",
-          "てもいいです",
-          "ことがあります",
-          "すぎます"
-        ],
-        "explanation": "「〜なければなりません」表示必須做某事。",
-        "hintChunks": [
-          "明日ま",
-          "で",
+          "は",
+          "を",
+          "が",
           "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "家族",
+          "は",
+          "みんな引っ越し"
         ]
       },
       "chunks": [
-        "明日ま",
-        "で",
+        "家族",
+        "は",
+        "みんな引っ越し",
         "に",
-        "賛成しなければなりません。"
+        "賛成しました。"
       ],
       "distractors": [],
       "synonyms": []
@@ -4207,51 +4217,50 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 63,
-      "example": "明日までに安心しなければなりません。",
-      "example_ja": "明日までに安心しなければなりません。",
-      "example_kana": "あしたまでに あんしんしなければなりません。",
-      "translation": "明天以前必須放心。",
-      "translation_zh": "明天以前必須放心。",
-      "audioText": "明日までに安心しなければなりません。",
+      "example": "無事だと聞いて安心しました。",
+      "example_ja": "無事だと聞いて安心しました。",
+      "example_kana": "ぶじだと きいて あんしんしました。",
+      "translation": "聽說平安無事後，我放心了。",
+      "translation_zh": "聽說平安無事後，我放心了。",
+      "audioText": "無事だと聞いて安心しました。",
       "particles": [
         {
           "kind": "particle",
-          "before": "明日ま",
-          "answer": "で",
-          "after": "に安心しなければなりません。",
+          "before": "無事だ",
+          "answer": "と",
+          "after": "聞いて安心しました。",
           "choices": [
-            "で",
+            "と",
             "を",
             "が",
             "に"
           ],
-          "explanation": "這裡用「で」讓句子自然連接。"
+          "explanation": "這裡用「と」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "明日までに安心し",
-        "answer": "なければなりません",
-        "after": "。",
+        "kind": "particle",
+        "before": "無事だ",
+        "answer": "と",
+        "after": "聞いて安心しました。",
         "choices": [
-          "なければなりません",
-          "てもいいです",
-          "ことがあります",
-          "すぎます"
-        ],
-        "explanation": "「〜なければなりません」表示必須做某事。",
-        "hintChunks": [
-          "明日ま",
-          "で",
+          "と",
+          "を",
+          "が",
           "に"
+        ],
+        "explanation": "這裡用「と」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "無事だ",
+          "と",
+          "聞いて安心しました。"
         ]
       },
       "chunks": [
-        "明日ま",
-        "で",
-        "に",
-        "安心しなければなりません。"
+        "無事だ",
+        "と",
+        "聞いて安心しました。"
       ],
       "distractors": [],
       "synonyms": [
@@ -4284,51 +4293,52 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 64,
-      "example": "明日までに心配しなければなりません。",
-      "example_ja": "明日までに心配しなければなりません。",
-      "example_kana": "あしたまでに しんぱいしなければなりません。",
-      "translation": "明天以前必須擔心。",
-      "translation_zh": "明天以前必須擔心。",
-      "audioText": "明日までに心配しなければなりません。",
+      "example": "家族は弟の帰りを心配しています。",
+      "example_ja": "家族は弟の帰りを心配しています。",
+      "example_kana": "かぞくは おとうとの かえりを しんぱいしています。",
+      "translation": "家人很擔心弟弟還沒回家。",
+      "translation_zh": "家人很擔心弟弟還沒回家。",
+      "audioText": "家族は弟の帰りを心配しています。",
       "particles": [
         {
           "kind": "particle",
-          "before": "明日ま",
-          "answer": "で",
-          "after": "に心配しなければなりません。",
+          "before": "家族",
+          "answer": "は",
+          "after": "弟の帰りを心配しています。",
           "choices": [
-            "で",
+            "は",
             "を",
             "が",
             "に"
           ],
-          "explanation": "這裡用「で」讓句子自然連接。"
+          "explanation": "這裡用「は」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "明日までに心配し",
-        "answer": "なければなりません",
-        "after": "。",
+        "kind": "particle",
+        "before": "家族",
+        "answer": "は",
+        "after": "弟の帰りを心配しています。",
         "choices": [
-          "なければなりません",
-          "てもいいです",
-          "ことがあります",
-          "すぎます"
-        ],
-        "explanation": "「〜なければなりません」表示必須做某事。",
-        "hintChunks": [
-          "明日ま",
-          "で",
+          "は",
+          "を",
+          "が",
           "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "家族",
+          "は",
+          "弟の帰り"
         ]
       },
       "chunks": [
-        "明日ま",
-        "で",
-        "に",
-        "心配しなければなりません。"
+        "家族",
+        "は",
+        "弟の帰り",
+        "を",
+        "心配しています。"
       ],
       "distractors": [],
       "synonyms": [
@@ -4361,18 +4371,18 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 65,
-      "example": "明日までに経験しなければなりません。",
-      "example_ja": "明日までに経験しなければなりません。",
-      "example_kana": "あしたまでに けいけんしなければなりません。",
-      "translation": "明天以前必須經驗。",
-      "translation_zh": "明天以前必須經驗。",
-      "audioText": "明日までに経験しなければなりません。",
+      "example": "日本で働いた経験があります。",
+      "example_ja": "日本で働いた経験があります。",
+      "example_kana": "にほんで はたらいた けいけんが あります。",
+      "translation": "我有在日本工作的經驗。",
+      "translation_zh": "我有在日本工作的經驗。",
+      "audioText": "日本で働いた経験があります。",
       "particles": [
         {
           "kind": "particle",
-          "before": "明日ま",
+          "before": "日本",
           "answer": "で",
-          "after": "に経験しなければなりません。",
+          "after": "働いた経験があります。",
           "choices": [
             "で",
             "を",
@@ -4383,29 +4393,30 @@
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "明日までに経験し",
-        "answer": "なければなりません",
-        "after": "。",
+        "kind": "particle",
+        "before": "日本",
+        "answer": "で",
+        "after": "働いた経験があります。",
         "choices": [
-          "なければなりません",
-          "てもいいです",
-          "ことがあります",
-          "すぎます"
-        ],
-        "explanation": "「〜なければなりません」表示必須做某事。",
-        "hintChunks": [
-          "明日ま",
           "で",
+          "を",
+          "が",
           "に"
+        ],
+        "explanation": "這裡用「で」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "日本",
+          "で",
+          "働いた経験"
         ]
       },
       "chunks": [
-        "明日ま",
+        "日本",
         "で",
-        "に",
-        "経験しなければなりません。"
+        "働いた経験",
+        "が",
+        "あります。"
       ],
       "distractors": [],
       "synonyms": []
@@ -4425,54 +4436,52 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 66,
-      "example": "私はこの仕事で運ぶことがあります。",
-      "example_ja": "私はこの仕事で運ぶことがあります。",
-      "example_kana": "わたしは この しごとで はこぶことが あります。",
-      "translation": "我曾經運送。",
-      "translation_zh": "我曾經運送。",
-      "audioText": "私はこの仕事で運ぶことがあります。",
+      "example": "重い荷物を二人で運びました。",
+      "example_ja": "重い荷物を二人で運びました。",
+      "example_kana": "おもい にもつを ふたりで はこびました。",
+      "translation": "兩個人一起搬了重物。",
+      "translation_zh": "兩個人一起搬了重物。",
+      "audioText": "重い荷物を二人で運びました。",
       "particles": [
         {
           "kind": "particle",
-          "before": "私",
-          "answer": "は",
-          "after": "この仕事で運ぶことがあります。",
+          "before": "重い荷物",
+          "answer": "を",
+          "after": "二人で運びました。",
           "choices": [
-            "は",
             "を",
             "が",
-            "に"
+            "に",
+            "と"
           ],
-          "explanation": "這裡用「は」讓句子自然連接。"
+          "explanation": "這裡用「を」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "私はこの仕事で運ぶ",
-        "answer": "ことがあります",
-        "after": "。",
+        "kind": "particle",
+        "before": "重い荷物",
+        "answer": "を",
+        "after": "二人で運びました。",
         "choices": [
-          "ことがあります",
-          "ところです",
-          "ようにします",
-          "なければなりません"
+          "を",
+          "が",
+          "に",
+          "と"
         ],
-        "explanation": "「〜ことがあります」表示曾經有過這種經驗。",
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "私",
-          "は",
-          "この仕事"
+          "重い荷物",
+          "を",
+          "二人"
         ]
       },
       "chunks": [
-        "私",
-        "は",
-        "この仕事",
+        "重い荷物",
+        "を",
+        "二人",
         "で",
-        "運ぶこと",
-        "が",
-        "あります。"
+        "運びました。"
       ],
       "distractors": [],
       "synonyms": []
@@ -4492,54 +4501,52 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 67,
-      "example": "私はこの仕事で借りることがあります。",
-      "example_ja": "私はこの仕事で借りることがあります。",
-      "example_kana": "わたしは この しごとで かりることが あります。",
-      "translation": "我曾經借入。",
-      "translation_zh": "我曾經借入。",
-      "audioText": "私はこの仕事で借りることがあります。",
+      "example": "図書館で料理の本を借りました。",
+      "example_ja": "図書館で料理の本を借りました。",
+      "example_kana": "としょかんで りょうりの ほんを かりました。",
+      "translation": "在圖書館借了料理書。",
+      "translation_zh": "在圖書館借了料理書。",
+      "audioText": "図書館で料理の本を借りました。",
       "particles": [
         {
           "kind": "particle",
-          "before": "私",
-          "answer": "は",
-          "after": "この仕事で借りることがあります。",
+          "before": "図書館",
+          "answer": "で",
+          "after": "料理の本を借りました。",
           "choices": [
-            "は",
+            "で",
             "を",
             "が",
             "に"
           ],
-          "explanation": "這裡用「は」讓句子自然連接。"
+          "explanation": "這裡用「で」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "私はこの仕事で借りる",
-        "answer": "ことがあります",
-        "after": "。",
+        "kind": "particle",
+        "before": "図書館",
+        "answer": "で",
+        "after": "料理の本を借りました。",
         "choices": [
-          "ことがあります",
-          "ところです",
-          "ようにします",
-          "なければなりません"
+          "で",
+          "を",
+          "が",
+          "に"
         ],
-        "explanation": "「〜ことがあります」表示曾經有過這種經驗。",
+        "explanation": "這裡用「で」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "私",
-          "は",
-          "この仕事"
+          "図書館",
+          "で",
+          "料理の本"
         ]
       },
       "chunks": [
-        "私",
-        "は",
-        "この仕事",
+        "図書館",
         "で",
-        "借りること",
-        "が",
-        "あります。"
+        "料理の本",
+        "を",
+        "借りました。"
       ],
       "distractors": [],
       "synonyms": []
@@ -4559,54 +4566,52 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 68,
-      "example": "私はこの仕事で貸すことがあります。",
-      "example_ja": "私はこの仕事で貸すことがあります。",
-      "example_kana": "わたしは この しごとで かすことが あります。",
-      "translation": "我曾經借出。",
-      "translation_zh": "我曾經借出。",
-      "audioText": "私はこの仕事で貸すことがあります。",
+      "example": "友達に傘を貸しました。",
+      "example_ja": "友達に傘を貸しました。",
+      "example_kana": "ともだちに かさを かしました。",
+      "translation": "把傘借給了朋友。",
+      "translation_zh": "把傘借給了朋友。",
+      "audioText": "友達に傘を貸しました。",
       "particles": [
         {
           "kind": "particle",
-          "before": "私",
-          "answer": "は",
-          "after": "この仕事で貸すことがあります。",
+          "before": "友達",
+          "answer": "に",
+          "after": "傘を貸しました。",
           "choices": [
-            "は",
+            "に",
             "を",
             "が",
-            "に"
+            "と"
           ],
-          "explanation": "這裡用「は」讓句子自然連接。"
+          "explanation": "這裡用「に」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "私はこの仕事で貸す",
-        "answer": "ことがあります",
-        "after": "。",
+        "kind": "particle",
+        "before": "友達",
+        "answer": "に",
+        "after": "傘を貸しました。",
         "choices": [
-          "ことがあります",
-          "ところです",
-          "ようにします",
-          "なければなりません"
+          "に",
+          "を",
+          "が",
+          "と"
         ],
-        "explanation": "「〜ことがあります」表示曾經有過這種經驗。",
+        "explanation": "這裡用「に」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "私",
-          "は",
-          "この仕事"
+          "友達",
+          "に",
+          "傘"
         ]
       },
       "chunks": [
-        "私",
-        "は",
-        "この仕事",
-        "で",
-        "貸すこと",
-        "が",
-        "あります。"
+        "友達",
+        "に",
+        "傘",
+        "を",
+        "貸しました。"
       ],
       "distractors": [],
       "synonyms": []
@@ -4626,54 +4631,50 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 69,
-      "example": "私はこの仕事で返すことがあります。",
-      "example_ja": "私はこの仕事で返すことがあります。",
-      "example_kana": "わたしは この しごとで かえすことが あります。",
-      "translation": "我曾經歸還。",
-      "translation_zh": "我曾經歸還。",
-      "audioText": "私はこの仕事で返すことがあります。",
+      "example": "借りた本を明日返します。",
+      "example_ja": "借りた本を明日返します。",
+      "example_kana": "かりた ほんを あした かえします。",
+      "translation": "明天會歸還借來的書。",
+      "translation_zh": "明天會歸還借來的書。",
+      "audioText": "借りた本を明日返します。",
       "particles": [
         {
           "kind": "particle",
-          "before": "私",
-          "answer": "は",
-          "after": "この仕事で返すことがあります。",
+          "before": "借りた本",
+          "answer": "を",
+          "after": "明日返します。",
           "choices": [
-            "は",
             "を",
             "が",
-            "に"
+            "に",
+            "と"
           ],
-          "explanation": "這裡用「は」讓句子自然連接。"
+          "explanation": "這裡用「を」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "私はこの仕事で返す",
-        "answer": "ことがあります",
-        "after": "。",
+        "kind": "particle",
+        "before": "借りた本",
+        "answer": "を",
+        "after": "明日返します。",
         "choices": [
-          "ことがあります",
-          "ところです",
-          "ようにします",
-          "なければなりません"
+          "を",
+          "が",
+          "に",
+          "と"
         ],
-        "explanation": "「〜ことがあります」表示曾經有過這種經驗。",
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "私",
-          "は",
-          "この仕事"
+          "借りた本",
+          "を",
+          "明日返します。"
         ]
       },
       "chunks": [
-        "私",
-        "は",
-        "この仕事",
-        "で",
-        "返すこと",
-        "が",
-        "あります。"
+        "借りた本",
+        "を",
+        "明日返します。"
       ],
       "distractors": [],
       "synonyms": []
@@ -4693,54 +4694,50 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 70,
-      "example": "私はこの仕事で始めることがあります。",
-      "example_ja": "私はこの仕事で始めることがあります。",
-      "example_kana": "わたしは この しごとで はじめることが あります。",
-      "translation": "我曾經開始。",
-      "translation_zh": "我曾經開始。",
-      "audioText": "私はこの仕事で始めることがあります。",
+      "example": "来月から新しい仕事を始めます。",
+      "example_ja": "来月から新しい仕事を始めます。",
+      "example_kana": "らいげつから あたらしい しごとを はじめます。",
+      "translation": "下個月開始新工作。",
+      "translation_zh": "下個月開始新工作。",
+      "audioText": "来月から新しい仕事を始めます。",
       "particles": [
         {
           "kind": "particle",
-          "before": "私",
-          "answer": "は",
-          "after": "この仕事で始めることがあります。",
+          "before": "来月から新しい仕事",
+          "answer": "を",
+          "after": "始めます。",
           "choices": [
-            "は",
             "を",
             "が",
-            "に"
+            "に",
+            "と"
           ],
-          "explanation": "這裡用「は」讓句子自然連接。"
+          "explanation": "這裡用「を」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "私はこの仕事で始める",
-        "answer": "ことがあります",
-        "after": "。",
+        "kind": "particle",
+        "before": "来月から新しい仕事",
+        "answer": "を",
+        "after": "始めます。",
         "choices": [
-          "ことがあります",
-          "ところです",
-          "ようにします",
-          "なければなりません"
+          "を",
+          "が",
+          "に",
+          "と"
         ],
-        "explanation": "「〜ことがあります」表示曾經有過這種經驗。",
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "私",
-          "は",
-          "この仕事"
+          "来月から新しい仕事",
+          "を",
+          "始めます。"
         ]
       },
       "chunks": [
-        "私",
-        "は",
-        "この仕事",
-        "で",
-        "始めること",
-        "が",
-        "あります。"
+        "来月から新しい仕事",
+        "を",
+        "始めます。"
       ],
       "distractors": [],
       "synonyms": []
@@ -4760,18 +4757,18 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 71,
-      "example": "私はこの仕事で終わることがあります。",
-      "example_ja": "私はこの仕事で終わることがあります。",
-      "example_kana": "わたしは この しごとで おわることが あります。",
-      "translation": "我曾經結束。",
-      "translation_zh": "我曾經結束。",
-      "audioText": "私はこの仕事で終わることがあります。",
+      "example": "仕事は午後五時に終わります。",
+      "example_ja": "仕事は午後五時に終わります。",
+      "example_kana": "しごとは ごご ごじに おわります。",
+      "translation": "工作下午五點結束。",
+      "translation_zh": "工作下午五點結束。",
+      "audioText": "仕事は午後五時に終わります。",
       "particles": [
         {
           "kind": "particle",
-          "before": "私",
+          "before": "仕事",
           "answer": "は",
-          "after": "この仕事で終わることがあります。",
+          "after": "午後五時に終わります。",
           "choices": [
             "は",
             "を",
@@ -4782,32 +4779,30 @@
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "私はこの仕事で終わる",
-        "answer": "ことがあります",
-        "after": "。",
+        "kind": "particle",
+        "before": "仕事",
+        "answer": "は",
+        "after": "午後五時に終わります。",
         "choices": [
-          "ことがあります",
-          "ところです",
-          "ようにします",
-          "なければなりません"
-        ],
-        "explanation": "「〜ことがあります」表示曾經有過這種經驗。",
-        "hintChunks": [
-          "私",
           "は",
-          "この仕事"
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "仕事",
+          "は",
+          "午後五時"
         ]
       },
       "chunks": [
-        "私",
+        "仕事",
         "は",
-        "この仕事",
-        "で",
-        "終わること",
-        "が",
-        "あります。"
+        "午後五時",
+        "に",
+        "終わります。"
       ],
       "distractors": [],
       "synonyms": []
@@ -4827,54 +4822,50 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 72,
-      "example": "私はこの仕事で考えることがあります。",
-      "example_ja": "私はこの仕事で考えることがあります。",
-      "example_kana": "わたしは この しごとで かんがえることが あります。",
-      "translation": "我曾經思考。",
-      "translation_zh": "我曾經思考。",
-      "audioText": "私はこの仕事で考えることがあります。",
+      "example": "週末の予定を考えています。",
+      "example_ja": "週末の予定を考えています。",
+      "example_kana": "しゅうまつの よていを かんがえています。",
+      "translation": "正在考慮週末的安排。",
+      "translation_zh": "正在考慮週末的安排。",
+      "audioText": "週末の予定を考えています。",
       "particles": [
         {
           "kind": "particle",
-          "before": "私",
-          "answer": "は",
-          "after": "この仕事で考えることがあります。",
+          "before": "週末の予定",
+          "answer": "を",
+          "after": "考えています。",
           "choices": [
-            "は",
             "を",
             "が",
-            "に"
+            "に",
+            "と"
           ],
-          "explanation": "這裡用「は」讓句子自然連接。"
+          "explanation": "這裡用「を」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "私はこの仕事で考える",
-        "answer": "ことがあります",
-        "after": "。",
+        "kind": "particle",
+        "before": "週末の予定",
+        "answer": "を",
+        "after": "考えています。",
         "choices": [
-          "ことがあります",
-          "ところです",
-          "ようにします",
-          "なければなりません"
+          "を",
+          "が",
+          "に",
+          "と"
         ],
-        "explanation": "「〜ことがあります」表示曾經有過這種經驗。",
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "私",
-          "は",
-          "この仕事"
+          "週末の予定",
+          "を",
+          "考えています。"
         ]
       },
       "chunks": [
-        "私",
-        "は",
-        "この仕事",
-        "で",
-        "考えること",
-        "が",
-        "あります。"
+        "週末の予定",
+        "を",
+        "考えています。"
       ],
       "distractors": [],
       "synonyms": []
@@ -4894,54 +4885,52 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 73,
-      "example": "私はこの仕事で思い出すことがあります。",
-      "example_ja": "私はこの仕事で思い出すことがあります。",
-      "example_kana": "わたしは この しごとで おもいだすことが あります。",
-      "translation": "我曾經想起。",
-      "translation_zh": "我曾經想起。",
-      "audioText": "私はこの仕事で思い出すことがあります。",
+      "example": "写真を見て旅行を思い出しました。",
+      "example_ja": "写真を見て旅行を思い出しました。",
+      "example_kana": "しゃしんを みて りょこうを おもいだしました。",
+      "translation": "看著照片想起了那次旅行。",
+      "translation_zh": "看著照片想起了那次旅行。",
+      "audioText": "写真を見て旅行を思い出しました。",
       "particles": [
         {
           "kind": "particle",
-          "before": "私",
-          "answer": "は",
-          "after": "この仕事で思い出すことがあります。",
+          "before": "写真",
+          "answer": "を",
+          "after": "見て旅行を思い出しました。",
           "choices": [
-            "は",
             "を",
             "が",
-            "に"
+            "に",
+            "と"
           ],
-          "explanation": "這裡用「は」讓句子自然連接。"
+          "explanation": "這裡用「を」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "私はこの仕事で思い出す",
-        "answer": "ことがあります",
-        "after": "。",
+        "kind": "particle",
+        "before": "写真",
+        "answer": "を",
+        "after": "見て旅行を思い出しました。",
         "choices": [
-          "ことがあります",
-          "ところです",
-          "ようにします",
-          "なければなりません"
+          "を",
+          "が",
+          "に",
+          "と"
         ],
-        "explanation": "「〜ことがあります」表示曾經有過這種經驗。",
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "私",
-          "は",
-          "この仕事"
+          "写真",
+          "を",
+          "見て旅行"
         ]
       },
       "chunks": [
-        "私",
-        "は",
-        "この仕事",
-        "で",
-        "思い出すこと",
-        "が",
-        "あります。"
+        "写真",
+        "を",
+        "見て旅行",
+        "を",
+        "思い出しました。"
       ],
       "distractors": [],
       "synonyms": []
@@ -4961,54 +4950,54 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 74,
-      "example": "私はこの仕事で伝えることがあります。",
-      "example_ja": "私はこの仕事で伝えることがあります。",
-      "example_kana": "わたしは この しごとで つたえることが あります。",
-      "translation": "我曾經傳達。",
-      "translation_zh": "我曾經傳達。",
-      "audioText": "私はこの仕事で伝えることがあります。",
+      "example": "帰りが遅くなると家族に伝えました。",
+      "example_ja": "帰りが遅くなると家族に伝えました。",
+      "example_kana": "かえりが おそくなると かぞくに つたえました。",
+      "translation": "告訴家人我會晚點回去。",
+      "translation_zh": "告訴家人我會晚點回去。",
+      "audioText": "帰りが遅くなると家族に伝えました。",
       "particles": [
         {
           "kind": "particle",
-          "before": "私",
-          "answer": "は",
-          "after": "この仕事で伝えることがあります。",
+          "before": "帰り",
+          "answer": "が",
+          "after": "遅くなると家族に伝えました。",
           "choices": [
-            "は",
-            "を",
             "が",
-            "に"
+            "を",
+            "に",
+            "と"
           ],
-          "explanation": "這裡用「は」讓句子自然連接。"
+          "explanation": "這裡用「が」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "私はこの仕事で伝える",
-        "answer": "ことがあります",
-        "after": "。",
+        "kind": "particle",
+        "before": "帰り",
+        "answer": "が",
+        "after": "遅くなると家族に伝えました。",
         "choices": [
-          "ことがあります",
-          "ところです",
-          "ようにします",
-          "なければなりません"
+          "が",
+          "を",
+          "に",
+          "と"
         ],
-        "explanation": "「〜ことがあります」表示曾經有過這種經驗。",
+        "explanation": "這裡用「が」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "私",
-          "は",
-          "この仕事"
+          "帰り",
+          "が",
+          "遅くなる"
         ]
       },
       "chunks": [
-        "私",
-        "は",
-        "この仕事",
-        "で",
-        "伝えること",
+        "帰り",
         "が",
-        "あります。"
+        "遅くなる",
+        "と",
+        "家族",
+        "に",
+        "伝えました。"
       ],
       "distractors": [],
       "synonyms": []
@@ -5028,54 +5017,52 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 75,
-      "example": "私はこの仕事で調べることがあります。",
-      "example_ja": "私はこの仕事で調べることがあります。",
-      "example_kana": "わたしは この しごとで しらべることが あります。",
-      "translation": "我曾經調查。",
-      "translation_zh": "我曾經調查。",
-      "audioText": "私はこの仕事で調べることがあります。",
+      "example": "電車の時間をスマホで調べました。",
+      "example_ja": "電車の時間をスマホで調べました。",
+      "example_kana": "でんしゃの じかんを スマホで しらべました。",
+      "translation": "用手機查了電車時間。",
+      "translation_zh": "用手機查了電車時間。",
+      "audioText": "電車の時間をスマホで調べました。",
       "particles": [
         {
           "kind": "particle",
-          "before": "私",
-          "answer": "は",
-          "after": "この仕事で調べることがあります。",
+          "before": "電車の時間",
+          "answer": "を",
+          "after": "スマホで調べました。",
           "choices": [
-            "は",
             "を",
             "が",
-            "に"
+            "に",
+            "と"
           ],
-          "explanation": "這裡用「は」讓句子自然連接。"
+          "explanation": "這裡用「を」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "私はこの仕事で調べる",
-        "answer": "ことがあります",
-        "after": "。",
+        "kind": "particle",
+        "before": "電車の時間",
+        "answer": "を",
+        "after": "スマホで調べました。",
         "choices": [
-          "ことがあります",
-          "ところです",
-          "ようにします",
-          "なければなりません"
+          "を",
+          "が",
+          "に",
+          "と"
         ],
-        "explanation": "「〜ことがあります」表示曾經有過這種經驗。",
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "私",
-          "は",
-          "この仕事"
+          "電車の時間",
+          "を",
+          "スマホ"
         ]
       },
       "chunks": [
-        "私",
-        "は",
-        "この仕事",
+        "電車の時間",
+        "を",
+        "スマホ",
         "で",
-        "調べること",
-        "が",
-        "あります。"
+        "調べました。"
       ],
       "distractors": [],
       "synonyms": []
@@ -5095,54 +5082,52 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 76,
-      "example": "私はこの仕事で忘れることがあります。",
-      "example_ja": "私はこの仕事で忘れることがあります。",
-      "example_kana": "わたしは この しごとで わすれることが あります。",
-      "translation": "我曾經忘記。",
-      "translation_zh": "我曾經忘記。",
-      "audioText": "私はこの仕事で忘れることがあります。",
+      "example": "電車に傘を忘れました。",
+      "example_ja": "電車に傘を忘れました。",
+      "example_kana": "でんしゃに かさを わすれました。",
+      "translation": "把傘忘在電車上了。",
+      "translation_zh": "把傘忘在電車上了。",
+      "audioText": "電車に傘を忘れました。",
       "particles": [
         {
           "kind": "particle",
-          "before": "私",
-          "answer": "は",
-          "after": "この仕事で忘れることがあります。",
+          "before": "電車",
+          "answer": "に",
+          "after": "傘を忘れました。",
           "choices": [
-            "は",
+            "に",
             "を",
             "が",
-            "に"
+            "と"
           ],
-          "explanation": "這裡用「は」讓句子自然連接。"
+          "explanation": "這裡用「に」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "私はこの仕事で忘れる",
-        "answer": "ことがあります",
-        "after": "。",
+        "kind": "particle",
+        "before": "電車",
+        "answer": "に",
+        "after": "傘を忘れました。",
         "choices": [
-          "ことがあります",
-          "ところです",
-          "ようにします",
-          "なければなりません"
+          "に",
+          "を",
+          "が",
+          "と"
         ],
-        "explanation": "「〜ことがあります」表示曾經有過這種經驗。",
+        "explanation": "這裡用「に」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "私",
-          "は",
-          "この仕事"
+          "電車",
+          "に",
+          "傘"
         ]
       },
       "chunks": [
-        "私",
-        "は",
-        "この仕事",
-        "で",
-        "忘れること",
-        "が",
-        "あります。"
+        "電車",
+        "に",
+        "傘",
+        "を",
+        "忘れました。"
       ],
       "distractors": [],
       "synonyms": []
@@ -5162,54 +5147,52 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 77,
-      "example": "私はこの仕事で決めることがあります。",
-      "example_ja": "私はこの仕事で決めることがあります。",
-      "example_kana": "わたしは この しごとで きめることが あります。",
-      "translation": "我曾經決定。",
-      "translation_zh": "我曾經決定。",
-      "audioText": "私はこの仕事で決めることがあります。",
+      "example": "旅行の日を家族と決めました。",
+      "example_ja": "旅行の日を家族と決めました。",
+      "example_kana": "りょこうの ひを かぞくと きめました。",
+      "translation": "和家人決定了旅行日期。",
+      "translation_zh": "和家人決定了旅行日期。",
+      "audioText": "旅行の日を家族と決めました。",
       "particles": [
         {
           "kind": "particle",
-          "before": "私",
-          "answer": "は",
-          "after": "この仕事で決めることがあります。",
+          "before": "旅行の日",
+          "answer": "を",
+          "after": "家族と決めました。",
           "choices": [
-            "は",
             "を",
             "が",
-            "に"
+            "に",
+            "と"
           ],
-          "explanation": "這裡用「は」讓句子自然連接。"
+          "explanation": "這裡用「を」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "私はこの仕事で決める",
-        "answer": "ことがあります",
-        "after": "。",
+        "kind": "particle",
+        "before": "旅行の日",
+        "answer": "を",
+        "after": "家族と決めました。",
         "choices": [
-          "ことがあります",
-          "ところです",
-          "ようにします",
-          "なければなりません"
+          "を",
+          "が",
+          "に",
+          "と"
         ],
-        "explanation": "「〜ことがあります」表示曾經有過這種經驗。",
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "私",
-          "は",
-          "この仕事"
+          "旅行の日",
+          "を",
+          "家族"
         ]
       },
       "chunks": [
-        "私",
-        "は",
-        "この仕事",
-        "で",
-        "決めること",
-        "が",
-        "あります。"
+        "旅行の日",
+        "を",
+        "家族",
+        "と",
+        "決めました。"
       ],
       "distractors": [],
       "synonyms": []
@@ -5229,54 +5212,53 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 78,
-      "example": "私はこの仕事で集めることがあります。",
-      "example_ja": "私はこの仕事で集めることがあります。",
-      "example_kana": "わたしは この しごとで あつめることが あります。",
-      "translation": "我曾經收集。",
-      "translation_zh": "我曾經收集。",
-      "audioText": "私はこの仕事で集めることがあります。",
+      "example": "子どものころ、切手を集めていました。",
+      "example_ja": "子どものころ、切手を集めていました。",
+      "example_kana": "こどもの ころ、きってを あつめていました。",
+      "translation": "小時候曾經收集郵票。",
+      "translation_zh": "小時候曾經收集郵票。",
+      "audioText": "子どものころ、切手を集めていました。",
       "particles": [
         {
           "kind": "particle",
-          "before": "私",
-          "answer": "は",
-          "after": "この仕事で集めることがあります。",
+          "before": "子どものころ、切手",
+          "answer": "を",
+          "after": "集めていました。",
           "choices": [
-            "は",
             "を",
             "が",
-            "に"
+            "に",
+            "と"
           ],
-          "explanation": "這裡用「は」讓句子自然連接。"
+          "explanation": "這裡用「を」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "私はこの仕事で集める",
-        "answer": "ことがあります",
-        "after": "。",
+        "kind": "particle",
+        "before": "子どものころ、切手",
+        "answer": "を",
+        "after": "集めていました。",
         "choices": [
-          "ことがあります",
-          "ところです",
-          "ようにします",
-          "なければなりません"
+          "を",
+          "が",
+          "に",
+          "と"
         ],
-        "explanation": "「〜ことがあります」表示曾經有過這種經驗。",
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "私",
-          "は",
-          "この仕事"
+          "子ど",
+          "も",
+          "のころ、"
         ]
       },
       "chunks": [
-        "私",
-        "は",
-        "この仕事",
-        "で",
-        "集めること",
-        "が",
-        "あります。"
+        "子ど",
+        "も",
+        "のころ、",
+        "切手",
+        "を",
+        "集めていました。"
       ],
       "distractors": [],
       "synonyms": []
@@ -5296,54 +5278,52 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 79,
-      "example": "私はこの仕事で知らせることがあります。",
-      "example_ja": "私はこの仕事で知らせることがあります。",
-      "example_kana": "わたしは この しごとで しらせることが あります。",
-      "translation": "我曾經通知。",
-      "translation_zh": "我曾經通知。",
-      "audioText": "私はこの仕事で知らせることがあります。",
+      "example": "試合の時間をみんなに知らせました。",
+      "example_ja": "試合の時間をみんなに知らせました。",
+      "example_kana": "しあいの じかんを みんなに しらせました。",
+      "translation": "通知了大家比賽時間。",
+      "translation_zh": "通知了大家比賽時間。",
+      "audioText": "試合の時間をみんなに知らせました。",
       "particles": [
         {
           "kind": "particle",
-          "before": "私",
-          "answer": "は",
-          "after": "この仕事で知らせることがあります。",
+          "before": "試合の時間",
+          "answer": "を",
+          "after": "みんなに知らせました。",
           "choices": [
-            "は",
             "を",
             "が",
-            "に"
+            "に",
+            "と"
           ],
-          "explanation": "這裡用「は」讓句子自然連接。"
+          "explanation": "這裡用「を」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "私はこの仕事で知らせる",
-        "answer": "ことがあります",
-        "after": "。",
+        "kind": "particle",
+        "before": "試合の時間",
+        "answer": "を",
+        "after": "みんなに知らせました。",
         "choices": [
-          "ことがあります",
-          "ところです",
-          "ようにします",
-          "なければなりません"
+          "を",
+          "が",
+          "に",
+          "と"
         ],
-        "explanation": "「〜ことがあります」表示曾經有過這種經驗。",
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "私",
-          "は",
-          "この仕事"
+          "試合の時間",
+          "を",
+          "みんな"
         ]
       },
       "chunks": [
-        "私",
-        "は",
-        "この仕事",
-        "で",
-        "知らせること",
-        "が",
-        "あります。"
+        "試合の時間",
+        "を",
+        "みんな",
+        "に",
+        "知らせました。"
       ],
       "distractors": [],
       "synonyms": []
@@ -5363,54 +5343,52 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 80,
-      "example": "私はこの仕事で慣れることがあります。",
-      "example_ja": "私はこの仕事で慣れることがあります。",
-      "example_kana": "わたしは この しごとで なれることが あります。",
-      "translation": "我曾經習慣。",
-      "translation_zh": "我曾經習慣。",
-      "audioText": "私はこの仕事で慣れることがあります。",
+      "example": "新しい仕事にやっと慣れました。",
+      "example_ja": "新しい仕事にやっと慣れました。",
+      "example_kana": "あたらしい しごとに やっと なれました。",
+      "translation": "終於習慣新工作了。",
+      "translation_zh": "終於習慣新工作了。",
+      "audioText": "新しい仕事にやっと慣れました。",
       "particles": [
         {
           "kind": "particle",
-          "before": "私",
-          "answer": "は",
-          "after": "この仕事で慣れることがあります。",
+          "before": "新しい仕事",
+          "answer": "に",
+          "after": "やっと慣れました。",
           "choices": [
-            "は",
+            "に",
             "を",
             "が",
-            "に"
+            "と"
           ],
-          "explanation": "這裡用「は」讓句子自然連接。"
+          "explanation": "這裡用「に」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "私はこの仕事で慣れる",
-        "answer": "ことがあります",
-        "after": "。",
+        "kind": "particle",
+        "before": "新しい仕事",
+        "answer": "に",
+        "after": "やっと慣れました。",
         "choices": [
-          "ことがあります",
-          "ところです",
-          "ようにします",
-          "なければなりません"
+          "に",
+          "を",
+          "が",
+          "と"
         ],
-        "explanation": "「〜ことがあります」表示曾經有過這種經驗。",
+        "explanation": "這裡用「に」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "私",
-          "は",
-          "この仕事"
+          "新しい仕事",
+          "に",
+          "やっ"
         ]
       },
       "chunks": [
-        "私",
-        "は",
-        "この仕事",
-        "で",
-        "慣れること",
-        "が",
-        "あります。"
+        "新しい仕事",
+        "に",
+        "やっ",
+        "と",
+        "慣れました。"
       ],
       "distractors": [],
       "synonyms": []
@@ -5430,54 +5408,50 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 81,
-      "example": "私はこの仕事で比べることがあります。",
-      "example_ja": "私はこの仕事で比べることがあります。",
-      "example_kana": "わたしは この しごとで くらべることが あります。",
-      "translation": "我曾經比較。",
-      "translation_zh": "我曾經比較。",
-      "audioText": "私はこの仕事で比べることがあります。",
+      "example": "二つのかばんの値段を比べました。",
+      "example_ja": "二つのかばんの値段を比べました。",
+      "example_kana": "ふたつの かばんの ねだんを くらべました。",
+      "translation": "比較了兩個包包的價格。",
+      "translation_zh": "比較了兩個包包的價格。",
+      "audioText": "二つのかばんの値段を比べました。",
       "particles": [
         {
           "kind": "particle",
-          "before": "私",
-          "answer": "は",
-          "after": "この仕事で比べることがあります。",
+          "before": "二つのかばんの値段",
+          "answer": "を",
+          "after": "比べました。",
           "choices": [
-            "は",
             "を",
             "が",
-            "に"
+            "に",
+            "と"
           ],
-          "explanation": "這裡用「は」讓句子自然連接。"
+          "explanation": "這裡用「を」讓句子自然連接。"
         }
       ],
       "grammar": {
-        "kind": "grammar_from_example",
-        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
-        "before": "私はこの仕事で比べる",
-        "answer": "ことがあります",
-        "after": "。",
+        "kind": "particle",
+        "before": "二つのかばんの値段",
+        "answer": "を",
+        "after": "比べました。",
         "choices": [
-          "ことがあります",
-          "ところです",
-          "ようにします",
-          "なければなりません"
+          "を",
+          "が",
+          "に",
+          "と"
         ],
-        "explanation": "「〜ことがあります」表示曾經有過這種經驗。",
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "私",
-          "は",
-          "この仕事"
+          "二つのかばんの値段",
+          "を",
+          "比べました。"
         ]
       },
       "chunks": [
-        "私",
-        "は",
-        "この仕事",
-        "で",
-        "比べること",
-        "が",
-        "あります。"
+        "二つのかばんの値段",
+        "を",
+        "比べました。"
       ],
       "distractors": [],
       "synonyms": []
@@ -5497,18 +5471,18 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 82,
-      "example": "この本は厚いです。",
-      "example_ja": "この本は厚いです。",
-      "example_kana": "この ほんは あついです。",
-      "translation": "這本書很厚。",
-      "translation_zh": "這本書很厚。",
-      "audioText": "この本は厚いです。",
+      "example": "冬は厚いコートを着ます。",
+      "example_ja": "冬は厚いコートを着ます。",
+      "example_kana": "ふゆは あつい コートを きます。",
+      "translation": "冬天會穿厚外套。",
+      "translation_zh": "冬天會穿厚外套。",
+      "audioText": "冬は厚いコートを着ます。",
       "particles": [
         {
           "kind": "particle",
-          "before": "この本",
+          "before": "冬",
           "answer": "は",
-          "after": "厚いです。",
+          "after": "厚いコートを着ます。",
           "choices": [
             "は",
             "を",
@@ -5520,9 +5494,9 @@
       ],
       "grammar": {
         "kind": "particle",
-        "before": "この本",
+        "before": "冬",
         "answer": "は",
-        "after": "厚いです。",
+        "after": "厚いコートを着ます。",
         "choices": [
           "は",
           "を",
@@ -5532,15 +5506,17 @@
         "explanation": "這裡用「は」讓句子自然連接。",
         "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "この本",
+          "冬",
           "は",
-          "厚いです。"
+          "厚いコート"
         ]
       },
       "chunks": [
-        "この本",
+        "冬",
         "は",
-        "厚いです。"
+        "厚いコート",
+        "を",
+        "着ます。"
       ],
       "distractors": [],
       "synonyms": []
@@ -5560,18 +5536,18 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 83,
-      "example": "この紙は薄いです。",
-      "example_ja": "この紙は薄いです。",
-      "example_kana": "この かみは うすいです。",
-      "translation": "這張紙很薄。",
-      "translation_zh": "這張紙很薄。",
-      "audioText": "この紙は薄いです。",
+      "example": "この紙は薄くて、すぐ破れます。",
+      "example_ja": "この紙は薄くて、すぐ破れます。",
+      "example_kana": "この かみは うすくて、すぐ やぶれます。",
+      "translation": "這張紙很薄，很快就會破。",
+      "translation_zh": "這張紙很薄，很快就會破。",
+      "audioText": "この紙は薄くて、すぐ破れます。",
       "particles": [
         {
           "kind": "particle",
           "before": "この紙",
           "answer": "は",
-          "after": "薄いです。",
+          "after": "薄くて、すぐ破れます。",
           "choices": [
             "は",
             "を",
@@ -5585,7 +5561,7 @@
         "kind": "particle",
         "before": "この紙",
         "answer": "は",
-        "after": "薄いです。",
+        "after": "薄くて、すぐ破れます。",
         "choices": [
           "は",
           "を",
@@ -5597,13 +5573,14 @@
         "hintChunks": [
           "この紙",
           "は",
-          "薄いです。"
+          "薄くて、"
         ]
       },
       "chunks": [
         "この紙",
         "は",
-        "薄いです。"
+        "薄くて、",
+        "すぐ破れます。"
       ],
       "distractors": [],
       "synonyms": []
@@ -5623,18 +5600,18 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 84,
-      "example": "このケーキは甘いです。",
-      "example_ja": "このケーキは甘いです。",
-      "example_kana": "この ケーキは あまいです。",
-      "translation": "這個蛋糕很甜。",
-      "translation_zh": "這個蛋糕很甜。",
-      "audioText": "このケーキは甘いです。",
+      "example": "妹は甘いお菓子が大好きです。",
+      "example_ja": "妹は甘いお菓子が大好きです。",
+      "example_kana": "いもうとは あまい おかしが だいすきです。",
+      "translation": "妹妹很喜歡甜點。",
+      "translation_zh": "妹妹很喜歡甜點。",
+      "audioText": "妹は甘いお菓子が大好きです。",
       "particles": [
         {
           "kind": "particle",
-          "before": "このケーキ",
+          "before": "妹",
           "answer": "は",
-          "after": "甘いです。",
+          "after": "甘いお菓子が大好きです。",
           "choices": [
             "は",
             "を",
@@ -5646,9 +5623,9 @@
       ],
       "grammar": {
         "kind": "particle",
-        "before": "このケーキ",
+        "before": "妹",
         "answer": "は",
-        "after": "甘いです。",
+        "after": "甘いお菓子が大好きです。",
         "choices": [
           "は",
           "を",
@@ -5658,15 +5635,17 @@
         "explanation": "這裡用「は」讓句子自然連接。",
         "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "このケーキ",
+          "妹",
           "は",
-          "甘いです。"
+          "甘いお菓子"
         ]
       },
       "chunks": [
-        "このケーキ",
+        "妹",
         "は",
-        "甘いです。"
+        "甘いお菓子",
+        "が",
+        "大好きです。"
       ],
       "distractors": [],
       "synonyms": []
@@ -5686,18 +5665,18 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 85,
-      "example": "この薬は苦いです。",
-      "example_ja": "この薬は苦いです。",
-      "example_kana": "この くすりは にがいです。",
-      "translation": "這個藥很苦。",
-      "translation_zh": "這個藥很苦。",
-      "audioText": "この薬は苦いです。",
+      "example": "このコーヒーは少し苦いです。",
+      "example_ja": "このコーヒーは少し苦いです。",
+      "example_kana": "この コーヒーは すこし にがいです。",
+      "translation": "這杯咖啡有點苦。",
+      "translation_zh": "這杯咖啡有點苦。",
+      "audioText": "このコーヒーは少し苦いです。",
       "particles": [
         {
           "kind": "particle",
-          "before": "この薬",
+          "before": "このコーヒー",
           "answer": "は",
-          "after": "苦いです。",
+          "after": "少し苦いです。",
           "choices": [
             "は",
             "を",
@@ -5709,9 +5688,9 @@
       ],
       "grammar": {
         "kind": "particle",
-        "before": "この薬",
+        "before": "このコーヒー",
         "answer": "は",
-        "after": "苦いです。",
+        "after": "少し苦いです。",
         "choices": [
           "は",
           "を",
@@ -5721,15 +5700,15 @@
         "explanation": "這裡用「は」讓句子自然連接。",
         "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "この薬",
+          "このコーヒー",
           "は",
-          "苦いです。"
+          "少し苦いです。"
         ]
       },
       "chunks": [
-        "この薬",
+        "このコーヒー",
         "は",
-        "苦いです。"
+        "少し苦いです。"
       ],
       "distractors": [],
       "synonyms": []
@@ -5749,50 +5728,54 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 86,
-      "example": "このカレーは辛いです。",
-      "example_ja": "このカレーは辛いです。",
-      "example_kana": "この カレーは からいです。",
-      "translation": "這個咖哩很辣。",
-      "translation_zh": "這個咖哩很辣。",
-      "audioText": "このカレーは辛いです。",
+      "example": "辛い物を食べると、汗が出ます。",
+      "example_ja": "辛い物を食べると、汗が出ます。",
+      "example_kana": "からい ものを たべると、あせが でます。",
+      "translation": "吃辣的東西就會流汗。",
+      "translation_zh": "吃辣的東西就會流汗。",
+      "audioText": "辛い物を食べると、汗が出ます。",
       "particles": [
         {
           "kind": "particle",
-          "before": "このカレー",
-          "answer": "は",
-          "after": "辛いです。",
+          "before": "辛い物",
+          "answer": "を",
+          "after": "食べると、汗が出ます。",
           "choices": [
-            "は",
             "を",
             "が",
-            "に"
+            "に",
+            "と"
           ],
-          "explanation": "這裡用「は」讓句子自然連接。"
+          "explanation": "這裡用「を」讓句子自然連接。"
         }
       ],
       "grammar": {
         "kind": "particle",
-        "before": "このカレー",
-        "answer": "は",
-        "after": "辛いです。",
+        "before": "辛い物",
+        "answer": "を",
+        "after": "食べると、汗が出ます。",
         "choices": [
-          "は",
           "を",
           "が",
-          "に"
+          "に",
+          "と"
         ],
-        "explanation": "這裡用「は」讓句子自然連接。",
+        "explanation": "這裡用「を」讓句子自然連接。",
         "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "このカレー",
-          "は",
-          "辛いです。"
+          "辛い物",
+          "を",
+          "食べる"
         ]
       },
       "chunks": [
-        "このカレー",
-        "は",
-        "辛いです。"
+        "辛い物",
+        "を",
+        "食べる",
+        "と、",
+        "汗",
+        "が",
+        "出ます。"
       ],
       "distractors": [],
       "synonyms": []
@@ -6192,18 +6175,18 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 93,
-      "example": "この説明は安全です。",
-      "example_ja": "この説明は安全です。",
-      "example_kana": "この せつめいは あんぜんです。",
-      "translation": "這個說明很安全的。",
-      "translation_zh": "這個說明很安全的。",
-      "audioText": "この説明は安全です。",
+      "example": "夜は明るい道を歩くほうが安全です。",
+      "example_ja": "夜は明るい道を歩くほうが安全です。",
+      "example_kana": "よるは あかるい みちを あるく ほうが あんぜんです。",
+      "translation": "晚上走明亮的路比較安全。",
+      "translation_zh": "晚上走明亮的路比較安全。",
+      "audioText": "夜は明るい道を歩くほうが安全です。",
       "particles": [
         {
           "kind": "particle",
-          "before": "この説明",
+          "before": "夜",
           "answer": "は",
-          "after": "安全です。",
+          "after": "明るい道を歩くほうが安全です。",
           "choices": [
             "は",
             "を",
@@ -6215,9 +6198,9 @@
       ],
       "grammar": {
         "kind": "particle",
-        "before": "この説明",
+        "before": "夜",
         "answer": "は",
-        "after": "安全です。",
+        "after": "明るい道を歩くほうが安全です。",
         "choices": [
           "は",
           "を",
@@ -6227,14 +6210,18 @@
         "explanation": "這裡用「は」讓句子自然連接。",
         "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "この説明",
+          "夜",
           "は",
-          "安全です。"
+          "明るい道"
         ]
       },
       "chunks": [
-        "この説明",
+        "夜",
         "は",
+        "明るい道",
+        "を",
+        "歩くほう",
+        "が",
         "安全です。"
       ],
       "distractors": [],
@@ -6268,50 +6255,50 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 94,
-      "example": "この説明は不便です。",
-      "example_ja": "この説明は不便です。",
-      "example_kana": "この せつめいは ふべんです。",
-      "translation": "這個說明很不便的。",
-      "translation_zh": "這個說明很不便的。",
-      "audioText": "この説明は不便です。",
+      "example": "駅から遠いので、少し不便です。",
+      "example_ja": "駅から遠いので、少し不便です。",
+      "example_kana": "えきから とおいので、すこし ふべんです。",
+      "translation": "因為離車站很遠，所以有點不方便。",
+      "translation_zh": "因為離車站很遠，所以有點不方便。",
+      "audioText": "駅から遠いので、少し不便です。",
       "particles": [
         {
           "kind": "particle",
-          "before": "この説明",
-          "answer": "は",
-          "after": "不便です。",
+          "before": "駅から遠いの",
+          "answer": "で",
+          "after": "、少し不便です。",
           "choices": [
-            "は",
+            "で",
             "を",
             "が",
             "に"
           ],
-          "explanation": "這裡用「は」讓句子自然連接。"
+          "explanation": "這裡用「で」讓句子自然連接。"
         }
       ],
       "grammar": {
         "kind": "particle",
-        "before": "この説明",
-        "answer": "は",
-        "after": "不便です。",
+        "before": "駅から遠いの",
+        "answer": "で",
+        "after": "、少し不便です。",
         "choices": [
-          "は",
+          "で",
           "を",
           "が",
           "に"
         ],
-        "explanation": "這裡用「は」讓句子自然連接。",
+        "explanation": "這裡用「で」讓句子自然連接。",
         "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "この説明",
-          "は",
-          "不便です。"
+          "駅から遠いの",
+          "で、",
+          "少し不便です。"
         ]
       },
       "chunks": [
-        "この説明",
-        "は",
-        "不便です。"
+        "駅から遠いの",
+        "で、",
+        "少し不便です。"
       ],
       "distractors": [],
       "synonyms": [
@@ -6344,16 +6331,16 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 95,
-      "example": "この説明は複雑です。",
-      "example_ja": "この説明は複雑です。",
-      "example_kana": "この せつめいは ふくざつです。",
-      "translation": "這個說明很複雜的。",
-      "translation_zh": "這個說明很複雜的。",
-      "audioText": "この説明は複雑です。",
+      "example": "この電車の乗り換えは複雑です。",
+      "example_ja": "この電車の乗り換えは複雑です。",
+      "example_kana": "この でんしゃの のりかえは ふくざつです。",
+      "translation": "這班電車的轉乘很複雜。",
+      "translation_zh": "這班電車的轉乘很複雜。",
+      "audioText": "この電車の乗り換えは複雑です。",
       "particles": [
         {
           "kind": "particle",
-          "before": "この説明",
+          "before": "この電車の乗り換え",
           "answer": "は",
           "after": "複雑です。",
           "choices": [
@@ -6367,7 +6354,7 @@
       ],
       "grammar": {
         "kind": "particle",
-        "before": "この説明",
+        "before": "この電車の乗り換え",
         "answer": "は",
         "after": "複雑です。",
         "choices": [
@@ -6379,13 +6366,13 @@
         "explanation": "這裡用「は」讓句子自然連接。",
         "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "この説明",
+          "この電車の乗り換え",
           "は",
           "複雑です。"
         ]
       },
       "chunks": [
-        "この説明",
+        "この電車の乗り換え",
         "は",
         "複雑です。"
       ],
@@ -6407,50 +6394,52 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 96,
-      "example": "この説明は親切です。",
-      "example_ja": "この説明は親切です。",
-      "example_kana": "この せつめいは しんせつです。",
-      "translation": "這個說明很親切的。",
-      "translation_zh": "這個說明很親切的。",
-      "audioText": "この説明は親切です。",
+      "example": "店員さんが親切に教えてくれました。",
+      "example_ja": "店員さんが親切に教えてくれました。",
+      "example_kana": "てんいんさんが しんせつに おしえてくれました。",
+      "translation": "店員很親切地教了我。",
+      "translation_zh": "店員很親切地教了我。",
+      "audioText": "店員さんが親切に教えてくれました。",
       "particles": [
         {
           "kind": "particle",
-          "before": "この説明",
-          "answer": "は",
-          "after": "親切です。",
+          "before": "店員さん",
+          "answer": "が",
+          "after": "親切に教えてくれました。",
           "choices": [
-            "は",
-            "を",
             "が",
-            "に"
+            "を",
+            "に",
+            "と"
           ],
-          "explanation": "這裡用「は」讓句子自然連接。"
+          "explanation": "這裡用「が」讓句子自然連接。"
         }
       ],
       "grammar": {
         "kind": "particle",
-        "before": "この説明",
-        "answer": "は",
-        "after": "親切です。",
+        "before": "店員さん",
+        "answer": "が",
+        "after": "親切に教えてくれました。",
         "choices": [
-          "は",
-          "を",
           "が",
-          "に"
+          "を",
+          "に",
+          "と"
         ],
-        "explanation": "這裡用「は」讓句子自然連接。",
+        "explanation": "這裡用「が」讓句子自然連接。",
         "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "この説明",
-          "は",
-          "親切です。"
+          "店員さん",
+          "が",
+          "親切"
         ]
       },
       "chunks": [
-        "この説明",
-        "は",
-        "親切です。"
+        "店員さん",
+        "が",
+        "親切",
+        "に",
+        "教えてくれました。"
       ],
       "distractors": [],
       "synonyms": []
@@ -6470,50 +6459,54 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 97,
-      "example": "この説明は大切です。",
-      "example_ja": "この説明は大切です。",
-      "example_kana": "この せつめいは たいせつです。",
-      "translation": "這個說明很重要的。",
-      "translation_zh": "這個說明很重要的。",
-      "audioText": "この説明は大切です。",
+      "example": "家族と過ごす時間を大切にしています。",
+      "example_ja": "家族と過ごす時間を大切にしています。",
+      "example_kana": "かぞくと すごす じかんを たいせつに しています。",
+      "translation": "我很珍惜和家人相處的時間。",
+      "translation_zh": "我很珍惜和家人相處的時間。",
+      "audioText": "家族と過ごす時間を大切にしています。",
       "particles": [
         {
           "kind": "particle",
-          "before": "この説明",
-          "answer": "は",
-          "after": "大切です。",
+          "before": "家族と過ごす時間",
+          "answer": "を",
+          "after": "大切にしています。",
           "choices": [
-            "は",
             "を",
             "が",
-            "に"
+            "に",
+            "と"
           ],
-          "explanation": "這裡用「は」讓句子自然連接。"
+          "explanation": "這裡用「を」讓句子自然連接。"
         }
       ],
       "grammar": {
         "kind": "particle",
-        "before": "この説明",
-        "answer": "は",
-        "after": "大切です。",
+        "before": "家族と過ごす時間",
+        "answer": "を",
+        "after": "大切にしています。",
         "choices": [
-          "は",
           "を",
           "が",
-          "に"
+          "に",
+          "と"
         ],
-        "explanation": "這裡用「は」讓句子自然連接。",
+        "explanation": "這裡用「を」讓句子自然連接。",
         "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "この説明",
-          "は",
-          "大切です。"
+          "家族",
+          "と",
+          "過ごす時間"
         ]
       },
       "chunks": [
-        "この説明",
-        "は",
-        "大切です。"
+        "家族",
+        "と",
+        "過ごす時間",
+        "を",
+        "大切",
+        "に",
+        "しています。"
       ],
       "distractors": [],
       "synonyms": [
@@ -6546,50 +6539,52 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 98,
-      "example": "この説明は丁寧です。",
-      "example_ja": "この説明は丁寧です。",
-      "example_kana": "この せつめいは ていねいです。",
-      "translation": "這個說明很有禮貌。",
-      "translation_zh": "這個說明很有禮貌。",
-      "audioText": "この説明は丁寧です。",
+      "example": "店員さんが丁寧に説明してくれました。",
+      "example_ja": "店員さんが丁寧に説明してくれました。",
+      "example_kana": "てんいんさんが ていねいに せつめいしてくれました。",
+      "translation": "店員很仔細地向我說明。",
+      "translation_zh": "店員很仔細地向我說明。",
+      "audioText": "店員さんが丁寧に説明してくれました。",
       "particles": [
         {
           "kind": "particle",
-          "before": "この説明",
-          "answer": "は",
-          "after": "丁寧です。",
+          "before": "店員さん",
+          "answer": "が",
+          "after": "丁寧に説明してくれました。",
           "choices": [
-            "は",
-            "を",
             "が",
-            "に"
+            "を",
+            "に",
+            "と"
           ],
-          "explanation": "這裡用「は」讓句子自然連接。"
+          "explanation": "這裡用「が」讓句子自然連接。"
         }
       ],
       "grammar": {
         "kind": "particle",
-        "before": "この説明",
-        "answer": "は",
-        "after": "丁寧です。",
+        "before": "店員さん",
+        "answer": "が",
+        "after": "丁寧に説明してくれました。",
         "choices": [
-          "は",
-          "を",
           "が",
-          "に"
+          "を",
+          "に",
+          "と"
         ],
-        "explanation": "這裡用「は」讓句子自然連接。",
+        "explanation": "這裡用「が」讓句子自然連接。",
         "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "この説明",
-          "は",
-          "丁寧です。"
+          "店員さん",
+          "が",
+          "丁寧"
         ]
       },
       "chunks": [
-        "この説明",
-        "は",
-        "丁寧です。"
+        "店員さん",
+        "が",
+        "丁寧",
+        "に",
+        "説明してくれました。"
       ],
       "distractors": [],
       "synonyms": []
@@ -6609,50 +6604,52 @@
       "tier": "n4_level_path",
       "firstSeen": "2026-06-04",
       "rank": 99,
-      "example": "この説明は残念です。",
-      "example_ja": "この説明は残念です。",
-      "example_kana": "この せつめいは ざんねんです。",
-      "translation": "這個說明很可惜。",
-      "translation_zh": "這個說明很可惜。",
-      "audioText": "この説明は残念です。",
+      "example": "雨で花火が見られなくて残念です。",
+      "example_ja": "雨で花火が見られなくて残念です。",
+      "example_kana": "あめで はなびが みられなくて ざんねんです。",
+      "translation": "因為下雨看不到煙火，很可惜。",
+      "translation_zh": "因為下雨看不到煙火，很可惜。",
+      "audioText": "雨で花火が見られなくて残念です。",
       "particles": [
         {
           "kind": "particle",
-          "before": "この説明",
-          "answer": "は",
-          "after": "残念です。",
+          "before": "雨",
+          "answer": "で",
+          "after": "花火が見られなくて残念です。",
           "choices": [
-            "は",
+            "で",
             "を",
             "が",
             "に"
           ],
-          "explanation": "這裡用「は」讓句子自然連接。"
+          "explanation": "這裡用「で」讓句子自然連接。"
         }
       ],
       "grammar": {
         "kind": "particle",
-        "before": "この説明",
-        "answer": "は",
-        "after": "残念です。",
+        "before": "雨",
+        "answer": "で",
+        "after": "花火が見られなくて残念です。",
         "choices": [
-          "は",
+          "で",
           "を",
           "が",
           "に"
         ],
-        "explanation": "這裡用「は」讓句子自然連接。",
+        "explanation": "這裡用「で」讓句子自然連接。",
         "prompt_zh": "看例句選出最自然的助詞。",
         "hintChunks": [
-          "この説明",
-          "は",
-          "残念です。"
+          "雨",
+          "で",
+          "花火"
         ]
       },
       "chunks": [
-        "この説明",
-        "は",
-        "残念です。"
+        "雨",
+        "で",
+        "花火",
+        "が",
+        "見られなくて残念です。"
       ],
       "distractors": [],
       "synonyms": []

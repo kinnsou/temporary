@@ -74,6 +74,23 @@ SYNONYM_OVERRIDES = {
 }
 
 
+def validate_example_variety(items: list[dict]) -> None:
+    """Reject copy-pasted example templates that make the classroom repetitive."""
+    skeletons: dict[str, list[str]] = {}
+    for item in items:
+        sentence = str(item.get("example_ja", "")).strip()
+        term = str(item.get("kanji") or item.get("kana") or "").strip()
+        if not sentence or not term or term not in sentence:
+            continue
+        skeleton = sentence.replace(term, "{word}")
+        skeletons.setdefault(skeleton, []).append(str(item.get("id") or term))
+
+    repeated = {skeleton: ids for skeleton, ids in skeletons.items() if len(ids) > 2}
+    if repeated:
+        details = "; ".join(f"{skeleton}: {', '.join(ids)}" for skeleton, ids in repeated.items())
+        raise ValueError(f"example template used more than twice: {details}")
+
+
 def validate_record(item: dict) -> None:
     ident = item.get("id") or item.get("kanji") or item.get("kana") or "(unknown)"
     required = ["id", "jlpt", "kind", "kana", "meaning_zh", "example_ja", "example_kana", "translation_zh", "rank"]
@@ -308,6 +325,7 @@ def main() -> None:
     if not isinstance(raw_items, list):
         raise ValueError("memory/jp-n4-vocab-history.json must contain an items array")
 
+    validate_example_variety(raw_items)
     words = [normalize_item(item) for item in raw_items if item.get("released", True)]
     words.sort(key=lambda w: (w["rank"], w["word"]))
     now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
