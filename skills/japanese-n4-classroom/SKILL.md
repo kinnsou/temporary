@@ -21,6 +21,7 @@ Use for the standalone 日文 N4 小教室. The goal is to reuse the proven clas
 - Use N4 as the target level. N5 may be used only as assumed foundation/review scaffolding, not as the daily new-word target unless Mark says so.
 - Prefer fresh N4-specific names over generic `jp` names.
 - Before sending public links, cron messages, or LINE messages, ask if delivery was not explicitly requested.
+- After an N4 change is implemented and verified, commit and push it by default unless Mark explicitly says to keep it local.
 
 ## Canonical N4 Files
 
@@ -94,7 +95,7 @@ Do not reuse English keys like `epopProfile` or `vocabReview.v1.players`.
 3. Create or edit N4 files only.
 4. Run data build and syntax checks.
 5. Browser-check the app before claiming UI/Firebase success.
-6. Commit/push only when Mark asked for a deployable change or the task is clearly a web-page release.
+6. Commit and push verified N4 changes by default.
 
 ## Verification Gate
 
