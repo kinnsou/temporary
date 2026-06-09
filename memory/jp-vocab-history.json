@@ -1,6 +1,6 @@
 {
   "meta": {
-    "updatedAt": "2026-06-08T11:05:14Z",
+    "updatedAt": "2026-06-09T11:05:12Z",
     "classroom": "jp-n3",
     "policy": "N5 excluded; N4 base is treated as already appeared; N3 seed releases 5 words per day.",
     "counts": {
@@ -1065,8 +1065,8 @@
       "meaning": "構成",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-09",
       "example": "構成をしました。",
       "translation": "進行了構成。"
     },
@@ -1075,8 +1075,8 @@
       "meaning": "維持",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-09",
       "example": "維持をしました。",
       "translation": "進行了維持。"
     },
@@ -1085,8 +1085,8 @@
       "meaning": "管理",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-09",
       "example": "管理をしました。",
       "translation": "進行了管理。"
     },
@@ -1095,8 +1095,8 @@
       "meaning": "營運",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-09",
       "example": "運営をしました。",
       "translation": "進行了營運。"
     },
@@ -1105,8 +1105,8 @@
       "meaning": "活用",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-09",
       "example": "活用をしました。",
       "translation": "進行了活用。"
     },
