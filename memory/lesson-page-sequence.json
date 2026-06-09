@@ -4,27 +4,27 @@
   "stopAfterLesson": 18,
   "next": {
     "lesson": 15,
-    "day": "周五"
+    "day": "主日"
   },
   "lastBuilt": {
-    "weekTag": "202606w1",
-    "builtAt": "2026-06-03T09:38:05.818859+08:00",
+    "weekTag": "202606w2",
+    "builtAt": "2026-06-10T06:30:21.539538+08:00",
     "wednesday": {
       "kind": "wednesday",
       "lesson": 15,
-      "day": "周三",
-      "title": "雅各的梦",
-      "file": "lesson15-202606w1.html",
-      "url": "https://kinnsou.github.io/temporary/lesson15-202606w1.html",
+      "day": "周五",
+      "title": "雅各回迦南地",
+      "file": "lesson15-202606w2.html",
+      "url": "https://kinnsou.github.io/temporary/lesson15-202606w2.html",
       "sourceUrl": "https://ezoe.work/books/2/2264-1-15.html"
     },
     "sunday": {
       "kind": "sunday",
       "lesson": 15,
-      "day": "周四",
-      "title": "雅各在巴旦亚兰",
-      "file": "lesson15-202606w1-sun.html",
-      "url": "https://kinnsou.github.io/temporary/lesson15-202606w1-sun.html",
+      "day": "周六",
+      "title": "雅各与神摔跤",
+      "file": "lesson15-202606w2-sun.html",
+      "url": "https://kinnsou.github.io/temporary/lesson15-202606w2-sun.html",
       "sourceUrl": "https://ezoe.work/books/2/2264-1-15.html"
     }
   }
