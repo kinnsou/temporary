@@ -1,6 +1,6 @@
 {
   "meta": {
-    "updatedAt": "2026-06-09T11:05:12Z",
+    "updatedAt": "2026-06-10T11:05:14Z",
     "classroom": "jp-n3",
     "policy": "N5 excluded; N4 base is treated as already appeared; N3 seed releases 5 words per day.",
     "counts": {
@@ -1115,8 +1115,8 @@
       "meaning": "安定",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-10",
       "example": "安定をしました。",
       "translation": "進行了安定。"
     },
@@ -1125,8 +1125,8 @@
       "meaning": "信賴",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-10",
       "example": "信頼をしました。",
       "translation": "進行了信賴。"
     },
@@ -1135,8 +1135,8 @@
       "meaning": "尊重",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-10",
       "example": "尊重をしました。",
       "translation": "進行了尊重。"
     },
@@ -1145,8 +1145,8 @@
       "meaning": "誤解",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-10",
       "example": "誤解をしました。",
       "translation": "進行了誤解。"
     },
@@ -1155,8 +1155,8 @@
       "meaning": "延長",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-10",
       "example": "延長をしました。",
       "translation": "進行了延長。"
     },

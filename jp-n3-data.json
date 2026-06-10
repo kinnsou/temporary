@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-06-09T11:05:12Z",
+    "updatedAt": "2026-06-10T11:05:14Z",
     "sourceCount": 380,
-    "releasedCount": 110,
+    "releasedCount": 115,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "誤解",
+      "reading": "ごかい",
+      "meaning": "誤解",
+      "example": "誤解をしました。",
+      "translation": "進行了誤解。",
+      "firstSeen": "2026-06-10",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "延長",
+      "reading": "えんちょう",
+      "meaning": "延長",
+      "example": "延長をしました。",
+      "translation": "進行了延長。",
+      "firstSeen": "2026-06-10",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "尊重",
+      "reading": "そんちょう",
+      "meaning": "尊重",
+      "example": "尊重をしました。",
+      "translation": "進行了尊重。",
+      "firstSeen": "2026-06-10",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "安定",
+      "reading": "あんてい",
+      "meaning": "安定",
+      "example": "安定をしました。",
+      "translation": "進行了安定。",
+      "firstSeen": "2026-06-10",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "信頼",
+      "reading": "しんらい",
+      "meaning": "信賴",
+      "example": "信頼をしました。",
+      "translation": "進行了信賴。",
+      "firstSeen": "2026-06-10",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "運営",
       "reading": "うんえい",
