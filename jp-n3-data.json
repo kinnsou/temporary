@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-06-10T11:05:14Z",
+    "updatedAt": "2026-06-11T11:05:13Z",
     "sourceCount": 380,
-    "releasedCount": 115,
+    "releasedCount": 120,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "継続",
+      "reading": "けいぞく",
+      "meaning": "繼續",
+      "example": "継続をしました。",
+      "translation": "進行了繼續。",
+      "firstSeen": "2026-06-11",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "終了",
+      "reading": "しゅうりょう",
+      "meaning": "結束",
+      "example": "終了をしました。",
+      "translation": "進行了結束。",
+      "firstSeen": "2026-06-11",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "短縮",
+      "reading": "たんしゅく",
+      "meaning": "縮短",
+      "example": "短縮をしました。",
+      "translation": "進行了縮短。",
+      "firstSeen": "2026-06-11",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "宣伝",
+      "reading": "せんでん",
+      "meaning": "宣傳",
+      "example": "宣伝をしました。",
+      "translation": "進行了宣傳。",
+      "firstSeen": "2026-06-11",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "実現",
+      "reading": "じつげん",
+      "meaning": "實現",
+      "example": "実現をしました。",
+      "translation": "進行了實現。",
+      "firstSeen": "2026-06-11",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "誤解",
       "reading": "ごかい",

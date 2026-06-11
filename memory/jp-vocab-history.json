@@ -1,6 +1,6 @@
 {
   "meta": {
-    "updatedAt": "2026-06-10T11:05:14Z",
+    "updatedAt": "2026-06-11T11:05:13Z",
     "classroom": "jp-n3",
     "policy": "N5 excluded; N4 base is treated as already appeared; N3 seed releases 5 words per day.",
     "counts": {
@@ -1165,8 +1165,8 @@
       "meaning": "縮短",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-11",
       "example": "短縮をしました。",
       "translation": "進行了縮短。"
     },
@@ -1175,8 +1175,8 @@
       "meaning": "宣傳",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-11",
       "example": "宣伝をしました。",
       "translation": "進行了宣傳。"
     },
@@ -1185,8 +1185,8 @@
       "meaning": "實現",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-11",
       "example": "実現をしました。",
       "translation": "進行了實現。"
     },
@@ -1195,8 +1195,8 @@
       "meaning": "繼續",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-11",
       "example": "継続をしました。",
       "translation": "進行了繼續。"
     },
@@ -1205,8 +1205,8 @@
       "meaning": "結束",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-11",
       "example": "終了をしました。",
       "translation": "進行了結束。"
     },
