@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-06-11T11:05:13Z",
+    "updatedAt": "2026-06-12T11:05:13Z",
     "sourceCount": 380,
-    "releasedCount": 120,
+    "releasedCount": 125,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "開始",
+      "reading": "かいし",
+      "meaning": "開始",
+      "example": "開始をしました。",
+      "translation": "進行了開始。",
+      "firstSeen": "2026-06-12",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "証明",
+      "reading": "しょうめい",
+      "meaning": "證明",
+      "example": "証明をしました。",
+      "translation": "進行了證明。",
+      "firstSeen": "2026-06-12",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "許可",
+      "reading": "きょか",
+      "meaning": "許可",
+      "example": "許可をしました。",
+      "translation": "進行了許可。",
+      "firstSeen": "2026-06-12",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "禁止",
+      "reading": "きんし",
+      "meaning": "禁止",
+      "example": "禁止をしました。",
+      "translation": "進行了禁止。",
+      "firstSeen": "2026-06-12",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "停止",
+      "reading": "ていし",
+      "meaning": "停止",
+      "example": "停止をしました。",
+      "translation": "進行了停止。",
+      "firstSeen": "2026-06-12",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "継続",
       "reading": "けいぞく",

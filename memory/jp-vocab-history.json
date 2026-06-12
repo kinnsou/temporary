@@ -1,6 +1,6 @@
 {
   "meta": {
-    "updatedAt": "2026-06-11T11:05:13Z",
+    "updatedAt": "2026-06-12T11:05:13Z",
     "classroom": "jp-n3",
     "policy": "N5 excluded; N4 base is treated as already appeared; N3 seed releases 5 words per day.",
     "counts": {
@@ -1215,8 +1215,8 @@
       "meaning": "開始",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-12",
       "example": "開始をしました。",
       "translation": "進行了開始。"
     },
@@ -1225,8 +1225,8 @@
       "meaning": "停止",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-12",
       "example": "停止をしました。",
       "translation": "進行了停止。"
     },
@@ -1235,8 +1235,8 @@
       "meaning": "禁止",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-12",
       "example": "禁止をしました。",
       "translation": "進行了禁止。"
     },
@@ -1245,8 +1245,8 @@
       "meaning": "許可",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-12",
       "example": "許可をしました。",
       "translation": "進行了許可。"
     },
@@ -1255,8 +1255,8 @@
       "meaning": "證明",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-12",
       "example": "証明をしました。",
       "translation": "進行了證明。"
     },
