@@ -1,6 +1,6 @@
 {
   "meta": {
-    "updatedAt": "2026-06-12T11:05:13Z",
+    "updatedAt": "2026-06-13T11:05:12Z",
     "classroom": "jp-n3",
     "policy": "N5 excluded; N4 base is treated as already appeared; N3 seed releases 5 words per day.",
     "counts": {
@@ -1265,8 +1265,8 @@
       "meaning": "計算",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-13",
       "example": "計算をしました。",
       "translation": "進行了計算。"
     },
@@ -1275,8 +1275,8 @@
       "meaning": "預約",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-13",
       "example": "予約をしました。",
       "translation": "進行了預約。"
     },
@@ -1285,8 +1285,8 @@
       "meaning": "修正",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-13",
       "example": "修正をしました。",
       "translation": "進行了修正。"
     },
@@ -1295,8 +1295,8 @@
       "meaning": "保存",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-13",
       "example": "保存をしました。",
       "translation": "進行了保存。"
     },
@@ -1305,8 +1305,8 @@
       "meaning": "發達",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-13",
       "example": "発達をしました。",
       "translation": "進行了發達。"
     },

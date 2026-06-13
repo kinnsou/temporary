@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-06-12T11:05:13Z",
+    "updatedAt": "2026-06-13T11:05:13Z",
     "sourceCount": 380,
-    "releasedCount": 125,
+    "releasedCount": 130,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "計算",
+      "reading": "けいさん",
+      "meaning": "計算",
+      "example": "計算をしました。",
+      "translation": "進行了計算。",
+      "firstSeen": "2026-06-13",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "発達",
+      "reading": "はったつ",
+      "meaning": "發達",
+      "example": "発達をしました。",
+      "translation": "進行了發達。",
+      "firstSeen": "2026-06-13",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "修正",
+      "reading": "しゅうせい",
+      "meaning": "修正",
+      "example": "修正をしました。",
+      "translation": "進行了修正。",
+      "firstSeen": "2026-06-13",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "保存",
+      "reading": "ほぞん",
+      "meaning": "保存",
+      "example": "保存をしました。",
+      "translation": "進行了保存。",
+      "firstSeen": "2026-06-13",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "予約",
+      "reading": "よやく",
+      "meaning": "預約",
+      "example": "予約をしました。",
+      "translation": "進行了預約。",
+      "firstSeen": "2026-06-13",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "開始",
       "reading": "かいし",
