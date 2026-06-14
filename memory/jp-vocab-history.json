@@ -1,6 +1,6 @@
 {
   "meta": {
-    "updatedAt": "2026-06-13T11:05:12Z",
+    "updatedAt": "2026-06-14T11:05:12Z",
     "classroom": "jp-n3",
     "policy": "N5 excluded; N4 base is treated as already appeared; N3 seed releases 5 words per day.",
     "counts": {
@@ -1315,8 +1315,8 @@
       "meaning": "發現",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-14",
       "example": "発見をしました。",
       "translation": "進行了發現。"
     },
@@ -1325,8 +1325,8 @@
       "meaning": "發明",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-14",
       "example": "発明をしました。",
       "translation": "進行了發明。"
     },
@@ -1335,8 +1335,8 @@
       "meaning": "整理",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-14",
       "example": "整理をしました。",
       "translation": "進行了整理。"
     },
@@ -1345,8 +1345,8 @@
       "meaning": "分析",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-14",
       "example": "分析をしました。",
       "translation": "進行了分析。"
     },
@@ -1355,8 +1355,8 @@
       "meaning": "恢復",
       "pos": "suru",
       "tier": "N3_SEED",
-      "released": false,
-      "first_seen": "",
+      "released": true,
+      "first_seen": "2026-06-14",
       "example": "回復をしました。",
       "translation": "進行了恢復。"
     },

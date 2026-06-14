@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-06-13T11:05:13Z",
+    "updatedAt": "2026-06-14T11:05:12Z",
     "sourceCount": 380,
-    "releasedCount": 130,
+    "releasedCount": 135,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "発見",
+      "reading": "はっけん",
+      "meaning": "發現",
+      "example": "発見をしました。",
+      "translation": "進行了發現。",
+      "firstSeen": "2026-06-14",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "発明",
+      "reading": "はつめい",
+      "meaning": "發明",
+      "example": "発明をしました。",
+      "translation": "進行了發明。",
+      "firstSeen": "2026-06-14",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "整理",
+      "reading": "せいり",
+      "meaning": "整理",
+      "example": "整理をしました。",
+      "translation": "進行了整理。",
+      "firstSeen": "2026-06-14",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "回復",
+      "reading": "かいふく",
+      "meaning": "恢復",
+      "example": "回復をしました。",
+      "translation": "進行了恢復。",
+      "firstSeen": "2026-06-14",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "分析",
+      "reading": "ぶんせき",
+      "meaning": "分析",
+      "example": "分析をしました。",
+      "translation": "進行了分析。",
+      "firstSeen": "2026-06-14",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "計算",
       "reading": "けいさん",
