@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-06-25T11:05:23Z",
+    "updatedAt": "2026-06-26T11:05:27Z",
     "sourceCount": 380,
-    "releasedCount": 180,
+    "releasedCount": 185,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "謙譲",
+      "reading": "けんじょう",
+      "meaning": "謙遜",
+      "example": "謙譲について話しました。",
+      "translation": "談到了謙遜。",
+      "firstSeen": "2026-06-26",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "記事",
+      "reading": "きじ",
+      "meaning": "報導",
+      "example": "記事について話しました。",
+      "translation": "談到了報導。",
+      "firstSeen": "2026-06-26",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "放送",
+      "reading": "ほうそう",
+      "meaning": "廣播",
+      "example": "放送をしました。",
+      "translation": "進行了廣播。",
+      "firstSeen": "2026-06-26",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "尊敬",
+      "reading": "そんけい",
+      "meaning": "尊敬",
+      "example": "尊敬をしました。",
+      "translation": "進行了尊敬。",
+      "firstSeen": "2026-06-26",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "企画",
+      "reading": "きかく",
+      "meaning": "企劃",
+      "example": "企画をしました。",
+      "translation": "進行了企劃。",
+      "firstSeen": "2026-06-26",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "転職",
       "reading": "てんしょく",

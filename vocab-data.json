@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-06-25T11:02:09Z",
-    "sourceCount": 248,
-    "includedCount": 240
+    "updatedAt": "2026-06-26T11:01:59Z",
+    "sourceCount": 251,
+    "includedCount": 243
   },
   "words": [
+    {
+      "word": "ocean",
+      "meaning": "海洋",
+      "example": "The ocean looks blue on sunny days.",
+      "translation": "晴天時海洋看起來藍藍的。",
+      "firstSeen": "2026-06-26",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "unhappy",
+      "meaning": "不開心的；難過的",
+      "example": "She feels unhappy when her toy is broken.",
+      "translation": "她的玩具壞掉時會覺得不開心。",
+      "firstSeen": "2026-06-26",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "volleyball",
+      "meaning": "排球",
+      "example": "We play volleyball at school after lunch.",
+      "translation": "我們午餐後會在學校打排球。",
+      "firstSeen": "2026-06-26",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "secret",
       "meaning": "秘密的；秘密",
