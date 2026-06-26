@@ -14,6 +14,7 @@ cp -f "$SRC"/jp-n3-* "$SRC"/jp-n4-* "$DST"/ 2>/dev/null
 cp -f "$SRC"/vocab-review.html "$SRC"/vocab-data.json "$SRC"/vocab-difficulty.json "$SRC"/daughter-vocab.md "$DST"/ 2>/dev/null
 cp -f "$SRC"/manifest.json "$SRC"/icon-192.png "$SRC"/icon-512.png "$DST"/ 2>/dev/null
 mkdir -p "$DST/market-briefs"; cp -f "$SRC"/market-briefs/*.html "$DST/market-briefs/" 2>/dev/null
+[ -d "$SRC/market-briefs/data" ] && cp -rf "$SRC/market-briefs/data" "$DST/market-briefs/" 2>/dev/null
 for d in Claw_ENG Claw_JP_N4 JLPT NEWS assets data docs; do [ -d "$SRC/$d" ] && cp -rf "$SRC/$d" "$DST"/; done
 
 # 2) Defense: strip any code/secret that could have slipped into copied dirs
