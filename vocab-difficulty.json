@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "createdAt": "2026-04-27",
+  "note": "AI-curated easy-to-hard ordering for the first 100 words. Used for level-based vocab unlock. Beyond rank 100, fall back to firstSeen date order (oldest first). Once curated, this list is intended to be stable across versions.",
+  "perLevel": {
+    "lv1Size": 15,
+    "lvIncrement": 5,
+    "maxCuratedRank": 100
+  },
+  "order": [
+    "red", "now", "son", "fan", "fun", "very", "side", "look", "nice", "moon",
+    "wait", "nose", "ride", "hide", "jump", "kiss", "kick", "kill", "lend", "hole",
+    "real", "mean", "dark", "sand", "land",
+    "blow", "feel", "lake", "idea", "joke",
+    "agree", "ugly", "catch", "white", "close",
+    "leave", "meet", "child", "party", "sorry",
+    "sweet", "paint", "ready", "early", "happy",
+    "glass", "glove", "woman", "onion", "sugar",
+    "desk", "hotel", "pizza", "storm", "dragon",
+    "hippo", "spider", "ticket", "choose", "news",
+    "kitchen", "forest", "mirror", "picnic", "weekend",
+    "spring", "bottle", "street", "camera", "rainbow",
+    "afraid", "brave", "clever", "quiet", "noisy",
+    "silly", "pretty", "excited", "tomorrow", "typhoon",
+    "hospital", "princess", "classmate", "homework", "balcony",
+    "vegetable", "popular", "possible", "careful", "gentle",
+    "believe", "friendly", "together", "prepare", "improve",
+    "practice", "promise", "whisper", "conversation", "teacher"
+  ]
+}

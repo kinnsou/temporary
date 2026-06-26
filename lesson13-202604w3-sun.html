@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>羅得的小步移居：小心慢慢走歪的路</title>
+  <meta name="description" content="藉著羅得的故事，學習為什麼我們需要待在屬靈的保護裡，並且小心不要一步步靠近世界的誘惑。" />
+  <style>
+    :root {
+      --bg: #f6f1e8;
+      --paper: #fffaf2;
+      --ink: #2f2a25;
+      --muted: #6f6559;
+      --line: #e6d7bf;
+      --gold: #c29045;
+      --gold-deep: #966b2f;
+      --olive: #6f7d55;
+      --rose: #b56a59;
+      --shadow: 0 16px 40px rgba(88, 63, 30, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.9;
+      background:
+        radial-gradient(1000px 480px at 110% -10%, rgba(194, 144, 69, 0.16), transparent 55%),
+        radial-gradient(900px 420px at -10% 100%, rgba(111, 125, 85, 0.16), transparent 55%),
+        var(--bg);
+    }
+
+    .grain::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.05;
+      background-image: radial-gradient(rgba(68, 48, 24, 0.28) 0.7px, transparent 0.7px);
+      background-size: 4px 4px;
+      z-index: 0;
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      width: min(1020px, 92vw);
+      margin: 28px auto 56px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: clamp(26px, 5vw, 48px);
+      background: linear-gradient(140deg, #fffdf8 0%, #fff5e7 100%);
+      box-shadow: var(--shadow);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      top: -120px;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(194, 144, 69, 0.28) 0%, rgba(194, 144, 69, 0) 70%);
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid #ebd6b0;
+      background: #fff7e8;
+      color: var(--gold-deep);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-family: "Noto Serif TC", "PMingLiU", serif;
+      font-size: clamp(34px, 6vw, 58px);
+      line-height: 1.15;
+      color: #2d2419;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 66ch;
+      color: var(--muted);
+      font-size: clamp(16px, 2.1vw, 19px);
+    }
+
+    .hero-actions {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+    .button.primary {
+      color: white;
+      background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%);
+      box-shadow: 0 10px 20px rgba(150, 107, 47, 0.28);
+    }
+
+    .button.secondary {
+      color: var(--ink);
+      background: rgba(255,255,255,0.74);
+      border: 1px solid var(--line);
+    }
+
+    .button:hover { transform: translateY(-1px); }
+
+    .intro-grid,
+    .content-grid,
+    .summary-grid {
+      display: grid;
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .intro-grid { grid-template-columns: 1.15fr 0.95fr; }
+    .content-grid { grid-template-columns: 1fr 1fr; }
+    .summary-grid { grid-template-columns: 1fr 1fr; }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--paper);
+      padding: 22px;
+      box-shadow: 0 10px 24px rgba(88, 63, 30, 0.08);
+    }
+
+    .card h2,
+    .card h3 {
+      margin: 0 0 12px;
+      font-family: "Noto Serif TC", serif;
+      color: #352a1e;
+      line-height: 1.45;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--gold-deep);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      font-weight: 700;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .wednesday { background: linear-gradient(180deg, #6f7d55 0%, #53613e 100%); }
+    .thursday { background: linear-gradient(180deg, #b56a59 0%, #8f4d40 100%); }
+
+    p { margin: 0 0 14px; }
+    ul, ol { margin: 0; padding-left: 22px; }
+    li + li { margin-top: 8px; }
+
+    .focus-box { background: linear-gradient(180deg, #fffdf9 0%, #f7efe2 100%); }
+
+    .scripture {
+      border-left: 4px solid var(--gold);
+      background: #fff3df;
+      border-radius: 12px;
+      padding: 14px 16px;
+      color: #5f4b31;
+      margin-top: 14px;
+    }
+
+    .prayer {
+      background: #fdf6ee;
+      border: 1px dashed #d4a070;
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .footer-note {
+      margin-top: 22px;
+      text-align: center;
+      color: #8a7a66;
+      font-size: 13px;
+    }
+
+    @media (max-width: 920px) {
+      .intro-grid,
+      .content-grid,
+      .summary-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .wrap { margin-top: 18px; }
+      .hero, .card { border-radius: 18px; }
+      .button { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body class="grain">
+  <main class="wrap">
+    <section class="hero">
+      <div class="badge-row">
+        <span class="badge">📖 主日帶讀</span>
+        <span class="badge">第十三課 · 2026 四月第三週</span>
+        <span class="badge">創世記 13 章</span>
+        <span class="badge">主題：羅得的遷移</span>
+      </div>
+      <h1>慢慢移動的帳棚<br>小心方向的選擇</h1>
+      <p class="lead">
+        讓我們跟著羅得的腳步，看看為什麼「一點點沒關係」可能是危險的開始。
+      </p>
+      <div class="hero-actions">
+        <a class="button primary" href="#reading">開始閱讀</a>
+        <a class="button secondary" href="#discussion">看主日重點</a>
+      </div>
+    </section>
+
+    <section class="intro-grid" aria-label="overview">
+      <article class="card">
+        <p class="eyebrow">Overview</p>
+        <h2>這一篇在提醒什麼？</h2>
+                <p>
+          亞伯拉罕和羅得分開後，亞伯拉罕留在神賜福的迦南地，那是神要他待的地方。羅得卻看中了約但河全平原，那裡看起來很富饒，於是他開始慢慢移動他的帳棚，一步步往所多瑪城的方向挪去。
+        </p>
+        <p>
+          羅得心裡想著，他只是一點點靠近，並不是真的要進城。沒想到這種「慢慢移動」的方式，最後竟然讓他不知不覺地住進了那個在神眼中充滿罪惡的地方，失去了原本該有的保護。
+        </p>
+      </article>
+
+      <aside class="card focus-box">
+        <p class="eyebrow">Sunday Focus</p>
+        <h2>主日可以先抓三句話</h2>
+        <ul>
+                    <li>離開屬靈的保護，生活就會不知不覺開始走下坡。</li>
+          <li>人不是一下子變壞的，而是慢慢靠近錯誤的地方。</li>
+          <li>要珍惜身邊正確的屬靈影響力，那是我們最好的保護。</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="reading" class="content-grid" aria-label="reading-content">
+      <article class="card">
+        <span class="section-tag wednesday">周四｜羅得的遷移</span>
+        <h2>羅得的選擇與遷移</h2>
+                <p>
+          亞伯拉罕選擇留在神呼召他的地方，那裡有神的同在和祝福。而羅得卻選擇了看起來很漂亮、草木茂盛的約但河平原。他開始慢慢地向東邊遷移，最後帳棚就停在所多瑪的旁邊。
+        </p>
+        <p>
+          羅得可能覺得，雖然所多瑪城很壞，但他只是住在附近，應該沒問題吧？他以為自己只是進去看看，不會跟著犯罪。可是人的心很容易受環境影響，羅得的帳棚越搬越近，最後就搬進城裡去了。
+        </p>
+        <p>
+          聖經提醒我們，所多瑪是個罪惡極大的城市。羅得身為一個義人，卻因為失去警覺，離開了亞伯拉罕這個屬靈的源頭，結果就像一塊浮木一樣，隨波逐流地漂到了錯誤的方向。
+        </p>
+        <div class="scripture">
+          <strong>可帶的一句提醒</strong><br />
+          羅得不是一下子進去的，他是慢慢挪移他的帳棚。
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="section-tag thursday">主日｜補充提醒與操練</span>
+        <h2>保護我們的小小心思</h2>
+                <p>
+          在我們的生活中，有三個危險的界線：偶像、世俗的享受、以及罪惡。如果我們不小心，很容易就會從神賜福的地方，慢慢漂向這些危險的地帶，這對我們是很大的提醒。
+        </p>
+        <p>
+          羅得的故事給我們一個很大的警惕。當我們離開了召會、離開了愛主的小排或屬靈同伴，我們就失去了保護。這時候，我們很容易會覺得「玩一下下沒關係」、「看一點點沒關係」。
+        </p>
+        <p>
+          我們要向神禱告，求祂保守我們的心，讓我們喜愛待在屬靈的源頭裡。不要學這個世界的樣子，而是要讓心思被更新，這樣我們才能看清楚什麼才是神所喜悅的事，讓生命一直向上發展。
+        </p>
+        <div class="scripture">
+          <strong>可帶的一句提醒</strong><br />
+          真正要小心的，不只是跌倒的那一刻，而是那些把人慢慢帶向跌倒的小步伐。
+        </div>
+      </article>
+    </section>
+
+    <section id="discussion" class="summary-grid" aria-label="discussion-guide">
+      <article class="card focus-box">
+        <p class="eyebrow">Lead the Group</p>
+        <h3>這篇可以帶出的三件事</h3>
+        <ol>
+                    <li>待在神賜福的地方：亞伯拉罕留在迦南地，得到神的保護與同在。</li>
+          <li>警惕慢慢的偏移：羅得的帳棚是「漸漸」挪移的，我們也要留意生活中的小習慣。</li>
+          <li>持守屬靈的源頭：不要離開召會和正確的同伴，那是我們最安全的防線。</li>
+        </ol>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Discussion</p>
+        <h3>可直接帶的三個問題</h3>
+        <ul>
+                    <li>羅得一開始有打算搬進所多瑪城嗎？他是怎麼進去的呢？</li>
+          <li>為什麼待在亞伯拉罕（屬靈的源頭）身邊對羅得來說是一種保護？</li>
+          <li>在你的生活中，有哪些事情會讓你「慢慢」離開主？我們要怎麼做才能停下來？</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="summary-grid" aria-label="verse-prayer">
+      <article class="card">
+        <p class="eyebrow">Verse</p>
+        <h3>今天的經文</h3>
+        <div class="scripture">
+          「不要模仿這世代，反要藉著心思的更新而變化，叫你們驗證何為神那美好、可喜悅、並純全的旨意。」<br />
+          羅馬書 12:2
+        </div>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Prayer</p>
+        <h3>一起禱告</h3>
+        <div class="prayer">
+          親愛的主耶穌，求祢保守我的心，讓我能夠一直愛祢，不離開召會這個溫暖的家，也不被世界漂亮的假象吸引。<br /><br />
+          主啊，求祢更新我的心思，讓我在做決定時能有智慧，看清楚前進的方向，不要像羅得一樣慢慢地走偏了。<br /><br />
+          謝謝主成為我最好的保護，求祢讓我在祢的愛中長大，天天驗證祢那美好又純全的旨意，做一個蒙祢喜悅的孩子。
+        </div>
+      </article>
+    </section>
+
+    <p class="footer-note">lesson13-202604w3-sun · made for Sunday gathering (two-column edition)</p>
+  </main>
+</body>
+</html>

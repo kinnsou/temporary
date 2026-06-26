@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesson13 — 周三 羅得的揀選</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', 'Noto Serif TC', '思源宋體', serif;
+      background: #f9f4ec;
+      color: #3a2e24;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .card {
+      background: #fff8f0;
+      border-radius: 18px;
+      box-shadow: 0 6px 32px rgba(120, 80, 30, 0.13);
+      max-width: 720px;
+      width: 100%;
+      overflow: hidden;
+      border: 1px solid #f0dfc8;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #8f5a2f 0%, #b27442 62%, #d19859 100%);
+      padding: 2rem 2rem 1.5rem;
+      text-align: center;
+    }
+
+    .lesson-label {
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      color: rgba(255, 240, 215, 0.85);
+      margin-bottom: 0.45rem;
+    }
+
+    .lesson-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #fff8ee;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 8px rgba(80, 30, 0, 0.28);
+    }
+
+    .lesson-subtitle {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: rgba(255, 235, 185, 0.96);
+      letter-spacing: 0.08em;
+    }
+
+    .divider-line {
+      height: 3px;
+      background: linear-gradient(90deg, transparent, rgba(255, 235, 190, 0.55), transparent);
+      margin-top: 1.2rem;
+    }
+
+    .body {
+      padding: 1.8rem 2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+    }
+
+    .section-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #8b4513;
+      margin-bottom: 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .story-box,
+    .three-things,
+    .scripture-box,
+    .summary-box,
+    .prayer-box {
+      border-radius: 12px;
+      padding: 1.25rem 1.4rem;
+    }
+
+    .story-box {
+      background: #fffaf4;
+      border: 1px solid #f0dfc8;
+    }
+
+    .story-text {
+      font-size: 1.03rem;
+      line-height: 2;
+      color: #3a2e24;
+      text-align: justify;
+    }
+
+    .story-text p + p { margin-top: 0.9em; }
+
+    .three-things {
+      background: #fef9ef;
+      border-left: 4px solid #d4924a;
+    }
+
+    .three-things ol {
+      padding-left: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .three-things li {
+      font-size: 1.02rem;
+      line-height: 1.75;
+      color: #4a3020;
+    }
+
+    .scripture-box {
+      background: linear-gradient(135deg, #fdf3e3, #fae8cc);
+      text-align: center;
+    }
+
+    .scripture-text {
+      font-size: 1.08rem;
+      font-style: italic;
+      line-height: 1.9;
+      color: #5c3d1e;
+      font-weight: 500;
+    }
+
+    .scripture-text p + p { margin-top: 0.8em; }
+
+    .scripture-ref {
+      margin-top: 0.6rem;
+      font-size: 0.88rem;
+      color: #8b6040;
+    }
+
+    .summary-box {
+      background: #fffdf7;
+      border: 1px dashed #d9b17a;
+    }
+
+    .summary-text {
+      font-size: 1.03rem;
+      line-height: 1.9;
+      color: #4a3020;
+    }
+
+    .prayer-box {
+      background: #fdf6ee;
+      border: 1px dashed #d4a070;
+    }
+
+    .prayer-text {
+      font-size: 1.01rem;
+      line-height: 2;
+      color: #4a3020;
+    }
+
+    .prayer-text p + p { margin-top: 0.5em; }
+
+    .footer-divider {
+      text-align: center;
+      padding: 0.7rem 2rem 0.5rem;
+      font-size: 0.82rem;
+      color: #c0a080;
+      letter-spacing: 0.12em;
+      border-top: 1px solid #f0dfc8;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 0.3rem 2rem 1.2rem;
+      font-size: 0.78rem;
+      color: #b08060;
+      letter-spacing: 0.08em;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <div class="lesson-label">Lesson 13 · 2026 四月第三週</div>
+      <div class="lesson-title">羅得 — 失敗的義人</div>
+      <div class="lesson-subtitle">周三 羅得的揀選</div>
+      <div class="divider-line"></div>
+    </div>
+
+    <div class="body">
+      <div>
+        <div class="section-title">📖 今日故事</div>
+        <div class="story-box">
+          <div class="story-text">
+                        <p>羅得抬起頭看，發現約旦河平原好漂亮！那裡的草綠油油的，水也很充足，看起來就像一座美麗的大花園。羅得心裡想：「哇！在那裡放羊一定很輕鬆，不用辛苦爬山，每天都能過得舒舒服服的。」</p>
+            <p>雖然那個地方看起來很棒，像樂園一樣，但聖經提醒我們，那裡其實也像「埃及」。埃及代表世界，雖然生活看起來很快樂，卻會讓人心裡不自由，就像被不好的習慣控制住，漸漸變得不開心。</p>
+            <p>最後，羅得決定搬到那塊肥沃的平原，和亞伯拉罕分開了。他選擇了看起來最享受的地方，卻不知道那裡的人並不愛神。羅得以為選到了最好的路，卻慢慢離開了屬靈的家。</p>
+            <p>天父也把兩條路放在我們面前。一條是跟隨神，得著真正的平安；另一條是追求世界的玩樂。羅得選了輕鬆的路，卻離開了同伴。我們要學習亞伯拉罕，不管環境如何，都要堅持選擇神。</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">✨ 故事學到的三件事</div>
+        <div class="three-things">
+          <ol>
+                        <li>看起來很漂亮、很好玩的東西，不一定對我們最好，要學會觀察它會不會讓我們遠離神。</li>
+            <li>天父給我們自由去作選擇，祂希望我們能愛祂，主動選那條能跟祂在一起的路。</li>
+            <li>當我們只想要世界的快樂時，我們的心就會慢慢離開神，也會離開愛我們的弟兄姊妹。</li>
+          </ol>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">📜 禱讀經文</div>
+        <div class="scripture-box">
+          <div class="scripture-text">
+                        <p>「不要愛世界，和世界上的事。人若愛世界，愛父的心就不在他裡面了。」</p>
+          </div>
+          <div class="scripture-ref">約翰一書二章15節</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">📝 每日信息總結</div>
+        <div class="summary-box">
+          <div class="summary-text">正確的選擇是揀選神和召會生活，不讓世界的快樂奪走我們愛神的心。</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">🙏 一起禱告</div>
+        <div class="prayer-box">
+          <div class="prayer-text">
+                        <p>親愛的天父，謝謝祢總是把最好的福氣預備給我，帶領我走正確的路。</p>
+            <p>求祢給我智慧，讓我能看見什麼才是真正的快樂，不被漂亮的誘惑騙走了。</p>
+            <p>當我面對選擇時，請幫助我勇敢選祢，讓我能一直留在愛我的召會生活中。</p>
+            <p>謝謝祢這麼愛我，我要每天開心地跟隨祢。奉主耶穌的名禱告，阿們。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-divider">——————END——————</div>
+    <div class="footer">聖經之旅 第一冊 · 蒙揀選的族類</div>
+  </div>
+</body>
+</html>

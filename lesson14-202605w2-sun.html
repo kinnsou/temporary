@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>第14課：美麗的利百加</title>
+  <meta name="description" content="學習利百加純潔與順服的性格，成為愛主、滿足主心意的人。" />
+  <style>
+    :root {
+      --bg: #f6f1e8;
+      --paper: #fffaf2;
+      --ink: #2f2a25;
+      --muted: #6f6559;
+      --line: #e6d7bf;
+      --gold: #c29045;
+      --gold-deep: #966b2f;
+      --olive: #6f7d55;
+      --rose: #b56a59;
+      --shadow: 0 16px 40px rgba(88, 63, 30, 0.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.9;
+      background:
+        radial-gradient(1000px 480px at 110% -10%, rgba(194, 144, 69, 0.16), transparent 55%),
+        radial-gradient(900px 420px at -10% 100%, rgba(111, 125, 85, 0.16), transparent 55%),
+        var(--bg);
+    }
+    .grain::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.05;
+      background-image: radial-gradient(rgba(68, 48, 24, 0.28) 0.7px, transparent 0.7px);
+      background-size: 4px 4px;
+      z-index: 0;
+    }
+    .wrap { position: relative; z-index: 1; width: min(1020px, 92vw); margin: 28px auto 56px; }
+    .hero { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 28px; padding: clamp(26px, 5vw, 48px); background: linear-gradient(140deg, #fffdf8 0%, #fff5e7 100%); box-shadow: var(--shadow); }
+    .hero::after { content: ""; position: absolute; right: -120px; top: -120px; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(194, 144, 69, 0.28) 0%, rgba(194, 144, 69, 0) 70%); }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; border: 1px solid #ebd6b0; background: #fff7e8; color: var(--gold-deep); font-size: 13px; font-weight: 700; letter-spacing: 0.02em; }
+    h1 { margin: 0 0 12px; font-family: "Noto Serif TC", "PMingLiU", serif; font-size: clamp(34px, 6vw, 58px); line-height: 1.15; color: #2d2419; }
+    .lead { margin: 0; max-width: 66ch; color: var(--muted); font-size: clamp(16px, 2.1vw, 19px); }
+    .hero-actions { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 12px; }
+    .button { display: inline-block; padding: 12px 18px; border-radius: 14px; text-decoration: none; font-weight: 700; transition: transform .18s ease, box-shadow .18s ease; }
+    .button.primary { color: white; background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%); box-shadow: 0 10px 20px rgba(150, 107, 47, 0.28); }
+    .button.secondary { color: var(--ink); background: rgba(255,255,255,0.74); border: 1px solid var(--line); }
+    .button:hover { transform: translateY(-1px); }
+    .intro-grid, .content-grid, .summary-grid { display: grid; gap: 18px; margin-top: 22px; }
+    .intro-grid { grid-template-columns: 1.15fr 0.95fr; }
+    .content-grid { grid-template-columns: 1fr 1fr; }
+    .summary-grid { grid-template-columns: 1fr 1fr; }
+    .card { border: 1px solid var(--line); border-radius: 22px; background: var(--paper); padding: 22px; box-shadow: 0 10px 24px rgba(88, 63, 30, 0.08); }
+    .card h2, .card h3 { margin: 0 0 12px; font-family: "Noto Serif TC", serif; color: #352a1e; line-height: 1.45; }
+    .eyebrow { margin: 0 0 8px; color: var(--gold-deep); font-size: 13px; text-transform: uppercase; letter-spacing: .09em; font-weight: 700; }
+    .section-tag { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 12px; padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 700; color: #fff; }
+    .wednesday { background: linear-gradient(180deg, #6f7d55 0%, #53613e 100%); }
+    .thursday { background: linear-gradient(180deg, #b56a59 0%, #8f4d40 100%); }
+    p { margin: 0 0 14px; }
+    ul, ol { margin: 0; padding-left: 22px; }
+    li + li { margin-top: 8px; }
+    .focus-box { background: linear-gradient(180deg, #fffdf9 0%, #f7efe2 100%); }
+    .scripture { border-left: 4px solid var(--gold); background: #fff3df; border-radius: 12px; padding: 14px 16px; color: #5f4b31; margin-top: 14px; }
+    .prayer { background: #fdf6ee; border: 1px dashed #d4a070; border-radius: 14px; padding: 16px; }
+    .footer-note { margin-top: 22px; text-align: center; color: #8a7a66; font-size: 13px; }
+    @media (max-width: 920px) { .intro-grid, .content-grid, .summary-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 560px) { .wrap { margin-top: 18px; } .hero, .card { border-radius: 18px; } .button { width: 100%; text-align: center; } }
+  </style>
+</head>
+<body class="grain">
+  <main class="wrap">
+    <section class="hero">
+      <div class="badge-row">
+        <span class="badge">📖 主日帶讀</span>
+        <span class="badge">第十四課 · 2026 五月第二週</span>
+        <span class="badge">來源段落：周五</span>
+        <span class="badge">主題：信心與愛心的跟隨</span>
+      </div>
+      <h1>第14課：美麗的利百加</h1>
+      <p class="lead">亞伯拉罕的老僕人受託為以撒尋找合適的人，在神的引領下，他遇見了勤勞又善良的利百加。</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#reading">開始閱讀</a>
+        <a class="button secondary" href="#discussion">看主日重點</a>
+      </div>
+    </section>
+
+    <section class="intro-grid" aria-label="overview">
+      <article class="card">
+        <p class="eyebrow">Overview</p>
+        <h2>這一篇在提醒什麼？</h2>
+            <p>老僕人看見利百加主動為駱駝打水，知道這就是神所預備的人。利百加的家人也看見這事出於神，便祝福她跟隨老僕人前往迦南地，成為以撒的妻子。</p>
+            <p>當利百加看見以撒時，她蒙上帕子表達服從。以撒也深愛利百加，這段婚姻達成了神的目的，也讓以撒的心在母親不在後得到了真正的安慰。</p>
+      </article>
+
+      <aside class="card focus-box">
+        <p class="eyebrow">Sunday Focus</p>
+        <h2>主日可以先抓三句話</h2>
+        <ul>
+          <li>利百加殷勤打水，展現出仁慈與單純的美好性格。</li>
+          <li>利百加絕對順服，雖然未曾見過以撒，仍願意跟隨神的引領。</li>
+          <li>利百加蒙頭的舉動，代表她有一顆謙卑並願意服從的心。</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="reading" class="content-grid" aria-label="reading-content">
+      <article class="card">
+        <span class="section-tag wednesday">周五｜正文帶讀</span>
+        <h2>信心與愛心的跟隨</h2>
+            <p>老僕人來到拿鶴的城，利百加不僅給老僕人水喝，還辛苦地為所有駱駝打滿了水。這份殷勤讓老僕人知道，神已經應允了他的禱告。老僕人送給她金環和金鐲，並低頭稱頌神的慈愛與誠實。</p>
+            <p>利百加帶老僕人回到家後，她的哥哥拉班和父親彼土利也熱情地接待客人。當他們聽見老僕人說明來意，都承認這事是出於耶和華，同意讓利百加前往。家人為利百加祝福，願她的後裔得著仇敵的城門。</p>
+            <p>利百加展現了絕對的態度，她沒有猶豫，立刻跟著老僕人出發。在回迦南地的路上，天色將晚，以撒正在田間默想。利百加遠遠看見他，便細心地詢問，並拿帕子蒙上臉，這成了她服從的記號。</p>
+            <p>以撒帶領利百加進了母親撒拉的帳棚，正式娶她為妻。聖經說以撒非常愛她，利百加不僅成為以撒的伴侶，更滿足了神的願望。因著利百加的來到，以撒才得到了真正的安慰。</p>
+      </article>
+
+      <article class="card">
+        <span class="section-tag thursday">主日｜補充提醒與操練</span>
+        <h2>我也是「利百加」</h2>
+            <p>雖然我們沒有見過主耶穌，但那靈就像老僕人一樣，將主的美麗告訴我們。當我們心裡被感動，開始想要愛主、親近主，這就表示我們也在回應神的選召。</p>
+            <p>在生活中，我們也要學習利百加的特點。當我們主動幫忙家事、看見別人的需要就去幫忙，這就是「仁慈」與「殷勤」。當我們願意聽主的話，就是對主「絕對」的順服。</p>
+            <p>我們每一個人都是今日的小利百加，神希望我們能有一顆純潔、單純的心，把自己獻給主，讓主耶穌也能在我們身上得到滿足，成為祂美麗的新婦。</p>
+        <div class="scripture"><strong>可帶的一句提醒</strong><br />「我們就是今日的『利百加』，在我們想不到的時候，那靈臨到我們，使我們從深處開始愛主。」</div>
+      </article>
+    </section>
+
+    <section id="discussion" class="summary-grid" aria-label="discussion-guide">
+      <article class="card focus-box">
+        <p class="eyebrow">Lead the Group</p>
+        <h3>這篇可以帶出的三件事</h3>
+        <ol>
+          <li>學習服事人的需要，操練成為殷勤、靈裡火熱的人。</li>
+          <li>像利百加一樣，對神的安排與引領有絕對順服的反應。</li>
+          <li>操練向著主心存純潔與單純，每天都更多把自己獻給主。</li>
+        </ol>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Discussion</p>
+        <h3>可直接帶的三個問題</h3>
+        <ul>
+          <li>利百加除了給老僕人水喝，還做了什麼辛苦的工作？</li>
+          <li>當利百加第一次看見以撒時，她做了什麼動作來表達服從？</li>
+          <li>我們可以從利百加身上學到哪些美好的性格特點？</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="summary-grid" aria-label="verse-prayer">
+      <article class="card">
+        <p class="eyebrow">Verse</p>
+        <h3>今天的經文</h3>
+        <div class="scripture">殷勤不可懶惰，要靈裡火熱，常常服事主。<br />羅馬書十二11</div>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Prayer</p>
+        <h3>一起禱告</h3>
+        <div class="prayer">主耶穌，謝謝祢揀選我，就像揀選利百加一樣。求祢給我一顆純潔、單純的心，讓我看見祢的美麗，就從深處開始愛祢，並且願意絕對地跟隨祢的帶領。<br /><br />親愛的主，求祢使我成為一個殷勤的孩子，讓我在生活中學習服事身邊的人。主啊，我願像利百加一樣，向祢純潔、仁慈，使祢的心意在我身上得到滿足。</div>
+      </article>
+    </section>
+
+    <p class="footer-note">lesson14-202605w2-sun.html · sequential lesson-page workflow · 202605w2</p>
+  </main>
+</body>
+</html>

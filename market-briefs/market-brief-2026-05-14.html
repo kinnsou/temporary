@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>📰 今日早報｜2026年5月14日（四）</title>
+  <meta name="description" content="一條網址版台股早報，整合新聞、台股焦點與除權息日曆。" />
+  <style>
+    :root {
+      --bg: #f3efe7;
+      --paper: #fffaf2;
+      --ink: #29241e;
+      --muted: #70675c;
+      --line: #e3d2b6;
+      --gold: #bd8741;
+      --gold-deep: #875c25;
+      --green: #607756;
+      --red: #b56b59;
+      --shadow: 0 16px 44px rgba(83, 58, 28, 0.13);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.85;
+      background:
+        radial-gradient(980px 480px at 110% -10%, rgba(189, 135, 65, 0.18), transparent 55%),
+        radial-gradient(860px 420px at -10% 110%, rgba(96, 119, 86, 0.15), transparent 55%),
+        var(--bg);
+    }
+    body::before { content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .045; background-image: radial-gradient(rgba(68,48,24,.32) .7px, transparent .7px); background-size: 4px 4px; }
+    .wrap { position: relative; z-index: 1; width: min(1120px, 92vw); margin: 28px auto 60px; }
+    .hero { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 30px; padding: clamp(26px, 5vw, 50px); background: linear-gradient(140deg, #fffdf8 0%, #fff3df 100%); box-shadow: var(--shadow); }
+    .hero::after { content: ""; position: absolute; right: -120px; top: -120px; width: 340px; height: 340px; border-radius: 50%; background: radial-gradient(circle, rgba(189,135,65,.28) 0%, rgba(189,135,65,0) 70%); }
+    .badge-row { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:18px; }
+    .badge { display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border-radius:999px; border:1px solid #ead5ae; background:#fff7e8; color:var(--gold-deep); font-size:13px; font-weight:800; letter-spacing:.02em; }
+    h1 { margin:0 0 12px; font-family:"Noto Serif TC", "PMingLiU", serif; font-size:clamp(34px, 6vw, 60px); line-height:1.14; color:#2b2118; }
+    h2, h3 { font-family:"Noto Serif TC", "PMingLiU", serif; line-height:1.35; color:#33281d; }
+    .lead { margin:0; max-width:72ch; color:var(--muted); font-size:clamp(16px, 2.05vw, 19px); }
+    .hero-actions { margin-top:22px; display:flex; flex-wrap:wrap; gap:12px; }
+    .button { display:inline-block; padding:12px 18px; border-radius:14px; text-decoration:none; font-weight:800; }
+    .button.primary { color:white; background:linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%); box-shadow:0 10px 20px rgba(135,92,37,.24); }
+    .button.secondary { color:var(--ink); background:rgba(255,255,255,.75); border:1px solid var(--line); }
+    .grid { display:grid; gap:18px; margin-top:22px; }
+    .two { grid-template-columns: 1fr 1fr; }
+    .three { grid-template-columns: repeat(3, 1fr); }
+    .card { border:1px solid var(--line); border-radius:22px; background:var(--paper); padding:22px; box-shadow:0 10px 24px rgba(83,58,28,.08); }
+    .card h2, .card h3 { margin:0 0 12px; }
+    .card p { margin: 0 0 12px; }
+    .eyebrow { margin:0 0 8px; color:var(--gold-deep); font-size:13px; text-transform:uppercase; letter-spacing:.09em; font-weight:800; }
+    .metric { font-size: clamp(30px, 5vw, 46px); font-weight:900; line-height:1; color:#31261b; }
+    .muted { color: var(--muted); }
+    ol, ul { margin: 0; padding-left: 22px; }
+    li + li { margin-top: 8px; }
+    .focus { background: linear-gradient(180deg, #fffdf9 0%, #f7efe2 100%); }
+    .news h2 { font-size: 22px; }
+    .news ol { padding-left: 24px; }
+    .radar { border-left: 5px solid var(--green); }
+    .new { border-left: 5px solid var(--red); }
+    .table-wrap { width:100%; overflow:auto; border:1px solid var(--line); border-radius:16px; background:#fffdf8; }
+    table { width:100%; border-collapse:collapse; min-width:720px; }
+    th, td { padding:12px 14px; border-bottom:1px solid #eadcc7; text-align:left; vertical-align:top; }
+    th { color:#6d5635; background:#fff4df; font-size:13px; letter-spacing:.04em; }
+    td.date { white-space:nowrap; font-weight:800; color:#5e6f4d; }
+    td span { color:var(--muted); font-size:13px; }
+    .pill { display:inline-flex; padding:3px 9px; border-radius:999px; background:#f0e2ca; color:#6b4b20; font-weight:800; font-size:13px; }
+    .table-note { margin-top:10px !important; }
+    .footer-note { margin-top:22px; text-align:center; color:#887964; font-size:13px; }
+    @media (max-width: 980px) { .two, .three { grid-template-columns: 1fr; } }
+    @media (max-width: 560px) { .wrap { margin-top:18px; } .hero, .card { border-radius:18px; } .button { width:100%; text-align:center; } }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <div class="badge-row">
+        <span class="badge">📰 一條網址版早報</span>
+        <span class="badge">2026/05/14</span>
+        <span class="badge">新聞主版</span>
+        <span class="badge">除權息日曆</span>
+      </div>
+      <h1>📰 今日早報｜2026年5月14日（四）</h1>
+      <p class="lead">新聞重點、台股焦點與除權息日曆整理成一頁；新聞放前面，除權息放最後補充。</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#brief">看今日早報</a>
+        <a class="button secondary" href="#radar">看除權息日曆</a>
+      </div>
+    </section>
+
+    <section id="brief" class="grid two" aria-label="morning-brief">
+      <article class="card news"><h2>🌍 國際新聞（5則）</h2><ol><li>【川普抵達北京、將與習近平會談】川普已抵達北京，預計就伊朗戰事、貿易/關稅、AI，以及美國對台軍售等敏感議題與習近平會談。（AP）</li><li>【黃仁勳加入川普訪中代表團】Nvidia 執行長黃仁勳臨時加入訪中商界代表團（同團還包括馬斯克、庫克等），凸顯 AI/晶片與市場准入成為此行焦點。（The Guardian）</li><li>【IEA：伊朗戰爭拖累供給、全球油庫存創紀錄下滑】IEA 指出，荷姆茲相關供給損失使全球庫存3月減少約1.29億桶、4月再減約1.17億桶，並預估高油價將壓抑需求。（The Guardian／IEA）</li><li>【油價＋通膨讓降息預期更保守】市場解讀通膨壓力回升、油價偏高，聯準會今年降息空間可能被壓縮，風險資產短線仍偏震盪。（綜合市場報導）</li><li>【俄烏戰事：無人機攻擊升溫】多家外媒報導俄羅斯對烏克蘭發動大規模無人機攻擊，顯示戰事仍未見明顯降溫。（AP）</li></ol></article>
+      <article class="card news"><h2>🇹🇼 台灣新聞（3則）</h2><ol><li>【民進黨提名沈伯洋選台北市長】民進黨提名遭中國制裁、長期投入反認知作戰與民防倡議的立委沈伯洋參選台北市長，年底地方選舉被視為2028前重要風向球。（Reuters／US News）</li><li>【4月出口年增39%】財政部：4月出口約新台幣2.12兆（約676.2億美元），雖較3月回落，但在AI/HPC與雲端需求帶動下年增39%，貿易順差擴大。（Taiwan News／CNA）</li><li>【國安官員：刪軍購預算恐被北京利用】國安官員警告，在野刪減對美軍購相關預算，可能被北京拿來影響美方對台支持與軍售決策；強調台灣應強化自身嚇阻力。（Taiwan News／CNA）</li></ol></article>
+      <article class="card news"><h2>📈 台股焦點</h2><p>昨日（5/13）：台股指數約 41,375 點，較前一日下跌約 1.25%；科技權值回檔、盤勢對通膨/油價與川習會前情緒較敏感。（TradingEconomics）</p></article>
+      <article class="card news"><h2>💬 馬斯克 &amp; 川普 &amp; Michael Saylor</h2><p>@elonmusk：此行隨同川普訪中，市場聚焦其在AI/供應鏈議題上的可能表態；截至截稿未見可驗證的單一新主題改變市場定價。</p><p>@realDonaldTrump：主軸是北京峰會（伊朗戰事、貿易與對台軍售等），其談判訊號仍是全球風險情緒的短線放大器。</p><p>@saylor：主線仍是比特幣長期配置與企業資產負債表策略；截至截稿未見可驗證的單一關鍵新貼文。</p></article>
+    </section>
+
+    <section id="radar" class="grid three" aria-label="ex-rights-summary">
+      <article class="card focus">
+        <p class="eyebrow">New Notices</p>
+        <div class="metric">0</div>
+        <p class="muted">今晨新出現的個股除權息公告。</p>
+      </article>
+      <article class="card focus">
+        <p class="eyebrow">Next 7 Days</p>
+        <div class="metric">5</div>
+        <p class="muted">05/14～05/21 一週內個股；ETF / 債券型商品另有 68 檔未列。</p>
+      </article>
+      <article class="card focus">
+        <p class="eyebrow">1–2 Months</p>
+        <div class="metric">21</div>
+        <p class="muted">06/14～07/14 之間已排程個股。</p>
+      </article>
+    </section>
+
+    <section class="grid" aria-label="new-ex-rights">
+      <article class="card new">
+        <p class="eyebrow">First Look</p>
+        <h2>今晨新增除權息公告</h2>
+        <p class='muted'>目前沒有今晨新增的個股除權息公告。</p>
+      </article>
+    </section>
+
+    <section class="grid two" aria-label="ex-rights-radar">
+      <article class="card radar">
+        <p class="eyebrow">Dividend Radar</p>
+        <h2>一週內除權息個股</h2>
+        <div class='table-wrap'><table><thead><tr><th>日期</th><th>代號 / 名稱</th><th>市場</th><th>類型</th><th>配息 / 配股 / 增資</th></tr></thead><tbody><tr><td class='date'>05/14</td><td><strong>8033</strong><br><span>雷虎</span></td><td>上市</td><td><span class='pill'>權</span></td><td>增資 0.07862161｜認購 108</td></tr><tr><td class='date'>05/14</td><td><strong>6712</strong><br><span>長聖</span></td><td>上櫃</td><td><span class='pill'>權</span></td><td>股 0.05</td></tr><tr><td class='date'>05/19</td><td><strong>6841</strong><br><span>長佳智能</span></td><td>上櫃</td><td><span class='pill'>息</span></td><td>息 1</td></tr><tr><td class='date'>05/19</td><td><strong>7714</strong><br><span>創泓科技</span></td><td>上櫃</td><td><span class='pill'>息</span></td><td>息 3</td></tr><tr><td class='date'>05/20</td><td><strong>6597</strong><br><span>立誠</span></td><td>上櫃</td><td><span class='pill'>息</span></td><td>息 1</td></tr></tbody></table></div>
+      </article>
+      <article class="card radar">
+        <p class="eyebrow">Forward Queue</p>
+        <h2>1-2 個月內 遠期除權息</h2>
+        <div class='table-wrap'><table><thead><tr><th>日期</th><th>代號 / 名稱</th><th>市場</th><th>類型</th><th>配息 / 配股 / 增資</th></tr></thead><tbody><tr><td class='date'>06/15</td><td><strong>2031</strong><br><span>新光鋼</span></td><td>上市</td><td><span class='pill'>息</span></td><td>息 2.5</td></tr><tr><td class='date'>06/15</td><td><strong>2385</strong><br><span>群光</span></td><td>上市</td><td><span class='pill'>息</span></td><td>息 7.2</td></tr><tr><td class='date'>06/15</td><td><strong>8435</strong><br><span>鉅邁</span></td><td>上櫃</td><td><span class='pill'>息</span></td><td>息 3.2</td></tr><tr><td class='date'>06/16</td><td><strong>3015</strong><br><span>全漢</span></td><td>上市</td><td><span class='pill'>息</span></td><td>息 2.2</td></tr><tr><td class='date'>06/17</td><td><strong>2105</strong><br><span>正新</span></td><td>上市</td><td><span class='pill'>息</span></td><td>息 1.8</td></tr><tr><td class='date'>06/17</td><td><strong>2450</strong><br><span>神腦</span></td><td>上市</td><td><span class='pill'>息</span></td><td>息 1.55</td></tr><tr><td class='date'>06/17</td><td><strong>2926</strong><br><span>誠品生活</span></td><td>上櫃</td><td><span class='pill'>息</span></td><td>息 0.46</td></tr><tr><td class='date'>06/17</td><td><strong>5443</strong><br><span>均豪</span></td><td>上櫃</td><td><span class='pill'>息</span></td><td>息 2.2</td></tr><tr><td class='date'>06/22</td><td><strong>1319</strong><br><span>東陽</span></td><td>上市</td><td><span class='pill'>息</span></td><td>息 5</td></tr><tr><td class='date'>06/22</td><td><strong>3447</strong><br><span>展達</span></td><td>上市</td><td><span class='pill'>息</span></td><td>息 1.1</td></tr><tr><td class='date'>06/22</td><td><strong>6120</strong><br><span>達運</span></td><td>上市</td><td><span class='pill'>息</span></td><td>息 0.25</td></tr><tr><td class='date'>06/23</td><td><strong>6292</strong><br><span>迅德</span></td><td>上櫃</td><td><span class='pill'>息</span></td><td>息 1.8</td></tr></tbody></table></div><p class='muted table-note'>另有 9 檔未展開。</p>
+      </article>
+    </section>
+
+    <p class="footer-note">資料：TWSE / TPEx · market-briefs/market-brief-2026-05-14.html</p>
+  </main>
+</body>
+</html>

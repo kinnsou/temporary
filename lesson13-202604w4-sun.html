@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>逃離所多瑪：神的審判與憐憫</title>
+  <meta name="description" content="從創世記十九章羅得出所多瑪的故事，看見神在公義的審判中仍有憐憫的拯救，並操練不拖延、不回頭，快快順服回到神的保護裡。" />
+  <style>
+    :root {
+      --bg: #f6f1e8;
+      --paper: #fffaf2;
+      --ink: #2f2a25;
+      --muted: #6f6559;
+      --line: #e6d7bf;
+      --gold: #c29045;
+      --gold-deep: #966b2f;
+      --olive: #6f7d55;
+      --rose: #b56a59;
+      --shadow: 0 16px 40px rgba(88, 63, 30, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.9;
+      background:
+        radial-gradient(1000px 480px at 110% -10%, rgba(194, 144, 69, 0.16), transparent 55%),
+        radial-gradient(900px 420px at -10% 100%, rgba(111, 125, 85, 0.16), transparent 55%),
+        var(--bg);
+    }
+
+    .grain::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.05;
+      background-image: radial-gradient(rgba(68, 48, 24, 0.28) 0.7px, transparent 0.7px);
+      background-size: 4px 4px;
+      z-index: 0;
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      width: min(1020px, 92vw);
+      margin: 28px auto 56px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: clamp(26px, 5vw, 48px);
+      background: linear-gradient(140deg, #fffdf8 0%, #fff5e7 100%);
+      box-shadow: var(--shadow);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      top: -120px;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(194, 144, 69, 0.28) 0%, rgba(194, 144, 69, 0) 70%);
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid #ebd6b0;
+      background: #fff7e8;
+      color: var(--gold-deep);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-family: "Noto Serif TC", "PMingLiU", serif;
+      font-size: clamp(34px, 6vw, 58px);
+      line-height: 1.15;
+      color: #2d2419;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 66ch;
+      color: var(--muted);
+      font-size: clamp(16px, 2.1vw, 19px);
+    }
+
+    .hero-actions {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+    .button.primary {
+      color: white;
+      background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%);
+      box-shadow: 0 10px 20px rgba(150, 107, 47, 0.28);
+    }
+
+    .button.secondary {
+      color: var(--ink);
+      background: rgba(255,255,255,0.74);
+      border: 1px solid var(--line);
+    }
+
+    .button:hover { transform: translateY(-1px); }
+
+    .intro-grid,
+    .content-grid,
+    .summary-grid {
+      display: grid;
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .intro-grid { grid-template-columns: 1.15fr 0.95fr; }
+    .content-grid { grid-template-columns: 1fr 1fr; }
+    .summary-grid { grid-template-columns: 1fr 1fr; }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--paper);
+      padding: 22px;
+      box-shadow: 0 10px 24px rgba(88, 63, 30, 0.08);
+    }
+
+    .card h2,
+    .card h3 {
+      margin: 0 0 12px;
+      font-family: "Noto Serif TC", serif;
+      color: #352a1e;
+      line-height: 1.45;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--gold-deep);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      font-weight: 700;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .wednesday { background: linear-gradient(180deg, #6f7d55 0%, #53613e 100%); }
+    .thursday { background: linear-gradient(180deg, #b56a59 0%, #8f4d40 100%); }
+
+    p { margin: 0 0 14px; }
+    ul, ol { margin: 0; padding-left: 22px; }
+    li + li { margin-top: 8px; }
+
+    .focus-box { background: linear-gradient(180deg, #fffdf9 0%, #f7efe2 100%); }
+
+    .scripture {
+      border-left: 4px solid var(--gold);
+      background: #fff3df;
+      border-radius: 12px;
+      padding: 14px 16px;
+      color: #5f4b31;
+      margin-top: 14px;
+    }
+
+    .prayer {
+      background: #fdf6ee;
+      border: 1px dashed #d4a070;
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .footer-note {
+      margin-top: 22px;
+      text-align: center;
+      color: #8a7a66;
+      font-size: 13px;
+    }
+
+    @media (max-width: 920px) {
+      .intro-grid,
+      .content-grid,
+      .summary-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .wrap { margin-top: 18px; }
+      .hero, .card { border-radius: 18px; }
+      .button { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body class="grain">
+  <main class="wrap">
+    <section class="hero">
+      <div class="badge-row">
+        <span class="badge">📖 主日帶讀</span>
+        <span class="badge">第十三課 · 2026 四月第四週</span>
+        <span class="badge">創世記 19 章</span>
+        <span class="badge">主題：神的毀滅</span>
+      </div>
+      <h1>逃離所多瑪：<br>神的審判與憐憫</h1>
+      <p class="lead">
+        當世界墮落到極點，神施行了嚴厲的審判，卻在公義中向屬祂的人顯出極大的憐憫。
+      </p>
+      <div class="hero-actions">
+        <a class="button primary" href="#reading">開始閱讀</a>
+        <a class="button secondary" href="#discussion">看主日重點</a>
+      </div>
+    </section>
+
+    <section class="intro-grid" aria-label="overview">
+      <article class="card">
+        <p class="eyebrow">Overview</p>
+        <h2>這一篇在提醒什麼？</h2>
+                <p>
+          所多瑪和蛾摩拉因罪大惡極面臨毀滅，神因著亞伯拉罕的祈求，在降下審判之前差遣天使拯救羅得。這段歷史不僅是關於過去的毀滅，更是對今日信徒的重要提醒。
+        </p>
+        <p>
+          透過羅得的遭遇，我們看見一個信徒若留戀世界，將會如何在關鍵時刻陷入遲疑，甚至失去對道德與罪惡的敏銳度，最終需要神強而有力的憐憫才能脫困。
+        </p>
+      </article>
+
+      <aside class="card focus-box">
+        <p class="eyebrow">Sunday Focus</p>
+        <h2>主日可以先抓三句話</h2>
+        <ul>
+                    <li>亞伯拉罕的代求與天使的拯救</li>
+          <li>羅得對世界的留戀與生命見證的喪失</li>
+          <li>神親自拉著手引領出城的極大憐恤</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="reading" class="content-grid" aria-label="reading-content">
+      <article class="card">
+        <span class="section-tag wednesday">周六｜神的毀滅</span>
+        <h2>天使的提醒與羅得的遲延</h2>
+                <p>
+          所多瑪城的罪惡在神面前極其重大，神預備要毀滅那地。然而，神並未忘記祂的僕人亞伯拉罕，因著亞伯拉罕誠懇的祈求，神在降下烈火之前，差遣兩位使者來到所多瑪拯救羅得一家。
+        </p>
+        <p>
+          當使者住進羅得家時，城裡的群眾竟然圍住房子，顯出極其邪惡的意圖。羅得試圖應對這光景，甚至願意做出違背道德與廉恥的犧牲，這說明他長期居住在邪惡的環境中，已經漸漸喪失了對羞恥的敏銳感覺。為了保護羅得，天使擊打那些人使他們眼睛昏迷。
+        </p>
+        <p>
+          天使明確告訴羅得這城即將毀滅，催促他帶領家人離開。沒想到羅得將這事告訴他的女婿們時，他們竟以為羅得是在開玩笑。這反映出羅得平時在親人面前，並沒有建立起屬靈的權威與正確的見證。
+        </p>
+        <p>
+          到了清晨，羅得雖然知道危急，卻因捨不得他在所多瑪城的產業與生活，遲延不肯離開。這份對世界的依戀，使他在面對審判時顯得軟弱無力。
+        </p>
+        <div class="scripture">
+          <strong>可帶的一句提醒</strong><br />
+          羅得在女婿面前並無見證。
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="section-tag thursday">主日｜補充提醒與操練</span>
+        <h2>把心轉向神，快快順服</h2>
+                <p>
+          因著神的憐恤，天使親自拉著羅得、他妻子和他兩個女兒的手，強有力地把他們領出來，安置在城外。天使嚴厲囑咐他們：「不可回頭看，也不可在平原站住，要往山上逃跑。」
+        </p>
+        <p>
+          今天我們所處的世界，正如同將要被毀滅的所多瑪。我們對世界的留戀不捨，或許正像羅得一樣。即使我們擁有的不多，但如果心在那裡，就會在關鍵時刻成為沈重的負擔。
+        </p>
+        <p>
+          主耶穌快要回來了。如果我們所有的盼望都建造在這個世界上，當有一天神要來把這一切都滅掉時，就再也逃不掉了。被提的時候，神只提人不提物，神只救人不救火。我們今天就應當有所「捨得」，將心從世界的霸佔中收回，專一愛主。
+        </p>
+        <div class="scripture">
+          <strong>可帶的一句提醒</strong><br />
+          神只提人不提物，神只救人不救火；我們今天就該學會捨得。
+        </div>
+      </article>
+    </section>
+
+    <section id="discussion" class="summary-grid" aria-label="discussion-guide">
+      <article class="card focus-box">
+        <p class="eyebrow">Lead the Group</p>
+        <h3>這篇可以帶出的三件事</h3>
+        <ol>
+                    <li>即使在最邪惡的環境中，神仍聽聖徒的代求並施予主動的拯救。</li>
+          <li>對世界的愛會侵蝕信徒的道德感，並使我們在人面前失去生命的見證。</li>
+          <li>真正的拯救是將人從世界中「拉出來」，而非改善那個將被毀滅的環境。</li>
+        </ol>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Discussion</p>
+        <h3>可直接帶的三個問題</h3>
+        <ul>
+                    <li>羅得的女婿為何把毀滅的警告當作「戲言」？這提醒我們在生活中該如何建立見證？</li>
+          <li>為什麼天使要親自「拉著羅得的手」？這展現了神怎樣的性格？</li>
+          <li>在你的生活中，有哪些事物讓你像羅得一樣「遲延不肯離開」？我們該如何勝過？</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="summary-grid" aria-label="verse-prayer">
+      <article class="card">
+        <p class="eyebrow">Verse</p>
+        <h3>今天的經文</h3>
+        <div class="scripture">
+          「所以我們既領受了不能震動的國，就當接受恩典，藉此得以照神所喜悅的，以虔誠和畏懼事奉神；因為我們的神乃是烈火。」<br />
+          希伯來書十二章28至29節
+        </div>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Prayer</p>
+        <h3>一起禱告</h3>
+        <div class="prayer">
+          親愛的主耶穌，感謝祢在審判來到之前，藉著話語警醒我們。求祢拯救我們脫離對世界的留戀，不讓地上的財富或享樂霸佔我們的心。
+          <br /><br />
+          主啊，使我們的心專一愛祢，不再「回頭看」那將要過去的世界。讓我們在生活中活出生命的見證，像亞伯拉罕一樣為人代求，也像羅得一家被祢的手親自引領，進入那不能震動的國。阿們。
+        </div>
+      </article>
+    </section>
+
+    <p class="footer-note">lesson13-202604w4-sun · made for Sunday gathering (two-column edition)</p>
+  </main>
+</body>
+</html>

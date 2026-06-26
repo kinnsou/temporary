@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>雅各與神摔跤</title>
+  <meta name="description" content="學習雅各在毗努伊勒遇見神，生命被主摸著並轉變的故事。" />
+  <style>
+    :root {
+      --bg: #f6f1e8;
+      --paper: #fffaf2;
+      --ink: #2f2a25;
+      --muted: #6f6559;
+      --line: #e6d7bf;
+      --gold: #c29045;
+      --gold-deep: #966b2f;
+      --olive: #6f7d55;
+      --rose: #b56a59;
+      --shadow: 0 16px 40px rgba(88, 63, 30, 0.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.9;
+      background:
+        radial-gradient(1000px 480px at 110% -10%, rgba(194, 144, 69, 0.16), transparent 55%),
+        radial-gradient(900px 420px at -10% 100%, rgba(111, 125, 85, 0.16), transparent 55%),
+        var(--bg);
+    }
+    .grain::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.05;
+      background-image: radial-gradient(rgba(68, 48, 24, 0.28) 0.7px, transparent 0.7px);
+      background-size: 4px 4px;
+      z-index: 0;
+    }
+    .wrap { position: relative; z-index: 1; width: min(1020px, 92vw); margin: 28px auto 56px; }
+    .hero { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 28px; padding: clamp(26px, 5vw, 48px); background: linear-gradient(140deg, #fffdf8 0%, #fff5e7 100%); box-shadow: var(--shadow); }
+    .hero::after { content: ""; position: absolute; right: -120px; top: -120px; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(194, 144, 69, 0.28) 0%, rgba(194, 144, 69, 0) 70%); }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; border: 1px solid #ebd6b0; background: #fff7e8; color: var(--gold-deep); font-size: 13px; font-weight: 700; letter-spacing: 0.02em; }
+    h1 { margin: 0 0 12px; font-family: "Noto Serif TC", "PMingLiU", serif; font-size: clamp(34px, 6vw, 58px); line-height: 1.15; color: #2d2419; }
+    .lead { margin: 0; max-width: 66ch; color: var(--muted); font-size: clamp(16px, 2.1vw, 19px); }
+    .hero-actions { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 12px; }
+    .button { display: inline-block; padding: 12px 18px; border-radius: 14px; text-decoration: none; font-weight: 700; transition: transform .18s ease, box-shadow .18s ease; }
+    .button.primary { color: white; background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%); box-shadow: 0 10px 20px rgba(150, 107, 47, 0.28); }
+    .button.secondary { color: var(--ink); background: rgba(255,255,255,0.74); border: 1px solid var(--line); }
+    .button:hover { transform: translateY(-1px); }
+    .intro-grid, .content-grid, .summary-grid { display: grid; gap: 18px; margin-top: 22px; }
+    .intro-grid { grid-template-columns: 1.15fr 0.95fr; }
+    .content-grid { grid-template-columns: 1fr 1fr; }
+    .summary-grid { grid-template-columns: 1fr 1fr; }
+    .card { border: 1px solid var(--line); border-radius: 22px; background: var(--paper); padding: 22px; box-shadow: 0 10px 24px rgba(88, 63, 30, 0.08); }
+    .card h2, .card h3 { margin: 0 0 12px; font-family: "Noto Serif TC", serif; color: #352a1e; line-height: 1.45; }
+    .eyebrow { margin: 0 0 8px; color: var(--gold-deep); font-size: 13px; text-transform: uppercase; letter-spacing: .09em; font-weight: 700; }
+    .section-tag { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 12px; padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 700; color: #fff; }
+    .wednesday { background: linear-gradient(180deg, #6f7d55 0%, #53613e 100%); }
+    .thursday { background: linear-gradient(180deg, #b56a59 0%, #8f4d40 100%); }
+    p { margin: 0 0 14px; }
+    ul, ol { margin: 0; padding-left: 22px; }
+    li + li { margin-top: 8px; }
+    .focus-box { background: linear-gradient(180deg, #fffdf9 0%, #f7efe2 100%); }
+    .scripture { border-left: 4px solid var(--gold); background: #fff3df; border-radius: 12px; padding: 14px 16px; color: #5f4b31; margin-top: 14px; }
+    .prayer { background: #fdf6ee; border: 1px dashed #d4a070; border-radius: 14px; padding: 16px; }
+    .footer-note { margin-top: 22px; text-align: center; color: #8a7a66; font-size: 13px; }
+    @media (max-width: 920px) { .intro-grid, .content-grid, .summary-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 560px) { .wrap { margin-top: 18px; } .hero, .card { border-radius: 18px; } .button { width: 100%; text-align: center; } }
+  </style>
+</head>
+<body class="grain">
+  <main class="wrap">
+    <section class="hero">
+      <div class="badge-row">
+        <span class="badge">📖 主日帶讀</span>
+        <span class="badge">第十五課 · 2026 六月第二週</span>
+        <span class="badge">來源段落：周六</span>
+        <span class="badge">主題：毗努伊勒的轉變</span>
+      </div>
+      <h1>雅各與神摔跤</h1>
+      <p class="lead">小朋友們，你們有沒有跟人玩過摔跤呢？今天我們要來看雅各如何與神「摔跤」，並且得到了一個全新的名字！</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#reading">開始閱讀</a>
+        <a class="button secondary" href="#discussion">看主日重點</a>
+      </div>
+    </section>
+
+    <section class="intro-grid" aria-label="overview">
+      <article class="card">
+        <p class="eyebrow">Overview</p>
+        <h2>這一篇在提醒什麼？</h2>
+            <p>雅各在回家的路上，心情非常緊張，因為他不知道哥哥會怎麼對待他。這天晚上，他讓家人先過河，自己一個人留在雅博渡口，沒想到卻遇到了一位神祕的人，與他摔跤直到天亮。</p>
+            <p>原來這位神祕客就是主自己。主藉著這次摔跤，摸了雅各身上最強壯的大腿窩，讓他變成了瘸腿的人。雖然外表受了傷，但雅各的生命卻從此發生了奇妙的改變。</p>
+      </article>
+
+      <aside class="card focus-box">
+        <p class="eyebrow">Sunday Focus</p>
+        <h2>主日可以先抓三句話</h2>
+        <ul>
+          <li>雅各在雅博渡口與神面對面摔跤。</li>
+          <li>主摸了雅各的大腿，暴露他天然的力量。</li>
+          <li>雅各的名字改為「以色列」，生命被神翻轉。</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="reading" class="content-grid" aria-label="reading-content">
+      <article class="card">
+        <span class="section-tag wednesday">周六｜正文帶讀</span>
+        <h2>毗努伊勒的轉變</h2>
+            <p>那天夜裡，雅各獨自留在渡口，忽然有一個人出現和他摔跤。雅各是個很努力的人，他使出全身的力氣不肯認輸，兩個人就這樣一直打到黎明。</p>
+            <p>那個人見雅各這麼堅持，就在雅各的大腿窩上輕輕摸了一把。大腿是人最有力氣的地方，被這一摸，雅各的大腿立刻就扭傷了。這時雅各才發現，眼前的這位比他強大得多。</p>
+            <p>雅各緊緊抓著那個人不放，說：「你不給我祝福，我就不讓你走。」那個人問雅各叫什麼名字，他誠實地回答：「我叫雅各。」雅各的意思就是「抓奪者」，代表他總想靠自己的力量去抓想要的東西。</p>
+            <p>那個人對他說：「你的名不要再叫雅各，要叫以色列。」以色列的意思是「神的王子」。主在那裡給雅各祝福，雅各也把那地方起名叫「毗努伊勒」，意思是「我面對面見了神」。</p>
+            <p>當太陽升起時，雅各走過毗努伊勒，雖然他的大腿瘸了，每一步走起來都和以前不一樣，但他的心裡卻充滿了神的光。這說明他在生命裡發生了真實的改變。</p>
+      </article>
+
+      <article class="card">
+        <span class="section-tag thursday">主日｜補充提醒與操練</span>
+        <h2>讓主摸我們天然的生命</h2>
+            <p>雅各的大腿窩代表我們身上最「硬」的部分，就是那些我們覺得自己很厲害、不肯聽話的地方。主有時候會藉著環境來「摸」我們一下，讓我們知道靠自己是行不通的。</p>
+            <p>當我們被主摸過後，可能會覺得自己變軟弱了，像雅各「瘸腿」一樣。但這其實是好事，因為這代表我們不再靠自己的小聰明，而是開始學習依靠神、跟隨神的道路。</p>
+            <p>在召會生活裡，我們也要像雅各一樣，向主敞開我們的心。雖然我們可能會有不順服的時候，但只要願意讓主的光照進來，經歷神的一摸，我們就能從「抓奪的雅各」變成「尊貴的以色列」。</p>
+        <div class="scripture"><strong>可帶的一句提醒</strong><br />我們不再靠自己的力量，而是靠著主的生命生活。</div>
+      </article>
+    </section>
+
+    <section id="discussion" class="summary-grid" aria-label="discussion-guide">
+      <article class="card focus-box">
+        <p class="eyebrow">Lead the Group</p>
+        <h3>這篇可以帶出的三件事</h3>
+        <ol>
+          <li>主希望我們能誠實地面對祂，承認我們天然的軟弱。</li>
+          <li>被主「摸」著雖然會痛，但卻能帶給我們真正的祝福。</li>
+          <li>當我們轉向主，主就會改變我們的生命，給我們新的身分。</li>
+        </ol>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Discussion</p>
+        <h3>可直接帶的三個問題</h3>
+        <ul>
+          <li>雅各在摔跤時，哪一個部位被神摸了一把？</li>
+          <li>神把雅各的名字改成了什麼？這個新名字代表什麼意思？</li>
+          <li>雅各瘸了腿之後，他的生命發生了什麼樣的改變？</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="summary-grid" aria-label="verse-prayer">
+      <article class="card">
+        <p class="eyebrow">Verse</p>
+        <h3>今天的經文</h3>
+        <div class="scripture">只剩下雅各一人；有一個人來和他摔跤，直到黎明。那人見自己勝不過他，就將他的大腿窩摸了一把，雅各的大腿窩，正在摔跤的時候就扭了。<br />創三二24~25</div>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Prayer</p>
+        <h3>一起禱告</h3>
+        <div class="prayer">主耶穌，我來到祢面前，把我的心向祢敞開。求祢用祢的大光來照亮我，讓我知道哪裡是我想靠自己、不肯聽話的地方。主啊，求祢摸我天然的生命，使我的心向祢柔軟。<br /><br />親愛的主，謝謝祢賜給我新的名字和生命。我不願再做一個只會「抓奪」的人，我要做祢的王子，凡事依靠祢的恩典，在祢的光中跟從祢的道路。阿門。</div>
+      </article>
+    </section>
+
+    <p class="footer-note">lesson15-202606w2-sun.html · sequential lesson-page workflow · 202606w2</p>
+  </main>
+</body>
+</html>

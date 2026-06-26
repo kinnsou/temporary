@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>主日聖經帶讀｜羅得：為了好處分開，會失去什麼？</title>
+  <meta name="description" content="第十三課主日版：取用周二〈羅得與亞伯拉罕分開〉，改寫成適合主日聚會使用的單頁（雙欄版面）。" />
+  <style>
+    :root {
+      --bg: #f6f1e8;
+      --paper: #fffaf2;
+      --ink: #2f2a25;
+      --muted: #6f6559;
+      --line: #e6d7bf;
+      --gold: #c29045;
+      --gold-deep: #966b2f;
+      --olive: #6f7d55;
+      --rose: #b56a59;
+      --shadow: 0 16px 40px rgba(88, 63, 30, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.9;
+      background:
+        radial-gradient(1000px 480px at 110% -10%, rgba(194, 144, 69, 0.16), transparent 55%),
+        radial-gradient(900px 420px at -10% 100%, rgba(111, 125, 85, 0.16), transparent 55%),
+        var(--bg);
+    }
+
+    .grain::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.05;
+      background-image: radial-gradient(rgba(68, 48, 24, 0.28) 0.7px, transparent 0.7px);
+      background-size: 4px 4px;
+      z-index: 0;
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      width: min(1020px, 92vw);
+      margin: 28px auto 56px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: clamp(26px, 5vw, 48px);
+      background: linear-gradient(140deg, #fffdf8 0%, #fff5e7 100%);
+      box-shadow: var(--shadow);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      top: -120px;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(194, 144, 69, 0.28) 0%, rgba(194, 144, 69, 0) 70%);
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid #ebd6b0;
+      background: #fff7e8;
+      color: var(--gold-deep);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-family: "Noto Serif TC", "PMingLiU", serif;
+      font-size: clamp(34px, 6vw, 58px);
+      line-height: 1.15;
+      color: #2d2419;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 70ch;
+      color: var(--muted);
+      font-size: clamp(16px, 2.1vw, 19px);
+    }
+
+    .hero-actions {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+    .button.primary {
+      color: white;
+      background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%);
+      box-shadow: 0 10px 20px rgba(150, 107, 47, 0.28);
+    }
+
+    .button.secondary {
+      color: var(--ink);
+      background: rgba(255,255,255,0.74);
+      border: 1px solid var(--line);
+    }
+
+    .button:hover { transform: translateY(-1px); }
+
+    .intro-grid,
+    .content-grid,
+    .summary-grid {
+      display: grid;
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .intro-grid { grid-template-columns: 1.15fr 0.95fr; }
+    .content-grid { grid-template-columns: 1fr 1fr; }
+    .summary-grid { grid-template-columns: 1fr 1fr; }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--paper);
+      padding: 22px;
+      box-shadow: 0 10px 24px rgba(88, 63, 30, 0.08);
+    }
+
+    .card h2,
+    .card h3 {
+      margin: 0 0 12px;
+      font-family: "Noto Serif TC", serif;
+      color: #352a1e;
+      line-height: 1.45;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--gold-deep);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      font-weight: 700;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .tuesday { background: linear-gradient(180deg, #6f7d55 0%, #53613e 100%); }
+    .reflection { background: linear-gradient(180deg, #b56a59 0%, #8f4d40 100%); }
+
+    p { margin: 0 0 14px; }
+    ul, ol { margin: 0; padding-left: 22px; }
+    li + li { margin-top: 8px; }
+
+    .focus-box { background: linear-gradient(180deg, #fffdf9 0%, #f7efe2 100%); }
+
+    .scripture {
+      border-left: 4px solid var(--gold);
+      background: #fff3df;
+      border-radius: 12px;
+      padding: 14px 16px;
+      color: #5f4b31;
+      margin-top: 14px;
+    }
+
+    .prayer {
+      background: #fdf6ee;
+      border: 1px dashed #d4a070;
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .footer-note {
+      margin-top: 22px;
+      text-align: center;
+      color: #8a7a66;
+      font-size: 13px;
+    }
+
+    @media (max-width: 920px) {
+      .intro-grid,
+      .content-grid,
+      .summary-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .wrap { margin-top: 18px; }
+      .hero, .card { border-radius: 18px; }
+      .button { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body class="grain">
+  <main class="wrap">
+    <section class="hero">
+      <div class="badge-row">
+        <span class="badge">📖 主日帶讀</span>
+        <span class="badge">第十三課 · 2026 四月第二週</span>
+        <span class="badge">創世記 13 章</span>
+        <span class="badge">主題：分開與選擇</span>
+      </div>
+      <h1>羅得：為了好處分開，<br>會失去什麼？</h1>
+      <p class="lead">
+        亞伯拉罕和羅得一開始一起走神的路，但日子一久，牛羊財物越來越多，就開始有摩擦。
+        亞伯拉罕選擇「先保護關係」，羅得卻選擇「先保護利益」。
+        這一篇要幫我們練習：做選擇時，不只看哪裡最好，還要想這會不會讓我離神更遠。
+      </p>
+      <div class="hero-actions">
+        <a class="button primary" href="#reading">開始閱讀</a>
+        <a class="button secondary" href="#discussion">看主日重點</a>
+      </div>
+    </section>
+
+    <section class="intro-grid" aria-label="overview">
+      <article class="card">
+        <p class="eyebrow">Overview</p>
+        <h2>這一篇在提醒什麼？</h2>
+        <p>
+          兩個人一起走路，要一起吃苦不難，要一起「過得好」反而容易出問題。
+          因為一變多、一變好，就會開始計較：誰的比較多？誰的比較好？
+        </p>
+        <p>
+          主日要抓一個很實際的提醒：<strong>我可以為了利益輸贏，跟重要的人分開嗎？</strong>
+          羅得的故事告訴我們，這種分開常常不是「變自由」，而是「失去保護」。
+        </p>
+      </article>
+
+      <aside class="card focus-box">
+        <p class="eyebrow">Sunday Focus</p>
+        <h2>主日可以先抓三句話</h2>
+        <ul>
+          <li><strong>先保護關係，</strong> 比先爭輸贏更聰明。</li>
+          <li><strong>最好的地方，</strong> 不一定帶你走最好的路。</li>
+          <li><strong>跟屬靈的源頭在一起，</strong> 是一種看不見的保護。</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="reading" class="content-grid" aria-label="reading-content">
+      <article class="card">
+        <span class="section-tag tuesday">周二｜羅得與亞伯拉罕分開</span>
+        <h2>兩邊都變多了，摩擦也變多了</h2>
+        <p>
+          亞伯拉罕帶著羅得一路跟隨神，他們走過不少辛苦的路。
+          但是神也祝福他們，讓他們的牛群、羊群和財物越來越多。
+          東西一多，就會遇到新難題：草地和水不夠用，牧人之間開始吵架。
+        </p>
+        <p>
+          這時候亞伯拉罕做了一個很美的決定。
+          他不想讓大家繼續相爭，就對羅得說：不要吵了，我們分開住吧，<strong>你先選</strong>。
+          亞伯拉罕是長輩，照理說可以自己先選最好的，但他願意先讓。
+        </p>
+        <p>
+          可是羅得在這件事上，想的不是「感謝」和「交通」，而是「哪裡最划算」。
+          他怕牛羊吃不飽，怕自己少一點，就挑了看起來最好的地方。
+          結果，他選到了好地方，卻也把自己帶到一條更危險的路上。
+        </p>
+        <div class="scripture">
+          <strong>一句話帶回家</strong><br />
+          有些選擇表面是在挑地點，其實是在決定：我接下來要跟誰在一起、要往哪裡去。
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="section-tag reflection">主日｜補充提醒與操練</span>
+        <h2>不要為了「多一點」，把「最重要的」弄丟</h2>
+        <p>
+          很多基督徒走歪，不是因為突然不信了，而是因為慢慢變成：
+          <strong>要利益，不要交通；要方便，不要跟隨；要世界的好處，不要神的保護。</strong>
+        </p>
+        <p>
+          羅得是被亞伯拉罕帶上這條路的人。
+          如果他願意珍惜這份屬靈的影響，常常跟在屬靈的源頭身邊，他會更容易走在蒙福的路上。
+          但他一分開，就很容易失去方向。
+        </p>
+        <p>
+          今天我們也一樣。
+          當你覺得「跟某些弟兄姊妹相處很煩」「不想跟長輩講話」「想自己來」時，先停一下，問問自己：
+          我是不是正在把自己推離保護？
+        </p>
+        <div class="scripture">
+          <strong>可以一起禱讀的經文</strong><br />
+          「記得你裡面無偽的信心，就是先在你外祖母羅以，和你母親友尼基裡面的，我深信也在你裡面。」<br />
+          提摩太後書 1:5
+        </div>
+      </article>
+    </section>
+
+    <section id="discussion" class="summary-grid" aria-label="discussion-guide">
+      <article class="card focus-box">
+        <p class="eyebrow">Lead the Group</p>
+        <h3>這篇可以帶出的三件事</h3>
+        <ol>
+          <li><strong>先選和睦。</strong> 先保護關係，而不是先爭輸贏。</li>
+          <li><strong>先想方向。</strong> 不是每個「看起來最好」都會把人帶到最好。</li>
+          <li><strong>緊跟屬靈源頭。</strong> 這是一種保護，也是一條蒙福的路。</li>
+        </ol>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Discussion</p>
+        <h3>可直接帶的三個問題</h3>
+        <ul>
+          <li>最近我有沒有因為「想多一點好處」，而對重要的人變得不耐煩、想分開？</li>
+          <li>我做選擇時，最常先看的是「方便」還是「方向」？</li>
+          <li>我可以用什麼方式更常跟屬靈長輩、同伴一起追求主？</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="summary-grid" aria-label="verse-prayer">
+      <article class="card">
+        <p class="eyebrow">Verse</p>
+        <h3>今天的經文</h3>
+        <div class="scripture">
+          「你我不可相爭…因為我們是骨肉（同一家人）。」<br />
+          創世記 13:8（意譯）
+        </div>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Prayer</p>
+        <h3>一起禱告</h3>
+        <div class="prayer">
+          親愛的天父，求你幫助我在遇到摩擦時，先學會保護關係，不被利益和面子牽著走。<br /><br />
+          當我做選擇時，求你提醒我不只看哪裡最好、最方便，也要看這會不會讓我更靠近你。<br /><br />
+          求你讓我珍惜屬靈的長輩與同伴，緊緊跟隨正確的屬靈影響，走在你祝福的路上。阿們。
+        </div>
+      </article>
+    </section>
+
+    <p class="footer-note">lesson13-202604w2-sun · made for Sunday gathering (two-column edition)</p>
+  </main>
+</body>
+</html>

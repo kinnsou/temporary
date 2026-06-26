@@ -1,0 +1,22 @@
+{
+  "id": "./vocab-review.html",
+  "name": "CLAW ENG 單字小教室",
+  "short_name": "CLAW單字",
+  "start_url": "./vocab-review.html",
+  "scope": "./vocab-review.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#333333",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

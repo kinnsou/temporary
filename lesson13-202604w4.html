@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesson13 — 周三 神的警告與遲鈍的反應</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', 'Noto Serif TC', '思源宋體', serif;
+      background: #f9f4ec;
+      color: #3a2e24;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .card {
+      background: #fff8f0;
+      border-radius: 18px;
+      box-shadow: 0 6px 32px rgba(120, 80, 30, 0.13);
+      max-width: 720px;
+      width: 100%;
+      overflow: hidden;
+      border: 1px solid #f0dfc8;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #8f5a2f 0%, #b27442 62%, #d19859 100%);
+      padding: 2rem 2rem 1.5rem;
+      text-align: center;
+    }
+
+    .lesson-label {
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      color: rgba(255, 240, 215, 0.85);
+      margin-bottom: 0.45rem;
+    }
+
+    .lesson-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #fff8ee;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 8px rgba(80, 30, 0, 0.28);
+    }
+
+    .lesson-subtitle {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: rgba(255, 235, 185, 0.96);
+      letter-spacing: 0.08em;
+    }
+
+    .divider-line {
+      height: 3px;
+      background: linear-gradient(90deg, transparent, rgba(255, 235, 190, 0.55), transparent);
+      margin-top: 1.2rem;
+    }
+
+    .body {
+      padding: 1.8rem 2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+    }
+
+    .section-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #8b4513;
+      margin-bottom: 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .story-box,
+    .three-things,
+    .scripture-box,
+    .summary-box,
+    .prayer-box {
+      border-radius: 12px;
+      padding: 1.25rem 1.4rem;
+    }
+
+    .story-box {
+      background: #fffaf4;
+      border: 1px solid #f0dfc8;
+    }
+
+    .story-text {
+      font-size: 1.03rem;
+      line-height: 2;
+      color: #3a2e24;
+      text-align: justify;
+    }
+
+    .story-text p + p { margin-top: 0.9em; }
+
+    .three-things {
+      background: #fef9ef;
+      border-left: 4px solid #d4924a;
+    }
+
+    .three-things ol {
+      padding-left: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .three-things li {
+      font-size: 1.02rem;
+      line-height: 1.75;
+      color: #4a3020;
+    }
+
+    .scripture-box {
+      background: linear-gradient(135deg, #fdf3e3, #fae8cc);
+      text-align: center;
+    }
+
+    .scripture-text {
+      font-size: 1.08rem;
+      font-style: italic;
+      line-height: 1.9;
+      color: #5c3d1e;
+      font-weight: 500;
+    }
+
+    .scripture-text p + p { margin-top: 0.8em; }
+
+    .scripture-ref {
+      margin-top: 0.6rem;
+      font-size: 0.88rem;
+      color: #8b6040;
+    }
+
+    .summary-box {
+      background: #fffdf7;
+      border: 1px dashed #d9b17a;
+    }
+
+    .summary-text {
+      font-size: 1.03rem;
+      line-height: 1.9;
+      color: #4a3020;
+    }
+
+    .prayer-box {
+      background: #fdf6ee;
+      border: 1px dashed #d4a070;
+    }
+
+    .prayer-text {
+      font-size: 1.01rem;
+      line-height: 2;
+      color: #4a3020;
+    }
+
+    .prayer-text p + p { margin-top: 0.5em; }
+
+    .footer-divider {
+      text-align: center;
+      padding: 0.7rem 2rem 0.5rem;
+      font-size: 0.82rem;
+      color: #c0a080;
+      letter-spacing: 0.12em;
+      border-top: 1px solid #f0dfc8;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 0.3rem 2rem 1.2rem;
+      font-size: 0.78rem;
+      color: #b08060;
+      letter-spacing: 0.08em;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <div class="lesson-label">Lesson 13 · 2026 四月第四週</div>
+      <div class="lesson-title">羅得 — 失敗的義人</div>
+      <div class="lesson-subtitle">周三 神的警告與遲鈍的反應</div>
+      <div class="divider-line"></div>
+    </div>
+
+    <div class="body">
+      <div>
+        <div class="section-title">📖 今日故事</div>
+        <div class="story-box">
+          <div class="story-text">
+                        <p>當羅得搬進罪惡的所多瑪城後不久，當地就爆發了激烈的戰爭。結果所多瑪戰敗，羅得不但失去了所有的財產，連他自己和家人都被擄走了。幸好亞伯拉罕聽見消息後，不計較過去的摩擦，立刻帶著家中的壯丁去營救，才把羅得平安地搶回來。這其實是神給羅得的一次嚴厲警告，告訴他所多瑪是一個危險且不該久留的地方。</p>
+            <p>身為一個屬主的人，羅得卻選擇住在遠離召會生活的地方。神藉著這場苦難管教他，是想催促他回頭。然而，羅得雖然獲救，卻沒有領悟神的心意，反而再次回到所多瑪。到了創世記十九章，當天使來到城門口時，羅得竟然坐在那裡當起了法官。他的社會地位雖然提高了，卻在罪惡的世界中越陷越深，完全忘記了之前的教訓。</p>
+            <p>這讓我們想到一個比喻：有個孩子拿到了幾顆糖果，明明知道要留到明天吃，卻忍不住一直舔。剛開始糖果還在，但舔著舔著，糖果就越來越小，最後索性一顆接一顆全部吃光了。基督徒面對犯罪也是如此，起初只是稍微違背一點良心，覺得沒什麼大不了，卻不知不覺養成了「罪癮」，讓自己對罪的感覺變得麻木，最後完全失去平安。</p>
+            <p>神為了保護我們，有時會藉著環境中的難處，像是身體的不適、或是生活中不順遂的事來提醒我們。這些警告不是為了處罰，而是出於愛。可惜許多人對神的管教感覺遲鈍，甚至覺得那是運氣不好，而不懂得那是神在拉我們一把。如果我們對神柔聲的說話沒有反應，祂有時就必須用環境的苦難來催促我們回頭。</p>
+            <p>我們必須重視良心的感覺，因為每一次的妥協，都會讓我們對神的話變得遲鈍。如果你發現自己正一步步靠近世界，心裡失去了平靜，那就表示神正在對你說話。不要等到像羅得一樣遭遇巨大的損失才後悔，現在就轉向神，回到召會生活中，這才是最安全、最有福的選擇。</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">✨ 故事學到的三件事</div>
+        <div class="three-things">
+          <ol>
+                        <li>羅得在受苦被擄後，雖然被救回，卻沒有離開罪惡的環境，反而追求更高的世界地位。</li>
+            <li>犯罪就像舔糖果，起初看似微小，卻會讓人產生癮頭，最終使良心完全失去感覺。</li>
+            <li>神給我們的難處往往是愛的警告，目的是要管教我們、催促我們回到正確的路上。</li>
+          </ol>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">📜 禱讀經文</div>
+        <div class="scripture-box">
+          <div class="scripture-text">
+                        <p>「你們要謹慎，不可棄絕那說話的，因為那些棄絕在地上警戒他們者的，尚且不能逃罪，何況我們這轉離那從諸天之上警戒我們者的？」</p>
+          </div>
+          <div class="scripture-ref">希伯來書十二章25節</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">📝 每日信息總結</div>
+        <div class="summary-box">
+          <div class="summary-text">神藉著環境的管教是為了讓我們從罪惡世界回頭，我們應當敏銳地照著良心的感覺生活行動。</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">🙏 一起禱告</div>
+        <div class="prayer-box">
+          <div class="prayer-text">
+                        <p>主耶穌，謝謝祢愛我，當我走錯路的時候，祢總是會藉著環境來提醒我。求祢賜給我一顆敏銳的心，讓我能聽見祢警戒的聲音。</p>
+            <p>主啊，保守我不被世界的快樂吸引，也不要對祢的警告感覺遲鈍。我不願意等到受苦才回頭，我現在就要轉向祢，回到平安的路上。</p>
+            <p>主耶穌，幫助我珍賞召會生活，不隨意違背良心的感覺。求祢加強我，讓我有勇氣拒絕罪的誘惑，不再讓自己對祢的說話變得麻木。</p>
+            <p>喔，主耶穌，我願意順從祢的管教與引導。求祢保守我一直活在祢的面前，在祢的保護中過每一天的生活。阿們。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-divider">——————END——————</div>
+    <div class="footer">聖經之旅 第一冊 · 蒙揀選的族類</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>雅各與長子的名分</title>
+  <meta name="description" content="學習寶愛神給我們的福分，並看見神在環境中的主宰安排。" />
+  <style>
+    :root {
+      --bg: #f6f1e8;
+      --paper: #fffaf2;
+      --ink: #2f2a25;
+      --muted: #6f6559;
+      --line: #e6d7bf;
+      --gold: #c29045;
+      --gold-deep: #966b2f;
+      --olive: #6f7d55;
+      --rose: #b56a59;
+      --shadow: 0 16px 40px rgba(88, 63, 30, 0.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.9;
+      background:
+        radial-gradient(1000px 480px at 110% -10%, rgba(194, 144, 69, 0.16), transparent 55%),
+        radial-gradient(900px 420px at -10% 100%, rgba(111, 125, 85, 0.16), transparent 55%),
+        var(--bg);
+    }
+    .grain::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.05;
+      background-image: radial-gradient(rgba(68, 48, 24, 0.28) 0.7px, transparent 0.7px);
+      background-size: 4px 4px;
+      z-index: 0;
+    }
+    .wrap { position: relative; z-index: 1; width: min(1020px, 92vw); margin: 28px auto 56px; }
+    .hero { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 28px; padding: clamp(26px, 5vw, 48px); background: linear-gradient(140deg, #fffdf8 0%, #fff5e7 100%); box-shadow: var(--shadow); }
+    .hero::after { content: ""; position: absolute; right: -120px; top: -120px; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(194, 144, 69, 0.28) 0%, rgba(194, 144, 69, 0) 70%); }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; border: 1px solid #ebd6b0; background: #fff7e8; color: var(--gold-deep); font-size: 13px; font-weight: 700; letter-spacing: 0.02em; }
+    h1 { margin: 0 0 12px; font-family: "Noto Serif TC", "PMingLiU", serif; font-size: clamp(34px, 6vw, 58px); line-height: 1.15; color: #2d2419; }
+    .lead { margin: 0; max-width: 66ch; color: var(--muted); font-size: clamp(16px, 2.1vw, 19px); }
+    .hero-actions { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 12px; }
+    .button { display: inline-block; padding: 12px 18px; border-radius: 14px; text-decoration: none; font-weight: 700; transition: transform .18s ease, box-shadow .18s ease; }
+    .button.primary { color: white; background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%); box-shadow: 0 10px 20px rgba(150, 107, 47, 0.28); }
+    .button.secondary { color: var(--ink); background: rgba(255,255,255,0.74); border: 1px solid var(--line); }
+    .button:hover { transform: translateY(-1px); }
+    .intro-grid, .content-grid, .summary-grid { display: grid; gap: 18px; margin-top: 22px; }
+    .intro-grid { grid-template-columns: 1.15fr 0.95fr; }
+    .content-grid { grid-template-columns: 1fr 1fr; }
+    .summary-grid { grid-template-columns: 1fr 1fr; }
+    .card { border: 1px solid var(--line); border-radius: 22px; background: var(--paper); padding: 22px; box-shadow: 0 10px 24px rgba(88, 63, 30, 0.08); }
+    .card h2, .card h3 { margin: 0 0 12px; font-family: "Noto Serif TC", serif; color: #352a1e; line-height: 1.45; }
+    .eyebrow { margin: 0 0 8px; color: var(--gold-deep); font-size: 13px; text-transform: uppercase; letter-spacing: .09em; font-weight: 700; }
+    .section-tag { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 12px; padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 700; color: #fff; }
+    .wednesday { background: linear-gradient(180deg, #6f7d55 0%, #53613e 100%); }
+    .thursday { background: linear-gradient(180deg, #b56a59 0%, #8f4d40 100%); }
+    p { margin: 0 0 14px; }
+    ul, ol { margin: 0; padding-left: 22px; }
+    li + li { margin-top: 8px; }
+    .focus-box { background: linear-gradient(180deg, #fffdf9 0%, #f7efe2 100%); }
+    .scripture { border-left: 4px solid var(--gold); background: #fff3df; border-radius: 12px; padding: 14px 16px; color: #5f4b31; margin-top: 14px; }
+    .prayer { background: #fdf6ee; border: 1px dashed #d4a070; border-radius: 14px; padding: 16px; }
+    .footer-note { margin-top: 22px; text-align: center; color: #8a7a66; font-size: 13px; }
+    @media (max-width: 920px) { .intro-grid, .content-grid, .summary-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 560px) { .wrap { margin-top: 18px; } .hero, .card { border-radius: 18px; } .button { width: 100%; text-align: center; } }
+  </style>
+</head>
+<body class="grain">
+  <main class="wrap">
+    <section class="hero">
+      <div class="badge-row">
+        <span class="badge">📖 主日帶讀</span>
+        <span class="badge">第十五課 · 2026 五月第四週</span>
+        <span class="badge">來源段落：周二</span>
+        <span class="badge">主題：雅各在父家</span>
+      </div>
+      <h1>雅各與長子的名分</h1>
+      <p class="lead">雅各和以掃雖然是雙胞胎兄弟，但他們的性格和選擇卻完全不同，這帶給我們寶貴的啟示。</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#reading">開始閱讀</a>
+        <a class="button secondary" href="#discussion">看主日重點</a>
+      </div>
+    </section>
+
+    <section class="intro-grid" aria-label="overview">
+      <article class="card">
+        <p class="eyebrow">Overview</p>
+        <h2>這一篇在提醒什麼？</h2>
+            <p>雅各和以掃是個性截然不同的兩兄弟。以掃喜歡在田野打獵，雅各則安靜地待在帳棚裡。雖然他們生活在同一個家，但心裡看重的事物卻很不一樣。</p>
+            <p>這堂課我們要看雅各如何竭力得著福分，而以掃又是如何輕看了神給他的寶貴名分。同時，我們也會看見神如何藉著周圍的人事物，來成全並變化雅各。</p>
+      </article>
+
+      <aside class="card focus-box">
+        <p class="eyebrow">Sunday Focus</p>
+        <h2>主日可以先抓三句話</h2>
+        <ul>
+          <li>寶愛長子的名分，不因一時的物質享受而放棄屬天的福分。</li>
+          <li>看見神主宰的手，環境中的每件事都是為了叫我們得益處。</li>
+          <li>學習在各種處境中讚美神，信靠祂完美的計劃與安排。</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="reading" class="content-grid" aria-label="reading-content">
+      <article class="card">
+        <span class="section-tag wednesday">周二｜正文帶讀</span>
+        <h2>雅各在父家</h2>
+            <p>以掃和雅各長大後，以掃擅長在田野打獵，雅各則喜歡安靜地住在帳棚裡。有一天，以掃從田野回來又累又餓，看見雅各正熬著紅豆湯。以掃為了喝那一碗湯，竟然隨意地將自己身為長子的名分賣給了雅各。</p>
+            <p>後來，父親以撒年老了，想要為以掃祝福。母親利百加因為愛雅各，就幫他出主意。雅各披上山羊羔的皮，假裝成哥哥毛茸茸的樣子，又端上美味的料理，最終得著了父親的祝福。</p>
+            <p>以掃發現祝福被雅各得著後，心裡非常憤恨，甚至想要殺雅各。利百加得知後，便趕緊叫雅各前往舅舅拉班的家躲避，並勸說以撒打發雅各去巴旦亞蘭娶妻。</p>
+            <p>就這樣，雅各聽從父母的話，離開了原本居住的地方，踏上了長遠的路途。這一切的過程看似波折，其實背後都有神主宰的帶領。</p>
+            <p>在這段經歷中，我們看見以掃輕看名分，而雅各雖然用了自己的手段，但他心裡卻是何等渴慕得著神的祝福。神也正是藉著這些環境，開始磨練並變化雅各。</p>
+      </article>
+
+      <article class="card">
+        <span class="section-tag thursday">主日｜補充提醒與操練</span>
+        <h2>萬有都互相效力</h2>
+            <p>長子的名分包含三件重要的事：彰顯神、代表神，以及在神的國中有分。如果我們像以掃一樣，只顧著追求眼前的玩樂與享受，而不關心召會生活與神的心意，就會錯過這些珍貴的應許。</p>
+            <p>我們身邊的每一個人，無論是爸爸媽媽、兄弟姊妹，或是學校的老師、同學，甚至是召會裡的弟兄姊妹，都是神為我們預備的。神主宰地安排這一切環境，目的是要幫助我們生命成長。</p>
+            <p>當我們遇到不如意的事情時，要記得這並非偶然。神知道我們需要什麼樣的對付與調整，祂讓「萬有都互相效力」，好叫我們這些蒙召的人得著真實的益處，使我們的性情被改變得更像主耶穌。</p>
+        <div class="scripture"><strong>可帶的一句提醒</strong><br />我們周圍發生的每件事，都在神主宰的手下，為著使我們得益處。</div>
+      </article>
+    </section>
+
+    <section id="discussion" class="summary-grid" aria-label="discussion-guide">
+      <article class="card focus-box">
+        <p class="eyebrow">Lead the Group</p>
+        <h3>這篇可以帶出的三件事</h3>
+        <ol>
+          <li>珍惜聖徒的身分與召會生活，不被世界的享樂吸引。</li>
+          <li>學習在困難或不順心的環境中，尋求神良善的旨意。</li>
+          <li>操練不抱怨，而是以信心接受神在我們身上的變化工作。</li>
+        </ol>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Discussion</p>
+        <h3>可直接帶的三個問題</h3>
+        <ul>
+          <li>以掃為什麼會把珍貴的長子名分賣給雅各？這提醒了我們什麼？</li>
+          <li>為什麼說我們身邊的家人和同學都是神的主宰安排？</li>
+          <li>當你遇到不開心的事時，你可以如何應用「萬有互相效力」這句話？</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="summary-grid" aria-label="verse-prayer">
+      <article class="card">
+        <p class="eyebrow">Verse</p>
+        <h3>今天的經文</h3>
+        <div class="scripture">還有，我們曉得萬有都互相效力，叫愛神的人得益處，就是按祂旨意被召的人。<br />羅馬書八章二十八節</div>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Prayer</p>
+        <h3>一起禱告</h3>
+        <div class="prayer">主耶穌，謝謝祢把我們放在召會生活裡，並給了我們長子的名分。求祢保守我們的心，不叫我們被世界的玩樂吸引，而是能天天寶愛祢，操練彰顯祢並代表祢。<br /><br />主耶穌，我們相信祢對我們有最好的安排。無論在學校還是在家裡，求祢叫我們學會讚美，看見萬有都互相效力。讓我們在各種環境中都能得著益處，使我們的生命不斷長大。</div>
+      </article>
+    </section>
+
+    <p class="footer-note">lesson15-202605w4-sun.html · sequential lesson-page workflow · 202605w4</p>
+  </main>
+</body>
+</html>

@@ -1,0 +1,2431 @@
+{
+  "meta": {
+    "updatedAt": "2026-06-25T11:02:09Z",
+    "sourceCount": 248,
+    "includedCount": 240
+  },
+  "words": [
+    {
+      "word": "secret",
+      "meaning": "秘密的；秘密",
+      "example": "This is a secret note for my mom.",
+      "translation": "這是一張要給我媽媽的秘密紙條。",
+      "firstSeen": "2026-06-25",
+      "pos": [
+        "adj",
+        "n"
+      ]
+    },
+    {
+      "word": "truly",
+      "meaning": "真正地；真的",
+      "example": "I truly like this storybook.",
+      "translation": "我真的很喜歡這本故事書。",
+      "firstSeen": "2026-06-25",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "expensive",
+      "meaning": "昂貴的；很貴的",
+      "example": "That bike is expensive, so I will save money first.",
+      "translation": "那台腳踏車很貴，所以我會先存錢。",
+      "firstSeen": "2026-06-25",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "sometimes",
+      "meaning": "有時候；偶爾",
+      "example": "I sometimes walk to school with my sister.",
+      "translation": "我有時候會跟姊姊一起走路去學校。",
+      "firstSeen": "2026-06-24",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "begin",
+      "meaning": "開始",
+      "example": "I begin my homework after dinner every night.",
+      "translation": "我每天晚上吃完晚餐後會開始寫作業。",
+      "firstSeen": "2026-06-24",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "below",
+      "meaning": "在…下面；低於",
+      "example": "The picture is below the clock on the wall.",
+      "translation": "那張圖在牆上時鐘的下面。",
+      "firstSeen": "2026-06-24",
+      "pos": [
+        "prep",
+        "adv"
+      ]
+    },
+    {
+      "word": "sign",
+      "meaning": "標誌；招牌；告示",
+      "example": "Please read the sign before you enter.",
+      "translation": "進去以前請先看告示。",
+      "firstSeen": "2026-06-23",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "use",
+      "meaning": "使用；利用",
+      "example": "We use pencils to write.",
+      "translation": "我們用鉛筆寫字。",
+      "firstSeen": "2026-06-23",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "yet",
+      "meaning": "還；尚未",
+      "example": "I have not finished my homework yet.",
+      "translation": "我還沒完成作業。",
+      "firstSeen": "2026-06-23",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "deeply",
+      "meaning": "深深地；非常",
+      "example": "She cares deeply about her family.",
+      "translation": "她非常關心她的家人。",
+      "firstSeen": "2026-06-05",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "road",
+      "meaning": "路；道路",
+      "example": "The road is wet after the rain.",
+      "translation": "下雨後道路是濕的。",
+      "firstSeen": "2026-06-05",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "write",
+      "meaning": "寫；書寫",
+      "example": "I write my name on the paper.",
+      "translation": "我把我的名字寫在紙上。",
+      "firstSeen": "2026-06-05",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "fresh",
+      "meaning": "新鮮的",
+      "example": "The bread is fresh today.",
+      "translation": "今天的麵包很新鮮。",
+      "firstSeen": "2026-06-01",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "luckily",
+      "meaning": "幸好；幸運地",
+      "example": "Luckily, we got home before the rain.",
+      "translation": "幸好我們在下雨前回到家。",
+      "firstSeen": "2026-06-01",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "make",
+      "meaning": "做；製作；使得",
+      "example": "I make my bed every morning.",
+      "translation": "我每天早上都會整理床鋪。",
+      "firstSeen": "2026-06-01",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "quick",
+      "meaning": "快的；迅速的",
+      "example": "She is quick to learn new words.",
+      "translation": "她學新單字學得很快。",
+      "firstSeen": "2026-05-31",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "river",
+      "meaning": "河；河流",
+      "example": "We saw fish in the river.",
+      "translation": "我們在河裡看到魚。",
+      "firstSeen": "2026-05-31",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "tooth",
+      "meaning": "牙齒",
+      "example": "I have a loose tooth.",
+      "translation": "我有一顆快掉下來的牙齒。",
+      "firstSeen": "2026-05-31",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "mind",
+      "meaning": "想法；主意；心；心思",
+      "example": "I changed my mind.",
+      "translation": "我改變主意了。",
+      "firstSeen": "2026-05-30",
+      "pos": [
+        "n",
+        "v"
+      ]
+    },
+    {
+      "word": "sharp",
+      "meaning": "鋒利的；尖銳的",
+      "example": "Be careful. The knife is sharp.",
+      "translation": "要小心，這把刀很鋒利。",
+      "firstSeen": "2026-05-30",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "without",
+      "meaning": "沒有；缺少（…就不行）",
+      "example": "I can't go out without my umbrella.",
+      "translation": "沒有雨傘我沒辦法出門。",
+      "firstSeen": "2026-05-30",
+      "pos": [
+        "prep"
+      ]
+    },
+    {
+      "word": "copy",
+      "meaning": "複製；抄寫；副本",
+      "example": "Please copy this sentence into your notebook.",
+      "translation": "請把這句話抄到你的筆記本裡。",
+      "firstSeen": "2026-05-29",
+      "pos": [
+        "v",
+        "n"
+      ]
+    },
+    {
+      "word": "especially",
+      "meaning": "特別是；尤其是",
+      "example": "I like fruit, especially apples.",
+      "translation": "我喜歡水果，尤其是蘋果。",
+      "firstSeen": "2026-05-29",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "go",
+      "meaning": "去；走；前往",
+      "example": "I go to school by bus.",
+      "translation": "我搭公車去上學。",
+      "firstSeen": "2026-05-29",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "healthy",
+      "meaning": "健康的；有益健康的",
+      "example": "Eating vegetables keeps you healthy.",
+      "translation": "吃蔬菜能讓你保持健康。",
+      "firstSeen": "2026-05-28",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "soon",
+      "meaning": "很快；不久",
+      "example": "We will leave soon.",
+      "translation": "我們很快就要出發了。",
+      "firstSeen": "2026-05-28",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "student",
+      "meaning": "學生",
+      "example": "The student asks a question.",
+      "translation": "那位學生問了一個問題。",
+      "firstSeen": "2026-05-28",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "appear",
+      "meaning": "出現",
+      "example": "Stars appear in the sky at night.",
+      "translation": "星星會在夜晚出現在天空中。",
+      "firstSeen": "2026-05-27",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "clock",
+      "meaning": "時鐘；鐘",
+      "example": "The clock on the wall is fast.",
+      "translation": "牆上的時鐘走得比較快。",
+      "firstSeen": "2026-05-27",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "fight",
+      "meaning": "打架；爭吵",
+      "example": "The two boys fight over the toy every day.",
+      "translation": "那兩個男孩每天都會為了那個玩具吵架。",
+      "firstSeen": "2026-05-27",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "boat",
+      "meaning": "船；小船",
+      "example": "The boat is on the lake.",
+      "translation": "那艘小船在湖上。",
+      "firstSeen": "2026-05-26",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "climb",
+      "meaning": "爬；攀爬",
+      "example": "The boy climbs the tree every afternoon.",
+      "translation": "那個男孩每天下午都會爬樹。",
+      "firstSeen": "2026-05-26",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "study",
+      "meaning": "讀書；學習",
+      "example": "She studies English after dinner.",
+      "translation": "她晚餐後讀英文。",
+      "firstSeen": "2026-05-26",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "become",
+      "meaning": "變成；變得",
+      "example": "The weather became cold.",
+      "translation": "天氣變冷了。",
+      "firstSeen": "2026-05-25",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "have",
+      "meaning": "有；擁有",
+      "example": "I have a red pencil.",
+      "translation": "我有一枝紅色的鉛筆。",
+      "firstSeen": "2026-05-25",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "truck",
+      "meaning": "卡車；貨車",
+      "example": "The truck is big.",
+      "translation": "那台卡車很大。",
+      "firstSeen": "2026-05-25",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "dollar",
+      "meaning": "美元；（泛指）元",
+      "example": "This book costs ten dollars.",
+      "translation": "這本書要十元（十美元）。",
+      "firstSeen": "2026-05-24",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "jacket",
+      "meaning": "外套；夾克",
+      "example": "I forgot my jacket at school.",
+      "translation": "我把外套忘在學校了。",
+      "firstSeen": "2026-05-24",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "though",
+      "meaning": "雖然；不過",
+      "example": "I was tired, but I finished my homework though.",
+      "translation": "我很累，不過我還是把作業寫完了。",
+      "firstSeen": "2026-05-24",
+      "pos": [
+        "conj",
+        "adv"
+      ]
+    },
+    {
+      "word": "fruit",
+      "meaning": "水果",
+      "example": "I eat fruit after dinner.",
+      "translation": "我晚餐後會吃水果。",
+      "firstSeen": "2026-05-23",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "phone",
+      "meaning": "電話；手機",
+      "example": "My phone is on the table.",
+      "translation": "我的手機在桌上。",
+      "firstSeen": "2026-05-23",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "vacation",
+      "meaning": "假期；度假",
+      "example": "We are on vacation next week.",
+      "translation": "我們下週要去度假。",
+      "firstSeen": "2026-05-23",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "dinosaur",
+      "meaning": "恐龍",
+      "example": "My son likes dinosaurs.",
+      "translation": "我兒子喜歡恐龍。",
+      "firstSeen": "2026-05-22",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "hair",
+      "meaning": "頭髮",
+      "example": "Her hair is long.",
+      "translation": "她的頭髮很長。",
+      "firstSeen": "2026-05-22",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "quite",
+      "meaning": "相當；蠻（很）",
+      "example": "It is quite cold today.",
+      "translation": "今天蠻冷的。",
+      "firstSeen": "2026-05-22",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "sister",
+      "meaning": "姊妹；姐姐／妹妹",
+      "example": "My sister helps me with my homework.",
+      "translation": "我姐姐（妹妹）會幫我寫作業。",
+      "firstSeen": "2026-05-21",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "skin",
+      "meaning": "皮膚",
+      "example": "My skin feels dry in winter.",
+      "translation": "冬天我的皮膚會覺得乾。",
+      "firstSeen": "2026-05-21",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "wood",
+      "meaning": "木頭；木材",
+      "example": "The table is made of wood.",
+      "translation": "這張桌子是木頭做的。",
+      "firstSeen": "2026-05-21",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "about",
+      "meaning": "關於",
+      "example": "Tell me about your day.",
+      "translation": "跟我說說你今天過得怎麼樣。",
+      "firstSeen": "2026-05-20",
+      "pos": [
+        "prep",
+        "adv"
+      ]
+    },
+    {
+      "word": "large",
+      "meaning": "大的；巨大的",
+      "example": "He has a large backpack.",
+      "translation": "他有一個很大的背包。",
+      "firstSeen": "2026-05-20",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "wizard",
+      "meaning": "巫師；魔法師",
+      "example": "The wizard lives in a tall tower.",
+      "translation": "那位巫師住在一座高塔裡。",
+      "firstSeen": "2026-05-20",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "beautiful",
+      "meaning": "漂亮的；美麗的",
+      "example": "The sky is beautiful today.",
+      "translation": "今天的天空很美。",
+      "firstSeen": "2026-05-19",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "cake",
+      "meaning": "蛋糕",
+      "example": "I want a piece of cake.",
+      "translation": "我想要一塊蛋糕。",
+      "firstSeen": "2026-05-19",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "finish",
+      "meaning": "完成；做完",
+      "example": "I will finish my homework before dinner.",
+      "translation": "我會在晚餐前把作業寫完。",
+      "firstSeen": "2026-05-19",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "housework",
+      "meaning": "家事",
+      "example": "I do housework after dinner.",
+      "translation": "我晚餐後做家事。",
+      "firstSeen": "2026-05-18",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "light",
+      "meaning": "燈；光",
+      "example": "Please turn on the light.",
+      "translation": "請把燈打開。",
+      "firstSeen": "2026-05-18",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "smart",
+      "meaning": "聰明的",
+      "example": "My sister is smart.",
+      "translation": "我姊姊很聰明。",
+      "firstSeen": "2026-05-18",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "back",
+      "meaning": "背部；背面",
+      "example": "My backpack is on my back.",
+      "translation": "我的背包在我背上。",
+      "firstSeen": "2026-05-17",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "dress",
+      "meaning": "穿衣服；打扮",
+      "example": "I dress quickly in the morning.",
+      "translation": "我早上很快就穿好衣服。",
+      "firstSeen": "2026-05-17",
+      "pos": [
+        "v",
+        "n"
+      ]
+    },
+    {
+      "word": "helicopter",
+      "meaning": "直升機",
+      "example": "The helicopter flew over the city.",
+      "translation": "直升機飛過城市上空。",
+      "firstSeen": "2026-05-17",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "compare",
+      "meaning": "比較；對照",
+      "example": "Compare these two pictures.",
+      "translation": "把這兩張照片比較一下。",
+      "firstSeen": "2026-05-16",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "station",
+      "meaning": "車站；站（地點）",
+      "example": "We waited for the bus at the station.",
+      "translation": "我們在車站等公車。",
+      "firstSeen": "2026-05-16",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "total",
+      "meaning": "總共的；總數",
+      "example": "The total cost is 300 dollars.",
+      "translation": "總費用是 300 美元。",
+      "firstSeen": "2026-05-16",
+      "pos": [
+        "adj",
+        "n"
+      ]
+    },
+    {
+      "word": "engine",
+      "meaning": "引擎",
+      "example": "The car engine is very loud.",
+      "translation": "這台車的引擎很大聲。",
+      "firstSeen": "2026-05-15",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "hot",
+      "meaning": "熱的；燙的",
+      "example": "The soup is too hot to drink.",
+      "translation": "這碗湯太燙了，沒辦法喝。",
+      "firstSeen": "2026-05-15",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "whale",
+      "meaning": "鯨魚",
+      "example": "We saw a whale in the ocean.",
+      "translation": "我們在海裡看到一隻鯨魚。",
+      "firstSeen": "2026-05-15",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "although",
+      "meaning": "雖然；儘管",
+      "example": "Although it was raining, we still went outside.",
+      "translation": "雖然在下雨，我們還是出門了。",
+      "firstSeen": "2026-05-14",
+      "pos": [
+        "conj"
+      ]
+    },
+    {
+      "word": "bridge",
+      "meaning": "橋；橋樑",
+      "example": "We walked across the bridge.",
+      "translation": "我們走過那座橋。",
+      "firstSeen": "2026-05-14",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "share",
+      "meaning": "分享；分擔；共用",
+      "example": "I want to share my snack with you.",
+      "translation": "我想跟你分享我的點心。",
+      "firstSeen": "2026-05-14",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "guess",
+      "meaning": "猜；猜測",
+      "example": "Can you guess the answer?",
+      "translation": "你猜得出答案嗎？",
+      "firstSeen": "2026-05-13",
+      "pos": [
+        "v",
+        "n"
+      ]
+    },
+    {
+      "word": "mouth",
+      "meaning": "嘴巴；口",
+      "example": "Open your mouth, please.",
+      "translation": "請把嘴巴張開。",
+      "firstSeen": "2026-05-13",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "order",
+      "meaning": "點（餐）；訂購；命令；指示；順序；訂單",
+      "example": "I want to order a hamburger.",
+      "translation": "我想點一個漢堡。",
+      "firstSeen": "2026-05-13",
+      "pos": [
+        "v",
+        "n"
+      ]
+    },
+    {
+      "word": "box",
+      "meaning": "盒子；箱子",
+      "example": "Put the toys in the box.",
+      "translation": "把玩具放進盒子裡。",
+      "firstSeen": "2026-05-12",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "kind",
+      "meaning": "親切的；善良的",
+      "example": "My teacher is kind to everyone.",
+      "translation": "我的老師對每個人都很親切。",
+      "firstSeen": "2026-05-12",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "send",
+      "meaning": "寄送；送出；派遣",
+      "example": "I will send a message to Dad.",
+      "translation": "我會傳一則訊息給爸爸。",
+      "firstSeen": "2026-05-12",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "live",
+      "meaning": "住；居住；活著；生活",
+      "example": "We live near the school.",
+      "translation": "我們住在學校附近。",
+      "firstSeen": "2026-05-11",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "player",
+      "meaning": "（運動或遊戲的）選手；玩家",
+      "example": "He is a good soccer player.",
+      "translation": "他是一個很棒的足球選手。",
+      "firstSeen": "2026-05-11",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "thick",
+      "meaning": "厚的；濃的",
+      "example": "This book is thick.",
+      "translation": "這本書很厚。",
+      "firstSeen": "2026-05-11",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "library",
+      "meaning": "圖書館",
+      "example": "We read books in the library.",
+      "translation": "我們在圖書館看書。",
+      "firstSeen": "2026-05-10",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "nature",
+      "meaning": "大自然",
+      "example": "I love nature.",
+      "translation": "我喜歡大自然。",
+      "firstSeen": "2026-05-10",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "repeat",
+      "meaning": "重複；再說一次",
+      "example": "Please repeat after me.",
+      "translation": "請跟我重複一次。",
+      "firstSeen": "2026-05-10",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "love",
+      "meaning": "愛；喜愛",
+      "example": "I love my family.",
+      "translation": "我愛我的家人。",
+      "firstSeen": "2026-05-09",
+      "pos": [
+        "v",
+        "n"
+      ]
+    },
+    {
+      "word": "pleasant",
+      "meaning": "愉快的；令人舒服的",
+      "example": "It is a pleasant day today.",
+      "translation": "今天是個舒服的一天。",
+      "firstSeen": "2026-05-09",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "until",
+      "meaning": "直到…為止",
+      "example": "Wait here until I come back.",
+      "translation": "在這裡等我回來。",
+      "firstSeen": "2026-05-09",
+      "pos": [
+        "prep",
+        "conj"
+      ]
+    },
+    {
+      "word": "doctor",
+      "meaning": "醫生",
+      "example": "The doctor helps sick people.",
+      "translation": "醫生會幫助生病的人。",
+      "firstSeen": "2026-05-08",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "free",
+      "meaning": "免費的；自由的；空閒的",
+      "example": "This app is free.",
+      "translation": "這個 App 是免費的。",
+      "firstSeen": "2026-05-08",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "surely",
+      "meaning": "一定；肯定地",
+      "example": "I will surely call you tonight.",
+      "translation": "我今晚一定會打給你。",
+      "firstSeen": "2026-05-08",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "drop",
+      "meaning": "掉下來；掉落；放下；放開（手上的東西）",
+      "example": "I dropped my pencil on the floor.",
+      "translation": "我把鉛筆掉到地上了。",
+      "firstSeen": "2026-05-07",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "gray",
+      "meaning": "灰色的",
+      "example": "The sky is gray today.",
+      "translation": "今天的天空是灰灰的。",
+      "firstSeen": "2026-05-07",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "help",
+      "meaning": "幫助；協助",
+      "example": "Can you help me with my homework?",
+      "translation": "你可以幫我寫作業嗎？",
+      "firstSeen": "2026-05-07",
+      "pos": [
+        "v",
+        "n"
+      ]
+    },
+    {
+      "word": "freeze",
+      "meaning": "結冰；冷凍；凍住",
+      "example": "Water can freeze in winter.",
+      "translation": "水在冬天會結冰。",
+      "firstSeen": "2026-05-06",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "ring",
+      "meaning": "戒指",
+      "example": "She wears a ring on her finger.",
+      "translation": "她手指上戴著一枚戒指。",
+      "firstSeen": "2026-05-06",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "top",
+      "meaning": "頂端；上面；在…上面",
+      "example": "Put the book on top of the box.",
+      "translation": "把書放在盒子上面。",
+      "firstSeen": "2026-05-06",
+      "pos": [
+        "n",
+        "prep"
+      ]
+    },
+    {
+      "word": "comfortable",
+      "meaning": "舒服的；舒適的",
+      "example": "This chair is comfortable.",
+      "translation": "這張椅子很舒服。",
+      "firstSeen": "2026-05-05",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "first",
+      "meaning": "第一（的）；最先",
+      "example": "I was first in line.",
+      "translation": "我排在隊伍最前面。",
+      "firstSeen": "2026-05-05",
+      "pos": [
+        "adj",
+        "adv"
+      ]
+    },
+    {
+      "word": "terrible",
+      "meaning": "糟糕的；可怕的",
+      "example": "The weather was terrible yesterday.",
+      "translation": "昨天天氣很糟。",
+      "firstSeen": "2026-05-05",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "build",
+      "meaning": "建造；建立",
+      "example": "We will build a sandcastle at the beach.",
+      "translation": "我們要在海灘堆一座沙堡。",
+      "firstSeen": "2026-05-04",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "hate",
+      "meaning": "討厭；憎恨",
+      "example": "I hate spiders.",
+      "translation": "我討厭蜘蛛。",
+      "firstSeen": "2026-05-04",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "shine",
+      "meaning": "發亮；照耀",
+      "example": "The sun shines in the morning.",
+      "translation": "太陽早上會發光。",
+      "firstSeen": "2026-05-04",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "crayon",
+      "meaning": "蠟筆",
+      "example": "My child drew a sun with a yellow crayon.",
+      "translation": "我的孩子用黃色蠟筆畫了一個太陽。",
+      "firstSeen": "2026-05-03",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "program",
+      "meaning": "程式；電腦程式；（活動／課程的）方案；節目",
+      "example": "I wrote a simple program for my class.",
+      "translation": "我為課堂寫了一個簡單的程式。",
+      "firstSeen": "2026-05-03",
+      "pos": [
+        "n",
+        "v"
+      ]
+    },
+    {
+      "word": "rush",
+      "meaning": "匆忙；趕忙；一陣忙亂；匆促",
+      "example": "Don't rush. We have enough time.",
+      "translation": "別急，我們時間很夠。",
+      "firstSeen": "2026-05-03",
+      "pos": [
+        "v",
+        "n"
+      ]
+    },
+    {
+      "word": "behind",
+      "meaning": "在…後面；在後方",
+      "example": "The cat is behind the chair.",
+      "translation": "那隻貓在椅子後面。",
+      "firstSeen": "2026-05-02",
+      "pos": [
+        "prep",
+        "adv"
+      ]
+    },
+    {
+      "word": "cat",
+      "meaning": "貓",
+      "example": "The cat is sleeping.",
+      "translation": "那隻貓在睡覺。",
+      "firstSeen": "2026-05-02",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "place",
+      "meaning": "地方；位置；放置",
+      "example": "Please place your bag on the chair.",
+      "translation": "請把你的書包放在椅子上。",
+      "firstSeen": "2026-05-02",
+      "pos": [
+        "n",
+        "v"
+      ]
+    },
+    {
+      "word": "between",
+      "meaning": "在…之間",
+      "example": "The ball is between the two chairs.",
+      "translation": "球在兩張椅子中間。",
+      "firstSeen": "2026-05-01",
+      "pos": [
+        "prep"
+      ]
+    },
+    {
+      "word": "inside",
+      "meaning": "在…裡面",
+      "example": "Please put the toy inside the box.",
+      "translation": "請把玩具放進盒子裡。",
+      "firstSeen": "2026-05-01",
+      "pos": [
+        "prep",
+        "adv"
+      ]
+    },
+    {
+      "word": "store",
+      "meaning": "商店；店家",
+      "example": "I went to the store with my dad.",
+      "translation": "我跟爸爸一起去商店。",
+      "firstSeen": "2026-05-01",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "father",
+      "meaning": "爸爸；父親",
+      "example": "My father is at work.",
+      "translation": "我爸爸在上班。",
+      "firstSeen": "2026-04-30",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "heavy",
+      "meaning": "重的；沉的",
+      "example": "This bag is heavy.",
+      "translation": "這個袋子很重。",
+      "firstSeen": "2026-04-30",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "window",
+      "meaning": "窗戶",
+      "example": "The window is open.",
+      "translation": "窗戶是開著的。",
+      "firstSeen": "2026-04-30",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "every",
+      "meaning": "每一個；每",
+      "example": "I brush my teeth every night.",
+      "translation": "我每天晚上都刷牙。",
+      "firstSeen": "2026-04-29",
+      "pos": [
+        "det"
+      ]
+    },
+    {
+      "word": "gift",
+      "meaning": "禮物",
+      "example": "I got a gift from my friend.",
+      "translation": "我收到朋友送的禮物。",
+      "firstSeen": "2026-04-29",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "say",
+      "meaning": "說；講",
+      "example": "Please say it again.",
+      "translation": "請再說一次。",
+      "firstSeen": "2026-04-29",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "always",
+      "meaning": "總是；一直",
+      "example": "She always eats breakfast.",
+      "translation": "她總是會吃早餐。",
+      "firstSeen": "2026-04-28",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "coffee",
+      "meaning": "咖啡",
+      "example": "My dad drinks coffee in the morning.",
+      "translation": "我爸爸早上會喝咖啡。",
+      "firstSeen": "2026-04-28",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "correctly",
+      "meaning": "正確地",
+      "example": "Please write your name correctly.",
+      "translation": "請把你的名字寫正確。",
+      "firstSeen": "2026-04-28",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "trip",
+      "meaning": "旅行；出遊",
+      "example": "Our trip to the zoo was fun.",
+      "translation": "我們去動物園的旅行很有趣。",
+      "firstSeen": "2026-04-27",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "wear",
+      "meaning": "穿；戴",
+      "example": "I wear my school uniform every day.",
+      "translation": "我每天都穿校服。",
+      "firstSeen": "2026-04-27",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "well",
+      "meaning": "很好地；很不錯地",
+      "example": "She sings well.",
+      "translation": "她唱得很好。",
+      "firstSeen": "2026-04-27",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "look",
+      "meaning": "看；看一看；看起來",
+      "example": "Look at the picture.",
+      "translation": "看看這張圖。",
+      "firstSeen": "2026-04-26",
+      "pos": [
+        "v",
+        "n"
+      ]
+    },
+    {
+      "word": "very",
+      "meaning": "非常；很",
+      "example": "It is very cold today.",
+      "translation": "今天很冷。",
+      "firstSeen": "2026-04-26",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "white",
+      "meaning": "白色的；白的；白色",
+      "example": "My shoes are white.",
+      "translation": "我的鞋子是白色的。",
+      "firstSeen": "2026-04-26",
+      "pos": [
+        "adj",
+        "n"
+      ]
+    },
+    {
+      "word": "agree",
+      "meaning": "同意",
+      "example": "I agree with your idea.",
+      "translation": "我同意你的想法。",
+      "firstSeen": "2026-04-25",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "catch",
+      "meaning": "接住；抓住",
+      "example": "I can catch the ball.",
+      "translation": "我可以接住球。",
+      "firstSeen": "2026-04-25",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "ugly",
+      "meaning": "醜的；難看的",
+      "example": "The ugly monster is not scary.",
+      "translation": "那隻醜醜的怪物並不可怕。",
+      "firstSeen": "2026-04-25",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "bottle",
+      "meaning": "瓶子",
+      "example": "Please put some water in the bottle.",
+      "translation": "請把一些水裝進瓶子裡。",
+      "firstSeen": "2026-04-23",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "probably",
+      "meaning": "大概；可能",
+      "example": "It will probably rain tomorrow.",
+      "translation": "明天大概會下雨。",
+      "firstSeen": "2026-04-23",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "street",
+      "meaning": "街道；馬路",
+      "example": "Don't play on the street.",
+      "translation": "不要在馬路上玩。",
+      "firstSeen": "2026-04-23",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "meet",
+      "meaning": "遇見；見面",
+      "example": "I will meet my friend after school.",
+      "translation": "我放學後要去見我的朋友。",
+      "firstSeen": "2026-04-22",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "nice",
+      "meaning": "不錯的；親切的",
+      "example": "She is a nice teacher.",
+      "translation": "她是一位很親切的老師。",
+      "firstSeen": "2026-04-22",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "red",
+      "meaning": "紅色（的）",
+      "example": "The apple is red.",
+      "translation": "這顆蘋果是紅色的。",
+      "firstSeen": "2026-04-22",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "believe",
+      "meaning": "相信；信任",
+      "example": "I believe you can do it.",
+      "translation": "我相信你做得到。",
+      "firstSeen": "2026-04-21",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "real",
+      "meaning": "真的；真實的",
+      "example": "Is this story real?",
+      "translation": "這個故事是真的嗎？",
+      "firstSeen": "2026-04-21",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "storm",
+      "meaning": "暴風雨；風暴",
+      "example": "The storm is coming.",
+      "translation": "暴風雨要來了。",
+      "firstSeen": "2026-04-21",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "dragon",
+      "meaning": "龍",
+      "example": "The dragon in the story is very strong.",
+      "translation": "故事裡的龍很強。",
+      "firstSeen": "2026-04-20",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "pizza",
+      "meaning": "披薩",
+      "example": "I want to eat pizza for dinner.",
+      "translation": "我晚餐想吃披薩。",
+      "firstSeen": "2026-04-20",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "sugar",
+      "meaning": "糖",
+      "example": "Don't put too much sugar in your tea.",
+      "translation": "你的茶不要加太多糖。",
+      "firstSeen": "2026-04-20",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "desk",
+      "meaning": "書桌；桌子",
+      "example": "Please put your books on the desk.",
+      "translation": "請把你的書放在桌上。",
+      "firstSeen": "2026-04-19",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "hole",
+      "meaning": "洞；孔洞",
+      "example": "There is a big hole in the ground.",
+      "translation": "地上有一個大洞。",
+      "firstSeen": "2026-04-19",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "hotel",
+      "meaning": "旅館；飯店",
+      "example": "We stayed in a nice hotel last night.",
+      "translation": "我們昨晚住在一間不錯的飯店。",
+      "firstSeen": "2026-04-19",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "jump",
+      "meaning": "跳；跳躍",
+      "example": "The cat can jump very high.",
+      "translation": "那隻貓可以跳得很高。",
+      "firstSeen": "2026-04-17",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "lend",
+      "meaning": "借出；借給",
+      "example": "Can you lend your ruler to me?",
+      "translation": "你可以把你的尺借給我嗎？",
+      "firstSeen": "2026-04-17",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "pretty",
+      "meaning": "漂亮的；可愛的",
+      "example": "That dress is pretty.",
+      "translation": "那件洋裝很漂亮。",
+      "firstSeen": "2026-04-17",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "afraid",
+      "meaning": "害怕的；擔心的",
+      "example": "I am afraid of the dark.",
+      "translation": "我怕黑。",
+      "firstSeen": "2026-04-15",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "enemy",
+      "meaning": "敵人",
+      "example": "He is not my enemy.",
+      "translation": "他不是我的敵人。",
+      "firstSeen": "2026-04-15",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "sweet",
+      "meaning": "甜的；甜甜的",
+      "example": "This cake is sweet.",
+      "translation": "這個蛋糕很甜。",
+      "firstSeen": "2026-04-15",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "blow",
+      "meaning": "吹；吹氣；吹風",
+      "example": "Please blow on the soup. It is hot.",
+      "translation": "請對湯吹一吹，它很燙。",
+      "firstSeen": "2026-04-14",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "conversation",
+      "meaning": "對話；談話",
+      "example": "We had a long conversation after class.",
+      "translation": "下課後我們聊了很久。",
+      "firstSeen": "2026-04-14",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "fun",
+      "meaning": "樂趣；好玩",
+      "example": "The game is fun.",
+      "translation": "這個遊戲很好玩。",
+      "firstSeen": "2026-04-14",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "homework",
+      "meaning": "作業；功課",
+      "example": "I finished my homework after dinner.",
+      "translation": "我晚餐後把作業寫完了。",
+      "firstSeen": "2026-04-13",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "now",
+      "meaning": "現在",
+      "example": "I have to go now.",
+      "translation": "我現在得走了。",
+      "firstSeen": "2026-04-13",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "popular",
+      "meaning": "受歡迎的；流行的",
+      "example": "This song is popular with students.",
+      "translation": "這首歌很受學生歡迎。",
+      "firstSeen": "2026-04-13",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "hospital",
+      "meaning": "醫院",
+      "example": "He is in the hospital.",
+      "translation": "他在醫院裡。",
+      "firstSeen": "2026-04-12",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "luck",
+      "meaning": "運氣；好運",
+      "example": "Good luck on your test!",
+      "translation": "考試加油，祝你好運！",
+      "firstSeen": "2026-04-12",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "mean",
+      "meaning": "意思是；表示",
+      "example": "What does this word mean?",
+      "translation": "這個字是什麼意思？",
+      "firstSeen": "2026-04-12",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "fan",
+      "meaning": "風扇；電風扇",
+      "example": "Please turn on the fan.",
+      "translation": "請把電風扇打開。",
+      "firstSeen": "2026-04-11",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "kiss",
+      "meaning": "親吻；吻",
+      "example": "Give Mom a kiss.",
+      "translation": "給媽媽一個吻。",
+      "firstSeen": "2026-04-11",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "typhoon",
+      "meaning": "颱風",
+      "example": "A typhoon is coming.",
+      "translation": "颱風要來了。",
+      "firstSeen": "2026-04-11",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "possible",
+      "meaning": "可能的",
+      "example": "Is it possible to finish it today?",
+      "translation": "今天有可能把它完成嗎？",
+      "firstSeen": "2026-04-10",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "sand",
+      "meaning": "沙子；沙",
+      "example": "There is sand on the beach.",
+      "translation": "海灘上有沙子。",
+      "firstSeen": "2026-04-10",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "spring",
+      "meaning": "春天",
+      "example": "Spring is my favorite season.",
+      "translation": "春天是我最喜歡的季節。",
+      "firstSeen": "2026-04-10",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "belong",
+      "meaning": "屬於",
+      "example": "This pencil belongs to you.",
+      "translation": "這枝鉛筆是你的。",
+      "firstSeen": "2026-04-09",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "classmate",
+      "meaning": "同學；同班同學",
+      "example": "My classmate sits next to me.",
+      "translation": "我的同學坐在我旁邊。",
+      "firstSeen": "2026-04-09",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "land",
+      "meaning": "降落；著陸",
+      "example": "The plane will land soon.",
+      "translation": "飛機很快就會降落。",
+      "firstSeen": "2026-04-09",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "everywhere",
+      "meaning": "到處；各處",
+      "example": "I looked everywhere for my pencil.",
+      "translation": "我到處找我的鉛筆。",
+      "firstSeen": "2026-04-08",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "news",
+      "meaning": "新聞；消息",
+      "example": "I watched the news with my dad.",
+      "translation": "我跟爸爸一起看新聞。",
+      "firstSeen": "2026-04-08",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "princess",
+      "meaning": "公主",
+      "example": "The princess lives in a castle.",
+      "translation": "公主住在城堡裡。",
+      "firstSeen": "2026-04-08",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "camera",
+      "meaning": "相機；攝影機",
+      "example": "I took a photo with my camera.",
+      "translation": "我用我的相機拍了一張照片。",
+      "firstSeen": "2026-04-07",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "close",
+      "meaning": "關上；關閉",
+      "example": "Please close the door.",
+      "translation": "請把門關上。",
+      "firstSeen": "2026-04-07",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "idea",
+      "meaning": "點子；想法",
+      "example": "That's a great idea!",
+      "translation": "那是個好主意！",
+      "firstSeen": "2026-04-07",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "choose",
+      "meaning": "選擇；挑選",
+      "example": "Please choose one book.",
+      "translation": "請選一本書。",
+      "firstSeen": "2026-04-06",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "dark",
+      "meaning": "黑暗的；暗的",
+      "example": "It is dark outside.",
+      "translation": "外面很暗。",
+      "firstSeen": "2026-04-06",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "kill",
+      "meaning": "殺死；消滅（細菌等）",
+      "example": "This soap can kill germs.",
+      "translation": "這種肥皂可以殺死細菌。",
+      "firstSeen": "2026-04-06",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "balcony",
+      "meaning": "陽台",
+      "example": "She is standing on the balcony.",
+      "translation": "她正站在陽台上。",
+      "firstSeen": "2026-04-05",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "nose",
+      "meaning": "鼻子",
+      "example": "My nose is cold.",
+      "translation": "我的鼻子冰冰的。",
+      "firstSeen": "2026-04-05",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "spider",
+      "meaning": "蜘蛛",
+      "example": "There is a spider on the wall.",
+      "translation": "牆上有一隻蜘蛛。",
+      "firstSeen": "2026-04-05",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "child",
+      "meaning": "小孩；孩子",
+      "example": "The child is playing in the park.",
+      "translation": "那個孩子正在公園玩。",
+      "firstSeen": "2026-04-04",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "forward",
+      "meaning": "向前；前方的",
+      "example": "Please move forward.",
+      "translation": "請往前移一點。",
+      "firstSeen": "2026-04-04",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "ride",
+      "meaning": "騎（車/馬）；搭乘",
+      "example": "I ride my bike to school.",
+      "translation": "我騎腳踏車去上學。",
+      "firstSeen": "2026-04-04",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "hippo",
+      "meaning": "河馬",
+      "example": "I saw a hippo at the zoo.",
+      "translation": "我在動物園看到一隻河馬。",
+      "firstSeen": "2026-04-03",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "leave",
+      "meaning": "離開；離去",
+      "example": "I have to leave now.",
+      "translation": "我現在得離開了。",
+      "firstSeen": "2026-04-03",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "wait",
+      "meaning": "等；等待",
+      "example": "Please wait for me.",
+      "translation": "請等我一下。",
+      "firstSeen": "2026-04-03",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "clearly",
+      "meaning": "清楚地；明確地",
+      "example": "Please speak clearly.",
+      "translation": "請講清楚一點。",
+      "firstSeen": "2026-04-02",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "hide",
+      "meaning": "躲起來；藏起來",
+      "example": "Don't hide your feelings.",
+      "translation": "不要把你的感覺藏起來。",
+      "firstSeen": "2026-04-02",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "tomorrow",
+      "meaning": "明天",
+      "example": "We will have a test tomorrow.",
+      "translation": "我們明天要考試。",
+      "firstSeen": "2026-04-02",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "kick",
+      "meaning": "踢；踢一下",
+      "example": "Don't kick the ball inside the classroom.",
+      "translation": "不要在教室裡踢球。",
+      "firstSeen": "2026-03-31",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "weekend",
+      "meaning": "週末",
+      "example": "I visit my grandma on the weekend.",
+      "translation": "我週末會去看外婆。",
+      "firstSeen": "2026-03-31",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "yellow",
+      "meaning": "黃色（的）",
+      "example": "I have a yellow raincoat.",
+      "translation": "我有一件黃色的雨衣。",
+      "firstSeen": "2026-03-31",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "divide",
+      "meaning": "分開；分成；除以",
+      "example": "Divide 12 by 3.",
+      "translation": "把 12 除以 3。",
+      "firstSeen": "2026-03-29",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "paint",
+      "meaning": "畫；塗；油漆",
+      "example": "I like to paint pictures.",
+      "translation": "我喜歡畫畫。",
+      "firstSeen": "2026-03-29",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "woman",
+      "meaning": "女人；女性",
+      "example": "The woman is a teacher.",
+      "translation": "那位女士是老師。",
+      "firstSeen": "2026-03-29",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "joke",
+      "meaning": "笑話；開玩笑",
+      "example": "That joke is funny.",
+      "translation": "那個笑話很好笑。",
+      "firstSeen": "2026-03-28",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "sorry",
+      "meaning": "對不起；抱歉",
+      "example": "I'm sorry I'm late.",
+      "translation": "對不起，我遲到了。",
+      "firstSeen": "2026-03-28",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "vegetable",
+      "meaning": "蔬菜",
+      "example": "I eat vegetables every day.",
+      "translation": "我每天吃蔬菜。",
+      "firstSeen": "2026-03-28",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "moon",
+      "meaning": "月亮",
+      "example": "The moon is bright tonight.",
+      "translation": "今晚月亮很亮。",
+      "firstSeen": "2026-03-27",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "onion",
+      "meaning": "洋蔥",
+      "example": "I cut an onion for dinner.",
+      "translation": "我為晚餐切了一顆洋蔥。",
+      "firstSeen": "2026-03-27",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "son",
+      "meaning": "兒子",
+      "example": "My son plays basketball after school.",
+      "translation": "我兒子放學後打籃球。",
+      "firstSeen": "2026-03-27",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "feel",
+      "meaning": "感覺；覺得",
+      "example": "I feel tired after school.",
+      "translation": "放學後我覺得很累。",
+      "firstSeen": "2026-03-26",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "happy",
+      "meaning": "開心的；快樂的",
+      "example": "I am happy today.",
+      "translation": "我今天很開心。",
+      "firstSeen": "2026-03-26",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "party",
+      "meaning": "派對；聚會",
+      "example": "We will have a party on Saturday.",
+      "translation": "我們星期六要辦一個派對。",
+      "firstSeen": "2026-03-26",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "glass",
+      "meaning": "玻璃杯；玻璃",
+      "example": "There is a glass of milk on the table.",
+      "translation": "桌上有一杯牛奶。",
+      "firstSeen": "2026-03-25",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "glove",
+      "meaning": "手套",
+      "example": "This glove is too big for my hand.",
+      "translation": "這隻手套對我的手來說太大了。",
+      "firstSeen": "2026-03-25",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "side",
+      "meaning": "旁邊；側面",
+      "example": "The ball rolled to the side of the road.",
+      "translation": "球滾到了路邊。",
+      "firstSeen": "2026-03-25",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "contest",
+      "meaning": "比賽",
+      "example": "She won the singing contest.",
+      "translation": "她贏得了歌唱比賽。",
+      "firstSeen": "2026-03-24",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "lake",
+      "meaning": "湖；湖泊",
+      "example": "We saw ducks on the lake.",
+      "translation": "我們看到湖上有鴨子。",
+      "firstSeen": "2026-03-24",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "silly",
+      "meaning": "傻傻的；笨笨的",
+      "example": "Don't be silly.",
+      "translation": "別傻傻的啦。",
+      "firstSeen": "2026-03-24",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "early",
+      "meaning": "早地；提早",
+      "example": "She gets up early every morning.",
+      "translation": "她每天早上都很早起床。",
+      "firstSeen": "2026-03-23",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "kitchen",
+      "meaning": "廚房",
+      "example": "My mother is cooking in the kitchen.",
+      "translation": "我媽媽正在廚房煮飯。",
+      "firstSeen": "2026-03-23",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "ticket",
+      "meaning": "票",
+      "example": "I bought a ticket for the train.",
+      "translation": "我買了一張火車票。",
+      "firstSeen": "2026-03-23",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "cloud",
+      "meaning": "雲",
+      "example": "That cloud looks like a rabbit.",
+      "translation": "那朵雲看起來像一隻兔子。",
+      "firstSeen": "2026-03-22",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "ready",
+      "meaning": "準備好的",
+      "example": "I am ready for the test.",
+      "translation": "我已經準備好考試了。",
+      "firstSeen": "2026-03-22",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "return",
+      "meaning": "回來；歸還",
+      "example": "Please return the book to the library tomorrow.",
+      "translation": "請明天把這本書還到圖書館。",
+      "firstSeen": "2026-03-22",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "arrive",
+      "meaning": "到達",
+      "example": "We will arrive at school before eight.",
+      "translation": "我們會在八點前到達學校。",
+      "firstSeen": "2026-03-08",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "forest",
+      "meaning": "森林",
+      "example": "We walked through the forest after lunch.",
+      "translation": "午餐後我們穿過森林散步。",
+      "firstSeen": "2026-03-08",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "noisy",
+      "meaning": "吵鬧的",
+      "example": "The classroom is noisy during break time.",
+      "translation": "下課時間教室很吵鬧。",
+      "firstSeen": "2026-03-08",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "invite",
+      "meaning": "邀請",
+      "example": "I want to invite my friend to the party.",
+      "translation": "我想邀請我的朋友來參加派對。",
+      "firstSeen": "2026-03-07",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "mirror",
+      "meaning": "鏡子",
+      "example": "I looked at myself in the mirror.",
+      "translation": "我在鏡子裡看著自己。",
+      "firstSeen": "2026-03-07",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "quiet",
+      "meaning": "安靜的",
+      "example": "Please be quiet in the library.",
+      "translation": "在圖書館請安靜。",
+      "firstSeen": "2026-03-07",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "clever",
+      "meaning": "聰明的",
+      "example": "The clever boy solved the puzzle quickly.",
+      "translation": "那個聰明的男孩很快解開了謎題。",
+      "firstSeen": "2026-03-06",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "picnic",
+      "meaning": "野餐",
+      "example": "We will have a picnic in the park.",
+      "translation": "我們要在公園野餐。",
+      "firstSeen": "2026-03-06",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "promise",
+      "meaning": "承諾；答應",
+      "example": "I promise to finish my homework tonight.",
+      "translation": "我答應今晚完成作業。",
+      "firstSeen": "2026-03-06",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "giggle",
+      "meaning": "咯咯笑；傻笑",
+      "example": "The kids giggle when they hear a funny joke.",
+      "translation": "孩子們聽到好笑的笑話會咯咯笑。",
+      "firstSeen": "2026-03-05",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "journey",
+      "meaning": "旅程；一段路途",
+      "example": "Our journey to the museum was fun.",
+      "translation": "我們去博物館的旅程很有趣。",
+      "firstSeen": "2026-03-05",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "sunlight",
+      "meaning": "陽光",
+      "example": "Plants need sunlight to grow.",
+      "translation": "植物需要陽光才能長大。",
+      "firstSeen": "2026-03-05",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "borrow",
+      "meaning": "借",
+      "example": "Can I borrow your pencil?",
+      "translation": "我可以借你的鉛筆嗎？",
+      "firstSeen": "2026-03-04",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "brave",
+      "meaning": "勇敢的",
+      "example": "The brave girl spoke in front of the class.",
+      "translation": "那位勇敢的女孩在全班前面發言。",
+      "firstSeen": "2026-03-04",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "whisper",
+      "meaning": "小聲說；耳語",
+      "example": "Please whisper in the library.",
+      "translation": "在圖書館請小聲說話。",
+      "firstSeen": "2026-03-04",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "careful",
+      "meaning": "小心的；謹慎的",
+      "example": "Be careful when you cross the street.",
+      "translation": "過馬路時要小心。",
+      "firstSeen": "2026-03-03",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "excited",
+      "meaning": "興奮的",
+      "example": "She is excited about the school trip.",
+      "translation": "她對學校旅行感到很興奮。",
+      "firstSeen": "2026-03-03",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "practice",
+      "meaning": "練習",
+      "example": "I practice English every day.",
+      "translation": "我每天練習英文。",
+      "firstSeen": "2026-03-03",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "friendly",
+      "meaning": "友善的；親切的",
+      "example": "Our new classmate is very friendly.",
+      "translation": "我們的新同學非常友善。",
+      "firstSeen": "2026-03-02",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "protect",
+      "meaning": "保護",
+      "example": "Trees help protect the earth.",
+      "translation": "樹木有助於保護地球。",
+      "firstSeen": "2026-03-02",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "together",
+      "meaning": "一起；共同",
+      "example": "We can learn together after dinner.",
+      "translation": "晚餐後我們可以一起學習。",
+      "firstSeen": "2026-03-02",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "hungry",
+      "meaning": "肚子餓的",
+      "example": "I am hungry. Can I have a sandwich?",
+      "translation": "我肚子餓了。我可以吃一個三明治嗎？",
+      "firstSeen": "2026-03-01",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "rainbow",
+      "meaning": "彩虹",
+      "example": "I can see a rainbow after the rain.",
+      "translation": "下雨後我看見彩虹。",
+      "firstSeen": "2026-03-01",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "teacher",
+      "meaning": "老師",
+      "example": "My teacher is kind and funny.",
+      "translation": "我的老師很親切又有趣。",
+      "firstSeen": "2026-03-01",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "gentle",
+      "meaning": "溫柔的；輕柔的",
+      "example": "Be gentle with the baby.",
+      "translation": "對寶寶要溫柔一點。",
+      "firstSeen": "2026-02-28",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "improve",
+      "meaning": "改善；進步",
+      "example": "Reading every day helps improve your English.",
+      "translation": "每天閱讀有助於提升你的英文。",
+      "firstSeen": "2026-02-28",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "prepare",
+      "meaning": "準備",
+      "example": "I need to prepare for tomorrow's test.",
+      "translation": "我需要為明天的考試做準備。",
+      "firstSeen": "2026-02-28",
+      "pos": [
+        "v"
+      ]
+    }
+  ]
+}

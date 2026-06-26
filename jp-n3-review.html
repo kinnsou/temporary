@@ -1,0 +1,3138 @@
+<!DOCTYPE html>
+<!-- jp-n3-review.html v1.0 — CLAW JP N3 classroom based on CLAW ENG -->
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<title>CLAW JP N3 日語小教室</title>
+<link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="apple-touch-icon" href="icon-512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+TC:wght@500;700;900&display=swap" rel="stylesheet">
+<script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+html,body{height:100%;background:#1a1a2e;font-family:'Nunito','Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;-webkit-font-smoothing:antialiased;}
+body{display:flex;justify-content:center;align-items:center;overscroll-behavior:none;}
+#root{width:390px;height:844px;position:relative;overflow:hidden;border-radius:44px;box-shadow:0 32px 80px rgba(0,0,0,0.6);background:#fff;}
+@media(max-height:900px){body{align-items:flex-start;padding:8px 0;}#root{border-radius:32px;}}
+@media(max-width:420px){body{background:#fff;padding:0;}#root{width:100%;height:100dvh;border-radius:0;box-shadow:none;}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes pop{from{transform:scale(0.92);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes slideUp{from{transform:translateY(12px);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@keyframes confettiFall{0%{transform:translateY(-10px) rotate(0);opacity:1}100%{transform:translateY(170px) rotate(600deg);opacity:0}}
+@keyframes xpRise{0%{transform:translate(-50%,0);opacity:1}100%{transform:translate(-50%,-44px);opacity:0}}
+@keyframes expandIn{from{max-height:0;opacity:0}to{max-height:220px;opacity:1}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes speakBurst{0%{transform:rotate(var(--ang,0deg)) translateX(22px) scaleX(0.35);opacity:0}25%{opacity:1}100%{transform:rotate(var(--ang,0deg)) translateX(40px) scaleX(1);opacity:0}}
+@keyframes resultStarLand{0%{opacity:.28;transform:translateY(-54px) scale(1.95) rotate(-58deg);filter:blur(.4px) saturate(1.15)}68%{opacity:1;transform:translateY(6px) scale(.92) rotate(8deg);filter:drop-shadow(0 4px 8px rgba(255,184,0,.35))}100%{opacity:1;transform:translateY(0) scale(1) rotate(0deg);filter:drop-shadow(0 5px 9px rgba(255,184,0,.42))}}
+@keyframes resultStarShine{0%,100%{transform:translateY(0) scale(1) rotate(0deg);filter:drop-shadow(0 5px 9px rgba(255,184,0,.42))}45%{transform:translateY(-2px) scale(1.17) rotate(0deg);filter:drop-shadow(0 0 8px rgba(255,255,255,.95)) drop-shadow(0 0 18px rgba(255,197,61,.92))}}
+@keyframes resultGlint{0%{opacity:0;transform:translate(-50%,-50%) scale(.45) rotate(-20deg)}35%{opacity:1}100%{opacity:0;transform:translate(-50%,-50%) scale(1.4) rotate(24deg)}}
+.screen{width:100%;height:100%;display:flex;flex-direction:column;overflow:hidden;}
+.scroll-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+.scroll-body::-webkit-scrollbar{display:none;}
+.spinner{width:28px;height:28px;border:3px solid #eee;border-top-color:#61c2ff;border-radius:50%;animation:spin 0.8s linear infinite;}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel" data-presets="env,react">
+const {useState,useEffect,useRef,useMemo,useCallback}=React;
+
+/* ══ Characters ══════════════════════════════════════════ */
+const CHARACTERS=[
+  {id:'newcha1',img:'Claw_ENG/design_handoff/assets/newcha1.png',name:'奶油貓',desc:'愛撒嬌的貓咪'},
+  {id:'newcha2',img:'Claw_ENG/design_handoff/assets/newcha2.png',name:'布丁狗',desc:'忠心的好夥伴'},
+  {id:'newcha3',img:'Claw_ENG/design_handoff/assets/newcha3.png',name:'胖河馬',desc:'萌萌的大塊頭'},
+  {id:'newcha4',img:'Claw_ENG/design_handoff/assets/newcha4.png',name:'泡泡魚',desc:'藍藍的海洋寶'},
+  {id:'newcha5',img:'Claw_ENG/design_handoff/assets/newcha5.png',name:'點點獸',desc:'斑點小可愛'},
+  {id:'newcha6',img:'Claw_ENG/design_handoff/assets/newcha6.png',name:'圓滾雞',desc:'圓圓愛學習'},
+  {id:'newcha7',img:'Claw_ENG/design_handoff/assets/newcha7.png',name:'六角龍',desc:'粉紅小精靈'},
+  {id:'newcha8',img:'Claw_ENG/design_handoff/assets/newcha8.png',name:'豹豹',  desc:'威風的小獵豹'},
+  {id:'newcha9',img:'Claw_ENG/design_handoff/assets/newcha9.png',name:'嫩芽龍',desc:'青嫩嫩的小恐龍'},
+  {id:'newcha10',img:'Claw_ENG/design_handoff/assets/newcha10.png',name:'橄欖鸚',desc:'藍尾巴的小鸚鵡'},
+  {id:'newcha11',img:'Claw_ENG/design_handoff/assets/newcha11.png',name:'繁星鯊',desc:'身上有點點的鯨鯊'},
+  {id:'newcha12',img:'Claw_ENG/design_handoff/assets/newcha12.png',name:'湯圓貓熊',desc:'黑白圓圓的小糰子'},
+  {id:'newcha13',img:'Claw_ENG/design_handoff/assets/newcha13.png',name:'冰棒企鵝',desc:'搖搖晃晃的小傢伙'},
+  {id:'newcha14',img:'Claw_ENG/design_handoff/assets/newcha14.png',name:'雲朵樹熊',desc:'慢慢抱住每個單字'},
+  {id:'newcha15',img:'Claw_ENG/design_handoff/assets/newcha15.png',name:'奶茶鼠',desc:'圓滾滾的倉鼠寶'},
+  {id:'newcha16',img:'Claw_ENG/design_handoff/assets/newcha16.png',name:'棉花羊駝',desc:'蓬鬆又溫柔'},
+  {id:'newcha17',img:'Claw_ENG/design_handoff/assets/newcha17.png',name:'蜜糖鼯',desc:'大耳朵會滑翔'},
+  {id:'newcha18',img:'Claw_ENG/design_handoff/assets/newcha18.png',name:'可可哈奇',desc:'毛茸茸的小哈奇'},
+  {id:'newcha19',img:'Claw_ENG/design_handoff/assets/newcha19.png',name:'橘虎貓',desc:'有虎斑紋的小橘貓'},
+  {id:'newcha20',img:'Claw_ENG/design_handoff/assets/newcha20.png',name:'可可熊',desc:'溫柔圓耳的小熊'},
+  {id:'newcha21',img:'Claw_ENG/design_handoff/assets/newcha21.png',name:'金鬃獅',desc:'蓬鬆鬃毛的小獅子'},
+];
+const CHAR_MAP=Object.fromEntries(CHARACTERS.map((c,i)=>[c.id,{...c,idx:i}]));
+const DEFAULT_AVATAR='newcha1';
+const AVATAR_COMPAT={chara01:'newcha1',chara02:'newcha2',chara03:'newcha3',chara04:'newcha4',chara05:'newcha5',chara06:'newcha6',chara07:'newcha7',chiika:'newcha1',hachi:'newcha2',usagi:'newcha3'};
+const normalizeAvatarId=id=>{const s=String(id||'').trim();if(CHAR_MAP[s])return s;if(AVATAR_COMPAT[s])return AVATAR_COMPAT[s];return DEFAULT_AVATAR;};
+function petIdxFromId(id){
+  const m=String(id||'').match(/^pet_(\d+)$/);
+  if(!m)return null;
+  const idx=parseInt(m[1],10)-1;
+  return idx>=0&&idx<CHARACTERS.length?idx:null;
+}
+const avatarIdxFromId=id=>{
+  const p=petIdxFromId(id);if(p!==null)return p;
+  return CHAR_MAP[normalizeAvatarId(id)]?.idx??0;
+};
+
+/* ══ Category colours ════════════════════════════════════ */
+const CAT={
+  '名詞':'#fb7185','動作':'#38bdf8','形容詞':'#a78bfa',
+  '副詞':'#94a3b8','其他':'#94a3b8',
+  '動物':'#4CAF82','食物':'#FF9800','物品':'#fb7185',
+};
+
+/* ══ Date helpers (Taipei) ═══════════════════════════════ */
+function taipeiDateKey(d=new Date()){
+  const utc=d.getTime()+d.getTimezoneOffset()*60000;
+  const t=new Date(utc+8*60*60*1000);
+  const y=t.getFullYear(),m=String(t.getMonth()+1).padStart(2,'0'),dd=String(t.getDate()).padStart(2,'0');
+  return `${y}-${m}-${dd}`;
+}
+function dateKeyToUtcMs(k){if(!/^\d{4}-\d{2}-\d{2}$/.test(String(k||'')))return NaN;return Date.UTC(+k.slice(0,4),+k.slice(5,7)-1,+k.slice(8,10));}
+
+/* ══ POS → Category ══════════════════════════════════════ */
+const POS_CAT={v:'動作',suru:'動作','adj-i':'形容詞','adj-na':'形容詞',adj:'形容詞',adv:'副詞',n:'名詞'};
+function posToCat(pos){const p=Array.isArray(pos)?pos[0]:pos;return POS_CAT[p]||'名詞';}
+function catLabel(cat){return cat==='動作'?'動詞':(cat||'名詞');}
+
+/* ══ Vocab shape normalization ═══════════════════════════ */
+function normalizeVocab(raw){
+  // Accept both prototype shape {word,zh,visual,cat,hint,en,zh2,date}
+  // and jp-n3-data.json shape {word,reading,meaning,example,translation,firstSeen,pos,level,tier}
+  if(raw.meaning!==undefined){
+    return{
+      word:raw.word,
+      reading:raw.reading||raw.kana||raw.word,
+      zh:raw.meaning,
+      visual:raw.visual||null,
+      hint:raw.hint||raw.reading||raw.meaning,
+      cat:raw.cat||posToCat(raw.pos),
+      en:raw.example||'',
+      zh2:raw.translation||'',
+      date:raw.firstSeen||'',
+      level:raw.level||raw.tier||'',
+      tier:raw.tier||raw.level||'',
+    };
+  }
+  return{
+    word:raw.word,reading:raw.reading||raw.word,zh:raw.zh,visual:raw.visual||null,hint:raw.hint||raw.reading||raw.zh,
+    cat:raw.cat||'名詞',en:raw.en||'',zh2:raw.zh2||'',date:raw.date||'',level:raw.level||'',tier:raw.tier||'',
+  };
+}
+
+/* ══ Fallback tiny dataset (in case jp-n3-data.json fails) ═ */
+const FALLBACK_WORDS=[
+  {word:'確認',reading:'かくにん',zh:'確認',cat:'動作',hint:'かくにん',en:'予定を確認します。',zh2:'確認行程。',date:'2026-06-03',level:'N3',tier:'daily_n3'},
+  {word:'準備',reading:'じゅんび',zh:'準備',cat:'動作',hint:'じゅんび',en:'明日の準備をします。',zh2:'準備明天的事情。',date:'2026-05-01',level:'N4',tier:'base_n4'},
+  {word:'説明',reading:'せつめい',zh:'說明',cat:'動作',hint:'せつめい',en:'先生が説明します。',zh2:'老師會說明。',date:'2026-05-01',level:'N4',tier:'base_n4'},
+].map(normalizeVocab);
+
+/* ══ English number words (for food count display) ══════ */
+const NUMBER_WORDS=['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen','twenty'];
+const TENS_WORDS=['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
+function numToEnglish(n){
+  n=n|0; if(n<0)return 'zero'; if(n<=20)return NUMBER_WORDS[n];
+  if(n<100){const t=Math.floor(n/10),o=n%10;return o?`${TENS_WORDS[t]}-${NUMBER_WORDS[o]}`:TENS_WORDS[t];}
+  return String(n); // ≥100 fallback to digits
+}
+
+/* ══ Level / unlock helpers ══════════════════════════════ */
+const LV1_SIZE=15;
+const LV_INCREMENT=5;
+const DAILY_FOCUS_COUNT=5;
+function unlockedCountForLevel(level){
+  const lv=Math.max(1,level|0);
+  return LV1_SIZE+(lv-1)*LV_INCREMENT;
+}
+function unlockedWords(allWords,difficultyOrder,level){
+  const want=unlockedCountForLevel(level);
+  const wordToObj=new Map(allWords.map(w=>[w.word,w]));
+  const seen=new Set();
+  const out=[];
+  for(let i=0;i<difficultyOrder.length&&out.length<want;i++){
+    const obj=wordToObj.get(difficultyOrder[i]);
+    if(obj){out.push(obj);seen.add(obj.word);}
+  }
+  if(out.length<want){
+    const rest=allWords
+      .filter(w=>!seen.has(w.word))
+      .sort((a,b)=>String(a.firstSeen||a.date||'').localeCompare(String(b.firstSeen||b.date||'')));
+    for(const w of rest){if(out.length>=want)break;out.push(w);seen.add(w.word);}
+  }
+  return out;
+}
+function newlyUnlockedWords(difficultyOrder,allWords,oldLevel,newLevel){
+  if(newLevel<=oldLevel)return[];
+  const oldCount=unlockedCountForLevel(oldLevel);
+  const newCount=unlockedCountForLevel(newLevel);
+  const all=unlockedWords(allWords,difficultyOrder,newLevel);
+  return all.slice(oldCount,newCount);
+}
+function mergeStudyPool(unlocked,todaySet){
+  const map=new Map();
+  for(const w of unlocked||[])map.set(w.word,w);
+  for(const w of todaySet||[])map.set(w.word,{...w,isDailyFocus:true});
+  return [...map.values()];
+}
+const LEVEL_XP_CAP_UI=1072;
+function levelXpRequirementUi(level){
+  const lv=Math.max(1,level|0);
+  let req=100;
+  for(let n=2;n<=lv;n++){
+    if(req>=LEVEL_XP_CAP_UI/2)return LEVEL_XP_CAP_UI;
+    const mult=1.30+0.05*(n-2);
+    req=Math.min(LEVEL_XP_CAP_UI/2,Math.round(req*mult));
+  }
+  return req*2;
+}
+function estimateTotalExpForLevel(level,exp=0){
+  const lv=Math.max(1,level|0);
+  let total=Number(exp||0);
+  for(let n=1;n<lv;n++)total+=levelXpRequirementUi(n);
+  return Math.max(0,Math.round(total));
+}
+
+/* ══ LocalStorage ════════════════════════════════════════ */
+const LS_PROFILE='jpN3Profile';
+const LS_STATS='jpN3Stats3';
+const loadProfile=()=>{try{const p=localStorage.getItem(LS_PROFILE);return p?JSON.parse(p):null;}catch{return null;}};
+const saveProfile=p=>{try{localStorage.setItem(LS_PROFILE,JSON.stringify(p));}catch{}};
+const defaultStats={streak:0,xp:0,avgScore:0,best:0,totalGames:0,todayQuiz:0,todayQuizDate:''};
+const loadStats=()=>{try{return{...defaultStats,...JSON.parse(localStorage.getItem(LS_STATS)||'{}')};}catch{return{...defaultStats};}};
+const saveStats=s=>{try{localStorage.setItem(LS_STATS,JSON.stringify(s));}catch{}};
+
+/* ══ Firebase leaderboard (SDK via window.FB) ═══════════════ */
+async function cloudRunQuery(orderField,limit=80){
+  if(!window.FB?.ops?.listLeaderboard)throw new Error('Firebase not ready');
+  return await window.FB.ops.listLeaderboard(orderField,limit);
+}
+async function cloudGetEntry(uid){
+  if(!window.FB?.ops?.getLeaderboardEntry||!uid)return null;
+  return await window.FB.ops.getLeaderboardEntry(uid);
+}
+async function cloudUpsertScore(uid,name,avatarId,score,total=20){
+  if(!window.FB?.ops?.upsertLeaderboardScore||!uid)return null;
+  return await window.FB.ops.upsertLeaderboardScore(uid,name,avatarId,score,total);
+}
+
+/* ══ Utils ═══════════════════════════════════════════════ */
+function shuffle(a){const x=[...a];for(let i=x.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[x[i],x[j]]=[x[j],x[i]];}return x;}
+function getOptions(correct,pool){
+  const others=shuffle(pool.filter(v=>v.word!==correct.word)).slice(0,3);
+  return shuffle([correct,...others]);
+}
+function formatDate(dateKey){
+  if(!dateKey)return'';
+  const[y,m,d]=dateKey.split('-').map(Number);
+  const js=new Date(y,m-1,d);
+  return js.toLocaleDateString('zh-TW',{month:'long',day:'numeric',weekday:'short'});
+}
+function normalizeAnswer(s){return String(s||'').trim().toLowerCase().replace(/[.,!?;:'"`。、！？；：「」『』（）()]/g,'').replace(/\s+/g,' ');}
+
+/* ══ Verb / tense helpers ════════════════════════════════ */
+const IRREGULAR={
+  ride:{thirds:'rides',past:'rode',ing:'riding'},leave:{thirds:'leaves',past:'left',ing:'leaving'},
+  go:{thirds:'goes',past:'went',ing:'going'},come:{thirds:'comes',past:'came',ing:'coming'},
+  have:{thirds:'has',past:'had',ing:'having'},do:{thirds:'does',past:'did',ing:'doing'},
+  make:{thirds:'makes',past:'made',ing:'making'},say:{thirds:'says',past:'said',ing:'saying'},
+  get:{thirds:'gets',past:'got',ing:'getting'},see:{thirds:'sees',past:'saw',ing:'seeing'},
+  eat:{thirds:'eats',past:'ate',ing:'eating'},run:{thirds:'runs',past:'ran',ing:'running'},
+  take:{thirds:'takes',past:'took',ing:'taking'},give:{thirds:'gives',past:'gave',ing:'giving'},
+  know:{thirds:'knows',past:'knew',ing:'knowing'},think:{thirds:'thinks',past:'thought',ing:'thinking'},
+  feel:{thirds:'feels',past:'felt',ing:'feeling'},buy:{thirds:'buys',past:'bought',ing:'buying'},
+  bring:{thirds:'brings',past:'brought',ing:'bringing'},catch:{thirds:'catches',past:'caught',ing:'catching'},
+  hear:{thirds:'hears',past:'heard',ing:'hearing'},hold:{thirds:'holds',past:'held',ing:'holding'},
+  read:{thirds:'reads',past:'read',ing:'reading'},send:{thirds:'sends',past:'sent',ing:'sending'},
+  sit:{thirds:'sits',past:'sat',ing:'sitting'},stand:{thirds:'stands',past:'stood',ing:'standing'},
+  win:{thirds:'wins',past:'won',ing:'winning'},write:{thirds:'writes',past:'wrote',ing:'writing'},
+  meet:{thirds:'meets',past:'met',ing:'meeting'},keep:{thirds:'keeps',past:'kept',ing:'keeping'},
+  put:{thirds:'puts',past:'put',ing:'putting'},cut:{thirds:'cuts',past:'cut',ing:'cutting'},
+  let:{thirds:'lets',past:'let',ing:'letting'},break:{thirds:'breaks',past:'broke',ing:'breaking'},
+  fall:{thirds:'falls',past:'fell',ing:'falling'},fly:{thirds:'flies',past:'flew',ing:'flying'},
+  speak:{thirds:'speaks',past:'spoke',ing:'speaking'},sleep:{thirds:'sleeps',past:'slept',ing:'sleeping'},
+  forget:{thirds:'forgets',past:'forgot',ing:'forgetting'},lose:{thirds:'loses',past:'lost',ing:'losing'},
+  tell:{thirds:'tells',past:'told',ing:'telling'},wear:{thirds:'wears',past:'wore',ing:'wearing'},
+  sing:{thirds:'sings',past:'sang',ing:'singing'},swim:{thirds:'swims',past:'swam',ing:'swimming'},
+  drink:{thirds:'drinks',past:'drank',ing:'drinking'},begin:{thirds:'begins',past:'began',ing:'beginning'},
+  understand:{thirds:'understands',past:'understood',ing:'understanding'},teach:{thirds:'teaches',past:'taught',ing:'teaching'},
+  build:{thirds:'builds',past:'built',ing:'building'},lend:{thirds:'lends',past:'lent',ing:'lending'},
+  find:{thirds:'finds',past:'found',ing:'finding'},feed:{thirds:'feeds',past:'fed',ing:'feeding'},
+  pay:{thirds:'pays',past:'paid',ing:'paying'},is:{thirds:'is',past:'was',ing:'being'},
+  are:{thirds:'is',past:'were',ing:'being'},be:{thirds:'is',past:'was',ing:'being'},
+};
+function toPast(v){v=v.toLowerCase();if(IRREGULAR[v])return IRREGULAR[v].past;if(/[^aeiou]e$/.test(v))return v+'d';if(/e$/.test(v))return v+'d';if(/[^aeiou]y$/.test(v))return v.slice(0,-1)+'ied';if(/[^aeiou][aeiou][^aeiouwxy]$/.test(v)&&v.length<=5)return v+v.slice(-1)+'ed';return v+'ed';}
+function toIng(v){v=v.toLowerCase();if(IRREGULAR[v])return IRREGULAR[v].ing;if(/ie$/.test(v))return v.slice(0,-2)+'ying';if(/[^aeiou]e$/.test(v))return v.slice(0,-1)+'ing';if(/[^aeiou][aeiou][^aeiouwxy]$/.test(v)&&v.length<=5)return v+v.slice(-1)+'ing';return v+'ing';}
+function toThirdS(v){v=v.toLowerCase();if(IRREGULAR[v])return IRREGULAR[v].thirds;if(/(s|x|z|o)$/.test(v))return v+'es';if(/(ch|sh)$/.test(v))return v+'es';if(/[^aeiou]y$/.test(v))return v.slice(0,-1)+'ies';return v+'s';}
+
+/* Word looks like a verb if ANY conjugated form appears right after a PRONOUN subject. */
+function looksLikeVerb(word,example){
+  if(!word||!example)return false;
+  const base=word.toLowerCase();
+  const forms=[...new Set([base,toThirdS(base),toPast(base),toIng(base)])];
+  for(const f of forms){
+    const safe=f.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    // Only safe: subject is a pronoun (I/We/They/You/He/She/It) directly followed by the verb form.
+    if(new RegExp('(?:^|[.!?,]\\s+)(?:I|We|They|You|He|She|It)\\s+'+safe+'\\b').test(example))return true;
+  }
+  return false;
+}
+
+/* Find which form of the verb appears in the example. Returns {form, index, length} or null. */
+function findVerbForm(base,example){
+  const forms=[toPast(base),toIng(base),toThirdS(base),base]; // prefer longer/more-specific first, keep base last
+  for(const f of [...new Set(forms)]){
+    const safe=f.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    const m=example.match(new RegExp('\\b'+safe+'\\b','i'));
+    if(m)return{form:f,index:m.index,length:m[0].length};
+  }
+  return null;
+}
+
+/* Split a sentence around the target word, case-insensitive, word-boundary preferred. */
+function splitAroundWord(sentence,word){
+  const safe=word.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  let m=sentence.match(new RegExp('\\b'+safe+'\\b','i'));
+  if(!m)m=sentence.match(new RegExp(safe,'i'));
+  if(!m)return null;
+  return{before:sentence.slice(0,m.index),match:m[0],after:sentence.slice(m.index+m[0].length)};
+}
+
+function buildLetterTokens(word){
+  const letters=Array.from(String(word||'').trim().toLowerCase()).filter(ch=>ch.trim());
+  return letters.map((text,i)=>({id:`${i}:${text}`,text,idx:i}));
+}
+
+/* Build a cloze spelling question. Returns {type,correct,letterTokens,tokens,before,after,zh2} or null. */
+function buildClozeQuestion(w){
+  if(!w.en||!w.word)return null;
+  const parts=splitAroundWord(w.en,w.word);
+  if(!parts)return null;
+  const letterTokens=buildLetterTokens(w.word);
+  if(letterTokens.length<2)return null;
+  let tokens=shuffle(letterTokens);
+  if(tokens.map(t=>t.id).join('|')===letterTokens.map(t=>t.id).join('|'))tokens=shuffle(letterTokens.slice().reverse());
+  return{type:'cloze',correct:w.word,letterTokens,tokens,before:parts.before,after:parts.after,zh2:w.zh2||'',zh:w.zh||''};
+}
+
+function buildReadingQuestion(w,pool){
+  if(!w.reading||!w.word||w.reading===w.word)return null;
+  const others=shuffle(pool.filter(v=>v.word!==w.word&&v.reading&&v.reading!==w.reading))
+    .map(v=>v.reading)
+    .filter((r,i,a)=>r&&a.indexOf(r)===i)
+    .slice(0,3);
+  if(others.length<3)return null;
+  return{type:'reading',correct:w.reading,options:shuffle([w.reading,...others]),zh2:w.zh2||'',zh:w.zh||''};
+}
+
+function tenseHintText(form,base){
+  if(form===toPast(base))return '這句在講「過去」發生的事 → 用過去式';
+  if(form===toIng(base))return '這句在講「正在進行」 → 用 -ing 進行式';
+  if(form===toThirdS(base))return '主詞是 He / She / It → 動詞加 -s / -es（第三人稱現在式）';
+  return '主詞是 I / We / You / They → 用動詞「原形」';
+}
+
+/* Build a tense (4-option) question. Target = whichever form appears in the sentence. Returns {type,correct,options,baseWord,before,after,zh2,tenseHint} or null. */
+function buildTenseQuestion(w,_otherVerbs){
+  if(!w.en||!w.word)return null;
+  const base=w.word.toLowerCase();
+  const hit=findVerbForm(base,w.en);
+  if(!hit)return null;
+  const correct=hit.form.toLowerCase();
+  const forms=[...new Set([base,toThirdS(base),toPast(base),toIng(base)])];
+  if(forms.length<4)return null; // need 4 distinct forms for a fair MC
+  if(!forms.includes(correct))return null;
+  const before=w.en.slice(0,hit.index);
+  const after=w.en.slice(hit.index+hit.length);
+  return{type:'tense',correct,options:shuffle(forms),baseWord:base,before,after,zh2:w.zh2||'',zh:w.zh||'',tenseHint:tenseHintText(correct,base)};
+}
+
+function pushJapaneseToken(tokens, token) {
+  const t = String(token || '').trim();
+  if (!t) return;
+  if (/^[。、！？!?]+$/.test(t) && tokens.length) tokens[tokens.length - 1] += t;
+  else tokens.push(t);
+}
+function splitJapaneseChunk(text) {
+  const tokens = [];
+  let buf = '';
+  const suffixes = ['ください', 'ました', 'ません', 'です', 'ます', 'でした', 'ないで', 'ない', 'たい'];
+  const particles = new Set(['は', 'が', 'を', 'に', 'へ', 'と', 'で', 'も']);
+  for (const ch of Array.from(String(text || '').replace(/\s+/g, ''))) {
+    if (/[。、！？!?]/.test(ch)) {
+      pushJapaneseToken(tokens, buf);
+      buf = '';
+      pushJapaneseToken(tokens, ch);
+      continue;
+    }
+    buf += ch;
+    if (particles.has(ch) && buf.length >= 2) {
+      pushJapaneseToken(tokens, buf);
+      buf = '';
+      continue;
+    }
+    if (suffixes.some(s => buf.endsWith(s))) {
+      pushJapaneseToken(tokens, buf);
+      buf = '';
+    }
+  }
+  pushJapaneseToken(tokens, buf);
+  return tokens;
+}
+function tokenizeSentence(sentence, targetWord = '') {
+  const src = String(sentence || '').trim();
+  const target = String(targetWord || '').trim();
+  if (!src) return [];
+  if (!target || !src.includes(target)) return splitJapaneseChunk(src);
+  const tokens = [];
+  const parts = src.split(target);
+  parts.forEach((part, i) => {
+    splitJapaneseChunk(part).forEach(t => pushJapaneseToken(tokens, t));
+    if (i < parts.length - 1) pushJapaneseToken(tokens, target);
+  });
+  return tokens;
+}
+
+const JP_PARTICLES=['を','が','に','と','で','は','も','へ'];
+const JP_LETTER_RE=/[\u3040-\u30ff\u3400-\u9fff]/;
+const JP_PUNCT_RE=/[。、！？!?\s]/;
+function particleScore(chars,i){
+  const ch=chars[i],prev=chars[i-1],next=chars[i+1];
+  if(!JP_PARTICLES.includes(ch)||!prev||!next)return -1;
+  if(JP_PUNCT_RE.test(prev)||JP_PUNCT_RE.test(next))return -1;
+  if(!JP_LETTER_RE.test(prev)||!JP_LETTER_RE.test(next))return -1;
+  let score=0;
+  if(/[一-龯々]/.test(prev))score+=3;
+  if(/[ぁ-んァ-ン]/.test(prev))score+=2;
+  if(JP_LETTER_RE.test(next))score+=2;
+  if(['を','が','に','で'].includes(ch))score+=2;
+  if(ch==='は'||ch==='も')score+=1;
+  if(/[ぁ-ん]/.test(prev)&&/[ぁ-ん]/.test(next))score-=1;
+  return score;
+}
+function splitAroundParticle(sentence){
+  const chars=Array.from(String(sentence||'').trim());
+  const candidates=chars.map((ch,i)=>({ch,i,score:particleScore(chars,i)})).filter(c=>c.score>=0);
+  if(!candidates.length)return null;
+  candidates.sort((a,b)=>b.score-a.score||a.i-b.i);
+  const pick=candidates[0];
+  return{before:chars.slice(0,pick.i).join(''),particle:pick.ch,after:chars.slice(pick.i+1).join('')};
+}
+
+/* Build a sentence-order question. Returns {type,correct,answerTokens,tokens,zh2,zh}. */
+function buildOrderQuestion(w){
+  if(!w.en)return null;
+  const answerTokens=tokenizeSentence(w.en,w.word);
+  if(answerTokens.length<3||answerTokens.length>10)return null;
+  const tokens=answerTokens.map((text,i)=>({id:`${i}:${text}`,text,idx:i}));
+  let shuffled=shuffle(tokens);
+  if(shuffled.map(t=>t.id).join('|')===tokens.map(t=>t.id).join('|'))shuffled=shuffle(tokens.slice().reverse());
+  return{type:'order',correct:answerTokens.join(' '),sentence:w.en,answerTokens,tokens:shuffled,zh2:w.zh2||'',zh:w.zh||''};
+}
+
+/* Build a particle fill-in question for grammar practice. */
+function buildParticleQuestion(w){
+  if(!w.en)return null;
+  const split=splitAroundParticle(w.en);
+  if(!split)return null;
+  const distractors=shuffle(JP_PARTICLES.filter(p=>p!==split.particle)).slice(0,3);
+  return{
+    type:'particle',
+    correct:split.particle,
+    options:shuffle([split.particle,...distractors]),
+    before:split.before,
+    after:split.after,
+    sentence:w.en,
+    zh2:w.zh2||'',
+    zh:w.zh||'',
+  };
+}
+
+/* Build mixed quiz items. Cap cloze/order/particle types so the quiz stays varied.
+   knownSet: Set of words the player has marked "我會了"; sampled last so unfamiliar words dominate. */
+const MAX_CLOZE=3;
+const MAX_ORDER=3;
+const MAX_PARTICLE=3;
+function buildQuizItems(pool,total,knownSet=new Set()){
+  const focus=shuffle(pool.filter(w=>w.isDailyFocus));
+  const focusWords=new Set(focus.map(w=>w.word));
+  const unknown=shuffle(pool.filter(w=>!focusWords.has(w.word)&&!knownSet.has(w.word)));
+  const known=shuffle(pool.filter(w=>!focusWords.has(w.word)&&knownSet.has(w.word)));
+  const chosen=[...focus,...unknown,...known].slice(0,total);
+  let clozeBudget=Math.min(MAX_CLOZE,Math.floor(total/4));
+  if(clozeBudget<2&&total>=8)clozeBudget=2;
+  let orderBudget=Math.min(MAX_ORDER,Math.floor(total/5)||1);
+  let particleBudget=Math.min(MAX_PARTICLE,Math.floor(total/5)||1);
+  const items=[];
+  for(const w of chosen){
+    let built=null;
+    if(particleBudget>0&&w.en&&(items.length%5===0||Math.random()<0.32)){
+      built=buildParticleQuestion(w);
+      if(built)particleBudget--;
+    }
+    if(!built&&orderBudget>0&&w.en&&(items.length%5===1||Math.random()<0.35)){
+      built=buildOrderQuestion(w);
+      if(built)orderBudget--;
+    }
+    if(!built&&w.reading&&w.reading!==w.word&&Math.random()<0.42){
+      built=buildReadingQuestion(w,pool);
+    }
+    if(!built&&clozeBudget>0&&w.en&&Math.random()<0.45){
+      built=buildClozeQuestion(w);
+      if(built)clozeBudget--;
+    }
+    if(!built){
+      built={type:'zh2en',options:getOptions(w,pool)};
+    }
+    items.push({...built,vocab:w});
+  }
+  return items;
+}
+
+
+/* ══ Map quest helpers ═══════════════════════════════════ */
+const MAP_STAGE_COUNT=30;
+const BOSS_EVERY=5;
+const MAP_BIOMES=[
+  {name:'新手森林',emoji:'🌲',from:1,to:10,bg:['#ecfdf5','#d1fae5'],color:'#22c55e'},
+  {name:'星砂沙漠',emoji:'🏜️',from:11,to:20,bg:['#fff7ed','#fed7aa'],color:'#f97316'},
+  {name:'熔岩火山',emoji:'🌋',from:21,to:30,bg:['#fff1f2','#fecdd3'],color:'#fb7185'},
+];
+function isBossStage(stage){return stage>0&&stage%BOSS_EVERY===0;}
+function biomeForStage(stage){return MAP_BIOMES.find(b=>stage>=b.from&&stage<=b.to)||MAP_BIOMES[0];}
+function stageDocId(stage){return `stage_${String(stage).padStart(3,'0')}`;}
+function getPlayerMapStage(profile){return Math.max(1,Number(profile?.mapStage||profile?.level||1));}
+function getEntryMapStage(entry){return Math.max(1,Number(entry?.mapStage||entry?.level||1));}
+function defaultBossAvgSec(stage){return Math.max(30,50-Math.floor((Math.max(1,stage)-1)/5)*5);}
+const MAP_FOOD_BONUS=3;
+const MAP_FOOD_BONUS_STAGES=[4,9,14,19,24,29];
+function isFoodBonusStage(stage){return MAP_FOOD_BONUS_STAGES.includes(Number(stage));}
+function clearPassTarget(total){return Math.max(1,Math.ceil((total||15)/2));}
+function bossPassTarget(total){return Math.max(8,clearPassTarget(total));}
+function stagePass(score,total,run){
+  if(!run)return true;
+  const target=run.isBoss?bossPassTarget(total):clearPassTarget(total);
+  const clearScore=Number(run.clearScore??score??0);
+  if(run.isBoss)return clearScore>=target&&Number(run.clearWins||0)>=target;
+  return clearScore>=target;
+}
+function formatSec(sec){const n=Number(sec||0);return n>0?`${n.toFixed(1)}秒`:'--';}
+function isRankEligible(streak,todayQuiz,level){const days=Number(streak||0),today=Number(todayQuiz||0),lv=Number(level||0);return !(days===1&&today===0&&lv===1);}
+function mapStarsForScore(score,total=15){const st=Number(score||0);if(st>=15)return 3;if(st>=6)return 2;if(st>=1)return 1;return 0;}
+
+/* ══ Shared UI ═══════════════════════════════════════════ */
+function Confetti({active}){
+  if(!active)return null;
+  const items=Array.from({length:18},(_,i)=>({id:i,x:5+Math.random()*90,color:['#FFD700','#4CAF82','#40d0e2','#fb7185','#a78bfa','#FF9800'][i%6],delay:i*0.05,size:6+Math.random()*8}));
+  return(<div style={{position:'absolute',top:0,left:0,width:'100%',height:'100%',pointerEvents:'none',overflow:'hidden',zIndex:99}}>
+    {items.map(p=><div key={p.id} style={{position:'absolute',top:-10,left:`${p.x}%`,width:p.size,height:p.size,borderRadius:p.size*0.25,background:p.color,animation:`confettiFall 1.1s ${p.delay}s ease-in both`}}/>)}
+  </div>);
+}
+
+function BottomNav({screen,onNav,pc}){
+  const tabs=[{id:'home',icon:'🏠',label:'首頁'},{id:'flash',icon:'📖',label:'語彙卡'},{id:'map',icon:'🗺️',label:'闖關'},{id:'rank',icon:'🏆',label:'排行榜'}];
+  return(<div style={{display:'flex',borderTop:'1px solid #f0f0f0',background:'#fff',flexShrink:0,paddingBottom:'max(8px,env(safe-area-inset-bottom))'}}>
+    {tabs.map(t=>(
+      <button key={t.id} onClick={()=>onNav(t.id)} style={{flex:1,padding:'10px 0 4px',border:'none',background:'none',cursor:'pointer',display:'flex',flexDirection:'column',alignItems:'center',gap:2,color:screen===t.id?pc:'#ccc',transition:'color 0.2s'}}>
+        <span style={{fontSize:22}}>{t.icon}</span>
+        <span style={{fontSize:9,fontWeight:800}}>{t.label}</span>
+        {screen===t.id&&<div style={{width:18,height:3,borderRadius:3,background:pc,marginTop:1}}/>}
+      </button>
+    ))}
+  </div>);
+}
+
+function WordVisual({vocab,size=48}){
+  if(vocab.visual) return <span style={{fontSize:size,lineHeight:1}}>{vocab.visual}</span>;
+  return null;
+}
+let _voicesCache=null;
+function _loadVoices(){
+  if(typeof window==='undefined'||!window.speechSynthesis)return [];
+  const v=window.speechSynthesis.getVoices();
+  if(v&&v.length)_voicesCache=v;
+  return _voicesCache||[];
+}
+if(typeof window!=='undefined'&&window.speechSynthesis){
+  _loadVoices();
+  try{window.speechSynthesis.onvoiceschanged=_loadVoices;}catch{}
+}
+// Japanese web TTS: prefer local ja-JP voices, then browser fallbacks.
+const FEMALE_VOICE_PIN='google 日本語';
+const MALE_VOICE_PIN='kyoko';
+const FEMALE_VOICE_KEYS=['google 日本語','kyoko','haruka','nanami','ichiro','japanese','日本語','female'];
+const MALE_VOICE_KEYS=['ichiro','google 日本語','kyoko','japanese','日本語','male'];
+function pickVoice(gender){
+  const list=_loadVoices();if(!list.length)return null;
+  const jaVoices=list.filter(v=>/^ja[-_]/i.test(v.lang||''));
+  const pool=jaVoices.length?jaVoices:list;
+  // Prefer local voices to avoid online/streaming TTS dropouts (e.g. Jenny Online stuttering).
+  const localPool=pool.filter(v=>v.localService!==false);
+  const tryPools=localPool.length?[localPool,pool]:[pool];
+  const exclude=gender==='male'?'female':null;
+  const primary=gender==='male'?MALE_VOICE_PIN:FEMALE_VOICE_PIN;
+  // Hard-pin first across local-then-full pool.
+  for(const sub of tryPools){
+    const hit=sub.find(v=>{
+      const n=(v.name||'').toLowerCase();
+      if(!n.includes(primary))return false;
+      if(exclude&&n.includes(exclude))return false;
+      return true;
+    });
+    if(hit)return hit;
+  }
+  // Fallback priority list for devices without the pin (iOS/Android etc).
+  const prefs=gender==='male'?MALE_VOICE_KEYS:FEMALE_VOICE_KEYS;
+  for(const sub of tryPools){
+    for(const key of prefs){
+      const hit=sub.find(v=>{
+        const n=(v.name||'').toLowerCase();
+        if(!n.includes(key))return false;
+        if(exclude&&n.includes(exclude))return false;
+        return true;
+      });
+      if(hit)return hit;
+    }
+  }
+  return pool[0]||null;
+}
+function useVoiceName(gender){
+  const[name,setName]=useState(()=>pickVoice(gender)?.name||'');
+  useEffect(()=>{
+    const tick=()=>setName(pickVoice(gender)?.name||'');
+    tick();
+    const ts=[setTimeout(tick,400),setTimeout(tick,1200),setTimeout(tick,2500)];
+    return()=>ts.forEach(clearTimeout);
+  },[gender]);
+  return name;
+}
+function isLineWebView(){
+  return typeof navigator!=='undefined'&&/\bLine\//i.test(navigator.userAgent||'');
+}
+function LineWebViewBanner(){
+  const [dismissed,setDismissed]=useState(()=>{try{return localStorage.getItem('jpN3.lineNoticeDismissed')==='1';}catch{return false;}});
+  if(!isLineWebView()||dismissed)return null;
+  const close=()=>{setDismissed(true);try{localStorage.setItem('jpN3.lineNoticeDismissed','1');}catch{}};
+  return(<div style={{position:'absolute',top:0,left:0,right:0,zIndex:200,background:'#fff7ed',color:'#9a3412',padding:'10px 32px 10px 12px',fontSize:11,fontWeight:800,lineHeight:1.45,boxShadow:'0 2px 8px rgba(0,0,0,0.08)'}}>
+    <div>⚠️ LINE 內建瀏覽器無法登入、儲存進度會失敗</div>
+    <div style={{fontWeight:700,opacity:0.85,marginTop:2}}>請點右上角 ⋯ → 選「在瀏覽器中開啟」（Chrome / Safari）</div>
+    <button onClick={close} aria-label="關閉提示" style={{position:'absolute',top:6,right:6,background:'transparent',border:'none',color:'#9a3412',fontSize:13,fontWeight:900,cursor:'pointer',padding:4,lineHeight:1}}>✕</button>
+  </div>);
+}
+function speakText(text,opts={}){
+  try{
+    if(!text||!window.speechSynthesis)return;
+    window.speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(String(text));
+    const gender=opts.gender==='male'?'male':'female';
+    u.lang='ja-JP';u.rate=0.86;u.pitch=gender==='male'?0.98:1.04;
+    const v=pickVoice(gender);if(v)u.voice=v;
+    window.speechSynthesis.speak(u);
+  }catch{}
+}
+function SpeakButton({text,color='#61c2ff',size=30,title='播放發音'}){
+  return(<button onClick={e=>{e.stopPropagation();speakText(text);}} aria-label={title} title={title} style={{width:size,height:size,border:'none',borderRadius:999,background:`${color}18`,color,display:'inline-flex',alignItems:'center',justifyContent:'center',fontSize:Math.round(size*0.52),cursor:'pointer',flexShrink:0,boxShadow:'0 1px 5px rgba(0,0,0,0.04)'}}>🔊</button>);
+}
+
+/* ══ Firebase Pet integration (Phase 2) ══════════════════ */
+function useFb(){
+  const [fb,setFb]=useState(()=>({ready:false,uid:null,profile:null,pet:null}));
+  const refresh=useCallback(async()=>{
+    if(!window.FB){return;}
+    try{
+      const profile=await window.FB.ops.refreshProfile(window.FB.uid);
+      let pet=null;
+      if(profile&&profile.currentPetId){pet=await window.FB.ops.loadPet(profile.currentPetId);}
+      setFb({ready:true,uid:window.FB.uid,profile,pet});
+    }catch(e){console.warn('[useFb] refresh failed',e);}
+  },[]);
+  useEffect(()=>{
+    if(window.FB){refresh();return;}
+    const h=()=>refresh();
+    window.addEventListener('fbready',h);
+    return()=>window.removeEventListener('fbready',h);
+  },[refresh]);
+  return[fb,refresh];
+}
+
+const FEED_MESSAGES=[
+  '{name} 大口吃掉了飼料！',
+  '{name} 看起來精神好多了！',
+  '{name} 開心地跳了起來！',
+  '{name} 吃飽飽，眼睛都亮了！',
+];
+function pickFeedMessage(name,full){
+  if(full)return `${name} 已經吃飽飽，HP 回滿了！`;
+  const t=FEED_MESSAGES[Math.floor(Math.random()*FEED_MESSAGES.length)];
+  return t.replace('{name}',name);
+}
+
+function FeedReaction({pet,newHp,msg,onClose}){
+  useEffect(()=>{const t=setTimeout(onClose,2200);return()=>clearTimeout(t);},[onClose]);
+  return(<div onClick={onClose} style={{position:'absolute',inset:0,background:'rgba(0,0,0,0.45)',display:'flex',alignItems:'center',justifyContent:'center',zIndex:120,padding:24,cursor:'pointer'}}>
+    <div style={{background:'#fff',borderRadius:24,padding:'28px 24px 22px',width:'100%',maxWidth:300,textAlign:'center',boxShadow:'0 14px 40px rgba(0,0,0,0.25)',animation:'pop 0.25s ease-out'}}>
+      <div style={{animation:'float 1.2s ease-in-out infinite',display:'inline-block',position:'relative',overflow:'visible'}}>
+        {pet?.img?<img src={pet.img} alt="" style={{width:96,height:96,objectFit:'contain'}}/>:<span style={{fontSize:80}}>🍖</span>}
+        <span style={{position:'absolute',left:-15,top:4,fontSize:25,transform:'rotate(-18deg)',filter:'drop-shadow(0 2px 3px rgba(0,0,0,0.18))',pointerEvents:'none'}}>❤️</span>
+        <span style={{position:'absolute',right:-12,top:18,fontSize:18,transform:'rotate(16deg)',filter:'drop-shadow(0 2px 3px rgba(0,0,0,0.14))',pointerEvents:'none'}}>💖</span>
+        <span style={{position:'absolute',left:12,bottom:-4,fontSize:14,transform:'rotate(-10deg)',filter:'drop-shadow(0 1px 2px rgba(0,0,0,0.12))',pointerEvents:'none'}}>💕</span>
+      </div>
+      <div style={{fontSize:16,fontWeight:900,color:'#1a1a2e',marginTop:8,lineHeight:1.5}}>{msg}</div>
+      <div style={{marginTop:14,display:'flex',alignItems:'center',gap:8,justifyContent:'center'}}>
+        <span style={{fontSize:13,color:'#FF6B47',fontWeight:800}}>HP</span>
+        <div style={{flex:1,maxWidth:160,height:8,background:'#fde2e6',borderRadius:6,overflow:'hidden'}}>
+          <div style={{height:'100%',width:`${newHp}%`,background:'linear-gradient(90deg,#fb7185,#ff8fa3)',transition:'width 0.4s'}}/>
+        </div>
+        <span style={{fontSize:13,fontWeight:900,color:'#fb7185'}}>{newHp}/100</span>
+      </div>
+    </div>
+  </div>);
+}
+
+function LevelUpModal({level,unlocked=[],pc,onClose}){
+  return(<div onClick={onClose} style={{position:'absolute',inset:0,background:'rgba(0,0,0,0.55)',display:'flex',alignItems:'center',justifyContent:'center',zIndex:130,padding:24,cursor:'pointer'}}>
+    <div onClick={e=>e.stopPropagation()} style={{background:'#fff',borderRadius:24,padding:'30px 24px 22px',width:'100%',maxWidth:300,textAlign:'center',boxShadow:'0 14px 40px rgba(0,0,0,0.3)',animation:'pop 0.3s ease-out',cursor:'default'}}>
+      <div style={{fontSize:60,animation:'float 1.2s ease-in-out infinite'}}>⭐</div>
+      <div style={{fontSize:13,fontWeight:800,color:'#888',marginTop:8,letterSpacing:2}}>升級啦！</div>
+      <div style={{fontSize:32,fontWeight:900,color:pc,marginTop:2,letterSpacing:1}}>LV {level}</div>
+      {unlocked.length>0&&<div style={{marginTop:10,background:`${pc}12`,borderRadius:14,padding:'8px 10px',fontSize:12,fontWeight:800,color:'#475569',lineHeight:1.45}}>新解鎖 {unlocked.length} 張語彙卡：<br/><span style={{color:pc}}>{unlocked.slice(0,6).map(w=>w.word).join('、')}{unlocked.length>6?'…':''}</span></div>}
+      <button onClick={onClose} style={{marginTop:18,padding:'10px 28px',borderRadius:14,border:'none',cursor:'pointer',background:`linear-gradient(135deg,${pc},${pc}bb)`,fontSize:14,fontWeight:900,color:'#fff',boxShadow:`0 3px 10px ${pc}44`,fontFamily:'inherit'}}>太棒了！</button>
+    </div>
+  </div>);
+}
+
+function PetCard({fb,refreshFb,onSelectPet,onStart,pc}){
+  const[feeding,setFeeding]=useState(false);
+  const[reaction,setReaction]=useState(null);
+  const[err,setErr]=useState('');
+  useEffect(()=>{if(!err)return;const t=setTimeout(()=>setErr(''),2200);return()=>clearTimeout(t);},[err]);
+
+  const ready=fb&&fb.ready;
+  const profile=fb?.profile||{};
+  const pet=fb?.pet;
+  const foodCount=profile.foodCount|0;
+  const level=profile.level||1;
+  const totalExp=profile.totalExp!==undefined?Math.max(0,Math.round(Number(profile.totalExp)||0)):estimateTotalExpForLevel(level,profile.exp||0);
+  const LV_COLOR='#a78bfa';
+  const lvLabel=<span style={{fontSize:12,color:LV_COLOR,fontWeight:900,display:'inline-flex',alignItems:'center',gap:5}}><span style={{fontSize:13}}>⭐</span>LV{level}<span style={{color:'#cbd5e1',fontWeight:700,margin:'0 2px'}}>∣</span>EXP {totalExp}</span>;
+  const totalExpLabel=null;
+  const helpers=window.FB?.helpers;
+  const curHp=pet&&helpers?helpers.calcCurrentHp(pet):0;
+  const isVisitor=!pet;
+  const isStarved=!isVisitor&&curHp<=0;
+
+  const handleFeed=async()=>{
+    if(feeding||isVisitor||isStarved||foodCount<=0)return;
+    setFeeding(true);
+    try{
+      const r=await window.FB.ops.feedMyPet(window.FB.uid);
+      setReaction({newHp:r.newHp,msg:pickFeedMessage(r.petName,r.newHp>=100)});
+      await refreshFb();
+    }catch(e){
+      const map={'no-food':'你沒有飼料了，再答對一些題目吧！','no-pet':'請先選一隻寵物喔！','pet-starved':'牠已經餓到不能餵了…','not-owner':'這不是你的寵物。'};
+      setErr(map[e.message]||`餵食失敗：${e.message}`);
+      await refreshFb();
+    }finally{setFeeding(false);}
+  };
+
+  // Visitor (no pet)
+  if(isVisitor){
+    return(<div style={{background:'#fff',borderRadius:22,padding:'14px 16px 14px',boxShadow:'0 3px 14px rgba(0,0,0,0.06)',position:'relative'}}>
+      <div style={{display:'flex',alignItems:'center',gap:14}}>
+        <button onClick={onSelectPet} aria-label="選寵物" style={{width:64,height:64,border:'2px dashed #cbd5e1',borderRadius:18,background:'#f8fafc',cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center',padding:0,fontSize:42,color:'#1a1a2e',animation:'float 3s ease-in-out infinite'}}>🐈‍⬛</button>
+        <div style={{flex:1,minWidth:0}}>
+          <div>{lvLabel}{totalExpLabel}</div>
+          <div style={{fontSize:18,fontWeight:900,color:'#1a1a2e'}}>訪客喵</div>
+          <div style={{fontSize:11,color:'#bbb',marginTop:1}}>選一隻寵物來照顧吧！</div>
+        </div>
+        <button onClick={onSelectPet} style={{padding:'9px 14px',borderRadius:14,border:'none',cursor:'pointer',background:`linear-gradient(135deg,${pc},${pc}bb)`,fontSize:12,fontWeight:900,color:'#fff',flexShrink:0,boxShadow:`0 3px 10px ${pc}44`,fontFamily:'inherit'}}>選寵物</button>
+      </div>
+      <div style={{marginTop:12,display:'flex',alignItems:'center',gap:10}}>
+        <div style={{flex:1,fontSize:13,fontWeight:800,color:'#666',display:'flex',alignItems:'center',gap:6}}>
+          <span style={{fontSize:16}}>🍖</span><span>:</span><span style={{color:'#FF9800',letterSpacing:0.5}}>{numToEnglish(foodCount)}</span>
+        </div>
+      </div>
+      {err&&<div style={{position:'absolute',top:-30,left:'50%',transform:'translateX(-50%)',background:'#fff4e5',color:'#9a4a00',padding:'6px 12px',borderRadius:10,fontSize:12,fontWeight:700,boxShadow:'0 2px 8px rgba(0,0,0,0.15)',whiteSpace:'nowrap'}}>{err}</div>}
+    </div>);
+  }
+
+  // Real pet
+  const grayStyle=isStarved?{filter:'grayscale(1)',opacity:0.55}:{};
+  const hpColor=curHp>60?'#fb7185':curHp>25?'#FF9800':'#dc2626';
+  return(<div style={{background:'#fff',borderRadius:22,padding:'14px 16px 14px',boxShadow:'0 3px 14px rgba(0,0,0,0.06)',position:'relative',overflow:'visible'}}>
+    <div style={{position:'absolute',right:-8,top:-8,width:80,height:80,borderRadius:'50%',background:`${pc}0f`,pointerEvents:'none'}}/>
+    <div style={{display:'flex',alignItems:'center',gap:14,position:'relative'}}>
+      <button onClick={onSelectPet} aria-label="換寵物" style={{width:64,height:64,border:'none',borderRadius:18,background:'transparent',cursor:'pointer',padding:0,flexShrink:0,position:'relative',overflow:'visible',animation:isStarved?'none':'float 3s ease-in-out infinite'}}>
+        <img src={pet.img} alt={pet.name} style={{width:'100%',height:'100%',objectFit:'contain',...grayStyle}}/>
+        {!isStarved&&curHp>0&&curHp<20&&<span style={{position:'absolute',right:0,bottom:6,fontSize:16,filter:'drop-shadow(0 1px 2px rgba(0,0,0,0.18))',pointerEvents:'none'}}>😢</span>}
+      </button>
+      <div style={{flex:1,minWidth:0}}>
+        <div>{lvLabel}{totalExpLabel}</div>
+        <div style={{fontSize:18,fontWeight:900,color:isStarved?'#94a3b8':pc}}>{pet.name}{isStarved?' 💤':''}</div>
+        <div style={{fontSize:11,color:'#bbb',marginTop:1}}>{isStarved?'牠餓壞了，去選別隻吧…':'一起來複習日語吧！'}</div>
+      </div>
+      <button onClick={onStart} style={{padding:'9px 14px',borderRadius:14,border:'none',cursor:'pointer',background:`linear-gradient(135deg,${pc},${pc}bb)`,fontSize:12,fontWeight:900,color:'#fff',flexShrink:0,boxShadow:`0 3px 10px ${pc}44`,fontFamily:'inherit'}}>開始 ▶</button>
+    </div>
+    {/* HP bar */}
+    <div style={{marginTop:12,display:'flex',alignItems:'center',gap:8}}>
+      <span style={{fontSize:11,color:'#999',fontWeight:800,width:24,flexShrink:0}}>HP</span>
+      <div style={{flex:1,height:9,background:'#fde2e6',borderRadius:6,overflow:'hidden',position:'relative'}}>
+        <div style={{position:'absolute',left:0,top:0,bottom:0,width:`${curHp}%`,background:`linear-gradient(90deg,${hpColor},${hpColor}cc)`,transition:'width 0.5s ease-out'}}/>
+      </div>
+      <span style={{fontSize:11,fontWeight:900,color:hpColor,width:48,textAlign:'right',flexShrink:0}}>{curHp}/100</span>
+    </div>
+    {/* Food + feed + dev */}
+    <div style={{marginTop:10,display:'flex',alignItems:'center',gap:8}}>
+      <div style={{flex:1,fontSize:13,fontWeight:800,color:'#666',display:'flex',alignItems:'center',gap:6}}>
+        <span style={{fontSize:16}}>🍖</span><span>:</span><span style={{color:'#FF9800',letterSpacing:0.5}}>{numToEnglish(foodCount)}</span>
+      </div>
+      <button onClick={handleFeed} disabled={feeding||isStarved||foodCount<=0} style={{padding:'8px 16px',borderRadius:12,border:'none',cursor:(feeding||isStarved||foodCount<=0)?'not-allowed':'pointer',background:(feeding||isStarved||foodCount<=0)?'#e5e7eb':'linear-gradient(135deg,#FF9800,#fbbf24)',color:(feeding||isStarved||foodCount<=0)?'#9ca3af':'#fff',fontSize:13,fontWeight:900,fontFamily:'inherit',boxShadow:(feeding||isStarved||foodCount<=0)?'none':'0 3px 10px rgba(255,152,0,0.35)'}}>{feeding?'…':'餵食'}</button>
+    </div>
+    {err&&<div style={{position:'absolute',top:-30,left:'50%',transform:'translateX(-50%)',background:'#fff4e5',color:'#9a4a00',padding:'6px 12px',borderRadius:10,fontSize:12,fontWeight:700,boxShadow:'0 2px 8px rgba(0,0,0,0.15)',whiteSpace:'nowrap',zIndex:5}}>{err}</div>}
+    {reaction&&<FeedReaction pet={pet} newHp={reaction.newHp} msg={reaction.msg} onClose={()=>setReaction(null)}/>}
+  </div>);
+}
+
+/* ══ ONBOARDING ══════════════════════════════════════════ */
+function PetGridButton({pet,pc,selected,onClick,disabled,tag}){
+  const hp=pet.hp|0;
+  return(<button onClick={onClick} disabled={disabled} style={{padding:'12px 6px 10px',borderRadius:18,border:`2.5px solid ${selected?pc:'#f0eaea'}`,background:selected?`${pc}12`:'#fff',cursor:disabled?'not-allowed':'pointer',boxShadow:selected?`0 4px 14px ${pc}33`:'0 2px 6px rgba(0,0,0,0.04)',transition:'all 0.18s',display:'flex',flexDirection:'column',alignItems:'center',gap:3,position:'relative',opacity:disabled?0.48:1,fontFamily:'inherit'}}>
+    {selected&&<div style={{position:'absolute',top:5,right:5,width:16,height:16,borderRadius:'50%',background:pc,display:'flex',alignItems:'center',justifyContent:'center',fontSize:9,color:'#fff',fontWeight:900}}>✓</div>}
+    {tag&&<div style={{position:'absolute',top:5,left:5,fontSize:9,fontWeight:900,color:disabled?'#94a3b8':pc,background:'#fff',borderRadius:8,padding:'2px 5px',boxShadow:'0 1px 5px rgba(0,0,0,0.08)'}}>{tag}</div>}
+    <img src={pet.img} alt={pet.name} style={{width:56,height:56,objectFit:'contain',filter:disabled?'grayscale(1)':'none'}}/>
+    <div style={{fontSize:11,fontWeight:900,color:selected?pc:'#1a1a2e',maxWidth:'100%',overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap'}}>{pet.name}</div>
+    <div style={{fontSize:9,color:'#bbb',fontWeight:700,textAlign:'center',minHeight:12}}>{disabled?(pet.status==='disabled'||hp<=0?'💤 餓壞了':`被 ${pet.ownerName||'別人'} 帶走`):`HP ${hp}`}</div>
+  </button>);
+}
+
+/* ══ ONBOARDING ══════════════════════════════════════════ */
+function OnboardingScreen({onDone,pc}){
+  const [step,setStep]=useState(1);
+  const [name,setName]=useState('');
+  const [nameErr,setNameErr]=useState('');
+  const [pets,setPets]=useState([]);
+  const [loading,setLoading]=useState(false);
+  const [selectedPetId,setSelectedPetId]=useState(null);
+  const [err,setErr]=useState('');
+
+  const loadPets=useCallback(async()=>{
+    if(!window.FB?.ops?.listPets)return;
+    setLoading(true);setErr('');
+    try{setPets(await window.FB.ops.listPets());}
+    catch(e){setErr('寵物清單載入失敗，請再試一次');console.warn('[Onboarding] listPets failed',e);}
+    finally{setLoading(false);}
+  },[]);
+  useEffect(()=>{if(step===2)loadPets();},[step,loadPets]);
+  useEffect(()=>{if(window.FB&&step===2)loadPets();const h=()=>step===2&&loadPets();window.addEventListener('fbready',h);return()=>window.removeEventListener('fbready',h);},[step,loadPets]);
+
+  const goStep2=async()=>{
+    if(!name.trim()){setNameErr('請輸入你的名字！');return;}
+    if(name.trim().length>10){setNameErr('名字最多10個字喔！');return;}
+    setNameErr('');setErr('');
+    try{
+      if(window.FB?.ops?.switchPlayerByName) await window.FB.ops.switchPlayerByName(name.trim());
+    }catch(e){
+      console.warn('[Onboarding] switchPlayerByName failed',e);
+      setErr('玩家資料載入失敗，請稍後再試');
+      return;
+    }
+    setStep(2);
+  };
+  const confirmChar=async()=>{
+    if(!selectedPetId||!window.FB?.ops)return;
+    setErr('');
+    try{
+      const switched=await window.FB.ops.switchPlayerByName(name.trim());
+      await window.FB.ops.claimPet(switched.uid,selectedPetId);
+      if(window.FB?.ops?.refreshProfile){
+        const fresh=await window.FB.ops.refreshProfile(switched.uid);
+        window.FB.uid=switched.uid;
+        window.FB.playerId=switched.uid;
+        window.FB.profile=fresh;
+        window.dispatchEvent(new Event('fbready'));
+      }
+      const idx=petIdxFromId(selectedPetId)??0;
+      const profile={name:name.trim(),charIdx:idx,petId:selectedPetId};
+      saveProfile(profile);onDone(profile);setStep(3);
+    }catch(e){
+      const msgs={'pet-taken':'這隻已經被別人帶走了！','pet-disabled':'這隻寵物餓壞了，不能選 😢','pet-not-found':'找不到這隻寵物'};
+      setErr(msgs[e.message]||`選寵失敗：${e.message}`);await loadPets();
+    }
+  };
+  const selectedPet=pets.find(p=>p.id===selectedPetId);
+
+  return(<div className="screen" style={{background:'linear-gradient(170deg,#fdf6ff 0%,#f0fdf4 100%)'}}>
+    {step===1&&<div style={{flex:1,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',padding:'40px 28px',gap:22}}>
+      <div style={{animation:'float 3s ease-in-out infinite'}}><img src={CHARACTERS[0].img} alt="" style={{width:100,height:100,objectFit:'contain'}}/></div>
+      <div style={{textAlign:'center'}}>
+        <div style={{fontSize:26,fontWeight:900,color:'#1a1a2e'}}>歡迎來到</div>
+        <div style={{fontSize:30,fontWeight:900,color:pc}}>CLAW JP N3！</div>
+        <div style={{fontSize:13,color:'#aaa',marginTop:6}}>先告訴我你的名字吧 😊</div>
+      </div>
+      <div style={{width:'100%'}}>
+        <input type="text" placeholder="輸入你的名字…" value={name} onChange={e=>{setName(e.target.value);setNameErr('');}} onKeyDown={e=>e.key==='Enter'&&goStep2()} maxLength={10}
+          style={{width:'100%',padding:'16px 20px',borderRadius:18,border:`2px solid ${nameErr?'#FF4D6D':name?pc:'#e8e0f8'}`,fontSize:18,fontWeight:800,color:'#1a1a2e',outline:'none',fontFamily:'inherit',background:'#fff',boxShadow:`0 2px 12px ${pc}22`,transition:'border 0.2s'}}/>
+        {nameErr&&<div style={{fontSize:12,color:'#FF4D6D',fontWeight:700,marginTop:6,paddingLeft:4}}>{nameErr}</div>}
+      </div>
+      <button onClick={goStep2} style={{width:'100%',padding:17,borderRadius:20,border:'none',cursor:'pointer',background:`linear-gradient(135deg,${pc},${pc}bb)`,fontSize:17,fontWeight:900,color:'#fff',boxShadow:`0 5px 18px ${pc}44`,opacity:name.trim()?1:0.5,transition:'opacity 0.2s',fontFamily:'inherit'}}>下一步 →</button>
+    </div>}
+
+    {step===2&&<div className="screen">
+      <div style={{padding:'48px 20px 8px',display:'flex',alignItems:'center',gap:12,flexShrink:0}}>
+        <button onClick={()=>setStep(1)} style={{width:38,height:38,borderRadius:12,border:'none',background:'rgba(0,0,0,0.06)',cursor:'pointer',fontSize:17}}>←</button>
+        <div style={{flex:1}}>
+          <div style={{fontSize:17,fontWeight:900,color:'#1a1a2e'}}>選一隻寵物，{name}！</div>
+          <div style={{fontSize:11,color:'#aaa'}}>這裡是公共寵物池，名字大家都看得到</div>
+        </div>
+        <button onClick={loadPets} style={{border:'none',background:`${pc}15`,color:pc,borderRadius:12,padding:'8px 10px',fontSize:11,fontWeight:900,cursor:'pointer'}}>↻</button>
+      </div>
+      <div className="scroll-body" style={{padding:'8px 16px 16px'}}>
+        {loading&&<div style={{display:'flex',justifyContent:'center',padding:30}}><div className="spinner"/></div>}
+        {err&&<div style={{background:'#fff4e5',color:'#b75d00',fontSize:12,fontWeight:800,padding:'8px 12px',borderRadius:12,marginBottom:10,textAlign:'center'}}>{err}</div>}
+        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:10}}>
+          {pets.map(p=>{
+            const disabled=p.status==='disabled'||p.hp<=0||(p.ownerUid&&p.ownerUid!==window.FB?.uid);
+            const mine=p.ownerUid&&p.ownerUid===window.FB?.uid;
+            return <PetGridButton key={p.id} pet={p} pc={pc} selected={selectedPetId===p.id} disabled={disabled&&!mine} tag={mine?'我的':null} onClick={()=>setSelectedPetId(p.id)}/>;
+          })}
+        </div>
+      </div>
+      <div style={{padding:'0 16px 28px',flexShrink:0}}>
+        <button onClick={confirmChar} disabled={!selectedPetId||loading} style={{width:'100%',padding:17,borderRadius:20,border:'none',cursor:(!selectedPetId||loading)?'not-allowed':'pointer',background:`linear-gradient(135deg,${pc},${pc}bb)`,fontSize:16,fontWeight:900,color:'#fff',boxShadow:`0 5px 18px ${pc}44`,opacity:selectedPetId&&!loading?1:0.4,transition:'opacity 0.2s',fontFamily:'inherit'}}>確認，這是我的寵物！🐾</button>
+      </div>
+    </div>}
+
+    {step===3&&<div style={{flex:1,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',padding:'40px 28px',gap:20}}>
+      <Confetti active/>
+      <div style={{animation:'float 3s ease-in-out infinite'}}><img src={selectedPet?.img||CHARACTERS[0].img} alt="" style={{width:100,height:100,objectFit:'contain'}}/></div>
+      <div style={{textAlign:'center'}}>
+        <div style={{fontSize:22,fontWeight:900,color:'#1a1a2e'}}>{name}，你的寵物是</div>
+        <div style={{fontSize:28,fontWeight:900,color:pc,marginTop:2}}>{selectedPet?.name||'小夥伴'} 🎉</div>
+      </div>
+    </div>}
+  </div>);
+}
+
+/* ══ HOME ════════════════════════════════════════════════ */
+function HomeScreen({charSrc,charName,studentName,stats,todaySet,dateLabel,onNav,onSelectChar,pc,fb,refreshFb}){
+  const [expanded,setExpanded]=useState(null);
+  const statItems=[
+    {icon:'🔥',val:stats.streak,label:'連續天數',color:'#FF6B47'},
+    {icon:'📊',val:Number(stats.avgScore||0).toFixed(1),label:'平均分數',color:pc},
+    {icon:'📝',val:stats.todayQuiz|0,label:'今日題數',color:'#FFB800'},
+  ];
+  const accent=['#FF9800','#38bdf8','#a78bfa'];
+
+  return(<div className="screen" style={{background:'linear-gradient(170deg,#fafeff 0%,#f0fdf8 100%)'}}>
+    <div className="scroll-body" style={{padding:'48px 20px 12px'}}>
+      <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:18}}>
+        <div>
+          <div style={{fontSize:22,fontWeight:900,color:'#1a1a2e'}}>你好！{studentName} 👋</div>
+          <div style={{fontSize:12,color:'#aaa',marginTop:2}}>{dateLabel}</div>
+        </div>
+        <button onClick={onSelectChar} style={{width:46,height:46,borderRadius:15,border:`2px solid ${pc}44`,background:'#fff',cursor:'pointer',overflow:'hidden',padding:3,boxShadow:`0 2px 10px ${pc}22`}}>
+          <img src={charSrc} alt="" style={{width:'100%',height:'100%',objectFit:'contain'}}/>
+        </button>
+      </div>
+
+      <div style={{display:'flex',gap:10,marginBottom:18}}>
+        {statItems.map(s=>(
+          <div key={s.label} style={{flex:1,background:'#fff',borderRadius:16,padding:'10px 6px',boxShadow:'0 2px 10px rgba(0,0,0,0.05)',textAlign:'center'}}>
+            <div style={{fontSize:18}}>{s.icon}</div>
+            <div style={{fontSize:18,fontWeight:900,color:s.color,lineHeight:1.1}}>{s.val}</div>
+            <div style={{fontSize:9,color:'#bbb',fontWeight:700,marginTop:1}}>{s.label}</div>
+          </div>
+        ))}
+      </div>
+
+      <div style={{marginBottom:18}}>
+        <PetCard fb={fb} refreshFb={refreshFb} onSelectPet={onSelectChar} onStart={()=>onNav('map')} pc={pc}/>
+      </div>
+
+      <div style={{marginBottom:18}}>
+        <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:10,gap:8}}>
+          <div style={{fontSize:15,fontWeight:900,color:'#1a1a2e',whiteSpace:'nowrap'}}>📅 今日 N3 新語彙</div>
+          <div style={{fontSize:11,color:'#aaa',fontWeight:700,whiteSpace:'nowrap',flexShrink:0}}>點擊看例句 ▾</div>
+        </div>
+        {todaySet.length===0?(
+          <div style={{background:'#fff',borderRadius:18,padding:'20px 16px',textAlign:'center',color:'#aaa',fontSize:13,boxShadow:'0 2px 10px rgba(0,0,0,0.04)'}}>今天還沒有 N3 新語彙，先複習 N4 基礎庫吧 ✨</div>
+        ):(
+          <div style={{display:'flex',flexDirection:'column',gap:10}}>
+            {todaySet.map((w,i)=>{
+              const bg=accent[i%3];
+              const isOpen=expanded===i;
+              return(<div key={w.word+i} onClick={()=>setExpanded(isOpen?null:i)} style={{background:`linear-gradient(135deg,${bg}18,${bg}08)`,border:`1.5px solid ${bg}33`,borderRadius:20,padding:'14px 16px',cursor:'pointer',transition:'all 0.2s'}}>
+                <div style={{display:'flex',alignItems:'center',gap:12}}>
+                  <div style={{width:48,height:48,borderRadius:14,background:`${bg}22`,display:'flex',alignItems:'center',justifyContent:'center',fontSize:28,flexShrink:0}}>
+                    {w.visual||<span style={{fontSize:12,fontWeight:900,color:bg,lineHeight:1.15,textAlign:'center'}}>{catLabel(w.cat)}</span>}
+                  </div>
+                  <div style={{flex:1,minWidth:0}}>
+                    <div style={{fontSize:9,color:'#94a3b8',fontWeight:900,letterSpacing:1,marginBottom:2}}>平假名讀音</div>
+                    <div style={{display:'flex',alignItems:'center',gap:7,minWidth:0}}>
+                      <div style={{fontSize:22,fontWeight:900,color:'#1a1a2e',letterSpacing:1,overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap'}}>{w.reading&&w.reading!==w.word?w.reading:w.word}</div>
+                      <SpeakButton text={w.word} color={bg} size={27} title={`播放 ${w.word} 發音`}/>
+                    </div>
+                    {w.reading&&w.reading!==w.word&&<div style={{fontSize:12,color:'#64748b',fontWeight:900,letterSpacing:1,marginTop:1}}><span style={{fontSize:9,color:'#94a3b8',letterSpacing:0,marginRight:5}}>漢字</span>{w.word}</div>}
+                    <div style={{fontSize:13,color:bg,fontWeight:800,marginTop:2}}><span style={{fontSize:9,color:'#94a3b8',letterSpacing:0,marginRight:5}}>中文</span>{w.zh}</div>
+                  </div>
+                  <div style={{fontSize:14,color:'#ccc',transform:isOpen?'rotate(180deg)':'rotate(0)',transition:'transform 0.2s'}}>▼</div>
+                </div>
+                {isOpen&&w.en&&<div style={{marginTop:12,paddingTop:12,borderTop:`1px solid ${bg}33`,animation:'expandIn 0.25s ease-out'}}>
+                  <div style={{display:'flex',alignItems:'center',gap:7,marginBottom:4}}>
+                    <div style={{fontSize:13,fontWeight:800,color:bg}}>例句</div>
+                    <SpeakButton text={w.en} color={bg} size={26} title="播放例句"/>
+                  </div>
+                  <div style={{fontSize:15,color:'#333',fontStyle:'italic',lineHeight:1.7}}>"{w.en}"</div>
+                  {w.zh2&&<div style={{fontSize:13,color:'#777',marginTop:4}}>「{w.zh2}」</div>}
+                </div>}
+              </div>);
+            })}
+          </div>
+        )}
+      </div>
+
+    </div>
+
+    <BottomNav screen="home" onNav={onNav} pc={pc}/>
+  </div>);
+}
+
+/* ══ CHAR SELECT ═════════════════════════════════════════ */
+function CharSelectScreen({current,onSelect,onBack,pc,fb,refreshFb}){
+  const [pets,setPets]=useState([]);
+  const [loading,setLoading]=useState(false);
+  const [sel,setSel]=useState(fb?.profile?.currentPetId||null);
+  const [err,setErr]=useState('');
+  const [rename,setRename]=useState('');
+  const [voiceGender,setVoiceGender]=useState('female');
+  const myPetId=fb?.profile?.currentPetId||null;
+  const myPet=pets.find(p=>p.id===myPetId)||fb?.pet||null;
+
+  const loadPets=useCallback(async()=>{
+    setLoading(true);setErr('');
+    try{
+      // Wait for fbready event or up to 12s — mobile cold-start Anonymous Auth + Firestore
+      // connection can take 5–10s on cellular, so pure 3s polling under-served mobile.
+      if(!window.FB?.ops?.listPets){
+        await new Promise(resolve=>{
+          let done=false;
+          const finish=()=>{if(done)return;done=true;clearTimeout(t);window.removeEventListener('fbready',finish);resolve();};
+          window.addEventListener('fbready',finish);
+          const t=setTimeout(finish,12000);
+          if(window.FB?.ops?.listPets)finish();
+        });
+      }
+      if(!window.FB?.ops?.listPets)throw new Error('firebase-not-ready');
+      const list=await window.FB.ops.listPets();
+      setPets(list);
+      if(!list.length)setErr('目前沒有寵物資料，請按右上角 ↻ 重試');
+    }
+    catch(e){
+      const lineHint='LINE 內建瀏覽器無法登入。請點右上角 ⋯ → 在瀏覽器中開啟';
+      const msg=e.message==='firebase-not-ready'?(isLineWebView()?lineHint:'Firebase 還沒連上，請稍後按 ↻ 重試'):'寵物清單載入失敗：'+e.message;
+      setErr(msg);
+    }
+    finally{setLoading(false);}
+  },[]);
+  useEffect(()=>{loadPets();},[loadPets,fb?.ready]);
+  useEffect(()=>{
+    const h=()=>loadPets();
+    window.addEventListener('fbready',h);
+    return()=>window.removeEventListener('fbready',h);
+  },[loadPets]);
+  useEffect(()=>{setSel(fb?.profile?.currentPetId||null);setRename((fb?.pet?.name)||'');setVoiceGender(fb?.pet?.voiceGender==='male'?'male':'female');},[fb?.profile?.currentPetId,fb?.pet?.name,fb?.pet?.voiceGender]);
+
+  const doRelease=async()=>{
+    if(!myPetId||!confirm('要把目前這隻寵物釋放回公共池嗎？'))return;
+    try{await window.FB.ops.releasePet(window.FB.uid);await refreshFb();await loadPets();setSel(null);}
+    catch(e){setErr('釋放失敗：'+e.message);}
+  };
+  const doRename=async()=>{
+    const v=rename.trim();if(!v)return setErr('名字不可空白');
+    try{await window.FB.ops.renameMyPet(window.FB.uid,myPetId,v);await refreshFb();await loadPets();}
+    catch(e){const msgs={'bad-name':'名字不可空白','name-too-long':'名字太長囉'};setErr(msgs[e.message]||`改名失敗：${e.message}`);}
+  };
+  const changeVoice=async(g)=>{
+    if(!myPetId||g===voiceGender)return;
+    const prev=voiceGender;setVoiceGender(g);setErr('');
+    try{speakText(g==='male'?'Boy':'Girl',{gender:g});await window.FB.ops.setPetVoiceGender(window.FB.uid,myPetId,g);await refreshFb();await loadPets();}
+    catch(e){setVoiceGender(prev);setErr(`設定發聲失敗：${e.message}`);}
+  };
+
+  return(<div className="screen" style={{background:'linear-gradient(170deg,#fafeff 0%,#f0fdf8 100%)'}}>
+    <div style={{padding:'48px 20px 12px',display:'flex',alignItems:'center',gap:12,flexShrink:0}}>
+      <button onClick={onBack} style={{width:38,height:38,borderRadius:12,border:'none',background:'rgba(0,0,0,0.06)',cursor:'pointer',fontSize:17}}>←</button>
+      <div style={{flex:1}}>
+        <div style={{fontSize:17,fontWeight:900,color:'#1a1a2e'}}>更換夥伴</div>
+        <div style={{fontSize:11,color:'#aaa'}}>寵物名字是公開的，大家都看得到</div>
+      </div>
+      <button onClick={loadPets} style={{border:'none',background:`${pc}15`,color:pc,borderRadius:12,padding:'8px 10px',fontSize:11,fontWeight:900,cursor:'pointer'}}>↻</button>
+    </div>
+
+    {myPet&&<div style={{margin:'0 18px 12px',background:'#fff',borderRadius:18,padding:12,boxShadow:'0 2px 10px rgba(0,0,0,0.05)'}}>
+      <div style={{display:'flex',alignItems:'flex-start',justifyContent:'space-between',marginBottom:8,gap:10}}>
+        <div style={{fontSize:12,fontWeight:900,color:'#1a1a2e',paddingTop:5}}>我的寵物名稱</div>
+        <div style={{display:'flex',flexDirection:'column',alignItems:'flex-end',gap:3}}>
+          <div style={{display:'flex',gap:3,background:'#f1f5f9',borderRadius:10,padding:3}}>
+            {[['male','Boy'],['female','Girl']].map(([g,label])=>{
+              const active=voiceGender===g;
+              return(<button key={g} onClick={()=>changeVoice(g)} style={{padding:'4px 12px',borderRadius:8,border:'none',background:active?pc:'transparent',color:active?'#fff':'#64748b',fontSize:11,fontWeight:900,cursor:'pointer',fontFamily:'inherit',letterSpacing:0.6,transition:'background 0.15s,color 0.15s'}}>{label}</button>);
+            })}
+          </div>
+        </div>
+      </div>
+      <div style={{display:'flex',gap:8}}>
+        <input value={rename} onChange={e=>setRename(e.target.value)} maxLength={24} placeholder="幫牠取個怪名字…" style={{flex:1,minWidth:0,padding:'10px 12px',borderRadius:12,border:'2px solid #eef2f7',fontSize:14,fontWeight:800,fontFamily:'inherit',outline:'none'}}/>
+        <button onClick={doRename} style={{padding:'0 12px',borderRadius:12,border:'none',background:`linear-gradient(135deg,${pc},${pc}bb)`,color:'#fff',fontSize:12,fontWeight:900,fontFamily:'inherit',cursor:'pointer'}}>改名</button>
+        <button onClick={doRelease} style={{padding:'0 12px',borderRadius:12,border:'none',background:'linear-gradient(135deg,#fb7185,#fb7185cc)',color:'#fff',fontSize:12,fontWeight:900,fontFamily:'inherit',cursor:'pointer'}}>💔 釋放</button>
+      </div>
+    </div>}
+
+    {err&&<div style={{margin:'0 18px 10px',background:'#fff4e5',color:'#b75d00',fontSize:12,fontWeight:800,padding:'8px 12px',borderRadius:12,textAlign:'center'}}>{err}</div>}
+
+    <div className="scroll-body" style={{padding:'0 18px 16px'}}>
+      {loading&&<div style={{display:'flex',justifyContent:'center',padding:30}}><div className="spinner"/></div>}
+      {!loading&&pets.length===0&&<div style={{background:'#fff',borderRadius:18,padding:'22px 16px',textAlign:'center',color:'#94a3b8',fontSize:13,fontWeight:800,boxShadow:'0 2px 10px rgba(0,0,0,0.04)'}}>寵物清單還沒載入，請按右上角 ↻ 重試</div>}
+      <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:12}}>
+        {pets.map(p=>{
+          const mine=p.ownerUid&&p.ownerUid===fb?.uid;
+          const unavailable=(p.status==='disabled'||p.hp<=0)||(p.ownerUid&&!mine);
+          return(<PetGridButton key={p.id} pet={p} pc={pc} selected={sel===p.id} disabled={unavailable&&!mine} tag={mine?'我的':null} onClick={()=>setSel(p.id)}/>);
+        })}
+      </div>
+    </div>
+    <div style={{padding:'0 18px 28px',flexShrink:0}}>
+      <button onClick={()=>onSelect(sel)} disabled={!sel} style={{width:'100%',padding:17,borderRadius:20,border:'none',cursor:sel?'pointer':'not-allowed',background:`linear-gradient(135deg,${pc},${pc}bb)`,fontSize:16,fontWeight:900,color:'#fff',boxShadow:`0 5px 18px ${pc}44`,fontFamily:'inherit',opacity:sel?1:0.4}}>確認選擇 ✓</button>
+    </div>
+  </div>);
+}
+
+/* ══ FLASHCARD ═══════════════════════════════════════════ */
+function FlashScreen({charSrc,flashAll,knownWords,refreshFb,onNav,pc,voiceGender='female'}){
+  const [tab,setTab]=useState('unfamiliar'); // 'unfamiliar' | 'known'
+  const knownSet=useMemo(()=>new Set(knownWords||[]),[knownWords]);
+  const unfamiliarPool=useMemo(()=>(flashAll||[]).filter(w=>!knownSet.has(w.word)),[flashAll,knownSet]);
+  const knownPool=useMemo(()=>(flashAll||[]).filter(w=>knownSet.has(w.word)),[flashAll,knownSet]);
+  const cards=tab==='unfamiliar'?unfamiliarPool:knownPool;
+  const [idx,setIdx]=useState(0);
+  const [flipped,setFlipped]=useState(false);
+  const [speakTick,setSpeakTick]=useState(0);
+  const [busy,setBusy]=useState(false);
+
+  // Reset index when switching tabs / pool changes
+  useEffect(()=>{setIdx(0);setFlipped(false);},[tab]);
+  useEffect(()=>{setIdx(i=>Math.min(i,Math.max(0,cards.length-1)));},[cards.length]);
+
+  const tabsHeader=(
+    <div style={{display:'flex',margin:'4px 20px 10px',background:'#f0f8fa',borderRadius:14,padding:3,flexShrink:0}}>
+      {[['unfamiliar',`未熟練 (${unfamiliarPool.length})`],['known',`已會 (${knownPool.length})`]].map(([id,label])=>(
+        <button key={id} onClick={()=>setTab(id)} style={{flex:1,padding:'8px',borderRadius:11,border:'none',cursor:'pointer',background:tab===id?'#fff':'transparent',fontSize:13,fontWeight:800,color:tab===id?pc:'#aaa',boxShadow:tab===id?'0 2px 8px rgba(0,0,0,0.08)':'none',transition:'all 0.2s',fontFamily:'inherit'}}>{label}</button>
+      ))}
+    </div>
+  );
+
+  if(cards.length===0)return(
+    <div className="screen" style={{background:'linear-gradient(170deg,#fafeff 0%,#f0fdf8 100%)'}}>
+      <div style={{padding:'48px 20px 8px',display:'flex',alignItems:'center',gap:12,flexShrink:0}}>
+        <div style={{flex:1,fontSize:16,fontWeight:900,color:'#1a1a2e'}}>📖 語彙卡庫</div>
+      </div>
+      {tabsHeader}
+      <div style={{flex:1,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',padding:40,gap:16,textAlign:'center'}}>
+        <span style={{fontSize:60}}>{tab==='unfamiliar'?'🎉':'📖'}</span>
+        <div style={{fontSize:18,fontWeight:900,color:'#1a1a2e'}}>{tab==='unfamiliar'?'全部都會了！':'還沒有已會語彙'}</div>
+        <div style={{fontSize:13,color:'#aaa',lineHeight:1.6}}>{tab==='unfamiliar'?'去做幾題測驗練手感吧～':'在「未熟練」按「我會了」後，語彙會搬到這裡。'}</div>
+        <button onClick={()=>onNav('home')} style={{padding:'14px 28px',borderRadius:18,border:'none',cursor:'pointer',background:`linear-gradient(135deg,${pc},${pc}bb)`,fontSize:15,fontWeight:900,color:'#fff',fontFamily:'inherit'}}>回首頁</button>
+      </div>
+      <BottomNav screen="flash" onNav={onNav} pc={pc}/>
+    </div>
+  );
+
+  const card=cards[Math.min(idx,cards.length-1)];
+  const catColor=CAT[card.cat]||'#94a3b8';
+  const progress=(idx+1)/cards.length;
+  const goNext=()=>{setFlipped(false);setTimeout(()=>setIdx(i=>Math.min(i+1,cards.length-1)),120);};
+  const goPrev=()=>{setFlipped(false);setTimeout(()=>setIdx(i=>Math.max(i-1,0)),120);};
+  const handleMarkKnown=async()=>{
+    if(busy||!card)return;
+    setBusy(true);
+    try{
+      if(window.FB?.ops?.markWordKnown&&window.FB?.uid){
+        await window.FB.ops.markWordKnown(window.FB.uid,card.word);
+        await refreshFb?.();
+      }
+    }catch(e){console.warn('markWordKnown failed',e);}
+    setBusy(false);
+    setFlipped(false);
+    // After move, current card index may now point past the new (shorter) unfamiliar list — useEffect will clamp
+  };
+  const handleMarkUnknown=async()=>{
+    if(busy||!card)return;
+    setBusy(true);
+    try{
+      if(window.FB?.ops?.markWordUnknown&&window.FB?.uid){
+        await window.FB.ops.markWordUnknown(window.FB.uid,card.word);
+        await refreshFb?.();
+      }
+    }catch(e){console.warn('markWordUnknown failed',e);}
+    setBusy(false);
+    setFlipped(false);
+  };
+
+  return(<div className="screen" style={{background:'linear-gradient(170deg,#fafeff 0%,#f0fdf8 100%)'}}>
+    <div style={{padding:'48px 20px 6px',display:'flex',alignItems:'center',gap:12,flexShrink:0}}>
+      <div style={{flex:1}}>
+        <div style={{fontSize:16,fontWeight:900,color:'#1a1a2e'}}>📖 語彙卡庫</div>
+      </div>
+      <div style={{fontSize:13,fontWeight:800,color:pc,background:`${pc}15`,padding:'5px 12px',borderRadius:16}}>{idx+1}/{cards.length}</div>
+    </div>
+
+    {tabsHeader}
+
+    <div style={{padding:'0 20px 10px',flexShrink:0}}>
+      <div style={{height:7,background:'#e8f8fa',borderRadius:8}}>
+        <div style={{height:7,borderRadius:8,background:`linear-gradient(90deg,${pc},${pc}88)`,width:`${progress*100}%`,transition:'width 0.3s ease-out'}}/>
+      </div>
+      <div style={{display:'flex',justifyContent:'space-between',marginTop:5}}>
+        <span style={{fontSize:11,color:'#aaa',fontWeight:700}}>{tab==='unfamiliar'?`📚 未熟練 ${cards.length} 個`:`✅ 已會 ${cards.length} 個`}</span>
+        <span style={{fontSize:11,color:'#aaa',fontWeight:700}}>還剩 {Math.max(0,cards.length-idx-1)} 張</span>
+      </div>
+    </div>
+
+    <div className="scroll-body" style={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',padding:'14px 22px 12px',gap:16}}>
+      <div style={{width:'100%',position:'relative'}}>
+      <div onClick={()=>setFlipped(f=>!f)} style={{width:'100%',background:'#fff',borderRadius:28,boxShadow:'0 6px 28px rgba(0,0,0,0.09)',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',padding:'28px 24px',gap:10,cursor:'pointer',minHeight:240,animation:'pop 0.2s ease-out',position:'relative',overflow:'hidden'}}>
+        <div style={{position:'absolute',top:0,left:0,right:0,height:4,background:`linear-gradient(90deg,${catColor},${catColor}66)`,borderRadius:'28px 28px 0 0'}}/>
+        <div style={{fontSize:11,fontWeight:800,color:catColor,letterSpacing:1,opacity:0.8}}>{catLabel(card.cat)}</div>
+        {!flipped?(
+          <>
+            <div style={{fontSize:10,color:'#94a3b8',fontWeight:900,letterSpacing:1}}>平假名讀音</div>
+            <div style={{fontSize:36,fontWeight:900,color:'#1a1a2e',letterSpacing:2,textAlign:'center',wordBreak:'break-word',maxWidth:'100%'}}>{card.reading&&card.reading!==card.word?card.reading:card.word}</div>
+            {card.reading&&card.reading!==card.word&&<div style={{display:'flex',alignItems:'center',gap:7,background:'#f8fafc',borderRadius:14,padding:'5px 12px',maxWidth:'100%'}}>
+              <span style={{fontSize:10,color:'#94a3b8',fontWeight:900,letterSpacing:1,whiteSpace:'nowrap'}}>漢字</span>
+              <span style={{fontSize:16,fontWeight:900,color:'#64748b',letterSpacing:1,wordBreak:'break-all'}}>{card.word}</span>
+            </div>}
+            <div style={{border:`1.5px dashed ${catColor}66`,background:`${catColor}10`,borderRadius:18,padding:'9px 16px',fontSize:17,fontWeight:900,color:catColor,lineHeight:1.35,textAlign:'center',maxWidth:'100%'}}>
+              <div style={{fontSize:10,color:'#94a3b8',fontWeight:900,letterSpacing:1,marginBottom:2}}>中文意思</div>
+              {card.zh}
+            </div>
+            <div style={{fontSize:12,color:'#ccc',marginTop:4}}>👆 點擊看例句</div>
+          </>
+        ):(()=>{
+          const sentence=card.en||'';
+          const wIdx=card.word&&sentence?sentence.toLowerCase().indexOf(card.word.toLowerCase()):-1;
+          const sentenceNode=sentence?(
+            <div style={{width:'100%',padding:'4px 2px'}}>
+              <div style={{fontSize:10,color:'#94a3b8',fontWeight:900,letterSpacing:1,textAlign:'center',marginBottom:4}}>日文例句</div>
+              <div style={{fontSize:18,color:'#555',textAlign:'center',lineHeight:1.6,fontStyle:'italic'}}>
+                {wIdx>=0?(<>"{sentence.slice(0,wIdx)}<span style={{color:catColor,fontWeight:900,fontStyle:'normal'}}>{sentence.slice(wIdx,wIdx+card.word.length)}</span>{sentence.slice(wIdx+card.word.length)}"</>):`"${sentence}"`}
+              </div>
+            </div>
+          ):(
+            <div style={{fontSize:22,fontWeight:900,color:catColor,textAlign:'center',lineHeight:1.3}}>{card.zh}</div>
+          );
+          return(<>
+            {sentenceNode}
+            {(card.zh2||card.zh)&&<div style={{borderTop:'1px dashed #e8e0e0',width:'100%',marginTop:6,paddingTop:10,fontSize:14,color:'#333',textAlign:'center',fontWeight:700}}><span style={{display:'block',fontSize:10,color:'#94a3b8',fontWeight:900,letterSpacing:1,marginBottom:3}}>中文句意</span>「{card.zh2||card.zh}」</div>}
+          </>);
+        })()}
+      </div>
+        <div style={{position:'absolute',top:15,right:12,width:54,height:54,zIndex:5}}>
+          {speakTick>0&&(
+            <div key={speakTick} style={{position:'absolute',top:'50%',left:'50%',width:0,height:0,pointerEvents:'none'}} aria-hidden>
+              {[-150,-120,-90,-60,-30].map((deg,i)=>(
+                <span key={i} style={{position:'absolute',top:-1.5,left:0,width:12,height:3,marginLeft:0,borderRadius:2,background:catColor,transformOrigin:'left center',['--ang']:`${deg}deg`,transform:`rotate(${deg}deg) translateX(22px) scaleX(0.35)`,animation:'speakBurst 0.55s ease-out forwards',animationDelay:`${i*40}ms`,opacity:0}}/>
+              ))}
+            </div>
+          )}
+          <button onClick={(e)=>{e.stopPropagation();speakText(flipped?(card.en||card.word):card.word,{gender:voiceGender});setSpeakTick(t=>t+1);}} aria-label="播放發音" title="點我發音" style={{border:'none',background:'transparent',padding:0,cursor:'pointer',display:'block',animation:'float 3s ease-in-out infinite',filter:'drop-shadow(0 3px 6px rgba(0,0,0,0.18))'}}>
+            <img src={charSrc} alt="" style={{width:54,height:54,objectFit:'contain',display:'block'}}/>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div style={{padding:'0 16px 6px',display:'flex',gap:8,flexShrink:0}}>
+      <button onClick={goPrev} disabled={idx===0} style={{flex:1,padding:'6px 10px',borderRadius:12,border:'1.5px solid #f0eaea',background:'#fff',fontSize:12,fontWeight:800,color:'#aaa',cursor:'pointer',opacity:idx===0?0.4:1,fontFamily:'inherit'}}>← 上一張</button>
+      {tab==='unfamiliar'?(
+        <button onClick={handleMarkKnown} disabled={busy} style={{flex:1.6,padding:'6px 10px',borderRadius:12,border:`1.5px solid ${pc}44`,background:`${pc}12`,fontSize:12,fontWeight:900,color:pc,cursor:busy?'wait':'pointer',fontFamily:'inherit',opacity:busy?0.6:1}}>{busy?'…':'✅ 我會了'}</button>
+      ):(
+        <button onClick={handleMarkUnknown} disabled={busy} style={{flex:1.6,padding:'6px 10px',borderRadius:12,border:'1.5px solid #fde2e6',background:'#fff5f7',fontSize:12,fontWeight:900,color:'#fb7185',cursor:busy?'wait':'pointer',fontFamily:'inherit',opacity:busy?0.6:1}}>{busy?'…':'↩ 移回未熟練'}</button>
+      )}
+      <button onClick={goNext} disabled={idx>=cards.length-1} style={{flex:1,padding:'6px 10px',borderRadius:12,border:'none',background:`linear-gradient(135deg,${pc},${pc}bb)`,fontSize:12,fontWeight:900,color:'#fff',cursor:'pointer',opacity:idx>=cards.length-1?0.5:1,fontFamily:'inherit'}}>下一張 →</button>
+    </div>
+    <BottomNav screen="flash" onNav={onNav} pc={pc}/>
+  </div>);
+}
+
+
+/* ══ MAP QUEST ═══════════════════════════════════════════ */
+function MapScreen({profile,uid,studentName,charSrc,pc,onNav,onStartStage,cloudEntries,stageRecords,onRefreshMap}){
+  const scrollRef=useRef(null);
+  const currentNodeRef=useRef(null);
+  const currentStage=Math.min(MAP_STAGE_COUNT,getPlayerMapStage(profile));
+  const records=useMemo(()=>{const m=new Map();(stageRecords||[]).forEach(r=>m.set(Number(r.stage||0),r));return m;},[stageRecords]);
+  const mapStars=profile?.mapStars||{};
+  const friends=useMemo(()=>{const map=new Map();(cloudEntries||[]).filter(e=>String(e.uid||'')!==String(uid||'')&&String(e.name||'')!==String(studentName||'')).slice(0,16).forEach((e,i)=>{const st=Math.min(MAP_STAGE_COUNT,getEntryMapStage(e));if(!map.has(st))map.set(st,[]);map.get(st).push({...e,rank:i+1});});return map;},[cloudEntries,uid,studentName]);
+  const boardH=1840;
+  const points=useMemo(()=>{
+    // Five-stage turn pockets: :>● then ●<: .
+    // Boss stages sit on the outer edge; regular stages form the turn shape.
+    const groupGap=270;
+    const baseY=boardH-180;
+    const rightTurn=[
+      {x:20,y:0},   // 1: approach
+      {x:45,y:0},   // 2: lower colon
+      {x:45,y:-110},// 3: upper colon
+      {x:64,y:-55}, // 4: arrow neck
+      {x:84,y:-55}, // 5: boss dot
+    ];
+    const leftTurn=[
+      {x:80,y:0},   // 6: approach
+      {x:55,y:0},   // 7: lower colon
+      {x:55,y:-110},// 8: upper colon
+      {x:36,y:-55}, // 9: arrow neck
+      {x:16,y:-55}, // 10: boss dot
+    ];
+    return Array.from({length:MAP_STAGE_COUNT},(_,i)=>{
+      const stage=i+1;
+      const group=Math.floor((stage-1)/5);
+      const slot=(stage-1)%5;
+      const tpl=group%2===0?rightTurn:leftTurn;
+      const pt=tpl[slot];
+      return{stage,x:pt.x,y:baseY-group*groupGap+pt.y,biome:biomeForStage(stage),boss:isBossStage(stage)};
+    });
+  },[]);
+  useEffect(()=>{
+    const t=setTimeout(()=>{
+      const el=scrollRef.current;
+      const cur=points.find(p=>p.stage===currentStage);
+      if(el&&cur){
+        const target=Math.max(0,cur.y-el.clientHeight*0.42);
+        try{el.scrollTo({top:target,behavior:'smooth'});}catch{el.scrollTop=target;}
+      }else currentNodeRef.current?.scrollIntoView?.({block:'center',behavior:'smooth'});
+    },180);
+    return()=>clearTimeout(t);
+  },[currentStage,points]);
+  const cleared=Math.max(0,currentStage-1);
+  const nextBoss=Math.ceil(currentStage/BOSS_EVERY)*BOSS_EVERY;
+  const pointByStage=new Map(points.map(p=>[p.stage,p]));
+  const stageLine=(a,b)=>{
+    const pa=pointByStage.get(a),pb=pointByStage.get(b);if(!pa||!pb)return null;
+    const color=biomeForStage(a).color;
+    return <g key={`line-${a}`}><line x1={`${pa.x}%`} y1={pa.y} x2={`${pb.x}%`} y2={pb.y} stroke="#fff" strokeWidth="18" strokeLinecap="round"/><line x1={`${pa.x}%`} y1={pa.y} x2={`${pb.x}%`} y2={pb.y} stroke={color} strokeWidth="12" strokeLinecap="round" strokeDasharray="9 10"/></g>;
+  };
+  const renderNode=(p)=>{
+    const stage=p.stage,locked=stage>currentStage,done=stage<currentStage,current=stage===currentStage,boss=p.boss,biome=p.biome;
+    const rec=records.get(stage)||{};
+    const people=friends.get(stage)||[];
+    const bossName=rec.firstClearerName||rec.bossName||'等你成為首位通關者';
+    const bossClearSec=defaultBossAvgSec(stage);
+    const bossChallengeSec=Number(rec.bestBossAvgSec||rec.bossAvgSec||rec.firstClearerAvgSec||bossClearSec);
+    const firstAvgSec=Number(rec.firstClearerAvgSec||rec.bestBossAvgSec||0);
+    const firstAvatarId=rec.firstClearerAvatarId||rec.bossAvatarId||null;
+    const firstAvatarSrc=firstAvatarId?(CHARACTERS[petIdxFromId(firstAvatarId)??avatarIdxFromId(firstAvatarId)]?.img||CHARACTERS[0].img):null;
+    const size=boss?62:54;
+    return(<div key={stage} ref={current?currentNodeRef:null} style={{position:'absolute',left:`${p.x}%`,top:p.y,transform:'translate(-50%,-50%)',zIndex:locked?2:5,width:110,height:96,display:'flex',alignItems:'center',justifyContent:'center'}}>
+      {boss&&firstAvatarSrc&&<img src={firstAvatarSrc} alt="首位通關寵物" style={{position:'absolute',top:-36,left:'50%',transform:'translateX(-50%)',width:32,height:32,objectFit:'contain',filter:'drop-shadow(0 3px 4px rgba(0,0,0,.22))',zIndex:4}}/>}
+      {boss&&<div style={{position:'absolute',top:firstAvatarSrc?-17:-18,left:'50%',transform:'translateX(-50%)',fontSize:23,filter:'drop-shadow(0 2px 2px rgba(0,0,0,0.18))',zIndex:3}}>👑</div>}
+      <button onClick={()=>!locked&&onStartStage({stage,isBoss:boss,biome,bossName,bossClearSec,bossChallengeSec})} disabled={locked} style={{position:'relative',width:size,height:size,border:'none',borderRadius:'50%',background:locked?'linear-gradient(145deg,#e5e7eb,#cbd5e1)':done?'linear-gradient(145deg,#75e49a,#22c55e)':current?'linear-gradient(145deg,#ffe680,#ffb703)':'linear-gradient(145deg,#74d7ff,#2797ff)',boxShadow:locked?'inset 0 3px 8px rgba(255,255,255,.7),0 5px 12px rgba(15,23,42,.12)':current?'0 0 0 5px rgba(255,183,3,.22),0 10px 24px rgba(255,183,3,.42),inset 0 4px 7px rgba(255,255,255,.72)':'0 8px 18px rgba(39,151,255,.28),inset 0 4px 7px rgba(255,255,255,.70)',cursor:locked?'not-allowed':'pointer',fontFamily:'inherit',animation:current?'float 2.2s ease-in-out infinite':'none'}}>
+        <span style={{position:'absolute',inset:9,borderRadius:'50%',background:locked?'rgba(255,255,255,.65)':'rgba(255,255,255,.88)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:boss?17:18,fontWeight:900,color:locked?'#94a3b8':done?'#15803d':'#1a1a2e',boxShadow:'inset 0 2px 5px rgba(255,255,255,.9)'}}>{locked?'🔒':stage}</span>
+      </button>
+      <div style={{position:'absolute',left:'50%',bottom:-2,transform:'translateX(-50%)',display:'flex',gap:0,letterSpacing:-2,fontSize:15,lineHeight:1,textShadow:'0 1px 2px rgba(255,255,255,.85)'}}>
+        {[0,1,2].map(i=><span key={i} style={{opacity:i<(Number(mapStars[stage]||0))?1:0.30,filter:i<(Number(mapStars[stage]||0))?'saturate(1.2)':'grayscale(1)'}}> {i<(Number(mapStars[stage]||0))?'⭐':'☆'} </span>)}
+      </div>
+      {current&&<img src={charSrc} alt="目前寵物" style={{position:'absolute',left:'50%',top:'50%',transform:'translate(-50%,-62%)',width:40,height:40,objectFit:'contain',filter:'drop-shadow(0 4px 5px rgba(0,0,0,.24))',zIndex:8,pointerEvents:'none'}}/>}
+      {boss&&<div style={{position:'absolute',left:'50%',top:firstAvatarSrc?-86:-62,transform:'translateX(-50%)',width:112,background:'#fff',border:`2px solid ${biome.color}55`,borderRadius:14,padding:'5px 7px',boxShadow:'0 4px 13px rgba(0,0,0,.10)',fontSize:9,color:'#334155',fontWeight:900,lineHeight:1.25,textAlign:'center',zIndex:6}}><div style={{color:'#fb7185',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>{rec.firstClearerName?(<>{rec.firstClearerName}{firstAvgSec>0&&<span style={{color:'#64748b'}}> (AVG {formatSec(firstAvgSec)})</span>}</>):'首位通關者'}</div><div style={{color:'#94a3b8'}}>每題限{formatSec(bossClearSec)}</div></div>}
+      {people.length>0&&<div style={{position:'absolute',left:'50%',top:'50%',transform:'translate(-50%,-62%)',display:'flex',pointerEvents:'none',zIndex:7}}>{people.slice(0,3).map((e,i)=>{const idx=petIdxFromId(e.avatarId)??avatarIdxFromId(e.avatarId);const src=CHARACTERS[idx]?.img||CHARACTERS[0].img;return <img key={(e.uid||e.name||i)+i} src={src} title={e.name||'玩家'} style={{width:40,height:40,objectFit:'contain',filter:'drop-shadow(0 3px 4px rgba(0,0,0,.22))',marginLeft:i?-24:0}}/>;})}</div>}
+    </div>);
+  };
+  const foodBonuses=MAP_FOOD_BONUS_STAGES.map(stage=>{const p=pointByStage.get(stage);if(!p)return null;const side=p.x>50?-1:1;const got=stage<currentStage;return(<div key={`food-${stage}`} style={{position:'absolute',left:`${p.x+side*30}%`,top:p.y-78,transform:'translate(-50%,-50%)',zIndex:3,textAlign:'center',opacity:got?0.42:1}}><div title={`通過第 ${stage} 關獲得肉塊 ×${MAP_FOOD_BONUS}`} style={{width:38,height:38,borderRadius:13,background:'#fff8',border:'2px dashed #fff',display:'flex',alignItems:'center',justifyContent:'center',fontSize:22,boxShadow:'0 3px 10px rgba(0,0,0,.09)'}}>🍖</div><div style={{fontSize:9,fontWeight:900,color:'#111827',textShadow:'0 1px 2px rgba(255,255,255,.75)',marginTop:1}}>+{MAP_FOOD_BONUS}</div><div style={{height:2,width:34,background:'repeating-linear-gradient(90deg,#fff 0 5px,transparent 5px 10px)',transform:`translate(${side*-12}px,22px) rotate(${side*24}deg)`}}/></div>);});
+  return(<div className="screen" style={{background:'linear-gradient(170deg,#fafeff 0%,#f0fdf8 100%)'}}>
+    <div style={{padding:'42px 18px 10px',background:'linear-gradient(180deg,#ffffff,#f8fdff)',boxShadow:'0 2px 12px rgba(0,0,0,.04)',zIndex:10}}>
+      <div style={{display:'flex',alignItems:'center',gap:12}}>
+        <div style={{width:50,height:50,borderRadius:18,background:'#fff',display:'flex',alignItems:'center',justifyContent:'center',boxShadow:'0 3px 12px rgba(0,0,0,0.07)'}}><img src={charSrc} alt="" style={{width:43,height:43,objectFit:'contain'}}/></div>
+        <div style={{flex:1,minWidth:0}}><div style={{fontSize:20,fontWeight:900,color:'#1a1a2e'}}>世界地圖闖關</div><div style={{fontSize:12,color:'#94a3b8',fontWeight:800}}>{studentName}：第 {currentStage} 關・下一魔王第 {nextBoss} 關</div></div>
+        <button onClick={onRefreshMap} style={{border:'none',background:'#fff',borderRadius:14,padding:'10px 12px',fontSize:16,cursor:'pointer',boxShadow:'0 2px 10px rgba(0,0,0,0.06)'}}>↻</button>
+      </div>
+      <div style={{height:9,background:'#eef2f7',borderRadius:999,overflow:'hidden',marginTop:12}}><div style={{height:'100%',width:`${Math.min(100,cleared/MAP_STAGE_COUNT*100)}%`,background:'linear-gradient(90deg,#61c2ff,#22c55e,#ffb703)',borderRadius:999}}/></div>
+    </div>
+    <div ref={scrollRef} className="scroll-body" style={{padding:'10px 14px 14px',background:'#7c4a24'}}>
+      <div style={{position:'relative',height:boardH,border:'5px solid #fff',borderRadius:30,overflow:'hidden',boxShadow:'inset 0 0 0 2px rgba(255,255,255,.45),0 8px 28px rgba(0,0,0,.24)',background:'linear-gradient(180deg,#f8ffff 0%,#dff8f6 31%,#fff7c2 55%,#fff0a3 72%,#d8f8a8 100%)'}}>
+        <svg viewBox="0 0 390 1360" preserveAspectRatio="none" style={{position:'absolute',inset:0,width:'100%',height:'100%',zIndex:0,pointerEvents:'none'}}>
+          <path d="M0 115 C70 55 135 170 205 92 S330 25 390 92 V360 H0 Z" fill="#9ceee7" opacity="0.32"/>
+          <path d="M0 190 C88 120 142 250 225 168 S330 112 390 176 V430 H0 Z" fill="#69d9d6" opacity="0.30"/>
+          <path d="M0 280 C70 210 155 330 235 252 S330 215 390 260 V520 H0 Z" fill="#4ccfd0" opacity="0.22"/>
+          <path d="M0 500 C86 430 135 560 218 486 S326 425 390 488 V755 H0 Z" fill="#fff3a2" opacity="0.64"/>
+          <path d="M0 590 C72 535 150 640 226 574 S325 532 390 590 V825 H0 Z" fill="#ffd976" opacity="0.36"/>
+          <path d="M0 835 C72 775 155 910 235 826 S325 765 390 825 V1085 H0 Z" fill="#b9ef8f" opacity="0.55"/>
+          <path d="M0 940 C88 860 145 1015 230 925 S330 850 390 930 V1225 H0 Z" fill="#7edb72" opacity="0.30"/>
+        </svg>
+        <div style={{position:'absolute',left:-30,top:75,width:145,height:62,borderRadius:'50%',background:'#fff8',filter:'blur(.2px)'}}/><div style={{position:'absolute',right:-35,top:230,width:130,height:55,borderRadius:'50%',background:'#fff7'}}/>
+        <div style={{position:'absolute',left:18,top:290,fontSize:34}}>🏜️</div><div style={{position:'absolute',right:18,top:610,fontSize:34}}>🌾</div><div style={{position:'absolute',left:18,bottom:40,fontSize:34}}>🚩</div><div style={{position:'absolute',right:18,bottom:115,fontSize:38}}>🌲</div>
+        <svg width="100%" height="100%" style={{position:'absolute',inset:0,zIndex:1,overflow:'visible'}}>{Array.from({length:MAP_STAGE_COUNT-1},(_,i)=>stageLine(i+1,i+2))}</svg>
+        {foodBonuses}
+        {points.map(renderNode)}
+      </div>
+    </div>
+    <BottomNav screen="map" onNav={onNav} pc={pc}/>
+  </div>);
+}
+
+/* ══ QUIZ ════════════════════════════════════════════════ */
+// Question-type theme tokens (matches fix1.jpg orange / fix2.jpg cyan)
+const Q_THEME={
+  zh2en:{color:'#61c2ff',icon:'🎯',label:'選出正確解釋'},
+  reading:{color:'#22c55e',icon:'かな',label:'選出正確讀音'},
+  particle:{color:'#f472b6',icon:'助',label:'填入正確助詞'},
+  cloze:{color:'#FF9800',icon:'✏️',label:'拼出正確語彙'},
+  tense:{color:'#38bdf8',icon:'⏱',label:'選出正確時態'},
+  order:{color:'#a78bfa',icon:'🧩',label:'排出完整句子'},
+};
+const QUIZ_ZH_SENTENCE_STYLE={fontSize:14,color:'#333',textAlign:'center',fontWeight:800,lineHeight:1.55};
+
+function Blank({width=78,color='#555',filled}){
+  return(<span style={{display:'inline-block',minWidth:width,padding:'0 6px',margin:'0 4px',borderBottom:`2px solid ${color}`,textAlign:'center',fontWeight:900,color:filled?color:'transparent',verticalAlign:'baseline',lineHeight:1.2,letterSpacing:1,fontFamily:filled?'monospace':'inherit'}}>{filled||'＿'}</span>);
+}
+
+function QuizScreen({charSrc,charName,quizPool,knownWords,onFinish,onNav,onAnsweredChange,pc,refreshFb,voiceGender='female',quest=null}){
+  const TOTAL=Math.min(15,quizPool.length);
+  const knownSet=useMemo(()=>new Set(knownWords||[]),[knownWords]);
+  const [questions]=useState(()=>buildQuizItems(quizPool,TOTAL,knownSet));
+  const HINT_BUDGET=3;
+  const [idx,setIdx]=useState(0);
+  const [selected,setSel]=useState(null);   // for zh2en/tense: chosen option string
+  const [clozePicked,setClozePicked]=useState([]); // token ids picked for spelling questions
+  const [clozeResult,setClozeResult]=useState(null); // {isCorrect, userAnswer}
+  const [orderPicked,setOrderPicked]=useState([]); // token ids picked for sentence-order questions
+  const [orderResult,setOrderResult]=useState(null); // {isCorrect}
+  const [score,setScore]=useState(0);
+  const [xp,setXp]=useState(0);
+  const [combo,setCombo]=useState(0);
+  const [showConf,setConf]=useState(false);
+  const [xpMsg,setXpMsg]=useState(null);
+  const [shaking,setShaking]=useState(false);
+  const [hintsLeft,setHintsLeft]=useState(HINT_BUDGET);
+  const [hintRevealed,setHintRevealed]=useState(false); // tense hint shown
+  const [hiddenOpts,setHiddenOpts]=useState(new Set()); // zh2en eliminated wrong options
+  const [hintUsedThisQ,setHintUsedThisQ]=useState(false); // per-question lock — only 1 hint debit per question
+  const [hintFx,setHintFx]=useState(0);
+  const answeredRef=useRef(0);
+  const dragTokenRef=useRef(null);
+  const questionStartRef=useRef(Date.now());
+  const answerTimesRef=useRef([]);
+  const speedWinsRef=useRef(0);
+  const clearWinsRef=useRef(0);
+  const clearScoreRef=useRef(0);
+  const [speedWins,setSpeedWins]=useState(0);
+  const [clearScore,setClearScore]=useState(0);
+  const clearTarget=quest?.isBoss?bossPassTarget(TOTAL):clearPassTarget(TOTAL);
+  const bossTimeLimit=Math.max(1,Math.round(Number(quest?.bossClearSec||defaultBossAvgSec(quest?.stage||1))));
+  const [timeLeft,setTimeLeft]=useState(bossTimeLimit);
+
+  useEffect(()=>{
+    // Reset per-question hint state
+    questionStartRef.current=Date.now();
+    setTimeLeft(bossTimeLimit);
+    setHintRevealed(false);
+    setHiddenOpts(new Set());
+    setHintUsedThisQ(false);
+    setHintFx(0);
+    setClozePicked([]);
+    setOrderPicked([]);
+    setOrderResult(null);
+  },[idx,questions,bossTimeLimit]);
+
+  // Auto-clear the ✨ pop overlay after its animation finishes (~0.4s)
+  useEffect(()=>{
+    if(hintFx<=0)return;
+    const t=setTimeout(()=>setHintFx(0),500);
+    return()=>clearTimeout(t);
+  },[hintFx]);
+
+  useEffect(()=>{
+    if(!quest?.isBoss||selected||clozeResult||orderResult)return;
+    const tick=()=>{
+      const elapsed=(Date.now()-questionStartRef.current)/1000;
+      setTimeLeft(Math.max(0,bossTimeLimit-elapsed));
+    };
+    tick();
+    const t=setInterval(tick,250);
+    return()=>clearInterval(t);
+  },[idx,quest?.isBoss,bossTimeLimit,selected,clozeResult,orderResult]);
+
+  const advanceClearScore=(ok)=>{
+    const prev=clearScoreRef.current;
+    const next=ok?Math.min(TOTAL,prev+1):(prev>=clearTarget?Math.max(0,prev-1):prev);
+    clearScoreRef.current=next;
+    setClearScore(next);
+    return next;
+  };
+
+  const usePetHint=()=>{
+    if(hintsLeft<=0)return;
+    if(hintUsedThisQ)return; // already debited this question — additional taps do nothing
+    const cur=questions[idx];
+    if(!cur||selected||clozeResult||orderResult)return;
+    if(cur.type==='zh2en'){
+      const wrongs=cur.options.filter(o=>normalizeAnswer(o.word)!==normalizeAnswer(cur.vocab.word));
+      const drop=shuffle(wrongs).slice(0,2).map(o=>o.word);
+      if(drop.length===0)return;
+      setHiddenOpts(new Set(drop));
+    }else if(cur.type==='particle'){
+      const wrongs=cur.options.filter(o=>normalizeAnswer(o)!==normalizeAnswer(cur.correct));
+      const drop=shuffle(wrongs).slice(0,2);
+      if(drop.length===0)return;
+      setHiddenOpts(new Set(drop));
+    }else if(cur.type==='cloze'){
+      const first3=(cur.letterTokens||[]).filter(t=>t.idx<3).sort((a,b)=>a.idx-b.idx).map(t=>t.id);
+      if(first3.length===0)return;
+      setClozePicked(prev=>[...first3,...prev.filter(id=>!first3.includes(id))]);
+    }else if(cur.type==='tense'){
+      setHintRevealed(true);
+    }else if(cur.type==='order'){
+      const first3=cur.tokens.filter(t=>t.idx<3).sort((a,b)=>a.idx-b.idx).map(t=>t.id);
+      setOrderPicked(prev=>[...first3,...prev.filter(id=>!first3.includes(id))]);
+    }else return;
+    setHintUsedThisQ(true);
+    setHintsLeft(n=>Math.max(0,n-1));
+    setHintFx(t=>t+1);
+  };
+
+  if(TOTAL===0)return(
+    <div className="screen" style={{background:'linear-gradient(170deg,#fafeff 0%,#f0fdf8 100%)'}}>
+      <div style={{flex:1,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',padding:40,gap:16,textAlign:'center'}}>
+        <span style={{fontSize:60}}>🎮</span>
+        <div style={{fontSize:20,fontWeight:900,color:'#1a1a2e'}}>還沒有可以測驗的語彙</div>
+        <div style={{fontSize:14,color:'#aaa',lineHeight:1.6}}>先到首頁看看今日 N3 新語彙，再進來測驗！</div>
+        <button onClick={()=>onNav('home')} style={{padding:'14px 28px',borderRadius:18,border:'none',cursor:'pointer',background:`linear-gradient(135deg,${pc},${pc}bb)`,fontSize:15,fontWeight:900,color:'#fff',fontFamily:'inherit'}}>回首頁</button>
+      </div>
+      <BottomNav screen="map" onNav={onNav} pc={pc}/>
+    </div>
+  );
+
+  const q=questions[idx];
+  const vocab=q.vocab;
+  const theme=Q_THEME[q.type]||Q_THEME.zh2en;
+
+  const sentenceForQuestion=(qq)=>{
+    if(!qq)return '';
+    if(qq.type==='order')return qq.sentence||qq.correct||qq.vocab?.en||'';
+    if(qq.type==='cloze')return `${qq.before||''}${qq.correct||''}${qq.after||''}`.trim();
+    if(qq.type==='tense')return `${qq.before||''}${qq.correct||''}${qq.after||''}`.trim();
+    if(qq.type==='particle')return `${qq.before||''}${qq.correct||''}${qq.after||''}`.trim();
+    return qq.vocab?.word||qq.correct||'';
+  };
+  const speakAfterAnswer=(qq)=>{
+    const text=sentenceForQuestion(qq);
+    if(text)try{speakText(text,{gender:voiceGender});}catch(e){console.warn('speak failed',e);}
+  };
+
+  const afterAnswer=async(ok)=>{
+    answeredRef.current+=1;
+    onAnsweredChange?.(answeredRef.current);
+    const elapsedSec=Math.max(0.2,(Date.now()-questionStartRef.current)/1000);
+    answerTimesRef.current=[...answerTimesRef.current,elapsedSec];
+    const finalClearScore=advanceClearScore(ok);
+    if(quest?.isBoss&&ok&&elapsedSec<=Number(quest.bossClearSec||defaultBossAvgSec(quest.stage))){
+      clearWinsRef.current+=1;
+    }
+    if(quest?.isBoss&&ok&&elapsedSec<Number(quest.bossChallengeSec||quest.bossClearSec||defaultBossAvgSec(quest.stage))){
+      speedWinsRef.current+=1;
+      setSpeedWins(speedWinsRef.current);
+    }
+    let gain=0,food=0,nextCombo=0;
+    if(ok){
+      try{
+        if(window.FB?.ops?.answerCorrect){
+          const r=await window.FB.ops.answerCorrect(window.FB.uid,q.type==='tense');
+          gain=r.gainExp||0;food=r.addFood||0;nextCombo=r.newCombo||0;
+          await refreshFb?.();
+        }
+      }catch(e){console.warn('[Quiz] answerCorrect failed',e);}
+      setScore(s=>s+1);setXp(x=>x+gain);setCombo(nextCombo);
+      setConf(true);setXpMsg(food>0?`+${gain} EXP　🍖 ×${food}！`:`+${gain} EXP`);
+      setTimeout(()=>setConf(false),1200);setTimeout(()=>setXpMsg(null),1000);
+    }else{
+      try{if(window.FB?.ops?.answerWrong){await window.FB.ops.answerWrong(window.FB.uid);}}catch(e){console.warn('[Quiz] answerWrong failed',e);}
+      try{if(window.FB?.ops?.markWordUnknown&&q?.vocab?.word){await window.FB.ops.markWordUnknown(window.FB.uid,q.vocab.word);}}catch(e){console.warn('[Quiz] markWordUnknown failed',e);}
+      try{await refreshFb?.();}catch{}
+      setCombo(0);
+      setShaking(true);setTimeout(()=>setShaking(false),500);
+    }
+    // Sentence-based questions linger a bit longer so kids can read the answer.
+    const delay=(q.type==='cloze'||q.type==='tense'||q.type==='order'||q.type==='particle')?1700:1100;
+    setTimeout(()=>{
+      setSel(null);setClozePicked([]);setClozeResult(null);setOrderPicked([]);setOrderResult(null);
+      if(idx+1>=TOTAL){
+        const times=answerTimesRef.current;
+        const avgSec=times.length?times.reduce((a,b)=>a+b,0)/times.length:0;
+        const rawScore=ok?score+1:score;
+        onFinish(rawScore,ok?xp+gain:xp,TOTAL,quest?{...quest,avgSec,clearScore:finalClearScore,rawScore,clearWins:clearWinsRef.current,speedWins:speedWinsRef.current,bossClearSec:Number(quest.bossClearSec||defaultBossAvgSec(quest.stage)),bossTargetSec:Number(quest.bossChallengeSec||quest.bossClearSec||defaultBossAvgSec(quest.stage))}:null);
+      }
+      else setIdx(i=>i+1);
+    },delay);
+  };
+
+  const answerChoice=(optStr)=>{
+    if(selected)return;
+    setSel(optStr);
+    speakAfterAnswer(q);
+    const correctStr=q.type==='zh2en'?q.vocab.word:q.correct;
+    afterAnswer(normalizeAnswer(optStr)===normalizeAnswer(correctStr));
+  };
+  const addClozeLetter=(id)=>{
+    if(clozeResult||clozePicked.includes(id))return;
+    setClozePicked(prev=>[...prev,id]);
+  };
+  const removeClozeLetter=(id)=>{
+    if(clozeResult)return;
+    setClozePicked(prev=>prev.filter(x=>x!==id));
+  };
+  const submitCloze=()=>{
+    if(clozeResult||clozePicked.length!==(q.letterTokens||[]).length)return;
+    const byId=new Map((q.letterTokens||[]).map(t=>[t.id,t]));
+    const userAnswer=clozePicked.map(id=>byId.get(id)?.text||'').join('');
+    const ok=normalizeAnswer(userAnswer)===normalizeAnswer(q.correct);
+    setClozeResult({isCorrect:ok,userAnswer});
+    speakAfterAnswer(q);
+    afterAnswer(ok);
+  };
+  const addOrderToken=(id)=>{
+    if(orderResult||orderPicked.includes(id))return;
+    setOrderPicked(prev=>[...prev,id]);
+  };
+  const removeOrderToken=(id)=>{
+    if(orderResult)return;
+    setOrderPicked(prev=>prev.filter(x=>x!==id));
+  };
+  const submitOrder=()=>{
+    if(orderResult||orderPicked.length!==q.tokens.length)return;
+    const byId=new Map(q.tokens.map(t=>[t.id,t]));
+    const text=orderPicked.map(id=>byId.get(id)?.text||'').join(' ');
+    const ok=normalizeAnswer(text)===normalizeAnswer(q.correct);
+    setOrderResult({isCorrect:ok});
+    speakAfterAnswer(q);
+    afterAnswer(ok);
+  };
+  const giveUp=()=>{
+    if(selected||clozeResult||orderResult)return;
+    speakAfterAnswer(q);
+    if(q.type==='cloze'){
+      setClozePicked((q.letterTokens||[]).slice().sort((a,b)=>a.idx-b.idx).map(t=>t.id));
+      setClozeResult({isCorrect:false,userAnswer:''});
+    }else if(q.type==='order'){
+      setOrderResult({isCorrect:false});
+      setOrderPicked(q.tokens.slice().sort((a,b)=>a.idx-b.idx).map(t=>t.id));
+    }else{
+      // mark a sentinel selection so UI shows correct answer highlight
+      setSel('__give_up__');
+    }
+    afterAnswer(false);
+  };
+
+  const bgBtn=(label,correctLabel)=>{if(!selected)return'#fff';if(normalizeAnswer(label)===normalizeAnswer(correctLabel))return'#4CAF82';if(normalizeAnswer(label)===normalizeAnswer(selected))return'#FF4D6D';return'#fff';};
+  const colBtn=(label,correctLabel)=>{if(!selected)return'#1a1a2e';if(normalizeAnswer(label)===normalizeAnswer(correctLabel)||normalizeAnswer(label)===normalizeAnswer(selected))return'#fff';return'#ccc';};
+  const bdrBtn=(label,correctLabel)=>{if(!selected)return'2px solid #f0eaea';if(normalizeAnswer(label)===normalizeAnswer(correctLabel))return'2px solid #4CAF82';if(normalizeAnswer(label)===normalizeAnswer(selected))return'2px solid #FF4D6D';return'2px solid #f5f5f5';};
+
+  // ─ Render question card per type ─
+  const giveUpBtn=(!selected&&!clozeResult&&!orderResult)?(
+    <div style={{textAlign:'center',paddingTop:6,paddingBottom:4}}>
+      <button onClick={giveUp} style={{padding:'7px 16px',borderRadius:14,border:'none',background:'linear-gradient(135deg,#fb7185,#fb7185cc)',fontSize:11,fontWeight:900,color:'#fff',cursor:'pointer',fontFamily:'inherit',boxShadow:'0 3px 10px rgba(251,113,133,0.30)'}}>放棄此題（進未熟練）</button>
+    </div>
+  ):null;
+
+  let questionCard,answerArea;
+
+  if(q.type==='zh2en'){
+    const correct=vocab;
+    const catColor=CAT[correct.cat]||'#94a3b8';
+    const primaryText=correct.reading&&correct.reading!==correct.word?correct.reading:correct.word;
+    const hasKanji=correct.reading&&correct.reading!==correct.word;
+    questionCard=(
+      <div style={{background:'#fff',borderRadius:22,padding:'14px 20px',textAlign:'center',boxShadow:'0 4px 18px rgba(0,0,0,0.07)',marginBottom:12,flexShrink:0,animation:shaking?'shake 0.4s ease-in-out':'pop 0.2s ease-out',display:'flex',flexDirection:'column',alignItems:'center',gap:6,position:'relative',overflow:'hidden'}}>
+        <div style={{position:'absolute',top:0,left:0,right:0,height:3,background:`linear-gradient(90deg,${catColor},${catColor}44)`}}/>
+        <div style={{fontSize:11,fontWeight:800,color:theme.color,background:`${theme.color}18`,padding:'3px 12px',borderRadius:20,letterSpacing:0.5}}>{theme.icon} {theme.label}</div>
+        {correct.visual&&<span style={{fontSize:44,lineHeight:1,marginTop:4}}>{correct.visual}</span>}
+        <div style={{fontSize:10,color:'#94a3b8',fontWeight:900,letterSpacing:1}}>平假名讀音</div>
+        <div style={{fontSize:30,fontWeight:900,color:'#1a1a2e',letterSpacing:2,wordBreak:'break-word'}}>{primaryText}</div>
+        {hasKanji&&<div style={{fontSize:14,color:'#64748b',fontWeight:900,letterSpacing:1}}><span style={{fontSize:10,color:'#94a3b8',marginRight:5}}>漢字</span>{correct.word}</div>}
+        <div style={{fontSize:10,color:catColor,fontWeight:800,background:`${catColor}18`,padding:'2px 10px',borderRadius:20}}>{correct.cat}</div>
+      </div>
+    );
+    answerArea=(
+      <div className="scroll-body" style={{display:'flex',flexDirection:'column',gap:8,paddingBottom:8}}>
+        {q.options.filter(opt=>!hiddenOpts.has(opt.word)).map((opt,i)=>(
+          <button key={opt.word+i} onClick={()=>answerChoice(opt.word)} style={{width:'100%',padding:'12px 16px',borderRadius:16,border:bdrBtn(opt.word,correct.word),background:bgBtn(opt.word,correct.word),color:colBtn(opt.word,correct.word),fontSize:14,fontWeight:800,cursor:'pointer',textAlign:'left',display:'flex',alignItems:'center',gap:10,boxShadow:selected&&normalizeAnswer(opt.word)===normalizeAnswer(correct.word)?'0 4px 14px #4CAF8244':'0 2px 6px rgba(0,0,0,0.04)',transition:'all 0.15s',animation:`slideUp 0.2s ${i*0.04}s both`,opacity:selected&&normalizeAnswer(opt.word)!==normalizeAnswer(correct.word)&&normalizeAnswer(opt.word)!==normalizeAnswer(selected)?0.4:1,fontFamily:'inherit',flexShrink:0}}>
+            <span style={{fontSize:16,flexShrink:0}}>{opt.visual||'💬'}</span>
+            <span style={{flex:1,lineHeight:1.3,wordBreak:'break-word'}}>{opt.zh}</span>
+            {selected&&normalizeAnswer(opt.word)===normalizeAnswer(correct.word)&&<span style={{fontSize:16,flexShrink:0}}>✓</span>}
+            {selected&&normalizeAnswer(opt.word)===normalizeAnswer(selected)&&normalizeAnswer(opt.word)!==normalizeAnswer(correct.word)&&<span style={{fontSize:16,flexShrink:0}}>✗</span>}
+          </button>
+        ))}
+        {giveUpBtn}
+      </div>
+    );
+  } else if(q.type==='reading'){
+    const catColor=CAT[vocab.cat]||'#94a3b8';
+    questionCard=(
+      <div style={{background:'#fff',borderRadius:22,padding:'14px 20px',textAlign:'center',boxShadow:'0 4px 18px rgba(0,0,0,0.07)',marginBottom:12,flexShrink:0,animation:shaking?'shake 0.4s ease-in-out':'pop 0.2s ease-out',display:'flex',flexDirection:'column',alignItems:'center',gap:7,position:'relative',overflow:'hidden'}}>
+        <div style={{position:'absolute',top:0,left:0,right:0,height:3,background:`linear-gradient(90deg,${theme.color},${theme.color}44)`}}/>
+        <div style={{fontSize:11,fontWeight:800,color:theme.color,background:`${theme.color}18`,padding:'3px 12px',borderRadius:20,letterSpacing:0.5}}>{theme.icon} {theme.label}</div>
+        <div style={{fontSize:32,fontWeight:900,color:'#1a1a2e',letterSpacing:1,wordBreak:'break-word'}}>{vocab.word}</div>
+        <div style={{fontSize:13,color:'#334155',fontWeight:800,background:'#f8fafc',padding:'4px 12px',borderRadius:14}}>意思：{vocab.zh}</div>
+        <div style={{fontSize:10,color:catColor,fontWeight:800,background:`${catColor}18`,padding:'2px 10px',borderRadius:20}}>{vocab.level||vocab.tier||'JP'}・{vocab.cat}</div>
+      </div>
+    );
+    answerArea=(
+      <div className="scroll-body" style={{display:'flex',flexDirection:'column',gap:8,paddingBottom:8}}>
+        {q.options.map((opt,i)=>(
+          <button key={opt+i} onClick={()=>answerChoice(opt)} style={{width:'100%',padding:'13px 16px',borderRadius:16,border:bdrBtn(opt,q.correct),background:bgBtn(opt,q.correct),color:colBtn(opt,q.correct),fontSize:18,fontWeight:900,cursor:'pointer',textAlign:'center',display:'flex',alignItems:'center',justifyContent:'center',gap:10,boxShadow:selected&&normalizeAnswer(opt)===normalizeAnswer(q.correct)?'0 4px 14px #4CAF8244':'0 2px 6px rgba(0,0,0,0.04)',transition:'all 0.15s',animation:`slideUp 0.2s ${i*0.04}s both`,opacity:selected&&normalizeAnswer(opt)!==normalizeAnswer(q.correct)&&normalizeAnswer(opt)!==normalizeAnswer(selected)?0.4:1,fontFamily:'inherit',flexShrink:0}}>
+            <span style={{lineHeight:1.3,wordBreak:'break-word'}}>{opt}</span>
+            {selected&&normalizeAnswer(opt)===normalizeAnswer(q.correct)&&<span style={{fontSize:16,flexShrink:0}}>✓</span>}
+            {selected&&normalizeAnswer(opt)===normalizeAnswer(selected)&&normalizeAnswer(opt)!==normalizeAnswer(q.correct)&&<span style={{fontSize:16,flexShrink:0}}>✗</span>}
+          </button>
+        ))}
+        {giveUpBtn}
+      </div>
+    );
+  } else if(q.type==='particle'){
+    const catColor=CAT[vocab.cat]||'#94a3b8';
+    questionCard=(
+      <div style={{background:'#fff',borderRadius:22,padding:'16px 20px',boxShadow:'0 4px 18px rgba(0,0,0,0.07)',marginBottom:12,flexShrink:0,animation:shaking?'shake 0.4s ease-in-out':'pop 0.2s ease-out',display:'flex',flexDirection:'column',gap:10,position:'relative',overflow:'hidden'}}>
+        <div style={{position:'absolute',top:0,left:0,right:0,height:3,background:`linear-gradient(90deg,${theme.color},${theme.color}44)`}}/>
+        <div style={{textAlign:'center'}}>
+          <span style={{fontSize:11,fontWeight:800,color:theme.color,background:`${theme.color}18`,padding:'4px 12px',borderRadius:20,letterSpacing:0.5}}>{theme.icon} {theme.label}</span>
+        </div>
+        <div style={{fontSize:12,color:'#aaa',fontWeight:700,textAlign:'center'}}>選出這句裡最自然的助詞。</div>
+        <div style={{fontSize:18,fontWeight:800,color:'#1a1a2e',lineHeight:1.9,textAlign:'left',padding:'4px 0'}}>
+          <span>{q.before}</span>
+          <Blank width={42} color={selected?'#4CAF82':theme.color} filled={selected?q.correct:null}/>
+          <span>{q.after}</span>
+        </div>
+        {q.zh2&&<div style={QUIZ_ZH_SENTENCE_STYLE}>「{q.zh2}」</div>}
+        <div style={{fontSize:12,color:'#64748b',fontWeight:800,background:`${catColor}12`,padding:'6px 10px',borderRadius:14,textAlign:'center'}}>
+          語彙：{vocab.reading&&vocab.reading!==vocab.word?vocab.reading:vocab.word}{vocab.reading&&vocab.reading!==vocab.word?`（${vocab.word}）`:''}・{vocab.zh}
+        </div>
+      </div>
+    );
+    answerArea=(
+      <div className="scroll-body" style={{display:'flex',flexDirection:'column',gap:8,paddingBottom:8}}>
+        {q.options.filter(opt=>!hiddenOpts.has(opt)).map((opt,i)=>(
+          <button key={opt+i} onClick={()=>answerChoice(opt)} style={{width:'100%',padding:'13px 16px',borderRadius:16,border:bdrBtn(opt,q.correct),background:bgBtn(opt,q.correct),color:colBtn(opt,q.correct),fontSize:22,fontWeight:900,cursor:'pointer',textAlign:'center',boxShadow:selected&&normalizeAnswer(opt)===normalizeAnswer(q.correct)?'0 4px 14px #4CAF8244':'0 2px 6px rgba(0,0,0,0.04)',transition:'all 0.15s',animation:`slideUp 0.2s ${i*0.04}s both`,opacity:selected&&normalizeAnswer(opt)!==normalizeAnswer(q.correct)&&normalizeAnswer(opt)!==normalizeAnswer(selected)?0.4:1,fontFamily:'inherit',flexShrink:0}}>
+            {opt}
+            {selected&&normalizeAnswer(opt)===normalizeAnswer(q.correct)&&<span style={{fontSize:16,marginLeft:8}}>✓</span>}
+            {selected&&normalizeAnswer(opt)===normalizeAnswer(selected)&&normalizeAnswer(opt)!==normalizeAnswer(q.correct)&&<span style={{fontSize:16,marginLeft:8}}>✗</span>}
+          </button>
+        ))}
+        {giveUpBtn}
+      </div>
+    );
+  } else if(q.type==='cloze'){
+    const byId=new Map((q.letterTokens||[]).map(t=>[t.id,t]));
+    const picked=clozePicked.map(id=>byId.get(id)).filter(Boolean);
+    const available=(q.tokens||[]).filter(t=>!clozePicked.includes(t.id));
+    const pickedText=picked.map(t=>t.text).join('');
+    const locked=!!clozeResult;
+    const isCorrect=clozeResult?.isCorrect;
+    questionCard=(
+      <div style={{background:'#fff',borderRadius:22,padding:'16px 20px',boxShadow:'0 4px 18px rgba(0,0,0,0.07)',marginBottom:12,flexShrink:0,animation:shaking?'shake 0.4s ease-in-out':'pop 0.2s ease-out',display:'flex',flexDirection:'column',gap:10,position:'relative',overflow:'hidden'}}>
+        <div style={{position:'absolute',top:0,left:0,right:0,height:3,background:`linear-gradient(90deg,${theme.color},${theme.color}44)`}}/>
+        <div style={{textAlign:'center'}}>
+          <span style={{fontSize:11,fontWeight:800,color:theme.color,background:`${theme.color}18`,padding:'4px 12px',borderRadius:20,letterSpacing:0.5}}>{theme.icon} {theme.label}</span>
+        </div>
+        <div style={{fontSize:12,color:'#aaa',fontWeight:700,textAlign:'center'}}>點下方文字，拼出空格裡的語彙。點寵物可先排前 3 個文字。</div>
+        <div style={{fontSize:17,fontWeight:700,color:'#1a1a2e',lineHeight:1.8,textAlign:'left',padding:'4px 0'}}>
+          <span>{q.before}</span>
+          <Blank width={Math.max(86,String(q.correct||'').length*18)} color={locked?(isCorrect?'#4CAF82':'#FF4D6D'):theme.color} filled={locked?q.correct:(pickedText||null)}/>
+          <span>{q.after}</span>
+        </div>
+        {q.zh2&&<div style={QUIZ_ZH_SENTENCE_STYLE}>「{q.zh2}」</div>}
+      </div>
+    );
+    answerArea=(
+      <div className="scroll-body" style={{display:'flex',flexDirection:'column',gap:10,paddingBottom:8}}>
+        <div style={{minHeight:66,border:`2px dashed ${locked?(isCorrect?'#4CAF82':'#FF4D6D'):theme.color}`,background:locked?(isCorrect?'#e9f8ef':'#ffeef0'):`${theme.color}0f`,borderRadius:18,padding:10,display:'flex',flexWrap:'wrap',alignContent:'flex-start',justifyContent:picked.length?'center':'center',gap:7,transition:'all 0.2s'}}>
+          {picked.length===0&&<div style={{width:'100%',fontSize:12,color:'#94a3b8',fontWeight:800,textAlign:'center',paddingTop:12}}>從下方點文字，排成日文語彙</div>}
+          {picked.map((t,i)=>(
+            <button key={t.id} onClick={()=>removeClozeLetter(t.id)} disabled={locked} style={{width:36,height:36,borderRadius:12,border:'none',background:'#fff',color:'#1a1a2e',fontSize:18,fontWeight:900,fontFamily:'monospace',textTransform:'uppercase',boxShadow:'0 2px 7px rgba(0,0,0,0.08)',cursor:locked?'default':'pointer'}}>{t.text}<span style={{display:'block',fontSize:8,color:'#cbd5e1',lineHeight:1}}>{i+1}</span></button>
+          ))}
+        </div>
+        <div style={{display:'flex',flexWrap:'wrap',gap:8,justifyContent:'center',background:'#fff',borderRadius:18,padding:12,boxShadow:'0 2px 8px rgba(0,0,0,0.04)'}}>
+          {available.map((t,i)=>(
+            <button key={t.id} onClick={()=>addClozeLetter(t.id)} disabled={locked} style={{width:38,height:38,borderRadius:14,border:`2px solid ${theme.color}25`,background:'#fff',color:'#1a1a2e',fontSize:18,fontWeight:900,fontFamily:'monospace',textTransform:'uppercase',cursor:locked?'default':'pointer',boxShadow:'0 2px 7px rgba(0,0,0,0.06)',animation:`slideUp 0.2s ${i*0.035}s both`}}>{t.text}</button>
+          ))}
+          {available.length===0&&<div style={{fontSize:12,color:'#94a3b8',fontWeight:800}}>全部放上去了，按「送出答案」</div>}
+        </div>
+        {locked&&<div style={{fontSize:12,fontWeight:800,color:isCorrect?'#4CAF82':'#FF4D6D',textAlign:'center'}}>
+          {isCorrect?'✓ 拼對了！':`✗ 正確答案：${q.correct}`}
+        </div>}
+        {!locked&&<button onClick={submitCloze} disabled={clozePicked.length!==(q.letterTokens||[]).length} style={{padding:14,borderRadius:16,border:'none',cursor:clozePicked.length===(q.letterTokens||[]).length?'pointer':'not-allowed',background:`linear-gradient(135deg,${theme.color},${theme.color}bb)`,fontSize:15,fontWeight:900,color:'#fff',boxShadow:`0 4px 14px ${theme.color}44`,opacity:clozePicked.length===(q.letterTokens||[]).length?1:0.4,transition:'opacity 0.2s',fontFamily:'inherit'}}>送出答案</button>}
+        {giveUpBtn}
+      </div>
+    );
+  } else if(q.type==='tense'){
+    questionCard=(
+      <div style={{background:'#fff',borderRadius:22,padding:'16px 20px',boxShadow:'0 4px 18px rgba(0,0,0,0.07)',marginBottom:12,flexShrink:0,animation:shaking?'shake 0.4s ease-in-out':'pop 0.2s ease-out',display:'flex',flexDirection:'column',gap:10,position:'relative',overflow:'hidden'}}>
+        <div style={{position:'absolute',top:0,left:0,right:0,height:3,background:`linear-gradient(90deg,${theme.color},${theme.color}44)`}}/>
+        <div style={{textAlign:'center'}}>
+          <span style={{fontSize:11,fontWeight:800,color:theme.color,background:`${theme.color}18`,padding:'4px 12px',borderRadius:20,letterSpacing:0.5}}>{theme.icon} {theme.label}</span>
+        </div>
+        <div style={{fontSize:16,fontWeight:700,color:'#1a1a2e',lineHeight:1.8,textAlign:'left',padding:'4px 0'}}>
+          <span>{q.before}</span>
+          <Blank width={90} color={selected?'#4CAF82':theme.color} filled={selected?q.correct:null}/>
+          <span>{q.after}</span>
+        </div>
+        {hintRevealed&&q.tenseHint&&<div style={{fontSize:12,fontWeight:800,color:theme.color,background:`${theme.color}14`,padding:'7px 12px',borderRadius:14,textAlign:'center',animation:'pop 0.25s ease-out'}}>💡 {q.tenseHint}（原形：<span style={{fontFamily:'monospace',fontWeight:900,letterSpacing:1}}>{q.baseWord}</span>）</div>}
+        {q.zh2&&<div style={QUIZ_ZH_SENTENCE_STYLE}>「{q.zh2}」</div>}
+      </div>
+    );
+    answerArea=(
+      <div className="scroll-body" style={{display:'flex',flexDirection:'column',gap:8,paddingBottom:8}}>
+        {q.options.map((opt,i)=>(
+          <button key={opt+i} onClick={()=>answerChoice(opt)} style={{width:'100%',padding:'12px 16px',borderRadius:16,border:bdrBtn(opt,q.correct),background:bgBtn(opt,q.correct),color:colBtn(opt,q.correct),fontSize:15,fontWeight:800,cursor:'pointer',textAlign:'center',boxShadow:selected&&normalizeAnswer(opt)===normalizeAnswer(q.correct)?'0 4px 14px #4CAF8244':'0 2px 6px rgba(0,0,0,0.04)',transition:'all 0.15s',animation:`slideUp 0.2s ${i*0.04}s both`,opacity:selected&&normalizeAnswer(opt)!==normalizeAnswer(q.correct)&&normalizeAnswer(opt)!==normalizeAnswer(selected)?0.4:1,fontFamily:'monospace',letterSpacing:1,flexShrink:0}}>
+            {opt}
+            {selected&&normalizeAnswer(opt)===normalizeAnswer(q.correct)&&<span style={{fontSize:14,marginLeft:8}}>✓</span>}
+            {selected&&normalizeAnswer(opt)===normalizeAnswer(selected)&&normalizeAnswer(opt)!==normalizeAnswer(q.correct)&&<span style={{fontSize:14,marginLeft:8}}>✗</span>}
+          </button>
+        ))}
+        {giveUpBtn}
+      </div>
+    );
+  } else if(q.type==='order'){
+    const byId=new Map(q.tokens.map(t=>[t.id,t]));
+    const picked=orderPicked.map(id=>byId.get(id)).filter(Boolean);
+    const available=q.tokens.filter(t=>!orderPicked.includes(t.id));
+    const locked=!!orderResult;
+    const isCorrect=orderResult?.isCorrect;
+    const dropOnAnswer=(e)=>{e.preventDefault();const id=dragTokenRef.current;if(id)addOrderToken(id);dragTokenRef.current=null;};
+    questionCard=(
+      <div style={{background:'#fff',borderRadius:22,padding:'16px 18px',boxShadow:'0 4px 18px rgba(0,0,0,0.07)',marginBottom:12,flexShrink:0,animation:shaking?'shake 0.4s ease-in-out':'pop 0.2s ease-out',display:'flex',flexDirection:'column',gap:10,position:'relative',overflow:'hidden'}}>
+        <div style={{position:'absolute',top:0,left:0,right:0,height:3,background:`linear-gradient(90deg,${theme.color},${theme.color}44)`}}/>
+        <div style={{textAlign:'center'}}>
+          <span style={{fontSize:11,fontWeight:800,color:theme.color,background:`${theme.color}18`,padding:'4px 12px',borderRadius:20,letterSpacing:0.5}}>{theme.icon} {theme.label}</span>
+        </div>
+        {q.zh2&&<div style={QUIZ_ZH_SENTENCE_STYLE}>「{q.zh2}」</div>}
+        <div onDragOver={e=>e.preventDefault()} onDrop={dropOnAnswer} style={{minHeight:78,border:`2px dashed ${locked?(isCorrect?'#4CAF82':'#FF4D6D'):theme.color}`,background:locked?(isCorrect?'#e9f8ef':'#ffeef0'):`${theme.color}0f`,borderRadius:18,padding:10,display:'flex',flexWrap:'wrap',alignContent:'flex-start',gap:7,transition:'all 0.2s'}}>
+          {picked.length===0&&<div style={{width:'100%',fontSize:12,color:'#94a3b8',fontWeight:800,textAlign:'center',paddingTop:16}}>把下方單字拖到這裡排句子（也可點一下）</div>}
+          {picked.map((t,i)=>(
+            <button key={t.id} onClick={()=>removeOrderToken(t.id)} disabled={locked} style={{padding:'8px 10px',borderRadius:13,border:'none',background:locked?'#fff':'#fff',color:'#1a1a2e',fontSize:14,fontWeight:900,fontFamily:'inherit',boxShadow:'0 2px 7px rgba(0,0,0,0.08)',cursor:locked?'default':'pointer'}}>{t.text}<span style={{marginLeft:5,color:'#cbd5e1',fontSize:11}}>{i+1}</span></button>
+          ))}
+        </div>
+        {locked&&<div style={{fontSize:12,fontWeight:800,color:isCorrect?'#4CAF82':'#FF4D6D',textAlign:'center'}}>{isCorrect?'✓ 句子排對了！':`✗ 正確句子：${q.sentence||q.correct}`}</div>}
+      </div>
+    );
+    answerArea=(
+      <div className="scroll-body" style={{display:'flex',flexDirection:'column',gap:10,paddingBottom:8}}>
+        <div style={{display:'flex',flexWrap:'wrap',gap:8,justifyContent:'center',background:'#fff',borderRadius:18,padding:12,boxShadow:'0 2px 8px rgba(0,0,0,0.04)'}}>
+          {available.map((t,i)=>(
+            <button key={t.id} draggable={!locked} onDragStart={()=>{dragTokenRef.current=t.id;}} onClick={()=>addOrderToken(t.id)} disabled={locked} style={{padding:'9px 12px',borderRadius:14,border:`2px solid ${theme.color}25`,background:'#fff',color:'#1a1a2e',fontSize:14,fontWeight:900,fontFamily:'inherit',cursor:locked?'default':'grab',boxShadow:'0 2px 7px rgba(0,0,0,0.06)',animation:`slideUp 0.2s ${i*0.035}s both`}}>{t.text}</button>
+          ))}
+          {available.length===0&&<div style={{fontSize:12,color:'#94a3b8',fontWeight:800}}>全部放上去了，按「送出答案」</div>}
+        </div>
+        {!locked&&<button onClick={submitOrder} disabled={orderPicked.length!==q.tokens.length} style={{padding:14,borderRadius:16,border:'none',cursor:orderPicked.length===q.tokens.length?'pointer':'not-allowed',background:`linear-gradient(135deg,${theme.color},${theme.color}bb)`,fontSize:15,fontWeight:900,color:'#fff',boxShadow:`0 4px 14px ${theme.color}44`,opacity:orderPicked.length===q.tokens.length?1:0.4,transition:'opacity 0.2s',fontFamily:'inherit'}}>送出答案</button>}
+        {giveUpBtn}
+      </div>
+    );
+  }
+
+  const isBossQuest=!!quest?.isBoss;
+  const meterColor=clearScore>=clearTarget?pc:'#fb7185';
+  const meterPct=TOTAL>0?Math.min(100,(clearScore/TOTAL)*100):0;
+  const timerPct=isBossQuest&&bossTimeLimit>0?Math.max(0,Math.min(100,(timeLeft/bossTimeLimit)*100)):0;
+  const timerText=Math.ceil(timeLeft);
+
+  return(<div className="screen" style={{background:'linear-gradient(170deg,#fafeff 0%,#f0fdf8 100%)',position:'relative',overflow:'hidden'}}>
+    {isBossQuest&&<>
+      <div style={{position:'absolute',top:0,left:0,right:0,height:5,background:'rgba(251,113,133,0.16)',zIndex:40}}>
+        <div style={{height:'100%',width:`${timerPct}%`,background:'linear-gradient(90deg,#fb7185,#ffb703)',transition:'width 0.25s linear',boxShadow:'0 0 10px rgba(251,113,133,0.35)'}}/>
+      </div>
+      <div style={{position:'absolute',top:10,right:16,zIndex:45,fontSize:12,fontWeight:900,color:timerText<=10?'#fb7185':'#f97316',background:'#fff',border:'1.5px solid rgba(251,113,133,0.18)',borderRadius:14,padding:'3px 9px',boxShadow:'0 3px 10px rgba(0,0,0,0.08)'}}>⏳ {timerText}</div>
+    </>}
+    <Confetti active={showConf}/>
+    {xpMsg&&<div style={{position:'absolute',top:'22%',left:'50%',fontSize:22,fontWeight:900,color:'#FFB800',textShadow:'0 2px 8px rgba(0,0,0,0.15)',animation:'xpRise 0.9s ease-out forwards',pointerEvents:'none',zIndex:50,whiteSpace:'nowrap'}}>{xpMsg} ⭐</div>}
+
+    <div style={{padding:'46px 20px 6px',display:'flex',alignItems:'center',gap:10,flexShrink:0}}>
+      <div style={{flex:1,height:9,background:clearScore>=clearTarget?'rgba(97,194,255,0.16)':'rgba(251,113,133,0.16)',borderRadius:9,position:'relative',overflow:'hidden'}}>
+        <div style={{height:9,borderRadius:9,background:`linear-gradient(90deg,${meterColor},${meterColor}99)`,width:`${meterPct}%`,transition:'width 0.35s ease-out, background 0.25s ease-out'}}/>
+        <div style={{position:'absolute',left:'50%',top:-3,bottom:-3,width:2,background:'rgba(26,26,46,0.22)',boxShadow:'0 0 0 1px rgba(255,255,255,0.75)',borderRadius:2}}/>
+      </div>
+      <div style={{fontSize:13,fontWeight:800,color:meterColor,background:'#fff',padding:'4px 10px',borderRadius:14,boxShadow:'0 2px 6px rgba(0,0,0,0.06)'}}>{idx+1}/{TOTAL}</div>
+    </div>
+
+    {combo>=2&&<div style={{textAlign:'center',fontSize:12,fontWeight:800,color:'#FF6B47',marginBottom:2,flexShrink:0}}>🔥 連續答對 {combo} 題！加油！</div>}
+    {quest&&<div style={{textAlign:'center',fontSize:11,fontWeight:900,color:quest.isBoss?'#fb7185':pc,marginBottom:2,flexShrink:0}}>
+      {quest.isBoss?`👑 第 ${quest.stage} 關魔王：通關血條 ${clearScore}/${clearTarget}｜限時 ${timerText} 秒`:`🗺️ 第 ${quest.stage} 關闖關中｜通關血條 ${clearScore}/${clearTarget}`}
+    </div>}
+
+    <div style={{flex:1,display:'flex',flexDirection:'column',padding:'4px 20px 0',overflow:'hidden'}}>
+      <div style={{display:'flex',justifyContent:'center',alignItems:'center',gap:8,marginBottom:4,paddingTop:22,flexShrink:0,position:'relative',overflow:'visible'}}>
+        <button onClick={usePetHint} disabled={hintsLeft<=0||hintUsedThisQ||!!selected||!!clozeResult||!!orderResult} title={hintUsedThisQ?'這題已用過提示':(hintsLeft>0?'點寵物用提示':'提示用完了')} aria-label="寵物提示" style={{border:'none',background:'transparent',padding:0,cursor:hintsLeft>0&&!hintUsedThisQ&&!selected&&!clozeResult&&!orderResult?'pointer':'default',position:'relative',width:48,height:48}}>
+          <span style={{display:'block',width:48,height:48,animation:'float 3s ease-in-out infinite'}}>
+            <img src={charSrc} alt="" style={{width:48,height:48,objectFit:'contain',filter:(hintsLeft<=0||hintUsedThisQ)?'grayscale(0.7) opacity(0.55)':'none',transition:'filter 0.2s'}}/>
+            {hintsLeft>0&&!hintUsedThisQ&&!selected&&!clozeResult&&!orderResult&&<span style={{position:'absolute',top:-6,right:-2,fontSize:18,lineHeight:1,filter:'drop-shadow(0 1px 2px rgba(0,0,0,0.18))'}}>💡</span>}
+          </span>
+          {hintFx>0&&<span key={hintFx} style={{position:'absolute',top:-6,right:-2,fontSize:20,animation:'pop 0.4s ease-out',lineHeight:1,pointerEvents:'none'}}>✨</span>}
+        </button>
+        <div style={{fontSize:11,fontWeight:800,color:hintsLeft>0?pc:'#bbb',background:hintsLeft>0?`${pc}18`:'#f0f0f0',padding:'4px 10px',borderRadius:14,whiteSpace:'nowrap'}}>{(charName||'寵物')}提示 {hintsLeft}/{HINT_BUDGET}</div>
+      </div>
+      {questionCard}
+      {answerArea}
+    </div>
+    <div style={{textAlign:'center',padding:'6px 0',flexShrink:0}}>
+      <span style={{fontSize:11,color:'#ccc',fontWeight:700}}>⭐ {xp} EXP 已獲得</span>
+    </div>
+    <BottomNav screen="map" onNav={onNav} pc={pc}/>
+  </div>);
+}
+
+/* ══ RESULT ══════════════════════════════════════════════ */
+function ResultStars({stars,pc}){
+  const got=Math.max(0,Math.min(3,Number(stars||0)));
+  const shine=got===3;
+  return(
+    <div style={{width:'100%',margin:'-4px 0 18px',padding:'14px 14px 13px',borderRadius:22,background:'linear-gradient(180deg,#fff8df 0%,#fff 100%)',border:'1.5px solid rgba(255,197,61,0.34)',boxShadow:'inset 0 1px 0 rgba(255,255,255,.9),0 6px 18px rgba(255,184,0,.13)',textAlign:'center',overflow:'hidden',position:'relative'}}>
+      <div style={{fontSize:11,fontWeight:900,color:'#b7791f',letterSpacing:1,marginBottom:5}}>本關獲得</div>
+      <div style={{height:48,display:'flex',justifyContent:'center',alignItems:'center',gap:10,position:'relative'}}>
+        {[0,1,2].map(i=>{
+          const active=i<got;
+          const landDelay=0.12+i*0.22;
+          const anim=active?`resultStarLand 0.72s cubic-bezier(.18,1.16,.32,1) ${landDelay}s both${shine?', resultStarShine 0.72s ease-out 1.36s forwards':''}`:'none';
+          return(
+            <span key={i} aria-hidden="true" style={{width:46,height:46,display:'inline-flex',alignItems:'center',justifyContent:'center',position:'relative',fontSize:active?39:31,lineHeight:1,color:active?'#ffc53d':'#e5e7eb',textShadow:active?'0 2px 0 #fff,0 5px 10px rgba(255,184,0,.35)':'none',opacity:active?1:.9,animation:anim}}>
+              {active?'★':'☆'}
+              {shine&&active&&<span style={{position:'absolute',left:'50%',top:'48%',fontSize:31,color:'#fff',textShadow:'0 0 8px rgba(255,255,255,.95),0 0 16px rgba(255,197,61,.9)',animation:'resultGlint 0.74s ease-out 1.39s both',pointerEvents:'none'}}>✦</span>}
+            </span>
+          );
+        })}
+      </div>
+      <div style={{fontSize:13,fontWeight:900,color:'#333',marginTop:3}}>得了 <span style={{fontSize:18,color:pc}}>{got}</span> 顆星</div>
+    </div>
+  );
+}
+
+function ResultScreen({score,xp,total,questRun,charSrc,charName,onRetry,onHome,pc}){
+  const pct=total>0?Math.round((score/total)*100):0;
+  const isGreat=pct>=80,isOk=pct>=50;
+  const grade=isGreat?'S 🌟':isOk?'B 👍':'C 💪';
+  const msg=isGreat?'太厲害了！':isOk?'做得不錯！':'繼續加油！';
+  const questTarget=questRun?(questRun.isBoss?bossPassTarget(total):clearPassTarget(total)):0;
+  const questClearScore=Number(questRun?.clearScore??score??0);
+  const resultStars=questRun?.passed?Math.max(0,Math.min(3,Number.isFinite(Number(questRun.stars))?Number(questRun.stars):mapStarsForScore(questClearScore,total))):0;
+  const questFailText=questRun?.isBoss
+    ?(questClearScore<questTarget?`魔王關還差一點：通關血條 ${questClearScore}/${questTarget}。`:`魔王關還差一點：限時答對 ${questRun.clearWins||0}/${questTarget}。`)
+    :`第 ${questRun?.stage} 關需要通關血條達到 ${questTarget}。`;
+  return(<div className="screen" style={{background:'linear-gradient(170deg,#fafeff 0%,#f0fdf8 100%)',position:'relative'}}>
+    {isGreat&&<Confetti active/>}
+    <div className="scroll-body" style={{padding:'52px 22px 28px',display:'flex',flexDirection:'column',alignItems:'center',gap:18}}>
+      <div style={{textAlign:'center'}}>
+        <div style={{animation:'float 3s ease-in-out infinite',display:'inline-block'}}><img src={charSrc} alt="" style={{width:96,height:96,objectFit:'contain'}}/></div>
+        <div style={{fontSize:26,fontWeight:900,color:'#1a1a2e',marginTop:10}}>{msg}</div>
+        <div style={{fontSize:13,color:'#aaa',marginTop:4}}>{charName} 在為你加油！</div>
+      </div>
+      <div style={{width:'100%',background:'#fff',borderRadius:28,padding:24,boxShadow:'0 6px 24px rgba(0,0,0,0.07)',animation:'pop 0.3s ease-out'}}>
+        <div style={{display:'flex',justifyContent:'center',marginBottom:18}}>
+          <div style={{width:84,height:84,borderRadius:'50%',background:`linear-gradient(135deg,${pc},${pc}88)`,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',boxShadow:`0 6px 20px ${pc}44`}}>
+            <div style={{fontSize:22,fontWeight:900,color:'#fff',lineHeight:1}}>{pct}%</div>
+            <div style={{fontSize:9,color:'rgba(255,255,255,0.8)'}}>正確率</div>
+          </div>
+        </div>
+        {questRun?.passed&&<ResultStars stars={resultStars} pc={pc}/>}
+        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:10}}>
+          {[{icon:'✅',label:'答對題數',val:`${score}/${total}`,color:'#4CAF82'},{icon:'⭐',label:'XP獲得',val:`+${xp}`,color:'#FFB800'},{icon:'🎯',label:'等級',val:grade,color:pc}].map(item=>(
+            <div key={item.label} style={{textAlign:'center',background:'#fafeff',borderRadius:14,padding:'12px 6px'}}>
+              <div style={{fontSize:20}}>{item.icon}</div>
+              <div style={{fontSize:14,fontWeight:900,color:item.color,lineHeight:1.2}}>{item.val}</div>
+              <div style={{fontSize:9,color:'#bbb',fontWeight:700,marginTop:2}}>{item.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+      {questRun&&<div style={{width:'100%',background:questRun.passed?'#ecfdf5':'#fff7ed',borderRadius:18,padding:'14px 18px',display:'flex',alignItems:'center',gap:12,border:`1.5px solid ${questRun.passed?'#86efac':'#fed7aa'}`}}>
+        <span style={{fontSize:24}}>{questRun.passed?'🗺️':'👑'}</span>
+        <div style={{fontSize:12,color:questRun.passed?'#166534':'#9a3412',fontWeight:800,lineHeight:1.55}}>
+          {questRun.passed?`第 ${questRun.stage} 關通過！地圖已前進到第 ${Math.min(MAP_STAGE_COUNT,(questRun.stage||1)+1)} 關。`:questFailText}
+          {questRun.rewardFood>0&&<div style={{marginTop:3}}>路上撿到肉塊 🍖 ×{questRun.rewardFood}！</div>}
+          {questRun.isBoss&&<div style={{marginTop:3}}>通關血條 {questClearScore}/{questTarget}，限時答對 {questRun.clearWins||0}/{questTarget}，平均答題 {formatSec(questRun.avgSec)}。</div>}
+        </div>
+      </div>}
+      <div style={{width:'100%',background:`${pc}10`,borderRadius:18,padding:'14px 18px',display:'flex',alignItems:'center',gap:12}}>
+        <span style={{fontSize:22}}>💡</span>
+        <div style={{fontSize:12,color:'#555',fontWeight:700,lineHeight:1.6}}>{isGreat?'完美！繼續保持每天複習的好習慣！':'每天複習，進步看得見！繼續努力！'}</div>
+      </div>
+      <div style={{width:'100%',display:'flex',flexDirection:'column',gap:10}}>
+        <button onClick={onRetry} style={{width:'100%',padding:16,borderRadius:20,border:'none',cursor:'pointer',background:`linear-gradient(135deg,${pc},${pc}bb)`,fontSize:16,fontWeight:900,color:'#fff',boxShadow:`0 5px 16px ${pc}44`,fontFamily:'inherit'}}>🗺️ 回地圖繼續</button>
+        <button onClick={onHome} style={{width:'100%',padding:14,borderRadius:20,border:'2px solid #f0eaea',background:'#fff',fontSize:14,fontWeight:800,color:'#aaa',cursor:'pointer',fontFamily:'inherit'}}>🏠 回首頁</button>
+      </div>
+    </div>
+  </div>);
+}
+
+/* ══ LEADERBOARD ═════════════════════════════════════════ */
+const PODIUM_H=[110,148,90];
+const PODIUM_C=['#C0C0C0','#FFD700','#CD7F32'];
+const PODIUM_MEDAL=['🥈','🥇','🥉'];
+
+function RankScreen({uid,studentName,charIdx,stats,onNav,pc,cloudEntries,cloudStreakEntries,cloudStatus,onRefresh}){
+  const [tab,setTab]=useState('score');
+
+  const todayKey=taipeiDateKey();
+  const list=useMemo(()=>{
+    const cloud=tab==='score'?cloudEntries:cloudStreakEntries;
+    let arr=(cloud||[]).map(e=>({
+      name:e.name||'(未命名)',
+      avgScore:Number(e.avgScore||0),
+      streak:e.streakCur|0,
+      streakBest:e.streakBest|0,
+      todayQuiz:(e.todayQuizDate===todayKey)?(e.todayQuizCount|0):0,
+      level:e.level|0||1,
+      charIdx:avatarIdxFromId(e.avatarId),
+      uid:e.uid||'',
+      isMe:uid&&e.uid===uid,
+    }));
+    // Inject me locally if not in cloud yet
+    if(studentName&&!arr.some(r=>r.isMe)){
+      arr.push({uid:uid||'',name:studentName,avgScore:Number(stats.avgScore||0),streak:stats.streak|0,streakBest:stats.streakBest||stats.streak||0,todayQuiz:stats.todayQuiz|0,level:stats.level|0||1,charIdx,isMe:true});
+    }
+    arr=arr.filter(r=>isRankEligible(r.streak,r.todayQuiz,r.level));
+    if(tab==='score'){
+      arr.sort((a,b)=>(b.level-a.level)||(b.avgScore-a.avgScore)||(b.streak-a.streak));
+    }else{
+      arr.sort((a,b)=>(b.streak-a.streak)||(b.streakBest-a.streakBest)||(b.level-a.level));
+    }
+    return arr.map((r,i)=>({...r,rank:i+1}));
+  },[tab,cloudEntries,cloudStreakEntries,studentName,charIdx,stats,uid,todayKey]);
+
+  const top3Src=[list[1],list[0],list[2]]; // left 2nd, center 1st, right 3rd
+
+  return(<div className="screen" style={{background:'linear-gradient(170deg,#fafeff 0%,#f0fdf8 100%)'}}>
+    <div style={{padding:'48px 20px 6px',flexShrink:0,display:'flex',alignItems:'center',gap:8}}>
+      <div style={{fontSize:18,fontWeight:900,color:'#1a1a2e',flex:1}}>🏆 排行榜</div>
+      <button onClick={onRefresh} style={{padding:'5px 12px',borderRadius:14,border:'none',background:`${pc}15`,color:pc,fontSize:11,fontWeight:800,cursor:'pointer',fontFamily:'inherit'}}>{cloudStatus==='loading'?'同步中…':'↻ 更新'}</button>
+    </div>
+    {cloudStatus==='offline'&&<div style={{margin:'0 20px 8px',background:'#fff4e5',color:'#b75d00',fontSize:11,fontWeight:700,padding:'6px 10px',borderRadius:10,textAlign:'center',flexShrink:0}}>雲端連線失敗，目前顯示本地資料</div>}
+
+    <div style={{display:'flex',margin:'4px 20px 14px',background:'#f0f8fa',borderRadius:14,padding:3,flexShrink:0}}>
+      {[['score','等級排行'],['streak','連續天數']].map(([id,label])=>(
+        <button key={id} onClick={()=>setTab(id)} style={{flex:1,padding:'8px',borderRadius:11,border:'none',cursor:'pointer',background:tab===id?'#fff':'transparent',fontSize:13,fontWeight:800,color:tab===id?pc:'#aaa',boxShadow:tab===id?'0 2px 8px rgba(0,0,0,0.08)':'none',transition:'all 0.2s',fontFamily:'inherit'}}>{label}</button>
+      ))}
+    </div>
+
+    {cloudStatus==='loading'&&list.length===0?(
+      <div style={{flex:1,display:'flex',alignItems:'center',justifyContent:'center'}}><div className="spinner"/></div>
+    ):(
+      <>
+        <div style={{display:'flex',alignItems:'flex-end',justifyContent:'center',gap:6,padding:'0 20px 14px',flexShrink:0,minHeight:200}}>
+          {top3Src.map((r,pi)=>{
+            if(!r)return(<div key={'empty-'+pi} style={{flex:1}}/>);
+            const isFirst=pi===1,isSecond=pi===0;
+            const valSize=isFirst?30:isSecond?22:17;
+            const unitSize=Math.round(valSize*0.42);
+            const medalSize=isFirst?24:18;
+            const nameSuffix=tab==='score'
+              ?(<><span style={{color:'#ffb300'}}>平均</span> <span style={{color:'#1a1a2e'}}>{Number(r.avgScore||0).toFixed(1)}</span></>)
+              :(<span style={{color:'#ffb300'}}>LV{r.level}</span>);
+            const valNode=tab==='score'
+              ?(<span style={{fontSize:valSize,fontWeight:900,color:'#fff',lineHeight:1,textShadow:'0 2px 6px rgba(0,0,0,0.22)'}}><span style={{fontSize:unitSize,marginRight:2,opacity:0.92}}>LV</span>{r.level}</span>)
+              :(<div style={{display:'flex',flexDirection:'column',alignItems:'center',gap:3}}>
+                  <span style={{fontSize:valSize,fontWeight:900,color:'#fff',lineHeight:1,textShadow:'0 2px 6px rgba(0,0,0,0.22)'}}>{r.streak}<span style={{fontSize:unitSize,marginLeft:2,opacity:0.92}}>天</span></span>
+                  <span style={{fontSize:11,fontWeight:800,color:'#fff',opacity:0.92,textShadow:'0 1px 3px rgba(0,0,0,0.18)',whiteSpace:'nowrap'}}>今日{r.todayQuiz|0}題</span>
+                </div>);
+            return(<div key={r.name+pi} style={{flex:1,display:'flex',flexDirection:'column',alignItems:'center',gap:3}}>
+              {r.isMe&&<div style={{fontSize:9,fontWeight:900,color:pc,background:`${pc}20`,padding:'2px 6px',borderRadius:10}}>你</div>}
+              <img src={CHARACTERS[r.charIdx]?.img||CHARACTERS[0].img} alt="" style={{width:isFirst?50:40,height:isFirst?50:40,objectFit:'contain'}}/>
+              <div style={{fontSize:10,fontWeight:900,color:r.isMe?pc:'#555',maxWidth:84,textAlign:'center',overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap'}}>{r.name} {nameSuffix}</div>
+              <div style={{width:'100%',height:PODIUM_H[pi],borderRadius:'10px 10px 0 0',background:`linear-gradient(180deg,${PODIUM_C[pi]},${PODIUM_C[pi]}88)`,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'space-between',padding:'10px 0 6px',boxShadow:`0 -4px 12px ${PODIUM_C[pi]}44`}}>
+                {valNode}
+                <span style={{fontSize:medalSize,filter:'drop-shadow(0 2px 4px rgba(0,0,0,0.18))'}}>{PODIUM_MEDAL[pi]}</span>
+              </div>
+            </div>);
+          })}
+        </div>
+
+        <div className="scroll-body" style={{padding:'0 20px 8px'}}>
+          {list.slice(3).map(r=>{
+            const nameSuffix=tab==='score'
+              ?(<><span style={{color:'#ffb300',fontSize:11}}>平均</span> <span style={{color:'#1a1a2e',fontSize:11}}>{Number(r.avgScore||0).toFixed(1)}</span></>)
+              :(<span style={{color:'#ffb300',fontSize:11}}>LV{r.level}</span>);
+            const rightVal=tab==='score'
+              ?(<><span style={{fontSize:10,color:'#aaa',fontWeight:700}}>LV </span>{r.level}</>)
+              :(<>{r.streak}<span style={{fontSize:10,color:'#aaa',fontWeight:700}}> 天</span></>);
+            return(<div key={r.name+r.rank} style={{display:'flex',alignItems:'center',gap:12,padding:'11px 14px',background:r.isMe?`${pc}10`:'#fff',borderRadius:16,marginBottom:8,boxShadow:r.isMe?`0 2px 10px ${pc}22`:'0 1px 6px rgba(0,0,0,0.04)',border:r.isMe?`1.5px solid ${pc}33`:'1.5px solid transparent'}}>
+              <div style={{width:26,textAlign:'center',fontSize:13,fontWeight:900,color:'#ddd'}}>{r.rank}</div>
+              <img src={CHARACTERS[r.charIdx]?.img||CHARACTERS[0].img} alt="" style={{width:36,height:36,objectFit:'contain'}}/>
+              <div style={{flex:1,minWidth:0}}>
+                <div style={{fontSize:13,fontWeight:900,color:r.isMe?pc:'#1a1a2e',overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap'}}>{r.name} {nameSuffix}{r.isMe?' (我)':''}</div>
+                <div style={{fontSize:10,color:'#aaa',fontWeight:700}}>🔥 連續 {r.streak} 天 · 今日 {r.todayQuiz|0} 題</div>
+              </div>
+              <div style={{fontSize:17,fontWeight:900,color:r.isMe?pc:'#555'}}>{rightVal}</div>
+            </div>);
+          })}
+          {list.length<=3&&<div style={{textAlign:'center',color:'#bbb',fontSize:12,padding:20}}>目前還沒有其他玩家資料</div>}
+        </div>
+      </>
+    )}
+    <BottomNav screen="rank" onNav={onNav} pc={pc}/>
+  </div>);
+}
+
+function ConfirmExitQuizModal({onYes,onNo}){
+  return(<div style={{position:'absolute',inset:0,background:'rgba(15,23,42,0.42)',zIndex:120,display:'flex',alignItems:'center',justifyContent:'center',padding:24}}>
+    <div style={{width:'100%',maxWidth:310,background:'#fff',borderRadius:24,padding:'24px 20px 18px',boxShadow:'0 18px 50px rgba(0,0,0,0.28)',textAlign:'center',animation:'pop 0.25s ease-out'}}>
+      <div style={{fontSize:34,marginBottom:8}}>⚠️</div>
+      <div style={{fontSize:16,fontWeight:900,color:'#1a1a2e',lineHeight:1.55,marginBottom:18}}>測驗已作答，如退出此頁則捨棄您的作答記錄。</div>
+      <div style={{display:'flex',gap:10}}>
+        <button onClick={onNo} style={{flex:1,padding:13,borderRadius:16,border:'2px solid #e5e7eb',background:'#fff',color:'#64748b',fontSize:14,fontWeight:900,cursor:'pointer',fontFamily:'inherit'}}>NO</button>
+        <button onClick={onYes} style={{flex:1,padding:13,borderRadius:16,border:'none',background:'linear-gradient(135deg,#fb7185,#fb7185cc)',color:'#fff',fontSize:14,fontWeight:900,cursor:'pointer',fontFamily:'inherit',boxShadow:'0 4px 14px rgba(251,113,133,0.32)'}}>YES</button>
+      </div>
+    </div>
+  </div>);
+}
+
+/* ══ APP ═════════════════════════════════════════════════ */
+function App(){
+  const [profile,setProfile]=useState(()=>loadProfile());
+  const [screen,setScreen]=useState('home');
+  const [result,setResult]=useState(null);
+  const [stats,setStats]=useState(loadStats);
+  const [vocabAll,setVocabAll]=useState(null);
+  const [difficultyOrder,setDifficultyOrder]=useState([]);
+  const [loadError,setLoadError]=useState('');
+  const [levelUpInfo,setLevelUpInfo]=useState(null);
+  const [cloudEntries,setCloudEntries]=useState([]);
+  const [cloudStreakEntries,setCloudStreakEntries]=useState([]);
+  const [cloudStatus,setCloudStatus]=useState('idle');
+  const [stageRecords,setStageRecords]=useState([]);
+  const [activeQuest,setActiveQuest]=useState(null);
+  const [quizAnswered,setQuizAnswered]=useState(0);
+  const [pendingNav,setPendingNav]=useState(null);
+  const [fb,refreshFb]=useFb();
+  const claimAttempted=useRef(false);
+  useEffect(()=>{
+    if(claimAttempted.current)return;
+    if(!fb?.ready||!window.FB)return;
+    if(fb.pet)return;
+    if(Object.prototype.hasOwnProperty.call(profile||{},'petId'))return; // new-mode profiles may intentionally be visitor after release
+    const idx=profile?.charIdx;
+    if(typeof idx!=='number')return;
+    const targetId=window.FB.config.SEED_PETS[idx]?.id;
+    if(!targetId)return;
+    claimAttempted.current=true;
+    window.FB.ops.claimPet(window.FB.uid,targetId)
+      .then(()=>refreshFb())
+      .catch(e=>{claimAttempted.current=false;console.warn('[App] auto-claim failed',e.message);});
+  },[fb,profile,refreshFb]);
+
+  const pc='#61c2ff';
+  const currentPetId=fb?.ready?(fb?.profile?.currentPetId||null):(profile?.petId||null);
+  const charIdx=(currentPetId?petIdxFromId(currentPetId):null)??profile?.charIdx??0;
+  const charSrc=fb?.pet?.img||CHARACTERS[charIdx]?.img||CHARACTERS[0].img;
+  const charName=fb?.pet?.name||CHARACTERS[charIdx]?.name||'小夥伴';
+  const studentName=fb?.profile?.name||profile?.name||'同學';
+  const today=taipeiDateKey();
+  const profileTodayDate=fb?.profile?.todayQuizDate||stats.todayQuizDate||'';
+  const profileTodayCount=fb?.profile?.todayQuizCount??stats.todayQuiz??0;
+  const displayStats={
+    ...stats,
+    streak:fb?.profile?.streakCur??stats.streak??0,
+    best:fb?.profile?.bestScore??stats.best??0,
+    avgScore:fb?.profile?.avgScore??stats.avgScore??0,
+    totalGames:fb?.profile?.totalGames??stats.totalGames??0,
+    xp:fb?.profile?.exp??stats.xp??0,
+    todayQuiz:profileTodayDate===today?(profileTodayCount|0):0,
+    level:fb?.profile?.level||1,
+    totalExp:fb?.profile?.totalExp??estimateTotalExpForLevel(fb?.profile?.level||1,fb?.profile?.exp??stats.xp??0),
+  };
+
+  // Load jp-n3-data.json + difficulty file once
+  useEffect(()=>{
+    (async()=>{
+      try{
+        const res=await fetch('jp-n3-data.json?t='+Date.now(),{cache:'no-store'});
+        if(!res.ok)throw new Error('HTTP '+res.status);
+        const data=await res.json();
+        const words=Array.isArray(data.words)?data.words:Array.isArray(data.vocab)?data.vocab:[];
+        if(!words.length)throw new Error('空的 vocab 資料');
+        setVocabAll(words.map(normalizeVocab));
+      }catch(e){
+        console.warn('jp-n3-data.json 載入失敗，使用 fallback:',e);
+        setVocabAll(FALLBACK_WORDS);
+        setLoadError(String(e.message||e));
+      }
+    })();
+    (async()=>{
+      try{
+        const res=await fetch('jp-n3-difficulty.json?t='+Date.now(),{cache:'no-store'});
+        if(!res.ok)throw new Error('HTTP '+res.status);
+        const data=await res.json();
+        if(Array.isArray(data.order))setDifficultyOrder(data.order);
+      }catch(e){console.warn('jp-n3-difficulty.json 載入失敗，按日期 fallback:',e);}
+    })();
+  },[]);
+
+  const refreshLeaderboard=useCallback(async()=>{
+    setCloudStatus('loading');
+    try{
+      const todayKey=taipeiDateKey();
+      const best=await cloudRunQuery('avgScore',80);
+      const eligibleBest=best.filter(e=>isRankEligible(e.streakCur,e.todayQuizDate===todayKey?(e.todayQuizCount|0):0,e.level||1));
+      eligibleBest.sort((a,b)=>(Number(b.avgScore||0))-(Number(a.avgScore||0))||String(b.updatedAt||'').localeCompare(String(a.updatedAt||'')));
+      setCloudEntries(eligibleBest);
+      try{
+        const streak=await cloudRunQuery('streakCur',80);
+        const eligibleStreak=streak.filter(e=>isRankEligible(e.streakCur,e.todayQuizDate===todayKey?(e.todayQuizCount|0):0,e.level||1));
+        eligibleStreak.sort((a,b)=>(b.streakCur||0)-(a.streakCur||0)||(Number(b.avgScore||0)-Number(a.avgScore||0)));
+        setCloudStreakEntries(eligibleStreak);
+      }catch{setCloudStreakEntries([]);}
+      setCloudStatus('ok');
+    }catch(e){
+      console.warn('leaderboard fetch failed',e);
+      setCloudStatus('offline');
+    }
+  },[]);
+
+  const refreshMapStages=useCallback(async()=>{
+    try{
+      if(window.FB?.ops?.listMapStages){
+        const rows=await window.FB.ops.listMapStages(MAP_STAGE_COUNT);
+        setStageRecords(rows||[]);
+      }
+    }catch(e){console.warn('map stages fetch failed',e);}
+  },[]);
+
+  // Fetch leaderboard/map markers when entering rank or map screen
+  useEffect(()=>{if(screen==='rank'||screen==='map')refreshLeaderboard();},[screen,refreshLeaderboard]);
+  useEffect(()=>{if(screen==='map')refreshMapStages();},[screen,refreshMapStages]);
+
+  // Today's set + level-based study path: LV1 gets easiest 15 cards + today's 3; each level unlocks 5 more.
+  const {todaySet,quizPool,dateLabel}=useMemo(()=>{
+    if(!vocabAll)return{todaySet:[],quizPool:[],dateLabel:formatDate(today)};
+    const byDate=new Map();
+    for(const w of vocabAll){if(!w.date)continue;if(!byDate.has(w.date))byDate.set(w.date,[]);byDate.get(w.date).push(w);}
+    const allDates=[...byDate.keys()].sort();
+    const latest=allDates[allDates.length-1]||'';
+    const todayWords=byDate.get(today)||[];
+    const displayDate=todayWords.length?today:latest;
+    const displaySet=(todayWords.length?todayWords:(byDate.get(latest)||[])).slice(0,DAILY_FOCUS_COUNT);
+    const focusWords=new Set(displaySet.map(w=>w.word));
+    const pathWords=vocabAll.filter(w=>!focusWords.has(w.word));
+    const unlocked=unlockedWords(pathWords,difficultyOrder,displayStats.level||1);
+    const studyPool=mergeStudyPool(unlocked,displaySet);
+    return{
+      todaySet:displaySet,
+      quizPool:studyPool.length?studyPool:vocabAll,
+      dateLabel:formatDate(displayDate||today),
+    };
+  },[vocabAll,difficultyOrder,today,displayStats.level]);
+
+  const goScreen=(s)=>{
+    if(s==='quiz'&&screen!=='quiz'){setResult(null);setQuizAnswered(0);}
+    if(s==='map'){setResult(null);setQuizAnswered(0);}
+    setScreen(s);
+  };
+  const nav=(s)=>{
+    if(screen==='quiz'&&s!=='quiz'&&quizAnswered>0){setPendingNav(s);return;}
+    goScreen(s);
+  };
+  const confirmExitQuiz=()=>{
+    const s=pendingNav||'home';
+    setPendingNav(null);
+    setQuizAnswered(0);
+    goScreen(s);
+  };
+
+  const levelUpAckingRef=useRef(false);
+  // Watch pendingLevelUp on home screen → show modal once
+  useEffect(()=>{
+    if(screen!=='home')return;
+    if(levelUpInfo)return;
+    if(levelUpAckingRef.current)return; // mid-ack: ignore stale pending value
+    const pending=fb?.profile?.pendingLevelUp|0;
+    if(pending<=0)return;
+    const newLevel=fb?.profile?.level||1;
+    const oldLevel=Math.max(1,newLevel-pending);
+    const focusWords=new Set((todaySet||[]).map(w=>w.word));
+    const pathWords=vocabAll?vocabAll.filter(w=>!focusWords.has(w.word)):[];
+    const unlocked=pathWords.length?newlyUnlockedWords(difficultyOrder,pathWords,oldLevel,newLevel):[];
+    setLevelUpInfo({level:newLevel,unlocked});
+  },[screen,fb?.profile?.pendingLevelUp,fb?.profile?.level,levelUpInfo,vocabAll,difficultyOrder,todaySet]);
+
+  const handleCloseLevelUp=async()=>{
+    levelUpAckingRef.current=true;
+    try{if(window.FB?.ops?.ackLevelUp&&window.FB?.uid)await window.FB.ops.ackLevelUp(window.FB.uid);}catch(e){console.warn('ackLevelUp failed',e);}
+    try{await refreshFb();}catch{}
+    setLevelUpInfo(null);
+    // Release lock on next tick so the now-zero pending is the value the effect sees
+    setTimeout(()=>{levelUpAckingRef.current=false;},0);
+  };
+
+  const handleFinish=async(score,xpGained,total,questRun=null)=>{
+    const pct=total>0?(score/total*100):0;
+    const passed=questRun?stagePass(score,total,questRun):true;
+    let finalQuestRun=questRun?{...questRun,passed}:null;
+    const baseStats=displayStats;
+    const baseAvg=Number(baseStats.avgScore||0);
+    const games=baseStats.totalGames||0;
+    const newAvg=games===0?Math.round(pct*10)/10:Math.round((baseAvg*games+pct)/(games+1)*10)/10;
+    const todayCount=(baseStats.todayQuizDate===today?(baseStats.todayQuiz||0):0)+(total|0);
+    const ns={...baseStats,xp:(baseStats.xp||0)+xpGained,best:Math.max(baseStats.best||0,score),totalGames:games+1,avgScore:newAvg,todayQuiz:todayCount,todayQuizDate:today};
+    saveStats(ns);setStats(ns);
+    setQuizAnswered(0);
+    if(window.FB?.uid&&studentName&&finalQuestRun){
+      try{
+        const mapResult=await window.FB.ops.clearMapStage?.(window.FB.uid,{...finalQuestRun,score,total,pct,name:studentName,avatarId:currentPetId||CHARACTERS[charIdx]?.id||DEFAULT_AVATAR});
+        if(mapResult)finalQuestRun={...finalQuestRun,...mapResult};
+        await refreshFb();
+        refreshMapStages();
+      }catch(e){console.warn('clearMapStage failed',e);}
+    }
+    setResult({score,xp:xpGained,total,questRun:finalQuestRun});setScreen('result');
+    if(window.FB?.uid&&studentName){
+      const entry=await cloudUpsertScore(window.FB.uid,studentName,currentPetId||CHARACTERS[charIdx]?.id||DEFAULT_AVATAR,score,total);
+      if(entry){
+        const ns2={...ns,streak:entry.streakCur,best:entry.bestScore,avgScore:entry.avgScore??ns.avgScore,todayQuiz:entry.todayQuizCount??ns.todayQuiz,todayQuizDate:entry.todayQuizDate??ns.todayQuizDate};
+        saveStats(ns2);setStats(ns2);
+        await refreshFb();
+        refreshLeaderboard();
+      }
+    }
+  };
+
+  if(!vocabAll){
+    return(<div style={{width:'100%',height:'100%',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:14,background:'linear-gradient(170deg,#fafeff 0%,#f0fdf8 100%)'}}>
+      <div className="spinner"/>
+      <div style={{fontSize:13,color:'#aaa',fontWeight:700}}>日語資料載入中…</div>
+    </div>);
+  }
+
+  if(!profile)return(<div style={{width:'100%',height:'100%',position:'relative'}}>
+    <LineWebViewBanner/>
+    <OnboardingScreen onDone={p=>{setProfile(p);setScreen('home');}} pc={pc}/>
+  </div>);
+
+  return(<div style={{width:'100%',height:'100%',position:'relative'}}>
+    <LineWebViewBanner/>
+    {screen==='home'&&<HomeScreen charSrc={charSrc} charName={charName} studentName={studentName} stats={displayStats} todaySet={todaySet} dateLabel={dateLabel} onNav={nav} onSelectChar={()=>setScreen('charselect')} pc={pc} fb={fb} refreshFb={refreshFb}/>}
+    {screen==='charselect'&&<CharSelectScreen current={charIdx} fb={fb} refreshFb={refreshFb} onSelect={async petId=>{
+      if(window.FB&&petId){
+        try{await window.FB.ops.claimPet(window.FB.uid,petId);await refreshFb();}
+        catch(e){
+          const msgs={'pet-taken':'這隻已經被別人帶走了！','pet-disabled':'這隻寵物餓壞了，不能選 😢','pet-not-found':'找不到這隻寵物'};
+          alert(msgs[e.message]||`選寵失敗：${e.message}`);
+          return;
+        }
+      }
+      const idx=petIdxFromId(petId)??charIdx;
+      const p={...profile,charIdx:idx,petId};setProfile(p);saveProfile(p);
+      setScreen('home');
+    }} onBack={()=>setScreen('home')} pc={pc}/>}
+    {screen==='flash'&&<FlashScreen charSrc={charSrc} flashAll={quizPool} knownWords={fb?.profile?.knownWords||[]} refreshFb={refreshFb} onNav={nav} pc={pc} voiceGender={fb?.pet?.voiceGender==='male'?'male':'female'}/>}
+    {screen==='map'&&<MapScreen profile={fb?.profile||displayStats} uid={fb?.uid} studentName={studentName} charSrc={charSrc} pc={pc} onNav={nav} cloudEntries={cloudEntries} stageRecords={stageRecords} onRefreshMap={()=>{refreshLeaderboard();refreshMapStages();}} onStartStage={q=>{setActiveQuest(q);setResult(null);setQuizAnswered(0);setScreen('quiz');}}/>}
+    {screen==='quiz'&&<QuizScreen charSrc={charSrc} charName={charName} quizPool={quizPool} knownWords={fb?.profile?.knownWords||[]} onFinish={handleFinish} onNav={nav} onAnsweredChange={setQuizAnswered} pc={pc} refreshFb={refreshFb} voiceGender={fb?.pet?.voiceGender==='male'?'male':'female'} quest={activeQuest}/>}
+    {screen==='result'&&result&&<ResultScreen {...result} charSrc={charSrc} charName={charName} onRetry={()=>setScreen('map')} onHome={()=>setScreen('home')} pc={pc}/>}
+    {screen==='rank'&&<RankScreen uid={fb?.uid} studentName={studentName} charIdx={charIdx} stats={displayStats} onNav={nav} pc={pc} cloudEntries={cloudEntries} cloudStreakEntries={cloudStreakEntries} cloudStatus={cloudStatus} onRefresh={refreshLeaderboard}/>}
+    {pendingNav&&<ConfirmExitQuizModal onYes={confirmExitQuiz} onNo={()=>setPendingNav(null)}/>}
+    {levelUpInfo&&<LevelUpModal level={levelUpInfo.level} unlocked={levelUpInfo.unlocked||[]} pc={pc} onClose={handleCloseLevelUp}/>}
+  </div>);
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+
+<!-- ════════════════════════════════════════════════════════════════
+     Firebase Pet MVP — Phase 1: backend wiring (anon auth + seeds)
+     Spec: Claw_ENG/design_handoff/firebase_pet_mvp_spec.md
+     UI integration happens in Phase 2/3.
+     ════════════════════════════════════════════════════════════════ -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+import { getAuth, signInAnonymously, onAuthStateChanged }
+  from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
+import { getFirestore, doc, getDoc, setDoc, updateDoc, getDocs, collection, runTransaction, query, orderBy, limit, arrayUnion, arrayRemove }
+  from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyB1c6yopEMzDxbYBrgkqr_3Rsr9KqKwNbA",
+  authDomain: "vocab-eng2026.firebaseapp.com",
+  projectId: "vocab-eng2026",
+};
+
+// Append new entries here — seedPets() will create any missing on next page load.
+const HP_DECAY_MS = 30 * 60 * 1000; // 30 min per HP point => 100 hp ~= 50h
+const SEED_PETS = [
+  { id:'pet_001', type:'cat',     name:'奶油貓', desc:'愛撒嬌的貓咪', img:'Claw_ENG/design_handoff/assets/newcha1.png' },
+  { id:'pet_002', type:'dog',     name:'布丁狗', desc:'忠心的好夥伴', img:'Claw_ENG/design_handoff/assets/newcha2.png' },
+  { id:'pet_003', type:'hippo',   name:'胖河馬', desc:'萌萌的大塊頭', img:'Claw_ENG/design_handoff/assets/newcha3.png' },
+  { id:'pet_004', type:'fish',    name:'泡泡魚', desc:'藍藍的海洋寶', img:'Claw_ENG/design_handoff/assets/newcha4.png' },
+  { id:'pet_005', type:'spotted', name:'點點獸', desc:'斑點小可愛',   img:'Claw_ENG/design_handoff/assets/newcha5.png' },
+  { id:'pet_006', type:'chick',   name:'圓滾雞', desc:'圓圓愛學習',   img:'Claw_ENG/design_handoff/assets/newcha6.png' },
+  { id:'pet_007', type:'dragon',  name:'六角龍', desc:'粉紅小精靈',   img:'Claw_ENG/design_handoff/assets/newcha7.png' },
+  { id:'pet_008', type:'cheetah',     name:'豹豹',     desc:'威風的小獵豹',     img:'Claw_ENG/design_handoff/assets/newcha8.png' },
+  { id:'pet_009', type:'dragon-green',name:'嫩芽龍',   desc:'青嫩嫩的小恐龍',   img:'Claw_ENG/design_handoff/assets/newcha9.png' },
+  { id:'pet_010', type:'parrot',      name:'橄欖鸚',   desc:'藍尾巴的小鸚鵡',   img:'Claw_ENG/design_handoff/assets/newcha10.png' },
+  { id:'pet_011', type:'whaleshark',  name:'繁星鯊',   desc:'身上有點點的鯨鯊', img:'Claw_ENG/design_handoff/assets/newcha11.png' },
+  { id:'pet_012', type:'panda',       name:'湯圓貓熊', desc:'黑白圓圓的小糰子', img:'Claw_ENG/design_handoff/assets/newcha12.png' },
+  { id:'pet_013', type:'penguin',     name:'冰棒企鵝', desc:'搖搖晃晃的小傢伙', img:'Claw_ENG/design_handoff/assets/newcha13.png' },
+  { id:'pet_014', type:'koala',       name:'雲朵樹熊', desc:'慢慢抱住每個單字', img:'Claw_ENG/design_handoff/assets/newcha14.png' },
+  { id:'pet_015', type:'hamster',     name:'奶茶鼠',   desc:'圓滾滾的倉鼠寶',   img:'Claw_ENG/design_handoff/assets/newcha15.png' },
+  { id:'pet_016', type:'alpaca',      name:'棉花羊駝', desc:'蓬鬆又溫柔',       img:'Claw_ENG/design_handoff/assets/newcha16.png' },
+  { id:'pet_017', type:'sugarglider', name:'蜜糖鼯',   desc:'大耳朵會滑翔',     img:'Claw_ENG/design_handoff/assets/newcha17.png' },
+  { id:'pet_018', type:'husky',       name:'可可哈奇', desc:'毛茸茸的小哈奇',   img:'Claw_ENG/design_handoff/assets/newcha18.png' },
+  { id:'pet_019', type:'orange-tabby', name:'橘虎貓',   desc:'有虎斑紋的小橘貓', img:'Claw_ENG/design_handoff/assets/newcha19.png' },
+  { id:'pet_020', type:'bear',         name:'可可熊',   desc:'溫柔圓耳的小熊',   img:'Claw_ENG/design_handoff/assets/newcha20.png' },
+  { id:'pet_021', type:'lion',         name:'金鬃獅',   desc:'蓬鬆鬃毛的小獅子', img:'Claw_ENG/design_handoff/assets/newcha21.png' },
+];
+
+const SEED_PET_MAP = Object.fromEntries(SEED_PETS.map(p => [p.id, p]));
+function seedPetDoc(id, now = Date.now()) {
+  const p = SEED_PET_MAP[id];
+  if (!p) return null;
+  return { type:p.type, name:p.name, desc:p.desc, img:p.img, ownerUid:null, ownerName:null, status:'available', hp:100, lastHpUpdate:now, createdAt:now, updatedAt:now };
+}
+function seedPetList(now = Date.now()) {
+  return SEED_PETS.map(p => ({ id:p.id, ...seedPetDoc(p.id, now), fallback:true }));
+}
+
+function normalizePlayerName(name) {
+  return String(name || '').trim().replace(/\s+/g, ' ').slice(0, 40) || '匿名玩家';
+}
+function playerIdFromName(name) {
+  const clean = normalizePlayerName(name).toLowerCase();
+  try {
+    const bytes = new TextEncoder().encode(clean);
+    let bin = '';
+    for (const b of bytes) bin += String.fromCharCode(b);
+    return 'name_' + btoa(bin).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/g, '').slice(0, 120);
+  } catch {
+    return 'name_' + clean.replace(/[^a-z0-9_-]+/g, '_').replace(/^_+|_+$/g, '').slice(0, 80);
+  }
+}
+
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const CLASSROOM_ID = 'jp-n3';
+const CLASSROOM_DOC_PREFIX = 'jpN3_';
+function classroomDocId(id) {
+  const raw = String(id || '');
+  return raw.startsWith(CLASSROOM_DOC_PREFIX) ? raw : CLASSROOM_DOC_PREFIX + raw;
+}
+function classroomLogicalId(id) {
+  const raw = String(id || '');
+  return raw.startsWith(CLASSROOM_DOC_PREFIX) ? raw.slice(CLASSROOM_DOC_PREFIX.length) : raw;
+}
+function isClassroomDoc(docSnap) {
+  return String(docSnap?.id || '').startsWith(CLASSROOM_DOC_PREFIX);
+}
+const userDoc = uid => doc(db, 'users', classroomDocId(uid));
+const petDoc = petId => doc(db, 'pets', classroomDocId(petId));
+const leaderboardDoc = uid => doc(db, 'leaderboard', classroomDocId(uid));
+const mapStageDoc = stage => doc(db, 'mapStages', classroomDocId(mapStageDocId(stage)));
+const petsCol = () => collection(db, 'pets');
+const leaderboardCol = () => collection(db, 'leaderboard');
+const mapStagesCol = () => collection(db, 'mapStages');
+
+function calcCurrentHp(pet, now = Date.now()) {
+  if (!pet) return 0;
+  const hp = Math.max(0, Number(pet.hp ?? 100));
+  if (pet.status === 'disabled') return 0;
+  // Only actively adopted pets lose HP over time.
+  // Available pool pets are paused so unselected pets don't all starve while a child plays with one companion.
+  if (pet.status !== 'owned' || !pet.ownerUid) return hp;
+  const last = pet.lastHpUpdate || now;
+  const passed = Math.floor((now - last) / HP_DECAY_MS);
+  return Math.max(0, hp - passed);
+}
+
+async function ensureUserProfile(uid, defaultName, legacyUid = null) {
+  const ref = userDoc(uid);
+  const snap = await getDoc(ref);
+  if (snap.exists()) {
+    const existing = snap.data();
+    // Backfill fields for users created before the LV/study-path system shipped.
+    const patch = {};
+    if (existing.level === undefined || existing.level === null) { patch.level = 1; patch.pendingLevelUp = 0; }
+    if (existing.pendingLevelUp === undefined || existing.pendingLevelUp === null) patch.pendingLevelUp = 0;
+    if (existing.knownWords === undefined || existing.knownWords === null) patch.knownWords = [];
+    if (existing.classroom !== CLASSROOM_ID) patch.classroom = CLASSROOM_ID;
+    if (existing.mapStage === undefined || existing.mapStage === null) patch.mapStage = Math.max(1, Number(existing.level || 1));
+    if (existing.mapBestStage === undefined || existing.mapBestStage === null) patch.mapBestStage = Math.max(0, Number((patch.mapStage || existing.mapStage || 1) - 1));
+    if (existing.mapFoodBonuses === undefined || existing.mapFoodBonuses === null) patch.mapFoodBonuses = [];
+    if (existing.mapStars === undefined || existing.mapStars === null) patch.mapStars = {};
+    const levelForTotal = patch.level || existing.level || 1;
+    const expForTotal = existing.exp || 0;
+    if (existing.totalExp === undefined || existing.totalExp === null) patch.totalExp = estimateTotalExpForLevelModule(levelForTotal, expForTotal);
+    if (Object.keys(patch).length) {
+      patch.updatedAt = Date.now();
+      try { await updateDoc(ref, patch); } catch (e) { console.warn('[FB] profile backfill failed', e); }
+      return { ref, data: { ...existing, ...patch }, created: false };
+    }
+    return { ref, data: existing, created: false };
+  }
+  const now = Date.now();
+  let data = null;
+  if (legacyUid && legacyUid !== uid) {
+    try {
+      const legacySnap = await getDoc(userDoc(legacyUid));
+      if (legacySnap.exists()) {
+        data = { ...legacySnap.data(), classroom: CLASSROOM_ID, name: normalizePlayerName(defaultName), playerId: uid, migratedFromAuthUid: legacyUid, updatedAt: now };
+      }
+    } catch (e) { console.warn('[FB] legacy profile copy failed', e); }
+  }
+  if (!data) data = {
+    classroom: CLASSROOM_ID,
+    name: normalizePlayerName(defaultName),
+    playerId: uid,
+    currentPetId: null,
+    exp: 0, totalExp: 0, combo: 0, foodCount: 0,
+    level: 1, pendingLevelUp: 0,
+    mapStage: 1, mapBestStage: 0, mapClears: 0, mapFoodBonuses: [], mapStars: {},
+    totalCorrect: 0, totalGames: 0,
+    streakCur: 0, streakBest: 0, bestScore: 0, avgScore: 0,
+    todayQuizCount: 0, todayQuizDate: '',
+    knownWords: [],
+    weekPlayed: [], lastPlayDate: '',
+    createdAt: now, updatedAt: now,
+  };
+  await setDoc(ref, data);
+  return { ref, data, created: true };
+}
+
+async function migrateLegacyPetOwner(legacyUid, playerId, currentPetId) {
+  if (!legacyUid || legacyUid === playerId || !currentPetId) return false;
+  try {
+    return await runTransaction(db, async (tx) => {
+      const petRef = petDoc(currentPetId);
+      const petSnap = await tx.get(petRef);
+      if (!petSnap.exists() || petSnap.data().ownerUid !== legacyUid) return false;
+      tx.update(petRef, { ownerUid: playerId, updatedAt: Date.now() });
+      return true;
+    });
+  } catch (e) { console.warn('[FB] legacy pet owner migration failed', e); return false; }
+}
+
+async function migrateLocalStats(uid, profile) {
+  if (profile?.migratedFromLocalAt) return false;
+  let old = null;
+  try { old = JSON.parse(localStorage.getItem('jpN3Stats3') || 'null'); } catch {}
+  if (!old) return false;
+  const patch = {
+    classroom: CLASSROOM_ID,
+    streakCur: Number(old.streak || 0),
+    streakBest: Math.max(Number(old.streak || 0), Number(old.streakBest || 0)),
+    bestScore: Number(old.best || 0),
+    avgScore: Number(old.avgScore || 0),
+    totalGames: Number(old.totalGames || 0),
+    exp: Number(profile?.exp || old.xp || 0) % 200,
+    totalExp: Number(profile?.totalExp ?? old.xp ?? 0),
+    weekPlayed: Array.isArray(old.weekPlayed) ? old.weekPlayed : [],
+    migratedFromLocalAt: Date.now(), updatedAt: Date.now(),
+  };
+  await setDoc(userDoc(uid), patch, { merge: true });
+  return true;
+}
+
+async function seedPets() {
+  const created = [];
+  for (const p of SEED_PETS) {
+    const ref = petDoc(p.id);
+    const snap = await getDoc(ref);
+    if (snap.exists()) continue;
+    const now = Date.now();
+    await setDoc(ref, {
+      classroom: CLASSROOM_ID,
+      type: p.type, name: p.name, desc: p.desc, img: p.img,
+      ownerUid: null, ownerName: null, status: 'available',
+      hp: 100, lastHpUpdate: now,
+      createdAt: now, updatedAt: now,
+    });
+    created.push(p.id);
+  }
+  return created;
+}
+
+async function loadPet(petId) {
+  const ref = petDoc(petId);
+  const snap = await getDoc(ref);
+  if (!snap.exists()) return null;
+  return { id: petId, ...snap.data() };
+}
+
+async function refreshProfile(uid) {
+  const snap = await getDoc(userDoc(uid));
+  return snap.exists() ? snap.data() : null;
+}
+
+async function updateUserName(uid, name) {
+  const clean = normalizePlayerName(name);
+  return await runTransaction(db, async (tx) => {
+    const userRef = userDoc(uid);
+    const userSnap = await tx.get(userRef);
+    if (!userSnap.exists()) throw new Error('no-user');
+    const user = userSnap.data();
+    let petRef = null, petSnap = null;
+    if (user.currentPetId) {
+      petRef = petDoc(user.currentPetId);
+      petSnap = await tx.get(petRef);
+    }
+    tx.update(userRef, { name: clean, updatedAt: Date.now() });
+    if (petRef && petSnap?.exists() && petSnap.data().ownerUid === uid) tx.update(petRef, { ownerName: clean, updatedAt: Date.now() });
+    return clean;
+  });
+}
+
+async function mergePetsByOwnerName(name, playerId) {
+  const clean = normalizePlayerName(name);
+  if (!clean || clean === '匿名玩家') return [];
+  const snap = await getDocs(petsCol());
+  const userRef = userDoc(playerId);
+  const userSnap = await getDoc(userRef);
+  const currentPetId = userSnap.exists() ? userSnap.data().currentPetId : null;
+  const merged = [];
+  const now = Date.now();
+  const writes = [];
+  snap.forEach(d => {
+    if (!isClassroomDoc(d)) return;
+    const petId = classroomLogicalId(d.id);
+    const pet = d.data();
+    if (normalizePlayerName(pet.ownerName || '') === clean && pet.ownerUid !== playerId) {
+      merged.push(petId);
+      writes.push(updateDoc(d.ref, { ownerUid: playerId, updatedAt: now }).catch(e => console.warn('[FB] merge ownerName pet failed', d.id, e)));
+    }
+  });
+  await Promise.all(writes);
+  if (!currentPetId && merged.length) {
+    await setDoc(userRef, { currentPetId: merged[0], updatedAt: now }, { merge: true });
+  }
+  return merged;
+}
+
+async function switchPlayerByName(name) {
+  const clean = normalizePlayerName(name);
+  const playerId = playerIdFromName(clean);
+  const authUid = auth.currentUser?.uid || null;
+  const { data } = await ensureUserProfile(playerId, clean, authUid);
+  await migrateLegacyPetOwner(authUid, playerId, data.currentPetId);
+  await mergePetsByOwnerName(clean, playerId);
+  await updateUserName(playerId, clean);
+  const profile = await refreshProfile(playerId);
+  if (window.FB) {
+    window.FB.uid = playerId;
+    window.FB.playerId = playerId;
+    window.FB.profile = profile;
+    window.dispatchEvent(new Event('fbready'));
+  }
+  return { uid: playerId, profile };
+}
+
+async function listPets() {
+  const now = Date.now();
+  let snap = await getDocs(petsCol());
+  let docs = snap.docs.filter(isClassroomDoc);
+  if (!docs.length) {
+    try {
+      await seedPets();
+      snap = await getDocs(petsCol());
+      docs = snap.docs.filter(isClassroomDoc);
+    } catch (e) {
+      console.warn('[FB] seed on listPets failed; showing seed fallback', e);
+      return seedPetList(now);
+    }
+    if (!docs.length) return seedPetList(now);
+  }
+  const out = [];
+  const reborn = [];
+  const usersToClear = new Set();
+  docs.forEach(d => {
+    const petId = classroomLogicalId(d.id);
+    const pet = d.data();
+    const hp = calcCurrentHp(pet, now);
+    if (hp <= 0 && (pet.ownerUid || pet.status === 'disabled')) {
+      // Starved or legacy-disabled → auto-release and reset to a fresh available pet
+      // so abandoned accounts don't lock pets forever.
+      reborn.push({ id: petId, ref: d.ref, prevOwner: pet.ownerUid || null });
+      if (pet.ownerUid) usersToClear.add(pet.ownerUid);
+      out.push({ id: petId, ...pet, hp:100, status:'available', ownerUid:null, ownerName:null });
+    } else {
+      out.push({ id: petId, ...pet, hp, status: pet.status || 'available' });
+    }
+  });
+  await Promise.all(reborn.map(p => updateDoc(p.ref, { hp:100, status:'available', ownerUid:null, ownerName:null, lastHpUpdate: now, updatedAt: now }).catch(()=>{})));
+  // Clear dangling currentPetId on the previous owners so they go through CharSelect again
+  await Promise.all([...usersToClear].map(uid => updateDoc(userDoc(uid), { currentPetId: null, updatedAt: now }).catch(()=>{})));
+  return out.sort((a,b)=>String(a.id).localeCompare(String(b.id)));
+}
+
+async function claimPet(uid, petId) {
+  return await runTransaction(db, async (tx) => {
+    const userRef = userDoc(uid);
+    const petRef = petDoc(petId);
+    const userSnap = await tx.get(userRef);
+    const petSnap = await tx.get(petRef);
+    if (!userSnap.exists()) throw new Error('no-user');
+    const now = Date.now();
+    const seededPet = petSnap.exists() ? null : seedPetDoc(petId, now);
+    if (!petSnap.exists() && !seededPet) throw new Error('pet-not-found');
+    const pet = petSnap.exists() ? petSnap.data() : seededPet;
+    const user = userSnap.data();
+
+    let releasedHp = null;
+    const oldId = user.currentPetId;
+    if (oldId && oldId !== petId) {
+      const oldRef = petDoc(oldId);
+      const oldSnap = await tx.get(oldRef);
+      if (oldSnap.exists() && oldSnap.data().ownerUid === uid) {
+        const oldPet = oldSnap.data();
+        const oldHp = calcCurrentHp(oldPet, now);
+        releasedHp = oldHp;
+        tx.update(oldRef, {
+          ownerUid: null, ownerName: null,
+          status: oldHp <= 0 ? 'disabled' : 'available',
+          hp: oldHp, lastHpUpdate: now, updatedAt: now,
+        });
+      }
+    }
+
+    const curHp = calcCurrentHp(pet, now);
+    const isStarved = curHp <= 0 || pet.status === 'disabled';
+    // Pets only block claims when they are alive AND owned by someone else.
+    // Starved/disabled pets are reborn (hp=100) and handed to whoever claims next.
+    if (!isStarved && pet.ownerUid && pet.ownerUid !== uid) throw new Error('pet-taken');
+
+    // Reborn handoff: clear the previous owner's currentPetId so they go through CharSelect again next login
+    if (isStarved && pet.ownerUid && pet.ownerUid !== uid) {
+      tx.update(userDoc(pet.ownerUid), { currentPetId: null, updatedAt: now });
+    }
+
+    const claimHp = isStarved
+      ? 100
+      : ((releasedHp != null) ? Math.min(curHp, releasedHp) : curHp);
+    const claimPatch = {
+      ownerUid: uid, ownerName: user.name || '匿名玩家', status: 'owned',
+      hp: claimHp, lastHpUpdate: now, updatedAt: now,
+    };
+    if (petSnap.exists()) tx.update(petRef, claimPatch);
+    else tx.set(petRef, { ...pet, ...claimPatch, classroom: CLASSROOM_ID, createdAt: now });
+    tx.update(userRef, { currentPetId: petId, updatedAt: now });
+    tx.set(leaderboardDoc(uid), { classroom: CLASSROOM_ID, uid, avatarId: petId, name: user.name || '匿名玩家', updatedAt: new Date(now).toISOString() }, { merge: true });
+    return { id: petId, ...pet, hp: claimHp, ownerUid: uid, ownerName: user.name || '匿名玩家', status: 'owned' };
+  });
+}
+
+async function feedMyPet(uid) {
+  return await runTransaction(db, async (tx) => {
+    const userRef = userDoc(uid);
+    const userSnap = await tx.get(userRef);
+    if (!userSnap.exists()) throw new Error('no-user');
+    const user = userSnap.data();
+    if ((user.foodCount || 0) <= 0) throw new Error('no-food');
+    if (!user.currentPetId) throw new Error('no-pet');
+    const petRef = petDoc(user.currentPetId);
+    const petSnap = await tx.get(petRef);
+    if (!petSnap.exists()) throw new Error('pet-missing');
+    const pet = petSnap.data();
+    if (pet.ownerUid !== uid) throw new Error('not-owner');
+    const now = Date.now();
+    const curHp = calcCurrentHp(pet, now);
+    if (curHp <= 0) {
+      tx.update(petRef, { hp:0, status:'disabled', ownerUid:null, ownerName:null, lastHpUpdate: now, updatedAt: now });
+      tx.update(userRef, { currentPetId: null, updatedAt: now });
+      throw new Error('pet-starved');
+    }
+    const newHp = Math.min(100, curHp + 50);
+    const newFood = (user.foodCount || 0) - 1;
+    tx.update(petRef, { hp: newHp, status: 'owned', lastHpUpdate: now, updatedAt: now });
+    tx.update(userRef, { foodCount: newFood, updatedAt: now });
+    return { newHp, foodCount: newFood, petName: pet.name };
+  });
+}
+
+async function releasePet(uid) {
+  return await runTransaction(db, async (tx) => {
+    const userRef = userDoc(uid);
+    const userSnap = await tx.get(userRef);
+    if (!userSnap.exists()) throw new Error('no-user');
+    const user = userSnap.data();
+    if (!user.currentPetId) return null;
+    const petRef = petDoc(user.currentPetId);
+    const petSnap = await tx.get(petRef);
+    const now = Date.now();
+    if (petSnap.exists() && petSnap.data().ownerUid === uid) {
+      const hp = calcCurrentHp(petSnap.data(), now);
+      tx.update(petRef, { ownerUid:null, ownerName:null, status:hp<=0?'disabled':'available', hp, lastHpUpdate:now, updatedAt:now });
+    }
+    tx.update(userRef, { currentPetId:null, updatedAt:now });
+    return true;
+  });
+}
+
+async function setPetVoiceGender(uid, petId, gender) {
+  const g = gender === 'male' ? 'male' : 'female';
+  return await runTransaction(db, async (tx) => {
+    const userRef = userDoc(uid);
+    const petRef = petDoc(petId);
+    const userSnap = await tx.get(userRef);
+    const petSnap = await tx.get(petRef);
+    if (!userSnap.exists()) throw new Error('no-user');
+    if (!petSnap.exists()) throw new Error('pet-missing');
+    if (userSnap.data().currentPetId !== petId) throw new Error('not-current-pet');
+    if (petSnap.data().ownerUid !== uid) throw new Error('not-owner');
+    tx.update(petRef, { voiceGender: g, updatedAt: Date.now() });
+    return g;
+  });
+}
+
+async function renameMyPet(uid, petId, newName) {
+  const clean = String(newName || '').trim();
+  if (!clean) throw new Error('bad-name');
+  const chars = [...clean];
+  const hasWide = /[^\x00-\x7F]/.test(clean);
+  if ((hasWide && chars.length > 12) || (!hasWide && clean.length > 24) || chars.length > 24) throw new Error('name-too-long');
+  return await runTransaction(db, async (tx) => {
+    const userRef = userDoc(uid);
+    const petRef = petDoc(petId);
+    const userSnap = await tx.get(userRef);
+    const petSnap = await tx.get(petRef);
+    if (!userSnap.exists()) throw new Error('no-user');
+    if (!petSnap.exists()) throw new Error('pet-missing');
+    const user = userSnap.data();
+    const pet = petSnap.data();
+    if (user.currentPetId !== petId) throw new Error('not-current-pet');
+    if (pet.ownerUid !== uid) throw new Error('not-owner');
+    tx.update(petRef, { name: clean, updatedAt: Date.now() });
+    return clean;
+  });
+}
+
+function calcExpGain(combo) {
+  const base = 10;
+  if (combo >= 10) return base + 20;
+  if (combo >= 5) return base + 10;
+  if (combo >= 3) return base + 5;
+  return base;
+}
+
+// XP required to advance from level n to n+1.
+// Curve keeps the original rounded requirements and doubles them:
+// 200, 260, 352, 492, 714, 1072, then capped — every level past LV6→7 stays
+// at 1072 XP (linear).
+const LEVEL_XP_CAP = 1072;
+function levelXpRequirement(level) {
+  const lv = Math.max(1, level | 0);
+  let req = 100;
+  for (let n = 2; n <= lv; n++) {
+    if (req >= LEVEL_XP_CAP / 2) return LEVEL_XP_CAP;
+    const mult = 1.30 + 0.05 * (n - 2);
+    req = Math.min(LEVEL_XP_CAP / 2, Math.round(req * mult));
+  }
+  return req * 2;
+}
+function estimateTotalExpForLevelModule(level, exp = 0) {
+  const lv = Math.max(1, level | 0);
+  let total = Number(exp || 0);
+  for (let n = 1; n < lv; n++) total += levelXpRequirement(n);
+  return Math.max(0, Math.round(total));
+}
+
+async function answerCorrect(uid, isVerb = false) {
+  return await runTransaction(db, async (tx) => {
+    const userRef = userDoc(uid);
+    const userSnap = await tx.get(userRef);
+    if (!userSnap.exists()) throw new Error('no-user');
+    const user = userSnap.data();
+    if (!user.currentPetId) return { gainExp:0, addFood:0, newCombo:user.combo||0, guest:true, levelUp:0 };
+    const gainExp = calcExpGain(user.combo || 0);
+    let curExp = (user.exp || 0) + gainExp;
+    let level = user.level || 1;
+    const totalExp = Number(user.totalExp ?? estimateTotalExpForLevelModule(level, user.exp || 0)) + gainExp;
+    let levelUp = 0;
+    // Advance through any thresholds crossed (usually 0 or 1 per question; defensive while-loop in case of huge multi-correct accumulators)
+    let safety = 8;
+    while (safety-- > 0) {
+      const need = levelXpRequirement(level);
+      if (curExp < need) break;
+      curExp -= need;
+      level += 1;
+      levelUp += 1;
+    }
+    const addFood = levelUp; // 1 food per level still
+    const newCombo = (user.combo || 0) + 1;
+    tx.update(userRef, {
+      exp: curExp,
+      totalExp,
+      combo: newCombo,
+      foodCount: (user.foodCount || 0) + addFood,
+      totalCorrect: (user.totalCorrect || 0) + 1,
+      level,
+      pendingLevelUp: (user.pendingLevelUp || 0) + levelUp,
+      updatedAt: Date.now(),
+    });
+    return { gainExp, addFood, newCombo, levelUp, level };
+  });
+}
+
+async function answerWrong(uid) {
+  return await updateDoc(userDoc(uid), { combo: 0, updatedAt: Date.now() });
+}
+
+async function ackLevelUp(uid) {
+  return await updateDoc(userDoc(uid), { pendingLevelUp: 0, updatedAt: Date.now() });
+}
+
+async function markWordKnown(uid, word) {
+  if (!uid || !word) return;
+  return await updateDoc(userDoc(uid), { knownWords: arrayUnion(word), updatedAt: Date.now() });
+}
+
+async function markWordUnknown(uid, word) {
+  if (!uid || !word) return;
+  return await updateDoc(userDoc(uid), { knownWords: arrayRemove(word), updatedAt: Date.now() });
+}
+
+async function listMapStages(maxRows = 60) {
+  const snap = await getDocs(mapStagesCol());
+  const out = [];
+  snap.forEach(d => {
+    if (!isClassroomDoc(d)) return;
+    out.push({ id: classroomLogicalId(d.id), ...d.data() });
+  });
+  return out
+    .filter(r => Number(r.stage || 0) > 0 && Number(r.stage || 0) <= maxRows)
+    .sort((a,b) => Number(a.stage || 0) - Number(b.stage || 0));
+}
+
+function mapStageDocId(stage) {
+  return 'stage_' + String(stage | 0).padStart(3, '0');
+}
+const MAP_FOOD_BONUS_MODULE = 3;
+const MAP_FOOD_BONUS_STAGES_MODULE = [4,9,14,19,24,29];
+function isMapFoodBonusStageModule(stage) { return MAP_FOOD_BONUS_STAGES_MODULE.includes(Number(stage)); }
+function mapStarsForScoreModule(score, total = 15) { const st = Number(score || 0); if (st >= 15) return 3; if (st >= 6) return 2; if (st >= 1) return 1; return 0; }
+
+async function clearMapStage(uid, run = {}) {
+  const stage = Math.max(1, Math.min(30, Number(run.stage || 1) | 0));
+  const passed = run.passed !== false;
+  const now = Date.now();
+  return await runTransaction(db, async (tx) => {
+    const userRef = userDoc(uid);
+    const lbRef = leaderboardDoc(uid);
+    const stageRef = mapStageDoc(stage);
+    const userSnap = await tx.get(userRef);
+    const stageSnap = await tx.get(stageRef);
+    if (!userSnap.exists()) throw new Error('no-user');
+    const user = userSnap.data();
+    const curMap = Math.max(1, Number(user.mapStage || user.level || 1));
+    const nextMap = passed ? Math.max(curMap, Math.min(30, stage + 1)) : curMap;
+    const cleanName = String(run.name || user.name || '匿名玩家').trim().slice(0, 40);
+    const avgSec = Math.max(0, Number(run.avgSec || 0));
+    const stars = mapStarsForScoreModule(run.clearScore ?? run.score, run.total || 15);
+    const prevStars = (user.mapStars && typeof user.mapStars === 'object') ? user.mapStars : {};
+    const userPatch = {
+      classroom: CLASSROOM_ID,
+      mapStage: nextMap,
+      mapBestStage: Math.max(Number(user.mapBestStage || 0), passed ? stage : 0),
+      mapLastRun: { stage, passed, score: run.score | 0, clearScore: run.clearScore | 0, total: run.total | 0, pct: Number(run.pct || 0), isBoss: !!run.isBoss, clearWins: run.clearWins | 0, speedWins: run.speedWins | 0, avgSec, bossClearSec: Number(run.bossClearSec || 0), stars, at: now },
+      mapStars: { ...prevStars, [stage]: Math.max(Number(prevStars[stage] || 0), stars) },
+      updatedAt: now,
+    };
+    let rewardFood = 0;
+    const claimedBonuses = Array.isArray(user.mapFoodBonuses) ? user.mapFoodBonuses.map(Number) : [];
+    if (passed && isMapFoodBonusStageModule(stage) && !claimedBonuses.includes(stage)) {
+      rewardFood = MAP_FOOD_BONUS_MODULE;
+      userPatch.foodCount = (user.foodCount || 0) + rewardFood;
+      userPatch.mapFoodBonuses = [...claimedBonuses, stage].sort((a,b)=>a-b);
+    }
+    if (passed && stage >= curMap) userPatch.mapClears = (user.mapClears || 0) + 1;
+    tx.set(userRef, userPatch, { merge: true });
+    tx.set(lbRef, { classroom: CLASSROOM_ID, uid, name: cleanName, avatarId: run.avatarId || user.currentPetId || 'pet_001', mapStage: nextMap, mapBestStage: userPatch.mapBestStage, updatedAt: new Date(now).toISOString() }, { merge: true });
+
+    const prev = stageSnap.exists() ? stageSnap.data() : {};
+    const stagePatch = { classroom: CLASSROOM_ID, stage, updatedAt: now };
+    if (passed && !prev.firstClearerUid) {
+      stagePatch.firstClearerUid = uid;
+      stagePatch.firstClearerName = cleanName;
+      stagePatch.firstClearerAvatarId = run.avatarId || user.currentPetId || 'pet_001';
+      stagePatch.firstClearerAvgSec = avgSec || null;
+      stagePatch.firstClearerScore = run.score | 0;
+      stagePatch.firstClearedAt = now;
+      if (run.isBoss) stagePatch.firstClearerAvgSec = avgSec || null;
+    }
+    if (run.isBoss && passed) {
+      const oldBest = Number(prev.bestBossSpeedScore || -1);
+      const speedWins = Number(run.speedWins || 0);
+      if (speedWins > oldBest || (speedWins === oldBest && avgSec > 0 && (!prev.bestBossAvgSec || avgSec < Number(prev.bestBossAvgSec)))) {
+        stagePatch.bestBossUid = uid;
+        stagePatch.bestBossName = cleanName;
+        stagePatch.bestBossSpeedScore = speedWins;
+        stagePatch.bestBossAvgSec = avgSec || null;
+      }
+    }
+    tx.set(stageRef, stagePatch, { merge: true });
+    return { mapStage: nextMap, stage, passed, stars, rewardFood, firstClearerName: prev.firstClearerName || stagePatch.firstClearerName || null };
+  });
+}
+
+function taipeiDateKeyModule(d = new Date()) {
+  const utc = d.getTime() + d.getTimezoneOffset() * 60000;
+  const t = new Date(utc + 8 * 60 * 60 * 1000);
+  const y = t.getFullYear(), m = String(t.getMonth()+1).padStart(2,'0'), dd = String(t.getDate()).padStart(2,'0');
+  return `${y}-${m}-${dd}`;
+}
+function nextStreak(base) {
+  const today = taipeiDateKeyModule();
+  const last = String(base.lastPlayDate || '');
+  let streakCur = base.streakCur || 0;
+  if (!last) streakCur = 1;
+  else {
+    const a = Date.UTC(+today.slice(0,4), +today.slice(5,7)-1, +today.slice(8,10));
+    const b = /^\d{4}-\d{2}-\d{2}$/.test(last) ? Date.UTC(+last.slice(0,4), +last.slice(5,7)-1, +last.slice(8,10)) : NaN;
+    const diff = Number.isFinite(b) ? Math.round((a-b)/86400000) : NaN;
+    if (diff === 0) streakCur = Math.max(streakCur, 1);
+    else if (diff === 1) streakCur = streakCur + 1;
+    else streakCur = 1;
+  }
+  return { today, streakCur, streakBest: Math.max(base.streakBest || 0, streakCur) };
+}
+
+async function getLeaderboardEntry(uid) {
+  const snap = await getDoc(leaderboardDoc(uid));
+  return snap.exists() ? { ...snap.data(), uid } : null;
+}
+
+async function listLeaderboard(orderField = 'bestScore', maxRows = 80) {
+  const snap = await getDocs(leaderboardCol());
+  const out = [];
+  snap.forEach(d => {
+    if (!isClassroomDoc(d)) return;
+    const data = d.data();
+    out.push({ ...data, uid: data.uid || classroomLogicalId(d.id) });
+  });
+  return out
+    .sort((a,b) => Number(b?.[orderField] || 0) - Number(a?.[orderField] || 0))
+    .slice(0, maxRows);
+}
+
+async function upsertLeaderboardScore(uid, name, avatarId, score, total = 20) {
+  return await runTransaction(db, async (tx) => {
+    const lbRef = leaderboardDoc(uid);
+    const userRef = userDoc(uid);
+    const lbSnap = await tx.get(lbRef);
+    const userSnap = await tx.get(userRef);
+    const prev = lbSnap.exists() ? lbSnap.data() : {};
+    const user = userSnap.exists() ? userSnap.data() : {};
+    const scoreInt = score | 0;
+    const totalInt = total | 0;
+    const pct = totalInt > 0 ? (scoreInt / totalInt * 100) : 0;
+    const plays = (prev.plays || user.totalGames || 0) + 1;
+    const prevAvg = Number(user.avgScore || 0);
+    const prevGames = user.totalGames || 0;
+    const avgScore = prevGames === 0
+      ? Math.round(pct * 10) / 10
+      : Math.round((prevAvg * prevGames + pct) / (prevGames + 1) * 10) / 10;
+    const streak = nextStreak(prev.lastPlayDate ? prev : user);
+    const today = streak.today;
+    const prevTodayDate = String(user.todayQuizDate || '');
+    const todayQuizCount = (prevTodayDate === today ? (user.todayQuizCount || 0) : 0) + totalInt;
+    const entry = {
+      classroom: CLASSROOM_ID,
+      uid,
+      name: String(name || user.name || '匿名玩家').trim().slice(0, 40),
+      avatarId: user.currentPetId || avatarId || prev.avatarId || 'pet_001',
+      plays,
+      bestScore: Math.max(prev.bestScore || user.bestScore || 0, scoreInt),
+      recentScores: [scoreInt, ...((prev.recentScores || []).slice(0, 9))],
+      streakCur: streak.streakCur,
+      streakBest: streak.streakBest,
+      lastPlayDate: today,
+      avgScore,
+      todayQuizCount,
+      todayQuizDate: today,
+      level: user.level || 1,
+      mapStage: user.mapStage || user.level || 1,
+      mapBestStage: user.mapBestStage || 0,
+      updatedAt: new Date().toISOString(),
+    };
+    tx.set(lbRef, entry, { merge: true });
+    tx.set(userRef, {
+      classroom: CLASSROOM_ID,
+      name: entry.name,
+      bestScore: entry.bestScore,
+      avgScore,
+      totalGames: prevGames + 1,
+      streakCur: entry.streakCur,
+      streakBest: entry.streakBest,
+      lastPlayDate: entry.lastPlayDate,
+      todayQuizCount,
+      todayQuizDate: today,
+      weekPlayed: Array.from(new Set([...(Array.isArray(user.weekPlayed)?user.weekPlayed:[]), entry.lastPlayDate])).slice(-14),
+      updatedAt: Date.now(),
+    }, { merge: true });
+    return entry;
+  });
+}
+
+// Boot
+signInAnonymously(auth).catch(err => console.error('[FB] anon signin failed', err));
+onAuthStateChanged(auth, async (user) => {
+  if (!user) return;
+  try {
+    let lpName = '匿名玩家', lpCharIdx = null;
+    try {
+      const p = JSON.parse(localStorage.getItem('jpN3Profile') || 'null');
+      if (p && p.name) lpName = String(p.name).slice(0, 40);
+      if (p && typeof p.charIdx === 'number' && !Object.prototype.hasOwnProperty.call(p,'petId')) lpCharIdx = p.charIdx;
+    } catch {}
+
+    const initialPlayerId = lpName && lpName !== '匿名玩家' ? playerIdFromName(lpName) : user.uid;
+    const { data: profile, created: userCreated } = await ensureUserProfile(initialPlayerId, lpName, user.uid);
+    await migrateLegacyPetOwner(user.uid, initialPlayerId, profile.currentPetId);
+    if (lpName && lpName !== '匿名玩家') {
+      try { await mergePetsByOwnerName(lpName, initialPlayerId); } catch (e) { console.warn('[FB] ownerName merge failed', e); }
+    }
+    let migrated = false;
+    try { migrated = await migrateLocalStats(initialPlayerId, profile); } catch (e) { console.warn('[FB] local stats migration failed', e); }
+    try { if (lpName && lpName !== '匿名玩家' && (!profile.name || profile.name === '匿名玩家')) await updateUserName(initialPlayerId, lpName); } catch (e) { console.warn('[FB] update user name failed', e); }
+
+    let finalProfile = await refreshProfile(initialPlayerId);
+    window.FB = {
+      app, auth, db, authUid: user.uid, uid: initialPlayerId, playerId: initialPlayerId, profile: finalProfile,
+      config: { HP_DECAY_MS, SEED_PETS },
+      helpers: { calcCurrentHp, normalizePlayerName, playerIdFromName },
+      ops: { loadPet, refreshProfile, updateUserName, switchPlayerByName, mergePetsByOwnerName, listPets, claimPet, releasePet, renameMyPet, setPetVoiceGender, feedMyPet, answerCorrect, answerWrong, ackLevelUp, markWordKnown, markWordUnknown, listMapStages, clearMapStage, getLeaderboardEntry, listLeaderboard, upsertLeaderboardScore, ensureUserProfile, seedPets },
+      modular: { doc, getDoc, setDoc, updateDoc, getDocs, collection, runTransaction, query, orderBy, limit },
+    };
+    window.dispatchEvent(new Event('fbready'));
+
+    let seeded = [], bridged = null;
+    try { seeded = await seedPets(); }
+    catch (e) { console.warn('[FB] seedPets failed; UI remains ready with fallback list', e); }
+
+    // Bridge: first-time users coming from old onboarding → auto-claim corresponding pet
+    if (!finalProfile.currentPetId && lpCharIdx !== null && lpCharIdx >= 0 && lpCharIdx < SEED_PETS.length) {
+      try {
+        await claimPet(initialPlayerId, SEED_PETS[lpCharIdx].id);
+        bridged = SEED_PETS[lpCharIdx].id;
+        finalProfile = await refreshProfile(initialPlayerId);
+        window.FB.profile = finalProfile;
+        window.dispatchEvent(new Event('fbready'));
+      } catch (e) {
+        console.warn('[FB] bridge claim failed', e.message);
+      }
+    }
+    console.log('[FB] phase3 ready', { authUid: user.uid, uid: initialPlayerId, userCreated, migrated, seededPets: seeded, bridgedTo: bridged, profile: finalProfile });
+  } catch (e) {
+    console.error('[FB] boot failed', e);
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>雅各在巴旦亞蘭的變遷</title>
+  <meta name="description" content="認識神主宰的手如何藉著環境變化雅各，使他從抓奪者轉變為神的彰顯。" />
+  <style>
+    :root {
+      --bg: #f6f1e8;
+      --paper: #fffaf2;
+      --ink: #2f2a25;
+      --muted: #6f6559;
+      --line: #e6d7bf;
+      --gold: #c29045;
+      --gold-deep: #966b2f;
+      --olive: #6f7d55;
+      --rose: #b56a59;
+      --shadow: 0 16px 40px rgba(88, 63, 30, 0.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.9;
+      background:
+        radial-gradient(1000px 480px at 110% -10%, rgba(194, 144, 69, 0.16), transparent 55%),
+        radial-gradient(900px 420px at -10% 100%, rgba(111, 125, 85, 0.16), transparent 55%),
+        var(--bg);
+    }
+    .grain::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.05;
+      background-image: radial-gradient(rgba(68, 48, 24, 0.28) 0.7px, transparent 0.7px);
+      background-size: 4px 4px;
+      z-index: 0;
+    }
+    .wrap { position: relative; z-index: 1; width: min(1020px, 92vw); margin: 28px auto 56px; }
+    .hero { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 28px; padding: clamp(26px, 5vw, 48px); background: linear-gradient(140deg, #fffdf8 0%, #fff5e7 100%); box-shadow: var(--shadow); }
+    .hero::after { content: ""; position: absolute; right: -120px; top: -120px; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(194, 144, 69, 0.28) 0%, rgba(194, 144, 69, 0) 70%); }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; border: 1px solid #ebd6b0; background: #fff7e8; color: var(--gold-deep); font-size: 13px; font-weight: 700; letter-spacing: 0.02em; }
+    h1 { margin: 0 0 12px; font-family: "Noto Serif TC", "PMingLiU", serif; font-size: clamp(34px, 6vw, 58px); line-height: 1.15; color: #2d2419; }
+    .lead { margin: 0; max-width: 66ch; color: var(--muted); font-size: clamp(16px, 2.1vw, 19px); }
+    .hero-actions { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 12px; }
+    .button { display: inline-block; padding: 12px 18px; border-radius: 14px; text-decoration: none; font-weight: 700; transition: transform .18s ease, box-shadow .18s ease; }
+    .button.primary { color: white; background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%); box-shadow: 0 10px 20px rgba(150, 107, 47, 0.28); }
+    .button.secondary { color: var(--ink); background: rgba(255,255,255,0.74); border: 1px solid var(--line); }
+    .button:hover { transform: translateY(-1px); }
+    .intro-grid, .content-grid, .summary-grid { display: grid; gap: 18px; margin-top: 22px; }
+    .intro-grid { grid-template-columns: 1.15fr 0.95fr; }
+    .content-grid { grid-template-columns: 1fr 1fr; }
+    .summary-grid { grid-template-columns: 1fr 1fr; }
+    .card { border: 1px solid var(--line); border-radius: 22px; background: var(--paper); padding: 22px; box-shadow: 0 10px 24px rgba(88, 63, 30, 0.08); }
+    .card h2, .card h3 { margin: 0 0 12px; font-family: "Noto Serif TC", serif; color: #352a1e; line-height: 1.45; }
+    .eyebrow { margin: 0 0 8px; color: var(--gold-deep); font-size: 13px; text-transform: uppercase; letter-spacing: .09em; font-weight: 700; }
+    .section-tag { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 12px; padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 700; color: #fff; }
+    .wednesday { background: linear-gradient(180deg, #6f7d55 0%, #53613e 100%); }
+    .thursday { background: linear-gradient(180deg, #b56a59 0%, #8f4d40 100%); }
+    p { margin: 0 0 14px; }
+    ul, ol { margin: 0; padding-left: 22px; }
+    li + li { margin-top: 8px; }
+    .focus-box { background: linear-gradient(180deg, #fffdf9 0%, #f7efe2 100%); }
+    .scripture { border-left: 4px solid var(--gold); background: #fff3df; border-radius: 12px; padding: 14px 16px; color: #5f4b31; margin-top: 14px; }
+    .prayer { background: #fdf6ee; border: 1px dashed #d4a070; border-radius: 14px; padding: 16px; }
+    .footer-note { margin-top: 22px; text-align: center; color: #8a7a66; font-size: 13px; }
+    @media (max-width: 920px) { .intro-grid, .content-grid, .summary-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 560px) { .wrap { margin-top: 18px; } .hero, .card { border-radius: 18px; } .button { width: 100%; text-align: center; } }
+  </style>
+</head>
+<body class="grain">
+  <main class="wrap">
+    <section class="hero">
+      <div class="badge-row">
+        <span class="badge">📖 主日帶讀</span>
+        <span class="badge">第十五課 · 2026 六月第一週</span>
+        <span class="badge">來源段落：周四</span>
+        <span class="badge">主題：抓奪者遇見了剝削者</span>
+      </div>
+      <h1>雅各在巴旦亞蘭的變遷</h1>
+      <p class="lead">雅各來到舅父拉班的家，本想尋求避風港，沒想到卻遇見了一個比他更會「抓奪」的人。</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#reading">開始閱讀</a>
+        <a class="button secondary" href="#discussion">看主日重點</a>
+      </div>
+    </section>
+
+    <section class="intro-grid" aria-label="overview">
+      <article class="card">
+        <p class="eyebrow">Overview</p>
+        <h2>這一篇在提醒什麼？</h2>
+            <p>雅各到了巴旦亞蘭，遇見了舅父拉班。雖然拉班是親戚，但他卻利用雅各，在婚姻和工價上多次欺詐。雅各為了心愛的拉結，前後服事了二十年，這段日子充滿了勞苦與忍耐，但也磨練了他的性格。</p>
+            <p>在這漫長的二十年裡，雅各的家庭生活並不容易，妻子們彼此競爭，孩子們也常有爭執。但聖經讓我們看見，這一切不順心的環境，其實都是神主宰的安排，為要煉淨並變化雅各這刻變的性格。</p>
+      </article>
+
+      <aside class="card focus-box">
+        <p class="eyebrow">Sunday Focus</p>
+        <h2>主日可以先抓三句話</h2>
+        <ul>
+          <li>看見神主宰的手在一切環境中細緻的安排。</li>
+          <li>認識神如何藉著周圍的人、事、物變化雅各。</li>
+          <li>學習在不公平的對待中，依然信靠神的祝福與保守。</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="reading" class="content-grid" aria-label="reading-content">
+      <article class="card">
+        <span class="section-tag wednesday">周四｜正文帶讀</span>
+        <h2>抓奪者遇見了剝削者</h2>
+            <p>雅各來到巴旦亞蘭後，遇見了舅父拉班。拉班發現雅各很有用處，就動了歪腦筋，用計讓雅各先娶了利亞，害得雅各必須多工作七年才能娶到他心愛的拉結。在拉班手下工作的二十年裡，拉班甚至改了雅各十次的工價，極力地壓榨他，使雅各的生活變得異常艱難。</p>
+            <p>雅各的家庭生活也像一場競賽。利亞和拉結為了生孩子的事彼此嫉妒、爭鬥，甚至連她們的使女也捲入了這場紛爭。結果雅各有了四個妻妾和十一個兒子，家庭環境變得很複雜，這種頻繁的爭競讓雅各失去了往日的自由，也必須面對更多的勞心勞力。</p>
+            <p>面對拉班的剝削，雅各也發揮他的本領，用自己的聰明才智想辦法獲取財富，讓自己得到強壯的羊群。然而，真正讓雅各富足的不是他的詭計，而是神的祝福。神因著雅各的緣故祝福了拉班，同時也主宰地保守雅各免受進一步的傷害，使他在艱難中仍得著上好的供應。</p>
+            <p>其實，拉班、拉結、利亞，甚至是那十一個孩子，都是神用來變化雅各的「工具」。雅各本是一個喜歡抓奪、自私的人，但神藉著這些讓他受苦的人事物，一步步剝掉他天然的生命。這些並非偶然，而是神預先安排的環境，為要將他模成神長子的形像。</p>
+            <p>這段故事讓我們看見：雖然環境中有壓榨的拉班，也有愛耍詭計的雅各，但最後真正在背後主宰一切的是祝福的神。雅各的經歷也是我們的縮影，不論我們是否喜歡當下的環境，神都會藉此來變化我們，使我們成為召會的建造。</p>
+      </article>
+
+      <article class="card">
+        <span class="section-tag thursday">主日｜補充提醒與操練</span>
+        <h2>在環境中看見神的手</h2>
+            <p>當我們在生活中遇到不公平的事，或是覺得身邊的人讓我們受委屈時，我們很容易會想抱怨。但從雅各的故事中，我們要學習停下抱怨，轉向主，相信發生在我們身上的每一件事，都是神量給我們的功課，為要成全我們。</p>
+            <p>雅各的經歷提醒我們，有時我們也想憑著自己的小聰明去「抓奪」好處。但神愛我們，祂會為我們安排最適合的環境來煉淨我們，雖然過程可能會辛苦，但那是為了讓我們變得更成熟、更像主耶穌，這就是奇妙的變化過程。</p>
+            <p>我們不需要靠著自己的手段去保護自己或與人爭競，因為我們的定命是在神的手中。只要我們是蒙神揀選的人，祂的憐憫與祝福就會隨時隨在。在任何境遇中，只要我們肯接受神的安排，我們就能經歷神的祝福超過人的計謀。</p>
+        <div class="scripture"><strong>可帶的一句提醒</strong><br />發生在我們身上的一切事，都是出於神，為要使我們變化。</div>
+      </article>
+    </section>
+
+    <section id="discussion" class="summary-grid" aria-label="discussion-guide">
+      <article class="card focus-box">
+        <p class="eyebrow">Lead the Group</p>
+        <h3>這篇可以帶出的三件事</h3>
+        <ol>
+          <li>相信神對我周圍的環境有最好的安排。</li>
+          <li>學習在不順心時不抱怨，而是轉向神並讚美祂。</li>
+          <li>認識神的憐憫與主宰超過人的聰明與努力。</li>
+        </ol>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Discussion</p>
+        <h3>可直接帶的三個問題</h3>
+        <ul>
+          <li>拉班如何對待雅各？雅各在巴旦亞蘭一共待了多少年？</li>
+          <li>為什麼神要安排拉班和爭吵的家人在雅各身邊？這對雅各的目的為何？</li>
+          <li>當你覺得受到不公平的對待或遇到不喜歡的環境時，你可以如何實行轉向神？</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="summary-grid" aria-label="verse-prayer">
+      <article class="card">
+        <p class="eyebrow">Verse</p>
+        <h3>今天的經文</h3>
+        <div class="scripture">我要向誰施憐憫，就向誰施憐憫；要對誰動憐恤，就對誰動憐恤。這樣看來，這不在於那定意的，也不在於那奔跑的，只在於那施憐憫的神。<br />羅馬書九章15至16節</div>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Prayer</p>
+        <h3>一起禱告</h3>
+        <div class="prayer">親愛的主耶穌，感謝祢揀選了我。我知道在我的生活環境中，無論是遇到什麼樣的人或是什麼樣的困難，都是祢為了變化我而主宰安排的。謝謝祢在我身上施下憐憫，讓我在這一切環境中能被祢建造。<br /><br />主耶穌，求祢保守我的心，讓我在遇到不順心的事時，不憑著自己的聰明想辦法，而是能立刻轉向祢，認識祢主宰的手，並學習向祢發出讚美，安息在祢的祝福與保守裡。阿們。</div>
+      </article>
+    </section>
+
+    <p class="footer-note">lesson15-202606w1-sun.html · sequential lesson-page workflow · 202606w1</p>
+  </main>
+</body>
+</html>

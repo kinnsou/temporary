@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>ENG EPOP</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;background:#1a1a2e;font-family:'Nunito',sans-serif;}
+body{display:flex;justify-content:center;align-items:center;}
+#root{width:390px;height:844px;position:relative;overflow:hidden;border-radius:44px;box-shadow:0 32px 80px rgba(0,0,0,0.6);background:#fff;}
+@media(max-height:900px){body{align-items:flex-start;padding:8px 0;}#root{border-radius:32px;}}
+@media(max-width:420px){body{background:#fff;}#root{width:100%;height:100dvh;border-radius:0;box-shadow:none;}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes pop{from{transform:scale(0.92);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes slideUp{from{transform:translateY(12px);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@keyframes confettiFall{0%{transform:translateY(-10px) rotate(0);opacity:1}100%{transform:translateY(170px) rotate(600deg);opacity:0}}
+@keyframes xpRise{0%{transform:translate(-50%,0);opacity:1}100%{transform:translate(-50%,-44px);opacity:0}}
+@keyframes expandIn{from{max-height:0;opacity:0}to{max-height:200px;opacity:1}}
+.screen{width:100%;height:100%;display:flex;flex-direction:column;overflow:hidden;}
+.scroll-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+.scroll-body::-webkit-scrollbar{display:none;}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const {useState,useEffect,useRef,useMemo}=React;
+
+/* ── Tweaks ───────────────────────────────────────────── */
+const TWEAK_DEFAULTS=/*EDITMODE-BEGIN*/{
+  "primaryColor": "#61c2ff",
+  "showStreak": true
+}/*EDITMODE-END*/;
+
+/* ── Characters ───────────────────────────────────────── */
+const CHARACTERS=[
+  {id:'c1',img:'uploads/newcha1.png',name:'奶油貓'},
+  {id:'c2',img:'uploads/newcha2.png',name:'布丁狗'},
+  {id:'c3',img:'uploads/newcha3.png',name:'胖河馬'},
+  {id:'c4',img:'uploads/newcha4.png',name:'泡泡魚'},
+  {id:'c5',img:'uploads/newcha5.png',name:'點點獸'},
+  {id:'c6',img:'uploads/newcha6.png',name:'圓滾雞'},
+  {id:'c7',img:'uploads/newcha7.png',name:'六角龍'},
+  {id:'c8',img:'uploads/newcha8.png',name:'豹豹'},
+];
+
+/* ── Category colours ─────────────────────────────────── */
+const CAT={
+  '動物':'#4CAF82','食物':'#FF9800','形容詞':'#a78bfa',
+  '動作':'#38bdf8','物品':'#fb7185','其他':'#94a3b8',
+};
+
+/* ── Daily word sets (3 per day, accumulate into flashcard pool) ── */
+const DAILY_SETS=[
+  // oldest first; dateKey = YYYY-MM-DD
+  {date:'2026-04-17',words:[
+    {word:'cat',   zh:'貓咪',   visual:'🐱',cat:'動物',en:'The cat is sleeping on the sofa.',zh2:'貓咪正在沙發上睡覺。'},
+    {word:'dog',   zh:'狗狗',   visual:'🐶',cat:'動物',en:'My dog loves to play outside.',zh2:'我的狗狗很喜歡在外面玩。'},
+    {word:'apple', zh:'蘋果',   visual:'🍎',cat:'食物',en:'An apple a day keeps the doctor away.',zh2:'每天一顆蘋果，醫生遠離我。'},
+  ]},
+  {date:'2026-04-18',words:[
+    {word:'run',   zh:'跑步',   visual:'🏃',cat:'動作',en:'I run to school every morning.',zh2:'我每天早上跑步去學校。'},
+    {word:'happy', zh:'快樂的', visual:null, cat:'形容詞',hint:'開心、笑咪咪',en:'I am very happy today!',zh2:'我今天非常快樂！'},
+    {word:'book',  zh:'書本',   visual:'📚',cat:'物品', en:'She reads a book every night.',zh2:'她每晚讀一本書。'},
+  ]},
+  {date:'2026-04-19',words:[
+    {word:'banana',zh:'香蕉',   visual:'🍌',cat:'食物',en:'Monkeys love to eat bananas.',zh2:'猴子很喜歡吃香蕉。'},
+    {word:'jump',  zh:'跳躍',   visual:'🦘',cat:'動作',en:'Can you jump over the puddle?',zh2:'你能跳過水坑嗎？'},
+    {word:'big',   zh:'大的',   visual:null, cat:'形容詞',hint:'非常非常大！',en:'The elephant is very big.',zh2:'大象非常的大。'},
+  ]},
+  {date:'2026-04-20',words:[
+    {word:'sun',   zh:'太陽',   visual:'☀️',cat:'物品',en:'The sun rises in the east.',zh2:'太陽從東方升起。'},
+    {word:'swim',  zh:'游泳',   visual:'🏊',cat:'動作',en:'Fish can swim very fast.',zh2:'魚可以游得非常快。'},
+    {word:'cold',  zh:'冷的',   visual:'🧊',cat:'形容詞',en:'The water is very cold.',zh2:'這水非常冷。'},
+  ]},
+  {date:'2026-04-21',words:[
+    {word:'rabbit',zh:'兔子',   visual:'🐰',cat:'動物',en:'The rabbit has long ears.',zh2:'兔子有長長的耳朵。'},
+    {word:'bread', zh:'麵包',   visual:'🍞',cat:'食物',en:'I eat bread for breakfast.',zh2:'我早餐吃麵包。'},
+    {word:'small', zh:'小的',   visual:null, cat:'形容詞',hint:'小小小的一點',en:'The mouse is very small.',zh2:'老鼠非常的小。'},
+  ]},
+  {date:'2026-04-22',words:[
+    {word:'flower',zh:'花朵',   visual:'🌸',cat:'物品',en:'She gave me a beautiful flower.',zh2:'她給了我一朵美麗的花。'},
+    {word:'sing',  zh:'唱歌',   visual:'🎵',cat:'動作',en:'I like to sing in the shower.',zh2:'我喜歡在洗澡時唱歌。'},
+    {word:'hot',   zh:'熱的',   visual:'🔥',cat:'形容詞',en:'Be careful, the soup is hot!',zh2:'小心，湯很燙！'},
+  ]},
+  {date:'2026-04-23',words:[
+    {word:'bear',  zh:'熊熊',   visual:'🐻',cat:'動物',en:'The bear lives in the forest.',zh2:'熊熊住在森林裡。'},
+    {word:'milk',  zh:'牛奶',   visual:'🥛',cat:'食物',en:'Drink milk to grow strong bones.',zh2:'喝牛奶讓骨頭更強壯。'},
+    {word:'fast',  zh:'快的',   visual:'⚡',cat:'形容詞',en:'The cheetah is very fast.',zh2:'獵豹非常的快。'},
+  ]},
+  // TODAY
+  {date:'2026-04-24',words:[
+    {word:'star',  zh:'星星',   visual:'⭐',cat:'物品',en:'I can see many stars at night.',zh2:'我晚上可以看到很多星星。'},
+    {word:'eat',   zh:'吃東西', visual:'😋',cat:'動作',en:'We eat dinner together as a family.',zh2:'我們全家一起吃晚飯。'},
+    {word:'sad',   zh:'難過的', visual:null, cat:'形容詞',hint:'心情不好、想哭',en:'She felt sad when she lost her toy.',zh2:'她弄丟玩具的時候感到很難過。'},
+  ]},
+];
+
+const TODAY='2026-04-24';
+const todaySet=DAILY_SETS.find(s=>s.date===TODAY)?.words||[];
+// Flashcard pool = all words from BEFORE today
+const flashPool=DAILY_SETS.filter(s=>s.date<TODAY).flatMap(s=>s.words);
+// Quiz pool = flashPool (learned words only)
+const quizPool=flashPool.length>=4?flashPool:DAILY_SETS.flatMap(s=>s.words);
+
+/* ── Utils ────────────────────────────────────────────── */
+function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function getOptions(correct,pool){
+  const others=shuffle(pool.filter(v=>v.word!==correct.word)).slice(0,3);
+  return shuffle([correct,...others]);
+}
+function loadProfile(){try{const p=localStorage.getItem('epopProfile');return p?JSON.parse(p):null;}catch{return null;}}
+function saveProfile(p){try{localStorage.setItem('epopProfile',JSON.stringify(p));}catch{}}
+function loadClaims(){try{return JSON.parse(localStorage.getItem('epopClaims')||'{}');}catch{return{};}}
+function saveClaims(c){try{localStorage.setItem('epopClaims',JSON.stringify(c));}catch{}}
+function genPassword(){const c='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';return Array.from({length:6},()=>c[Math.floor(Math.random()*c.length)]).join('');}
+function loadStats(){try{return JSON.parse(localStorage.getItem('epopStats3')||'{"streak":7,"avgScore":82,"best":10,"totalGames":12}');}catch{return{streak:7,avgScore:82,best:10,totalGames:12};}}
+function saveStats(s){try{localStorage.setItem('epopStats3',JSON.stringify(s));}catch{}}
+
+/* ── Shared UI ────────────────────────────────────────── */
+function Confetti({active}){
+  if(!active)return null;
+  const items=Array.from({length:18},(_,i)=>({id:i,x:5+Math.random()*90,color:['#FFD700','#4CAF82','#40d0e2','#fb7185','#a78bfa','#FF9800'][i%6],delay:i*0.05,size:6+Math.random()*8}));
+  return(<div style={{position:'absolute',top:0,left:0,width:'100%',height:'100%',pointerEvents:'none',overflow:'hidden',zIndex:99}}>
+    {items.map(p=><div key={p.id} style={{position:'absolute',top:-10,left:`${p.x}%`,width:p.size,height:p.size,borderRadius:p.size*0.25,background:p.color,animation:`confettiFall 1.1s ${p.delay}s ease-in both`}}/>)}
+  </div>);
+}
+
+function BottomNav({screen,onNav,pc}){
+  const tabs=[{id:'home',icon:'🏠',label:'首頁'},{id:'flash',icon:'📖',label:'單字卡'},{id:'quiz',icon:'🎮',label:'測驗'},{id:'rank',icon:'🏆',label:'排行榜'}];
+  return(<div style={{display:'flex',borderTop:'1px solid #f0f0f0',background:'#fff',flexShrink:0,paddingBottom:8}}>
+    {tabs.map(t=>(
+      <button key={t.id} onClick={()=>onNav(t.id)} style={{flex:1,padding:'10px 0 4px',border:'none',background:'none',cursor:'pointer',display:'flex',flexDirection:'column',alignItems:'center',gap:2,color:screen===t.id?pc:'#ccc',transition:'color 0.2s'}}>
+        <span style={{fontSize:22}}>{t.icon}</span>
+        <span style={{fontSize:9,fontWeight:800}}>{t.label}</span>
+        {screen===t.id&&<div style={{width:18,height:3,borderRadius:3,background:pc,marginTop:1}}/>}
+      </button>
+    ))}
+  </div>);
+}
+
+function WordVisual({vocab,size=48}){
+  const c=CAT[vocab.cat]||'#94a3b8';
+  if(vocab.visual) return <span style={{fontSize:size,lineHeight:1}}>{vocab.visual}</span>;
+  return(<div style={{background:`${c}22`,border:`2px dashed ${c}66`,borderRadius:14,padding:'8px 14px',display:'flex',flexDirection:'column',alignItems:'center',gap:2,minWidth:80}}>
+    <div style={{fontSize:10,fontWeight:800,color:c,opacity:0.8}}>{vocab.cat}</div>
+    <div style={{fontSize:14,fontWeight:900,color:c,textAlign:'center',lineHeight:1.3}}>{vocab.hint||vocab.zh}</div>
+  </div>);
+}
+
+/* ── ONBOARDING ───────────────────────────────────────── */
+function OnboardingScreen({onDone,pc}){
+  const [step,setStep]=useState(1);
+  const [name,setName]=useState('');
+  const [nameErr,setNameErr]=useState('');
+  const [selectedChar,setSel]=useState(null);
+  const [pwModal,setPwModal]=useState(null);
+  const [pwInput,setPwInput]=useState('');
+  const [pwErr,setPwErr]=useState('');
+  const [generatedPw,setGenPw]=useState('');
+  const claims=useRef(loadClaims());
+
+  const goStep2=()=>{
+    if(!name.trim()){setNameErr('請輸入你的名字！');return;}
+    if(name.trim().length>10){setNameErr('名字最多10個字喔！');return;}
+    setNameErr('');setStep(2);
+  };
+  const trySelect=(i)=>{
+    const claim=claims.current[CHARACTERS[i].id];
+    if(!claim){setSel(i);}
+    else{setPwModal({charIdx:i,charName:CHARACTERS[i].name,ownerName:claim.name});setPwInput('');setPwErr('');}
+  };
+  const verifyPw=()=>{
+    const claim=claims.current[CHARACTERS[pwModal.charIdx].id];
+    if(pwInput.toUpperCase()===claim.password){setPwModal(null);setSel(pwModal.charIdx);}
+    else setPwErr('密碼錯誤，請再試一次！');
+  };
+  const confirmChar=()=>{
+    if(selectedChar===null)return;
+    const pw=genPassword();setGenPw(pw);
+    const nc={...claims.current,[CHARACTERS[selectedChar].id]:{name:name.trim(),password:pw}};
+    claims.current=nc;saveClaims(nc);setStep(3);
+  };
+  const finish=()=>{
+    const profile={name:name.trim(),charIdx:selectedChar,password:generatedPw};
+    saveProfile(profile);onDone(profile);
+  };
+
+  return(<div className="screen" style={{background:'linear-gradient(170deg,#fdf6ff 0%,#f0fdf4 100%)'}}>
+    {/* Step 1 */}
+    {step===1&&<div style={{flex:1,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',padding:'40px 28px',gap:22}}>
+      <div style={{animation:'float 3s ease-in-out infinite'}}><img src={CHARACTERS[0].img} alt="" style={{width:100,height:100,objectFit:'contain'}}/></div>
+      <div style={{textAlign:'center'}}>
+        <div style={{fontSize:26,fontWeight:900,color:'#1a1a2e'}}>歡迎來到</div>
+        <div style={{fontSize:30,fontWeight:900,color:pc}}>ENG EPOP！</div>
+        <div style={{fontSize:13,color:'#aaa',marginTop:6}}>先告訴我你的名字吧 😊</div>
+      </div>
+      <div style={{width:'100%'}}>
+        <input type="text" placeholder="輸入你的名字…" value={name} onChange={e=>{setName(e.target.value);setNameErr('');}} onKeyDown={e=>e.key==='Enter'&&goStep2()} maxLength={10}
+          style={{width:'100%',padding:'16px 20px',borderRadius:18,border:`2px solid ${nameErr?'#FF4D6D':name?pc:'#e8e0f8'}`,fontSize:18,fontWeight:800,color:'#1a1a2e',outline:'none',fontFamily:'Nunito,sans-serif',background:'#fff',boxShadow:`0 2px 12px ${pc}22`,transition:'border 0.2s'}}/>
+        {nameErr&&<div style={{fontSize:12,color:'#FF4D6D',fontWeight:700,marginTop:6,paddingLeft:4}}>{nameErr}</div>}
+      </div>
+      <button onClick={goStep2} style={{width:'100%',padding:17,borderRadius:20,border:'none',cursor:'pointer',background:`linear-gradient(135deg,${pc},${pc}bb)`,fontSize:17,fontWeight:900,color:'#fff',boxShadow:`0 5px 18px ${pc}44`,opacity:name.trim()?1:0.5,transition:'opacity 0.2s'}}>下一步 →</button>
+    </div>}
+
+    {/* Step 2 */}
+    {step===2&&<div className="screen">
+      <div style={{padding:'48px 20px 8px',display:'flex',alignItems:'center',gap:12,flexShrink:0}}>
+        <button onClick={()=>setStep(1)} style={{width:38,height:38,borderRadius:12,border:'none',background:'rgba(0,0,0,0.06)',cursor:'pointer',fontSize:17}}>←</button>
+        <div style={{flex:1}}>
+          <div style={{fontSize:17,fontWeight:900,color:'#1a1a2e'}}>選一隻寵物，{name}！</div>
+          <div style={{fontSize:11,color:'#aaa'}}>🔒 已被其他同學認養的需要密碼</div>
+        </div>
+      </div>
+      <div className="scroll-body" style={{padding:'8px 16px 16px'}}>
+        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:10}}>
+          {CHARACTERS.map((c,i)=>{
+            const claim=claims.current[c.id];
+            const isMine=claim&&claim.name===name.trim();
+            const isClaimed=!!claim&&!isMine;
+            const isSel=selectedChar===i;
+            return(<button key={c.id} onClick={()=>trySelect(i)} style={{padding:'12px 6px 10px',borderRadius:18,border:`2.5px solid ${isSel?pc:'#f0eaea'}`,background:isSel?`${pc}12`:'#fff',cursor:'pointer',boxShadow:isSel?`0 4px 14px ${pc}33`:'0 2px 6px rgba(0,0,0,0.04)',transition:'all 0.18s',display:'flex',flexDirection:'column',alignItems:'center',gap:3,position:'relative',opacity:isClaimed?0.65:1}}>
+              {isSel&&<div style={{position:'absolute',top:5,right:5,width:16,height:16,borderRadius:'50%',background:pc,display:'flex',alignItems:'center',justifyContent:'center',fontSize:9,color:'#fff',fontWeight:900}}>✓</div>}
+              {isClaimed&&<div style={{position:'absolute',top:5,right:5,fontSize:14}}>🔒</div>}
+              {isMine&&<div style={{position:'absolute',top:5,right:5,width:16,height:16,borderRadius:'50%',background:'#4CAF82',display:'flex',alignItems:'center',justifyContent:'center',fontSize:9,color:'#fff'}}>✓</div>}
+              <img src={c.img} alt={c.name} style={{width:56,height:56,objectFit:'contain',filter:isClaimed?'grayscale(0.4)':'none'}}/>
+              <div style={{fontSize:11,fontWeight:900,color:isSel?pc:'#1a1a2e'}}>{c.name}</div>
+              {isClaimed&&<div style={{fontSize:9,color:'#bbb',fontWeight:700}}>{claim.name} 的</div>}
+            </button>);
+          })}
+        </div>
+      </div>
+      <div style={{padding:'0 16px 28px',flexShrink:0}}>
+        <button onClick={confirmChar} disabled={selectedChar===null} style={{width:'100%',padding:17,borderRadius:20,border:'none',cursor:'pointer',background:`linear-gradient(135deg,${pc},${pc}bb)`,fontSize:16,fontWeight:900,color:'#fff',boxShadow:`0 5px 18px ${pc}44`,opacity:selectedChar!==null?1:0.4,transition:'opacity 0.2s'}}>確認，這是我的寵物！🐾</button>
+      </div>
+    </div>}
+
+    {/* Step 3 */}
+    {step===3&&<div style={{flex:1,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',padding:'40px 28px',gap:20}}>
+      <Confetti active/>
+      <div style={{animation:'float 3s ease-in-out infinite'}}><img src={CHARACTERS[selectedChar].img} alt="" style={{width:100,height:100,objectFit:'contain'}}/></div>
+      <div style={{textAlign:'center'}}>
+        <div style={{fontSize:22,fontWeight:900,color:'#1a1a2e'}}>{name}，你的寵物是</div>
+        <div style={{fontSize:28,fontWeight:900,color:pc,marginTop:2}}>{CHARACTERS[selectedChar].name} 🎉</div>
+      </div>
+      <div style={{width:'100%',background:'#fff',borderRadius:24,padding:'22px 24px',boxShadow:'0 6px 24px rgba(0,0,0,0.08)',textAlign:'center'}}>
+        <div style={{fontSize:11,fontWeight:800,color:'#aaa',letterSpacing:1,marginBottom:10}}>📋 你的專屬密碼（請抄下來！）</div>
+        <div style={{fontSize:32,fontWeight:900,letterSpacing:6,color:pc,background:`${pc}12`,borderRadius:16,padding:'14px 20px',fontFamily:'monospace'}}>{generatedPw}</div>
+        <div style={{fontSize:11,color:'#bbb',marginTop:10,lineHeight:1.7}}>這隻寵物屬於你了！<br/>如果別人想認養同一隻，需要輸入這組密碼 🔒</div>
+      </div>
+      <button onClick={finish} style={{width:'100%',padding:17,borderRadius:20,border:'none',cursor:'pointer',background:`linear-gradient(135deg,${pc},${pc}bb)`,fontSize:17,fontWeight:900,color:'#fff',boxShadow:`0 5px 18px ${pc}44`}}>我記住了，開始學習！→</button>
+    </div>}
+
+    {/* Password modal */}
+    {pwModal&&<div style={{position:'absolute',inset:0,background:'rgba(0,0,0,0.45)',display:'flex',alignItems:'center',justifyContent:'center',zIndex:200,padding:24}}>
+      <div style={{background:'#fff',borderRadius:24,padding:26,width:'100%',animation:'pop 0.2s ease-out'}}>
+        <div style={{textAlign:'center',marginBottom:16}}>
+          <img src={CHARACTERS[pwModal.charIdx].img} alt="" style={{width:70,height:70,objectFit:'contain'}}/>
+          <div style={{fontSize:15,fontWeight:900,color:'#1a1a2e',marginTop:8}}>🔒 {pwModal.charName} 已被 {pwModal.ownerName} 認養</div>
+          <div style={{fontSize:12,color:'#aaa',marginTop:4}}>請輸入密碼來認領這隻寵物</div>
+        </div>
+        <input type="text" placeholder="輸入密碼…" value={pwInput} onChange={e=>{setPwInput(e.target.value.toUpperCase());setPwErr('');}} maxLength={6}
+          style={{width:'100%',padding:'14px 16px',borderRadius:14,border:`2px solid ${pwErr?'#FF4D6D':'#e8e0f8'}`,fontSize:22,fontWeight:900,letterSpacing:4,textAlign:'center',fontFamily:'monospace',outline:'none',color:'#1a1a2e',marginBottom:8}}/>
+        {pwErr&&<div style={{fontSize:12,color:'#FF4D6D',fontWeight:700,textAlign:'center',marginBottom:8}}>{pwErr}</div>}
+        <div style={{display:'flex',gap:10,marginTop:4}}>
+          <button onClick={()=>setPwModal(null)} style={{flex:1,padding:13,borderRadius:14,border:'2px solid #f0eaea',background:'#fff',fontSize:14,fontWeight:800,color:'#aaa',cursor:'pointer'}}>取消</button>
+          <button onClick={verifyPw} style={{flex:2,padding:13,borderRadius:14,border:'none',background:`linear-gradient(135deg,${pc},${pc}bb)`,fontSize:14,fontWeight:900,color:'#fff',cursor:'pointer'}}>確認密碼</button>
+        </div>
+      </div>
+    </div>}
+  </div>);
+}
+
+/* ── HOME ─────────────────────────────────────────────── */
+function HomeScreen({charSrc,charName,studentName,stats,onNav,onSelectChar,pc,showStreak}){
+  const [expanded,setExpanded]=useState(null);
+  const d=new Date(TODAY);
+  const dateLabel=d.toLocaleDateString('zh-TW',{month:'long',day:'numeric',weekday:'short'});
+  const statItems=[
+    {icon:'🔥',val:stats.streak,label:'連續天數',color:'#FF6B47'},
+    {icon:'📊',val:`${stats.avgScore}%`,label:'平均分數',color:pc},
+    {icon:'🏆',val:`${stats.best}/10`,label:'最高分',color:'#FFB800'},
+  ];
+  const catColors=['#FF9800','#38bdf8','#a78bfa'];
+
+  return(<div className="screen" style={{background:'linear-gradient(170deg,#fafeff 0%,#f0fdf8 100%)'}}>
+    <div className="scroll-body" style={{padding:'48px 20px 12px'}}>
+      {/* Header */}
+      <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:18}}>
+        <div>
+          <div style={{fontSize:22,fontWeight:900,color:'#1a1a2e'}}>你好！{studentName} 👋</div>
+          <div style={{fontSize:12,color:'#aaa',marginTop:2}}>{dateLabel}</div>
+        </div>
+        <button onClick={onSelectChar} style={{width:46,height:46,borderRadius:15,border:`2px solid ${pc}44`,background:'#fff',cursor:'pointer',overflow:'hidden',padding:3,boxShadow:`0 2px 10px ${pc}22`}}>
+          <img src={charSrc} alt="" style={{width:'100%',height:'100%',objectFit:'contain'}}/>
+        </button>
+      </div>
+
+      {/* Stats row */}
+      {showStreak&&<div style={{display:'flex',gap:10,marginBottom:18}}>
+        {statItems.map(s=>(
+          <div key={s.label} style={{flex:1,background:'#fff',borderRadius:16,padding:'10px 6px',boxShadow:'0 2px 10px rgba(0,0,0,0.05)',textAlign:'center'}}>
+            <div style={{fontSize:18}}>{s.icon}</div>
+            <div style={{fontSize:18,fontWeight:900,color:s.color,lineHeight:1.1}}>{s.val}</div>
+            <div style={{fontSize:9,color:'#bbb',fontWeight:700,marginTop:1}}>{s.label}</div>
+          </div>
+        ))}
+      </div>}
+
+      {/* Today's 3 words */}
+      <div style={{marginBottom:18}}>
+        <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:10,flexWrap:'nowrap',gap:8}}>
+          <div style={{fontSize:15,fontWeight:900,color:'#1a1a2e',whiteSpace:'nowrap'}}>📅 今日新單字</div>
+          <div style={{fontSize:11,color:'#aaa',fontWeight:700,whiteSpace:'nowrap',flexShrink:0}}>點擊看例句 ▾</div>
+        </div>
+        <div style={{display:'flex',flexDirection:'column',gap:10}}>
+          {todaySet.map((w,i)=>{
+            const bg=catColors[i%3];
+            const isOpen=expanded===i;
+            return(<div key={w.word} onClick={()=>setExpanded(isOpen?null:i)} style={{background:`linear-gradient(135deg,${bg}18,${bg}08)`,border:`1.5px solid ${bg}33`,borderRadius:20,padding:'14px 16px',cursor:'pointer',transition:'all 0.2s'}}>
+              <div style={{display:'flex',alignItems:'center',gap:12}}>
+                <div style={{width:48,height:48,borderRadius:14,background:`${bg}22`,display:'flex',alignItems:'center',justifyContent:'center',fontSize:28,flexShrink:0}}>
+                  {w.visual||<span style={{fontSize:14,fontWeight:900,color:bg}}>{w.zh.slice(0,2)}</span>}
+                </div>
+                <div style={{flex:1}}>
+                  <div style={{fontSize:20,fontWeight:900,color:'#1a1a2e',letterSpacing:1}}>{w.word}</div>
+                  <div style={{fontSize:13,color:bg,fontWeight:800}}>{w.zh}</div>
+                </div>
+                <div style={{fontSize:14,color:'#ccc',transform:isOpen?'rotate(180deg)':'rotate(0)',transition:'transform 0.2s'}}>▼</div>
+              </div>
+              {isOpen&&<div style={{marginTop:12,paddingTop:12,borderTop:`1px solid ${bg}33`,animation:'expandIn 0.25s ease-out'}}>
+                <div style={{fontSize:13,fontWeight:800,color:bg,marginBottom:4}}>例句</div>
+                <div style={{fontSize:15,color:'#333',fontStyle:'italic',lineHeight:1.7}}>"{w.en}"</div>
+                <div style={{fontSize:13,color:'#777',marginTop:4}}>「{w.zh2}」</div>
+              </div>}
+            </div>);
+          })}
+        </div>
+      </div>
+
+      {/* Companion mini card */}
+      <div style={{background:'#fff',borderRadius:20,padding:'14px 18px',boxShadow:'0 2px 12px rgba(0,0,0,0.06)',display:'flex',alignItems:'center',gap:14,marginBottom:4,position:'relative',overflow:'hidden'}}>
+        <div style={{position:'absolute',right:-10,top:-10,width:80,height:80,borderRadius:'50%',background:`${pc}0f`}}/>
+        <div style={{animation:'float 3s ease-in-out infinite',flexShrink:0}}>
+          <img src={charSrc} alt="" style={{width:56,height:56,objectFit:'contain'}}/>
+        </div>
+        <div>
+          <div style={{fontSize:12,color:'#aaa',fontWeight:700}}>今天的夥伴</div>
+          <div style={{fontSize:18,fontWeight:900,color:pc}}>{charName}</div>
+          <div style={{fontSize:11,color:'#bbb',marginTop:1}}>一起來複習單字吧！</div>
+        </div>
+        <button onClick={()=>onNav('quiz')} style={{marginLeft:'auto',padding:'9px 16px',borderRadius:14,border:'none',cursor:'pointer',background:`linear-gradient(135deg,${pc},${pc}bb)`,fontSize:12,fontWeight:900,color:'#fff',flexShrink:0,boxShadow:`0 3px 10px ${pc}44`}}>開始 ▶</button>
+      </div>
+    </div>
+
+    {/* Quick actions */}
+    <div style={{padding:'8px 20px 10px',display:'flex',gap:10,flexShrink:0}}>
+      <button onClick={()=>onNav('flash')} style={{flex:1,padding:'13px 8px',borderRadius:16,border:'1.5px solid #f0eaea',cursor:'pointer',background:'#fff',boxShadow:'0 2px 8px rgba(0,0,0,0.05)',display:'flex',flexDirection:'column',alignItems:'center',gap:3}}>
+        <span style={{fontSize:22}}>📖</span>
+        <span style={{fontSize:11,fontWeight:800,color:'#666'}}>單字卡</span>
+        <span style={{fontSize:9,color:'#bbb',fontWeight:700}}>{flashPool.length} 個</span>
+      </button>
+      <button onClick={()=>onNav('quiz')} style={{flex:1.6,padding:'13px 8px',borderRadius:16,border:'none',cursor:'pointer',background:`linear-gradient(135deg,${pc},${pc}bb)`,boxShadow:`0 4px 14px ${pc}44`,display:'flex',flexDirection:'column',alignItems:'center',gap:3}}>
+        <span style={{fontSize:22}}>🎮</span>
+        <span style={{fontSize:12,fontWeight:900,color:'#fff'}}>開始測驗</span>
+        <span style={{fontSize:9,color:'rgba(255,255,255,0.7)',fontWeight:700}}>10題挑戰</span>
+      </button>
+      <button onClick={()=>onNav('rank')} style={{flex:1,padding:'13px 8px',borderRadius:16,border:'1.5px solid #f0eaea',cursor:'pointer',background:'#fff',boxShadow:'0 2px 8px rgba(0,0,0,0.05)',display:'flex',flexDirection:'column',alignItems:'center',gap:3}}>
+        <span style={{fontSize:22}}>🏆</span>
+        <span style={{fontSize:11,fontWeight:800,color:'#666'}}>排行榜</span>
+        <span style={{fontSize:9,color:'#bbb',fontWeight:700}}>查排名</span>
+      </button>
+    </div>
+    <BottomNav screen="home" onNav={onNav} pc={pc}/>
+  </div>);
+}
+
+/* ── CHAR SELECT ──────────────────────────────────────── */
+function CharSelectScreen({current,onSelect,onBack,pc}){
+  const [sel,setSel]=useState(current);
+  return(<div className="screen" style={{background:'linear-gradient(170deg,#fafeff 0%,#f0fdf8 100%)'}}>
+    <div style={{padding:'48px 20px 12px',display:'flex',alignItems:'center',gap:12,flexShrink:0}}>
+      <button onClick={onBack} style={{width:38,height:38,borderRadius:12,border:'none',background:'rgba(0,0,0,0.06)',cursor:'pointer',fontSize:17}}>←</button>
+      <div style={{fontSize:17,fontWeight:900,color:'#1a1a2e'}}>更換夥伴</div>
+    </div>
+    <div className="scroll-body" style={{padding:'0 18px 16px'}}>
+      <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:12}}>
+        {CHARACTERS.map((c,i)=>{
+          const isSel=sel===i;
+          return(<button key={c.id} onClick={()=>setSel(i)} style={{padding:'14px 8px 12px',borderRadius:20,border:`2.5px solid ${isSel?pc:'#f0eaea'}`,background:isSel?`${pc}10`:'#fff',cursor:'pointer',boxShadow:isSel?`0 4px 16px ${pc}33`:'0 2px 8px rgba(0,0,0,0.05)',transition:'all 0.2s',display:'flex',flexDirection:'column',alignItems:'center',gap:4,position:'relative'}}>
+            {isSel&&<div style={{position:'absolute',top:6,right:6,width:16,height:16,borderRadius:'50%',background:pc,display:'flex',alignItems:'center',justifyContent:'center',fontSize:9,color:'#fff',fontWeight:900}}>✓</div>}
+            <img src={c.img} alt={c.name} style={{width:60,height:60,objectFit:'contain'}}/>
+            <div style={{fontSize:12,fontWeight:900,color:isSel?pc:'#1a1a2e'}}>{c.name}</div>
+          </button>);
+        })}
+      </div>
+    </div>
+    <div style={{padding:'0 18px 28px',flexShrink:0}}>
+      <button onClick={()=>onSelect(sel)} style={{width:'100%',padding:17,borderRadius:20,border:'none',cursor:'pointer',background:`linear-gradient(135deg,${pc},${pc}bb)`,fontSize:16,fontWeight:900,color:'#fff',boxShadow:`0 5px 18px ${pc}44`}}>確認選擇 ✓</button>
+    </div>
+  </div>);
+}
+
+/* ── FLASHCARD ────────────────────────────────────────── */
+function FlashScreen({charSrc,onNav,pc}){
+  const cards=useMemo(()=>shuffle(flashPool),[]);
+  const [idx,setIdx]=useState(0);
+  const [flipped,setFlipped]=useState(false);
+  const [known,setKnown]=useState(new Set());
+  const card=cards[idx%cards.length];
+
+  const goNext=()=>{setFlipped(false);setTimeout(()=>setIdx(i=>Math.min(i+1,cards.length-1)),120);};
+  const goPrev=()=>{setFlipped(false);setTimeout(()=>setIdx(i=>Math.max(i-1,0)),120);};
+  const markKnown=()=>{setKnown(s=>{const n=new Set(s);n.add(card.word);return n;});goNext();};
+
+  if(cards.length===0)return(
+    <div className="screen" style={{background:'linear-gradient(170deg,#fafeff 0%,#f0fdf8 100%)'}}>
+      <div style={{flex:1,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',padding:40,gap:16,textAlign:'center'}}>
+        <span style={{fontSize:60}}>📖</span>
+        <div style={{fontSize:20,fontWeight:900,color:'#1a1a2e'}}>單字卡還是空的！</div>
+        <div style={{fontSize:14,color:'#aaa'}}>每天的新單字，第二天才會加入單字卡喔。先去學今日新單字吧！</div>
+        <button onClick={()=>onNav('home')} style={{padding:'14px 28px',borderRadius:18,border:'none',cursor:'pointer',background:`linear-gradient(135deg,${pc},${pc}bb)`,fontSize:15,fontWeight:900,color:'#fff'}}>回首頁</button>
+      </div>
+      <BottomNav screen="flash" onNav={onNav} pc={pc}/>
+    </div>
+  );
+
+  const catColor=CAT[card.cat]||'#94a3b8';
+  const progress=(idx+1)/cards.length;
+
+  return(<div className="screen" style={{background:'linear-gradient(170deg,#fafeff 0%,#f0fdf8 100%)'}}>
+    {/* Header */}
+    <div style={{padding:'48px 20px 8px',display:'flex',alignItems:'center',gap:12,flexShrink:0}}>
+      <div style={{flex:1}}>
+        <div style={{fontSize:16,fontWeight:900,color:'#1a1a2e'}}>📖 單字卡庫</div>
+        <div style={{fontSize:11,color:'#aaa',marginTop:1}}>共 {cards.length} 個學過的單字</div>
+      </div>
+      <div style={{fontSize:13,fontWeight:800,color:pc,background:`${pc}15`,padding:'5px 12px',borderRadius:16}}>{idx+1}/{cards.length}</div>
+    </div>
+
+    {/* Progress */}
+    <div style={{padding:'0 20px 10px',flexShrink:0}}>
+      <div style={{height:7,background:'#e8f8fa',borderRadius:8}}>
+        <div style={{height:7,borderRadius:8,background:`linear-gradient(90deg,${pc},${pc}88)`,width:`${progress*100}%`,transition:'width 0.3s ease-out'}}/>
+      </div>
+      <div style={{display:'flex',justifyContent:'space-between',marginTop:5}}>
+        <span style={{fontSize:11,color:'#aaa',fontWeight:700}}>✅ 已記住 {known.size} 個</span>
+        <span style={{fontSize:11,color:'#aaa',fontWeight:700}}>還剩 {cards.length-idx-1} 張</span>
+      </div>
+    </div>
+
+    {/* Card */}
+    <div style={{flex:1,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',padding:'0 22px',gap:16}}>
+      <div onClick={()=>setFlipped(f=>!f)} style={{width:'100%',background:'#fff',borderRadius:28,boxShadow:'0 6px 28px rgba(0,0,0,0.09)',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',padding:'28px 24px',gap:10,cursor:'pointer',minHeight:230,animation:'pop 0.2s ease-out',position:'relative',overflow:'hidden'}}>
+        {/* Category bar */}
+        <div style={{position:'absolute',top:0,left:0,right:0,height:4,background:`linear-gradient(90deg,${catColor},${catColor}66)`,borderRadius:'28px 28px 0 0'}}/>
+        <div style={{fontSize:11,fontWeight:800,color:catColor,letterSpacing:1,opacity:0.8}}>{card.cat}</div>
+        <WordVisual vocab={card} size={56}/>
+        {!flipped?(
+          <>
+            <div style={{fontSize:34,fontWeight:900,color:'#1a1a2e',letterSpacing:2}}>{card.word}</div>
+            <div style={{fontSize:12,color:'#ccc',marginTop:4}}>👆 點擊看中文</div>
+          </>
+        ):(
+          <>
+            <div style={{fontSize:30,fontWeight:900,color:pc}}>{card.zh}</div>
+            <div style={{fontSize:14,color:'#aaa',fontStyle:'italic'}}>{card.word}</div>
+            {card.en&&<div style={{fontSize:13,color:'#555',textAlign:'center',lineHeight:1.6,marginTop:4,paddingTop:8,borderTop:'1px dashed #f0eaea',width:'100%'}}>"{card.en}"</div>}
+          </>
+        )}
+        {known.has(card.word)&&<div style={{position:'absolute',top:12,right:14,fontSize:16}}>✅</div>}
+      </div>
+
+      <div style={{animation:'float 3s ease-in-out infinite'}}>
+        <img src={charSrc} alt="" style={{width:60,height:60,objectFit:'contain'}}/>
+      </div>
+    </div>
+
+    {/* Buttons */}
+    <div style={{padding:'0 20px 10px',display:'flex',gap:10,flexShrink:0}}>
+      <button onClick={goPrev} disabled={idx===0} style={{flex:1,padding:13,borderRadius:16,border:'1.5px solid #f0eaea',background:'#fff',fontSize:13,fontWeight:800,color:'#aaa',cursor:'pointer',opacity:idx===0?0.4:1}}>← 上一張</button>
+      <button onClick={markKnown} style={{flex:1.4,padding:13,borderRadius:16,border:`1.5px solid ${pc}44`,background:`${pc}12`,fontSize:13,fontWeight:900,color:pc,cursor:'pointer'}}>✅ 我會了</button>
+      <button onClick={goNext} disabled={idx===cards.length-1} style={{flex:1,padding:13,borderRadius:16,border:'none',background:`linear-gradient(135deg,${pc},${pc}bb)`,fontSize:13,fontWeight:900,color:'#fff',cursor:'pointer',opacity:idx===cards.length-1?0.5:1}}>下一張 →</button>
+    </div>
+    <BottomNav screen="flash" onNav={onNav} pc={pc}/>
+  </div>);
+}
+
+/* ── QUIZ ─────────────────────────────────────────────── */
+function QuizScreen({charSrc,onFinish,onNav,pc}){
+  const TOTAL=Math.min(20,quizPool.length);
+  const [questions]=useState(()=>shuffle(quizPool).slice(0,TOTAL).map(v=>({vocab:v,options:getOptions(v,quizPool)})));
+  const [idx,setIdx]=useState(0);
+  const [selected,setSel]=useState(null);
+  const [score,setScore]=useState(0);
+  const [xp,setXp]=useState(0);
+  const [combo,setCombo]=useState(0);
+  const [showConf,setConf]=useState(false);
+  const [xpMsg,setXpMsg]=useState(null);
+  const [shaking,setShaking]=useState(false);
+
+  const q=questions[idx];
+  const correct=q.vocab;
+  const catColor=CAT[correct.cat]||'#94a3b8';
+
+  const answer=(opt)=>{
+    if(selected)return;
+    setSel(opt.word);
+    const ok=opt.word===correct.word;
+    if(ok){
+      const gain=10+combo*3;
+      setScore(s=>s+1);setXp(x=>x+gain);setCombo(c=>c+1);
+      setConf(true);setXpMsg(`+${gain} XP`);
+      setTimeout(()=>setConf(false),1200);setTimeout(()=>setXpMsg(null),900);
+    }else{
+      setCombo(0);
+      setShaking(true);setTimeout(()=>setShaking(false),500);
+    }
+    setTimeout(()=>{
+      setSel(null);
+      if(idx+1>=TOTAL) onFinish(ok?score+1:score,ok?xp+10+combo*3:xp,TOTAL);
+      else setIdx(i=>i+1);
+    },1100);
+  };
+
+  const bg=(opt)=>{
+    if(!selected)return'#fff';
+    if(opt.word===correct.word)return'#4CAF82';
+    if(opt.word===selected)return'#FF4D6D';
+    return'#fff';
+  };
+  const col=(opt)=>{
+    if(!selected)return'#1a1a2e';
+    if(opt.word===correct.word||opt.word===selected)return'#fff';
+    return'#ccc';
+  };
+  const bdr=(opt)=>{
+    if(!selected)return'2px solid #f0eaea';
+    if(opt.word===correct.word)return'2px solid #4CAF82';
+    if(opt.word===selected)return'2px solid #FF4D6D';
+    return'2px solid #f5f5f5';
+  };
+
+  return(<div className="screen" style={{background:'linear-gradient(170deg,#fafeff 0%,#f0fdf8 100%)',position:'relative',overflow:'hidden'}}>
+    <Confetti active={showConf}/>
+    {xpMsg&&<div style={{position:'absolute',top:'22%',left:'50%',fontSize:22,fontWeight:900,color:'#FFB800',textShadow:'0 2px 8px rgba(0,0,0,0.15)',animation:'xpRise 0.9s ease-out forwards',pointerEvents:'none',zIndex:50,whiteSpace:'nowrap'}}>{xpMsg} ⭐</div>}
+
+    {/* Header */}
+    <div style={{padding:'46px 20px 6px',display:'flex',alignItems:'center',gap:10,flexShrink:0}}>
+      <div style={{flex:1,height:9,background:'rgba(0,0,0,0.06)',borderRadius:9}}>
+        <div style={{height:9,borderRadius:9,background:`linear-gradient(90deg,${pc},${pc}99)`,width:`${(idx/TOTAL)*100}%`,transition:'width 0.35s ease-out'}}/>
+      </div>
+      <div style={{fontSize:13,fontWeight:800,color:pc,background:'#fff',padding:'4px 10px',borderRadius:14,boxShadow:'0 2px 6px rgba(0,0,0,0.06)'}}>{idx+1}/{TOTAL}</div>
+    </div>
+
+    {combo>=2&&<div style={{textAlign:'center',fontSize:12,fontWeight:800,color:'#FF6B47',marginBottom:2,flexShrink:0}}>🔥 連續答對 {combo} 題！加油！</div>}
+
+    <div style={{flex:1,display:'flex',flexDirection:'column',padding:'4px 20px 0',overflow:'hidden'}}>
+      {/* Character */}
+      <div style={{display:'flex',justifyContent:'center',marginBottom:4,flexShrink:0}}>
+        <img src={charSrc} alt="" style={{width:54,height:54,objectFit:'contain',animation:'float 3s ease-in-out infinite'}}/>
+      </div>
+
+      {/* Question card */}
+      <div style={{background:'#fff',borderRadius:22,padding:'14px 20px',textAlign:'center',boxShadow:'0 4px 18px rgba(0,0,0,0.07)',marginBottom:12,flexShrink:0,animation:shaking?'shake 0.4s ease-in-out':'pop 0.2s ease-out',display:'flex',flexDirection:'column',alignItems:'center',gap:6,position:'relative',overflow:'hidden'}}>
+        <div style={{position:'absolute',top:0,left:0,right:0,height:3,background:`linear-gradient(90deg,${catColor},${catColor}44)`}}/>
+        <div style={{fontSize:11,fontWeight:700,color:'#ddd',letterSpacing:1}}>這個英文單字是什麼意思？</div>
+        <WordVisual vocab={correct} size={44}/>
+        <div style={{fontSize:30,fontWeight:900,color:'#1a1a2e',letterSpacing:2}}>{correct.word}</div>
+        <div style={{fontSize:10,color:catColor,fontWeight:800,background:`${catColor}18`,padding:'2px 10px',borderRadius:20}}>{correct.cat}</div>
+      </div>
+
+      {/* Options */}
+      <div style={{display:'flex',flexDirection:'column',gap:8,flex:1}}>
+        {q.options.map((opt,i)=>(
+          <button key={opt.word} onClick={()=>answer(opt)} style={{width:'100%',padding:'13px 16px',borderRadius:16,border:bdr(opt),background:bg(opt),color:col(opt),fontSize:15,fontWeight:800,cursor:'pointer',textAlign:'left',display:'flex',alignItems:'center',gap:10,boxShadow:selected&&opt.word===correct.word?'0 4px 14px #4CAF8244':'0 2px 6px rgba(0,0,0,0.04)',transition:'all 0.15s',animation:`slideUp 0.2s ${i*0.04}s both`,opacity:selected&&opt.word!==correct.word&&opt.word!==selected?0.4:1}}
+            onMouseEnter={e=>{if(!selected){e.currentTarget.style.transform='scale(1.02)';e.currentTarget.style.boxShadow='0 4px 14px rgba(0,0,0,0.1)';}}}
+            onMouseLeave={e=>{e.currentTarget.style.transform='scale(1)';e.currentTarget.style.boxShadow='0 2px 6px rgba(0,0,0,0.04)';}}>
+            <span style={{fontSize:18}}>{opt.visual||'💬'}</span>
+            <span style={{flex:1}}>{opt.zh}</span>
+            {selected&&opt.word===correct.word&&<span style={{fontSize:16}}>✓</span>}
+            {selected&&opt.word===selected&&opt.word!==correct.word&&<span style={{fontSize:16}}>✗</span>}
+          </button>
+        ))}
+      </div>
+    </div>
+    <div style={{textAlign:'center',padding:'6px 0 6px',flexShrink:0}}>
+      <span style={{fontSize:11,color:'#ccc',fontWeight:700}}>⭐ {xp} XP 已獲得</span>
+    </div>
+    <BottomNav screen="quiz" onNav={onNav} pc={pc}/>
+  </div>);
+}
+
+/* ── RESULT ───────────────────────────────────────────── */
+function ResultScreen({score,xp,total,charSrc,charName,onRetry,onHome,pc}){
+  const pct=Math.round((score/total)*100);
+  const isGreat=pct>=80,isOk=pct>=50;
+  const grade=isGreat?'S 🌟':isOk?'B 👍':'C 💪';
+  const msg=isGreat?'太厲害了！':isOk?'做得不錯！':'繼續加油！';
+  return(<div className="screen" style={{background:'linear-gradient(170deg,#fafeff 0%,#f0fdf8 100%)',position:'relative'}}>
+    {isGreat&&<Confetti active/>}
+    <div className="scroll-body" style={{padding:'52px 22px 28px',display:'flex',flexDirection:'column',alignItems:'center',gap:18}}>
+      <div style={{textAlign:'center'}}>
+        <div style={{animation:'float 3s ease-in-out infinite',display:'inline-block'}}><img src={charSrc} alt="" style={{width:96,height:96,objectFit:'contain'}}/></div>
+        <div style={{fontSize:26,fontWeight:900,color:'#1a1a2e',marginTop:10}}>{msg}</div>
+        <div style={{fontSize:13,color:'#aaa',marginTop:4}}>{charName} 在為你加油！</div>
+      </div>
+      <div style={{width:'100%',background:'#fff',borderRadius:28,padding:24,boxShadow:'0 6px 24px rgba(0,0,0,0.07)',animation:'pop 0.3s ease-out'}}>
+        <div style={{display:'flex',justifyContent:'center',marginBottom:18}}>
+          <div style={{width:84,height:84,borderRadius:'50%',background:`linear-gradient(135deg,${pc},${pc}88)`,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',boxShadow:`0 6px 20px ${pc}44`}}>
+            <div style={{fontSize:22,fontWeight:900,color:'#fff',lineHeight:1}}>{pct}%</div>
+            <div style={{fontSize:9,color:'rgba(255,255,255,0.8)'}}>正確率</div>
+          </div>
+        </div>
+        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:10}}>
+          {[{icon:'✅',label:'答對題數',val:`${score}/${total}`,color:'#4CAF82'},{icon:'⭐',label:'XP獲得',val:`+${xp}`,color:'#FFB800'},{icon:'🎯',label:'等級',val:grade,color:pc}].map(item=>(
+            <div key={item.label} style={{textAlign:'center',background:'#fafeff',borderRadius:14,padding:'12px 6px'}}>
+              <div style={{fontSize:20}}>{item.icon}</div>
+              <div style={{fontSize:14,fontWeight:900,color:item.color,lineHeight:1.2}}>{item.val}</div>
+              <div style={{fontSize:9,color:'#bbb',fontWeight:700,marginTop:2}}>{item.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div style={{width:'100%',background:`${pc}10`,borderRadius:18,padding:'14px 18px',display:'flex',alignItems:'center',gap:12}}>
+        <span style={{fontSize:22}}>💡</span>
+        <div style={{fontSize:12,color:'#555',fontWeight:700,lineHeight:1.6}}>{isGreat?'完美！繼續保持每天複習的好習慣！':'每天複習，進步看得見！繼續努力！'}</div>
+      </div>
+      <div style={{width:'100%',display:'flex',flexDirection:'column',gap:10}}>
+        <button onClick={onRetry} style={{width:'100%',padding:16,borderRadius:20,border:'none',cursor:'pointer',background:`linear-gradient(135deg,${pc},${pc}bb)`,fontSize:16,fontWeight:900,color:'#fff',boxShadow:`0 5px 16px ${pc}44`}}>🔄 再玩一次</button>
+        <button onClick={onHome} style={{width:'100%',padding:14,borderRadius:20,border:'2px solid #f0eaea',background:'#fff',fontSize:14,fontWeight:800,color:'#aaa',cursor:'pointer'}}>🏠 回首頁</button>
+      </div>
+    </div>
+  </div>);
+}
+
+/* ── LEADERBOARD ──────────────────────────────────────── */
+const DEMO_RANKS=[
+  {name:'Emily',score:10,xp:1240,charIdx:0},
+  {name:'Kevin',score:9,xp:1180,charIdx:2},
+  {name:'Sophia',score:9,xp:1100,charIdx:4},
+  {name:'Lucas',score:8,xp:980,charIdx:1},
+  {name:'Mia',score:8,xp:900,charIdx:6},
+  {name:'Ryan',score:7,xp:840,charIdx:3},
+  {name:'Lily',score:7,xp:760,charIdx:5},
+  {name:'Noah',score:6,xp:680,charIdx:0},
+  {name:'Chloe',score:5,xp:600,charIdx:2},
+  {name:'Ethan',score:4,xp:520,charIdx:1},
+];
+const MEDAL=['🥇','🥈','🥉'];
+// 位置順序：左(pi=0)=2nd銀, 中(pi=1)=1st金, 右(pi=2)=3rd銅
+const PODIUM_H=[110,148,90];      // 左中右高度
+const PODIUM_C=['#C0C0C0','#FFD700','#CD7F32']; // 左銀/中金/右銅
+const PODIUM_MEDAL=['🥈','🥇','🥉']; // 左中右獎牌
+
+function RankScreen({stats,charIdx,studentName,onNav,pc}){
+  const [tab,setTab]=useState('week');
+  const allRanks=useMemo(()=>{
+    const me={name:studentName||'你',score:stats.best,xp:stats.xp,charIdx,isMe:true};
+    return [...DEMO_RANKS,me].sort((a,b)=>b.score-a.score||b.xp-a.xp).map((r,i)=>({...r,rank:i+1}));
+  },[stats,charIdx,studentName]);
+
+  // 頒獎台：左=2nd(銀), 中=1st(金), 右=3rd(銅)
+  const top3=[allRanks[1],allRanks[0],allRanks[2]];
+
+  return(<div className="screen" style={{background:'linear-gradient(170deg,#fafeff 0%,#f0fdf8 100%)'}}>
+    <div style={{padding:'48px 20px 10px',flexShrink:0}}>
+      <div style={{fontSize:18,fontWeight:900,color:'#1a1a2e'}}>🏆 排行榜</div>
+    </div>
+
+    {/* Tab */}
+    <div style={{display:'flex',margin:'0 20px 14px',background:'#f0f8fa',borderRadius:14,padding:3,flexShrink:0}}>
+      {[['week','本週排名'],['all','全部排名']].map(([id,label])=>(
+        <button key={id} onClick={()=>setTab(id)} style={{flex:1,padding:'8px',borderRadius:11,border:'none',cursor:'pointer',background:tab===id?'#fff':'transparent',fontSize:13,fontWeight:800,color:tab===id?pc:'#aaa',boxShadow:tab===id?'0 2px 8px rgba(0,0,0,0.08)':'none',transition:'all 0.2s'}}>{label}</button>
+      ))}
+    </div>
+
+    {/* Podium */}
+    <div style={{display:'flex',alignItems:'flex-end',justifyContent:'center',gap:6,padding:'0 20px 14px',flexShrink:0}}>
+      {top3.filter(Boolean).map((r,pi)=>{
+        // pi=0→左(2nd銀), pi=1→中(1st金), pi=2→右(3rd銅)
+        const rankMap=[2,1,3];
+        const rank=rankMap[pi];
+        return(<div key={r.name} style={{flex:1,display:'flex',flexDirection:'column',alignItems:'center',gap:3}}>
+          {r.isMe&&<div style={{fontSize:9,fontWeight:900,color:pc,background:`${pc}20`,padding:'2px 6px',borderRadius:10}}>你</div>}
+          <img src={CHARACTERS[r.charIdx]?.img||CHARACTERS[0].img} alt="" style={{width:pi===1?50:40,height:pi===1?50:40,objectFit:'contain'}}/>
+          <div style={{fontSize:10,fontWeight:900,color:r.isMe?pc:'#555',maxWidth:64,textAlign:'center',overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap'}}>{r.name}</div>
+          <div style={{fontSize:11,fontWeight:700,color:'#aaa'}}>{r.score}分</div>
+          <div style={{width:'100%',height:PODIUM_H[pi],borderRadius:'10px 10px 0 0',background:`linear-gradient(180deg,${PODIUM_C[pi]},${PODIUM_C[pi]}88)`,display:'flex',alignItems:'flex-start',justifyContent:'center',paddingTop:8,boxShadow:`0 -4px 12px ${PODIUM_C[pi]}44`}}>
+            <span style={{fontSize:22}}>{PODIUM_MEDAL[pi]}</span>
+          </div>
+        </div>);
+      })}
+    </div>
+
+    {/* List */}
+    <div className="scroll-body" style={{padding:'0 20px 8px'}}>
+      {allRanks.slice(3).map(r=>(
+        <div key={r.name+r.rank} style={{display:'flex',alignItems:'center',gap:12,padding:'11px 14px',background:r.isMe?`${pc}10`:'#fff',borderRadius:16,marginBottom:8,boxShadow:r.isMe?`0 2px 10px ${pc}22`:'0 1px 6px rgba(0,0,0,0.04)',border:r.isMe?`1.5px solid ${pc}33`:'1.5px solid transparent'}}>
+          <div style={{width:26,textAlign:'center',fontSize:13,fontWeight:900,color:'#ddd'}}>{r.rank}</div>
+          <img src={CHARACTERS[r.charIdx]?.img||CHARACTERS[0].img} alt="" style={{width:36,height:36,objectFit:'contain'}}/>
+          <div style={{flex:1}}>
+            <div style={{fontSize:13,fontWeight:900,color:r.isMe?pc:'#1a1a2e'}}>{r.name}{r.isMe?' (我)':''}</div>
+            <div style={{fontSize:10,color:'#aaa',fontWeight:700}}>⭐ {r.xp} XP</div>
+          </div>
+          <div style={{fontSize:17,fontWeight:900,color:r.isMe?pc:'#555'}}>{r.score}<span style={{fontSize:10,color:'#aaa',fontWeight:700}}> 分</span></div>
+        </div>
+      ))}
+    </div>
+    <BottomNav screen="rank" onNav={onNav} pc={pc}/>
+  </div>);
+}
+
+/* ── APP ──────────────────────────────────────────────── */
+function App(){
+  const [profile,setProfile]=useState(()=>loadProfile());
+  const [screen,setScreen]=useState('home');
+  const [result,setResult]=useState(null);
+  const [tweaks,setTweaks]=useState(TWEAK_DEFAULTS);
+  const [showTweaks,setShowTweaks]=useState(false);
+  const [stats,setStats]=useState(loadStats);
+
+  const pc=tweaks.primaryColor;
+  const charIdx=profile?.charIdx??0;
+  const charSrc=CHARACTERS[charIdx]?.img||CHARACTERS[0].img;
+  const charName=CHARACTERS[charIdx]?.name||'小夥伴';
+  const studentName=profile?.name||'同學';
+
+  useEffect(()=>{
+    const h=e=>{
+      if(e.data?.type==='__activate_edit_mode')setShowTweaks(true);
+      if(e.data?.type==='__deactivate_edit_mode')setShowTweaks(false);
+    };
+    window.addEventListener('message',h);
+    window.parent.postMessage({type:'__edit_mode_available'},'*');
+    return()=>window.removeEventListener('message',h);
+  },[]);
+
+  const nav=(s)=>{if(s==='quiz'&&screen!=='quiz')setResult(null);setScreen(s);};
+
+  const handleFinish=(score,xpGained,total)=>{
+    const newAvg=Math.round((stats.avgScore*stats.totalGames+Math.round(score/total*100))/(stats.totalGames+1));
+    const ns={...stats,xp:(stats.xp||0)+xpGained,best:Math.max(stats.best,score),totalGames:stats.totalGames+1,avgScore:newAvg};
+    saveStats(ns);setStats(ns);
+    setResult({score,xp:xpGained,total});setScreen('result');
+  };
+
+  if(!profile) return(
+    <div style={{width:'100%',height:'100%',position:'relative'}}>
+      <OnboardingScreen onDone={p=>{setProfile(p);setScreen('home');}} pc={pc}/>
+    </div>
+  );
+
+  return(<div style={{width:'100%',height:'100%',position:'relative'}}>
+    {screen==='home'&&<HomeScreen charSrc={charSrc} charName={charName} studentName={studentName} stats={stats} onNav={nav} onSelectChar={()=>setScreen('charselect')} pc={pc} showStreak={tweaks.showStreak}/>}
+    {screen==='charselect'&&<CharSelectScreen current={charIdx} onSelect={i=>{const p={...profile,charIdx:i};setProfile(p);saveProfile(p);setScreen('home');}} onBack={()=>setScreen('home')} pc={pc}/>}
+    {screen==='flash'&&<FlashScreen charSrc={charSrc} onNav={nav} pc={pc}/>}
+    {screen==='quiz'&&<QuizScreen charSrc={charSrc} onFinish={handleFinish} onNav={nav} pc={pc}/>}
+    {screen==='result'&&result&&<ResultScreen {...result} charSrc={charSrc} charName={charName} onRetry={()=>setScreen('quiz')} onHome={()=>setScreen('home')} pc={pc}/>}
+    {screen==='rank'&&<RankScreen stats={stats} charIdx={charIdx} studentName={studentName} onNav={nav} pc={pc}/>}
+
+    {showTweaks&&<div style={{position:'absolute',bottom:80,right:14,left:14,background:'#fff',borderRadius:20,padding:20,boxShadow:'0 8px 32px rgba(0,0,0,0.18)',zIndex:999}}>
+      <div style={{fontSize:15,fontWeight:900,marginBottom:14,color:'#1a1a2e'}}>🎨 Tweaks</div>
+      <div style={{display:'flex',flexDirection:'column',gap:12}}>
+        <label style={{fontSize:13,fontWeight:700,color:'#555',display:'flex',alignItems:'center',justifyContent:'space-between'}}>
+          主色調
+          <input type="color" value={tweaks.primaryColor} onChange={e=>{const v={...tweaks,primaryColor:e.target.value};setTweaks(v);window.parent.postMessage({type:'__edit_mode_set_keys',edits:v},'*');}} style={{width:40,height:28,border:'none',borderRadius:8,cursor:'pointer'}}/>
+        </label>
+        <label style={{fontSize:13,fontWeight:700,color:'#555',display:'flex',alignItems:'center',justifyContent:'space-between'}}>
+          顯示統計數字
+          <input type="checkbox" checked={tweaks.showStreak} onChange={e=>{const v={...tweaks,showStreak:e.target.checked};setTweaks(v);window.parent.postMessage({type:'__edit_mode_set_keys',edits:v},'*');}}/>
+        </label>
+        <label style={{fontSize:13,fontWeight:700,color:'#ff6b6b',display:'flex',alignItems:'center',justifyContent:'space-between',borderTop:'1px solid #f0eaea',paddingTop:10}}>
+          重設帳號（測試用）
+          <button onClick={()=>{localStorage.clear();window.location.reload();}} style={{fontSize:11,fontWeight:800,color:'#fff',background:'#FF4D6D',border:'none',padding:'5px 10px',borderRadius:8,cursor:'pointer'}}>重設</button>
+        </label>
+      </div>
+    </div>}
+  </div>);
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>

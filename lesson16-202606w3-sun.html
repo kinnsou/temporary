@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>第16課：神的說話與雅各的回應</title>
+  <meta name="description" content="學習聽從神的呼召，帶著全家人離開安逸，回到神的家過奉獻的生活。" />
+  <style>
+    :root {
+      --bg: #f6f1e8;
+      --paper: #fffaf2;
+      --ink: #2f2a25;
+      --muted: #6f6559;
+      --line: #e6d7bf;
+      --gold: #c29045;
+      --gold-deep: #966b2f;
+      --olive: #6f7d55;
+      --rose: #b56a59;
+      --shadow: 0 16px 40px rgba(88, 63, 30, 0.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.9;
+      background:
+        radial-gradient(1000px 480px at 110% -10%, rgba(194, 144, 69, 0.16), transparent 55%),
+        radial-gradient(900px 420px at -10% 100%, rgba(111, 125, 85, 0.16), transparent 55%),
+        var(--bg);
+    }
+    .grain::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.05;
+      background-image: radial-gradient(rgba(68, 48, 24, 0.28) 0.7px, transparent 0.7px);
+      background-size: 4px 4px;
+      z-index: 0;
+    }
+    .wrap { position: relative; z-index: 1; width: min(1020px, 92vw); margin: 28px auto 56px; }
+    .hero { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 28px; padding: clamp(26px, 5vw, 48px); background: linear-gradient(140deg, #fffdf8 0%, #fff5e7 100%); box-shadow: var(--shadow); }
+    .hero::after { content: ""; position: absolute; right: -120px; top: -120px; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(194, 144, 69, 0.28) 0%, rgba(194, 144, 69, 0) 70%); }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; border: 1px solid #ebd6b0; background: #fff7e8; color: var(--gold-deep); font-size: 13px; font-weight: 700; letter-spacing: 0.02em; }
+    h1 { margin: 0 0 12px; font-family: "Noto Serif TC", "PMingLiU", serif; font-size: clamp(34px, 6vw, 58px); line-height: 1.15; color: #2d2419; }
+    .lead { margin: 0; max-width: 66ch; color: var(--muted); font-size: clamp(16px, 2.1vw, 19px); }
+    .hero-actions { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 12px; }
+    .button { display: inline-block; padding: 12px 18px; border-radius: 14px; text-decoration: none; font-weight: 700; transition: transform .18s ease, box-shadow .18s ease; }
+    .button.primary { color: white; background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%); box-shadow: 0 10px 20px rgba(150, 107, 47, 0.28); }
+    .button.secondary { color: var(--ink); background: rgba(255,255,255,0.74); border: 1px solid var(--line); }
+    .button:hover { transform: translateY(-1px); }
+    .intro-grid, .content-grid, .summary-grid { display: grid; gap: 18px; margin-top: 22px; }
+    .intro-grid { grid-template-columns: 1.15fr 0.95fr; }
+    .content-grid { grid-template-columns: 1fr 1fr; }
+    .summary-grid { grid-template-columns: 1fr 1fr; }
+    .card { border: 1px solid var(--line); border-radius: 22px; background: var(--paper); padding: 22px; box-shadow: 0 10px 24px rgba(88, 63, 30, 0.08); }
+    .card h2, .card h3 { margin: 0 0 12px; font-family: "Noto Serif TC", serif; color: #352a1e; line-height: 1.45; }
+    .eyebrow { margin: 0 0 8px; color: var(--gold-deep); font-size: 13px; text-transform: uppercase; letter-spacing: .09em; font-weight: 700; }
+    .section-tag { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 12px; padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 700; color: #fff; }
+    .wednesday { background: linear-gradient(180deg, #6f7d55 0%, #53613e 100%); }
+    .thursday { background: linear-gradient(180deg, #b56a59 0%, #8f4d40 100%); }
+    p { margin: 0 0 14px; }
+    ul, ol { margin: 0; padding-left: 22px; }
+    li + li { margin-top: 8px; }
+    .focus-box { background: linear-gradient(180deg, #fffdf9 0%, #f7efe2 100%); }
+    .scripture { border-left: 4px solid var(--gold); background: #fff3df; border-radius: 12px; padding: 14px 16px; color: #5f4b31; margin-top: 14px; }
+    .prayer { background: #fdf6ee; border: 1px dashed #d4a070; border-radius: 14px; padding: 16px; }
+    .footer-note { margin-top: 22px; text-align: center; color: #8a7a66; font-size: 13px; }
+    @media (max-width: 920px) { .intro-grid, .content-grid, .summary-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 560px) { .wrap { margin-top: 18px; } .hero, .card { border-radius: 18px; } .button { width: 100%; text-align: center; } }
+  </style>
+</head>
+<body class="grain">
+  <main class="wrap">
+    <section class="hero">
+      <div class="badge-row">
+        <span class="badge">📖 主日帶讀</span>
+        <span class="badge">第十六課 · 2026 六月第三週</span>
+        <span class="badge">來源段落：周一</span>
+        <span class="badge">主題：起來！上伯特利去</span>
+      </div>
+      <h1>第16課：神的說話與雅各的回應</h1>
+      <p class="lead">當雅各平安回到家鄉後，神再次對他說話，引領他回到起初許願的地方，重新建立與神的關係。</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#reading">開始閱讀</a>
+        <a class="button secondary" href="#discussion">看主日重點</a>
+      </div>
+    </section>
+
+    <section class="intro-grid" aria-label="overview">
+      <article class="card">
+        <p class="eyebrow">Overview</p>
+        <h2>這一篇在提醒什麼？</h2>
+            <p>雅各在經歷了長年的漂泊後，帶著家人平安回到了迦南地。他在示劍安頓下來，過著舒適的生活，卻在無意間忘記了曾經對神許下的諾言。直到家中發生了意外的難處，雅各才在困境中重新尋求神。</p>
+            <p>神藉著環境再次向雅各顯現，呼召他「起來，上伯特利去」。雅各立刻反應，帶領全家人除掉偶像並自潔，起身前往那座代表「神之家具」的伯特利，恢復團體的召會生活與敬拜。</p>
+      </article>
+
+      <aside class="card focus-box">
+        <p class="eyebrow">Sunday Focus</p>
+        <h2>主日可以先抓三句話</h2>
+        <ul>
+          <li>敏銳察覺神藉著環境對我們的說話。</li>
+          <li>帶著全家人自潔，除去生活中不屬神的事物。</li>
+          <li>堅定持續地實行召會生活，完成對神的奉獻。</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="reading" class="content-grid" aria-label="reading-content">
+      <article class="card">
+        <span class="section-tag wednesday">周一｜正文帶讀</span>
+        <h2>起來！上伯特利去</h2>
+            <p>主拯救了雅各，讓他平安地和哥哥見面，不再有危險。雅各就在示劍這個地方蓋了房子、搭了棚子，還為神築了一座壇，打算在那裡過平靜的日子。對他來說，這二十多年來的辛苦總算換來了現在的安逸。</p>
+            <p>沒想到，就在這平安的時候，雅各的家裡發生了大麻煩。他的兒女們在示劍惹出了嚴重的衝突，這讓雅各感到非常害怕，擔心周圍的居民會起來攻擊他的全家。就在這不知所措的時刻，神向雅各顯現並對他說話了。</p>
+            <p>神對他說：「起來，上伯特利去住在那裡，在那裡築一座壇給神。」神提醒雅各，要回到那個他曾經在患難中遇見神、並向神許願的地方。神的心意不只是要雅各個人平安，更是要他回到「伯特利」——也就是神的家。</p>
+            <p>雅各一聽見神的話，立刻告訴全家人和所有同在的人，要除掉他們中間的外邦神偶像，並且要潔淨自己，更換衣裳。他知道要遇見神，必須先有整潔與分別的內心，不能帶著不屬神的事物去伯特利。</p>
+            <p>雅各帶著全家人一同起來出發。他深切記得，伯特利的那位神是在他遭難的日子應允他禱告、並在路上保佑他的那位。現在，他要帶著全家回到那裡築壇，將感謝與讚美獻給神。</p>
+      </article>
+
+      <article class="card">
+        <span class="section-tag thursday">主日｜補充提醒與操練</span>
+        <h2>生活中的提醒與轉向</h2>
+            <p>有時候，當我們的生活變得很順利、很安逸時，心裡就容易只顧著自己的滿足，而忘記了曾經向主許下的心願。我們可能像雅各一樣，停留在自己的「示劍」，卻忽略了神對我們有更高的目標。</p>
+            <p>神非常愛我們，所以祂會藉著生活中的各種環境，無論是小小的挫折還是大大的挑戰，來提醒我們轉向祂。這些事並不是要讓我們難過，而是神在呼喚我們：「起來，回到我這裡來。」</p>
+            <p>今天的伯特利就是團體的召會生活。神不希望我們只是獨自敬拜祂，而是要我們帶領全家人，甚至身邊的朋友，一起來到召會中築壇獻祭。當我們願意放下個人的安逸，回到神的家，神的心就會得到真正的滿足。</p>
+        <div class="scripture"><strong>可帶的一句提醒</strong><br />在每一個聖徒身上，神都為他造出環境，藉著那個環境來對他說話。</div>
+      </article>
+    </section>
+
+    <section id="discussion" class="summary-grid" aria-label="discussion-guide">
+      <article class="card focus-box">
+        <p class="eyebrow">Lead the Group</p>
+        <h3>這篇可以帶出的三件事</h3>
+        <ol>
+          <li>學習在環境中聽見神的說話，不因安逸而忘記神。</li>
+          <li>當察覺生活中有不屬神的事物時，要立刻自潔並轉向主。</li>
+          <li>珍惜並積極參與召會生活，實行團體的敬拜與事奉。</li>
+        </ol>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Discussion</p>
+        <h3>可直接帶的三個問題</h3>
+        <ul>
+          <li>當神要雅各去伯特利時，雅各要求家人在出發前做哪些準備？</li>
+          <li>神為什麼要藉著環境對雅各說話？這對我們的生活有什麼啟發？</li>
+          <li>「上伯特利去」在今天的召會生活中代表什麼樣的實行？</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="summary-grid" aria-label="verse-prayer">
+      <article class="card">
+        <p class="eyebrow">Verse</p>
+        <h3>今天的經文</h3>
+        <div class="scripture">神對雅各說，起來，上伯特利去住在那裡，要在那裡築一座壇給神，就是你逃避你哥哥以掃的時候向你顯現的那位。<br />創世記三十五章1節</div>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Prayer</p>
+        <h3>一起禱告</h3>
+        <div class="prayer">親愛的主耶穌，謝謝祢總是在生活中保守我。求祢賜給我一顆敏銳的心，讓我在平順的時候不忘記祢，在遇到挑戰時能聽見祢對我說的話，引領我回到祢的面前。<br /><br />主耶穌，我要再次把自己獻給祢。幫助我離開只顧自己的安逸生活，帶著喜樂的心回到召會生活裡，與弟兄姊妹一同敬拜祢，讓祢的心在伯特利得到滿足。</div>
+      </article>
+    </section>
+
+    <p class="footer-note">lesson16-202606w3-sun.html · sequential lesson-page workflow · 202606w3</p>
+  </main>
+</body>
+</html>

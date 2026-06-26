@@ -1,0 +1,13 @@
+*.env
+.env
+**/.env
+*.key
+*.pem
+*.pyc
+*.py
+__pycache__/
+openclaw.json
+*.pid
+*.log
+*secret*
+.openclaw/

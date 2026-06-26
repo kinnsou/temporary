@@ -1,0 +1,6980 @@
+{
+  "meta": {
+    "updatedAt": "2026-06-08T12:38:33Z",
+    "sourceCount": 104,
+    "releasedCount": 104,
+    "classroom": "jp-n4",
+    "jlpt": "N4",
+    "levelUnlock": {
+      "initial": 15,
+      "increment": 5
+    },
+    "notes": "N5 assumed known; N4 words unlock by player level, fifteen at LV1 and five more per level."
+  },
+  "words": [
+    {
+      "id": "n4_0001",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "大変",
+      "kana": "たいへん",
+      "reading": "たいへん",
+      "kanji": "大変",
+      "meaning": "很、非常；辛苦、不得了",
+      "meaning_zh": "很、非常；辛苦、不得了",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 1,
+      "example": "昨日の宿題は大変でした。",
+      "example_ja": "昨日の宿題は大変でした。",
+      "example_kana": "きのうの しゅくだいは たいへんでした。",
+      "translation": "昨天的作業很辛苦。",
+      "translation_zh": "昨天的作業很辛苦。",
+      "audioText": "昨日の宿題は大変でした。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "昨日の宿題",
+          "answer": "は",
+          "after": "大変でした。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "昨日の宿題",
+        "answer": "は",
+        "after": "大変でした。",
+        "choices": [
+          "は",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "昨日の宿題",
+          "は",
+          "大変でした。"
+        ]
+      },
+      "chunks": [
+        "昨日の宿題",
+        "は",
+        "大変",
+        "でした。"
+      ],
+      "distractors": [],
+      "synonyms": [
+        {
+          "source": "大変",
+          "prompt_zh": "選出和「大変」意思最接近的說法。",
+          "answer": "とても",
+          "choices": [
+            "とても",
+            "少し",
+            "全然",
+            "多分"
+          ],
+          "explanation": "「大変」可表示程度很高，接近「とても」。"
+        }
+      ]
+    },
+    {
+      "id": "n4_0002",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "必要",
+      "kana": "ひつよう",
+      "reading": "ひつよう",
+      "kanji": "必要",
+      "meaning": "必要的",
+      "meaning_zh": "必要的",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 2,
+      "example": "試験には鉛筆が必要です。",
+      "example_ja": "試験には鉛筆が必要です。",
+      "example_kana": "しけんには えんぴつが ひつようです。",
+      "translation": "考試需要鉛筆。",
+      "translation_zh": "考試需要鉛筆。",
+      "audioText": "試験には鉛筆が必要です。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "試験",
+          "answer": "に",
+          "after": "は鉛筆が必要です。",
+          "choices": [
+            "に",
+            "を",
+            "が",
+            "と"
+          ],
+          "explanation": "這裡用「に」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "試験",
+        "answer": "に",
+        "after": "は鉛筆が必要です。",
+        "choices": [
+          "に",
+          "を",
+          "が",
+          "と"
+        ],
+        "explanation": "這裡用「に」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "試験",
+          "に",
+          "は"
+        ]
+      },
+      "chunks": [
+        "試験",
+        "に",
+        "は",
+        "鉛筆",
+        "が",
+        "必要です。"
+      ],
+      "distractors": [],
+      "synonyms": [
+        {
+          "source": "必要",
+          "prompt_zh": "選出和「必要」意思最接近的說法。",
+          "answer": "いります",
+          "choices": [
+            "いります",
+            "なくします",
+            "遅れます",
+            "壊れます"
+          ],
+          "explanation": "「必要」表示需要某物或某事。"
+        }
+      ]
+    },
+    {
+      "id": "n4_0003",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "便利",
+      "kana": "べんり",
+      "reading": "べんり",
+      "kanji": "便利",
+      "meaning": "方便的",
+      "meaning_zh": "方便的",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 3,
+      "example": "このアプリはとても便利です。",
+      "example_ja": "このアプリはとても便利です。",
+      "example_kana": "この アプリは とても べんりです。",
+      "translation": "這個 App 很方便。",
+      "translation_zh": "這個 App 很方便。",
+      "audioText": "このアプリはとても便利です。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "このアプリ",
+          "answer": "は",
+          "after": "とても便利です。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "このアプリ",
+        "answer": "は",
+        "after": "とても便利です。",
+        "choices": [
+          "は",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "このアプリ",
+          "は",
+          "とても便利です。"
+        ]
+      },
+      "chunks": [
+        "このアプリ",
+        "は",
+        "とても",
+        "便利です。"
+      ],
+      "distractors": [],
+      "synonyms": [
+        {
+          "source": "便利",
+          "prompt_zh": "選出和「便利」意思最接近的說法。",
+          "answer": "役に立ちます",
+          "choices": [
+            "役に立ちます",
+            "困ります",
+            "遅れます",
+            "反対します"
+          ],
+          "explanation": "「便利」表示好用、派得上用場。"
+        }
+      ]
+    },
+    {
+      "id": "n4_0004",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "間に合う",
+      "kana": "まにあう",
+      "reading": "まにあう",
+      "kanji": "間に合う",
+      "meaning": "來得及",
+      "meaning_zh": "來得及",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 4,
+      "example": "電車に間に合うように早く出ます。",
+      "example_ja": "電車に間に合うように早く出ます。",
+      "example_kana": "でんしゃに まにあうように はやく でます。",
+      "translation": "為了趕上電車，我會早點出門。",
+      "translation_zh": "為了趕上電車，我會早點出門。",
+      "audioText": "電車に間に合うように早く出ます。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "電車",
+          "answer": "に",
+          "after": "間に合うように早く出ます。",
+          "choices": [
+            "に",
+            "を",
+            "が",
+            "と"
+          ],
+          "explanation": "這裡用「に」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "grammar_from_example",
+        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
+        "before": "電車に間に合う",
+        "answer": "ように",
+        "after": "早く出ます。",
+        "choices": [
+          "ように",
+          "ことが",
+          "ためで",
+          "ながら"
+        ],
+        "explanation": "「〜ように」表示為了達成某個目的。",
+        "hintChunks": [
+          "電車",
+          "に",
+          "間に合うよう"
+        ]
+      },
+      "chunks": [
+        "電車",
+        "に",
+        "間に合うよう",
+        "に",
+        "早く出ます。"
+      ],
+      "distractors": [],
+      "synonyms": [
+        {
+          "source": "間に合う",
+          "prompt_zh": "選出和「間に合う」意思最接近的說法。",
+          "answer": "遅れません",
+          "choices": [
+            "遅れません",
+            "忘れます",
+            "壊れます",
+            "捨てます"
+          ],
+          "explanation": "「間に合う」表示沒有遲到，趕得上。"
+        }
+      ]
+    },
+    {
+      "id": "n4_0005",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "手伝う",
+      "kana": "てつだう",
+      "reading": "てつだう",
+      "kanji": "手伝う",
+      "meaning": "幫忙",
+      "meaning_zh": "幫忙",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 5,
+      "example": "母の仕事を手伝ったことがあります。",
+      "example_ja": "母の仕事を手伝ったことがあります。",
+      "example_kana": "ははの しごとを てつだったことが あります。",
+      "translation": "我曾經幫忙媽媽的工作。",
+      "translation_zh": "我曾經幫忙媽媽的工作。",
+      "audioText": "母の仕事を手伝ったことがあります。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "母の仕事",
+          "answer": "を",
+          "after": "手伝ったことがあります。",
+          "choices": [
+            "を",
+            "が",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「を」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "grammar_from_example",
+        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
+        "before": "母の仕事を手伝った",
+        "answer": "ことがあります",
+        "after": "。",
+        "choices": [
+          "ことがあります",
+          "ところです",
+          "ようにします",
+          "なければなりません"
+        ],
+        "explanation": "「〜ことがあります」表示曾經有過這種經驗。",
+        "hintChunks": [
+          "母の仕事",
+          "を",
+          "手伝ったこと"
+        ]
+      },
+      "chunks": [
+        "母の仕事",
+        "を",
+        "手伝った",
+        "こと",
+        "が",
+        "あります。"
+      ],
+      "distractors": [],
+      "synonyms": [
+        {
+          "source": "手伝う",
+          "prompt_zh": "選出和「手伝う」意思最接近的說法。",
+          "answer": "助けます",
+          "choices": [
+            "助けます",
+            "借ります",
+            "忘れます",
+            "決めます"
+          ],
+          "explanation": "「手伝う」就是幫忙做某件事。"
+        }
+      ]
+    },
+    {
+      "id": "n4_0006",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "簡単",
+      "kana": "かんたん",
+      "reading": "かんたん",
+      "kanji": "簡単",
+      "meaning": "簡單的",
+      "meaning_zh": "簡單的",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 6,
+      "example": "この問題は簡単すぎます。",
+      "example_ja": "この問題は簡単すぎます。",
+      "example_kana": "この もんだいは かんたんすぎます。",
+      "translation": "這個問題太簡單了。",
+      "translation_zh": "這個問題太簡單了。",
+      "audioText": "この問題は簡単すぎます。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "この問題",
+          "answer": "は",
+          "after": "簡単すぎます。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "grammar_from_example",
+        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
+        "before": "この問題は簡単",
+        "answer": "すぎます",
+        "after": "。",
+        "choices": [
+          "すぎます",
+          "そうです",
+          "くなります",
+          "でした"
+        ],
+        "explanation": "「〜すぎます」表示太過於某種狀態。",
+        "hintChunks": [
+          "この問題",
+          "は",
+          "簡単すぎます。"
+        ]
+      },
+      "chunks": [
+        "この問題",
+        "は",
+        "簡単すぎます。"
+      ],
+      "distractors": [],
+      "synonyms": [
+        {
+          "source": "簡単",
+          "prompt_zh": "選出和「簡単」意思最接近的說法。",
+          "answer": "やさしい",
+          "choices": [
+            "やさしい",
+            "難しい",
+            "危ない",
+            "寂しい"
+          ],
+          "explanation": "「簡単」表示不難，接近「やさしい」。"
+        }
+      ]
+    },
+    {
+      "id": "n4_0007",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "自由",
+      "kana": "じゆう",
+      "reading": "じゆう",
+      "kanji": "自由",
+      "meaning": "自由的",
+      "meaning_zh": "自由的",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 7,
+      "example": "休みの日は自由に遊んでもいいです。",
+      "example_ja": "休みの日は自由に遊んでもいいです。",
+      "example_kana": "やすみの ひは じゆうに あそんでもいいです。",
+      "translation": "休假日可以自由地玩。",
+      "translation_zh": "休假日可以自由地玩。",
+      "audioText": "休みの日は自由に遊んでもいいです。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "休みの日",
+          "answer": "は",
+          "after": "自由に遊んでもいいです。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "休みの日",
+        "answer": "は",
+        "after": "自由に遊んでもいいです。",
+        "choices": [
+          "は",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "休みの日",
+          "は",
+          "自由"
+        ]
+      },
+      "chunks": [
+        "休みの日",
+        "は",
+        "自由",
+        "に",
+        "遊んで",
+        "も",
+        "いいです。"
+      ],
+      "distractors": [],
+      "synonyms": [
+        {
+          "source": "自由",
+          "prompt_zh": "選出和「自由」意思最接近的說法。",
+          "answer": "好きなようにできます",
+          "choices": [
+            "好きなようにできます",
+            "急にします",
+            "全部だめです",
+            "心配します"
+          ],
+          "explanation": "「自由」表示可以照自己的意思做。"
+        }
+      ]
+    },
+    {
+      "id": "n4_0008",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "無理",
+      "kana": "むり",
+      "reading": "むり",
+      "kanji": "無理",
+      "meaning": "勉強、做不到",
+      "meaning_zh": "勉強、做不到",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 8,
+      "example": "一人で全部するのは無理です。",
+      "example_ja": "一人で全部するのは無理です。",
+      "example_kana": "ひとりで ぜんぶ するのは むりです。",
+      "translation": "一個人全部做完很勉強。",
+      "translation_zh": "一個人全部做完很勉強。",
+      "audioText": "一人で全部するのは無理です。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "一人",
+          "answer": "で",
+          "after": "全部するのは無理です。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "一人",
+        "answer": "で",
+        "after": "全部するのは無理です。",
+        "choices": [
+          "で",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「で」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "一人",
+          "で",
+          "全部するの"
+        ]
+      },
+      "chunks": [
+        "一人",
+        "で",
+        "全部するの",
+        "は",
+        "無理です。"
+      ],
+      "distractors": [],
+      "synonyms": [
+        {
+          "source": "無理",
+          "prompt_zh": "選出和「無理」意思最接近的說法。",
+          "answer": "できません",
+          "choices": [
+            "できません",
+            "足ります",
+            "直ります",
+            "慣れます"
+          ],
+          "explanation": "「無理」表示做不到或勉強。"
+        }
+      ]
+    },
+    {
+      "id": "n4_0009",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "急",
+      "kana": "きゅう",
+      "reading": "きゅう",
+      "kanji": "急",
+      "meaning": "突然、緊急",
+      "meaning_zh": "突然、緊急",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 9,
+      "example": "急な用事で出かけました。",
+      "example_ja": "急な用事で出かけました。",
+      "example_kana": "きゅうな ようじで でかけました。",
+      "translation": "因為突然有事就出門了。",
+      "translation_zh": "因為突然有事就出門了。",
+      "audioText": "急な用事で出かけました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "急な用事",
+          "answer": "で",
+          "after": "出かけました。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "急な用事",
+        "answer": "で",
+        "after": "出かけました。",
+        "choices": [
+          "で",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「で」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "急な用事",
+          "で",
+          "出かけました。"
+        ]
+      },
+      "chunks": [
+        "急な用事",
+        "で",
+        "出かけました。"
+      ],
+      "distractors": [],
+      "synonyms": [
+        {
+          "source": "急",
+          "prompt_zh": "選出和「急」意思最接近的說法。",
+          "answer": "突然",
+          "choices": [
+            "突然",
+            "普通",
+            "十分",
+            "丁寧"
+          ],
+          "explanation": "「急」常表示突然或緊急。"
+        }
+      ]
+    },
+    {
+      "id": "n4_0010",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "十分",
+      "kana": "じゅうぶん",
+      "reading": "じゅうぶん",
+      "kanji": "十分",
+      "meaning": "足夠、充分",
+      "meaning_zh": "足夠、充分",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 10,
+      "example": "時間は十分あります。",
+      "example_ja": "時間は十分あります。",
+      "example_kana": "じかんは じゅうぶん あります。",
+      "translation": "時間很充足。",
+      "translation_zh": "時間很充足。",
+      "audioText": "時間は十分あります。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "時間",
+          "answer": "は",
+          "after": "十分あります。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "時間",
+        "answer": "は",
+        "after": "十分あります。",
+        "choices": [
+          "は",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "時間",
+          "は",
+          "十分あります。"
+        ]
+      },
+      "chunks": [
+        "時間",
+        "は",
+        "十分あります。"
+      ],
+      "distractors": [],
+      "synonyms": [
+        {
+          "source": "十分",
+          "prompt_zh": "選出和「十分」意思最接近的說法。",
+          "answer": "足ります",
+          "choices": [
+            "足ります",
+            "足りません",
+            "壊れます",
+            "遅れます"
+          ],
+          "explanation": "「十分」表示數量或程度已經夠了。"
+        }
+      ]
+    },
+    {
+      "id": "n4_0011",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "普通",
+      "kana": "ふつう",
+      "reading": "ふつう",
+      "kanji": "普通",
+      "meaning": "普通、一般",
+      "meaning_zh": "普通、一般",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 11,
+      "example": "普通の生活が一番安心です。",
+      "example_ja": "普通の生活が一番安心です。",
+      "example_kana": "ふつうの せいかつが いちばん あんしんです。",
+      "translation": "普通的生活最安心。",
+      "translation_zh": "普通的生活最安心。",
+      "audioText": "普通の生活が一番安心です。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "普通の生活",
+          "answer": "が",
+          "after": "一番安心です。",
+          "choices": [
+            "が",
+            "を",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「が」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "普通の生活",
+        "answer": "が",
+        "after": "一番安心です。",
+        "choices": [
+          "が",
+          "を",
+          "に",
+          "と"
+        ],
+        "explanation": "這裡用「が」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "普通の生活",
+          "が",
+          "一番安心です。"
+        ]
+      },
+      "chunks": [
+        "普通の生活",
+        "が",
+        "一番安心です。"
+      ],
+      "distractors": [],
+      "synonyms": [
+        {
+          "source": "普通",
+          "prompt_zh": "選出和「普通」意思最接近的說法。",
+          "answer": "いつも通り",
+          "choices": [
+            "いつも通り",
+            "特別",
+            "急に",
+            "全然"
+          ],
+          "explanation": "「普通」表示一般、和平常差不多。"
+        }
+      ]
+    },
+    {
+      "id": "n4_0012",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "以外",
+      "kana": "いがい",
+      "reading": "いがい",
+      "kanji": "以外",
+      "meaning": "以外",
+      "meaning_zh": "以外",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 12,
+      "example": "日曜日以外は毎日練習します。",
+      "example_ja": "日曜日以外は毎日練習します。",
+      "example_kana": "にちようび いがいは まいにち れんしゅうします。",
+      "translation": "星期日以外每天練習。",
+      "translation_zh": "星期日以外每天練習。",
+      "audioText": "日曜日以外は毎日練習します。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "日曜日以外",
+          "answer": "は",
+          "after": "毎日練習します。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "日曜日以外",
+        "answer": "は",
+        "after": "毎日練習します。",
+        "choices": [
+          "は",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "日曜日以外",
+          "は",
+          "毎日練習します。"
+        ]
+      },
+      "chunks": [
+        "日曜日以外",
+        "は",
+        "毎日練習します。"
+      ],
+      "distractors": [],
+      "synonyms": [
+        {
+          "source": "以外",
+          "prompt_zh": "選出和「以外」意思最接近的說法。",
+          "answer": "ほか",
+          "choices": [
+            "ほか",
+            "全部",
+            "前",
+            "中"
+          ],
+          "explanation": "「以外」表示某個範圍之外的其他部分。"
+        }
+      ]
+    },
+    {
+      "id": "n4_0013",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "以上",
+      "kana": "いじょう",
+      "reading": "いじょう",
+      "kanji": "以上",
+      "meaning": "以上",
+      "meaning_zh": "以上",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 13,
+      "example": "三十分以上待ちました。",
+      "example_ja": "三十分以上待ちました。",
+      "example_kana": "さんじゅっぷん いじょう まちました。",
+      "translation": "等了三十分鐘以上。",
+      "translation_zh": "等了三十分鐘以上。",
+      "audioText": "三十分以上待ちました。",
+      "particles": [],
+      "grammar": {},
+      "chunks": [
+        "三十分以上待ちました。"
+      ],
+      "distractors": [],
+      "synonyms": [
+        {
+          "source": "以上",
+          "prompt_zh": "選出和「以上」意思最接近的說法。",
+          "answer": "それより多い",
+          "choices": [
+            "それより多い",
+            "それより少ない",
+            "その外",
+            "その前"
+          ],
+          "explanation": "「以上」表示包含基準在內，或比基準更多。"
+        }
+      ]
+    },
+    {
+      "id": "n4_0014",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "以下",
+      "kana": "いか",
+      "reading": "いか",
+      "kanji": "以下",
+      "meaning": "以下",
+      "meaning_zh": "以下",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 14,
+      "example": "千円以下の物を買います。",
+      "example_ja": "千円以下の物を買います。",
+      "example_kana": "せんえん いかの ものを かいます。",
+      "translation": "買一千日圓以下的東西。",
+      "translation_zh": "買一千日圓以下的東西。",
+      "audioText": "千円以下の物を買います。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "千円以下の物",
+          "answer": "を",
+          "after": "買います。",
+          "choices": [
+            "を",
+            "が",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「を」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "千円以下の物",
+        "answer": "を",
+        "after": "買います。",
+        "choices": [
+          "を",
+          "が",
+          "に",
+          "と"
+        ],
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "千円以下の物",
+          "を",
+          "買います。"
+        ]
+      },
+      "chunks": [
+        "千円以下の物",
+        "を",
+        "買います。"
+      ],
+      "distractors": [],
+      "synonyms": [
+        {
+          "source": "以下",
+          "prompt_zh": "選出和「以下」意思最接近的說法。",
+          "answer": "それより少ない",
+          "choices": [
+            "それより少ない",
+            "それより多い",
+            "その外",
+            "その後"
+          ],
+          "explanation": "「以下」表示包含基準在內，或比基準更少。"
+        }
+      ]
+    },
+    {
+      "id": "n4_0015",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "以内",
+      "kana": "いない",
+      "reading": "いない",
+      "kanji": "以内",
+      "meaning": "以內",
+      "meaning_zh": "以內",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 15,
+      "example": "十日以内に返してください。",
+      "example_ja": "十日以内に返してください。",
+      "example_kana": "とおか いないに かえしてください。",
+      "translation": "請在十天以內歸還。",
+      "translation_zh": "請在十天以內歸還。",
+      "audioText": "十日以内に返してください。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "十日以内",
+          "answer": "に",
+          "after": "返してください。",
+          "choices": [
+            "に",
+            "を",
+            "が",
+            "と"
+          ],
+          "explanation": "這裡用「に」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "grammar_from_example",
+        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
+        "before": "十日",
+        "answer": "以内に",
+        "after": "返してください。",
+        "choices": [
+          "以内に",
+          "以上に",
+          "以外に",
+          "以下に"
+        ],
+        "explanation": "「〜以内に」表示在範圍或期限之內。",
+        "hintChunks": [
+          "十日以内",
+          "に",
+          "返してください。"
+        ]
+      },
+      "chunks": [
+        "十日以内",
+        "に",
+        "返してください。"
+      ],
+      "distractors": [],
+      "synonyms": [
+        {
+          "source": "以内",
+          "prompt_zh": "選出和「以内」意思最接近的說法。",
+          "answer": "その範囲の中",
+          "choices": [
+            "その範囲の中",
+            "その範囲の外",
+            "急な予定",
+            "別の理由"
+          ],
+          "explanation": "「以内」表示在時間、數量或範圍裡面。"
+        }
+      ]
+    },
+    {
+      "id": "n4_0016",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "申し込む",
+      "kana": "もうしこむ",
+      "reading": "もうしこむ",
+      "kanji": "申し込む",
+      "meaning": "報名、申請",
+      "meaning_zh": "報名、申請",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 16,
+      "example": "日本語の試験に申し込んだことがあります。",
+      "example_ja": "日本語の試験に申し込んだことがあります。",
+      "example_kana": "にほんごの しけんに もうしこんだことが あります。",
+      "translation": "我曾經報名日文考試。",
+      "translation_zh": "我曾經報名日文考試。",
+      "audioText": "日本語の試験に申し込んだことがあります。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "日本語の試験",
+          "answer": "に",
+          "after": "申し込んだことがあります。",
+          "choices": [
+            "に",
+            "を",
+            "が",
+            "と"
+          ],
+          "explanation": "這裡用「に」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "grammar_from_example",
+        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
+        "before": "日本語の試験に申し込んだ",
+        "answer": "ことがあります",
+        "after": "。",
+        "choices": [
+          "ことがあります",
+          "ところです",
+          "ようにします",
+          "なければなりません"
+        ],
+        "explanation": "「〜ことがあります」表示曾經有過這種經驗。",
+        "hintChunks": [
+          "日本語の試験",
+          "に",
+          "申し込んだこと"
+        ]
+      },
+      "chunks": [
+        "日本語の試験",
+        "に",
+        "申し込んだこと",
+        "が",
+        "あります。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0017",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "片付ける",
+      "kana": "かたづける",
+      "reading": "かたづける",
+      "kanji": "片付ける",
+      "meaning": "整理、收拾",
+      "meaning_zh": "整理、收拾",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 17,
+      "example": "寝る前に机を片付けなければなりません。",
+      "example_ja": "寝る前に机を片付けなければなりません。",
+      "example_kana": "ねる まえに つくえを かたづけなければなりません。",
+      "translation": "睡覺前必須整理桌子。",
+      "translation_zh": "睡覺前必須整理桌子。",
+      "audioText": "寝る前に机を片付けなければなりません。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "寝る前",
+          "answer": "に",
+          "after": "机を片付けなければなりません。",
+          "choices": [
+            "に",
+            "を",
+            "が",
+            "と"
+          ],
+          "explanation": "這裡用「に」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "grammar_from_example",
+        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
+        "before": "寝る前に机を片付け",
+        "answer": "なければなりません",
+        "after": "。",
+        "choices": [
+          "なければなりません",
+          "てもいいです",
+          "ことがあります",
+          "すぎます"
+        ],
+        "explanation": "「〜なければなりません」表示必須做某事。",
+        "hintChunks": [
+          "寝る前",
+          "に",
+          "机"
+        ]
+      },
+      "chunks": [
+        "寝る前",
+        "に",
+        "机",
+        "を",
+        "片付けなければなりません。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0018",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "捨てる",
+      "kana": "すてる",
+      "reading": "すてる",
+      "kanji": "捨てる",
+      "meaning": "丟掉",
+      "meaning_zh": "丟掉",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 18,
+      "example": "古い紙を捨ててもいいです。",
+      "example_ja": "古い紙を捨ててもいいです。",
+      "example_kana": "ふるい かみを すてても いいです。",
+      "translation": "可以丟掉舊紙。",
+      "translation_zh": "可以丟掉舊紙。",
+      "audioText": "古い紙を捨ててもいいです。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "古い紙",
+          "answer": "を",
+          "after": "捨ててもいいです。",
+          "choices": [
+            "を",
+            "が",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「を」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "grammar_from_example",
+        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
+        "before": "古い紙を捨て",
+        "answer": "てもいいです",
+        "after": "。",
+        "choices": [
+          "てもいいです",
+          "なければなりません",
+          "ことがあります",
+          "すぎます"
+        ],
+        "explanation": "「〜てもいいです」表示可以做某事。",
+        "hintChunks": [
+          "古い紙",
+          "を",
+          "捨てて"
+        ]
+      },
+      "chunks": [
+        "古い紙",
+        "を",
+        "捨てて",
+        "も",
+        "いいです。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0019",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "遅れる",
+      "kana": "おくれる",
+      "reading": "おくれる",
+      "kanji": "遅れる",
+      "meaning": "遲到、延遲",
+      "meaning_zh": "遲到、延遲",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 19,
+      "example": "バスが遅れることがあります。",
+      "example_ja": "バスが遅れることがあります。",
+      "example_kana": "バスが おくれることが あります。",
+      "translation": "公車有時會延遲。",
+      "translation_zh": "公車有時會延遲。",
+      "audioText": "バスが遅れることがあります。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "バス",
+          "answer": "が",
+          "after": "遅れることがあります。",
+          "choices": [
+            "が",
+            "を",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「が」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "grammar_from_example",
+        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
+        "before": "バスが遅れる",
+        "answer": "ことがあります",
+        "after": "。",
+        "choices": [
+          "ことがあります",
+          "ところです",
+          "ようにします",
+          "なければなりません"
+        ],
+        "explanation": "「〜ことがあります」表示曾經有過這種經驗。",
+        "hintChunks": [
+          "バス",
+          "が",
+          "遅れること"
+        ]
+      },
+      "chunks": [
+        "バス",
+        "が",
+        "遅れること",
+        "が",
+        "あります。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0020",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "壊れる",
+      "kana": "こわれる",
+      "reading": "こわれる",
+      "kanji": "壊れる",
+      "meaning": "壞掉",
+      "meaning_zh": "壞掉",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 20,
+      "example": "古い時計が壊れてしまいました。",
+      "example_ja": "古い時計が壊れてしまいました。",
+      "example_kana": "ふるい とけいが こわれてしまいました。",
+      "translation": "舊時鐘壞掉了。",
+      "translation_zh": "舊時鐘壞掉了。",
+      "audioText": "古い時計が壊れてしまいました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "古い時計",
+          "answer": "が",
+          "after": "壊れてしまいました。",
+          "choices": [
+            "が",
+            "を",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「が」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "grammar_from_example",
+        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
+        "before": "古い時計が壊れ",
+        "answer": "てしまいました",
+        "after": "。",
+        "choices": [
+          "てしまいました",
+          "てもいいです",
+          "てあります",
+          "てください"
+        ],
+        "explanation": "「〜てしまいました」常表示事情已經發生，帶有遺憾或完成感。",
+        "hintChunks": [
+          "古い時計",
+          "が",
+          "壊れてしまいました。"
+        ]
+      },
+      "chunks": [
+        "古い時計",
+        "が",
+        "壊れてしまいました。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0021",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "直す",
+      "kana": "なおす",
+      "reading": "なおす",
+      "kanji": "直す",
+      "meaning": "修理、改正",
+      "meaning_zh": "修理、改正",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 21,
+      "example": "間違いを直さなければなりません。",
+      "example_ja": "間違いを直さなければなりません。",
+      "example_kana": "まちがいを なおさなければなりません。",
+      "translation": "必須改正錯誤。",
+      "translation_zh": "必須改正錯誤。",
+      "audioText": "間違いを直さなければなりません。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "間違い",
+          "answer": "を",
+          "after": "直さなければなりません。",
+          "choices": [
+            "を",
+            "が",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「を」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "grammar_from_example",
+        "prompt_zh": "從同一句例句中選出最自然的文法形式。",
+        "before": "間違いを直さ",
+        "answer": "なければなりません",
+        "after": "。",
+        "choices": [
+          "なければなりません",
+          "てもいいです",
+          "ことがあります",
+          "すぎます"
+        ],
+        "explanation": "「〜なければなりません」表示必須做某事。",
+        "hintChunks": [
+          "間違い",
+          "を",
+          "直さなければなりません。"
+        ]
+      },
+      "chunks": [
+        "間違い",
+        "を",
+        "直さなければなりません。"
+      ],
+      "distractors": [],
+      "synonyms": [
+        {
+          "source": "直す",
+          "prompt_zh": "選出和「直す」意思最接近的說法。",
+          "answer": "修理します",
+          "choices": [
+            "修理します",
+            "捨てます",
+            "忘れます",
+            "借ります"
+          ],
+          "explanation": "「直す」表示修理或改正。"
+        }
+      ]
+    },
+    {
+      "id": "n4_0022",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "確か",
+      "kana": "たしか",
+      "reading": "たしか",
+      "kanji": "確か",
+      "meaning": "確實；我記得",
+      "meaning_zh": "確實；我記得",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 22,
+      "example": "確か明日は休みです。",
+      "example_ja": "確か明日は休みです。",
+      "example_kana": "たしか あしたは やすみです。",
+      "translation": "我記得明天放假。",
+      "translation_zh": "我記得明天放假。",
+      "audioText": "確か明日は休みです。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "確か明日",
+          "answer": "は",
+          "after": "休みです。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "確か明日",
+        "answer": "は",
+        "after": "休みです。",
+        "choices": [
+          "は",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "確か明日",
+          "は",
+          "休みです。"
+        ]
+      },
+      "chunks": [
+        "確か明日",
+        "は",
+        "休みです。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0023",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "ほとんど",
+      "kana": "ほとんど",
+      "reading": "ほとんど",
+      "kanji": "ほとんど",
+      "meaning": "幾乎",
+      "meaning_zh": "幾乎",
+      "pos": "adv",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 23,
+      "example": "宿題はほとんど終わりました。",
+      "example_ja": "宿題はほとんど終わりました。",
+      "example_kana": "しゅくだいは ほとんど おわりました。",
+      "translation": "作業幾乎完成了。",
+      "translation_zh": "作業幾乎完成了。",
+      "audioText": "宿題はほとんど終わりました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "宿題",
+          "answer": "は",
+          "after": "ほとんど終わりました。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "宿題",
+        "answer": "は",
+        "after": "ほとんど終わりました。",
+        "choices": [
+          "は",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "宿題",
+          "は",
+          "ほとんど終わりました。"
+        ]
+      },
+      "chunks": [
+        "宿題",
+        "は",
+        "ほとんど終わりました。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0024",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "ぜひ",
+      "kana": "ぜひ",
+      "reading": "ぜひ",
+      "kanji": "ぜひ",
+      "meaning": "一定、務必",
+      "meaning_zh": "一定、務必",
+      "pos": "adv",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 24,
+      "example": "ぜひ日本へ行きたいです。",
+      "example_ja": "ぜひ日本へ行きたいです。",
+      "example_kana": "ぜひ にほんへ いきたいです。",
+      "translation": "我很想一定去日本。",
+      "translation_zh": "我很想一定去日本。",
+      "audioText": "ぜひ日本へ行きたいです。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "ぜひ日本",
+          "answer": "へ",
+          "after": "行きたいです。",
+          "choices": [
+            "へ",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「へ」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "ぜひ日本",
+        "answer": "へ",
+        "after": "行きたいです。",
+        "choices": [
+          "へ",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「へ」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "ぜひ日本",
+          "へ",
+          "行きたいです。"
+        ]
+      },
+      "chunks": [
+        "ぜひ日本",
+        "へ",
+        "行きたいです。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0025",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "もし",
+      "kana": "もし",
+      "reading": "もし",
+      "kanji": "もし",
+      "meaning": "如果",
+      "meaning_zh": "如果",
+      "pos": "adv",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 25,
+      "example": "もし雨なら、家で勉強します。",
+      "example_ja": "もし雨なら、家で勉強します。",
+      "example_kana": "もし あめなら、いえで べんきょうします。",
+      "translation": "如果下雨，就在家讀書。",
+      "translation_zh": "如果下雨，就在家讀書。",
+      "audioText": "もし雨なら、家で勉強します。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "もし雨なら、家",
+          "answer": "で",
+          "after": "勉強します。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "もし雨なら、家",
+        "answer": "で",
+        "after": "勉強します。",
+        "choices": [
+          "で",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「で」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "もし雨なら、",
+          "家",
+          "で"
+        ]
+      },
+      "chunks": [
+        "もし雨なら、",
+        "家",
+        "で",
+        "勉強します。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0026",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "空港",
+      "kana": "くうこう",
+      "reading": "くうこう",
+      "kanji": "空港",
+      "meaning": "機場",
+      "meaning_zh": "機場",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 26,
+      "example": "空港で友達を待っています。",
+      "example_ja": "空港で友達を待っています。",
+      "example_kana": "くうこうで ともだちを まっています。",
+      "translation": "我正在機場等朋友。",
+      "translation_zh": "我正在機場等朋友。",
+      "audioText": "空港で友達を待っています。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "空港",
+          "answer": "で",
+          "after": "友達を待っています。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "空港",
+        "answer": "で",
+        "after": "友達を待っています。",
+        "choices": [
+          "で",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「で」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "空港",
+          "で",
+          "友達"
+        ]
+      },
+      "chunks": [
+        "空港",
+        "で",
+        "友達",
+        "を",
+        "待っています。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0027",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "旅館",
+      "kana": "りょかん",
+      "reading": "りょかん",
+      "kanji": "旅館",
+      "meaning": "旅館",
+      "meaning_zh": "旅館",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 27,
+      "example": "温泉のある旅館に泊まりました。",
+      "example_ja": "温泉のある旅館に泊まりました。",
+      "example_kana": "おんせんの ある りょかんに とまりました。",
+      "translation": "住在有溫泉的日式旅館。",
+      "translation_zh": "住在有溫泉的日式旅館。",
+      "audioText": "温泉のある旅館に泊まりました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "温泉のある旅館",
+          "answer": "に",
+          "after": "泊まりました。",
+          "choices": [
+            "に",
+            "を",
+            "が",
+            "と"
+          ],
+          "explanation": "這裡用「に」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "温泉のある旅館",
+        "answer": "に",
+        "after": "泊まりました。",
+        "choices": [
+          "に",
+          "を",
+          "が",
+          "と"
+        ],
+        "explanation": "這裡用「に」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "温泉のある旅館",
+          "に",
+          "泊まりました。"
+        ]
+      },
+      "chunks": [
+        "温泉のある旅館",
+        "に",
+        "泊まりました。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0028",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "交通",
+      "kana": "こうつう",
+      "reading": "こうつう",
+      "kanji": "交通",
+      "meaning": "交通",
+      "meaning_zh": "交通",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 28,
+      "example": "この町は交通が便利です。",
+      "example_ja": "この町は交通が便利です。",
+      "example_kana": "この まちは こうつうが べんりです。",
+      "translation": "這個城鎮交通很方便。",
+      "translation_zh": "這個城鎮交通很方便。",
+      "audioText": "この町は交通が便利です。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "この町",
+          "answer": "は",
+          "after": "交通が便利です。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "この町",
+        "answer": "は",
+        "after": "交通が便利です。",
+        "choices": [
+          "は",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "この町",
+          "は",
+          "交通"
+        ]
+      },
+      "chunks": [
+        "この町",
+        "は",
+        "交通",
+        "が",
+        "便利です。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0029",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "道具",
+      "kana": "どうぐ",
+      "reading": "どうぐ",
+      "kanji": "道具",
+      "meaning": "工具",
+      "meaning_zh": "工具",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 29,
+      "example": "料理に使う道具を洗いました。",
+      "example_ja": "料理に使う道具を洗いました。",
+      "example_kana": "りょうりに つかう どうぐを あらいました。",
+      "translation": "洗了做菜用的工具。",
+      "translation_zh": "洗了做菜用的工具。",
+      "audioText": "料理に使う道具を洗いました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "料理",
+          "answer": "に",
+          "after": "使う道具を洗いました。",
+          "choices": [
+            "に",
+            "を",
+            "が",
+            "と"
+          ],
+          "explanation": "這裡用「に」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "料理",
+        "answer": "に",
+        "after": "使う道具を洗いました。",
+        "choices": [
+          "に",
+          "を",
+          "が",
+          "と"
+        ],
+        "explanation": "這裡用「に」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "料理",
+          "に",
+          "使う道具"
+        ]
+      },
+      "chunks": [
+        "料理",
+        "に",
+        "使う道具",
+        "を",
+        "洗いました。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0030",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "生活",
+      "kana": "せいかつ",
+      "reading": "せいかつ",
+      "kanji": "生活",
+      "meaning": "生活",
+      "meaning_zh": "生活",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 30,
+      "example": "日本の生活に少し慣れました。",
+      "example_ja": "日本の生活に少し慣れました。",
+      "example_kana": "にほんの せいかつに すこし なれました。",
+      "translation": "稍微習慣日本的生活了。",
+      "translation_zh": "稍微習慣日本的生活了。",
+      "audioText": "日本の生活に少し慣れました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "日本の生活",
+          "answer": "に",
+          "after": "少し慣れました。",
+          "choices": [
+            "に",
+            "を",
+            "が",
+            "と"
+          ],
+          "explanation": "這裡用「に」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "日本の生活",
+        "answer": "に",
+        "after": "少し慣れました。",
+        "choices": [
+          "に",
+          "を",
+          "が",
+          "と"
+        ],
+        "explanation": "這裡用「に」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "日本の生活",
+          "に",
+          "少し慣れました。"
+        ]
+      },
+      "chunks": [
+        "日本の生活",
+        "に",
+        "少し慣れました。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0031",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "習慣",
+      "kana": "しゅうかん",
+      "reading": "しゅうかん",
+      "kanji": "習慣",
+      "meaning": "習慣",
+      "meaning_zh": "習慣",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 31,
+      "example": "毎朝散歩するのが父の習慣です。",
+      "example_ja": "毎朝散歩するのが父の習慣です。",
+      "example_kana": "まいあさ さんぽするのが ちちの しゅうかんです。",
+      "translation": "每天早上散步是爸爸的習慣。",
+      "translation_zh": "每天早上散步是爸爸的習慣。",
+      "audioText": "毎朝散歩するのが父の習慣です。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "毎朝散歩するの",
+          "answer": "が",
+          "after": "父の習慣です。",
+          "choices": [
+            "が",
+            "を",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「が」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "毎朝散歩するの",
+        "answer": "が",
+        "after": "父の習慣です。",
+        "choices": [
+          "が",
+          "を",
+          "に",
+          "と"
+        ],
+        "explanation": "這裡用「が」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "毎朝散歩するの",
+          "が",
+          "父の習慣です。"
+        ]
+      },
+      "chunks": [
+        "毎朝散歩するの",
+        "が",
+        "父の習慣です。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0032",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "趣味",
+      "kana": "しゅみ",
+      "reading": "しゅみ",
+      "kanji": "趣味",
+      "meaning": "興趣",
+      "meaning_zh": "興趣",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 32,
+      "example": "私の趣味は写真を撮ることです。",
+      "example_ja": "私の趣味は写真を撮ることです。",
+      "example_kana": "わたしの しゅみは しゃしんを とることです。",
+      "translation": "我的興趣是拍照。",
+      "translation_zh": "我的興趣是拍照。",
+      "audioText": "私の趣味は写真を撮ることです。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "私の趣味",
+          "answer": "は",
+          "after": "写真を撮ることです。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "私の趣味",
+        "answer": "は",
+        "after": "写真を撮ることです。",
+        "choices": [
+          "は",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "私の趣味",
+          "は",
+          "写真"
+        ]
+      },
+      "chunks": [
+        "私の趣味",
+        "は",
+        "写真",
+        "を",
+        "撮ることです。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0033",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "理由",
+      "kana": "りゆう",
+      "reading": "りゆう",
+      "kanji": "理由",
+      "meaning": "理由",
+      "meaning_zh": "理由",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 33,
+      "example": "遅れた理由を教えてください。",
+      "example_ja": "遅れた理由を教えてください。",
+      "example_kana": "おくれた りゆうを おしえてください。",
+      "translation": "請告訴我遲到的理由。",
+      "translation_zh": "請告訴我遲到的理由。",
+      "audioText": "遅れた理由を教えてください。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "遅れた理由",
+          "answer": "を",
+          "after": "教えてください。",
+          "choices": [
+            "を",
+            "が",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「を」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "遅れた理由",
+        "answer": "を",
+        "after": "教えてください。",
+        "choices": [
+          "を",
+          "が",
+          "に",
+          "と"
+        ],
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "遅れた理由",
+          "を",
+          "教えてください。"
+        ]
+      },
+      "chunks": [
+        "遅れた理由",
+        "を",
+        "教えてください。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0034",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "意味",
+      "kana": "いみ",
+      "reading": "いみ",
+      "kanji": "意味",
+      "meaning": "意思",
+      "meaning_zh": "意思",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 34,
+      "example": "この言葉の意味がわかりません。",
+      "example_ja": "この言葉の意味がわかりません。",
+      "example_kana": "この ことばの いみが わかりません。",
+      "translation": "我不懂這個詞的意思。",
+      "translation_zh": "我不懂這個詞的意思。",
+      "audioText": "この言葉の意味がわかりません。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "この言葉の意味",
+          "answer": "が",
+          "after": "わかりません。",
+          "choices": [
+            "が",
+            "を",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「が」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "この言葉の意味",
+        "answer": "が",
+        "after": "わかりません。",
+        "choices": [
+          "が",
+          "を",
+          "に",
+          "と"
+        ],
+        "explanation": "這裡用「が」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "この言葉の意味",
+          "が",
+          "わかりません。"
+        ]
+      },
+      "chunks": [
+        "この言葉の意味",
+        "が",
+        "わかりません。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0035",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "意見",
+      "kana": "いけん",
+      "reading": "いけん",
+      "kanji": "意見",
+      "meaning": "意見",
+      "meaning_zh": "意見",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 35,
+      "example": "家族に自分の意見を話しました。",
+      "example_ja": "家族に自分の意見を話しました。",
+      "example_kana": "かぞくに じぶんの いけんを はなしました。",
+      "translation": "向家人說了自己的意見。",
+      "translation_zh": "向家人說了自己的意見。",
+      "audioText": "家族に自分の意見を話しました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "家族",
+          "answer": "に",
+          "after": "自分の意見を話しました。",
+          "choices": [
+            "に",
+            "を",
+            "が",
+            "と"
+          ],
+          "explanation": "這裡用「に」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "家族",
+        "answer": "に",
+        "after": "自分の意見を話しました。",
+        "choices": [
+          "に",
+          "を",
+          "が",
+          "と"
+        ],
+        "explanation": "這裡用「に」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "家族",
+          "に",
+          "自分の意見"
+        ]
+      },
+      "chunks": [
+        "家族",
+        "に",
+        "自分の意見",
+        "を",
+        "話しました。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0036",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "場所",
+      "kana": "ばしょ",
+      "reading": "ばしょ",
+      "kanji": "場所",
+      "meaning": "地點",
+      "meaning_zh": "地點",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 36,
+      "example": "駅の近くで静かな場所を見つけました。",
+      "example_ja": "駅の近くで静かな場所を見つけました。",
+      "example_kana": "えきの ちかくで しずかな ばしょを みつけました。",
+      "translation": "在車站附近找到了一個安靜的地方。",
+      "translation_zh": "在車站附近找到了一個安靜的地方。",
+      "audioText": "駅の近くで静かな場所を見つけました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "駅の近く",
+          "answer": "で",
+          "after": "静かな場所を見つけました。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "駅の近く",
+        "answer": "で",
+        "after": "静かな場所を見つけました。",
+        "choices": [
+          "で",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「で」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "駅の近く",
+          "で",
+          "静かな場所"
+        ]
+      },
+      "chunks": [
+        "駅の近く",
+        "で",
+        "静かな場所",
+        "を",
+        "見つけました。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0037",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "住所",
+      "kana": "じゅうしょ",
+      "reading": "じゅうしょ",
+      "kanji": "住所",
+      "meaning": "地址",
+      "meaning_zh": "地址",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 37,
+      "example": "ここに住所を書いてください。",
+      "example_ja": "ここに住所を書いてください。",
+      "example_kana": "ここに じゅうしょを かいてください。",
+      "translation": "請在這裡寫地址。",
+      "translation_zh": "請在這裡寫地址。",
+      "audioText": "ここに住所を書いてください。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "ここ",
+          "answer": "に",
+          "after": "住所を書いてください。",
+          "choices": [
+            "に",
+            "を",
+            "が",
+            "と"
+          ],
+          "explanation": "這裡用「に」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "ここ",
+        "answer": "に",
+        "after": "住所を書いてください。",
+        "choices": [
+          "に",
+          "を",
+          "が",
+          "と"
+        ],
+        "explanation": "這裡用「に」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "ここ",
+          "に",
+          "住所"
+        ]
+      },
+      "chunks": [
+        "ここ",
+        "に",
+        "住所",
+        "を",
+        "書いてください。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0038",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "名前",
+      "kana": "なまえ",
+      "reading": "なまえ",
+      "kanji": "名前",
+      "meaning": "名字",
+      "meaning_zh": "名字",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 38,
+      "example": "紙に名前を書いてください。",
+      "example_ja": "紙に名前を書いてください。",
+      "example_kana": "かみに なまえを かいてください。",
+      "translation": "請在紙上寫名字。",
+      "translation_zh": "請在紙上寫名字。",
+      "audioText": "紙に名前を書いてください。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "紙",
+          "answer": "に",
+          "after": "名前を書いてください。",
+          "choices": [
+            "に",
+            "を",
+            "が",
+            "と"
+          ],
+          "explanation": "這裡用「に」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "紙",
+        "answer": "に",
+        "after": "名前を書いてください。",
+        "choices": [
+          "に",
+          "を",
+          "が",
+          "と"
+        ],
+        "explanation": "這裡用「に」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "紙",
+          "に",
+          "名前"
+        ]
+      },
+      "chunks": [
+        "紙",
+        "に",
+        "名前",
+        "を",
+        "書いてください。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0039",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "番号",
+      "kana": "ばんごう",
+      "reading": "ばんごう",
+      "kanji": "番号",
+      "meaning": "號碼",
+      "meaning_zh": "號碼",
+      "pos": "n",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 39,
+      "example": "予約の番号を見せてください。",
+      "example_ja": "予約の番号を見せてください。",
+      "example_kana": "よやくの ばんごうを みせてください。",
+      "translation": "請出示預約號碼。",
+      "translation_zh": "請出示預約號碼。",
+      "audioText": "予約の番号を見せてください。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "予約の番号",
+          "answer": "を",
+          "after": "見せてください。",
+          "choices": [
+            "を",
+            "が",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「を」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "予約の番号",
+        "answer": "を",
+        "after": "見せてください。",
+        "choices": [
+          "を",
+          "が",
+          "に",
+          "と"
+        ],
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "予約の番号",
+          "を",
+          "見せてください。"
+        ]
+      },
+      "chunks": [
+        "予約の番号",
+        "を",
+        "見せてください。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0040",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "直接",
+      "kana": "ちょくせつ",
+      "reading": "ちょくせつ",
+      "kanji": "直接",
+      "meaning": "直接",
+      "meaning_zh": "直接",
+      "pos": "adv",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 40,
+      "example": "先生に直接聞きました。",
+      "example_ja": "先生に直接聞きました。",
+      "example_kana": "せんせいに ちょくせつ ききました。",
+      "translation": "直接問了老師。",
+      "translation_zh": "直接問了老師。",
+      "audioText": "先生に直接聞きました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "先生",
+          "answer": "に",
+          "after": "直接聞きました。",
+          "choices": [
+            "に",
+            "を",
+            "が",
+            "と"
+          ],
+          "explanation": "這裡用「に」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "先生",
+        "answer": "に",
+        "after": "直接聞きました。",
+        "choices": [
+          "に",
+          "を",
+          "が",
+          "と"
+        ],
+        "explanation": "這裡用「に」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "先生",
+          "に",
+          "直接聞きました。"
+        ]
+      },
+      "chunks": [
+        "先生",
+        "に",
+        "直接聞きました。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0041",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "特別",
+      "kana": "とくべつ",
+      "reading": "とくべつ",
+      "kanji": "特別",
+      "meaning": "特別",
+      "meaning_zh": "特別",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 41,
+      "example": "誕生日に特別な料理を作りました。",
+      "example_ja": "誕生日に特別な料理を作りました。",
+      "example_kana": "たんじょうびに とくべつな りょうりを つくりました。",
+      "translation": "生日那天做了特別的料理。",
+      "translation_zh": "生日那天做了特別的料理。",
+      "audioText": "誕生日に特別な料理を作りました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "誕生日",
+          "answer": "に",
+          "after": "特別な料理を作りました。",
+          "choices": [
+            "に",
+            "を",
+            "が",
+            "と"
+          ],
+          "explanation": "這裡用「に」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "誕生日",
+        "answer": "に",
+        "after": "特別な料理を作りました。",
+        "choices": [
+          "に",
+          "を",
+          "が",
+          "と"
+        ],
+        "explanation": "這裡用「に」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "誕生日",
+          "に",
+          "特別な料理"
+        ]
+      },
+      "chunks": [
+        "誕生日",
+        "に",
+        "特別な料理",
+        "を",
+        "作りました。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0042",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "準備",
+      "kana": "じゅんび",
+      "reading": "じゅんび",
+      "kanji": "準備",
+      "meaning": "準備",
+      "meaning_zh": "準備",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 42,
+      "example": "旅行の準備はもうできました。",
+      "example_ja": "旅行の準備はもうできました。",
+      "example_kana": "りょこうの じゅんびは もう できました。",
+      "translation": "旅行的準備已經完成了。",
+      "translation_zh": "旅行的準備已經完成了。",
+      "audioText": "旅行の準備はもうできました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "旅行の準備",
+          "answer": "は",
+          "after": "もうできました。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "旅行の準備",
+        "answer": "は",
+        "after": "もうできました。",
+        "choices": [
+          "は",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "旅行の準備",
+          "は",
+          "も"
+        ]
+      },
+      "chunks": [
+        "旅行の準備",
+        "は",
+        "も",
+        "う",
+        "で",
+        "きました。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0043",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "説明",
+      "kana": "せつめい",
+      "reading": "せつめい",
+      "kanji": "説明",
+      "meaning": "說明",
+      "meaning_zh": "說明",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 43,
+      "example": "店員が使い方を説明してくれました。",
+      "example_ja": "店員が使い方を説明してくれました。",
+      "example_kana": "てんいんが つかいかたを せつめいしてくれました。",
+      "translation": "店員向我說明了使用方法。",
+      "translation_zh": "店員向我說明了使用方法。",
+      "audioText": "店員が使い方を説明してくれました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "店員",
+          "answer": "が",
+          "after": "使い方を説明してくれました。",
+          "choices": [
+            "が",
+            "を",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「が」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "店員",
+        "answer": "が",
+        "after": "使い方を説明してくれました。",
+        "choices": [
+          "が",
+          "を",
+          "に",
+          "と"
+        ],
+        "explanation": "這裡用「が」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "店員",
+          "が",
+          "使い方"
+        ]
+      },
+      "chunks": [
+        "店員",
+        "が",
+        "使い方",
+        "を",
+        "説明してくれました。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0044",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "約束",
+      "kana": "やくそく",
+      "reading": "やくそく",
+      "kanji": "約束",
+      "meaning": "約定",
+      "meaning_zh": "約定",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 44,
+      "example": "友達と駅で会う約束をしました。",
+      "example_ja": "友達と駅で会う約束をしました。",
+      "example_kana": "ともだちと えきで あう やくそくを しました。",
+      "translation": "和朋友約好在車站見面。",
+      "translation_zh": "和朋友約好在車站見面。",
+      "audioText": "友達と駅で会う約束をしました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "友達と駅",
+          "answer": "で",
+          "after": "会う約束をしました。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "友達と駅",
+        "answer": "で",
+        "after": "会う約束をしました。",
+        "choices": [
+          "で",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「で」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "友達",
+          "と",
+          "駅"
+        ]
+      },
+      "chunks": [
+        "友達",
+        "と",
+        "駅",
+        "で",
+        "会う約束",
+        "を",
+        "しました。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0045",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "相談",
+      "kana": "そうだん",
+      "reading": "そうだん",
+      "kanji": "相談",
+      "meaning": "商量",
+      "meaning_zh": "商量",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 45,
+      "example": "困ったときは家族に相談します。",
+      "example_ja": "困ったときは家族に相談します。",
+      "example_kana": "こまった ときは かぞくに そうだんします。",
+      "translation": "遇到困難時會和家人商量。",
+      "translation_zh": "遇到困難時會和家人商量。",
+      "audioText": "困ったときは家族に相談します。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "困ったとき",
+          "answer": "は",
+          "after": "家族に相談します。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "困ったとき",
+        "answer": "は",
+        "after": "家族に相談します。",
+        "choices": [
+          "は",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "困った",
+          "と",
+          "き"
+        ]
+      },
+      "chunks": [
+        "困った",
+        "と",
+        "き",
+        "は",
+        "家族",
+        "に",
+        "相談します。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0046",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "復習",
+      "kana": "ふくしゅう",
+      "reading": "ふくしゅう",
+      "kanji": "復習",
+      "meaning": "複習",
+      "meaning_zh": "複習",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 46,
+      "example": "試験の前に文法を復習しました。",
+      "example_ja": "試験の前に文法を復習しました。",
+      "example_kana": "しけんの まえに ぶんぽうを ふくしゅうしました。",
+      "translation": "考試前複習了文法。",
+      "translation_zh": "考試前複習了文法。",
+      "audioText": "試験の前に文法を復習しました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "試験の前",
+          "answer": "に",
+          "after": "文法を復習しました。",
+          "choices": [
+            "に",
+            "を",
+            "が",
+            "と"
+          ],
+          "explanation": "這裡用「に」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "試験の前",
+        "answer": "に",
+        "after": "文法を復習しました。",
+        "choices": [
+          "に",
+          "を",
+          "が",
+          "と"
+        ],
+        "explanation": "這裡用「に」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "試験の前",
+          "に",
+          "文法"
+        ]
+      },
+      "chunks": [
+        "試験の前",
+        "に",
+        "文法",
+        "を",
+        "復習しました。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0047",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "予習",
+      "kana": "よしゅう",
+      "reading": "よしゅう",
+      "kanji": "予習",
+      "meaning": "預習",
+      "meaning_zh": "預習",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 47,
+      "example": "明日の授業を予習しておきます。",
+      "example_ja": "明日の授業を予習しておきます。",
+      "example_kana": "あしたの じゅぎょうを よしゅうしておきます。",
+      "translation": "先預習明天的課。",
+      "translation_zh": "先預習明天的課。",
+      "audioText": "明日の授業を予習しておきます。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "明日の授業",
+          "answer": "を",
+          "after": "予習しておきます。",
+          "choices": [
+            "を",
+            "が",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「を」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "明日の授業",
+        "answer": "を",
+        "after": "予習しておきます。",
+        "choices": [
+          "を",
+          "が",
+          "に",
+          "と"
+        ],
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "明日の授業",
+          "を",
+          "予習しておきます。"
+        ]
+      },
+      "chunks": [
+        "明日の授業",
+        "を",
+        "予習しておきます。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0048",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "練習",
+      "kana": "れんしゅう",
+      "reading": "れんしゅう",
+      "kanji": "練習",
+      "meaning": "練習",
+      "meaning_zh": "練習",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 48,
+      "example": "毎日ピアノを練習しています。",
+      "example_ja": "毎日ピアノを練習しています。",
+      "example_kana": "まいにち ピアノを れんしゅうしています。",
+      "translation": "每天都在練習鋼琴。",
+      "translation_zh": "每天都在練習鋼琴。",
+      "audioText": "毎日ピアノを練習しています。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "毎日ピアノ",
+          "answer": "を",
+          "after": "練習しています。",
+          "choices": [
+            "を",
+            "が",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「を」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "毎日ピアノ",
+        "answer": "を",
+        "after": "練習しています。",
+        "choices": [
+          "を",
+          "が",
+          "に",
+          "と"
+        ],
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "毎日ピアノ",
+          "を",
+          "練習しています。"
+        ]
+      },
+      "chunks": [
+        "毎日ピアノ",
+        "を",
+        "練習しています。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0049",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "注意",
+      "kana": "ちゅうい",
+      "reading": "ちゅうい",
+      "kanji": "注意",
+      "meaning": "注意",
+      "meaning_zh": "注意",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 49,
+      "example": "道を渡るときは車に注意してください。",
+      "example_ja": "道を渡るときは車に注意してください。",
+      "example_kana": "みちを わたる ときは くるまに ちゅういしてください。",
+      "translation": "過馬路時請注意車子。",
+      "translation_zh": "過馬路時請注意車子。",
+      "audioText": "道を渡るときは車に注意してください。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "道",
+          "answer": "を",
+          "after": "渡るときは車に注意してください。",
+          "choices": [
+            "を",
+            "が",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「を」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "道",
+        "answer": "を",
+        "after": "渡るときは車に注意してください。",
+        "choices": [
+          "を",
+          "が",
+          "に",
+          "と"
+        ],
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "道",
+          "を",
+          "渡る"
+        ]
+      },
+      "chunks": [
+        "道",
+        "を",
+        "渡る",
+        "と",
+        "き",
+        "は",
+        "車",
+        "に",
+        "注意してください。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0050",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "紹介",
+      "kana": "しょうかい",
+      "reading": "しょうかい",
+      "kanji": "紹介",
+      "meaning": "介紹",
+      "meaning_zh": "介紹",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 50,
+      "example": "友達に妹を紹介しました。",
+      "example_ja": "友達に妹を紹介しました。",
+      "example_kana": "ともだちに いもうとを しょうかいしました。",
+      "translation": "把妹妹介紹給朋友認識。",
+      "translation_zh": "把妹妹介紹給朋友認識。",
+      "audioText": "友達に妹を紹介しました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "友達",
+          "answer": "に",
+          "after": "妹を紹介しました。",
+          "choices": [
+            "に",
+            "を",
+            "が",
+            "と"
+          ],
+          "explanation": "這裡用「に」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "友達",
+        "answer": "に",
+        "after": "妹を紹介しました。",
+        "choices": [
+          "に",
+          "を",
+          "が",
+          "と"
+        ],
+        "explanation": "這裡用「に」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "友達",
+          "に",
+          "妹"
+        ]
+      },
+      "chunks": [
+        "友達",
+        "に",
+        "妹",
+        "を",
+        "紹介しました。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0051",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "案内",
+      "kana": "あんない",
+      "reading": "あんない",
+      "kanji": "案内",
+      "meaning": "嚮導",
+      "meaning_zh": "嚮導",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 51,
+      "example": "駅からホテルまで案内します。",
+      "example_ja": "駅からホテルまで案内します。",
+      "example_kana": "えきから ホテルまで あんないします。",
+      "translation": "我會從車站帶你到飯店。",
+      "translation_zh": "我會從車站帶你到飯店。",
+      "audioText": "駅からホテルまで案内します。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "駅からホテルま",
+          "answer": "で",
+          "after": "案内します。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "駅からホテルま",
+        "answer": "で",
+        "after": "案内します。",
+        "choices": [
+          "で",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「で」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "駅からホテルま",
+          "で",
+          "案内します。"
+        ]
+      },
+      "chunks": [
+        "駅からホテルま",
+        "で",
+        "案内します。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0052",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "利用",
+      "kana": "りよう",
+      "reading": "りよう",
+      "kanji": "利用",
+      "meaning": "利用",
+      "meaning_zh": "利用",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 52,
+      "example": "毎朝このバスを利用しています。",
+      "example_ja": "毎朝このバスを利用しています。",
+      "example_kana": "まいあさ この バスを りようしています。",
+      "translation": "每天早上都搭這班公車。",
+      "translation_zh": "每天早上都搭這班公車。",
+      "audioText": "毎朝このバスを利用しています。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "毎朝このバス",
+          "answer": "を",
+          "after": "利用しています。",
+          "choices": [
+            "を",
+            "が",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「を」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "毎朝このバス",
+        "answer": "を",
+        "after": "利用しています。",
+        "choices": [
+          "を",
+          "が",
+          "に",
+          "と"
+        ],
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "毎朝このバス",
+          "を",
+          "利用しています。"
+        ]
+      },
+      "chunks": [
+        "毎朝このバス",
+        "を",
+        "利用しています。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0053",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "計画",
+      "kana": "けいかく",
+      "reading": "けいかく",
+      "kanji": "計画",
+      "meaning": "計畫",
+      "meaning_zh": "計畫",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 53,
+      "example": "夏休みの旅行を計画しています。",
+      "example_ja": "夏休みの旅行を計画しています。",
+      "example_kana": "なつやすみの りょこうを けいかくしています。",
+      "translation": "正在計畫暑假的旅行。",
+      "translation_zh": "正在計畫暑假的旅行。",
+      "audioText": "夏休みの旅行を計画しています。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "夏休みの旅行",
+          "answer": "を",
+          "after": "計画しています。",
+          "choices": [
+            "を",
+            "が",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「を」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "夏休みの旅行",
+        "answer": "を",
+        "after": "計画しています。",
+        "choices": [
+          "を",
+          "が",
+          "に",
+          "と"
+        ],
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "夏休みの旅行",
+          "を",
+          "計画しています。"
+        ]
+      },
+      "chunks": [
+        "夏休みの旅行",
+        "を",
+        "計画しています。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0054",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "連絡",
+      "kana": "れんらく",
+      "reading": "れんらく",
+      "kanji": "連絡",
+      "meaning": "聯絡",
+      "meaning_zh": "聯絡",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 54,
+      "example": "家に着いたら連絡してください。",
+      "example_ja": "家に着いたら連絡してください。",
+      "example_kana": "いえに ついたら れんらくしてください。",
+      "translation": "到家後請聯絡我。",
+      "translation_zh": "到家後請聯絡我。",
+      "audioText": "家に着いたら連絡してください。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "家",
+          "answer": "に",
+          "after": "着いたら連絡してください。",
+          "choices": [
+            "に",
+            "を",
+            "が",
+            "と"
+          ],
+          "explanation": "這裡用「に」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "家",
+        "answer": "に",
+        "after": "着いたら連絡してください。",
+        "choices": [
+          "に",
+          "を",
+          "が",
+          "と"
+        ],
+        "explanation": "這裡用「に」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "家",
+          "に",
+          "着いたら連絡してください。"
+        ]
+      },
+      "chunks": [
+        "家",
+        "に",
+        "着いたら連絡してください。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0055",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "故障",
+      "kana": "こしょう",
+      "reading": "こしょう",
+      "kanji": "故障",
+      "meaning": "故障",
+      "meaning_zh": "故障",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 55,
+      "example": "洗濯機が急に故障しました。",
+      "example_ja": "洗濯機が急に故障しました。",
+      "example_kana": "せんたくきが きゅうに こしょうしました。",
+      "translation": "洗衣機突然故障了。",
+      "translation_zh": "洗衣機突然故障了。",
+      "audioText": "洗濯機が急に故障しました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "洗濯機",
+          "answer": "が",
+          "after": "急に故障しました。",
+          "choices": [
+            "が",
+            "を",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「が」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "洗濯機",
+        "answer": "が",
+        "after": "急に故障しました。",
+        "choices": [
+          "が",
+          "を",
+          "に",
+          "と"
+        ],
+        "explanation": "這裡用「が」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "洗濯機",
+          "が",
+          "急"
+        ]
+      },
+      "chunks": [
+        "洗濯機",
+        "が",
+        "急",
+        "に",
+        "故障しました。"
+      ],
+      "distractors": [],
+      "synonyms": [
+        {
+          "source": "故障",
+          "prompt_zh": "選出和「故障」意思最接近的說法。",
+          "answer": "壊れています",
+          "choices": [
+            "壊れています",
+            "安心です",
+            "十分です",
+            "普通です"
+          ],
+          "explanation": "「故障」表示機器等壞掉。"
+        }
+      ]
+    },
+    {
+      "id": "n4_0056",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "修理",
+      "kana": "しゅうり",
+      "reading": "しゅうり",
+      "kanji": "修理",
+      "meaning": "修理",
+      "meaning_zh": "修理",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 56,
+      "example": "自転車を店で修理してもらいました。",
+      "example_ja": "自転車を店で修理してもらいました。",
+      "example_kana": "じてんしゃを みせで しゅうりしてもらいました。",
+      "translation": "請店家修理了腳踏車。",
+      "translation_zh": "請店家修理了腳踏車。",
+      "audioText": "自転車を店で修理してもらいました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "自転車",
+          "answer": "を",
+          "after": "店で修理してもらいました。",
+          "choices": [
+            "を",
+            "が",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「を」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "自転車",
+        "answer": "を",
+        "after": "店で修理してもらいました。",
+        "choices": [
+          "を",
+          "が",
+          "に",
+          "と"
+        ],
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "自転車",
+          "を",
+          "店"
+        ]
+      },
+      "chunks": [
+        "自転車",
+        "を",
+        "店",
+        "で",
+        "修理して",
+        "も",
+        "らいました。"
+      ],
+      "distractors": [],
+      "synonyms": [
+        {
+          "source": "修理",
+          "prompt_zh": "選出和「修理」意思最接近的說法。",
+          "answer": "直します",
+          "choices": [
+            "直します",
+            "捨てます",
+            "忘れます",
+            "集めます"
+          ],
+          "explanation": "「修理」表示把壞掉的東西修好。"
+        }
+      ]
+    },
+    {
+      "id": "n4_0057",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "出席",
+      "kana": "しゅっせき",
+      "reading": "しゅっせき",
+      "kanji": "出席",
+      "meaning": "出席",
+      "meaning_zh": "出席",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 57,
+      "example": "明日の会議に出席します。",
+      "example_ja": "明日の会議に出席します。",
+      "example_kana": "あしたの かいぎに しゅっせきします。",
+      "translation": "我會出席明天的會議。",
+      "translation_zh": "我會出席明天的會議。",
+      "audioText": "明日の会議に出席します。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "明日の会議",
+          "answer": "に",
+          "after": "出席します。",
+          "choices": [
+            "に",
+            "を",
+            "が",
+            "と"
+          ],
+          "explanation": "這裡用「に」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "明日の会議",
+        "answer": "に",
+        "after": "出席します。",
+        "choices": [
+          "に",
+          "を",
+          "が",
+          "と"
+        ],
+        "explanation": "這裡用「に」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "明日の会議",
+          "に",
+          "出席します。"
+        ]
+      },
+      "chunks": [
+        "明日の会議",
+        "に",
+        "出席します。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0058",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "欠席",
+      "kana": "けっせき",
+      "reading": "けっせき",
+      "kanji": "欠席",
+      "meaning": "缺席",
+      "meaning_zh": "缺席",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 58,
+      "example": "風邪をひいたので、授業を欠席しました。",
+      "example_ja": "風邪をひいたので、授業を欠席しました。",
+      "example_kana": "かぜを ひいたので、じゅぎょうを けっせきしました。",
+      "translation": "因為感冒，所以缺席了課程。",
+      "translation_zh": "因為感冒，所以缺席了課程。",
+      "audioText": "風邪をひいたので、授業を欠席しました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "風邪",
+          "answer": "を",
+          "after": "ひいたので、授業を欠席しました。",
+          "choices": [
+            "を",
+            "が",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「を」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "風邪",
+        "answer": "を",
+        "after": "ひいたので、授業を欠席しました。",
+        "choices": [
+          "を",
+          "が",
+          "に",
+          "と"
+        ],
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "風邪",
+          "を",
+          "ひいたの"
+        ]
+      },
+      "chunks": [
+        "風邪",
+        "を",
+        "ひいたの",
+        "で、",
+        "授業",
+        "を",
+        "欠席しました。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0059",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "出張",
+      "kana": "しゅっちょう",
+      "reading": "しゅっちょう",
+      "kanji": "出張",
+      "meaning": "出差",
+      "meaning_zh": "出差",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 59,
+      "example": "父は来週大阪へ出張します。",
+      "example_ja": "父は来週大阪へ出張します。",
+      "example_kana": "ちちは らいしゅう おおさかへ しゅっちょうします。",
+      "translation": "爸爸下週要去大阪出差。",
+      "translation_zh": "爸爸下週要去大阪出差。",
+      "audioText": "父は来週大阪へ出張します。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "父",
+          "answer": "は",
+          "after": "来週大阪へ出張します。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "父",
+        "answer": "は",
+        "after": "来週大阪へ出張します。",
+        "choices": [
+          "は",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "父",
+          "は",
+          "来週大阪"
+        ]
+      },
+      "chunks": [
+        "父",
+        "は",
+        "来週大阪",
+        "へ",
+        "出張します。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0060",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "合格",
+      "kana": "ごうかく",
+      "reading": "ごうかく",
+      "kanji": "合格",
+      "meaning": "及格",
+      "meaning_zh": "及格",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 60,
+      "example": "姉は大学の試験に合格しました。",
+      "example_ja": "姉は大学の試験に合格しました。",
+      "example_kana": "あねは だいがくの しけんに ごうかくしました。",
+      "translation": "姊姊通過了大學考試。",
+      "translation_zh": "姊姊通過了大學考試。",
+      "audioText": "姉は大学の試験に合格しました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "姉",
+          "answer": "は",
+          "after": "大学の試験に合格しました。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "姉",
+        "answer": "は",
+        "after": "大学の試験に合格しました。",
+        "choices": [
+          "は",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "姉",
+          "は",
+          "大学の試験"
+        ]
+      },
+      "chunks": [
+        "姉",
+        "は",
+        "大学の試験",
+        "に",
+        "合格しました。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0061",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "反対",
+      "kana": "はんたい",
+      "reading": "はんたい",
+      "kanji": "反対",
+      "meaning": "反對",
+      "meaning_zh": "反對",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 61,
+      "example": "私はその計画に反対です。",
+      "example_ja": "私はその計画に反対です。",
+      "example_kana": "わたしは その けいかくに はんたいです。",
+      "translation": "我反對那個計畫。",
+      "translation_zh": "我反對那個計畫。",
+      "audioText": "私はその計画に反対です。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "私",
+          "answer": "は",
+          "after": "その計画に反対です。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "私",
+        "answer": "は",
+        "after": "その計画に反対です。",
+        "choices": [
+          "は",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "私",
+          "は",
+          "その計画"
+        ]
+      },
+      "chunks": [
+        "私",
+        "は",
+        "その計画",
+        "に",
+        "反対です。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0062",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "賛成",
+      "kana": "さんせい",
+      "reading": "さんせい",
+      "kanji": "賛成",
+      "meaning": "贊成",
+      "meaning_zh": "贊成",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 62,
+      "example": "家族はみんな引っ越しに賛成しました。",
+      "example_ja": "家族はみんな引っ越しに賛成しました。",
+      "example_kana": "かぞくは みんな ひっこしに さんせいしました。",
+      "translation": "家人全都贊成搬家。",
+      "translation_zh": "家人全都贊成搬家。",
+      "audioText": "家族はみんな引っ越しに賛成しました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "家族",
+          "answer": "は",
+          "after": "みんな引っ越しに賛成しました。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "家族",
+        "answer": "は",
+        "after": "みんな引っ越しに賛成しました。",
+        "choices": [
+          "は",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "家族",
+          "は",
+          "みんな引っ越し"
+        ]
+      },
+      "chunks": [
+        "家族",
+        "は",
+        "みんな引っ越し",
+        "に",
+        "賛成しました。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0063",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "安心",
+      "kana": "あんしん",
+      "reading": "あんしん",
+      "kanji": "安心",
+      "meaning": "放心",
+      "meaning_zh": "放心",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 63,
+      "example": "無事だと聞いて安心しました。",
+      "example_ja": "無事だと聞いて安心しました。",
+      "example_kana": "ぶじだと きいて あんしんしました。",
+      "translation": "聽說平安無事後，我放心了。",
+      "translation_zh": "聽說平安無事後，我放心了。",
+      "audioText": "無事だと聞いて安心しました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "無事だ",
+          "answer": "と",
+          "after": "聞いて安心しました。",
+          "choices": [
+            "と",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「と」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "無事だ",
+        "answer": "と",
+        "after": "聞いて安心しました。",
+        "choices": [
+          "と",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「と」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "無事だ",
+          "と",
+          "聞いて安心しました。"
+        ]
+      },
+      "chunks": [
+        "無事だ",
+        "と",
+        "聞いて安心しました。"
+      ],
+      "distractors": [],
+      "synonyms": [
+        {
+          "source": "安心",
+          "prompt_zh": "選出和「安心」意思最接近的說法。",
+          "answer": "心配しません",
+          "choices": [
+            "心配しません",
+            "反対します",
+            "遅れます",
+            "壊れます"
+          ],
+          "explanation": "「安心」表示不擔心、放心。"
+        }
+      ]
+    },
+    {
+      "id": "n4_0064",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "心配",
+      "kana": "しんぱい",
+      "reading": "しんぱい",
+      "kanji": "心配",
+      "meaning": "擔心",
+      "meaning_zh": "擔心",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 64,
+      "example": "家族は弟の帰りを心配しています。",
+      "example_ja": "家族は弟の帰りを心配しています。",
+      "example_kana": "かぞくは おとうとの かえりを しんぱいしています。",
+      "translation": "家人很擔心弟弟還沒回家。",
+      "translation_zh": "家人很擔心弟弟還沒回家。",
+      "audioText": "家族は弟の帰りを心配しています。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "家族",
+          "answer": "は",
+          "after": "弟の帰りを心配しています。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "家族",
+        "answer": "は",
+        "after": "弟の帰りを心配しています。",
+        "choices": [
+          "は",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "家族",
+          "は",
+          "弟の帰り"
+        ]
+      },
+      "chunks": [
+        "家族",
+        "は",
+        "弟の帰り",
+        "を",
+        "心配しています。"
+      ],
+      "distractors": [],
+      "synonyms": [
+        {
+          "source": "心配",
+          "prompt_zh": "選出和「心配」意思最接近的說法。",
+          "answer": "不安です",
+          "choices": [
+            "不安です",
+            "安全です",
+            "自由です",
+            "簡単です"
+          ],
+          "explanation": "「心配」表示擔心、不安。"
+        }
+      ]
+    },
+    {
+      "id": "n4_0065",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "経験",
+      "kana": "けいけん",
+      "reading": "けいけん",
+      "kanji": "経験",
+      "meaning": "經驗",
+      "meaning_zh": "經驗",
+      "pos": "suru",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 65,
+      "example": "日本で働いた経験があります。",
+      "example_ja": "日本で働いた経験があります。",
+      "example_kana": "にほんで はたらいた けいけんが あります。",
+      "translation": "我有在日本工作的經驗。",
+      "translation_zh": "我有在日本工作的經驗。",
+      "audioText": "日本で働いた経験があります。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "日本",
+          "answer": "で",
+          "after": "働いた経験があります。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "日本",
+        "answer": "で",
+        "after": "働いた経験があります。",
+        "choices": [
+          "で",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「で」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "日本",
+          "で",
+          "働いた経験"
+        ]
+      },
+      "chunks": [
+        "日本",
+        "で",
+        "働いた経験",
+        "が",
+        "あります。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0066",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "運ぶ",
+      "kana": "はこぶ",
+      "reading": "はこぶ",
+      "kanji": "運ぶ",
+      "meaning": "運送",
+      "meaning_zh": "運送",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 66,
+      "example": "重い荷物を二人で運びました。",
+      "example_ja": "重い荷物を二人で運びました。",
+      "example_kana": "おもい にもつを ふたりで はこびました。",
+      "translation": "兩個人一起搬了重物。",
+      "translation_zh": "兩個人一起搬了重物。",
+      "audioText": "重い荷物を二人で運びました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "重い荷物",
+          "answer": "を",
+          "after": "二人で運びました。",
+          "choices": [
+            "を",
+            "が",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「を」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "重い荷物",
+        "answer": "を",
+        "after": "二人で運びました。",
+        "choices": [
+          "を",
+          "が",
+          "に",
+          "と"
+        ],
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "重い荷物",
+          "を",
+          "二人"
+        ]
+      },
+      "chunks": [
+        "重い荷物",
+        "を",
+        "二人",
+        "で",
+        "運びました。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0067",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "借りる",
+      "kana": "かりる",
+      "reading": "かりる",
+      "kanji": "借りる",
+      "meaning": "借入",
+      "meaning_zh": "借入",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 67,
+      "example": "図書館で料理の本を借りました。",
+      "example_ja": "図書館で料理の本を借りました。",
+      "example_kana": "としょかんで りょうりの ほんを かりました。",
+      "translation": "在圖書館借了料理書。",
+      "translation_zh": "在圖書館借了料理書。",
+      "audioText": "図書館で料理の本を借りました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "図書館",
+          "answer": "で",
+          "after": "料理の本を借りました。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "図書館",
+        "answer": "で",
+        "after": "料理の本を借りました。",
+        "choices": [
+          "で",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「で」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "図書館",
+          "で",
+          "料理の本"
+        ]
+      },
+      "chunks": [
+        "図書館",
+        "で",
+        "料理の本",
+        "を",
+        "借りました。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0068",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "貸す",
+      "kana": "かす",
+      "reading": "かす",
+      "kanji": "貸す",
+      "meaning": "借出",
+      "meaning_zh": "借出",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 68,
+      "example": "友達に傘を貸しました。",
+      "example_ja": "友達に傘を貸しました。",
+      "example_kana": "ともだちに かさを かしました。",
+      "translation": "把傘借給了朋友。",
+      "translation_zh": "把傘借給了朋友。",
+      "audioText": "友達に傘を貸しました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "友達",
+          "answer": "に",
+          "after": "傘を貸しました。",
+          "choices": [
+            "に",
+            "を",
+            "が",
+            "と"
+          ],
+          "explanation": "這裡用「に」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "友達",
+        "answer": "に",
+        "after": "傘を貸しました。",
+        "choices": [
+          "に",
+          "を",
+          "が",
+          "と"
+        ],
+        "explanation": "這裡用「に」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "友達",
+          "に",
+          "傘"
+        ]
+      },
+      "chunks": [
+        "友達",
+        "に",
+        "傘",
+        "を",
+        "貸しました。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0069",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "返す",
+      "kana": "かえす",
+      "reading": "かえす",
+      "kanji": "返す",
+      "meaning": "歸還",
+      "meaning_zh": "歸還",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 69,
+      "example": "借りた本を明日返します。",
+      "example_ja": "借りた本を明日返します。",
+      "example_kana": "かりた ほんを あした かえします。",
+      "translation": "明天會歸還借來的書。",
+      "translation_zh": "明天會歸還借來的書。",
+      "audioText": "借りた本を明日返します。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "借りた本",
+          "answer": "を",
+          "after": "明日返します。",
+          "choices": [
+            "を",
+            "が",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「を」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "借りた本",
+        "answer": "を",
+        "after": "明日返します。",
+        "choices": [
+          "を",
+          "が",
+          "に",
+          "と"
+        ],
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "借りた本",
+          "を",
+          "明日返します。"
+        ]
+      },
+      "chunks": [
+        "借りた本",
+        "を",
+        "明日返します。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0070",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "始める",
+      "kana": "はじめる",
+      "reading": "はじめる",
+      "kanji": "始める",
+      "meaning": "開始",
+      "meaning_zh": "開始",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 70,
+      "example": "来月から新しい仕事を始めます。",
+      "example_ja": "来月から新しい仕事を始めます。",
+      "example_kana": "らいげつから あたらしい しごとを はじめます。",
+      "translation": "下個月開始新工作。",
+      "translation_zh": "下個月開始新工作。",
+      "audioText": "来月から新しい仕事を始めます。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "来月から新しい仕事",
+          "answer": "を",
+          "after": "始めます。",
+          "choices": [
+            "を",
+            "が",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「を」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "来月から新しい仕事",
+        "answer": "を",
+        "after": "始めます。",
+        "choices": [
+          "を",
+          "が",
+          "に",
+          "と"
+        ],
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "来月から新しい仕事",
+          "を",
+          "始めます。"
+        ]
+      },
+      "chunks": [
+        "来月から新しい仕事",
+        "を",
+        "始めます。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0071",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "終わる",
+      "kana": "おわる",
+      "reading": "おわる",
+      "kanji": "終わる",
+      "meaning": "結束",
+      "meaning_zh": "結束",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 71,
+      "example": "仕事は午後五時に終わります。",
+      "example_ja": "仕事は午後五時に終わります。",
+      "example_kana": "しごとは ごご ごじに おわります。",
+      "translation": "工作下午五點結束。",
+      "translation_zh": "工作下午五點結束。",
+      "audioText": "仕事は午後五時に終わります。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "仕事",
+          "answer": "は",
+          "after": "午後五時に終わります。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "仕事",
+        "answer": "は",
+        "after": "午後五時に終わります。",
+        "choices": [
+          "は",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "仕事",
+          "は",
+          "午後五時"
+        ]
+      },
+      "chunks": [
+        "仕事",
+        "は",
+        "午後五時",
+        "に",
+        "終わります。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0072",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "考える",
+      "kana": "かんがえる",
+      "reading": "かんがえる",
+      "kanji": "考える",
+      "meaning": "思考",
+      "meaning_zh": "思考",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 72,
+      "example": "週末の予定を考えています。",
+      "example_ja": "週末の予定を考えています。",
+      "example_kana": "しゅうまつの よていを かんがえています。",
+      "translation": "正在考慮週末的安排。",
+      "translation_zh": "正在考慮週末的安排。",
+      "audioText": "週末の予定を考えています。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "週末の予定",
+          "answer": "を",
+          "after": "考えています。",
+          "choices": [
+            "を",
+            "が",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「を」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "週末の予定",
+        "answer": "を",
+        "after": "考えています。",
+        "choices": [
+          "を",
+          "が",
+          "に",
+          "と"
+        ],
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "週末の予定",
+          "を",
+          "考えています。"
+        ]
+      },
+      "chunks": [
+        "週末の予定",
+        "を",
+        "考えています。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0073",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "思い出す",
+      "kana": "おもいだす",
+      "reading": "おもいだす",
+      "kanji": "思い出す",
+      "meaning": "想起",
+      "meaning_zh": "想起",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 73,
+      "example": "写真を見て旅行を思い出しました。",
+      "example_ja": "写真を見て旅行を思い出しました。",
+      "example_kana": "しゃしんを みて りょこうを おもいだしました。",
+      "translation": "看著照片想起了那次旅行。",
+      "translation_zh": "看著照片想起了那次旅行。",
+      "audioText": "写真を見て旅行を思い出しました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "写真",
+          "answer": "を",
+          "after": "見て旅行を思い出しました。",
+          "choices": [
+            "を",
+            "が",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「を」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "写真",
+        "answer": "を",
+        "after": "見て旅行を思い出しました。",
+        "choices": [
+          "を",
+          "が",
+          "に",
+          "と"
+        ],
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "写真",
+          "を",
+          "見て旅行"
+        ]
+      },
+      "chunks": [
+        "写真",
+        "を",
+        "見て旅行",
+        "を",
+        "思い出しました。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0074",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "伝える",
+      "kana": "つたえる",
+      "reading": "つたえる",
+      "kanji": "伝える",
+      "meaning": "傳達",
+      "meaning_zh": "傳達",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 74,
+      "example": "帰りが遅くなると家族に伝えました。",
+      "example_ja": "帰りが遅くなると家族に伝えました。",
+      "example_kana": "かえりが おそくなると かぞくに つたえました。",
+      "translation": "告訴家人我會晚點回去。",
+      "translation_zh": "告訴家人我會晚點回去。",
+      "audioText": "帰りが遅くなると家族に伝えました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "帰り",
+          "answer": "が",
+          "after": "遅くなると家族に伝えました。",
+          "choices": [
+            "が",
+            "を",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「が」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "帰り",
+        "answer": "が",
+        "after": "遅くなると家族に伝えました。",
+        "choices": [
+          "が",
+          "を",
+          "に",
+          "と"
+        ],
+        "explanation": "這裡用「が」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "帰り",
+          "が",
+          "遅くなる"
+        ]
+      },
+      "chunks": [
+        "帰り",
+        "が",
+        "遅くなる",
+        "と",
+        "家族",
+        "に",
+        "伝えました。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0075",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "調べる",
+      "kana": "しらべる",
+      "reading": "しらべる",
+      "kanji": "調べる",
+      "meaning": "調查",
+      "meaning_zh": "調查",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 75,
+      "example": "電車の時間をスマホで調べました。",
+      "example_ja": "電車の時間をスマホで調べました。",
+      "example_kana": "でんしゃの じかんを スマホで しらべました。",
+      "translation": "用手機查了電車時間。",
+      "translation_zh": "用手機查了電車時間。",
+      "audioText": "電車の時間をスマホで調べました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "電車の時間",
+          "answer": "を",
+          "after": "スマホで調べました。",
+          "choices": [
+            "を",
+            "が",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「を」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "電車の時間",
+        "answer": "を",
+        "after": "スマホで調べました。",
+        "choices": [
+          "を",
+          "が",
+          "に",
+          "と"
+        ],
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "電車の時間",
+          "を",
+          "スマホ"
+        ]
+      },
+      "chunks": [
+        "電車の時間",
+        "を",
+        "スマホ",
+        "で",
+        "調べました。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0076",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "忘れる",
+      "kana": "わすれる",
+      "reading": "わすれる",
+      "kanji": "忘れる",
+      "meaning": "忘記",
+      "meaning_zh": "忘記",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 76,
+      "example": "電車に傘を忘れました。",
+      "example_ja": "電車に傘を忘れました。",
+      "example_kana": "でんしゃに かさを わすれました。",
+      "translation": "把傘忘在電車上了。",
+      "translation_zh": "把傘忘在電車上了。",
+      "audioText": "電車に傘を忘れました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "電車",
+          "answer": "に",
+          "after": "傘を忘れました。",
+          "choices": [
+            "に",
+            "を",
+            "が",
+            "と"
+          ],
+          "explanation": "這裡用「に」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "電車",
+        "answer": "に",
+        "after": "傘を忘れました。",
+        "choices": [
+          "に",
+          "を",
+          "が",
+          "と"
+        ],
+        "explanation": "這裡用「に」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "電車",
+          "に",
+          "傘"
+        ]
+      },
+      "chunks": [
+        "電車",
+        "に",
+        "傘",
+        "を",
+        "忘れました。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0077",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "決める",
+      "kana": "きめる",
+      "reading": "きめる",
+      "kanji": "決める",
+      "meaning": "決定",
+      "meaning_zh": "決定",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 77,
+      "example": "旅行の日を家族と決めました。",
+      "example_ja": "旅行の日を家族と決めました。",
+      "example_kana": "りょこうの ひを かぞくと きめました。",
+      "translation": "和家人決定了旅行日期。",
+      "translation_zh": "和家人決定了旅行日期。",
+      "audioText": "旅行の日を家族と決めました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "旅行の日",
+          "answer": "を",
+          "after": "家族と決めました。",
+          "choices": [
+            "を",
+            "が",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「を」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "旅行の日",
+        "answer": "を",
+        "after": "家族と決めました。",
+        "choices": [
+          "を",
+          "が",
+          "に",
+          "と"
+        ],
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "旅行の日",
+          "を",
+          "家族"
+        ]
+      },
+      "chunks": [
+        "旅行の日",
+        "を",
+        "家族",
+        "と",
+        "決めました。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0078",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "集める",
+      "kana": "あつめる",
+      "reading": "あつめる",
+      "kanji": "集める",
+      "meaning": "收集",
+      "meaning_zh": "收集",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 78,
+      "example": "子どものころ、切手を集めていました。",
+      "example_ja": "子どものころ、切手を集めていました。",
+      "example_kana": "こどもの ころ、きってを あつめていました。",
+      "translation": "小時候曾經收集郵票。",
+      "translation_zh": "小時候曾經收集郵票。",
+      "audioText": "子どものころ、切手を集めていました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "子どものころ、切手",
+          "answer": "を",
+          "after": "集めていました。",
+          "choices": [
+            "を",
+            "が",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「を」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "子どものころ、切手",
+        "answer": "を",
+        "after": "集めていました。",
+        "choices": [
+          "を",
+          "が",
+          "に",
+          "と"
+        ],
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "子ど",
+          "も",
+          "のころ、"
+        ]
+      },
+      "chunks": [
+        "子ど",
+        "も",
+        "のころ、",
+        "切手",
+        "を",
+        "集めていました。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0079",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "知らせる",
+      "kana": "しらせる",
+      "reading": "しらせる",
+      "kanji": "知らせる",
+      "meaning": "通知",
+      "meaning_zh": "通知",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 79,
+      "example": "試合の時間をみんなに知らせました。",
+      "example_ja": "試合の時間をみんなに知らせました。",
+      "example_kana": "しあいの じかんを みんなに しらせました。",
+      "translation": "通知了大家比賽時間。",
+      "translation_zh": "通知了大家比賽時間。",
+      "audioText": "試合の時間をみんなに知らせました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "試合の時間",
+          "answer": "を",
+          "after": "みんなに知らせました。",
+          "choices": [
+            "を",
+            "が",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「を」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "試合の時間",
+        "answer": "を",
+        "after": "みんなに知らせました。",
+        "choices": [
+          "を",
+          "が",
+          "に",
+          "と"
+        ],
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "試合の時間",
+          "を",
+          "みんな"
+        ]
+      },
+      "chunks": [
+        "試合の時間",
+        "を",
+        "みんな",
+        "に",
+        "知らせました。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0080",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "慣れる",
+      "kana": "なれる",
+      "reading": "なれる",
+      "kanji": "慣れる",
+      "meaning": "習慣",
+      "meaning_zh": "習慣",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 80,
+      "example": "新しい仕事にやっと慣れました。",
+      "example_ja": "新しい仕事にやっと慣れました。",
+      "example_kana": "あたらしい しごとに やっと なれました。",
+      "translation": "終於習慣新工作了。",
+      "translation_zh": "終於習慣新工作了。",
+      "audioText": "新しい仕事にやっと慣れました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "新しい仕事",
+          "answer": "に",
+          "after": "やっと慣れました。",
+          "choices": [
+            "に",
+            "を",
+            "が",
+            "と"
+          ],
+          "explanation": "這裡用「に」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "新しい仕事",
+        "answer": "に",
+        "after": "やっと慣れました。",
+        "choices": [
+          "に",
+          "を",
+          "が",
+          "と"
+        ],
+        "explanation": "這裡用「に」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "新しい仕事",
+          "に",
+          "やっ"
+        ]
+      },
+      "chunks": [
+        "新しい仕事",
+        "に",
+        "やっ",
+        "と",
+        "慣れました。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0081",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "比べる",
+      "kana": "くらべる",
+      "reading": "くらべる",
+      "kanji": "比べる",
+      "meaning": "比較",
+      "meaning_zh": "比較",
+      "pos": "v",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 81,
+      "example": "二つのかばんの値段を比べました。",
+      "example_ja": "二つのかばんの値段を比べました。",
+      "example_kana": "ふたつの かばんの ねだんを くらべました。",
+      "translation": "比較了兩個包包的價格。",
+      "translation_zh": "比較了兩個包包的價格。",
+      "audioText": "二つのかばんの値段を比べました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "二つのかばんの値段",
+          "answer": "を",
+          "after": "比べました。",
+          "choices": [
+            "を",
+            "が",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「を」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "二つのかばんの値段",
+        "answer": "を",
+        "after": "比べました。",
+        "choices": [
+          "を",
+          "が",
+          "に",
+          "と"
+        ],
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "二つのかばんの値段",
+          "を",
+          "比べました。"
+        ]
+      },
+      "chunks": [
+        "二つのかばんの値段",
+        "を",
+        "比べました。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0082",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "厚い",
+      "kana": "あつい",
+      "reading": "あつい",
+      "kanji": "厚い",
+      "meaning": "厚的",
+      "meaning_zh": "厚的",
+      "pos": "adj-i",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 82,
+      "example": "冬は厚いコートを着ます。",
+      "example_ja": "冬は厚いコートを着ます。",
+      "example_kana": "ふゆは あつい コートを きます。",
+      "translation": "冬天會穿厚外套。",
+      "translation_zh": "冬天會穿厚外套。",
+      "audioText": "冬は厚いコートを着ます。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "冬",
+          "answer": "は",
+          "after": "厚いコートを着ます。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "冬",
+        "answer": "は",
+        "after": "厚いコートを着ます。",
+        "choices": [
+          "は",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "冬",
+          "は",
+          "厚いコート"
+        ]
+      },
+      "chunks": [
+        "冬",
+        "は",
+        "厚いコート",
+        "を",
+        "着ます。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0083",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "薄い",
+      "kana": "うすい",
+      "reading": "うすい",
+      "kanji": "薄い",
+      "meaning": "薄的",
+      "meaning_zh": "薄的",
+      "pos": "adj-i",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 83,
+      "example": "この紙は薄くて、すぐ破れます。",
+      "example_ja": "この紙は薄くて、すぐ破れます。",
+      "example_kana": "この かみは うすくて、すぐ やぶれます。",
+      "translation": "這張紙很薄，很快就會破。",
+      "translation_zh": "這張紙很薄，很快就會破。",
+      "audioText": "この紙は薄くて、すぐ破れます。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "この紙",
+          "answer": "は",
+          "after": "薄くて、すぐ破れます。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "この紙",
+        "answer": "は",
+        "after": "薄くて、すぐ破れます。",
+        "choices": [
+          "は",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "この紙",
+          "は",
+          "薄くて、"
+        ]
+      },
+      "chunks": [
+        "この紙",
+        "は",
+        "薄くて、",
+        "すぐ破れます。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0084",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "甘い",
+      "kana": "あまい",
+      "reading": "あまい",
+      "kanji": "甘い",
+      "meaning": "甜的",
+      "meaning_zh": "甜的",
+      "pos": "adj-i",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 84,
+      "example": "妹は甘いお菓子が大好きです。",
+      "example_ja": "妹は甘いお菓子が大好きです。",
+      "example_kana": "いもうとは あまい おかしが だいすきです。",
+      "translation": "妹妹很喜歡甜點。",
+      "translation_zh": "妹妹很喜歡甜點。",
+      "audioText": "妹は甘いお菓子が大好きです。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "妹",
+          "answer": "は",
+          "after": "甘いお菓子が大好きです。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "妹",
+        "answer": "は",
+        "after": "甘いお菓子が大好きです。",
+        "choices": [
+          "は",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "妹",
+          "は",
+          "甘いお菓子"
+        ]
+      },
+      "chunks": [
+        "妹",
+        "は",
+        "甘いお菓子",
+        "が",
+        "大好きです。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0085",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "苦い",
+      "kana": "にがい",
+      "reading": "にがい",
+      "kanji": "苦い",
+      "meaning": "苦的",
+      "meaning_zh": "苦的",
+      "pos": "adj-i",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 85,
+      "example": "このコーヒーは少し苦いです。",
+      "example_ja": "このコーヒーは少し苦いです。",
+      "example_kana": "この コーヒーは すこし にがいです。",
+      "translation": "這杯咖啡有點苦。",
+      "translation_zh": "這杯咖啡有點苦。",
+      "audioText": "このコーヒーは少し苦いです。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "このコーヒー",
+          "answer": "は",
+          "after": "少し苦いです。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "このコーヒー",
+        "answer": "は",
+        "after": "少し苦いです。",
+        "choices": [
+          "は",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "このコーヒー",
+          "は",
+          "少し苦いです。"
+        ]
+      },
+      "chunks": [
+        "このコーヒー",
+        "は",
+        "少し苦いです。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0086",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "辛い",
+      "kana": "からい",
+      "reading": "からい",
+      "kanji": "辛い",
+      "meaning": "辣的",
+      "meaning_zh": "辣的",
+      "pos": "adj-i",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 86,
+      "example": "辛い物を食べると、汗が出ます。",
+      "example_ja": "辛い物を食べると、汗が出ます。",
+      "example_kana": "からい ものを たべると、あせが でます。",
+      "translation": "吃辣的東西就會流汗。",
+      "translation_zh": "吃辣的東西就會流汗。",
+      "audioText": "辛い物を食べると、汗が出ます。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "辛い物",
+          "answer": "を",
+          "after": "食べると、汗が出ます。",
+          "choices": [
+            "を",
+            "が",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「を」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "辛い物",
+        "answer": "を",
+        "after": "食べると、汗が出ます。",
+        "choices": [
+          "を",
+          "が",
+          "に",
+          "と"
+        ],
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "辛い物",
+          "を",
+          "食べる"
+        ]
+      },
+      "chunks": [
+        "辛い物",
+        "を",
+        "食べる",
+        "と、",
+        "汗",
+        "が",
+        "出ます。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0087",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "痛い",
+      "kana": "いたい",
+      "reading": "いたい",
+      "kanji": "痛い",
+      "meaning": "痛的",
+      "meaning_zh": "痛的",
+      "pos": "adj-i",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 87,
+      "example": "朝から足が痛いです。",
+      "example_ja": "朝から足が痛いです。",
+      "example_kana": "あさから あしが いたいです。",
+      "translation": "從早上開始腳很痛。",
+      "translation_zh": "從早上開始腳很痛。",
+      "audioText": "朝から足が痛いです。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "朝から足",
+          "answer": "が",
+          "after": "痛いです。",
+          "choices": [
+            "が",
+            "を",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「が」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "朝から足",
+        "answer": "が",
+        "after": "痛いです。",
+        "choices": [
+          "が",
+          "を",
+          "に",
+          "と"
+        ],
+        "explanation": "這裡用「が」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "朝から足",
+          "が",
+          "痛いです。"
+        ]
+      },
+      "chunks": [
+        "朝から足",
+        "が",
+        "痛いです。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0088",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "眠い",
+      "kana": "ねむい",
+      "reading": "ねむい",
+      "kanji": "眠い",
+      "meaning": "睏的",
+      "meaning_zh": "睏的",
+      "pos": "adj-i",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 88,
+      "example": "朝はとても眠いです。",
+      "example_ja": "朝はとても眠いです。",
+      "example_kana": "あさは とても ねむいです。",
+      "translation": "早上非常想睡。",
+      "translation_zh": "早上非常想睡。",
+      "audioText": "朝はとても眠いです。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "朝",
+          "answer": "は",
+          "after": "とても眠いです。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "朝",
+        "answer": "は",
+        "after": "とても眠いです。",
+        "choices": [
+          "は",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "朝",
+          "は",
+          "とても眠いです。"
+        ]
+      },
+      "chunks": [
+        "朝",
+        "は",
+        "とても眠いです。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0089",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "怖い",
+      "kana": "こわい",
+      "reading": "こわい",
+      "kanji": "怖い",
+      "meaning": "害怕的",
+      "meaning_zh": "害怕的",
+      "pos": "adj-i",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 89,
+      "example": "暗い道は怖いです。",
+      "example_ja": "暗い道は怖いです。",
+      "example_kana": "くらい みちは こわいです。",
+      "translation": "昏暗的路很可怕。",
+      "translation_zh": "昏暗的路很可怕。",
+      "audioText": "暗い道は怖いです。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "暗い道",
+          "answer": "は",
+          "after": "怖いです。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "暗い道",
+        "answer": "は",
+        "after": "怖いです。",
+        "choices": [
+          "は",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "暗い道",
+          "は",
+          "怖いです。"
+        ]
+      },
+      "chunks": [
+        "暗い道",
+        "は",
+        "怖いです。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0090",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "寂しい",
+      "kana": "さびしい",
+      "reading": "さびしい",
+      "kanji": "寂しい",
+      "meaning": "寂寞的",
+      "meaning_zh": "寂寞的",
+      "pos": "adj-i",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 90,
+      "example": "一人でいると寂しいです。",
+      "example_ja": "一人でいると寂しいです。",
+      "example_kana": "ひとりで いると さびしいです。",
+      "translation": "一個人時會覺得寂寞。",
+      "translation_zh": "一個人時會覺得寂寞。",
+      "audioText": "一人でいると寂しいです。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "一人",
+          "answer": "で",
+          "after": "いると寂しいです。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "一人",
+        "answer": "で",
+        "after": "いると寂しいです。",
+        "choices": [
+          "で",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「で」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "一人",
+          "で",
+          "いる"
+        ]
+      },
+      "chunks": [
+        "一人",
+        "で",
+        "いる",
+        "と",
+        "寂しいです。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0091",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "正しい",
+      "kana": "ただしい",
+      "reading": "ただしい",
+      "kanji": "正しい",
+      "meaning": "正確的",
+      "meaning_zh": "正確的",
+      "pos": "adj-i",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 91,
+      "example": "この答えは正しいです。",
+      "example_ja": "この答えは正しいです。",
+      "example_kana": "この こたえは ただしいです。",
+      "translation": "這個答案是正確的。",
+      "translation_zh": "這個答案是正確的。",
+      "audioText": "この答えは正しいです。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "この答え",
+          "answer": "は",
+          "after": "正しいです。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "この答え",
+        "answer": "は",
+        "after": "正しいです。",
+        "choices": [
+          "は",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "この答え",
+          "は",
+          "正しいです。"
+        ]
+      },
+      "chunks": [
+        "この答え",
+        "は",
+        "正しいです。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0092",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "珍しい",
+      "kana": "めずらしい",
+      "reading": "めずらしい",
+      "kanji": "珍しい",
+      "meaning": "罕見的",
+      "meaning_zh": "罕見的",
+      "pos": "adj-i",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 92,
+      "example": "珍しい花を見ました。",
+      "example_ja": "珍しい花を見ました。",
+      "example_kana": "めずらしい はなを みました。",
+      "translation": "看到了罕見的花。",
+      "translation_zh": "看到了罕見的花。",
+      "audioText": "珍しい花を見ました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "珍しい花",
+          "answer": "を",
+          "after": "見ました。",
+          "choices": [
+            "を",
+            "が",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「を」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "珍しい花",
+        "answer": "を",
+        "after": "見ました。",
+        "choices": [
+          "を",
+          "が",
+          "に",
+          "と"
+        ],
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "珍しい花",
+          "を",
+          "見ました。"
+        ]
+      },
+      "chunks": [
+        "珍しい花",
+        "を",
+        "見ました。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0093",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "安全",
+      "kana": "あんぜん",
+      "reading": "あんぜん",
+      "kanji": "安全",
+      "meaning": "安全的",
+      "meaning_zh": "安全的",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 93,
+      "example": "夜は明るい道を歩くほうが安全です。",
+      "example_ja": "夜は明るい道を歩くほうが安全です。",
+      "example_kana": "よるは あかるい みちを あるく ほうが あんぜんです。",
+      "translation": "晚上走明亮的路比較安全。",
+      "translation_zh": "晚上走明亮的路比較安全。",
+      "audioText": "夜は明るい道を歩くほうが安全です。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "夜",
+          "answer": "は",
+          "after": "明るい道を歩くほうが安全です。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "夜",
+        "answer": "は",
+        "after": "明るい道を歩くほうが安全です。",
+        "choices": [
+          "は",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "夜",
+          "は",
+          "明るい道"
+        ]
+      },
+      "chunks": [
+        "夜",
+        "は",
+        "明るい道",
+        "を",
+        "歩くほう",
+        "が",
+        "安全です。"
+      ],
+      "distractors": [],
+      "synonyms": [
+        {
+          "source": "安全",
+          "prompt_zh": "選出和「安全」意思最接近的說法。",
+          "answer": "危なくない",
+          "choices": [
+            "危なくない",
+            "便利ではない",
+            "足りない",
+            "普通ではない"
+          ],
+          "explanation": "「安全」表示沒有危險。"
+        }
+      ]
+    },
+    {
+      "id": "n4_0094",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "不便",
+      "kana": "ふべん",
+      "reading": "ふべん",
+      "kanji": "不便",
+      "meaning": "不便的",
+      "meaning_zh": "不便的",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 94,
+      "example": "駅から遠いので、少し不便です。",
+      "example_ja": "駅から遠いので、少し不便です。",
+      "example_kana": "えきから とおいので、すこし ふべんです。",
+      "translation": "因為離車站很遠，所以有點不方便。",
+      "translation_zh": "因為離車站很遠，所以有點不方便。",
+      "audioText": "駅から遠いので、少し不便です。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "駅から遠いの",
+          "answer": "で",
+          "after": "、少し不便です。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "駅から遠いの",
+        "answer": "で",
+        "after": "、少し不便です。",
+        "choices": [
+          "で",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「で」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "駅から遠いの",
+          "で、",
+          "少し不便です。"
+        ]
+      },
+      "chunks": [
+        "駅から遠いの",
+        "で、",
+        "少し不便です。"
+      ],
+      "distractors": [],
+      "synonyms": [
+        {
+          "source": "不便",
+          "prompt_zh": "選出和「不便」意思最接近的說法。",
+          "answer": "便利ではない",
+          "choices": [
+            "便利ではない",
+            "危なくない",
+            "十分ある",
+            "急にする"
+          ],
+          "explanation": "「不便」表示不好用、不方便。"
+        }
+      ]
+    },
+    {
+      "id": "n4_0095",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "複雑",
+      "kana": "ふくざつ",
+      "reading": "ふくざつ",
+      "kanji": "複雑",
+      "meaning": "複雜的",
+      "meaning_zh": "複雜的",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 95,
+      "example": "この電車の乗り換えは複雑です。",
+      "example_ja": "この電車の乗り換えは複雑です。",
+      "example_kana": "この でんしゃの のりかえは ふくざつです。",
+      "translation": "這班電車的轉乘很複雜。",
+      "translation_zh": "這班電車的轉乘很複雜。",
+      "audioText": "この電車の乗り換えは複雑です。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "この電車の乗り換え",
+          "answer": "は",
+          "after": "複雑です。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "この電車の乗り換え",
+        "answer": "は",
+        "after": "複雑です。",
+        "choices": [
+          "は",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "この電車の乗り換え",
+          "は",
+          "複雑です。"
+        ]
+      },
+      "chunks": [
+        "この電車の乗り換え",
+        "は",
+        "複雑です。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0096",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "親切",
+      "kana": "しんせつ",
+      "reading": "しんせつ",
+      "kanji": "親切",
+      "meaning": "親切的",
+      "meaning_zh": "親切的",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 96,
+      "example": "店員さんが親切に教えてくれました。",
+      "example_ja": "店員さんが親切に教えてくれました。",
+      "example_kana": "てんいんさんが しんせつに おしえてくれました。",
+      "translation": "店員很親切地教了我。",
+      "translation_zh": "店員很親切地教了我。",
+      "audioText": "店員さんが親切に教えてくれました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "店員さん",
+          "answer": "が",
+          "after": "親切に教えてくれました。",
+          "choices": [
+            "が",
+            "を",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「が」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "店員さん",
+        "answer": "が",
+        "after": "親切に教えてくれました。",
+        "choices": [
+          "が",
+          "を",
+          "に",
+          "と"
+        ],
+        "explanation": "這裡用「が」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "店員さん",
+          "が",
+          "親切"
+        ]
+      },
+      "chunks": [
+        "店員さん",
+        "が",
+        "親切",
+        "に",
+        "教えてくれました。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0097",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "大切",
+      "kana": "たいせつ",
+      "reading": "たいせつ",
+      "kanji": "大切",
+      "meaning": "重要的",
+      "meaning_zh": "重要的",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 97,
+      "example": "家族と過ごす時間を大切にしています。",
+      "example_ja": "家族と過ごす時間を大切にしています。",
+      "example_kana": "かぞくと すごす じかんを たいせつに しています。",
+      "translation": "我很珍惜和家人相處的時間。",
+      "translation_zh": "我很珍惜和家人相處的時間。",
+      "audioText": "家族と過ごす時間を大切にしています。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "家族と過ごす時間",
+          "answer": "を",
+          "after": "大切にしています。",
+          "choices": [
+            "を",
+            "が",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「を」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "家族と過ごす時間",
+        "answer": "を",
+        "after": "大切にしています。",
+        "choices": [
+          "を",
+          "が",
+          "に",
+          "と"
+        ],
+        "explanation": "這裡用「を」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "家族",
+          "と",
+          "過ごす時間"
+        ]
+      },
+      "chunks": [
+        "家族",
+        "と",
+        "過ごす時間",
+        "を",
+        "大切",
+        "に",
+        "しています。"
+      ],
+      "distractors": [],
+      "synonyms": [
+        {
+          "source": "大切",
+          "prompt_zh": "選出和「大切」意思最接近的說法。",
+          "answer": "重要",
+          "choices": [
+            "重要",
+            "普通",
+            "急",
+            "無理"
+          ],
+          "explanation": "「大切」表示重要、需要珍惜。"
+        }
+      ]
+    },
+    {
+      "id": "n4_0098",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "丁寧",
+      "kana": "ていねい",
+      "reading": "ていねい",
+      "kanji": "丁寧",
+      "meaning": "有禮貌",
+      "meaning_zh": "有禮貌",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 98,
+      "example": "店員さんが丁寧に説明してくれました。",
+      "example_ja": "店員さんが丁寧に説明してくれました。",
+      "example_kana": "てんいんさんが ていねいに せつめいしてくれました。",
+      "translation": "店員很仔細地向我說明。",
+      "translation_zh": "店員很仔細地向我說明。",
+      "audioText": "店員さんが丁寧に説明してくれました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "店員さん",
+          "answer": "が",
+          "after": "丁寧に説明してくれました。",
+          "choices": [
+            "が",
+            "を",
+            "に",
+            "と"
+          ],
+          "explanation": "這裡用「が」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "店員さん",
+        "answer": "が",
+        "after": "丁寧に説明してくれました。",
+        "choices": [
+          "が",
+          "を",
+          "に",
+          "と"
+        ],
+        "explanation": "這裡用「が」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "店員さん",
+          "が",
+          "丁寧"
+        ]
+      },
+      "chunks": [
+        "店員さん",
+        "が",
+        "丁寧",
+        "に",
+        "説明してくれました。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0099",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "残念",
+      "kana": "ざんねん",
+      "reading": "ざんねん",
+      "kanji": "残念",
+      "meaning": "可惜",
+      "meaning_zh": "可惜",
+      "pos": "adj-na",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 99,
+      "example": "雨で花火が見られなくて残念です。",
+      "example_ja": "雨で花火が見られなくて残念です。",
+      "example_kana": "あめで はなびが みられなくて ざんねんです。",
+      "translation": "因為下雨看不到煙火，很可惜。",
+      "translation_zh": "因為下雨看不到煙火，很可惜。",
+      "audioText": "雨で花火が見られなくて残念です。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "雨",
+          "answer": "で",
+          "after": "花火が見られなくて残念です。",
+          "choices": [
+            "で",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「で」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "雨",
+        "answer": "で",
+        "after": "花火が見られなくて残念です。",
+        "choices": [
+          "で",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「で」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "雨",
+          "で",
+          "花火"
+        ]
+      },
+      "chunks": [
+        "雨",
+        "で",
+        "花火",
+        "が",
+        "見られなくて残念です。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0100",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "全然",
+      "kana": "ぜんぜん",
+      "reading": "ぜんぜん",
+      "kanji": "全然",
+      "meaning": "完全不",
+      "meaning_zh": "完全不",
+      "pos": "adv",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 100,
+      "example": "この問題は全然わかりません。",
+      "example_ja": "この問題は全然わかりません。",
+      "example_kana": "この もんだいは ぜんぜん わかりません。",
+      "translation": "這題完全不懂。",
+      "translation_zh": "這題完全不懂。",
+      "audioText": "この問題は全然わかりません。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "この問題",
+          "answer": "は",
+          "after": "全然わかりません。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "この問題",
+        "answer": "は",
+        "after": "全然わかりません。",
+        "choices": [
+          "は",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "この問題",
+          "は",
+          "全然わかりません。"
+        ]
+      },
+      "chunks": [
+        "この問題",
+        "は",
+        "全然わかりません。"
+      ],
+      "distractors": [],
+      "synonyms": [
+        {
+          "source": "全然",
+          "prompt_zh": "選出和「全然」意思最接近的說法。",
+          "answer": "まったく",
+          "choices": [
+            "まったく",
+            "たぶん",
+            "だいたい",
+            "ぜひ"
+          ],
+          "explanation": "「全然」接否定時接近「まったく」。"
+        }
+      ]
+    },
+    {
+      "id": "n4_0101",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "決して",
+      "kana": "けっして",
+      "reading": "けっして",
+      "kanji": "決して",
+      "meaning": "絕不",
+      "meaning_zh": "絕不",
+      "pos": "adv",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 101,
+      "example": "決してあきらめません。",
+      "example_ja": "決してあきらめません。",
+      "example_kana": "けっして あきらめません。",
+      "translation": "絕不放棄。",
+      "translation_zh": "絕不放棄。",
+      "audioText": "決してあきらめません。",
+      "particles": [],
+      "grammar": {},
+      "chunks": [
+        "決してあきらめません。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0102",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "多分",
+      "kana": "たぶん",
+      "reading": "たぶん",
+      "kanji": "多分",
+      "meaning": "大概",
+      "meaning_zh": "大概",
+      "pos": "adv",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 102,
+      "example": "多分明日は雨です。",
+      "example_ja": "多分明日は雨です。",
+      "example_kana": "たぶん あしたは あめです。",
+      "translation": "明天大概會下雨。",
+      "translation_zh": "明天大概會下雨。",
+      "audioText": "多分明日は雨です。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "多分明日",
+          "answer": "は",
+          "after": "雨です。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "多分明日",
+        "answer": "は",
+        "after": "雨です。",
+        "choices": [
+          "は",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "多分明日",
+          "は",
+          "雨です。"
+        ]
+      },
+      "chunks": [
+        "多分明日",
+        "は",
+        "雨です。"
+      ],
+      "distractors": [],
+      "synonyms": [
+        {
+          "source": "多分",
+          "prompt_zh": "選出和「多分」意思最接近的說法。",
+          "answer": "おそらく",
+          "choices": [
+            "おそらく",
+            "決して",
+            "直接",
+            "十分"
+          ],
+          "explanation": "「多分」表示大概、可能。"
+        }
+      ]
+    },
+    {
+      "id": "n4_0103",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "大体",
+      "kana": "だいたい",
+      "reading": "だいたい",
+      "kanji": "大体",
+      "meaning": "大約",
+      "meaning_zh": "大約",
+      "pos": "adv",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 103,
+      "example": "内容は大体わかりました。",
+      "example_ja": "内容は大体わかりました。",
+      "example_kana": "ないようは だいたい わかりました。",
+      "translation": "內容大致了解了。",
+      "translation_zh": "內容大致了解了。",
+      "audioText": "内容は大体わかりました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "内容",
+          "answer": "は",
+          "after": "大体わかりました。",
+          "choices": [
+            "は",
+            "を",
+            "が",
+            "に"
+          ],
+          "explanation": "這裡用「は」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "内容",
+        "answer": "は",
+        "after": "大体わかりました。",
+        "choices": [
+          "は",
+          "を",
+          "が",
+          "に"
+        ],
+        "explanation": "這裡用「は」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "内容",
+          "は",
+          "大体わかりました。"
+        ]
+      },
+      "chunks": [
+        "内容",
+        "は",
+        "大体わかりました。"
+      ],
+      "distractors": [],
+      "synonyms": []
+    },
+    {
+      "id": "n4_0104",
+      "jlpt": "N4",
+      "kind": "vocab",
+      "word": "急に",
+      "kana": "きゅうに",
+      "reading": "きゅうに",
+      "kanji": "急に",
+      "meaning": "突然",
+      "meaning_zh": "突然",
+      "pos": "adv",
+      "level": "N4",
+      "tier": "n4_level_path",
+      "firstSeen": "2026-06-04",
+      "rank": 104,
+      "example": "急に雨が降りました。",
+      "example_ja": "急に雨が降りました。",
+      "example_kana": "きゅうに あめが ふりました。",
+      "translation": "突然下雨了。",
+      "translation_zh": "突然下雨了。",
+      "audioText": "急に雨が降りました。",
+      "particles": [
+        {
+          "kind": "particle",
+          "before": "急",
+          "answer": "に",
+          "after": "雨が降りました。",
+          "choices": [
+            "に",
+            "を",
+            "が",
+            "と"
+          ],
+          "explanation": "這裡用「に」讓句子自然連接。"
+        }
+      ],
+      "grammar": {
+        "kind": "particle",
+        "before": "急",
+        "answer": "に",
+        "after": "雨が降りました。",
+        "choices": [
+          "に",
+          "を",
+          "が",
+          "と"
+        ],
+        "explanation": "這裡用「に」讓句子自然連接。",
+        "prompt_zh": "看例句選出最自然的助詞。",
+        "hintChunks": [
+          "急",
+          "に",
+          "雨"
+        ]
+      },
+      "chunks": [
+        "急",
+        "に",
+        "雨",
+        "が",
+        "降りました。"
+      ],
+      "distractors": [],
+      "synonyms": [
+        {
+          "source": "急に",
+          "prompt_zh": "選出和「急に」意思最接近的說法。",
+          "answer": "突然",
+          "choices": [
+            "突然",
+            "普通に",
+            "丁寧に",
+            "安全に"
+          ],
+          "explanation": "「急に」表示突然發生。"
+        }
+      ]
+    }
+  ]
+}

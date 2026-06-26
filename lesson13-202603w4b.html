@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesson13 — 週六 神的朋友</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', 'Noto Serif TC', '思源宋體', serif;
+      background: #f9f4ec;
+      color: #3a2e24;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .card {
+      background: #fff8f0;
+      border-radius: 18px;
+      box-shadow: 0 6px 32px rgba(120, 80, 30, 0.13);
+      max-width: 720px;
+      width: 100%;
+      overflow: hidden;
+      border: 1px solid #f0dfc8;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #8f5a2f 0%, #b27442 62%, #d19859 100%);
+      padding: 2rem 2rem 1.5rem;
+      text-align: center;
+    }
+
+    .lesson-label {
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      color: rgba(255, 240, 215, 0.85);
+      margin-bottom: 0.45rem;
+    }
+
+    .lesson-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #fff8ee;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 8px rgba(80, 30, 0, 0.28);
+    }
+
+    .lesson-subtitle {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: rgba(255, 235, 185, 0.96);
+      letter-spacing: 0.08em;
+    }
+
+    .divider-line {
+      height: 3px;
+      background: linear-gradient(90deg, transparent, rgba(255, 235, 190, 0.55), transparent);
+      margin-top: 1.2rem;
+    }
+
+    .body {
+      padding: 1.8rem 2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+    }
+
+    .section-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #8b4513;
+      margin-bottom: 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .story-box,
+    .three-things,
+    .scripture-box,
+    .summary-box,
+    .prayer-box {
+      border-radius: 12px;
+      padding: 1.25rem 1.4rem;
+    }
+
+    .story-box {
+      background: #fffaf4;
+      border: 1px solid #f0dfc8;
+    }
+
+    .story-text {
+      font-size: 1.03rem;
+      line-height: 2;
+      color: #3a2e24;
+      text-align: justify;
+    }
+
+    .story-text p + p { margin-top: 0.9em; }
+
+    .three-things {
+      background: #fef9ef;
+      border-left: 4px solid #d4924a;
+    }
+
+    .three-things ol {
+      padding-left: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .three-things li {
+      font-size: 1.02rem;
+      line-height: 1.75;
+      color: #4a3020;
+    }
+
+    .scripture-box {
+      background: linear-gradient(135deg, #fdf3e3, #fae8cc);
+      text-align: center;
+    }
+
+    .scripture-text {
+      font-size: 1.08rem;
+      font-style: italic;
+      line-height: 1.9;
+      color: #5c3d1e;
+      font-weight: 500;
+    }
+
+    .scripture-text p + p { margin-top: 0.8em; }
+
+    .scripture-ref {
+      margin-top: 0.6rem;
+      font-size: 0.88rem;
+      color: #8b6040;
+    }
+
+    .summary-box {
+      background: #fffdf7;
+      border: 1px dashed #d9b17a;
+    }
+
+    .summary-text {
+      font-size: 1.03rem;
+      line-height: 1.9;
+      color: #4a3020;
+    }
+
+    .prayer-box {
+      background: #fdf6ee;
+      border: 1px dashed #d4a070;
+    }
+
+    .prayer-text {
+      font-size: 1.01rem;
+      line-height: 2;
+      color: #4a3020;
+    }
+
+    .prayer-text p + p { margin-top: 0.5em; }
+
+    .footer-divider {
+      text-align: center;
+      padding: 0.7rem 2rem 0.5rem;
+      font-size: 0.82rem;
+      color: #c0a080;
+      letter-spacing: 0.12em;
+      border-top: 1px solid #f0dfc8;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 0.3rem 2rem 1.2rem;
+      font-size: 0.78rem;
+      color: #b08060;
+      letter-spacing: 0.08em;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <div class="lesson-label">Lesson 13 · 2026 三月第四週</div>
+      <div class="lesson-title">亞伯拉罕 — 神的朋友</div>
+      <div class="lesson-subtitle">週六 與神親密交通</div>
+      <div class="divider-line"></div>
+    </div>
+
+    <div class="body">
+      <div>
+        <div class="section-title">📖 今日故事</div>
+        <div class="story-box">
+          <div class="story-text">
+            <p>有一天，天氣正熱的時候，亞伯拉罕坐在帳棚門口。他舉目一看，發現有三個人站在他前面，亞伯拉罕立刻跑去迎接他們，請他們留下來休息，又預備水給他們洗腳，還為他們準備豐盛的食物。</p>
+            <p>這三位來客當中，一位是主耶和華，另外兩位是天使。其中一位對亞伯拉罕說：「到明年這時候，我必要回到你這裡，你的妻子撒拉必生一個兒子。」撒拉在帳棚門口聽見，就暗暗笑了。耶和華卻說：「撒拉為什麼暗笑？……耶和華豈有難成的事麼？」</p>
+            <p>後來，他們要往所多瑪去，亞伯拉罕就送他們一程。這段故事給我們看見，神不是只遠遠地在天上，祂也願意在亞伯拉罕能懂的情形裡，像朋友一樣來到他身邊，與他親密說話。亞伯拉罕和神之間的關係，已經不是只停在敬拜、仰望而已，更是能交通、能同行、能聽見神心意的朋友關係。</p>
+            <p>亞伯拉罕對神的經歷，一步一步往前：起初他經歷神的榮耀，後來經歷神是至高的神、全豐全足的大能者；到了這裡，神更以親近、柔和的方式來到他身邊。我們也需要這樣經歷神：不只知道祂偉大，也知道祂願意親近我們。無論在讀書、吃飯、走路、坐車的時候，我們都可以向神說話，把心裡的感受告訴祂，也學習在禱告中聽祂的心意。</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">✨ 故事學到的三件事</div>
+        <div class="three-things">
+          <ol>
+            <li>神不只是偉大的主，也願意親近人，與人有甜美的交通。</li>
+            <li>亞伯拉罕樂意接待神，也因此經歷到與神像朋友一樣來往。</li>
+            <li>我們可以藉著禱告向神傾心吐意，也學習明白神的心意。</li>
+          </ol>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">📜 禱讀經文</div>
+        <div class="scripture-box">
+          <div class="scripture-text">
+            <p>「耶和華說，我所要作的事，豈可瞞著亞伯拉罕呢？」</p>
+            <p>「亞伯拉罕信神，這就算為他的義。他又得稱為神的朋友。」</p>
+          </div>
+          <div class="scripture-ref">創世記 18:17；雅各書 2:23 下</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">📝 每日信息總結</div>
+        <div class="summary-box">
+          <div class="summary-text">藉著禱告作神的朋友，向神傾心吐意，也經歷神將祂的心意告訴我們。</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">🙏 一起禱告</div>
+        <div class="prayer-box">
+          <div class="prayer-text">
+            <p>親愛的主，謝謝你不只是高高在上的神，你也願意親近我，像朋友一樣與我說話。</p>
+            <p>求你教我常常向你禱告，把心裡的感受、想法和需要都帶到你面前。</p>
+            <p>也求你讓我在每天的生活裡，越來越認識你、親近你，學習聽見你的心意。</p>
+            <p>願我天天經歷你是我的主，也是我最親近的朋友。奉主耶穌的名禱告，阿們。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-divider">——————END——————</div>
+    <div class="footer">聖經之旅 第一冊 · 蒙揀選的族類</div>
+  </div>
+</body>
+</html>
