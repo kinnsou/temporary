@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-06-26T11:05:27Z",
+    "updatedAt": "2026-06-27T11:07:06Z",
     "sourceCount": 380,
-    "releasedCount": 185,
+    "releasedCount": 190,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "通信",
+      "reading": "つうしん",
+      "meaning": "通訊",
+      "example": "通信をしました。",
+      "translation": "進行了通訊。",
+      "firstSeen": "2026-06-27",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "普及",
+      "reading": "ふきゅう",
+      "meaning": "普及",
+      "example": "普及をしました。",
+      "translation": "進行了普及。",
+      "firstSeen": "2026-06-27",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "情報",
+      "reading": "じょうほう",
+      "meaning": "資訊",
+      "example": "情報について話しました。",
+      "translation": "談到了資訊。",
+      "firstSeen": "2026-06-27",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "広告",
+      "reading": "こうこく",
+      "meaning": "廣告",
+      "example": "広告について話しました。",
+      "translation": "談到了廣告。",
+      "firstSeen": "2026-06-27",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "世論",
+      "reading": "よろん",
+      "meaning": "輿論",
+      "example": "世論について話しました。",
+      "translation": "談到了輿論。",
+      "firstSeen": "2026-06-27",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "謙譲",
       "reading": "けんじょう",

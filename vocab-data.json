@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-06-26T11:01:59Z",
-    "sourceCount": 251,
-    "includedCount": 243
+    "updatedAt": "2026-06-27T11:05:22Z",
+    "sourceCount": 254,
+    "includedCount": 246
   },
   "words": [
+    {
+      "word": "ever",
+      "meaning": "曾經；在任何時候",
+      "example": "Have you ever seen snow?",
+      "translation": "你曾經看過雪嗎？",
+      "firstSeen": "2026-06-27",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "boyfriend",
+      "meaning": "男朋友",
+      "example": "Her boyfriend walks her home after class.",
+      "translation": "她男朋友下課後會陪她走回家。",
+      "firstSeen": "2026-06-27",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "little",
+      "meaning": "小的；年幼的",
+      "example": "The little dog runs to me every morning.",
+      "translation": "那隻小狗每天早上都會跑向我。",
+      "firstSeen": "2026-06-27",
+      "pos": [
+        "adj"
+      ]
+    },
     {
       "word": "ocean",
       "meaning": "海洋",
