@@ -1,18 +1,38 @@
 {
   "meta": {
-    "updatedAt": "2026-06-27T11:05:22Z",
-    "sourceCount": 254,
-    "includedCount": 246
+    "updatedAt": "2026-06-28T11:06:00Z",
+    "sourceCount": 257,
+    "includedCount": 249
   },
   "words": [
     {
-      "word": "ever",
-      "meaning": "曾經；在任何時候",
-      "example": "Have you ever seen snow?",
-      "translation": "你曾經看過雪嗎？",
-      "firstSeen": "2026-06-27",
+      "word": "cry",
+      "meaning": "哭；哭泣",
+      "example": "The baby cried when he lost his toy.",
+      "translation": "那個寶寶弄丟玩具時哭了。",
+      "firstSeen": "2026-06-28",
       "pos": [
-        "adv"
+        "v"
+      ]
+    },
+    {
+      "word": "post",
+      "meaning": "張貼；貼出",
+      "example": "Dad posted a note on the door yesterday.",
+      "translation": "爸爸昨天在門上貼了一張便條。",
+      "firstSeen": "2026-06-28",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "drive",
+      "meaning": "開車；駕駛",
+      "example": "My uncle drives to work every morning.",
+      "translation": "我叔叔每天早上都開車去上班。",
+      "firstSeen": "2026-06-28",
+      "pos": [
+        "v"
       ]
     },
     {
@@ -23,6 +43,16 @@
       "firstSeen": "2026-06-27",
       "pos": [
         "n"
+      ]
+    },
+    {
+      "word": "ever",
+      "meaning": "曾經；在任何時候",
+      "example": "Have you ever seen snow?",
+      "translation": "你曾經看過雪嗎？",
+      "firstSeen": "2026-06-27",
+      "pos": [
+        "adv"
       ]
     },
     {

@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-06-27T11:07:06Z",
+    "updatedAt": "2026-06-28T11:07:44Z",
     "sourceCount": 380,
-    "releasedCount": 190,
+    "releasedCount": 195,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "購読",
+      "reading": "こうどく",
+      "meaning": "訂閱",
+      "example": "購読をしました。",
+      "translation": "進行了訂閱。",
+      "firstSeen": "2026-06-28",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "編集",
+      "reading": "へんしゅう",
+      "meaning": "編輯",
+      "example": "編集をしました。",
+      "translation": "進行了編輯。",
+      "firstSeen": "2026-06-28",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "番組",
+      "reading": "ばんぐみ",
+      "meaning": "節目",
+      "example": "番組について話しました。",
+      "translation": "談到了節目。",
+      "firstSeen": "2026-06-28",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "専門",
+      "reading": "せんもん",
+      "meaning": "專業",
+      "example": "専門について話しました。",
+      "translation": "談到了專業。",
+      "firstSeen": "2026-06-28",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "出版",
+      "reading": "しゅっぱん",
+      "meaning": "出版",
+      "example": "出版をしました。",
+      "translation": "進行了出版。",
+      "firstSeen": "2026-06-28",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "通信",
       "reading": "つうしん",
