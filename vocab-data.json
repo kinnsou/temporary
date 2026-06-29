@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-06-28T11:06:00Z",
-    "sourceCount": 257,
-    "includedCount": 249
+    "updatedAt": "2026-06-29T11:02:04Z",
+    "sourceCount": 260,
+    "includedCount": 252
   },
   "words": [
+    {
+      "word": "flag",
+      "meaning": "旗子；旗幟",
+      "example": "The red flag is on the school gate.",
+      "translation": "那面紅旗掛在學校大門上。",
+      "firstSeen": "2026-06-29",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "out",
+      "meaning": "在外面；出去",
+      "example": "The kids are out in the yard after lunch.",
+      "translation": "孩子們午餐後在院子裡玩。",
+      "firstSeen": "2026-06-29",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "hit",
+      "meaning": "打；擊中",
+      "example": "He hit the ball and ran to first base.",
+      "translation": "他把球打出去後跑向一壘。",
+      "firstSeen": "2026-06-29",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "cry",
       "meaning": "哭；哭泣",

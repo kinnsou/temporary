@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-06-28T11:07:44Z",
+    "updatedAt": "2026-06-29T11:05:23Z",
     "sourceCount": 380,
-    "releasedCount": 195,
+    "releasedCount": 200,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "講義",
+      "reading": "こうぎ",
+      "meaning": "講義",
+      "example": "講義をしました。",
+      "translation": "進行了講義。",
+      "firstSeen": "2026-06-29",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "研究",
+      "reading": "けんきゅう",
+      "meaning": "研究",
+      "example": "研究をしました。",
+      "translation": "進行了研究。",
+      "firstSeen": "2026-06-29",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "理論",
+      "reading": "りろん",
+      "meaning": "理論",
+      "example": "理論について話しました。",
+      "translation": "談到了理論。",
+      "firstSeen": "2026-06-29",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "応用",
+      "reading": "おうよう",
+      "meaning": "應用",
+      "example": "応用をしました。",
+      "translation": "進行了應用。",
+      "firstSeen": "2026-06-29",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "奨学金",
+      "reading": "しょうがくきん",
+      "meaning": "獎學金",
+      "example": "奨学金について話しました。",
+      "translation": "談到了獎學金。",
+      "firstSeen": "2026-06-29",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "購読",
       "reading": "こうどく",
