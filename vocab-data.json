@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-06-29T11:02:04Z",
-    "sourceCount": 260,
-    "includedCount": 252
+    "updatedAt": "2026-06-30T11:03:20Z",
+    "sourceCount": 263,
+    "includedCount": 255
   },
   "words": [
+    {
+      "word": "teach",
+      "meaning": "教；教導",
+      "example": "Ms. Lin teaches us a new song every Monday.",
+      "translation": "林老師每週一都會教我們一首新歌。",
+      "firstSeen": "2026-06-30",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "kid",
+      "meaning": "小孩；孩子",
+      "example": "The kid is drawing a cat at the table.",
+      "translation": "那個孩子正在桌邊畫一隻貓。",
+      "firstSeen": "2026-06-30",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "drink",
+      "meaning": "喝；飲用",
+      "example": "I drink water after I play basketball.",
+      "translation": "我打完籃球後會喝水。",
+      "firstSeen": "2026-06-30",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "flag",
       "meaning": "旗子；旗幟",

@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-06-29T11:05:23Z",
+    "updatedAt": "2026-06-30T11:05:26Z",
     "sourceCount": 380,
-    "releasedCount": 200,
+    "releasedCount": 205,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "観光",
+      "reading": "かんこう",
+      "meaning": "觀光",
+      "example": "観光をしました。",
+      "translation": "進行了觀光。",
+      "firstSeen": "2026-06-30",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "知識",
+      "reading": "ちしき",
+      "meaning": "知識",
+      "example": "知識について話しました。",
+      "translation": "談到了知識。",
+      "firstSeen": "2026-06-30",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "延期",
+      "reading": "えんき",
+      "meaning": "延期",
+      "example": "延期をしました。",
+      "translation": "進行了延期。",
+      "firstSeen": "2026-06-30",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "宿泊",
+      "reading": "しゅくはく",
+      "meaning": "住宿",
+      "example": "宿泊をしました。",
+      "translation": "進行了住宿。",
+      "firstSeen": "2026-06-30",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "基礎",
+      "reading": "きそ",
+      "meaning": "基礎",
+      "example": "基礎について話しました。",
+      "translation": "談到了基礎。",
+      "firstSeen": "2026-06-30",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "講義",
       "reading": "こうぎ",
