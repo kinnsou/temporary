@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-06-30T11:05:26Z",
+    "updatedAt": "2026-07-01T11:05:26Z",
     "sourceCount": 380,
-    "releasedCount": 205,
+    "releasedCount": 210,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "近所",
+      "reading": "きんじょ",
+      "meaning": "附近",
+      "example": "近所について話しました。",
+      "translation": "談到了附近。",
+      "firstSeen": "2026-07-01",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "調整",
+      "reading": "ちょうせい",
+      "meaning": "調整",
+      "example": "調整をしました。",
+      "translation": "進行了調整。",
+      "firstSeen": "2026-07-01",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "行事",
+      "reading": "ぎょうじ",
+      "meaning": "活動",
+      "example": "行事について話しました。",
+      "translation": "談到了活動。",
+      "firstSeen": "2026-07-01",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "交渉",
+      "reading": "こうしょう",
+      "meaning": "交涉",
+      "example": "交渉をしました。",
+      "translation": "進行了交涉。",
+      "firstSeen": "2026-07-01",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "中止",
+      "reading": "ちゅうし",
+      "meaning": "中止",
+      "example": "中止をしました。",
+      "translation": "進行了中止。",
+      "firstSeen": "2026-07-01",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "観光",
       "reading": "かんこう",

@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-06-30T11:03:20Z",
-    "sourceCount": 263,
-    "includedCount": 255
+    "updatedAt": "2026-07-01T11:01:51Z",
+    "sourceCount": 266,
+    "includedCount": 258
   },
   "words": [
+    {
+      "word": "ill",
+      "meaning": "生病的；不舒服的",
+      "example": "My brother is ill, so he is resting at home today.",
+      "translation": "我哥哥生病了，所以他今天在家休息。",
+      "firstSeen": "2026-07-01",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "mask",
+      "meaning": "口罩；面具",
+      "example": "She puts on a mask before she rides her scooter.",
+      "translation": "她騎機車前會先戴上口罩。",
+      "firstSeen": "2026-07-01",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "rude",
+      "meaning": "沒禮貌的；粗魯的",
+      "example": "It is rude to point at people.",
+      "translation": "用手指著別人很沒禮貌。",
+      "firstSeen": "2026-07-01",
+      "pos": [
+        "adj"
+      ]
+    },
     {
       "word": "teach",
       "meaning": "教；教導",
