@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-07-01T11:05:26Z",
+    "updatedAt": "2026-07-02T11:05:23Z",
     "sourceCount": 380,
-    "releasedCount": 210,
+    "releasedCount": 215,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "診察",
+      "reading": "しんさつ",
+      "meaning": "診察",
+      "example": "診察をしました。",
+      "translation": "進行了診察。",
+      "firstSeen": "2026-07-02",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "睡眠",
+      "reading": "すいみん",
+      "meaning": "睡眠",
+      "example": "睡眠について話しました。",
+      "translation": "談到了睡眠。",
+      "firstSeen": "2026-07-02",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "栄養",
+      "reading": "えいよう",
+      "meaning": "營養",
+      "example": "栄養について話しました。",
+      "translation": "談到了營養。",
+      "firstSeen": "2026-07-02",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "健康",
+      "reading": "けんこう",
+      "meaning": "健康",
+      "example": "健康について話しました。",
+      "translation": "談到了健康。",
+      "firstSeen": "2026-07-02",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "予防",
+      "reading": "よぼう",
+      "meaning": "預防",
+      "example": "予防をしました。",
+      "translation": "進行了預防。",
+      "firstSeen": "2026-07-02",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "近所",
       "reading": "きんじょ",

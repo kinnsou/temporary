@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-07-01T11:01:51Z",
-    "sourceCount": 266,
-    "includedCount": 258
+    "updatedAt": "2026-07-02T11:02:53Z",
+    "sourceCount": 269,
+    "includedCount": 261
   },
   "words": [
+    {
+      "word": "bath",
+      "meaning": "洗澡；沐浴",
+      "example": "I take a bath before I go to bed.",
+      "translation": "我睡前會洗澡。",
+      "firstSeen": "2026-07-02",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "gas",
+      "meaning": "汽油；瓦斯",
+      "example": "We need more gas before we drive to Tainan.",
+      "translation": "我們開車去台南前需要先加油。",
+      "firstSeen": "2026-07-02",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "join",
+      "meaning": "加入；參加",
+      "example": "She will join the art club next semester.",
+      "translation": "她下學期會加入美術社。",
+      "firstSeen": "2026-07-02",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "ill",
       "meaning": "生病的；不舒服的",
