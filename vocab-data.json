@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-07-02T11:02:53Z",
-    "sourceCount": 269,
-    "includedCount": 261
+    "updatedAt": "2026-07-03T11:02:57Z",
+    "sourceCount": 272,
+    "includedCount": 264
   },
   "words": [
+    {
+      "word": "rabbit",
+      "meaning": "兔子",
+      "example": "The rabbit is eating a carrot in the yard.",
+      "translation": "那隻兔子正在院子裡吃紅蘿蔔。",
+      "firstSeen": "2026-07-03",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "factory",
+      "meaning": "工廠",
+      "example": "My aunt works in a toy factory.",
+      "translation": "我阿姨在一間玩具工廠上班。",
+      "firstSeen": "2026-07-03",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "leaf",
+      "meaning": "葉子",
+      "example": "A small leaf fell onto my book.",
+      "translation": "一片小葉子掉到我的書上。",
+      "firstSeen": "2026-07-03",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "bath",
       "meaning": "洗澡；沐浴",
