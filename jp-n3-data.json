@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-07-02T11:05:23Z",
+    "updatedAt": "2026-07-03T11:05:27Z",
     "sourceCount": 380,
-    "releasedCount": 215,
+    "releasedCount": 220,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "診断",
+      "reading": "しんだん",
+      "meaning": "診斷",
+      "example": "診断をしました。",
+      "translation": "進行了診斷。",
+      "firstSeen": "2026-07-03",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "看護",
+      "reading": "かんご",
+      "meaning": "看護",
+      "example": "看護をしました。",
+      "translation": "進行了看護。",
+      "firstSeen": "2026-07-03",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "症状",
+      "reading": "しょうじょう",
+      "meaning": "症狀",
+      "example": "症状について話しました。",
+      "translation": "談到了症狀。",
+      "firstSeen": "2026-07-03",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "手術",
+      "reading": "しゅじゅつ",
+      "meaning": "手術",
+      "example": "手術をしました。",
+      "translation": "進行了手術。",
+      "firstSeen": "2026-07-03",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "休憩",
+      "reading": "きゅうけい",
+      "meaning": "休息",
+      "example": "休憩をしました。",
+      "translation": "進行了休息。",
+      "firstSeen": "2026-07-03",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "診察",
       "reading": "しんさつ",
