@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-07-03T11:02:57Z",
-    "sourceCount": 272,
-    "includedCount": 264
+    "updatedAt": "2026-07-04T11:03:14Z",
+    "sourceCount": 275,
+    "includedCount": 267
   },
   "words": [
+    {
+      "word": "dirty",
+      "meaning": "髒的",
+      "example": "Your hands are dirty after you play outside.",
+      "translation": "你出去玩之後，手變得髒髒的。",
+      "firstSeen": "2026-07-04",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "big",
+      "meaning": "大的；巨大的",
+      "example": "The big dog is sleeping by the door.",
+      "translation": "那隻大狗正睡在門邊。",
+      "firstSeen": "2026-07-04",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "pen",
+      "meaning": "筆；原子筆",
+      "example": "I put my pen next to the notebook.",
+      "translation": "我把我的筆放在筆記本旁邊。",
+      "firstSeen": "2026-07-04",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "rabbit",
       "meaning": "兔子",

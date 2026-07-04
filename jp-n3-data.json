@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-07-03T11:05:27Z",
+    "updatedAt": "2026-07-04T11:05:25Z",
     "sourceCount": 380,
-    "releasedCount": 220,
+    "releasedCount": 225,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "苦労",
+      "reading": "くろう",
+      "meaning": "辛苦",
+      "example": "苦労をしました。",
+      "translation": "進行了辛苦。",
+      "firstSeen": "2026-07-04",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "緊張",
+      "reading": "きんちょう",
+      "meaning": "緊張",
+      "example": "緊張をしました。",
+      "translation": "進行了緊張。",
+      "firstSeen": "2026-07-04",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "結論",
+      "reading": "けつろん",
+      "meaning": "結論",
+      "example": "結論について話しました。",
+      "translation": "談到了結論。",
+      "firstSeen": "2026-07-04",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "治療",
+      "reading": "ちりょう",
+      "meaning": "治療",
+      "example": "治療をしました。",
+      "translation": "進行了治療。",
+      "firstSeen": "2026-07-04",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "我慢",
+      "reading": "がまん",
+      "meaning": "忍耐",
+      "example": "我慢をしました。",
+      "translation": "進行了忍耐。",
+      "firstSeen": "2026-07-04",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "診断",
       "reading": "しんだん",
