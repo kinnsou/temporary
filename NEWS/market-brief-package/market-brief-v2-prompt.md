@@ -15,6 +15,7 @@
 9a. 本週／一週內除權息必須直接全展開；不可寫「另有 N 檔未展開」。1～2 個月遠期除權息固定顯示 15 條；若仍有更多，可顯示未展開數，但若有「看更多」按鈕就必須真的可用。
 10. 可見頁面文字只能寫正式新聞、行情、來源與市場結論；禁止出現任何編輯台提醒、製作說明、改版說明、流程語、品質檢查或反省文，例如「本刊製作調整」、「這篇只放可追溯來源」、「source-first」、「no filler」、「Filler Removed」、「0段」、「單一 responsive HTML」、「前3國際大事＋後2財經」等。
 11. Hero lead 與各區標題都要像完稿新聞版面；不要寫資料來源政策、製作說明、欄位配置規則或提醒句。
+12. Hero lead 是首頁最大版面的獨立主版新聞，不是整份早報總摘要。它的事件不得與 world、taiwan、topic_voices 任一卡片重複、近似、上下位或共用同一新聞事件；禁止把下方多張卡片揉成「今日主軸」式總結。
 
 ## 必查來源優先序
 - 官方：TWSE、TPEx、金管會、央行、公司 IR / 新聞稿、Fed / Treasury / SEC。
@@ -28,12 +29,14 @@
   "edition": "source-first",
   "hero": {
     "label": "Lead",
-    "takeaway": "一行主結論",
-    "body": "一句說明，必須來自最重要的 source-backed item"
+    "event_key": "不可與 world/taiwan/topic_voices 任何 event_key 重複的獨立事件鍵",
+    "takeaway": "主版新聞大標",
+    "body": "2 句說明，必須來自獨立 source-backed item；不可摘要或合併下方卡片事件"
   },
   "world": [
     {
       "slot": "global_event_1",
+      "event_key": "此卡事件鍵",
       "title": "短標題，不超過 22 字",
       "body": "發生什麼；為何重要。",
       "tag": "War / Diplomacy / Security...",
@@ -45,6 +48,7 @@
   "taiwan": [
     {
       "slot": "taiwan_issue_1",
+      "event_key": "此卡事件鍵",
       "title": "短標題",
       "body": "台灣要事或財經重點。",
       "source_name": "CNA / official",
@@ -54,6 +58,7 @@
   ],
   "topic_voices": [
     {
+      "event_key": "此卡人物/發言事件鍵",
       "person": "Donald J. Trump / Jensen Huang / Mark Zuckerberg...",
       "handle_or_role": "@realDonaldTrump / Nvidia CEO / Meta CEO",
       "source_url": "https://...",
@@ -71,5 +76,6 @@
 - 國際是否 6 則，且前 4 則是國際大事、最後 2 則才是財經/產業？最後 2 則是否至少 1 則是美元/日幣或日圓/黃金/油價/降息/非農/就業/CPI/Fed 類當日市場報告？沒有就重抓來源。
 - 台灣是否 3 則，且前 2 則台灣要事、最後 1 則財經/市場？沒有就重排。
 - 社群/人物是否補滿 3 格、每格都有今日或昨日可驗證來源日期，且沒有「未找到」「not verified」「今日無發言」這類提示文？沒有就補位；若 X status 日期不是今日/昨日，必須丟棄。
+- Hero、world、taiwan、topic_voices 是否各自有 event_key，且沒有任何重複、近似、上下位或同一來源事件？尤其 Hero 不可重講下方新聞卡；人物卡不可只是把台灣/國際新聞中的同一人物再講一次。若有重複，必須換題或重排後再輸出。
 - 本週／一週內除權息是否全展開且沒有「另有 N 檔未展開」？遠期除權息是否顯示 15 條？沒有就改。
 - 可見文字是否混入 prompt/流程/反省/改版/提醒/欄位配置字眼？有就刪，改成正式新聞版面文字。
