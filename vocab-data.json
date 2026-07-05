@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-07-04T11:03:14Z",
-    "sourceCount": 275,
-    "includedCount": 267
+    "updatedAt": "2026-07-05T11:02:59Z",
+    "sourceCount": 278,
+    "includedCount": 270
   },
   "words": [
+    {
+      "word": "forever",
+      "meaning": "永遠；一直",
+      "example": "We will be friends forever.",
+      "translation": "我們會永遠當朋友。",
+      "firstSeen": "2026-07-05",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "hand",
+      "meaning": "手",
+      "example": "Raise your hand if you know the answer.",
+      "translation": "如果你知道答案，就把手舉起來。",
+      "firstSeen": "2026-07-05",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "short",
+      "meaning": "短的；矮的",
+      "example": "My hair is short now.",
+      "translation": "我現在是短頭髮。",
+      "firstSeen": "2026-07-05",
+      "pos": [
+        "adj"
+      ]
+    },
     {
       "word": "dirty",
       "meaning": "髒的",

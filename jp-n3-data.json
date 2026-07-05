@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-07-04T11:05:25Z",
+    "updatedAt": "2026-07-05T11:05:28Z",
     "sourceCount": 380,
-    "releasedCount": 225,
+    "releasedCount": 230,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "遠慮",
+      "reading": "えんりょ",
+      "meaning": "客氣、婉拒",
+      "example": "遠慮をしました。",
+      "translation": "進行了客氣、婉拒。",
+      "firstSeen": "2026-07-05",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "確認",
+      "reading": "かくにん",
+      "meaning": "確認",
+      "example": "確認をしました。",
+      "translation": "進行了確認。",
+      "firstSeen": "2026-07-05",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "承知",
+      "reading": "しょうち",
+      "meaning": "知道、答應",
+      "example": "承知をしました。",
+      "translation": "進行了知道、答應。",
+      "firstSeen": "2026-07-05",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "感動",
+      "reading": "かんどう",
+      "meaning": "感動",
+      "example": "感動をしました。",
+      "translation": "進行了感動。",
+      "firstSeen": "2026-07-05",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "募集",
+      "reading": "ぼしゅう",
+      "meaning": "募集",
+      "example": "募集をしました。",
+      "translation": "進行了募集。",
+      "firstSeen": "2026-07-05",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "苦労",
       "reading": "くろう",
