@@ -396,22 +396,32 @@ function buildQuizItems(pool,total,knownSet=new Set()){
 
 
 /* ══ Map quest helpers ═══════════════════════════════════ */
-const MAP_STAGE_COUNT=30;
+const MAP_INITIAL_STAGE_COUNT=30;
+const MAP_STAGE_LOOKAHEAD=10;
+const MAP_GROUP_GAP=270;
+const MAP_TOP_MARGIN=200;
+const MAP_BOTTOM_MARGIN=180;
+const MAP_TURN_TOP_OFFSET=110;
 const BOSS_EVERY=5;
 const MAP_BIOMES=[
   {name:'新手森林',emoji:'🌲',from:1,to:10,bg:['#ecfdf5','#d1fae5'],color:'#22c55e'},
   {name:'星砂沙漠',emoji:'🏜️',from:11,to:20,bg:['#fff7ed','#fed7aa'],color:'#f97316'},
   {name:'熔岩火山',emoji:'🌋',from:21,to:30,bg:['#fff1f2','#fecdd3'],color:'#fb7185'},
 ];
+function normalizeMapStage(stage){return Math.max(1,Number(stage||1)|0);}
+function mapVisibleStageCount(...stages){
+  const known=Math.max(1,...stages.map(normalizeMapStage));
+  return Math.max(MAP_INITIAL_STAGE_COUNT,Math.ceil((known+MAP_STAGE_LOOKAHEAD)/BOSS_EVERY)*BOSS_EVERY);
+}
 function isBossStage(stage){return stage>0&&stage%BOSS_EVERY===0;}
-function biomeForStage(stage){return MAP_BIOMES.find(b=>stage>=b.from&&stage<=b.to)||MAP_BIOMES[0];}
+function biomeForStage(stage){const s=((normalizeMapStage(stage)-1)%MAP_INITIAL_STAGE_COUNT)+1;return MAP_BIOMES.find(b=>s>=b.from&&s<=b.to)||MAP_BIOMES[0];}
 function stageDocId(stage){return `stage_${String(stage).padStart(3,'0')}`;}
 function getPlayerMapStage(profile){return Math.max(1,Number(profile?.mapStage||profile?.level||1));}
 function getEntryMapStage(entry){return Math.max(1,Number(entry?.mapStage||entry?.level||1));}
 function defaultBossAvgSec(stage){return Math.max(30,50-Math.floor((Math.max(1,stage)-1)/5)*5);}
 const MAP_FOOD_BONUS=3;
-const MAP_FOOD_BONUS_STAGES=[4,9,14,19,24,29];
-function isFoodBonusStage(stage){return MAP_FOOD_BONUS_STAGES.includes(Number(stage));}
+function isFoodBonusStage(stage){const n=normalizeMapStage(stage);return n>=4&&(n-4)%BOSS_EVERY===0;}
+function mapFoodBonusStages(stageCount){const out=[];for(let s=4;s<=stageCount;s+=BOSS_EVERY)out.push(s);return out;}
 function clearPassTarget(total){return Math.max(1,Math.ceil((total||15)/2));}
 function bossPassTarget(total){return Math.max(8,clearPassTarget(total));}
 function stagePass(score,total,run){
@@ -549,6 +559,7 @@ function useFb(){
       const profile=await window.FB.ops.refreshProfile(window.FB.uid);
       let pet=null;
       if(profile&&profile.currentPetId){pet=await window.FB.ops.loadPet(profile.currentPetId);}
+      window.FB.profile=profile;
       setFb({ready:true,uid:window.FB.uid,profile,pet});
     }catch(e){console.warn('[useFb] refresh failed',e);}
   },[]);
@@ -1157,16 +1168,23 @@ function FlashScreen({charSrc,flashAll,knownWords,refreshFb,onNav,pc,voiceGender
 function MapScreen({profile,uid,studentName,charSrc,pc,onNav,onStartStage,cloudEntries,stageRecords,onRefreshMap}){
   const scrollRef=useRef(null);
   const currentNodeRef=useRef(null);
-  const currentStage=Math.min(MAP_STAGE_COUNT,getPlayerMapStage(profile));
+  const currentStage=getPlayerMapStage(profile);
   const records=useMemo(()=>{const m=new Map();(stageRecords||[]).forEach(r=>m.set(Number(r.stage||0),r));return m;},[stageRecords]);
   const mapStars=profile?.mapStars||{};
-  const friends=useMemo(()=>{const map=new Map();(cloudEntries||[]).filter(e=>String(e.uid||'')!==String(uid||'')&&String(e.name||'')!==String(studentName||'')).slice(0,16).forEach((e,i)=>{const st=Math.min(MAP_STAGE_COUNT,getEntryMapStage(e));if(!map.has(st))map.set(st,[]);map.get(st).push({...e,rank:i+1});});return map;},[cloudEntries,uid,studentName]);
-  const boardH=1840;
+  const stageCount=useMemo(()=>{
+    const entryMax=Math.max(1,...(cloudEntries||[]).map(getEntryMapStage));
+    const recordMax=Math.max(1,...(stageRecords||[]).map(r=>Number(r.stage||0)));
+    return mapVisibleStageCount(currentStage,entryMax,recordMax);
+  },[currentStage,cloudEntries,stageRecords]);
+  const friends=useMemo(()=>{const map=new Map();(cloudEntries||[]).filter(e=>String(e.uid||'')!==String(uid||'')&&String(e.name||'')!==String(studentName||'')).slice(0,16).forEach((e,i)=>{const st=Math.min(stageCount,getEntryMapStage(e));if(!map.has(st))map.set(st,[]);map.get(st).push({...e,rank:i+1});});return map;},[cloudEntries,uid,studentName,stageCount]);
+  const boardH=useMemo(()=>{
+    const groupCount=Math.ceil(stageCount/BOSS_EVERY);
+    return MAP_BOTTOM_MARGIN+MAP_TOP_MARGIN+MAP_TURN_TOP_OFFSET+Math.max(0,groupCount-1)*MAP_GROUP_GAP;
+  },[stageCount]);
   const points=useMemo(()=>{
     // Five-stage turn pockets: :>● then ●<: .
     // Boss stages sit on the outer edge; regular stages form the turn shape.
-    const groupGap=270;
-    const baseY=boardH-180;
+    const baseY=boardH-MAP_BOTTOM_MARGIN;
     const rightTurn=[
       {x:20,y:0},   // 1: approach
       {x:45,y:0},   // 2: lower colon
@@ -1181,15 +1199,15 @@ function MapScreen({profile,uid,studentName,charSrc,pc,onNav,onStartStage,cloudE
       {x:36,y:-55}, // 9: arrow neck
       {x:16,y:-55}, // 10: boss dot
     ];
-    return Array.from({length:MAP_STAGE_COUNT},(_,i)=>{
+    return Array.from({length:stageCount},(_,i)=>{
       const stage=i+1;
       const group=Math.floor((stage-1)/5);
       const slot=(stage-1)%5;
       const tpl=group%2===0?rightTurn:leftTurn;
       const pt=tpl[slot];
-      return{stage,x:pt.x,y:baseY-group*groupGap+pt.y,biome:biomeForStage(stage),boss:isBossStage(stage)};
+      return{stage,x:pt.x,y:baseY-group*MAP_GROUP_GAP+pt.y,biome:biomeForStage(stage),boss:isBossStage(stage)};
     });
-  },[]);
+  },[boardH,stageCount]);
   useEffect(()=>{
     const t=setTimeout(()=>{
       const el=scrollRef.current;
@@ -1234,7 +1252,7 @@ function MapScreen({profile,uid,studentName,charSrc,pc,onNav,onStartStage,cloudE
       {people.length>0&&<div style={{position:'absolute',left:'50%',top:'50%',transform:'translate(-50%,-62%)',display:'flex',pointerEvents:'none',zIndex:7}}>{people.slice(0,3).map((e,i)=>{const idx=petIdxFromId(e.avatarId)??avatarIdxFromId(e.avatarId);const src=CHARACTERS[idx]?.img||CHARACTERS[0].img;return <img key={(e.uid||e.name||i)+i} src={src} title={e.name||'玩家'} style={{width:40,height:40,objectFit:'contain',filter:'drop-shadow(0 3px 4px rgba(0,0,0,.22))',marginLeft:i?-24:0}}/>;})}</div>}
     </div>);
   };
-  const foodBonuses=MAP_FOOD_BONUS_STAGES.map(stage=>{const p=pointByStage.get(stage);if(!p)return null;const side=p.x>50?-1:1;const got=stage<currentStage;return(<div key={`food-${stage}`} style={{position:'absolute',left:`${p.x+side*30}%`,top:p.y-78,transform:'translate(-50%,-50%)',zIndex:3,textAlign:'center',opacity:got?0.42:1}}><div title={`通過第 ${stage} 關獲得肉塊 ×${MAP_FOOD_BONUS}`} style={{width:38,height:38,borderRadius:13,background:'#fff8',border:'2px dashed #fff',display:'flex',alignItems:'center',justifyContent:'center',fontSize:22,boxShadow:'0 3px 10px rgba(0,0,0,.09)'}}>🍖</div><div style={{fontSize:9,fontWeight:900,color:'#111827',textShadow:'0 1px 2px rgba(255,255,255,.75)',marginTop:1}}>+{MAP_FOOD_BONUS}</div><div style={{height:2,width:34,background:'repeating-linear-gradient(90deg,#fff 0 5px,transparent 5px 10px)',transform:`translate(${side*-12}px,22px) rotate(${side*24}deg)`}}/></div>);});
+  const foodBonuses=mapFoodBonusStages(stageCount).map(stage=>{const p=pointByStage.get(stage);if(!p)return null;const side=p.x>50?-1:1;const got=stage<currentStage;return(<div key={`food-${stage}`} style={{position:'absolute',left:`${p.x+side*30}%`,top:p.y-78,transform:'translate(-50%,-50%)',zIndex:3,textAlign:'center',opacity:got?0.42:1}}><div title={`通過第 ${stage} 關獲得肉塊 ×${MAP_FOOD_BONUS}`} style={{width:38,height:38,borderRadius:13,background:'#fff8',border:'2px dashed #fff',display:'flex',alignItems:'center',justifyContent:'center',fontSize:22,boxShadow:'0 3px 10px rgba(0,0,0,.09)'}}>🍖</div><div style={{fontSize:9,fontWeight:900,color:'#111827',textShadow:'0 1px 2px rgba(255,255,255,.75)',marginTop:1}}>+{MAP_FOOD_BONUS}</div><div style={{height:2,width:34,background:'repeating-linear-gradient(90deg,#fff 0 5px,transparent 5px 10px)',transform:`translate(${side*-12}px,22px) rotate(${side*24}deg)`}}/></div>);});
   return(<div className="screen" style={{background:'linear-gradient(170deg,#fafeff 0%,#f0fdf8 100%)'}}>
     <div style={{padding:'42px 18px 10px',background:'linear-gradient(180deg,#ffffff,#f8fdff)',boxShadow:'0 2px 12px rgba(0,0,0,.04)',zIndex:10}}>
       <div style={{display:'flex',alignItems:'center',gap:12}}>
@@ -1242,7 +1260,7 @@ function MapScreen({profile,uid,studentName,charSrc,pc,onNav,onStartStage,cloudE
         <div style={{flex:1,minWidth:0}}><div style={{fontSize:20,fontWeight:900,color:'#1a1a2e'}}>世界地圖闖關</div><div style={{fontSize:12,color:'#94a3b8',fontWeight:800}}>{studentName}：第 {currentStage} 關・下一魔王第 {nextBoss} 關</div></div>
         <button onClick={onRefreshMap} style={{border:'none',background:'#fff',borderRadius:14,padding:'10px 12px',fontSize:16,cursor:'pointer',boxShadow:'0 2px 10px rgba(0,0,0,0.06)'}}>↻</button>
       </div>
-      <div style={{height:9,background:'#eef2f7',borderRadius:999,overflow:'hidden',marginTop:12}}><div style={{height:'100%',width:`${Math.min(100,cleared/MAP_STAGE_COUNT*100)}%`,background:'linear-gradient(90deg,#61c2ff,#22c55e,#ffb703)',borderRadius:999}}/></div>
+      <div style={{height:9,background:'#eef2f7',borderRadius:999,overflow:'hidden',marginTop:12}}><div style={{height:'100%',width:`${Math.min(100,cleared/stageCount*100)}%`,background:'linear-gradient(90deg,#61c2ff,#22c55e,#ffb703)',borderRadius:999}}/></div>
     </div>
     <div ref={scrollRef} className="scroll-body" style={{padding:'10px 14px 14px',background:'#7c4a24'}}>
       <div style={{position:'relative',height:boardH,border:'5px solid #fff',borderRadius:30,overflow:'hidden',boxShadow:'inset 0 0 0 2px rgba(255,255,255,.45),0 8px 28px rgba(0,0,0,.24)',background:'linear-gradient(180deg,#f8ffff 0%,#dff8f6 31%,#fff7c2 55%,#fff0a3 72%,#d8f8a8 100%)'}}>
@@ -1257,7 +1275,7 @@ function MapScreen({profile,uid,studentName,charSrc,pc,onNav,onStartStage,cloudE
         </svg>
         <div style={{position:'absolute',left:-30,top:75,width:145,height:62,borderRadius:'50%',background:'#fff8',filter:'blur(.2px)'}}/><div style={{position:'absolute',right:-35,top:230,width:130,height:55,borderRadius:'50%',background:'#fff7'}}/>
         <div style={{position:'absolute',left:18,top:290,fontSize:34}}>🏜️</div><div style={{position:'absolute',right:18,top:610,fontSize:34}}>🌾</div><div style={{position:'absolute',left:18,bottom:40,fontSize:34}}>🚩</div><div style={{position:'absolute',right:18,bottom:115,fontSize:38}}>🌲</div>
-        <svg width="100%" height="100%" style={{position:'absolute',inset:0,zIndex:1,overflow:'visible'}}>{Array.from({length:MAP_STAGE_COUNT-1},(_,i)=>stageLine(i+1,i+2))}</svg>
+        <svg width="100%" height="100%" style={{position:'absolute',inset:0,zIndex:1,overflow:'visible'}}>{Array.from({length:stageCount-1},(_,i)=>stageLine(i+1,i+2))}</svg>
         {foodBonuses}
         {points.map(renderNode)}
       </div>
@@ -1771,7 +1789,7 @@ function ResultScreen({score,xp,total,questRun,charSrc,charName,onRetry,onHome,p
       {questRun&&<div style={{width:'100%',background:questRun.passed?'#ecfdf5':'#fff7ed',borderRadius:18,padding:'14px 18px',display:'flex',alignItems:'center',gap:12,border:`1.5px solid ${questRun.passed?'#86efac':'#fed7aa'}`}}>
         <span style={{fontSize:24}}>{questRun.passed?'🗺️':'👑'}</span>
         <div style={{fontSize:12,color:questRun.passed?'#166534':'#9a3412',fontWeight:800,lineHeight:1.55}}>
-          {questRun.passed?`第 ${questRun.stage} 關通過！地圖已前進到第 ${Math.min(MAP_STAGE_COUNT,(questRun.stage||1)+1)} 關。`:questFailText}
+          {questRun.passed?`第 ${questRun.stage} 關通過！地圖已前進到第 ${Math.max(1,Number(questRun.mapStage||((questRun.stage||1)+1)))} 關。`:questFailText}
           {questRun.rewardFood>0&&<div style={{marginTop:3}}>路上撿到肉塊 🍖 ×{questRun.rewardFood}！</div>}
           {questRun.isBoss&&<div style={{marginTop:3}}>通關血條 {questClearScore}/{questTarget}，限時答對 {questRun.clearWins||0}/{questTarget}，平均答題 {formatSec(questRun.avgSec)}。</div>}
         </div>
@@ -2014,11 +2032,13 @@ function App(){
   const refreshMapStages=useCallback(async()=>{
     try{
       if(window.FB?.ops?.listMapStages){
-        const rows=await window.FB.ops.listMapStages(MAP_STAGE_COUNT);
+        const profileForMap=window.FB?.profile||fb?.profile||{level:displayStats.level};
+        const entryMax=Math.max(1,...(cloudEntries||[]).map(getEntryMapStage));
+        const rows=await window.FB.ops.listMapStages(mapVisibleStageCount(getPlayerMapStage(profileForMap),entryMax));
         setStageRecords(rows||[]);
       }
     }catch(e){console.warn('map stages fetch failed',e);}
-  },[]);
+  },[fb?.profile?.mapStage,fb?.profile?.level,displayStats.level,cloudEntries]);
 
   // Fetch leaderboard/map markers when entering rank or map screen
   useEffect(()=>{if(screen==='rank'||screen==='map')refreshLeaderboard();},[screen,refreshLeaderboard]);
@@ -2689,14 +2709,15 @@ async function markWordUnknown(uid, word) {
   return await updateDoc(doc(db, 'users', uid), { knownWords: arrayRemove(word), updatedAt: Date.now() });
 }
 
-async function listMapStages(maxRows = 60) {
+async function listMapStages(maxRows = null) {
   const snap = await getDocs(collection(db, 'mapStages'));
+  const cap = Number(maxRows || 0);
   const out = [];
   snap.forEach(d => {
     if (isEnglishClassroomDoc(d)) out.push({ id: d.id, ...d.data() });
   });
   return out
-    .filter(r => Number(r.stage || 0) > 0 && Number(r.stage || 0) <= maxRows)
+    .filter(r => Number(r.stage || 0) > 0 && (!cap || Number(r.stage || 0) <= cap))
     .sort((a,b) => Number(a.stage || 0) - Number(b.stage || 0));
 }
 
@@ -2704,12 +2725,11 @@ function mapStageDocId(stage) {
   return 'stage_' + String(stage | 0).padStart(3, '0');
 }
 const MAP_FOOD_BONUS_MODULE = 3;
-const MAP_FOOD_BONUS_STAGES_MODULE = [4,9,14,19,24,29];
-function isMapFoodBonusStageModule(stage) { return MAP_FOOD_BONUS_STAGES_MODULE.includes(Number(stage)); }
+function isMapFoodBonusStageModule(stage) { const n = Math.max(1, Number(stage || 1) | 0); return n >= 4 && (n - 4) % 5 === 0; }
 function mapStarsForScoreModule(score, total = 15) { const st = Number(score || 0); if (st >= 15) return 3; if (st >= 6) return 2; if (st >= 1) return 1; return 0; }
 
 async function clearMapStage(uid, run = {}) {
-  const stage = Math.max(1, Math.min(30, Number(run.stage || 1) | 0));
+  const stage = Math.max(1, Number(run.stage || 1) | 0);
   const passed = run.passed !== false;
   const now = Date.now();
   return await runTransaction(db, async (tx) => {
@@ -2721,7 +2741,7 @@ async function clearMapStage(uid, run = {}) {
     if (!userSnap.exists()) throw new Error('no-user');
     const user = userSnap.data();
     const curMap = Math.max(1, Number(user.mapStage || user.level || 1));
-    const nextMap = passed ? Math.max(curMap, Math.min(30, stage + 1)) : curMap;
+    const nextMap = passed ? Math.max(curMap, stage + 1) : curMap;
     const cleanName = String(run.name || user.name || '匿名玩家').trim().slice(0, 40);
     const avgSec = Math.max(0, Number(run.avgSec || 0));
     const stars = mapStarsForScoreModule(run.clearScore ?? run.score, run.total || 15);
