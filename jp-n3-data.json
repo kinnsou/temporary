@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-07-05T11:05:28Z",
+    "updatedAt": "2026-07-06T11:07:18Z",
     "sourceCount": 380,
-    "releasedCount": 230,
+    "releasedCount": 235,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "立場",
+      "reading": "たちば",
+      "meaning": "立場",
+      "example": "立場について話しました。",
+      "translation": "談到了立場。",
+      "firstSeen": "2026-07-06",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "政治",
+      "reading": "せいじ",
+      "meaning": "政治",
+      "example": "政治について話しました。",
+      "translation": "談到了政治。",
+      "firstSeen": "2026-07-06",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "意識",
+      "reading": "いしき",
+      "meaning": "意識",
+      "example": "意識をしました。",
+      "translation": "進行了意識。",
+      "firstSeen": "2026-07-06",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "判断",
+      "reading": "はんだん",
+      "meaning": "判斷",
+      "example": "判断をしました。",
+      "translation": "進行了判斷。",
+      "firstSeen": "2026-07-06",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "価値",
+      "reading": "かち",
+      "meaning": "價值",
+      "example": "価値について話しました。",
+      "translation": "談到了價值。",
+      "firstSeen": "2026-07-06",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "遠慮",
       "reading": "えんりょ",

@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-07-05T11:02:59Z",
-    "sourceCount": 278,
-    "includedCount": 270
+    "updatedAt": "2026-07-06T11:05:53Z",
+    "sourceCount": 281,
+    "includedCount": 273
   },
   "words": [
+    {
+      "word": "offer",
+      "meaning": "提供；主動給",
+      "example": "I offer my seat to Grandma on the bus.",
+      "translation": "我在公車上把座位讓給奶奶。",
+      "firstSeen": "2026-07-06",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "soup",
+      "meaning": "湯",
+      "example": "The soup is hot, so blow on it first.",
+      "translation": "這碗湯很燙，所以要先吹一吹。",
+      "firstSeen": "2026-07-06",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "cover",
+      "meaning": "蓋住；覆蓋",
+      "example": "Please cover the soup before dinner starts.",
+      "translation": "晚餐開始前，請先把湯蓋起來。",
+      "firstSeen": "2026-07-06",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "forever",
       "meaning": "永遠；一直",
