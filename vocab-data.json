@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-07-06T11:05:53Z",
-    "sourceCount": 281,
-    "includedCount": 273
+    "updatedAt": "2026-07-07T11:02:40Z",
+    "sourceCount": 284,
+    "includedCount": 276
   },
   "words": [
+    {
+      "word": "envelope",
+      "meaning": "信封",
+      "example": "The letter is in the envelope.",
+      "translation": "那封信在信封裡。",
+      "firstSeen": "2026-07-07",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "boring",
+      "meaning": "無聊的；乏味的",
+      "example": "The movie was boring, so I fell asleep.",
+      "translation": "那部電影很無聊，所以我睡著了。",
+      "firstSeen": "2026-07-07",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "strong",
+      "meaning": "強壯的；有力的",
+      "example": "The strong boy carried the heavy bag.",
+      "translation": "那個強壯的男孩提著很重的袋子。",
+      "firstSeen": "2026-07-07",
+      "pos": [
+        "adj"
+      ]
+    },
     {
       "word": "offer",
       "meaning": "提供；主動給",

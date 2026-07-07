@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-07-06T11:07:18Z",
+    "updatedAt": "2026-07-07T11:05:25Z",
     "sourceCount": 380,
-    "releasedCount": 235,
+    "releasedCount": 240,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "経済",
+      "reading": "けいざい",
+      "meaning": "經濟",
+      "example": "経済について話しました。",
+      "translation": "談到了經濟。",
+      "firstSeen": "2026-07-07",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "現代",
+      "reading": "げんだい",
+      "meaning": "現代",
+      "example": "現代について話しました。",
+      "translation": "談到了現代。",
+      "firstSeen": "2026-07-07",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "機会",
+      "reading": "きかい",
+      "meaning": "機會",
+      "example": "機会について話しました。",
+      "translation": "談到了機會。",
+      "firstSeen": "2026-07-07",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "文化",
+      "reading": "ぶんか",
+      "meaning": "文化",
+      "example": "文化について話しました。",
+      "translation": "談到了文化。",
+      "firstSeen": "2026-07-07",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "効率",
+      "reading": "こうりつ",
+      "meaning": "效率",
+      "example": "効率について話しました。",
+      "translation": "談到了效率。",
+      "firstSeen": "2026-07-07",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "立場",
       "reading": "たちば",
