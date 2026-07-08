@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-07-07T11:02:40Z",
-    "sourceCount": 284,
-    "includedCount": 276
+    "updatedAt": "2026-07-08T11:01:57Z",
+    "sourceCount": 287,
+    "includedCount": 279
   },
   "words": [
+    {
+      "word": "closet",
+      "meaning": "衣櫥；壁櫥",
+      "example": "The shoes are in the closet.",
+      "translation": "鞋子在衣櫥裡。",
+      "firstSeen": "2026-07-08",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "serve",
+      "meaning": "端上；提供",
+      "example": "They serve hot noodles at lunch.",
+      "translation": "他們午餐會端上熱騰騰的麵。",
+      "firstSeen": "2026-07-08",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "shoot",
+      "meaning": "射擊；發射",
+      "example": "The player shoots the ball into the basket.",
+      "translation": "那位球員把球投進籃框。",
+      "firstSeen": "2026-07-08",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "envelope",
       "meaning": "信封",
