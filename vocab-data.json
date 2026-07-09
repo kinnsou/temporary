@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-07-08T11:01:57Z",
-    "sourceCount": 287,
-    "includedCount": 279
+    "updatedAt": "2026-07-09T11:02:24Z",
+    "sourceCount": 290,
+    "includedCount": 282
   },
   "words": [
+    {
+      "word": "maybe",
+      "meaning": "也許；可能",
+      "example": "Maybe we can play outside after dinner.",
+      "translation": "也許我們晚餐後可以去外面玩。",
+      "firstSeen": "2026-07-09",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "suddenly",
+      "meaning": "突然地",
+      "example": "The lights suddenly went out.",
+      "translation": "燈突然熄掉了。",
+      "firstSeen": "2026-07-09",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "point",
+      "meaning": "指；指向",
+      "example": "I point to the answer on the board.",
+      "translation": "我指著黑板上的答案。",
+      "firstSeen": "2026-07-09",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "closet",
       "meaning": "衣櫥；壁櫥",
