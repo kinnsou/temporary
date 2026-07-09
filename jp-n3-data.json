@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-07-08T11:05:28Z",
+    "updatedAt": "2026-07-09T11:05:26Z",
     "sourceCount": 380,
-    "releasedCount": 245,
+    "releasedCount": 250,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "預ける",
+      "reading": "あずける",
+      "meaning": "寄放",
+      "example": "預けることがあります。",
+      "translation": "有時會寄放。",
+      "firstSeen": "2026-07-09",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "謝る",
+      "reading": "あやまる",
+      "meaning": "道歉",
+      "example": "謝ることがあります。",
+      "translation": "有時會道歉。",
+      "firstSeen": "2026-07-09",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "祝う",
+      "reading": "いわう",
+      "meaning": "慶祝",
+      "example": "祝うことがあります。",
+      "translation": "有時會慶祝。",
+      "firstSeen": "2026-07-09",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "祈る",
+      "reading": "いのる",
+      "meaning": "祈禱",
+      "example": "祈ることがあります。",
+      "translation": "有時會祈禱。",
+      "firstSeen": "2026-07-09",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "疑う",
+      "reading": "うたがう",
+      "meaning": "懷疑",
+      "example": "疑うことがあります。",
+      "translation": "有時會懷疑。",
+      "firstSeen": "2026-07-09",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "驚く",
       "reading": "おどろく",
