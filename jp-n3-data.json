@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-07-09T11:05:26Z",
+    "updatedAt": "2026-07-10T11:05:15Z",
     "sourceCount": 380,
-    "releasedCount": 250,
+    "releasedCount": 255,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "贈る",
+      "reading": "おくる",
+      "meaning": "贈送",
+      "example": "贈ることがあります。",
+      "translation": "有時會贈送。",
+      "firstSeen": "2026-07-10",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "補う",
+      "reading": "おぎなう",
+      "meaning": "補充",
+      "example": "補うことがあります。",
+      "translation": "有時會補充。",
+      "firstSeen": "2026-07-10",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "敬う",
+      "reading": "うやまう",
+      "meaning": "尊敬",
+      "example": "敬うことがあります。",
+      "translation": "有時會尊敬。",
+      "firstSeen": "2026-07-10",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "奪う",
+      "reading": "うばう",
+      "meaning": "搶奪",
+      "example": "奪うことがあります。",
+      "translation": "有時會搶奪。",
+      "firstSeen": "2026-07-10",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "占う",
+      "reading": "うらなう",
+      "meaning": "占卜",
+      "example": "占うことがあります。",
+      "translation": "有時會占卜。",
+      "firstSeen": "2026-07-10",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "預ける",
       "reading": "あずける",

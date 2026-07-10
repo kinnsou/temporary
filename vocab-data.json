@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-07-09T11:02:24Z",
-    "sourceCount": 290,
-    "includedCount": 282
+    "updatedAt": "2026-07-10T11:01:58Z",
+    "sourceCount": 293,
+    "includedCount": 285
   },
   "words": [
+    {
+      "word": "shy",
+      "meaning": "害羞的；靦腆的",
+      "example": "She feels shy when she speaks to new people.",
+      "translation": "她和不熟的人說話時會覺得害羞。",
+      "firstSeen": "2026-07-10",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "energy",
+      "meaning": "精力；能量",
+      "example": "After lunch, I have enough energy to finish my homework.",
+      "translation": "午餐後，我有足夠的精力完成作業。",
+      "firstSeen": "2026-07-10",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "carefully",
+      "meaning": "仔細地；小心地",
+      "example": "He carefully packs his books before school every day.",
+      "translation": "他每天上學前都會仔細地收好書本。",
+      "firstSeen": "2026-07-10",
+      "pos": [
+        "adv"
+      ]
+    },
     {
       "word": "maybe",
       "meaning": "也許；可能",
