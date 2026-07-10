@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>第16課｜拉結的死與便雅憫出生</title>
+  <meta name="description" content="看見神如何藉著失去天然的喜愛，使人更多得著基督。" />
+  <style>
+    :root {
+      --bg: #f6f1e8;
+      --paper: #fffaf2;
+      --ink: #2f2a25;
+      --muted: #6f6559;
+      --line: #e6d7bf;
+      --gold: #c29045;
+      --gold-deep: #966b2f;
+      --olive: #6f7d55;
+      --rose: #b56a59;
+      --shadow: 0 16px 40px rgba(88, 63, 30, 0.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.9;
+      background:
+        radial-gradient(1000px 480px at 110% -10%, rgba(194, 144, 69, 0.16), transparent 55%),
+        radial-gradient(900px 420px at -10% 100%, rgba(111, 125, 85, 0.16), transparent 55%),
+        var(--bg);
+    }
+    .grain::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.05;
+      background-image: radial-gradient(rgba(68, 48, 24, 0.28) 0.7px, transparent 0.7px);
+      background-size: 4px 4px;
+      z-index: 0;
+    }
+    .wrap { position: relative; z-index: 1; width: min(1020px, 92vw); margin: 28px auto 56px; }
+    .hero { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 28px; padding: clamp(26px, 5vw, 48px); background: linear-gradient(140deg, #fffdf8 0%, #fff5e7 100%); box-shadow: var(--shadow); }
+    .hero::after { content: ""; position: absolute; right: -120px; top: -120px; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(194, 144, 69, 0.28) 0%, rgba(194, 144, 69, 0) 70%); }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; border: 1px solid #ebd6b0; background: #fff7e8; color: var(--gold-deep); font-size: 13px; font-weight: 700; letter-spacing: 0.02em; }
+    h1 { margin: 0 0 12px; font-family: "Noto Serif TC", "PMingLiU", serif; font-size: clamp(34px, 6vw, 58px); line-height: 1.15; color: #2d2419; }
+    .lead { margin: 0; max-width: 66ch; color: var(--muted); font-size: clamp(16px, 2.1vw, 19px); }
+    .hero-actions { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 12px; }
+    .button { display: inline-block; padding: 12px 18px; border-radius: 14px; text-decoration: none; font-weight: 700; transition: transform .18s ease, box-shadow .18s ease; }
+    .button.primary { color: white; background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%); box-shadow: 0 10px 20px rgba(150, 107, 47, 0.28); }
+    .button.secondary { color: var(--ink); background: rgba(255,255,255,0.74); border: 1px solid var(--line); }
+    .button:hover { transform: translateY(-1px); }
+    .intro-grid, .content-grid, .summary-grid { display: grid; gap: 18px; margin-top: 22px; }
+    .intro-grid { grid-template-columns: 1.15fr 0.95fr; }
+    .content-grid { grid-template-columns: 1fr 1fr; }
+    .summary-grid { grid-template-columns: 1fr 1fr; }
+    .card { border: 1px solid var(--line); border-radius: 22px; background: var(--paper); padding: 22px; box-shadow: 0 10px 24px rgba(88, 63, 30, 0.08); }
+    .card h2, .card h3 { margin: 0 0 12px; font-family: "Noto Serif TC", serif; color: #352a1e; line-height: 1.45; }
+    .eyebrow { margin: 0 0 8px; color: var(--gold-deep); font-size: 13px; text-transform: uppercase; letter-spacing: .09em; font-weight: 700; }
+    .section-tag { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 12px; padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 700; color: #fff; }
+    .wednesday { background: linear-gradient(180deg, #6f7d55 0%, #53613e 100%); }
+    .thursday { background: linear-gradient(180deg, #b56a59 0%, #8f4d40 100%); }
+    p { margin: 0 0 14px; }
+    ul, ol { margin: 0; padding-left: 22px; }
+    li + li { margin-top: 8px; }
+    .focus-box { background: linear-gradient(180deg, #fffdf9 0%, #f7efe2 100%); }
+    .scripture { border-left: 4px solid var(--gold); background: #fff3df; border-radius: 12px; padding: 14px 16px; color: #5f4b31; margin-top: 14px; }
+    .prayer { background: #fdf6ee; border: 1px dashed #d4a070; border-radius: 14px; padding: 16px; }
+    .footer-note { margin-top: 22px; text-align: center; color: #8a7a66; font-size: 13px; }
+    @media (max-width: 920px) { .intro-grid, .content-grid, .summary-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 560px) { .wrap { margin-top: 18px; } .hero, .card { border-radius: 18px; } .button { width: 100%; text-align: center; } }
+  </style>
+</head>
+<body class="grain">
+  <main class="wrap">
+    <section class="hero">
+      <div class="badge-row">
+        <span class="badge">📖 主日帶讀</span>
+        <span class="badge">第十六課 · 2026 七月第二週</span>
+        <span class="badge">來源段落：周三</span>
+        <span class="badge">主題：主日帶讀</span>
+      </div>
+      <h1>第16課｜拉結的死與便雅憫出生</h1>
+      <p class="lead">雅各離開伯特利後，經過一段很深的經歷：他失去了所愛的拉結，卻得著了便雅憫。這件事不只是家庭中的悲傷，也是神在他身上更深的製作。</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#reading">開始閱讀</a>
+        <a class="button secondary" href="#discussion">看主日重點</a>
+      </div>
+    </section>
+
+    <section class="intro-grid" aria-label="overview">
+      <article class="card">
+        <p class="eyebrow">Overview</p>
+        <h2>這一篇在提醒什麼？</h2>
+            <p>雅各在伯特利停留一段時間後，又繼續往前行。就在路上，拉結生產非常艱難，最後在生下小兒子時離世。她在痛苦中給孩子起名叫便俄尼，意思是「憂患之子」；雅各卻給他起名叫便雅憫，意思是「右手之子」。</p>
+            <p>這段記載讓我們看見，神不只祝福雅各，也在他裡面作更深的工。拉結是雅各特別喜愛、天然揀選的，但神最終讓他經歷失去，好叫他不只停留在自己的愛好裡，反而能得著更寶貴的基督。</p>
+      </article>
+
+      <aside class="card focus-box">
+        <p class="eyebrow">Sunday Focus</p>
+        <h2>主日可以先抓三句話</h2>
+        <ul>
+          <li>神有時會摸著我們天然最喜愛、最看重的事。</li>
+          <li>便雅憫預表基督，祂既是憂患之子，也是右手之子。</li>
+          <li>當天然的揀選被放下，我們就更有機會經歷基督。</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="reading" class="content-grid" aria-label="reading-content">
+      <article class="card">
+        <span class="section-tag wednesday">周三｜正文帶讀</span>
+        <h2>主日帶讀</h2>
+            <p>雅各離開伯特利時，外面的路還在往前，但裡面的經歷卻更深了。拉結在途中生產，過程十分艱難。收生婆安慰她，告訴她又得了一個兒子；可是就在這次生產中，拉結離世了。</p>
+            <p>拉結臨終前，給孩子起名叫便俄尼，意思是「憂患之子」，因為這個孩子是在痛苦中出生的。雅各卻給他改名叫便雅憫，意思是「右手之子」。同一個孩子，卻有兩個名字，讓我們看見兩面不同的意思。</p>
+            <p>在聖經裡，便雅憫可以叫我們想到基督。主耶穌在地上時，多受痛苦，常經憂患；但祂完成神的旨意後，又被高舉，坐在神的右邊。所以祂既是憂患之子，也是右手之子。</p>
+            <p>拉結也預表雅各天然的喜愛與揀選。雅各一直特別愛拉結，這是他心裡很深的選擇。神曾容讓他有這樣的喜愛，但到了更深的時候，神要雅各不再只活在天然的愛裡，而是藉著失去，帶他進到對基督更真實的得著。</p>
+            <p>我們也常有自己特別喜歡、特別在意的事，可能是某種興趣、某樣拿手的事，或自己很想抓住的安排。神有時不立刻拿掉這些，甚至也讓我們經歷一些祝福；但當祂帶我們往前時，祂可能會摸著這些天然的揀選，好叫我們得著祂自己。</p>
+      </article>
+
+      <article class="card">
+        <span class="section-tag thursday">主日｜補充提醒與操練</span>
+        <h2>生活操練</h2>
+            <p>當我們很喜歡一件事、很在意一個選擇時，可以先停下來問主：「主阿，這是我天然的喜愛，還是你要帶領我的路？」這樣的禱告，能幫助我們不只照自己的感覺行動。</p>
+            <p>有時候主沒有照我們原本想的去成全，我們裡面可能會失望，甚至覺得難過。但這不一定是失去一切，反而可能是主在空出更多地位，好把基督作到我們裡面。</p>
+            <p>所以我們的操練不是勉強自己放棄，而是學習把心轉向主，對祂說：「主，我願意讓你來揀選。」當我們這樣跟隨主，就會發現，主若取去一樣東西，祂常把更寶貴的自己賞給我們。</p>
+        <div class="scripture"><strong>可帶的一句提醒</strong><br />如果你收去的東西，你以自己來代替。</div>
+      </article>
+    </section>
+
+    <section id="discussion" class="summary-grid" aria-label="discussion-guide">
+      <article class="card focus-box">
+        <p class="eyebrow">Lead the Group</p>
+        <h3>這篇可以帶出的三件事</h3>
+        <ol>
+          <li>神看重的不只是外面的順利，更是我們裡面有沒有更多得著基督。</li>
+          <li>天然的喜愛若被主摸著，不一定是損失，可能是更深的成全。</li>
+          <li>基督是憂患之子，也是右手之子，祂最懂我們，也最配得我們揀選。</li>
+        </ol>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Discussion</p>
+        <h3>可直接帶的三個問題</h3>
+        <ul>
+          <li>雅各失去拉結後，得著了哪一個兒子？這個名字有什麼意思？</li>
+          <li>為什麼便雅憫可以預表基督？</li>
+          <li>你有沒有一件自己很喜歡、很想抓住的事，願不願意帶到主面前？</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="summary-grid" aria-label="verse-prayer">
+      <article class="card">
+        <p class="eyebrow">Verse</p>
+        <h3>今天的經文</h3>
+        <div class="scripture">祂被藐視，被人厭棄，多受痛苦，常經憂患。祂成就了洗罪的事，就坐在高處至尊至大者的右邊。<br />以賽亞書53:3；希伯來書1:3</div>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Prayer</p>
+        <h3>一起禱告</h3>
+        <div class="prayer">主耶穌，謝謝你不但經過憂患，也被神高高舉起。你最知道人的痛苦，也最能成為我們裡面的安慰和力量。<br /><br />主，救我不只抓住自己天然的喜愛，也學習把心交給你。若你要帶我放下一些事，求你用你自己來充滿我，使我更多得著基督。</div>
+      </article>
+    </section>
+
+    <p class="footer-note">聖經之旅 第一冊 · 第十六課 · 202607w2</p>
+  </main>
+</body>
+</html>
