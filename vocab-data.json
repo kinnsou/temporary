@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-07-10T11:01:58Z",
-    "sourceCount": 293,
-    "includedCount": 285
+    "updatedAt": "2026-07-11T11:02:09Z",
+    "sourceCount": 296,
+    "includedCount": 288
   },
   "words": [
+    {
+      "word": "explain",
+      "meaning": "解釋；說明",
+      "example": "I explain the rule to my friend.",
+      "translation": "我向朋友解釋這條規則。",
+      "firstSeen": "2026-07-11",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "cost",
+      "meaning": "花費；費用",
+      "example": "This book costs five dollars.",
+      "translation": "這本書要五美元。",
+      "firstSeen": "2026-07-11",
+      "pos": [
+        "v",
+        "n"
+      ]
+    },
+    {
+      "word": "rule",
+      "meaning": "規則；規定",
+      "example": "Our teacher made a new rule.",
+      "translation": "老師訂了一條新規則。",
+      "firstSeen": "2026-07-11",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "shy",
       "meaning": "害羞的；靦腆的",
