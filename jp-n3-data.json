@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-07-10T11:05:15Z",
+    "updatedAt": "2026-07-12T11:05:12Z",
     "sourceCount": 380,
-    "releasedCount": 255,
+    "releasedCount": 260,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "訪れる",
+      "reading": "おとずれる",
+      "meaning": "訪問",
+      "example": "訪れることがあります。",
+      "translation": "有時會訪問。",
+      "firstSeen": "2026-07-12",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "教わる",
+      "reading": "おそわる",
+      "meaning": "受教",
+      "example": "教わることがあります。",
+      "translation": "有時會受教。",
+      "firstSeen": "2026-07-12",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "抑える",
+      "reading": "おさえる",
+      "meaning": "壓抑",
+      "example": "抑えることがあります。",
+      "translation": "有時會壓抑。",
+      "firstSeen": "2026-07-12",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "怠る",
+      "reading": "おこたる",
+      "meaning": "怠慢",
+      "example": "怠ることがあります。",
+      "translation": "有時會怠慢。",
+      "firstSeen": "2026-07-12",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "劣る",
+      "reading": "おとる",
+      "meaning": "劣於",
+      "example": "劣ることがあります。",
+      "translation": "有時會劣於。",
+      "firstSeen": "2026-07-12",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "贈る",
       "reading": "おくる",

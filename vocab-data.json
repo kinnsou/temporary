@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-07-11T11:02:09Z",
-    "sourceCount": 296,
-    "includedCount": 288
+    "updatedAt": "2026-07-12T11:01:57Z",
+    "sourceCount": 299,
+    "includedCount": 291
   },
   "words": [
+    {
+      "word": "movie",
+      "meaning": "電影",
+      "example": "We watched a movie after dinner.",
+      "translation": "我們晚餐後看了一部電影。",
+      "firstSeen": "2026-07-12",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "polite",
+      "meaning": "有禮貌的；客氣的",
+      "example": "She is polite to her teachers.",
+      "translation": "她對老師很有禮貌。",
+      "firstSeen": "2026-07-12",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "imagine",
+      "meaning": "想像；設想",
+      "example": "She imagined a castle in the clouds.",
+      "translation": "她想像著一座在雲端的城堡。",
+      "firstSeen": "2026-07-12",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "explain",
       "meaning": "解釋；說明",
