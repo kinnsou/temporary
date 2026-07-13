@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-07-12T11:05:12Z",
+    "updatedAt": "2026-07-13T11:05:12Z",
     "sourceCount": 380,
-    "releasedCount": 260,
+    "releasedCount": 265,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "限る",
+      "reading": "かぎる",
+      "meaning": "限於",
+      "example": "限ることがあります。",
+      "translation": "有時會限於。",
+      "firstSeen": "2026-07-13",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "輝く",
+      "reading": "かがやく",
+      "meaning": "閃耀",
+      "example": "輝くことがあります。",
+      "translation": "有時會閃耀。",
+      "firstSeen": "2026-07-13",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "欠ける",
+      "reading": "かける",
+      "meaning": "欠缺",
+      "example": "欠けることがあります。",
+      "translation": "有時會欠缺。",
+      "firstSeen": "2026-07-13",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "担ぐ",
+      "reading": "かつぐ",
+      "meaning": "扛",
+      "example": "担ぐことがあります。",
+      "translation": "有時會扛。",
+      "firstSeen": "2026-07-13",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "及ぼす",
+      "reading": "およぼす",
+      "meaning": "波及",
+      "example": "及ぼすことがあります。",
+      "translation": "有時會波及。",
+      "firstSeen": "2026-07-13",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "訪れる",
       "reading": "おとずれる",
