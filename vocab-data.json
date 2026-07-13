@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-07-12T11:01:57Z",
-    "sourceCount": 299,
-    "includedCount": 291
+    "updatedAt": "2026-07-13T11:01:55Z",
+    "sourceCount": 302,
+    "includedCount": 294
   },
   "words": [
+    {
+      "word": "pair",
+      "meaning": "一雙；一對",
+      "example": "I bought a pair of socks.",
+      "translation": "我買了一雙襪子。",
+      "firstSeen": "2026-07-13",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "orange",
+      "meaning": "橘子；柳橙",
+      "example": "She peeled an orange for a snack.",
+      "translation": "她剝了一顆橘子當點心。",
+      "firstSeen": "2026-07-13",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "leg",
+      "meaning": "腿",
+      "example": "My leg hurts after the race.",
+      "translation": "比賽後，我的腿很痛。",
+      "firstSeen": "2026-07-13",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "movie",
       "meaning": "電影",
