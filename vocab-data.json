@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-07-13T11:01:55Z",
-    "sourceCount": 302,
-    "includedCount": 294
+    "updatedAt": "2026-07-14T11:01:39Z",
+    "sourceCount": 305,
+    "includedCount": 297
   },
   "words": [
+    {
+      "word": "search",
+      "meaning": "尋找；搜尋",
+      "example": "I search for my keys every morning.",
+      "translation": "我每天早上都會找我的鑰匙。",
+      "firstSeen": "2026-07-14",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "rich",
+      "meaning": "富有的；豐富的",
+      "example": "Her family is rich.",
+      "translation": "她的家庭很富有。",
+      "firstSeen": "2026-07-14",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "name",
+      "meaning": "名字；名稱；替……取名",
+      "example": "They name the new kitten Mimi.",
+      "translation": "他們幫新來的小貓取名叫咪咪。",
+      "firstSeen": "2026-07-14",
+      "pos": [
+        "n",
+        "v"
+      ]
+    },
     {
       "word": "pair",
       "meaning": "一雙；一對",

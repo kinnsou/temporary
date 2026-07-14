@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-07-13T11:05:12Z",
+    "updatedAt": "2026-07-14T11:05:10Z",
     "sourceCount": 380,
-    "releasedCount": 265,
+    "releasedCount": 270,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "悲しむ",
+      "reading": "かなしむ",
+      "meaning": "悲傷",
+      "example": "悲しむことがあります。",
+      "translation": "有時會悲傷。",
+      "firstSeen": "2026-07-14",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "嫌う",
+      "reading": "きらう",
+      "meaning": "討厭",
+      "example": "嫌うことがあります。",
+      "translation": "有時會討厭。",
+      "firstSeen": "2026-07-14",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "可愛がる",
+      "reading": "かわいがる",
+      "meaning": "寵愛",
+      "example": "可愛がることがあります。",
+      "translation": "有時會寵愛。",
+      "firstSeen": "2026-07-14",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "加える",
+      "reading": "くわえる",
+      "meaning": "加上",
+      "example": "加えることがあります。",
+      "translation": "有時會加上。",
+      "firstSeen": "2026-07-14",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "切れる",
+      "reading": "きれる",
+      "meaning": "切斷",
+      "example": "切れることがあります。",
+      "translation": "有時會切斷。",
+      "firstSeen": "2026-07-14",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "限る",
       "reading": "かぎる",
