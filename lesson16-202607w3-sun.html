@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>第16課・周五：希伯崙——進入與主完全的交通</title>
+  <meta name="description" content="渴慕與神交通，也進入基督身體的交通中。" />
+  <style>
+    :root {
+      --bg: #f6f1e8;
+      --paper: #fffaf2;
+      --ink: #2f2a25;
+      --muted: #6f6559;
+      --line: #e6d7bf;
+      --gold: #c29045;
+      --gold-deep: #966b2f;
+      --olive: #6f7d55;
+      --rose: #b56a59;
+      --shadow: 0 16px 40px rgba(88, 63, 30, 0.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.9;
+      background:
+        radial-gradient(1000px 480px at 110% -10%, rgba(194, 144, 69, 0.16), transparent 55%),
+        radial-gradient(900px 420px at -10% 100%, rgba(111, 125, 85, 0.16), transparent 55%),
+        var(--bg);
+    }
+    .grain::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.05;
+      background-image: radial-gradient(rgba(68, 48, 24, 0.28) 0.7px, transparent 0.7px);
+      background-size: 4px 4px;
+      z-index: 0;
+    }
+    .wrap { position: relative; z-index: 1; width: min(1020px, 92vw); margin: 28px auto 56px; }
+    .hero { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 28px; padding: clamp(26px, 5vw, 48px); background: linear-gradient(140deg, #fffdf8 0%, #fff5e7 100%); box-shadow: var(--shadow); }
+    .hero::after { content: ""; position: absolute; right: -120px; top: -120px; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(194, 144, 69, 0.28) 0%, rgba(194, 144, 69, 0) 70%); }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; border: 1px solid #ebd6b0; background: #fff7e8; color: var(--gold-deep); font-size: 13px; font-weight: 700; letter-spacing: 0.02em; }
+    h1 { margin: 0 0 12px; font-family: "Noto Serif TC", "PMingLiU", serif; font-size: clamp(34px, 6vw, 58px); line-height: 1.15; color: #2d2419; }
+    .lead { margin: 0; max-width: 66ch; color: var(--muted); font-size: clamp(16px, 2.1vw, 19px); }
+    .hero-actions { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 12px; }
+    .button { display: inline-block; padding: 12px 18px; border-radius: 14px; text-decoration: none; font-weight: 700; transition: transform .18s ease, box-shadow .18s ease; }
+    .button.primary { color: white; background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%); box-shadow: 0 10px 20px rgba(150, 107, 47, 0.28); }
+    .button.secondary { color: var(--ink); background: rgba(255,255,255,0.74); border: 1px solid var(--line); }
+    .button:hover { transform: translateY(-1px); }
+    .intro-grid, .content-grid, .summary-grid { display: grid; gap: 18px; margin-top: 22px; }
+    .intro-grid { grid-template-columns: 1.15fr 0.95fr; }
+    .content-grid { grid-template-columns: 1fr 1fr; }
+    .summary-grid { grid-template-columns: 1fr 1fr; }
+    .card { border: 1px solid var(--line); border-radius: 22px; background: var(--paper); padding: 22px; box-shadow: 0 10px 24px rgba(88, 63, 30, 0.08); }
+    .card h2, .card h3 { margin: 0 0 12px; font-family: "Noto Serif TC", serif; color: #352a1e; line-height: 1.45; }
+    .eyebrow { margin: 0 0 8px; color: var(--gold-deep); font-size: 13px; text-transform: uppercase; letter-spacing: .09em; font-weight: 700; }
+    .section-tag { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 12px; padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 700; color: #fff; }
+    .wednesday { background: linear-gradient(180deg, #6f7d55 0%, #53613e 100%); }
+    .thursday { background: linear-gradient(180deg, #b56a59 0%, #8f4d40 100%); }
+    p { margin: 0 0 14px; }
+    ul, ol { margin: 0; padding-left: 22px; }
+    li + li { margin-top: 8px; }
+    .focus-box { background: linear-gradient(180deg, #fffdf9 0%, #f7efe2 100%); }
+    .scripture { border-left: 4px solid var(--gold); background: #fff3df; border-radius: 12px; padding: 14px 16px; color: #5f4b31; margin-top: 14px; }
+    .prayer { background: #fdf6ee; border: 1px dashed #d4a070; border-radius: 14px; padding: 16px; }
+    .footer-note { margin-top: 22px; text-align: center; color: #8a7a66; font-size: 13px; }
+    @media (max-width: 920px) { .intro-grid, .content-grid, .summary-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 560px) { .wrap { margin-top: 18px; } .hero, .card { border-radius: 18px; } .button { width: 100%; text-align: center; } }
+  </style>
+</head>
+<body class="grain">
+  <main class="wrap">
+    <section class="hero">
+      <div class="badge-row">
+        <span class="badge">📖 主日帶讀</span>
+        <span class="badge">第十六課 · 2026 七月第三週</span>
+        <span class="badge">來源段落：周五</span>
+        <span class="badge">主題：住在交通裡</span>
+      </div>
+      <h1>第16課・周五：希伯崙——進入與主完全的交通</h1>
+      <p class="lead">希伯崙告訴我們，真正的安息和喜樂，不是靠自己作成許多事，乃是住在與主和眾聖徒的交通裡。</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#reading">開始閱讀</a>
+        <a class="button secondary" href="#discussion">看主日重點</a>
+      </div>
+    </section>
+
+    <section class="intro-grid" aria-label="overview">
+      <article class="card">
+        <p class="eyebrow">Overview</p>
+        <h2>這一篇在提醒什麼？</h2>
+            <p>雅各經過一些深刻又切身的對付後，來到父親以撒所在的希伯崙。希伯崙也是亞伯拉罕、以撒寄居的地方；雅各住在那裡，進入了與主完全的交通。</p>
+            <p>希伯崙的意思是一直在交通裡：不只與神交通，也與基督身體上其他肢體交通。在這樣的交通中，人能得著安息、平安、喜樂、滿足和親密。</p>
+      </article>
+
+      <aside class="card focus-box">
+        <p class="eyebrow">Sunday Focus</p>
+        <h2>主日可以先抓三句話</h2>
+        <ul>
+          <li>我們不能靠自己單獨作基督徒。</li>
+          <li>一切事都需要在與主的交通裡來作。</li>
+          <li>我們也需要活在基督身體的交通中。</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="reading" class="content-grid" aria-label="reading-content">
+      <article class="card">
+        <span class="section-tag wednesday">周五｜正文帶讀</span>
+        <h2>住在交通裡</h2>
+            <p>伯特利是神的家，但不是雅各久住的地方；希伯崙才是亞伯拉罕、以撒和雅各久住的地方。雅各來到希伯崙，就學習停留在與主的交通裡。</p>
+            <p>雅各所經過的事，使他更認識自己不能憑天然的力量往前。他看見，許多事不是自己努力就能作成，乃是需要在主面前有交通。</p>
+            <p>與主交通，不只是禱告時說幾句話，也是在每天的生活中轉向主，問主的心意，接受主的帶領。當我們這樣親近主，裡面就有平安和安息。</p>
+            <p>希伯崙也說出身體的交通。我們不是單獨跟隨主的人，乃是基督身體上的肢體；我們需要和召會中的弟兄姊妹一同禱告、追求、彼此扶持。</p>
+            <p>住在這樣的交通裡，會使我們的生命漸漸成熟。我們與主更親近，也更能寶愛並接受身體中的弟兄姊妹。</p>
+      </article>
+
+      <article class="card">
+        <span class="section-tag thursday">主日｜補充提醒與操練</span>
+        <h2>今天的操練</h2>
+            <p>遇到事情時，不要立刻只靠自己的想法決定，可以先安靜轉向主，向祂說：「主啊，我需要你的帶領。」</p>
+            <p>在召會生活中，學習不把自己關起來。可以主動和弟兄姊妹一起禱告，分享所讀的話，或請人為自己代禱。</p>
+            <p>當我們覺得煩躁、不安或孤單時，更需要回到交通裡。主能藉著祂的話、禱告和身體的扶持，把平安放在我們裡面。</p>
+        <div class="scripture"><strong>可帶的一句提醒</strong><br />所有的事只有在與主的交通裡才能作；沒有交通就不能作。</div>
+      </article>
+    </section>
+
+    <section id="discussion" class="summary-grid" aria-label="discussion-guide">
+      <article class="card focus-box">
+        <p class="eyebrow">Lead the Group</p>
+        <h3>這篇可以帶出的三件事</h3>
+        <ol>
+          <li>希伯崙是與主完全交通的地方。</li>
+          <li>我們需要與神交通，也需要與基督身體交通。</li>
+          <li>活在交通裡，能得著安息、喜樂、平安和成熟。</li>
+        </ol>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Discussion</p>
+        <h3>可直接帶的三個問題</h3>
+        <ul>
+          <li>希伯崙所說出的交通包括哪兩面？</li>
+          <li>當你遇到困難或需要作決定時，可以怎樣轉向主？</li>
+          <li>你可以怎樣更實際地進入召會生活中的交通？</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="summary-grid" aria-label="verse-prayer">
+      <article class="card">
+        <p class="eyebrow">Verse</p>
+        <h3>今天的經文</h3>
+        <div class="scripture">但我們若在光中行，如同神在光中，就彼此有交通。<br />約壹一7上</div>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Prayer</p>
+        <h3>一起禱告</h3>
+        <div class="prayer">主耶穌，謝謝你把我帶進與你的交通裡。求你使我不靠自己，凡事都學習轉向你、尋求你。<br /><br />主啊，求你使我寶愛召會生活中的交通，樂意與弟兄姊妹一同禱告、彼此扶持，住在你的安息、平安和喜樂裡。</div>
+      </article>
+    </section>
+
+    <p class="footer-note">聖經之旅 第一冊 · 第十六課 · 202607w3</p>
+  </main>
+</body>
+</html>
