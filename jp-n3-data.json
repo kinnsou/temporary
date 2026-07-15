@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-07-14T11:05:10Z",
+    "updatedAt": "2026-07-15T11:05:26Z",
     "sourceCount": 380,
-    "releasedCount": 270,
+    "releasedCount": 275,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "避ける",
+      "reading": "さける",
+      "meaning": "避開",
+      "example": "避けることがあります。",
+      "translation": "有時會避開。",
+      "firstSeen": "2026-07-15",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "断る",
+      "reading": "ことわる",
+      "meaning": "拒絕",
+      "example": "断ることがあります。",
+      "translation": "有時會拒絕。",
+      "firstSeen": "2026-07-15",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "探る",
+      "reading": "さぐる",
+      "meaning": "探尋",
+      "example": "探ることがあります。",
+      "translation": "有時會探尋。",
+      "firstSeen": "2026-07-15",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "好む",
+      "reading": "このむ",
+      "meaning": "喜好",
+      "example": "好むことがあります。",
+      "translation": "有時會喜好。",
+      "firstSeen": "2026-07-15",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "叫ぶ",
+      "reading": "さけぶ",
+      "meaning": "呼喊",
+      "example": "叫ぶことがあります。",
+      "translation": "有時會呼喊。",
+      "firstSeen": "2026-07-15",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "悲しむ",
       "reading": "かなしむ",
