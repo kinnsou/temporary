@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-07-14T11:01:39Z",
-    "sourceCount": 305,
-    "includedCount": 297
+    "updatedAt": "2026-07-15T11:02:06Z",
+    "sourceCount": 308,
+    "includedCount": 300
   },
   "words": [
+    {
+      "word": "black",
+      "meaning": "黑色的",
+      "example": "My cat is black.",
+      "translation": "我的貓是黑色的。",
+      "firstSeen": "2026-07-15",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "listen",
+      "meaning": "聽；聆聽",
+      "example": "I listen to my teacher every day.",
+      "translation": "我每天都聽老師說話。",
+      "firstSeen": "2026-07-15",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "along",
+      "meaning": "沿著",
+      "example": "We walked along the river.",
+      "translation": "我們沿著河邊散步。",
+      "firstSeen": "2026-07-15",
+      "pos": [
+        "prep"
+      ]
+    },
     {
       "word": "search",
       "meaning": "尋找；搜尋",
