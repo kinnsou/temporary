@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-07-15T11:05:26Z",
+    "updatedAt": "2026-07-16T11:05:12Z",
     "sourceCount": 380,
-    "releasedCount": 275,
+    "releasedCount": 280,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "畳む",
+      "reading": "たたむ",
+      "meaning": "摺疊",
+      "example": "畳むことがあります。",
+      "translation": "有時會摺疊。",
+      "firstSeen": "2026-07-16",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "沈む",
+      "reading": "しずむ",
+      "meaning": "沉沒",
+      "example": "沈むことがあります。",
+      "translation": "有時會沉沒。",
+      "firstSeen": "2026-07-16",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "従う",
+      "reading": "したがう",
+      "meaning": "服從",
+      "example": "従うことがあります。",
+      "translation": "有時會服從。",
+      "firstSeen": "2026-07-16",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "妨げる",
+      "reading": "さまたげる",
+      "meaning": "妨礙",
+      "example": "妨げることがあります。",
+      "translation": "有時會妨礙。",
+      "firstSeen": "2026-07-16",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "勧める",
+      "reading": "すすめる",
+      "meaning": "推薦",
+      "example": "勧めることがあります。",
+      "translation": "有時會推薦。",
+      "firstSeen": "2026-07-16",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "避ける",
       "reading": "さける",

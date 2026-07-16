@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-07-15T11:02:06Z",
-    "sourceCount": 308,
-    "includedCount": 300
+    "updatedAt": "2026-07-16T11:02:27Z",
+    "sourceCount": 311,
+    "includedCount": 303
   },
   "words": [
+    {
+      "word": "pay",
+      "meaning": "付錢；支付",
+      "example": "She pays for her lunch every day.",
+      "translation": "她每天都會付自己的午餐錢。",
+      "firstSeen": "2026-07-16",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "key",
+      "meaning": "鑰匙",
+      "example": "The key is on the table.",
+      "translation": "鑰匙在桌上。",
+      "firstSeen": "2026-07-16",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "water",
+      "meaning": "水",
+      "example": "The plants need water every day.",
+      "translation": "植物每天都需要水。",
+      "firstSeen": "2026-07-16",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "black",
       "meaning": "黑色的",
