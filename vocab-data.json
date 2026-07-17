@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-07-16T11:02:27Z",
-    "sourceCount": 311,
-    "includedCount": 303
+    "updatedAt": "2026-07-17T11:01:34Z",
+    "sourceCount": 314,
+    "includedCount": 306
   },
   "words": [
+    {
+      "word": "full",
+      "meaning": "滿的；飽的",
+      "example": "The bottle is full of water.",
+      "translation": "那個瓶子裡裝滿了水。",
+      "firstSeen": "2026-07-17",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "fish",
+      "meaning": "魚；魚肉",
+      "example": "We eat fish for dinner on Fridays.",
+      "translation": "我們每週五晚餐會吃魚。",
+      "firstSeen": "2026-07-17",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "besides",
+      "meaning": "除了……以外；而且",
+      "example": "Besides math, I like English.",
+      "translation": "除了數學以外，我也喜歡英文。",
+      "firstSeen": "2026-07-17",
+      "pos": [
+        "prep",
+        "adv"
+      ]
+    },
     {
       "word": "pay",
       "meaning": "付錢；支付",

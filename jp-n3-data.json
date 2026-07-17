@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-07-16T11:05:12Z",
+    "updatedAt": "2026-07-17T11:05:12Z",
     "sourceCount": 380,
-    "releasedCount": 280,
+    "releasedCount": 285,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "雇う",
+      "reading": "やとう",
+      "meaning": "雇用",
+      "example": "雇うことがあります。",
+      "translation": "有時會雇用。",
+      "firstSeen": "2026-07-17",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "間に合う",
+      "reading": "まニアう",
+      "meaning": "來得及",
+      "example": "間に合うことがあります。",
+      "translation": "有時會來得及。",
+      "firstSeen": "2026-07-17",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "迎える",
+      "reading": "むかえる",
+      "meaning": "迎接",
+      "example": "迎えることがあります。",
+      "translation": "有時會迎接。",
+      "firstSeen": "2026-07-17",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "確かめる",
+      "reading": "たしかめる",
+      "meaning": "確認",
+      "example": "確かめることがあります。",
+      "translation": "有時會確認。",
+      "firstSeen": "2026-07-17",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "励ます",
+      "reading": "はげます",
+      "meaning": "鼓勵",
+      "example": "励ますことがあります。",
+      "translation": "有時會鼓勵。",
+      "firstSeen": "2026-07-17",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "畳む",
       "reading": "たたむ",
