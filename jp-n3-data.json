@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-07-17T11:05:12Z",
+    "updatedAt": "2026-07-18T11:05:10Z",
     "sourceCount": 380,
-    "releasedCount": 285,
+    "releasedCount": 290,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "詳しい",
+      "reading": "くわしい",
+      "meaning": "詳細的",
+      "example": "詳しい日でした。",
+      "translation": "是詳細的的一天。",
+      "firstSeen": "2026-07-18",
+      "pos": "adj-i",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "苦しい",
+      "reading": "くるしい",
+      "meaning": "痛苦的",
+      "example": "苦しい日でした。",
+      "translation": "是痛苦的的一天。",
+      "firstSeen": "2026-07-18",
+      "pos": "adj-i",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "恐ろしい",
+      "reading": "おそろしい",
+      "meaning": "可怕的",
+      "example": "恐ろしい日でした。",
+      "translation": "是可怕的的一天。",
+      "firstSeen": "2026-07-18",
+      "pos": "adj-i",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "寄る",
+      "reading": "よる",
+      "meaning": "靠近",
+      "example": "寄ることがあります。",
+      "translation": "有時會靠近。",
+      "firstSeen": "2026-07-18",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "分ける",
+      "reading": "わける",
+      "meaning": "分開",
+      "example": "分けることがあります。",
+      "translation": "有時會分開。",
+      "firstSeen": "2026-07-18",
+      "pos": "v",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "雇う",
       "reading": "やとう",
