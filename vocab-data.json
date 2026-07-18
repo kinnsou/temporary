@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-07-17T11:01:34Z",
-    "sourceCount": 314,
-    "includedCount": 306
+    "updatedAt": "2026-07-18T11:02:19Z",
+    "sourceCount": 317,
+    "includedCount": 309
   },
   "words": [
+    {
+      "word": "bank",
+      "meaning": "銀行",
+      "example": "My dad works at a bank.",
+      "translation": "我爸爸在一家銀行工作。",
+      "firstSeen": "2026-07-18",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "mostly",
+      "meaning": "大多；主要地",
+      "example": "I mostly walk to school.",
+      "translation": "我大多走路去上學。",
+      "firstSeen": "2026-07-18",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "slow",
+      "meaning": "慢的；緩慢的",
+      "example": "The turtle is slow.",
+      "translation": "這隻烏龜很慢。",
+      "firstSeen": "2026-07-18",
+      "pos": [
+        "adj"
+      ]
+    },
     {
       "word": "full",
       "meaning": "滿的；飽的",
