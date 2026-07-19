@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-07-18T11:05:10Z",
+    "updatedAt": "2026-07-19T11:05:13Z",
     "sourceCount": 380,
-    "releasedCount": 290,
+    "releasedCount": 295,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "險しい",
+      "reading": "けわしい",
+      "meaning": "險峻的",
+      "example": "險しい日でした。",
+      "translation": "是險峻的的一天。",
+      "firstSeen": "2026-07-19",
+      "pos": "adj-i",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "貧しい",
+      "reading": "まずしい",
+      "meaning": "貧窮的",
+      "example": "貧しい日でした。",
+      "translation": "是貧窮的的一天。",
+      "firstSeen": "2026-07-19",
+      "pos": "adj-i",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "眩しい",
+      "reading": "まぶしい",
+      "meaning": "刺眼的",
+      "example": "眩しい日でした。",
+      "translation": "是刺眼的的一天。",
+      "firstSeen": "2026-07-19",
+      "pos": "adj-i",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "激しい",
+      "reading": "はげしい",
+      "meaning": "激烈的",
+      "example": "激しい日でした。",
+      "translation": "是激烈的的一天。",
+      "firstSeen": "2026-07-19",
+      "pos": "adj-i",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "惜しい",
+      "reading": "おしい",
+      "meaning": "可惜的",
+      "example": "惜しい日でした。",
+      "translation": "是可惜的的一天。",
+      "firstSeen": "2026-07-19",
+      "pos": "adj-i",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "詳しい",
       "reading": "くわしい",

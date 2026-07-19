@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-07-18T11:02:19Z",
-    "sourceCount": 317,
-    "includedCount": 309
+    "updatedAt": "2026-07-19T11:02:22Z",
+    "sourceCount": 320,
+    "includedCount": 312
   },
   "words": [
+    {
+      "word": "sheep",
+      "meaning": "綿羊",
+      "example": "The sheep is eating grass.",
+      "translation": "這隻綿羊正在吃草。",
+      "firstSeen": "2026-07-19",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "prince",
+      "meaning": "王子",
+      "example": "The prince rides a white horse.",
+      "translation": "王子騎著一匹白馬。",
+      "firstSeen": "2026-07-19",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "notice",
+      "meaning": "注意到；公告",
+      "example": "I noticed a bird in the tree yesterday.",
+      "translation": "我昨天注意到樹上有一隻鳥。",
+      "firstSeen": "2026-07-19",
+      "pos": [
+        "v",
+        "n"
+      ]
+    },
     {
       "word": "bank",
       "meaning": "銀行",
