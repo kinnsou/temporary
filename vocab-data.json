@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-07-19T11:02:22Z",
-    "sourceCount": 320,
-    "includedCount": 312
+    "updatedAt": "2026-07-20T11:01:54Z",
+    "sourceCount": 323,
+    "includedCount": 315
   },
   "words": [
+    {
+      "word": "ice",
+      "meaning": "冰",
+      "example": "The ice melted in my drink.",
+      "translation": "我飲料裡的冰融化了。",
+      "firstSeen": "2026-07-20",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "bus",
+      "meaning": "公車",
+      "example": "We take the bus to school every morning.",
+      "translation": "我們每天早上搭公車去學校。",
+      "firstSeen": "2026-07-20",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "show",
+      "meaning": "展示；表演；節目",
+      "example": "Mia showed me her new drawing yesterday.",
+      "translation": "米亞昨天拿她的新畫給我看。",
+      "firstSeen": "2026-07-20",
+      "pos": [
+        "v",
+        "n"
+      ]
+    },
     {
       "word": "sheep",
       "meaning": "綿羊",

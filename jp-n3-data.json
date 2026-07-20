@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-07-19T11:05:13Z",
+    "updatedAt": "2026-07-20T11:05:11Z",
     "sourceCount": 380,
-    "releasedCount": 295,
+    "releasedCount": 300,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "鋭い",
+      "reading": "するどい",
+      "meaning": "尖銳的",
+      "example": "鋭い日でした。",
+      "translation": "是尖銳的的一天。",
+      "firstSeen": "2026-07-20",
+      "pos": "adj-i",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "鈍い",
+      "reading": "にぶい",
+      "meaning": "遲鈍的",
+      "example": "鈍い日でした。",
+      "translation": "是遲鈍的的一天。",
+      "firstSeen": "2026-07-20",
+      "pos": "adj-i",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "等しい",
+      "reading": "ひとしい",
+      "meaning": "相等的",
+      "example": "等しい日でした。",
+      "translation": "是相等的的一天。",
+      "firstSeen": "2026-07-20",
+      "pos": "adj-i",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "懐かしい",
+      "reading": "なつかしい",
+      "meaning": "令人懷念的",
+      "example": "懐かしい日でした。",
+      "translation": "是令人懷念的的一天。",
+      "firstSeen": "2026-07-20",
+      "pos": "adj-i",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "幼い",
+      "reading": "おさない",
+      "meaning": "幼小的",
+      "example": "幼い日でした。",
+      "translation": "是幼小的的一天。",
+      "firstSeen": "2026-07-20",
+      "pos": "adj-i",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "險しい",
       "reading": "けわしい",
