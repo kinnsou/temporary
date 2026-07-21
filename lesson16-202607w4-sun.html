@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>第16課・雅各失去約瑟</title>
+  <meta name="description" content="在難過與不明白的事中，認識神仍在主宰地作工，使人被變化並走向榮耀。" />
+  <style>
+    :root {
+      --bg: #f6f1e8;
+      --paper: #fffaf2;
+      --ink: #2f2a25;
+      --muted: #6f6559;
+      --line: #e6d7bf;
+      --gold: #c29045;
+      --gold-deep: #966b2f;
+      --olive: #6f7d55;
+      --rose: #b56a59;
+      --shadow: 0 16px 40px rgba(88, 63, 30, 0.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.9;
+      background:
+        radial-gradient(1000px 480px at 110% -10%, rgba(194, 144, 69, 0.16), transparent 55%),
+        radial-gradient(900px 420px at -10% 100%, rgba(111, 125, 85, 0.16), transparent 55%),
+        var(--bg);
+    }
+    .grain::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.05;
+      background-image: radial-gradient(rgba(68, 48, 24, 0.28) 0.7px, transparent 0.7px);
+      background-size: 4px 4px;
+      z-index: 0;
+    }
+    .wrap { position: relative; z-index: 1; width: min(1020px, 92vw); margin: 28px auto 56px; }
+    .hero { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 28px; padding: clamp(26px, 5vw, 48px); background: linear-gradient(140deg, #fffdf8 0%, #fff5e7 100%); box-shadow: var(--shadow); }
+    .hero::after { content: ""; position: absolute; right: -120px; top: -120px; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(194, 144, 69, 0.28) 0%, rgba(194, 144, 69, 0) 70%); }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; border: 1px solid #ebd6b0; background: #fff7e8; color: var(--gold-deep); font-size: 13px; font-weight: 700; letter-spacing: 0.02em; }
+    h1 { margin: 0 0 12px; font-family: "Noto Serif TC", "PMingLiU", serif; font-size: clamp(34px, 6vw, 58px); line-height: 1.15; color: #2d2419; }
+    .lead { margin: 0; max-width: 66ch; color: var(--muted); font-size: clamp(16px, 2.1vw, 19px); }
+    .hero-actions { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 12px; }
+    .button { display: inline-block; padding: 12px 18px; border-radius: 14px; text-decoration: none; font-weight: 700; transition: transform .18s ease, box-shadow .18s ease; }
+    .button.primary { color: white; background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%); box-shadow: 0 10px 20px rgba(150, 107, 47, 0.28); }
+    .button.secondary { color: var(--ink); background: rgba(255,255,255,0.74); border: 1px solid var(--line); }
+    .button:hover { transform: translateY(-1px); }
+    .intro-grid, .content-grid, .summary-grid { display: grid; gap: 18px; margin-top: 22px; }
+    .intro-grid { grid-template-columns: 1.15fr 0.95fr; }
+    .content-grid { grid-template-columns: 1fr 1fr; }
+    .summary-grid { grid-template-columns: 1fr 1fr; }
+    .card { border: 1px solid var(--line); border-radius: 22px; background: var(--paper); padding: 22px; box-shadow: 0 10px 24px rgba(88, 63, 30, 0.08); }
+    .card h2, .card h3 { margin: 0 0 12px; font-family: "Noto Serif TC", serif; color: #352a1e; line-height: 1.45; }
+    .eyebrow { margin: 0 0 8px; color: var(--gold-deep); font-size: 13px; text-transform: uppercase; letter-spacing: .09em; font-weight: 700; }
+    .section-tag { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 12px; padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 700; color: #fff; }
+    .wednesday { background: linear-gradient(180deg, #6f7d55 0%, #53613e 100%); }
+    .thursday { background: linear-gradient(180deg, #b56a59 0%, #8f4d40 100%); }
+    p { margin: 0 0 14px; }
+    ul, ol { margin: 0; padding-left: 22px; }
+    li + li { margin-top: 8px; }
+    .focus-box { background: linear-gradient(180deg, #fffdf9 0%, #f7efe2 100%); }
+    .scripture { border-left: 4px solid var(--gold); background: #fff3df; border-radius: 12px; padding: 14px 16px; color: #5f4b31; margin-top: 14px; }
+    .prayer { background: #fdf6ee; border: 1px dashed #d4a070; border-radius: 14px; padding: 16px; }
+    .footer-note { margin-top: 22px; text-align: center; color: #8a7a66; font-size: 13px; }
+    @media (max-width: 920px) { .intro-grid, .content-grid, .summary-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 560px) { .wrap { margin-top: 18px; } .hero, .card { border-radius: 18px; } .button { width: 100%; text-align: center; } }
+  </style>
+</head>
+<body class="grain">
+  <main class="wrap">
+    <section class="hero">
+      <div class="badge-row">
+        <span class="badge">📖 主日帶讀</span>
+        <span class="badge">第十六課 · 2026 七月第四週</span>
+        <span class="badge">來源段落：主日</span>
+        <span class="badge">主題：神在苦難中仍有祂的工作</span>
+      </div>
+      <h1>第16課・雅各失去約瑟</h1>
+      <p class="lead">有些事發生時，我們會很難過，也不明白為甚麼。但神沒有離開，祂能使用一切經歷，使我們更認識祂、更多被祂變化。</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#reading">開始閱讀</a>
+        <a class="button secondary" href="#discussion">看主日重點</a>
+      </div>
+    </section>
+
+    <section class="intro-grid" aria-label="overview">
+      <article class="card">
+        <p class="eyebrow">Overview</p>
+        <h2>這一篇在提醒什麼？</h2>
+            <p>雅各差約瑟到示劍去看看哥哥們是否平安。約瑟順服父親的話出發，途中雖然一度找不到路，仍然繼續尋找，最後找到了哥哥們。</p>
+            <p>哥哥們因著嫉妒約瑟，就同謀害他。他們剝去約瑟的彩衣，把他丟在坑裡，後來又把他賣到埃及。雅各看見染血的彩衣，以為約瑟被野獸吃了，心中非常悲傷。</p>
+      </article>
+
+      <aside class="card focus-box">
+        <p class="eyebrow">Sunday Focus</p>
+        <h2>主日可以先抓三句話</h2>
+        <ul>
+          <li>約瑟順服父親的差遣，即使路上遇到困難，也沒有隨便放棄。</li>
+          <li>哥哥們的嫉妒使他們作出傷害弟兄、欺騙父親的事。</li>
+          <li>人所看見的是痛苦和失去，神卻仍在主宰地安排，要帶人經過變化而進入榮耀。</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="reading" class="content-grid" aria-label="reading-content">
+      <article class="card">
+        <span class="section-tag wednesday">主日｜正文帶讀</span>
+        <h2>神在苦難中仍有祂的工作</h2>
+            <p>約瑟去尋找哥哥們，是因為他願意順服父親。當他走迷路時，有人指點他，他就繼續往前。這給我們看見，順服主有時不一定很容易，但我們可以一步一步跟隨祂的帶領。</p>
+            <p>約瑟的哥哥們看見他，就因著嫉妒商量要害他。流便想救約瑟的性命，提議先把他放在坑裡；後來猶大提議把約瑟賣給往埃及去的商人。約瑟就這樣離開父親，被帶到埃及。</p>
+            <p>哥哥們用山羊的血染了約瑟的彩衣，讓雅各以為約瑟遭遇不幸。雅各十分悲傷，覺得自己失去了最寶愛的兒子。這一段經歷對他來說，是非常深的痛苦。</p>
+            <p>雅各原本喜愛平靜的生活，也特別偏愛約瑟；但神藉著這件事摸著他，使他不再只抓住自己所愛的。神不是喜歡人受苦，卻能在苦難中作變化人的工作。</p>
+            <p>創世記的故事沒有停在悲傷裡。約瑟後來在埃及成為掌權的人，雅各也在神的帶領下走到榮耀的結局。今天我們遇見不明白的事，也可以相信神仍在作工。</p>
+      </article>
+
+      <article class="card">
+        <span class="section-tag thursday">主日｜補充提醒與操練</span>
+        <h2>在不明白時信靠主</h2>
+            <p>當我們遇到失望、誤會或失去時，可能會想問主：「為甚麼會這樣？」主知道我們的感覺，我們可以坦誠地把難過告訴祂。</p>
+            <p>我們也要留意自己的心，不讓嫉妒、比較或不滿控制我們。若看見別人得到稱讚或有好的表現，可以學習為他感謝主，而不是在心裡產生不好的想法。</p>
+            <p>主所量給我們的環境，能使我們更多經歷祂。即使現在還看不清楚結果，仍可以向主說：「主阿，我信你在這件事上有美好的心意，求你使我被變化。」</p>
+        <div class="scripture"><strong>可帶的一句提醒</strong><br />苦難不是故事的最後一頁；在主手中，它能成為我們被變化、進入榮耀的過程。</div>
+      </article>
+    </section>
+
+    <section id="discussion" class="summary-grid" aria-label="discussion-guide">
+      <article class="card focus-box">
+        <p class="eyebrow">Lead the Group</p>
+        <h3>這篇可以帶出的三件事</h3>
+        <ol>
+          <li>順服主的帶領，即使途中有困難，也願意繼續往前。</li>
+          <li>拒絕嫉妒和欺騙，學習用愛對待弟兄姊妹。</li>
+          <li>在苦難中信靠神的主宰，相信祂能使我們被變化。</li>
+        </ol>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Discussion</p>
+        <h3>可直接帶的三個問題</h3>
+        <ul>
+          <li>約瑟在尋找哥哥們的路上遇到甚麼困難？他怎樣面對？</li>
+          <li>哥哥們為甚麼會傷害約瑟？這提醒我們要小心甚麼？</li>
+          <li>當你遇到不明白或難過的事時，可以怎樣轉向主？</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="summary-grid" aria-label="verse-prayer">
+      <article class="card">
+        <p class="eyebrow">Verse</p>
+        <h3>今天的經文</h3>
+        <div class="scripture">因為我們這短暫輕微的苦楚，要極盡超越地為我們成就永遠重大的榮耀。<br />林後四17</div>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Prayer</p>
+        <h3>一起禱告</h3>
+        <div class="prayer">主耶穌，謝謝你知道我所有的感覺。當我遇到難過或不明白的事時，求你保守我的心，使我不抱怨，願意信靠你的主宰。<br /><br />主阿，救我脫離嫉妒、比較和不好的心思。求你使用我的每一個經歷，使我更多得著你、更多被你變化，並向你歡樂讚美。</div>
+      </article>
+    </section>
+
+    <p class="footer-note">聖經之旅 第一冊 · 第十六課 · 202607w4</p>
+  </main>
+</body>
+</html>
