@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-07-20T11:05:11Z",
+    "updatedAt": "2026-07-21T11:05:11Z",
     "sourceCount": 380,
-    "releasedCount": 300,
+    "releasedCount": 305,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "穏やか",
+      "reading": "おだやか",
+      "meaning": "溫和的",
+      "example": "穏やかな説明でした。",
+      "translation": "這是溫和的的說明。",
+      "firstSeen": "2026-07-21",
+      "pos": "adj-na",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "盛ん",
+      "reading": "さかん",
+      "meaning": "盛行的",
+      "example": "盛んな説明でした。",
+      "translation": "這是盛行的的說明。",
+      "firstSeen": "2026-07-21",
+      "pos": "adj-na",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "派手",
+      "reading": "はで",
+      "meaning": "華麗的",
+      "example": "派手な説明でした。",
+      "translation": "這是華麗的的說明。",
+      "firstSeen": "2026-07-21",
+      "pos": "adj-na",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "新鮮",
+      "reading": "しんせん",
+      "meaning": "新鮮的",
+      "example": "新鮮な説明でした。",
+      "translation": "這是新鮮的的說明。",
+      "firstSeen": "2026-07-21",
+      "pos": "adj-na",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "地味",
+      "reading": "じみ",
+      "meaning": "樸素的",
+      "example": "地味な説明でした。",
+      "translation": "這是樸素的的說明。",
+      "firstSeen": "2026-07-21",
+      "pos": "adj-na",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "鋭い",
       "reading": "するどい",
