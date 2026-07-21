@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-07-20T11:01:54Z",
-    "sourceCount": 323,
-    "includedCount": 315
+    "updatedAt": "2026-07-21T11:02:05Z",
+    "sourceCount": 326,
+    "includedCount": 318
   },
   "words": [
+    {
+      "word": "fill",
+      "meaning": "裝滿；填寫",
+      "example": "I filled my water bottle before school yesterday.",
+      "translation": "我昨天上學前把水壺裝滿水。",
+      "firstSeen": "2026-07-21",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "include",
+      "meaning": "包含；包括",
+      "example": "The list included my name yesterday.",
+      "translation": "那份名單昨天有我的名字。",
+      "firstSeen": "2026-07-21",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "swim",
+      "meaning": "游泳",
+      "example": "We swam in the pool last Sunday.",
+      "translation": "上週日我們在游泳池游泳。",
+      "firstSeen": "2026-07-21",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "ice",
       "meaning": "冰",
