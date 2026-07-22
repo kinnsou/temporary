@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-07-21T11:05:11Z",
+    "updatedAt": "2026-07-22T11:05:14Z",
     "sourceCount": 380,
-    "releasedCount": 305,
+    "releasedCount": 310,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "苦手",
+      "reading": "にがて",
+      "meaning": "不擅長的",
+      "example": "苦手な説明でした。",
+      "translation": "這是不擅長的的說明。",
+      "firstSeen": "2026-07-22",
+      "pos": "adj-na",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "真面目",
+      "reading": "まじめ",
+      "meaning": "認真的",
+      "example": "真面目な説明でした。",
+      "translation": "這是認真的的說明。",
+      "firstSeen": "2026-07-22",
+      "pos": "adj-na",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "得意",
+      "reading": "とくい",
+      "meaning": "擅長的",
+      "example": "得意な説明でした。",
+      "translation": "這是擅長的的說明。",
+      "firstSeen": "2026-07-22",
+      "pos": "adj-na",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "勝手",
+      "reading": "かって",
+      "meaning": "任性的",
+      "example": "勝手な説明でした。",
+      "translation": "這是任性的的說明。",
+      "firstSeen": "2026-07-22",
+      "pos": "adj-na",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "余計",
+      "reading": "よけい",
+      "meaning": "多餘的",
+      "example": "余計な説明でした。",
+      "translation": "這是多餘的的說明。",
+      "firstSeen": "2026-07-22",
+      "pos": "adj-na",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "穏やか",
       "reading": "おだやか",

@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-07-21T11:02:05Z",
-    "sourceCount": 326,
-    "includedCount": 318
+    "updatedAt": "2026-07-22T11:01:51Z",
+    "sourceCount": 329,
+    "includedCount": 321
   },
   "words": [
+    {
+      "word": "square",
+      "meaning": "正方形；廣場",
+      "example": "We drew a square in math class today.",
+      "translation": "我們今天在數學課畫了一個正方形。",
+      "firstSeen": "2026-07-22",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "read",
+      "meaning": "閱讀；朗讀",
+      "example": "I read a story before bed every night.",
+      "translation": "我每天晚上睡前會讀一個故事。",
+      "firstSeen": "2026-07-22",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "mountain",
+      "meaning": "山；山岳",
+      "example": "We saw a tall mountain on our trip yesterday.",
+      "translation": "我們昨天旅行時看到一座高山。",
+      "firstSeen": "2026-07-22",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "fill",
       "meaning": "裝滿；填寫",
