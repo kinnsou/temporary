@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-07-22T11:01:51Z",
-    "sourceCount": 329,
-    "includedCount": 321
+    "updatedAt": "2026-07-23T11:01:50Z",
+    "sourceCount": 332,
+    "includedCount": 324
   },
   "words": [
+    {
+      "word": "rest",
+      "meaning": "休息；其餘部分",
+      "example": "We rest after school.",
+      "translation": "我們放學後休息。",
+      "firstSeen": "2026-07-23",
+      "pos": [
+        "v",
+        "n"
+      ]
+    },
+    {
+      "word": "finally",
+      "meaning": "最後；終於",
+      "example": "Finally, Mia finished her homework.",
+      "translation": "最後，米亞完成了她的作業。",
+      "firstSeen": "2026-07-23",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "apartment",
+      "meaning": "公寓；公寓住宅",
+      "example": "My aunt lives in a small apartment.",
+      "translation": "我阿姨住在一間小公寓裡。",
+      "firstSeen": "2026-07-23",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "square",
       "meaning": "正方形；廣場",

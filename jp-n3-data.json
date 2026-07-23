@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-07-22T11:05:14Z",
+    "updatedAt": "2026-07-23T11:05:11Z",
     "sourceCount": 380,
-    "releasedCount": 310,
+    "releasedCount": 315,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "貴重",
+      "reading": "きちょう",
+      "meaning": "貴重的",
+      "example": "貴重な説明でした。",
+      "translation": "這是貴重的的說明。",
+      "firstSeen": "2026-07-23",
+      "pos": "adj-na",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "無駄",
+      "reading": "むだ",
+      "meaning": "徒勞的",
+      "example": "無駄な説明でした。",
+      "translation": "這是徒勞的的說明。",
+      "firstSeen": "2026-07-23",
+      "pos": "adj-na",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "案外",
+      "reading": "あんがい",
+      "meaning": "意外地",
+      "example": "彼は案外話しました。",
+      "translation": "他以「意外地」的方式說話。",
+      "firstSeen": "2026-07-23",
+      "pos": "adv",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "うっかり",
+      "reading": "うっかり",
+      "meaning": "不留神地",
+      "example": "彼はうっかり話しました。",
+      "translation": "他以「不留神地」的方式說話。",
+      "firstSeen": "2026-07-23",
+      "pos": "adv",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "いきなり",
+      "reading": "いきなり",
+      "meaning": "突然地",
+      "example": "彼はいきなり話しました。",
+      "translation": "他以「突然地」的方式說話。",
+      "firstSeen": "2026-07-23",
+      "pos": "adv",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "苦手",
       "reading": "にがて",
