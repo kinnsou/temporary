@@ -1,6 +1,6 @@
 {
   "date": "2026-07-24",
-  "fetched_at": "2026-07-24T09:38:53+08:00",
+  "fetched_at": "2026-07-24T13:46:40+08:00",
   "sources": {
     "twse": "https://openapi.twse.com.tw/v1/exchangeReport/TWT48U_ALL",
     "tpex": "https://www.tpex.org.tw/openapi/v1/tpex_exright_prepost",
@@ -19,7 +19,7 @@
     "future_window_stock_rows": 2,
     "new_observed_stock_rows": 8,
     "mops_announcement_query_date": "2026-07-23",
-    "mops_announcement_rows": 11,
+    "mops_announcement_rows": 10,
     "mops_pending_amount_rows": 1,
     "mops_available": true
   },
@@ -36,7 +36,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "114",
       "last_close_date": "2026-07-23"
     },
@@ -52,7 +52,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "31.2",
       "last_close_date": "2026-07-23"
     },
@@ -68,7 +68,7 @@
       "subscription_price": "30",
       "stock_holding_ratio": "158.50613852",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "30.5",
       "last_close_date": "2026-07-23"
     },
@@ -84,7 +84,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "27.4",
       "last_close_date": "2026-07-23"
     },
@@ -100,7 +100,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "19.6",
       "last_close_date": "2026-07-23"
     },
@@ -116,7 +116,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "27.55",
       "last_close_date": "2026-07-23"
     },
@@ -132,7 +132,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "160",
       "last_close_date": "2026-07-23"
     },
@@ -148,7 +148,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "118",
       "last_close_date": "2026-07-23"
     },
@@ -164,7 +164,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "407.5",
       "last_close_date": "2026-07-23"
     },
@@ -180,7 +180,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "94.3",
       "last_close_date": "2026-07-23"
     },
@@ -196,7 +196,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "22.25",
       "last_close_date": "2026-07-23"
     },
@@ -212,7 +212,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "23.8",
       "last_close_date": "2026-07-23"
     },
@@ -228,7 +228,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "35",
       "last_close_date": "2026-07-23"
     },
@@ -244,7 +244,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "64.1",
       "last_close_date": "2026-07-23"
     },
@@ -260,7 +260,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "110",
       "last_close_date": "2026-07-23"
     },
@@ -276,7 +276,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "40.45",
       "last_close_date": "2026-07-23"
     },
@@ -292,7 +292,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "---",
       "last_close_date": "2026-07-23"
     },
@@ -308,7 +308,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "29.99",
       "last_close_date": "2026-07-23"
     },
@@ -324,7 +324,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "14.13",
       "last_close_date": "2026-07-23"
     },
@@ -340,7 +340,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "9.28",
       "last_close_date": "2026-07-23"
     },
@@ -356,7 +356,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "9.39",
       "last_close_date": "2026-07-23"
     },
@@ -372,7 +372,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "10.22",
       "last_close_date": "2026-07-23"
     },
@@ -388,7 +388,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "55.2",
       "last_close_date": "2026-07-23"
     },
@@ -404,7 +404,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "258",
       "last_close_date": "2026-07-23"
     },
@@ -420,7 +420,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "16.15",
       "last_close_date": "2026-07-23"
     },
@@ -436,7 +436,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "50.9",
       "last_close_date": "2026-07-23"
     },
@@ -452,7 +452,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "27.45",
       "last_close_date": "2026-07-23"
     },
@@ -468,7 +468,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "1830",
       "last_close_date": "2026-07-23"
     },
@@ -484,7 +484,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "76.8",
       "last_close_date": "2026-07-23"
     },
@@ -500,7 +500,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "75",
       "last_close_date": "2026-07-23"
     },
@@ -516,7 +516,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "76.2",
       "last_close_date": "2026-07-23"
     },
@@ -532,7 +532,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "461",
       "last_close_date": "2026-07-23"
     },
@@ -548,7 +548,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "40.35",
       "last_close_date": "2026-07-23"
     },
@@ -564,7 +564,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "88",
       "last_close_date": "2026-07-23"
     },
@@ -580,7 +580,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "42.27",
       "last_close_date": "2026-07-23"
     },
@@ -596,7 +596,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "35.24",
       "last_close_date": "2026-07-23"
     },
@@ -612,7 +612,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "28.77",
       "last_close_date": "2026-07-23"
     },
@@ -628,7 +628,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "35.11",
       "last_close_date": "2026-07-23"
     },
@@ -644,7 +644,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "29.86",
       "last_close_date": "2026-07-23"
     },
@@ -660,7 +660,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "33.51",
       "last_close_date": "2026-07-23"
     },
@@ -676,7 +676,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "34.64",
       "last_close_date": "2026-07-23"
     },
@@ -692,7 +692,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "39.59",
       "last_close_date": "2026-07-23"
     },
@@ -708,7 +708,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "38.15",
       "last_close_date": "2026-07-23"
     },
@@ -724,7 +724,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "37.82",
       "last_close_date": "2026-07-23"
     },
@@ -740,7 +740,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "35.17",
       "last_close_date": "2026-07-23"
     },
@@ -756,7 +756,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "31.46",
       "last_close_date": "2026-07-23"
     },
@@ -772,7 +772,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "32.36",
       "last_close_date": "2026-07-23"
     },
@@ -788,7 +788,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "33.33",
       "last_close_date": "2026-07-23"
     },
@@ -804,7 +804,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "35.74",
       "last_close_date": "2026-07-23"
     },
@@ -820,7 +820,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "32.11",
       "last_close_date": "2026-07-23"
     },
@@ -836,7 +836,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "34.2",
       "last_close_date": "2026-07-23"
     },
@@ -852,7 +852,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "30.1",
       "last_close_date": "2026-07-23"
     },
@@ -868,7 +868,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "34.72",
       "last_close_date": "2026-07-23"
     },
@@ -884,7 +884,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "29.63",
       "last_close_date": "2026-07-23"
     },
@@ -900,7 +900,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "33.96",
       "last_close_date": "2026-07-23"
     },
@@ -916,7 +916,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "37.73",
       "last_close_date": "2026-07-23"
     },
@@ -932,7 +932,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "29.28",
       "last_close_date": "2026-07-23"
     },
@@ -948,7 +948,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "31.88",
       "last_close_date": "2026-07-23"
     },
@@ -964,7 +964,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "31.16",
       "last_close_date": "2026-07-23"
     },
@@ -980,7 +980,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "15.98",
       "last_close_date": "2026-07-23"
     },
@@ -996,7 +996,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "14.67",
       "last_close_date": "2026-07-23"
     },
@@ -1012,7 +1012,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "9.36",
       "last_close_date": "2026-07-23"
     },
@@ -1028,7 +1028,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "13.31",
       "last_close_date": "2026-07-23"
     },
@@ -1044,7 +1044,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "20.41",
       "last_close_date": "2026-07-23"
     },
@@ -1060,7 +1060,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "11.2",
       "last_close_date": "2026-07-23"
     },
@@ -1076,7 +1076,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "10.45",
       "last_close_date": "2026-07-23"
     },
@@ -1092,7 +1092,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "9.73",
       "last_close_date": "2026-07-23"
     },
@@ -1108,7 +1108,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "19.95",
       "last_close_date": "2026-07-23"
     },
@@ -1124,7 +1124,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "72.9",
       "last_close_date": "2026-07-23"
     },
@@ -1140,7 +1140,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "110",
       "last_close_date": "2026-07-23"
     },
@@ -1156,7 +1156,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "105",
       "last_close_date": "2026-07-23"
     },
@@ -1172,7 +1172,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "187",
       "last_close_date": "2026-07-23"
     },
@@ -1188,7 +1188,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "38.7",
       "last_close_date": "2026-07-23"
     },
@@ -1204,7 +1204,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "69.9",
       "last_close_date": "2026-07-23"
     },
@@ -1220,7 +1220,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "72.4",
       "last_close_date": "2026-07-23"
     },
@@ -1236,7 +1236,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "22.4",
       "last_close_date": "2026-07-23"
     },
@@ -1252,7 +1252,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "14.25",
       "last_close_date": "2026-07-23"
     },
@@ -1268,7 +1268,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "39.7",
       "last_close_date": "2026-07-23"
     },
@@ -1284,7 +1284,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "20.45",
       "last_close_date": "2026-07-23"
     },
@@ -1300,7 +1300,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "635",
       "last_close_date": "2026-07-23"
     },
@@ -1316,7 +1316,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "57.5",
       "last_close_date": "2026-07-23"
     },
@@ -1332,7 +1332,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "52.1",
       "last_close_date": "2026-07-23"
     },
@@ -1348,7 +1348,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "72.4",
       "last_close_date": "2026-07-23"
     },
@@ -1364,7 +1364,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "23.75",
       "last_close_date": "2026-07-23"
     },
@@ -1380,7 +1380,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "1120",
       "last_close_date": "2026-07-23"
     },
@@ -1396,7 +1396,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "27.45",
       "last_close_date": "2026-07-23"
     },
@@ -1412,7 +1412,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "108",
       "last_close_date": "2026-07-23"
     },
@@ -1428,7 +1428,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "375",
       "last_close_date": "2026-07-23"
     },
@@ -1444,7 +1444,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "13.36",
       "last_close_date": "2026-07-23"
     },
@@ -1460,7 +1460,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "10.09",
       "last_close_date": "2026-07-23"
     },
@@ -1476,7 +1476,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "25.3",
       "last_close_date": "2026-07-23"
     },
@@ -1492,7 +1492,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "29.35",
       "last_close_date": "2026-07-23"
     },
@@ -1508,7 +1508,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "70.9",
       "last_close_date": "2026-07-23"
     },
@@ -1524,7 +1524,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "87.4",
       "last_close_date": "2026-07-23"
     },
@@ -1540,7 +1540,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "30.2",
       "last_close_date": "2026-07-23"
     },
@@ -1556,7 +1556,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "121",
       "last_close_date": "2026-07-23"
     },
@@ -1572,7 +1572,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "406.5",
       "last_close_date": "2026-07-23"
     },
@@ -1588,7 +1588,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "94.8",
       "last_close_date": "2026-07-23"
     },
@@ -1604,7 +1604,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "145.5",
       "last_close_date": "2026-07-23"
     },
@@ -1620,7 +1620,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "17.4",
       "last_close_date": "2026-07-23"
     },
@@ -1636,7 +1636,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "184.5",
       "last_close_date": "2026-07-23"
     },
@@ -1652,7 +1652,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "46",
       "last_close_date": "2026-07-23"
     },
@@ -1668,7 +1668,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "253.5",
       "last_close_date": "2026-07-23"
     },
@@ -1684,7 +1684,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "125.5",
       "last_close_date": "2026-07-23"
     },
@@ -1700,7 +1700,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "192",
       "last_close_date": "2026-07-23"
     },
@@ -1716,7 +1716,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "31.37",
       "last_close_date": "2026-07-23"
     },
@@ -1732,7 +1732,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "32.58",
       "last_close_date": "2026-07-23"
     },
@@ -1748,7 +1748,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "29.79",
       "last_close_date": "2026-07-23"
     },
@@ -1764,7 +1764,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "47.21",
       "last_close_date": "2026-07-23"
     },
@@ -1780,7 +1780,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "57.4",
       "last_close_date": "2026-07-23"
     },
@@ -1796,7 +1796,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "33.92",
       "last_close_date": "2026-07-23"
     },
@@ -1812,7 +1812,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "28.08",
       "last_close_date": "2026-07-23"
     },
@@ -1828,7 +1828,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "9.11",
       "last_close_date": "2026-07-23"
     },
@@ -1844,7 +1844,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "9.19",
       "last_close_date": "2026-07-23"
     },
@@ -1860,7 +1860,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "9.28",
       "last_close_date": "2026-07-23"
     },
@@ -1876,7 +1876,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "14.76",
       "last_close_date": "2026-07-23"
     },
@@ -1892,7 +1892,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "19.05",
       "last_close_date": "2026-07-23"
     },
@@ -1908,7 +1908,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "20.9",
       "last_close_date": "2026-07-23"
     },
@@ -1924,7 +1924,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "68.6",
       "last_close_date": "2026-07-23"
     },
@@ -1940,7 +1940,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "67.8",
       "last_close_date": "2026-07-23"
     },
@@ -1956,7 +1956,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "269",
       "last_close_date": "2026-07-23"
     },
@@ -1972,7 +1972,7 @@
       "subscription_price": "55",
       "stock_holding_ratio": "169.02636348",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "75.5",
       "last_close_date": "2026-07-23"
     },
@@ -1988,7 +1988,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "30.25",
       "last_close_date": "2026-07-23"
     },
@@ -2004,7 +2004,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "60.7",
       "last_close_date": "2026-07-23"
     },
@@ -2020,7 +2020,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "48.2",
       "last_close_date": "2026-07-23"
     },
@@ -2036,7 +2036,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "99.6",
       "last_close_date": "2026-07-23"
     },
@@ -2052,7 +2052,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "13.4",
       "last_close_date": "2026-07-23"
     },
@@ -2068,7 +2068,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "101",
       "last_close_date": "2026-07-23"
     },
@@ -2084,7 +2084,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "13.55",
       "last_close_date": "2026-07-23"
     },
@@ -2100,7 +2100,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "216.5",
       "last_close_date": "2026-07-23"
     },
@@ -2116,7 +2116,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "3710",
       "last_close_date": "2026-07-23"
     },
@@ -2132,7 +2132,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "134.5",
       "last_close_date": "2026-07-23"
     },
@@ -2148,7 +2148,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "130",
       "last_close_date": "2026-07-23"
     },
@@ -2164,7 +2164,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "185",
       "last_close_date": "2026-07-23"
     },
@@ -2180,7 +2180,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "13.15",
       "last_close_date": "2026-07-23"
     },
@@ -2196,7 +2196,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "143",
       "last_close_date": "2026-07-23"
     },
@@ -2212,7 +2212,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "120",
       "last_close_date": "2026-07-23"
     },
@@ -2228,7 +2228,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "249",
       "last_close_date": "2026-07-23"
     },
@@ -2244,7 +2244,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "52.1",
       "last_close_date": "2026-07-23"
     },
@@ -2260,7 +2260,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "232",
       "last_close_date": "2026-07-23"
     },
@@ -2276,7 +2276,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "25.35",
       "last_close_date": "2026-07-23"
     },
@@ -2292,7 +2292,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "44.35",
       "last_close_date": "2026-07-23"
     },
@@ -2308,7 +2308,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "---",
       "last_close_date": "2026-07-23"
     },
@@ -2324,7 +2324,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "13.1",
       "last_close_date": "2026-07-23"
     },
@@ -2340,7 +2340,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "12.4",
       "last_close_date": "2026-07-23"
     },
@@ -2356,7 +2356,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "28.8",
       "last_close_date": "2026-07-23"
     },
@@ -2372,7 +2372,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "13.45",
       "last_close_date": "2026-07-23"
     },
@@ -2388,7 +2388,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "12.75",
       "last_close_date": "2026-07-23"
     },
@@ -2404,7 +2404,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "14.55",
       "last_close_date": "2026-07-23"
     },
@@ -2420,7 +2420,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "15.4",
       "last_close_date": "2026-07-23"
     },
@@ -2436,7 +2436,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "8.5",
       "last_close_date": "2026-07-23"
     },
@@ -2452,7 +2452,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "38.85",
       "last_close_date": "2026-07-23"
     },
@@ -2468,7 +2468,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "211.5",
       "last_close_date": "2026-07-23"
     },
@@ -2484,7 +2484,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "89.7",
       "last_close_date": "2026-07-23"
     },
@@ -2500,7 +2500,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "1405",
       "last_close_date": "2026-07-23"
     },
@@ -2516,7 +2516,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "56.1",
       "last_close_date": "2026-07-23"
     },
@@ -2532,7 +2532,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "8.18",
       "last_close_date": "2026-07-23"
     },
@@ -2548,7 +2548,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "38.75",
       "last_close_date": "2026-07-23"
     },
@@ -2564,7 +2564,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "52",
       "last_close_date": "2026-07-23"
     },
@@ -2580,7 +2580,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "30.1",
       "last_close_date": "2026-07-23"
     },
@@ -2596,7 +2596,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "54.5",
       "last_close_date": "2026-07-23"
     },
@@ -2612,7 +2612,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "38.2",
       "last_close_date": "2026-07-23"
     },
@@ -2628,7 +2628,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "10.05",
       "last_close_date": "2026-07-23"
     },
@@ -2644,7 +2644,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "11.5",
       "last_close_date": "2026-07-23"
     },
@@ -2660,7 +2660,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "14.15",
       "last_close_date": "2026-07-23"
     },
@@ -2676,7 +2676,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "33.35",
       "last_close_date": "2026-07-23"
     },
@@ -2692,7 +2692,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "33.6",
       "last_close_date": "2026-07-23"
     },
@@ -2708,7 +2708,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "1000",
       "last_close_date": "2026-07-23"
     },
@@ -2724,7 +2724,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "23.15",
       "last_close_date": "2026-07-23"
     },
@@ -2740,7 +2740,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "829",
       "last_close_date": "2026-07-23"
     },
@@ -2756,7 +2756,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "297.5",
       "last_close_date": "2026-07-23"
     },
@@ -2772,7 +2772,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "295",
       "last_close_date": "2026-07-23"
     },
@@ -2788,7 +2788,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "43.5",
       "last_close_date": "2026-07-23"
     },
@@ -2804,7 +2804,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "110",
       "last_close_date": "2026-07-23"
     },
@@ -2820,7 +2820,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "94.7",
       "last_close_date": "2026-07-23"
     },
@@ -2836,7 +2836,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "154",
       "last_close_date": "2026-07-23"
     },
@@ -2852,7 +2852,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "33.55",
       "last_close_date": "2026-07-23"
     },
@@ -2868,7 +2868,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "63.5",
       "last_close_date": "2026-07-23"
     },
@@ -2884,7 +2884,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "74.5",
       "last_close_date": "2026-07-23"
     },
@@ -2900,7 +2900,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "1300",
       "last_close_date": "2026-07-23"
     },
@@ -2916,7 +2916,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "87.9",
       "last_close_date": "2026-07-23"
     },
@@ -2932,7 +2932,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "56.1",
       "last_close_date": "2026-07-23"
     },
@@ -2948,7 +2948,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "212.5",
       "last_close_date": "2026-07-23"
     },
@@ -2964,7 +2964,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "249",
       "last_close_date": "2026-07-23"
     },
@@ -2980,7 +2980,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "17.25",
       "last_close_date": "2026-07-23"
     },
@@ -2996,7 +2996,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "52.4",
       "last_close_date": "2026-07-23"
     },
@@ -3012,7 +3012,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "37.7",
       "last_close_date": "2026-07-23"
     },
@@ -3028,7 +3028,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "19.25",
       "last_close_date": "2026-07-23"
     },
@@ -3044,7 +3044,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "32.55",
       "last_close_date": "2026-07-23"
     },
@@ -3060,7 +3060,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "19.1",
       "last_close_date": "2026-07-23"
     },
@@ -3076,7 +3076,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "38.85",
       "last_close_date": "2026-07-23"
     },
@@ -3092,7 +3092,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "38.8",
       "last_close_date": "2026-07-23"
     },
@@ -3108,7 +3108,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "64.1",
       "last_close_date": "2026-07-23"
     },
@@ -3124,7 +3124,7 @@
       "subscription_price": "230",
       "stock_holding_ratio": "52.6056994",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "309.5",
       "last_close_date": "2026-07-23"
     },
@@ -3140,7 +3140,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "194.5",
       "last_close_date": "2026-07-23"
     },
@@ -3156,7 +3156,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "60",
       "last_close_date": "2026-07-23"
     },
@@ -3172,7 +3172,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "109.5",
       "last_close_date": "2026-07-23"
     },
@@ -3188,7 +3188,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "157",
       "last_close_date": "2026-07-23"
     },
@@ -3204,7 +3204,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "230",
       "last_close_date": "2026-07-23"
     },
@@ -3220,7 +3220,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "41.4",
       "last_close_date": "2026-07-23"
     },
@@ -3236,7 +3236,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "28.15",
       "last_close_date": "2026-07-23"
     },
@@ -3252,7 +3252,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "36.8",
       "last_close_date": "2026-07-23"
     },
@@ -3268,7 +3268,7 @@
       "subscription_price": "85.8",
       "stock_holding_ratio": "56.38814929",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "97.7",
       "last_close_date": "2026-07-23"
     },
@@ -3284,7 +3284,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "14.55",
       "last_close_date": "2026-07-23"
     },
@@ -3300,7 +3300,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "293",
       "last_close_date": "2026-07-23"
     },
@@ -3316,7 +3316,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "63",
       "last_close_date": "2026-07-23"
     },
@@ -3332,7 +3332,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "24.2",
       "last_close_date": "2026-07-23"
     },
@@ -3348,7 +3348,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "30.5",
       "last_close_date": "2026-07-23"
     },
@@ -3364,7 +3364,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "18.3",
       "last_close_date": "2026-07-23"
     },
@@ -3380,7 +3380,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "16.95",
       "last_close_date": "2026-07-23"
     },
@@ -3396,7 +3396,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "445.5",
       "last_close_date": "2026-07-23"
     },
@@ -3412,7 +3412,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "39.25",
       "last_close_date": "2026-07-23"
     },
@@ -3428,7 +3428,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "36.81",
       "last_close_date": "2026-07-23"
     },
@@ -3444,7 +3444,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "35.19",
       "last_close_date": "2026-07-23"
     },
@@ -3460,7 +3460,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "9.3",
       "last_close_date": "2026-07-23"
     },
@@ -3476,7 +3476,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "39",
       "last_close_date": "2026-07-23"
     },
@@ -3492,7 +3492,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "30.7",
       "last_close_date": "2026-07-23"
     },
@@ -3508,7 +3508,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "46.2",
       "last_close_date": "2026-07-23"
     },
@@ -3524,7 +3524,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "257.5",
       "last_close_date": "2026-07-23"
     },
@@ -3540,7 +3540,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "27.4",
       "last_close_date": "2026-07-23"
     },
@@ -3556,7 +3556,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "416",
       "last_close_date": "2026-07-23"
     },
@@ -3572,7 +3572,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "88.8",
       "last_close_date": "2026-07-23"
     },
@@ -3588,7 +3588,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "24.6",
       "last_close_date": "2026-07-23"
     },
@@ -3604,7 +3604,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "34.75",
       "last_close_date": "2026-07-23"
     },
@@ -3620,7 +3620,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "420",
       "last_close_date": "2026-07-23"
     },
@@ -3636,7 +3636,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "286",
       "last_close_date": "2026-07-23"
     },
@@ -3652,7 +3652,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "52.8",
       "last_close_date": "2026-07-23"
     },
@@ -3668,7 +3668,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "22.35",
       "last_close_date": "2026-07-23"
     },
@@ -3684,7 +3684,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "44.8",
       "last_close_date": "2026-07-23"
     },
@@ -3700,7 +3700,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "106.5",
       "last_close_date": "2026-07-23"
     },
@@ -3716,7 +3716,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "55.5",
       "last_close_date": "2026-07-23"
     },
@@ -3732,7 +3732,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "129.5",
       "last_close_date": "2026-07-23"
     },
@@ -3748,7 +3748,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "33.25",
       "last_close_date": "2026-07-23"
     },
@@ -3764,7 +3764,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "761",
       "last_close_date": "2026-07-23"
     },
@@ -3780,7 +3780,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "75.1",
       "last_close_date": "2026-07-23"
     },
@@ -3796,7 +3796,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "119",
       "last_close_date": "2026-07-23"
     },
@@ -3812,7 +3812,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "20.6",
       "last_close_date": "2026-07-23"
     },
@@ -3828,7 +3828,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "34.7",
       "last_close_date": "2026-07-23"
     },
@@ -3844,7 +3844,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "87.2",
       "last_close_date": "2026-07-23"
     },
@@ -3860,7 +3860,7 @@
       "subscription_price": "37",
       "stock_holding_ratio": "224.25139838",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "41.95",
       "last_close_date": "2026-07-23"
     },
@@ -3876,7 +3876,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "68",
       "last_close_date": "2026-07-23"
     },
@@ -3892,7 +3892,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "362",
       "last_close_date": "2026-07-23"
     },
@@ -3908,7 +3908,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "21.55",
       "last_close_date": "2026-07-23"
     },
@@ -3924,7 +3924,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "38.3",
       "last_close_date": "2026-07-23"
     },
@@ -3940,7 +3940,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "59.5",
       "last_close_date": "2026-07-23"
     },
@@ -3956,7 +3956,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "17.8",
       "last_close_date": "2026-07-23"
     },
@@ -3972,7 +3972,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "12.85",
       "last_close_date": "2026-07-23"
     },
@@ -3988,7 +3988,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "36.95",
       "last_close_date": "2026-07-23"
     },
@@ -4004,7 +4004,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "120.5",
       "last_close_date": "2026-07-23"
     },
@@ -4020,7 +4020,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "102.5",
       "last_close_date": "2026-07-23"
     },
@@ -4036,7 +4036,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "61.6",
       "last_close_date": "2026-07-23"
     },
@@ -4052,7 +4052,7 @@
       "subscription_price": "310",
       "stock_holding_ratio": "70.615",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "425.5",
       "last_close_date": "2026-07-23"
     },
@@ -4068,7 +4068,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "3035",
       "last_close_date": "2026-07-23"
     },
@@ -4084,7 +4084,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "56.6",
       "last_close_date": "2026-07-23"
     },
@@ -4100,7 +4100,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "56.6",
       "last_close_date": "2026-07-23"
     },
@@ -4116,7 +4116,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "21.45",
       "last_close_date": "2026-07-23"
     },
@@ -4132,7 +4132,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "96.6",
       "last_close_date": "2026-07-23"
     },
@@ -4148,7 +4148,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "28.4",
       "last_close_date": "2026-07-23"
     },
@@ -4164,7 +4164,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "81",
       "last_close_date": "2026-07-23"
     },
@@ -4180,7 +4180,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "40.8",
       "last_close_date": "2026-07-23"
     },
@@ -4196,7 +4196,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "77",
       "last_close_date": "2026-07-23"
     },
@@ -4212,7 +4212,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "92",
       "last_close_date": "2026-07-23"
     },
@@ -4228,7 +4228,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "108",
       "last_close_date": "2026-07-23"
     },
@@ -4244,7 +4244,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "218.5",
       "last_close_date": "2026-07-23"
     },
@@ -4260,7 +4260,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "2325",
       "last_close_date": "2026-07-23"
     },
@@ -4276,7 +4276,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "26.25",
       "last_close_date": "2026-07-23"
     },
@@ -4292,7 +4292,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "8.51",
       "last_close_date": "2026-07-23"
     },
@@ -4308,7 +4308,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "9.9",
       "last_close_date": "2026-07-23"
     },
@@ -4324,7 +4324,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "39.75",
       "last_close_date": "2026-07-23"
     },
@@ -4340,7 +4340,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "237",
       "last_close_date": "2026-07-23"
     },
@@ -4356,7 +4356,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "759",
       "last_close_date": "2026-07-23"
     },
@@ -4372,7 +4372,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "24.7",
       "last_close_date": "2026-07-23"
     },
@@ -4388,7 +4388,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "31.5",
       "last_close_date": "2026-07-23"
     },
@@ -4404,7 +4404,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "188",
       "last_close_date": "2026-07-23"
     },
@@ -4420,7 +4420,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "103.5",
       "last_close_date": "2026-07-23"
     },
@@ -4436,7 +4436,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "50.2",
       "last_close_date": "2026-07-23"
     },
@@ -4452,7 +4452,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "294",
       "last_close_date": "2026-07-23"
     },
@@ -4468,7 +4468,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "32.95",
       "last_close_date": "2026-07-23"
     },
@@ -4484,7 +4484,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "6465",
       "last_close_date": "2026-07-23"
     },
@@ -4500,7 +4500,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "123",
       "last_close_date": "2026-07-23"
     },
@@ -4516,7 +4516,7 @@
       "subscription_price": "20",
       "stock_holding_ratio": "114.91541904",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "24.3",
       "last_close_date": "2026-07-23"
     },
@@ -4532,7 +4532,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "---",
       "last_close_date": "2026-07-23"
     },
@@ -4548,7 +4548,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "64.9",
       "last_close_date": "2026-07-23"
     },
@@ -4564,7 +4564,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "240",
       "last_close_date": "2026-07-23"
     },
@@ -4580,7 +4580,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "14.95",
       "last_close_date": "2026-07-23"
     },
@@ -4596,7 +4596,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "40.4",
       "last_close_date": "2026-07-23"
     },
@@ -4612,7 +4612,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "36.85",
       "last_close_date": "2026-07-23"
     },
@@ -4628,7 +4628,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "30.2",
       "last_close_date": "2026-07-23"
     },
@@ -4644,7 +4644,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "43.5",
       "last_close_date": "2026-07-23"
     },
@@ -4660,7 +4660,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "47.3",
       "last_close_date": "2026-07-23"
     },
@@ -4676,7 +4676,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "94.5",
       "last_close_date": "2026-07-23"
     },
@@ -4692,7 +4692,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "197",
       "last_close_date": "2026-07-23"
     },
@@ -4708,7 +4708,7 @@
       "subscription_price": "註4",
       "stock_holding_ratio": "17.72671375",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "93",
       "last_close_date": "2026-07-23"
     },
@@ -4724,7 +4724,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "42.3",
       "last_close_date": "2026-07-23"
     },
@@ -4740,7 +4740,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "9.52",
       "last_close_date": "2026-07-23"
     },
@@ -4756,7 +4756,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "21.67",
       "last_close_date": "2026-07-23"
     },
@@ -4772,7 +4772,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "10.21",
       "last_close_date": "2026-07-23"
     },
@@ -4788,7 +4788,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "23.25",
       "last_close_date": "2026-07-23"
     },
@@ -4804,7 +4804,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "13.85",
       "last_close_date": "2026-07-23"
     },
@@ -4820,7 +4820,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "64.3",
       "last_close_date": "2026-07-23"
     },
@@ -4836,7 +4836,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "401",
       "last_close_date": "2026-07-23"
     },
@@ -4852,7 +4852,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "102",
       "last_close_date": "2026-07-23"
     },
@@ -4868,7 +4868,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "14.03",
       "last_close_date": "2026-07-23"
     },
@@ -4884,7 +4884,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "9.34",
       "last_close_date": "2026-07-23"
     },
@@ -4900,7 +4900,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "13.83",
       "last_close_date": "2026-07-23"
     },
@@ -4916,7 +4916,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "15.59",
       "last_close_date": "2026-07-23"
     },
@@ -4932,7 +4932,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "16.2",
       "last_close_date": "2026-07-23"
     },
@@ -4948,7 +4948,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "9.87",
       "last_close_date": "2026-07-23"
     },
@@ -4964,7 +4964,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "323",
       "last_close_date": "2026-07-23"
     },
@@ -4980,7 +4980,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "47.3",
       "last_close_date": "2026-07-23"
     },
@@ -4996,7 +4996,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "30.5",
       "last_close_date": "2026-07-23"
     },
@@ -5012,7 +5012,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "12.8",
       "last_close_date": "2026-07-23"
     },
@@ -5028,7 +5028,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "33.6",
       "last_close_date": "2026-07-23"
     },
@@ -5044,7 +5044,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "44.1",
       "last_close_date": "2026-07-23"
     },
@@ -5060,7 +5060,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "354.5",
       "last_close_date": "2026-07-23"
     },
@@ -5076,7 +5076,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "23",
       "last_close_date": "2026-07-23"
     },
@@ -5092,7 +5092,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "40.25",
       "last_close_date": "2026-07-23"
     },
@@ -5108,7 +5108,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "243",
       "last_close_date": "2026-07-23"
     },
@@ -5124,7 +5124,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "44.8",
       "last_close_date": "2026-07-23"
     },
@@ -5140,7 +5140,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "110",
       "last_close_date": "2026-07-23"
     },
@@ -5156,7 +5156,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "11.1",
       "last_close_date": "2026-07-23"
     },
@@ -5172,7 +5172,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "50.7",
       "last_close_date": "2026-07-23"
     },
@@ -5188,7 +5188,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "1025",
       "last_close_date": "2026-07-23"
     },
@@ -5204,7 +5204,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "15.08",
       "last_close_date": "2026-07-23"
     },
@@ -5220,7 +5220,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "9.79",
       "last_close_date": "2026-07-23"
     },
@@ -5236,7 +5236,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "10.36",
       "last_close_date": "2026-07-23"
     },
@@ -5252,7 +5252,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "10.45",
       "last_close_date": "2026-07-23"
     },
@@ -5268,7 +5268,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "131.5",
       "last_close_date": "2026-07-23"
     },
@@ -5284,7 +5284,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "79.2",
       "last_close_date": "2026-07-23"
     },
@@ -5300,7 +5300,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "38",
       "last_close_date": "2026-07-23"
     },
@@ -5316,7 +5316,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "164",
       "last_close_date": "2026-07-23"
     },
@@ -5332,7 +5332,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "66.9",
       "last_close_date": "2026-07-23"
     },
@@ -5348,7 +5348,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "39.05",
       "last_close_date": "2026-07-23"
     },
@@ -5364,7 +5364,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "20.45",
       "last_close_date": "2026-07-23"
     },
@@ -5380,7 +5380,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "17.9",
       "last_close_date": "2026-07-23"
     },
@@ -5396,7 +5396,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "2035",
       "last_close_date": "2026-07-23"
     },
@@ -5412,7 +5412,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "49.4",
       "last_close_date": "2026-07-23"
     },
@@ -5428,7 +5428,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "26.7",
       "last_close_date": "2026-07-23"
     },
@@ -5444,7 +5444,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "71.8",
       "last_close_date": "2026-07-23"
     },
@@ -5460,7 +5460,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "30.1",
       "last_close_date": "2026-07-23"
     },
@@ -5476,7 +5476,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "16.95",
       "last_close_date": "2026-07-23"
     },
@@ -5492,7 +5492,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "46.9",
       "last_close_date": "2026-07-23"
     },
@@ -5508,7 +5508,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "65.5",
       "last_close_date": "2026-07-23"
     },
@@ -5524,7 +5524,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "77.7",
       "last_close_date": "2026-07-23"
     },
@@ -5540,7 +5540,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "16.1",
       "last_close_date": "2026-07-23"
     },
@@ -5556,7 +5556,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "66.8",
       "last_close_date": "2026-07-23"
     },
@@ -5572,7 +5572,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "122.5",
       "last_close_date": "2026-07-23"
     },
@@ -5588,7 +5588,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "78.6",
       "last_close_date": "2026-07-23"
     },
@@ -5604,7 +5604,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "109",
       "last_close_date": "2026-07-23"
     },
@@ -5620,7 +5620,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "13.93",
       "last_close_date": "2026-07-23"
     },
@@ -5636,7 +5636,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "31",
       "last_close_date": "2026-07-23"
     },
@@ -5652,7 +5652,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "705",
       "last_close_date": "2026-07-23"
     },
@@ -5668,7 +5668,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "23.2",
       "last_close_date": "2026-07-23"
     },
@@ -5684,7 +5684,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "24.25",
       "last_close_date": "2026-07-23"
     },
@@ -5700,7 +5700,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "49",
       "last_close_date": "2026-07-23"
     },
@@ -5716,7 +5716,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "147.5",
       "last_close_date": "2026-07-23"
     },
@@ -5732,7 +5732,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "188",
       "last_close_date": "2026-07-23"
     },
@@ -5748,7 +5748,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "27.1",
       "last_close_date": "2026-07-23"
     },
@@ -5764,7 +5764,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "304",
       "last_close_date": "2026-07-23"
     },
@@ -5780,7 +5780,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "73",
       "last_close_date": "2026-07-23"
     },
@@ -5796,7 +5796,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "15.8",
       "last_close_date": "2026-07-23"
     },
@@ -5812,7 +5812,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "65.8",
       "last_close_date": "2026-07-23"
     },
@@ -5828,7 +5828,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "26.35",
       "last_close_date": "2026-07-23"
     },
@@ -5844,7 +5844,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "48",
       "last_close_date": "2026-07-23"
     },
@@ -5860,7 +5860,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "142.5",
       "last_close_date": "2026-07-23"
     },
@@ -5876,7 +5876,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "84.2",
       "last_close_date": "2026-07-23"
     },
@@ -5892,7 +5892,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "60.8",
       "last_close_date": "2026-07-23"
     },
@@ -5908,7 +5908,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "50.5",
       "last_close_date": "2026-07-23"
     },
@@ -5924,7 +5924,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "191.5",
       "last_close_date": "2026-07-23"
     },
@@ -5940,7 +5940,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "197.5",
       "last_close_date": "2026-07-23"
     },
@@ -5956,7 +5956,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "23",
       "last_close_date": "2026-07-23"
     },
@@ -5972,7 +5972,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "78.1",
       "last_close_date": "2026-07-23"
     },
@@ -5988,7 +5988,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "232.5",
       "last_close_date": "2026-07-23"
     },
@@ -6004,7 +6004,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "26.6",
       "last_close_date": "2026-07-23"
     },
@@ -6020,7 +6020,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "51",
       "last_close_date": "2026-07-23"
     },
@@ -6036,7 +6036,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "42.5",
       "last_close_date": "2026-07-23"
     },
@@ -6052,7 +6052,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "115.5",
       "last_close_date": "2026-07-23"
     },
@@ -6068,7 +6068,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "56.9",
       "last_close_date": "2026-07-23"
     },
@@ -6084,7 +6084,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "336",
       "last_close_date": "2026-07-23"
     },
@@ -6100,7 +6100,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "35.1",
       "last_close_date": "2026-07-23"
     },
@@ -6116,7 +6116,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "150",
       "last_close_date": "2026-07-23"
     },
@@ -6132,7 +6132,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "34.45",
       "last_close_date": "2026-07-23"
     },
@@ -6148,7 +6148,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "81.5",
       "last_close_date": "2026-07-23"
     },
@@ -6164,7 +6164,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "11.7",
       "last_close_date": "2026-07-23"
     },
@@ -6180,7 +6180,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "64.4",
       "last_close_date": "2026-07-23"
     },
@@ -6196,7 +6196,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "38.5",
       "last_close_date": "2026-07-23"
     },
@@ -6212,7 +6212,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "15.8",
       "last_close_date": "2026-07-23"
     },
@@ -6228,7 +6228,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "125",
       "last_close_date": "2026-07-23"
     },
@@ -6244,7 +6244,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "44.95",
       "last_close_date": "2026-07-23"
     },
@@ -6260,7 +6260,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "58.6",
       "last_close_date": "2026-07-23"
     }
@@ -6278,7 +6278,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "147.5",
       "last_close_date": "2026-07-23"
     },
@@ -6294,7 +6294,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "84.2",
       "last_close_date": "2026-07-23"
     },
@@ -6310,7 +6310,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "232.5",
       "last_close_date": "2026-07-23"
     },
@@ -6326,7 +6326,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TPEx",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "51",
       "last_close_date": "2026-07-23"
     },
@@ -6342,7 +6342,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "56.9",
       "last_close_date": "2026-07-23"
     },
@@ -6358,7 +6358,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "150",
       "last_close_date": "2026-07-23"
     },
@@ -6374,7 +6374,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "34.45",
       "last_close_date": "2026-07-23"
     },
@@ -6390,7 +6390,7 @@
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "TWSE",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
       "last_close": "125",
       "last_close_date": "2026-07-23"
     }
@@ -6421,143 +6421,6 @@
     },
     {
       "market": "MOPS",
-      "date": "2026-08-06",
-      "code": "2762",
-      "name": "世界健身-KY",
-      "event": "息",
-      "cash_dividend": "3.636991",
-      "stock_dividend_ratio": "未公告",
-      "subscription_ratio": "未公告",
-      "subscription_price": "未公告",
-      "stock_holding_ratio": "未公告",
-      "source": "MOPS",
-      "source_url": "https://mops.twse.com.tw/mops/web/t05st02",
-      "source_title": "公告本公司董事長訂定股利配息基準日",
-      "announcement_date": "115/07/22",
-      "announcement_time": "20:02:51",
-      "announcement_at": "2026-07-22T20:02:51+08:00",
-      "fetched_at": "2026-07-23T09:18:53+08:00",
-      "last_close": "85.2",
-      "last_close_date": "2026-07-22",
-      "amount_pending": "false",
-      "amount_completed_on": "2026-07-24"
-    },
-    {
-      "market": "MOPS",
-      "date": "2026-08-10",
-      "code": "3023",
-      "name": "信邦",
-      "event": "息",
-      "cash_dividend": "9.10",
-      "stock_dividend_ratio": "未公告",
-      "subscription_ratio": "未公告",
-      "subscription_price": "未公告",
-      "stock_holding_ratio": "未公告",
-      "source": "MOPS",
-      "source_url": "https://mops.twse.com.tw/mops/web/t05st02",
-      "source_title": "公告董事會決議現金股利及資本公積發放現金基準日",
-      "announcement_date": "115/07/23",
-      "announcement_time": "13:43:37",
-      "announcement_at": "2026-07-23T13:43:37+08:00",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
-      "last_close": "304.5",
-      "last_close_date": "2026-07-23",
-      "amount_pending": "false",
-      "amount_completed_on": "2026-07-24"
-    },
-    {
-      "market": "MOPS",
-      "date": "2026-08-10",
-      "code": "2948",
-      "name": "寶陞",
-      "event": "權息",
-      "cash_dividend": "1.92865032",
-      "stock_dividend_ratio": "未公告",
-      "subscription_ratio": "未公告",
-      "subscription_price": "未公告",
-      "stock_holding_ratio": "未公告",
-      "source": "MOPS",
-      "source_url": "https://mops.twse.com.tw/mops/web/t05st02",
-      "source_title": "公告本公司董事會決議除權息基準日相關事宜",
-      "announcement_date": "115/07/23",
-      "announcement_time": "14:40:24",
-      "announcement_at": "2026-07-23T14:40:24+08:00",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
-      "last_close": "---",
-      "last_close_date": "2026-07-23",
-      "amount_pending": "false",
-      "amount_completed_on": "2026-07-24"
-    },
-    {
-      "market": "MOPS",
-      "date": "2026-08-18",
-      "code": "6842",
-      "name": "瑞宇",
-      "event": "權息",
-      "cash_dividend": "2",
-      "stock_dividend_ratio": "未公告",
-      "subscription_ratio": "未公告",
-      "subscription_price": "未公告",
-      "stock_holding_ratio": "未公告",
-      "source": "MOPS",
-      "source_url": "https://mops.twse.com.tw/mops/web/t05st02",
-      "source_title": "公告本公司除權息基準日相關事宜",
-      "announcement_date": "115/07/23",
-      "announcement_time": "15:37:42",
-      "announcement_at": "2026-07-23T15:37:42+08:00",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
-      "last_close": "—",
-      "last_close_date": "",
-      "amount_pending": "false",
-      "amount_completed_on": "2026-07-24"
-    },
-    {
-      "market": "MOPS",
-      "date": "2026-08-27",
-      "code": "6624",
-      "name": "萬年清",
-      "event": "息",
-      "cash_dividend": "0.28",
-      "stock_dividend_ratio": "未公告",
-      "subscription_ratio": "未公告",
-      "subscription_price": "未公告",
-      "stock_holding_ratio": "未公告",
-      "source": "MOPS",
-      "source_url": "https://mops.twse.com.tw/mops/web/t05st02",
-      "source_title": "公告本公司董事長訂定114年度除息基準日",
-      "announcement_date": "115/07/23",
-      "announcement_time": "17:03:50",
-      "announcement_at": "2026-07-23T17:03:50+08:00",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
-      "last_close": "39.8",
-      "last_close_date": "2026-07-23",
-      "amount_pending": "false",
-      "amount_completed_on": "2026-07-24"
-    },
-    {
-      "market": "MOPS",
-      "date": "2026-08-11",
-      "code": "6958",
-      "name": "日盛台駿",
-      "event": "權",
-      "cash_dividend": "未公告",
-      "stock_dividend_ratio": "未公告",
-      "subscription_ratio": "未公告",
-      "subscription_price": "未公告",
-      "stock_holding_ratio": "未公告",
-      "source": "MOPS",
-      "source_url": "https://mops.twse.com.tw/mops/web/t05st02",
-      "source_title": "公告本公司董事會訂定除權基準日及調整配股率相關事宜",
-      "announcement_date": "115/07/23",
-      "announcement_time": "17:07:25",
-      "announcement_at": "2026-07-23T17:07:25+08:00",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
-      "last_close": "18",
-      "last_close_date": "2026-07-23",
-      "amount_pending": "true"
-    },
-    {
-      "market": "MOPS",
       "date": "2026-08-11",
       "code": "6005",
       "name": "群益證",
@@ -6572,32 +6435,9 @@
       "source_title": "公告本公司除權息基準日",
       "announcement_date": "115/07/22",
       "announcement_time": "17:39:05",
-      "announcement_at": "2026-07-23T17:39:05+08:00",
+      "announcement_at": "2026-07-22T17:39:05+08:00",
       "fetched_at": "2026-07-24T09:38:53+08:00",
       "last_close": "34.45",
-      "last_close_date": "2026-07-23",
-      "amount_pending": "false",
-      "amount_completed_on": "2026-07-24"
-    },
-    {
-      "market": "MOPS",
-      "date": "2026-08-03",
-      "code": "2317",
-      "name": "鴻海",
-      "event": "息",
-      "cash_dividend": "0.65",
-      "stock_dividend_ratio": "未公告",
-      "subscription_ratio": "未公告",
-      "subscription_price": "未公告",
-      "stock_holding_ratio": "未公告",
-      "source": "MOPS",
-      "source_url": "https://mops.twse.com.tw/mops/web/t05st02",
-      "source_title": "代重要子公司富士康工業互聯網股份有限公司公告現金股利 配發基準日",
-      "announcement_date": "115/07/23",
-      "announcement_time": "18:08:57",
-      "announcement_at": "2026-07-23T18:08:57+08:00",
-      "fetched_at": "2026-07-24T09:38:53+08:00",
-      "last_close": "257.5",
       "last_close_date": "2026-07-23",
       "amount_pending": "false",
       "amount_completed_on": "2026-07-24"
@@ -6618,7 +6458,7 @@
       "source_title": "公告本公司董事會決議配息基準日暨現金發放日",
       "announcement_date": "115/07/22",
       "announcement_time": "19:59:18",
-      "announcement_at": "2026-07-23T19:59:18+08:00",
+      "announcement_at": "2026-07-22T19:59:18+08:00",
       "fetched_at": "2026-07-24T09:38:53+08:00",
       "last_close": "30.4",
       "last_close_date": "2026-07-23",
@@ -6641,9 +6481,146 @@
       "source_title": "公告本公司董事長訂定股利配息基準日",
       "announcement_date": "115/07/22",
       "announcement_time": "20:02:51",
-      "announcement_at": "2026-07-23T20:02:51+08:00",
+      "announcement_at": "2026-07-22T20:02:51+08:00",
       "fetched_at": "2026-07-24T09:38:53+08:00",
       "last_close": "84.2",
+      "last_close_date": "2026-07-23",
+      "amount_pending": "false",
+      "amount_completed_on": "2026-07-24"
+    },
+    {
+      "market": "MOPS",
+      "date": "2026-08-10",
+      "code": "3023",
+      "name": "信邦",
+      "event": "息",
+      "cash_dividend": "9.10",
+      "stock_dividend_ratio": "未公告",
+      "subscription_ratio": "未公告",
+      "subscription_price": "未公告",
+      "stock_holding_ratio": "未公告",
+      "source": "MOPS",
+      "source_url": "https://mops.twse.com.tw/mops/web/t05st02",
+      "source_title": "公告董事會決議現金股利及資本公積發放現金基準日",
+      "announcement_date": "115/07/23",
+      "announcement_time": "13:43:37",
+      "announcement_at": "2026-07-23T13:43:37+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
+      "last_close": "304.5",
+      "last_close_date": "2026-07-23",
+      "amount_pending": "false",
+      "amount_completed_on": "2026-07-24"
+    },
+    {
+      "market": "MOPS",
+      "date": "2026-08-10",
+      "code": "2948",
+      "name": "寶陞",
+      "event": "權息",
+      "cash_dividend": "1.92865032",
+      "stock_dividend_ratio": "未公告",
+      "subscription_ratio": "未公告",
+      "subscription_price": "未公告",
+      "stock_holding_ratio": "未公告",
+      "source": "MOPS",
+      "source_url": "https://mops.twse.com.tw/mops/web/t05st02",
+      "source_title": "公告本公司董事會決議除權息基準日相關事宜",
+      "announcement_date": "115/07/23",
+      "announcement_time": "14:40:24",
+      "announcement_at": "2026-07-23T14:40:24+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
+      "last_close": "---",
+      "last_close_date": "2026-07-23",
+      "amount_pending": "false",
+      "amount_completed_on": "2026-07-24"
+    },
+    {
+      "market": "MOPS",
+      "date": "2026-08-18",
+      "code": "6842",
+      "name": "瑞宇",
+      "event": "權息",
+      "cash_dividend": "2",
+      "stock_dividend_ratio": "未公告",
+      "subscription_ratio": "未公告",
+      "subscription_price": "未公告",
+      "stock_holding_ratio": "未公告",
+      "source": "MOPS",
+      "source_url": "https://mops.twse.com.tw/mops/web/t05st02",
+      "source_title": "公告本公司除權息基準日相關事宜",
+      "announcement_date": "115/07/23",
+      "announcement_time": "15:37:42",
+      "announcement_at": "2026-07-23T15:37:42+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
+      "last_close": "—",
+      "last_close_date": "",
+      "amount_pending": "false",
+      "amount_completed_on": "2026-07-24"
+    },
+    {
+      "market": "MOPS",
+      "date": "2026-08-27",
+      "code": "6624",
+      "name": "萬年清",
+      "event": "息",
+      "cash_dividend": "0.28",
+      "stock_dividend_ratio": "未公告",
+      "subscription_ratio": "未公告",
+      "subscription_price": "未公告",
+      "stock_holding_ratio": "未公告",
+      "source": "MOPS",
+      "source_url": "https://mops.twse.com.tw/mops/web/t05st02",
+      "source_title": "公告本公司董事長訂定114年度除息基準日",
+      "announcement_date": "115/07/23",
+      "announcement_time": "17:03:50",
+      "announcement_at": "2026-07-23T17:03:50+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
+      "last_close": "39.8",
+      "last_close_date": "2026-07-23",
+      "amount_pending": "false",
+      "amount_completed_on": "2026-07-24"
+    },
+    {
+      "market": "MOPS",
+      "date": "2026-08-11",
+      "code": "6958",
+      "name": "日盛台駿",
+      "event": "權",
+      "cash_dividend": "未公告",
+      "stock_dividend_ratio": "未公告",
+      "subscription_ratio": "未公告",
+      "subscription_price": "未公告",
+      "stock_holding_ratio": "未公告",
+      "source": "MOPS",
+      "source_url": "https://mops.twse.com.tw/mops/web/t05st02",
+      "source_title": "公告本公司董事會訂定除權基準日及調整配股率相關事宜",
+      "announcement_date": "115/07/23",
+      "announcement_time": "17:07:25",
+      "announcement_at": "2026-07-23T17:07:25+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
+      "last_close": "18",
+      "last_close_date": "2026-07-23",
+      "amount_pending": "true"
+    },
+    {
+      "market": "MOPS",
+      "date": "2026-08-03",
+      "code": "2317",
+      "name": "鴻海",
+      "event": "息",
+      "cash_dividend": "0.65",
+      "stock_dividend_ratio": "未公告",
+      "subscription_ratio": "未公告",
+      "subscription_price": "未公告",
+      "stock_holding_ratio": "未公告",
+      "source": "MOPS",
+      "source_url": "https://mops.twse.com.tw/mops/web/t05st02",
+      "source_title": "代重要子公司富士康工業互聯網股份有限公司公告現金股利 配發基準日",
+      "announcement_date": "115/07/23",
+      "announcement_time": "18:08:57",
+      "announcement_at": "2026-07-23T18:08:57+08:00",
+      "fetched_at": "2026-07-24T13:46:40+08:00",
+      "last_close": "257.5",
       "last_close_date": "2026-07-23",
       "amount_pending": "false",
       "amount_completed_on": "2026-07-24"
