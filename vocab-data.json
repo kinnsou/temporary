@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-07-23T11:01:50Z",
-    "sourceCount": 332,
-    "includedCount": 324
+    "updatedAt": "2026-07-24T11:01:27Z",
+    "sourceCount": 335,
+    "includedCount": 327
   },
   "words": [
+    {
+      "word": "however",
+      "meaning": "然而；不過",
+      "example": "It was raining. However, Mia walked to school.",
+      "translation": "那時正在下雨，不過米亞還是走路去上學。",
+      "firstSeen": "2026-07-24",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "easy",
+      "meaning": "容易的；簡單的",
+      "example": "The math test was easy yesterday.",
+      "translation": "昨天的數學考試很簡單。",
+      "firstSeen": "2026-07-24",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "corner",
+      "meaning": "角落；轉角",
+      "example": "The cat sat in the corner yesterday.",
+      "translation": "那隻貓昨天坐在角落裡。",
+      "firstSeen": "2026-07-24",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "rest",
       "meaning": "休息；其餘部分",

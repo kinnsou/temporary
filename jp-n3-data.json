@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-07-23T11:05:11Z",
+    "updatedAt": "2026-07-24T11:05:10Z",
     "sourceCount": 380,
-    "releasedCount": 315,
+    "releasedCount": 320,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "結局",
+      "reading": "けっきょく",
+      "meaning": "結果",
+      "example": "彼は結局話しました。",
+      "translation": "他以「結果」的方式說話。",
+      "firstSeen": "2026-07-24",
+      "pos": "adv",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "思わず",
+      "reading": "おもわず",
+      "meaning": "不由自主地",
+      "example": "彼は思わず話しました。",
+      "translation": "他以「不由自主地」的方式說話。",
+      "firstSeen": "2026-07-24",
+      "pos": "adv",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "さっぱり",
+      "reading": "さっぱり",
+      "meaning": "完全/爽快",
+      "example": "彼はさっぱり話しました。",
+      "translation": "他以「完全/爽快」的方式說話。",
+      "firstSeen": "2026-07-24",
+      "pos": "adv",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "さすが",
+      "reading": "さすが",
+      "meaning": "不愧是",
+      "example": "彼はさすが話しました。",
+      "translation": "他以「不愧是」的方式說話。",
+      "firstSeen": "2026-07-24",
+      "pos": "adv",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "かなり",
+      "reading": "かなり",
+      "meaning": "相當地",
+      "example": "彼はかなり話しました。",
+      "translation": "他以「相當地」的方式說話。",
+      "firstSeen": "2026-07-24",
+      "pos": "adv",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "貴重",
       "reading": "きちょう",
