@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-07-24T11:01:27Z",
-    "sourceCount": 335,
-    "includedCount": 327
+    "updatedAt": "2026-07-25T11:01:40Z",
+    "sourceCount": 338,
+    "includedCount": 330
   },
   "words": [
+    {
+      "word": "game",
+      "meaning": "遊戲；比賽",
+      "example": "We played a game after dinner.",
+      "translation": "我們晚餐後玩了一場遊戲。",
+      "firstSeen": "2026-07-25",
+      "pos": [
+        "n",
+        "v"
+      ]
+    },
+    {
+      "word": "body",
+      "meaning": "身體；身軀",
+      "example": "My body feels tired after the long walk.",
+      "translation": "走了很長一段路後，我覺得身體很累。",
+      "firstSeen": "2026-07-25",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "thin",
+      "meaning": "瘦的；薄的",
+      "example": "The thin book is easy to carry.",
+      "translation": "這本薄書很方便攜帶。",
+      "firstSeen": "2026-07-25",
+      "pos": [
+        "adj"
+      ]
+    },
     {
       "word": "however",
       "meaning": "然而；不過",

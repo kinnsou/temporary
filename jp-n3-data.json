@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-07-24T11:05:10Z",
+    "updatedAt": "2026-07-25T11:05:12Z",
     "sourceCount": 380,
-    "releasedCount": 320,
+    "releasedCount": 325,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "隨分",
+      "reading": "ずいぶん",
+      "meaning": "相當",
+      "example": "彼は隨分話しました。",
+      "translation": "他以「相當」的方式說話。",
+      "firstSeen": "2026-07-25",
+      "pos": "adv",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "暫く",
+      "reading": "しばらく",
+      "meaning": "暫時",
+      "example": "彼は暫く話しました。",
+      "translation": "他以「暫時」的方式說話。",
+      "firstSeen": "2026-07-25",
+      "pos": "adv",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "既に",
+      "reading": "すでに",
+      "meaning": "已經",
+      "example": "彼は既に話しました。",
+      "translation": "他以「已經」的方式說話。",
+      "firstSeen": "2026-07-25",
+      "pos": "adv",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "全く",
+      "reading": "まったく",
+      "meaning": "完全地",
+      "example": "彼は全く話しました。",
+      "translation": "他以「完全地」的方式說話。",
+      "firstSeen": "2026-07-25",
+      "pos": "adv",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "偶に",
+      "reading": "たまに",
+      "meaning": "偶爾",
+      "example": "彼は偶に話しました。",
+      "translation": "他以「偶爾」的方式說話。",
+      "firstSeen": "2026-07-25",
+      "pos": "adv",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "結局",
       "reading": "けっきょく",
