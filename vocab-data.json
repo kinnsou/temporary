@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-07-25T11:01:40Z",
-    "sourceCount": 338,
-    "includedCount": 330
+    "updatedAt": "2026-07-26T11:01:29Z",
+    "sourceCount": 341,
+    "includedCount": 333
   },
   "words": [
+    {
+      "word": "different",
+      "meaning": "不同的；不一樣的",
+      "example": "These two bags are different.",
+      "translation": "這兩個包包不一樣。",
+      "firstSeen": "2026-07-26",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "sky",
+      "meaning": "天空",
+      "example": "The sky was blue yesterday.",
+      "translation": "昨天天空是藍色的。",
+      "firstSeen": "2026-07-26",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "wide",
+      "meaning": "寬的；寬廣的",
+      "example": "The river is wide here.",
+      "translation": "這裡的河很寬。",
+      "firstSeen": "2026-07-26",
+      "pos": [
+        "adj"
+      ]
+    },
     {
       "word": "game",
       "meaning": "遊戲；比賽",

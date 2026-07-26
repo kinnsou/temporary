@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-07-25T11:05:12Z",
+    "updatedAt": "2026-07-26T11:05:13Z",
     "sourceCount": 380,
-    "releasedCount": 325,
+    "releasedCount": 330,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "遂に",
+      "reading": "ついに",
+      "meaning": "終於",
+      "example": "彼は遂に話しました。",
+      "translation": "他以「終於」的方式說話。",
+      "firstSeen": "2026-07-26",
+      "pos": "adv",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "漸く",
+      "reading": "ようやく",
+      "meaning": "好不容易",
+      "example": "彼は漸く話しました。",
+      "translation": "他以「好不容易」的方式說話。",
+      "firstSeen": "2026-07-26",
+      "pos": "adv",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "景色",
+      "reading": "けしき",
+      "meaning": "景色",
+      "example": "景色について話しました。",
+      "translation": "談到了景色。",
+      "firstSeen": "2026-07-26",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "常に",
+      "reading": "つねに",
+      "meaning": "時常",
+      "example": "彼は常に話しました。",
+      "translation": "他以「時常」的方式說話。",
+      "firstSeen": "2026-07-26",
+      "pos": "adv",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "依頼",
+      "reading": "いらい",
+      "meaning": "委託",
+      "example": "依頼をしました。",
+      "translation": "進行了委託。",
+      "firstSeen": "2026-07-26",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "隨分",
       "reading": "ずいぶん",
