@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-07-26T11:01:29Z",
-    "sourceCount": 341,
-    "includedCount": 333
+    "updatedAt": "2026-07-28T11:01:41Z",
+    "sourceCount": 344,
+    "includedCount": 336
   },
   "words": [
+    {
+      "word": "lead",
+      "meaning": "帶領；引導",
+      "example": "Mia leads her team to the park.",
+      "translation": "Mia 帶著她的小隊到公園。",
+      "firstSeen": "2026-07-28",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "next",
+      "meaning": "下一個的；接下來的",
+      "example": "We will read the next page tomorrow.",
+      "translation": "我們明天要讀下一頁。",
+      "firstSeen": "2026-07-28",
+      "pos": [
+        "adj",
+        "det"
+      ]
+    },
+    {
+      "word": "umbrella",
+      "meaning": "雨傘",
+      "example": "I take my umbrella when it rains.",
+      "translation": "下雨時，我會帶著雨傘。",
+      "firstSeen": "2026-07-28",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "different",
       "meaning": "不同的；不一樣的",

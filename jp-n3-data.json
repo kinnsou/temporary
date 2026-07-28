@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-07-26T11:05:13Z",
+    "updatedAt": "2026-07-28T11:05:11Z",
     "sourceCount": 380,
-    "releasedCount": 330,
+    "releasedCount": 335,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "自身",
+      "reading": "じしん",
+      "meaning": "自身",
+      "example": "自身について話しました。",
+      "translation": "談到了自身。",
+      "firstSeen": "2026-07-28",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "秘密",
+      "reading": "ひみつ",
+      "meaning": "秘密",
+      "example": "秘密について話しました。",
+      "translation": "談到了秘密。",
+      "firstSeen": "2026-07-28",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "独身",
+      "reading": "どくしん",
+      "meaning": "單身",
+      "example": "独身について話しました。",
+      "translation": "談到了單身。",
+      "firstSeen": "2026-07-28",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "流行",
+      "reading": "りゅうこう",
+      "meaning": "流行",
+      "example": "流行について話しました。",
+      "translation": "談到了流行。",
+      "firstSeen": "2026-07-28",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "将来",
+      "reading": "しょうらい",
+      "meaning": "將來",
+      "example": "将来について話しました。",
+      "translation": "談到了將來。",
+      "firstSeen": "2026-07-28",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "遂に",
       "reading": "ついに",
