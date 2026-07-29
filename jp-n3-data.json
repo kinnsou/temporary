@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-07-28T11:05:11Z",
+    "updatedAt": "2026-07-29T11:05:23Z",
     "sourceCount": 380,
-    "releasedCount": 335,
+    "releasedCount": 340,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "転送",
+      "reading": "てんそう",
+      "meaning": "轉傳",
+      "example": "転送をしました。",
+      "translation": "進行了轉傳。",
+      "firstSeen": "2026-07-29",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "画面",
+      "reading": "がめん",
+      "meaning": "畫面",
+      "example": "画面について話しました。",
+      "translation": "談到了畫面。",
+      "firstSeen": "2026-07-29",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "検索",
+      "reading": "けんさく",
+      "meaning": "檢索",
+      "example": "検索をしました。",
+      "translation": "進行了檢索。",
+      "firstSeen": "2026-07-29",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "更新",
+      "reading": "こうしん",
+      "meaning": "更新",
+      "example": "更新をしました。",
+      "translation": "進行了更新。",
+      "firstSeen": "2026-07-29",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "接続",
+      "reading": "せつぞく",
+      "meaning": "連接",
+      "example": "接続をしました。",
+      "translation": "進行了連接。",
+      "firstSeen": "2026-07-29",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "自身",
       "reading": "じしん",

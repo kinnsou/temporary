@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-07-28T11:01:41Z",
-    "sourceCount": 344,
-    "includedCount": 336
+    "updatedAt": "2026-07-29T11:01:47Z",
+    "sourceCount": 347,
+    "includedCount": 339
   },
   "words": [
+    {
+      "word": "change",
+      "meaning": "改變；變化",
+      "example": "Mia changes her plan when it rains.",
+      "translation": "下雨時，米亞會改變她的計畫。",
+      "firstSeen": "2026-07-29",
+      "pos": [
+        "v",
+        "n"
+      ]
+    },
+    {
+      "word": "follow",
+      "meaning": "跟隨；跟著",
+      "example": "The puppy follows Mia to school.",
+      "translation": "那隻小狗跟著米亞去上學。",
+      "firstSeen": "2026-07-29",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "here",
+      "meaning": "這裡；在這裡",
+      "example": "Please put your bag here.",
+      "translation": "請把你的書包放在這裡。",
+      "firstSeen": "2026-07-29",
+      "pos": [
+        "adv"
+      ]
+    },
     {
       "word": "lead",
       "meaning": "帶領；引導",
