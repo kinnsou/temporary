@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-07-29T11:05:23Z",
+    "updatedAt": "2026-07-30T11:05:14Z",
     "sourceCount": 380,
-    "releasedCount": 340,
+    "releasedCount": 345,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "資源",
+      "reading": "しげん",
+      "meaning": "資源",
+      "example": "資源について話しました。",
+      "translation": "談到了資源。",
+      "firstSeen": "2026-07-30",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "設定",
+      "reading": "せってい",
+      "meaning": "設定",
+      "example": "設定をしました。",
+      "translation": "進行了設定。",
+      "firstSeen": "2026-07-30",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "端末",
+      "reading": "たんまつ",
+      "meaning": "終端裝置",
+      "example": "端末について話しました。",
+      "translation": "談到了終端裝置。",
+      "firstSeen": "2026-07-30",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "森林",
+      "reading": "しんりん",
+      "meaning": "森林",
+      "example": "森林について話しました。",
+      "translation": "談到了森林。",
+      "firstSeen": "2026-07-30",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "処理",
+      "reading": "しょり",
+      "meaning": "處理",
+      "example": "処理をしました。",
+      "translation": "進行了處理。",
+      "firstSeen": "2026-07-30",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "転送",
       "reading": "てんそう",

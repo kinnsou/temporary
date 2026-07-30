@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-07-29T11:01:47Z",
-    "sourceCount": 347,
-    "includedCount": 339
+    "updatedAt": "2026-07-30T11:01:20Z",
+    "sourceCount": 350,
+    "includedCount": 342
   },
   "words": [
+    {
+      "word": "title",
+      "meaning": "標題；名稱",
+      "example": "The book has a funny title.",
+      "translation": "這本書有一個有趣的標題。",
+      "firstSeen": "2026-07-30",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "under",
+      "meaning": "在……下方",
+      "example": "The cat is under the table.",
+      "translation": "那隻貓在桌子下方。",
+      "firstSeen": "2026-07-30",
+      "pos": [
+        "prep"
+      ]
+    },
+    {
+      "word": "glad",
+      "meaning": "高興的；開心的",
+      "example": "I am glad that you came today.",
+      "translation": "我很高興你今天來了。",
+      "firstSeen": "2026-07-30",
+      "pos": [
+        "adj"
+      ]
+    },
     {
       "word": "change",
       "meaning": "改變；變化",
