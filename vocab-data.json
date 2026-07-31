@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-07-30T11:01:20Z",
-    "sourceCount": 350,
-    "includedCount": 342
+    "updatedAt": "2026-07-31T11:01:34Z",
+    "sourceCount": 353,
+    "includedCount": 345
   },
   "words": [
+    {
+      "word": "life",
+      "meaning": "生活；人生",
+      "example": "Her life is full of music.",
+      "translation": "她的生活充滿音樂。",
+      "firstSeen": "2026-07-31",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "interest",
+      "meaning": "興趣；感興趣的事",
+      "example": "My interest is drawing pictures.",
+      "translation": "我的興趣是畫圖。",
+      "firstSeen": "2026-07-31",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "today",
+      "meaning": "今天；今日",
+      "example": "We have a science class today.",
+      "translation": "我們今天有自然課。",
+      "firstSeen": "2026-07-31",
+      "pos": [
+        "adv"
+      ]
+    },
     {
       "word": "title",
       "meaning": "標題；名稱",

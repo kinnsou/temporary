@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-07-30T11:05:14Z",
+    "updatedAt": "2026-07-31T11:05:14Z",
     "sourceCount": 380,
-    "releasedCount": 345,
+    "releasedCount": 350,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "湿度",
+      "reading": "しつど",
+      "meaning": "濕度",
+      "example": "湿度について話しました。",
+      "translation": "談到了濕度。",
+      "firstSeen": "2026-07-31",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "温暖",
+      "reading": "おんだん",
+      "meaning": "温暖",
+      "example": "温暖な説明でした。",
+      "translation": "這是温暖的說明。",
+      "firstSeen": "2026-07-31",
+      "pos": "adj-na",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "汚染",
+      "reading": "おせん",
+      "meaning": "污染",
+      "example": "汚染をしました。",
+      "translation": "進行了污染。",
+      "firstSeen": "2026-07-31",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "気候",
+      "reading": "きこう",
+      "meaning": "氣候",
+      "example": "気候について話しました。",
+      "translation": "談到了氣候。",
+      "firstSeen": "2026-07-31",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "乾燥",
+      "reading": "かんそう",
+      "meaning": "乾燥",
+      "example": "乾燥をしました。",
+      "translation": "進行了乾燥。",
+      "firstSeen": "2026-07-31",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "資源",
       "reading": "しげん",
