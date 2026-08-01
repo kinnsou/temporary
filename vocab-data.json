@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-07-31T11:01:34Z",
-    "sourceCount": 353,
-    "includedCount": 345
+    "updatedAt": "2026-08-01T11:01:37Z",
+    "sourceCount": 356,
+    "includedCount": 348
   },
   "words": [
+    {
+      "word": "turn",
+      "meaning": "轉動；轉彎",
+      "example": "Mia turns left at the corner every morning.",
+      "translation": "米亞每天早上都在轉角左轉。",
+      "firstSeen": "2026-08-01",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "bed",
+      "meaning": "床",
+      "example": "The cat sleeps on my bed every night.",
+      "translation": "那隻貓每天晚上睡在我的床上。",
+      "firstSeen": "2026-08-01",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "lay",
+      "meaning": "放置；平放",
+      "example": "Dad lays the books on the table after dinner.",
+      "translation": "爸爸晚餐後把書放在桌上。",
+      "firstSeen": "2026-08-01",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "life",
       "meaning": "生活；人生",

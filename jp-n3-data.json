@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-07-31T11:05:14Z",
+    "updatedAt": "2026-08-01T11:05:12Z",
     "sourceCount": 380,
-    "releasedCount": 350,
+    "releasedCount": 355,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "風景",
+      "reading": "ふうけい",
+      "meaning": "風景",
+      "example": "風景について話しました。",
+      "translation": "談到了風景。",
+      "firstSeen": "2026-08-01",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "災害",
+      "reading": "さいがい",
+      "meaning": "災害",
+      "example": "災害について話しました。",
+      "translation": "談到了災害。",
+      "firstSeen": "2026-08-01",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "施設",
+      "reading": "しせつ",
+      "meaning": "設施",
+      "example": "施設について話しました。",
+      "translation": "談到了設施。",
+      "firstSeen": "2026-08-01",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "公共",
+      "reading": "こうきょう",
+      "meaning": "公共",
+      "example": "公共について話しました。",
+      "translation": "談到了公共。",
+      "firstSeen": "2026-08-01",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "予報",
+      "reading": "よほう",
+      "meaning": "預報",
+      "example": "予報について話しました。",
+      "translation": "談到了預報。",
+      "firstSeen": "2026-08-01",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "湿度",
       "reading": "しつど",
