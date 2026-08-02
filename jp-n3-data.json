@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-08-01T11:05:12Z",
+    "updatedAt": "2026-08-02T11:05:12Z",
     "sourceCount": 380,
-    "releasedCount": 355,
+    "releasedCount": 360,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "署名",
+      "reading": "しょめい",
+      "meaning": "簽名",
+      "example": "署名をしました。",
+      "translation": "進行了簽名。",
+      "firstSeen": "2026-08-02",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "窓口",
+      "reading": "まどぐち",
+      "meaning": "窗口",
+      "example": "窓口について話しました。",
+      "translation": "談到了窗口。",
+      "firstSeen": "2026-08-02",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "税金",
+      "reading": "ぜいきん",
+      "meaning": "稅金",
+      "example": "税金について話しました。",
+      "translation": "談到了稅金。",
+      "firstSeen": "2026-08-02",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "手続き",
+      "reading": "てつづき",
+      "meaning": "手續",
+      "example": "手続きについて話しました。",
+      "translation": "談到了手續。",
+      "firstSeen": "2026-08-02",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "保険",
+      "reading": "ほけん",
+      "meaning": "保險",
+      "example": "保険について話しました。",
+      "translation": "談到了保險。",
+      "firstSeen": "2026-08-02",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "風景",
       "reading": "ふうけい",

@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-08-01T11:01:37Z",
-    "sourceCount": 356,
-    "includedCount": 348
+    "updatedAt": "2026-08-02T11:01:41Z",
+    "sourceCount": 359,
+    "includedCount": 351
   },
   "words": [
+    {
+      "word": "monkey",
+      "meaning": "猴子",
+      "example": "The monkey is eating a banana.",
+      "translation": "那隻猴子正在吃香蕉。",
+      "firstSeen": "2026-08-02",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "nearly",
+      "meaning": "幾乎；差一點",
+      "example": "We nearly missed the bus this morning.",
+      "translation": "我們今天早上差一點錯過公車。",
+      "firstSeen": "2026-08-02",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "fork",
+      "meaning": "叉子",
+      "example": "My dad put a fork next to my plate.",
+      "translation": "爸爸把一支叉子放在我的盤子旁邊。",
+      "firstSeen": "2026-08-02",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "turn",
       "meaning": "轉動；轉彎",
