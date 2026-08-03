@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-08-02T11:01:41Z",
-    "sourceCount": 359,
-    "includedCount": 351
+    "updatedAt": "2026-08-03T11:01:52Z",
+    "sourceCount": 362,
+    "includedCount": 354
   },
   "words": [
+    {
+      "word": "tower",
+      "meaning": "塔；高塔",
+      "example": "The tower stands near the river.",
+      "translation": "那座塔矗立在河邊。",
+      "firstSeen": "2026-08-03",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "stage",
+      "meaning": "舞台",
+      "example": "The singer walks onto the stage.",
+      "translation": "那位歌手走上舞台。",
+      "firstSeen": "2026-08-03",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "interesting",
+      "meaning": "有趣的；引人入勝的",
+      "example": "The book is interesting.",
+      "translation": "這本書很有趣。",
+      "firstSeen": "2026-08-03",
+      "pos": [
+        "adj"
+      ]
+    },
     {
       "word": "monkey",
       "meaning": "猴子",
