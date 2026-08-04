@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-08-03T11:05:11Z",
+    "updatedAt": "2026-08-04T11:05:10Z",
     "sourceCount": 380,
-    "releasedCount": 365,
+    "releasedCount": 370,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "苦情",
+      "reading": "くじょう",
+      "meaning": "投訴",
+      "example": "苦情について話しました。",
+      "translation": "談到了投訴。",
+      "firstSeen": "2026-08-04",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "自慢",
+      "reading": "じまん",
+      "meaning": "自誇",
+      "example": "自慢をしました。",
+      "translation": "進行了自誇。",
+      "firstSeen": "2026-08-04",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "悩み",
+      "reading": "なやみ",
+      "meaning": "煩惱",
+      "example": "悩みについて話しました。",
+      "translation": "談到了煩惱。",
+      "firstSeen": "2026-08-04",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "後悔",
+      "reading": "こうかい",
+      "meaning": "後悔",
+      "example": "後悔をしました。",
+      "translation": "進行了後悔。",
+      "firstSeen": "2026-08-04",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "不安",
+      "reading": "ふあん",
+      "meaning": "不安",
+      "example": "不安な説明でした。",
+      "translation": "這是不安的說明。",
+      "firstSeen": "2026-08-04",
+      "pos": "adj-na",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "混乱",
       "reading": "こんらん",

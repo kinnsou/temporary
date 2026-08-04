@@ -1,10 +1,42 @@
 {
   "meta": {
-    "updatedAt": "2026-08-03T11:01:52Z",
-    "sourceCount": 362,
-    "includedCount": 354
+    "updatedAt": "2026-08-04T11:01:37Z",
+    "sourceCount": 365,
+    "includedCount": 357
   },
   "words": [
+    {
+      "word": "dessert",
+      "meaning": "甜點",
+      "example": "We ate dessert after dinner.",
+      "translation": "我們晚餐後吃了甜點。",
+      "firstSeen": "2026-08-04",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "wave",
+      "meaning": "揮手；海浪",
+      "example": "Mia waves to her friend every morning.",
+      "translation": "米亞每天早上都會向朋友揮手。",
+      "firstSeen": "2026-08-04",
+      "pos": [
+        "v",
+        "n"
+      ]
+    },
+    {
+      "word": "right",
+      "meaning": "正確的；右邊的",
+      "example": "Turn right at the bank.",
+      "translation": "在銀行那裡右轉。",
+      "firstSeen": "2026-08-04",
+      "pos": [
+        "adj",
+        "adv"
+      ]
+    },
     {
       "word": "tower",
       "meaning": "塔；高塔",
