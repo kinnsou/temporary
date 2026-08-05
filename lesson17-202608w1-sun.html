@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>第17課・約瑟成為生命的供應者</title>
+  <meta name="description" content="在饑荒中，約瑟開了糧倉供應眾人；今天基督也在召會中作我們生命的供應。" />
+  <style>
+    :root {
+      --bg: #f6f1e8;
+      --paper: #fffaf2;
+      --ink: #2f2a25;
+      --muted: #6f6559;
+      --line: #e6d7bf;
+      --gold: #c29045;
+      --gold-deep: #966b2f;
+      --olive: #6f7d55;
+      --rose: #b56a59;
+      --shadow: 0 16px 40px rgba(88, 63, 30, 0.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.9;
+      background:
+        radial-gradient(1000px 480px at 110% -10%, rgba(194, 144, 69, 0.16), transparent 55%),
+        radial-gradient(900px 420px at -10% 100%, rgba(111, 125, 85, 0.16), transparent 55%),
+        var(--bg);
+    }
+    .grain::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.05;
+      background-image: radial-gradient(rgba(68, 48, 24, 0.28) 0.7px, transparent 0.7px);
+      background-size: 4px 4px;
+      z-index: 0;
+    }
+    .wrap { position: relative; z-index: 1; width: min(1020px, 92vw); margin: 28px auto 56px; }
+    .hero { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 28px; padding: clamp(26px, 5vw, 48px); background: linear-gradient(140deg, #fffdf8 0%, #fff5e7 100%); box-shadow: var(--shadow); }
+    .hero::after { content: ""; position: absolute; right: -120px; top: -120px; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(194, 144, 69, 0.28) 0%, rgba(194, 144, 69, 0) 70%); }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; border: 1px solid #ebd6b0; background: #fff7e8; color: var(--gold-deep); font-size: 13px; font-weight: 700; letter-spacing: 0.02em; }
+    h1 { margin: 0 0 12px; font-family: "Noto Serif TC", "PMingLiU", serif; font-size: clamp(34px, 6vw, 58px); line-height: 1.15; color: #2d2419; }
+    .lead { margin: 0; max-width: 66ch; color: var(--muted); font-size: clamp(16px, 2.1vw, 19px); }
+    .hero-actions { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 12px; }
+    .button { display: inline-block; padding: 12px 18px; border-radius: 14px; text-decoration: none; font-weight: 700; transition: transform .18s ease, box-shadow .18s ease; }
+    .button.primary { color: white; background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%); box-shadow: 0 10px 20px rgba(150, 107, 47, 0.28); }
+    .button.secondary { color: var(--ink); background: rgba(255,255,255,0.74); border: 1px solid var(--line); }
+    .button:hover { transform: translateY(-1px); }
+    .intro-grid, .content-grid, .summary-grid { display: grid; gap: 18px; margin-top: 22px; }
+    .intro-grid { grid-template-columns: 1.15fr 0.95fr; }
+    .content-grid { grid-template-columns: 1fr 1fr; }
+    .summary-grid { grid-template-columns: 1fr 1fr; }
+    .card { border: 1px solid var(--line); border-radius: 22px; background: var(--paper); padding: 22px; box-shadow: 0 10px 24px rgba(88, 63, 30, 0.08); }
+    .card h2, .card h3 { margin: 0 0 12px; font-family: "Noto Serif TC", serif; color: #352a1e; line-height: 1.45; }
+    .eyebrow { margin: 0 0 8px; color: var(--gold-deep); font-size: 13px; text-transform: uppercase; letter-spacing: .09em; font-weight: 700; }
+    .section-tag { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 12px; padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 700; color: #fff; }
+    .wednesday { background: linear-gradient(180deg, #6f7d55 0%, #53613e 100%); }
+    .thursday { background: linear-gradient(180deg, #b56a59 0%, #8f4d40 100%); }
+    p { margin: 0 0 14px; }
+    ul, ol { margin: 0; padding-left: 22px; }
+    li + li { margin-top: 8px; }
+    .focus-box { background: linear-gradient(180deg, #fffdf9 0%, #f7efe2 100%); }
+    .scripture { border-left: 4px solid var(--gold); background: #fff3df; border-radius: 12px; padding: 14px 16px; color: #5f4b31; margin-top: 14px; }
+    .prayer { background: #fdf6ee; border: 1px dashed #d4a070; border-radius: 14px; padding: 16px; }
+    .footer-note { margin-top: 22px; text-align: center; color: #8a7a66; font-size: 13px; }
+    @media (max-width: 920px) { .intro-grid, .content-grid, .summary-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 560px) { .wrap { margin-top: 18px; } .hero, .card { border-radius: 18px; } .button { width: 100%; text-align: center; } }
+  </style>
+</head>
+<body class="grain">
+  <main class="wrap">
+    <section class="hero">
+      <div class="badge-row">
+        <span class="badge">📖 主日帶讀</span>
+        <span class="badge">第十七課 · 2026 八月第一週</span>
+        <span class="badge">來源段落：周四</span>
+        <span class="badge">主題：來到生命的糧倉</span>
+      </div>
+      <h1>第17課・約瑟成為生命的供應者</h1>
+      <p class="lead">約瑟預備糧食，使飢餓的人得著飽足；這使我們看見基督是從天降下的活糧。</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#reading">開始閱讀</a>
+        <a class="button secondary" href="#discussion">看主日重點</a>
+      </div>
+    </section>
+
+    <section class="intro-grid" aria-label="overview">
+      <article class="card">
+        <p class="eyebrow">Overview</p>
+        <h2>這一篇在提醒什麼？</h2>
+            <p>埃及地先有七個豐年，出產非常豐富。約瑟忠心地把許多糧食積存在各城裡，所積存的五穀多得無法計算。後來豐年結束，正如神所啟示的，嚴重的荒年來到了。</p>
+            <p>饑荒遍滿各地，只有埃及有糧食。人們需要糧食時，法老要他們到約瑟那裡去；約瑟便開了各處的糧倉，供應一切前來的人。約瑟成了飢餓之人的供應者。</p>
+      </article>
+
+      <aside class="card focus-box">
+        <p class="eyebrow">Sunday Focus</p>
+        <h2>主日可以先抓三句話</h2>
+        <ul>
+          <li>約瑟在豐年預備糧食，顯出他接受並順從神所給的啟示。</li>
+          <li>荒年臨到時，人不能靠自己得著飽足，必須來到約瑟面前。</li>
+          <li>約瑟預表基督；基督在召會中供應我們，使我們得著生命的滿足。</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="reading" class="content-grid" aria-label="reading-content">
+      <article class="card">
+        <span class="section-tag wednesday">周四｜正文帶讀</span>
+        <h2>來到生命的糧倉</h2>
+            <p>約瑟為法老解夢後，埃及果然經過七個豐年。地裡出產豐盛，約瑟沒有隨意浪費這些豐富，反而把糧食好好收聚、儲存起來，為將要來到的荒年作準備。</p>
+            <p>荒年來到時，不只埃及缺糧，許多地方也都陷入饑荒。人們發現自己沒有食物，便向法老求糧；法老告訴他們，要往約瑟那裡去，照約瑟所說的去作。</p>
+            <p>約瑟打開糧倉，讓各地飢餓的人都能來買糧。無論人從哪裡來，只要願意來到約瑟面前，就能得著供應，不再一直受飢餓所困。</p>
+            <p>這幅圖畫指向基督。世界上的事物也許暫時令人快樂，卻不能使人的裡面真正飽足；唯有基督是生命的糧。祂在召會中供應我們，使我們藉著聚會、禱告、讀主的話，得著滋養和滿足。</p>
+            <p>召會生活就像今日的糧倉，因為基督在其中。當我們感到空虛、疲倦或有需要時，可以轉向主，也可以帶著同學、朋友一同來享受祂的供應。</p>
+      </article>
+
+      <article class="card">
+        <span class="section-tag thursday">主日｜補充提醒與操練</span>
+        <h2>把人帶到主的供應裡</h2>
+            <p>每天可以用一點時間親近主，讀一節經文，向主說簡單、真實的禱告。這不是完成一項工作，乃是來吃生命的糧。</p>
+            <p>參加召會生活時，不只是來聽一篇話，也可以學習開口禱告、唱詩、分享所享受的話。這樣，我們裡面就會越來越得著基督的供應。</p>
+            <p>當同學或朋友心裡煩悶、覺得沒有力量時，我們可以關心他，邀請他來到召會生活中，一同認識並享受基督。</p>
+        <div class="scripture"><strong>可帶的一句提醒</strong><br />基督在那裡，那裡就有滿足。</div>
+      </article>
+    </section>
+
+    <section id="discussion" class="summary-grid" aria-label="discussion-guide">
+      <article class="card focus-box">
+        <p class="eyebrow">Lead the Group</p>
+        <h3>這篇可以帶出的三件事</h3>
+        <ol>
+          <li>基督是從天降下的活糧，能真正滿足人。</li>
+          <li>召會生活是享受基督、得著生命供應的地方。</li>
+          <li>我們可以把有需要的人帶來，一同享受基督。</li>
+        </ol>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Discussion</p>
+        <h3>可直接帶的三個問題</h3>
+        <ul>
+          <li>約瑟為什麼要在豐年時收聚糧食？</li>
+          <li>饑荒來到時，人們為什麼必須到約瑟那裡去？</li>
+          <li>你可以怎樣在召會生活中更多享受基督，並邀請人一同來？</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="summary-grid" aria-label="verse-prayer">
+      <article class="card">
+        <p class="eyebrow">Verse</p>
+        <h3>今天的經文</h3>
+        <div class="scripture">我是從天上降下來的活糧，人若吃這糧，就必永遠活著。<br />約翰福音六章51節上</div>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Prayer</p>
+        <h3>一起禱告</h3>
+        <div class="prayer">主耶穌，謝謝你是從天上降下來的活糧。當我覺得裡面空虛或沒有力量時，求你使我轉向你，享受你作我的生命供應。<br /><br />主，謝謝你把我們放在召會生活中。求你使我愛來聚會、愛讀你的話，也給我一顆關心人的心，帶人一同來享受你。阿們。</div>
+      </article>
+    </section>
+
+    <p class="footer-note">聖經之旅 第一冊 · 第十七課 · 202608w1</p>
+  </main>
+</body>
+</html>
