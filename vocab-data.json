@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-08-04T11:01:37Z",
-    "sourceCount": 365,
-    "includedCount": 357
+    "updatedAt": "2026-08-05T11:01:42Z",
+    "sourceCount": 368,
+    "includedCount": 360
   },
   "words": [
+    {
+      "word": "successful",
+      "meaning": "成功的；順利的",
+      "example": "Mia was successful in the race because she practiced every day.",
+      "translation": "米亞在比賽中很成功，因為她每天都練習。",
+      "firstSeen": "2026-08-05",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "control",
+      "meaning": "控制；掌控",
+      "example": "Mia controls the robot with a small remote.",
+      "translation": "米亞用一個小遙控器控制機器人。",
+      "firstSeen": "2026-08-05",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "valley",
+      "meaning": "山谷；溪谷",
+      "example": "We walked through a green valley on Sunday.",
+      "translation": "星期天我們走過一座綠意盎然的山谷。",
+      "firstSeen": "2026-08-05",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "dessert",
       "meaning": "甜點",

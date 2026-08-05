@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-08-04T11:05:10Z",
+    "updatedAt": "2026-08-05T11:05:10Z",
     "sourceCount": 380,
-    "releasedCount": 370,
+    "releasedCount": 375,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "規則",
+      "reading": "きそく",
+      "meaning": "規則",
+      "example": "規則について話しました。",
+      "translation": "談到了規則。",
+      "firstSeen": "2026-08-05",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "行政",
+      "reading": "ぎょうせい",
+      "meaning": "行政",
+      "example": "行政について話しました。",
+      "translation": "談到了行政。",
+      "firstSeen": "2026-08-05",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "政策",
+      "reading": "せいさく",
+      "meaning": "政策",
+      "example": "政策について話しました。",
+      "translation": "談到了政策。",
+      "firstSeen": "2026-08-05",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "投票",
+      "reading": "とうひょう",
+      "meaning": "投票",
+      "example": "投票をしました。",
+      "translation": "進行了投票。",
+      "firstSeen": "2026-08-05",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "会議",
+      "reading": "かいぎ",
+      "meaning": "會議",
+      "example": "会議について話しました。",
+      "translation": "談到了會議。",
+      "firstSeen": "2026-08-05",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "苦情",
       "reading": "くじょう",
