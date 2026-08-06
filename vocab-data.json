@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-08-05T11:01:42Z",
-    "sourceCount": 368,
-    "includedCount": 360
+    "updatedAt": "2026-08-06T11:01:58Z",
+    "sourceCount": 371,
+    "includedCount": 363
   },
   "words": [
+    {
+      "word": "mail",
+      "meaning": "郵件；信件",
+      "example": "I check the mail after school.",
+      "translation": "我放學後查看信件。",
+      "firstSeen": "2026-08-06",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "salt",
+      "meaning": "鹽",
+      "example": "Please add a little salt to the soup.",
+      "translation": "請在湯裡加一點鹽。",
+      "firstSeen": "2026-08-06",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "run",
+      "meaning": "跑；奔跑",
+      "example": "Mia runs in the park every morning.",
+      "translation": "米亞每天早上在公園跑步。",
+      "firstSeen": "2026-08-06",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "successful",
       "meaning": "成功的；順利的",

@@ -1,13 +1,68 @@
 {
   "meta": {
-    "updatedAt": "2026-08-05T11:05:10Z",
+    "updatedAt": "2026-08-06T11:05:10Z",
     "sourceCount": 380,
-    "releasedCount": 375,
+    "releasedCount": 380,
     "classroom": "jp-n3",
     "dailyNewCount": 5,
     "notes": "N5 excluded; N4 is already-seen base; N3 releases in daily batches."
   },
   "words": [
+    {
+      "word": "討論",
+      "reading": "とうろん",
+      "meaning": "討論",
+      "example": "討論をしました。",
+      "translation": "進行了討論。",
+      "firstSeen": "2026-08-06",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "演奏",
+      "reading": "えんそう",
+      "meaning": "演奏",
+      "example": "演奏をしました。",
+      "translation": "進行了演奏。",
+      "firstSeen": "2026-08-06",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "彫刻",
+      "reading": "ちょうこく",
+      "meaning": "雕刻",
+      "example": "彫刻について話しました。",
+      "translation": "談到了雕刻。",
+      "firstSeen": "2026-08-06",
+      "pos": "n",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "実行",
+      "reading": "じっこう",
+      "meaning": "執行",
+      "example": "実行をしました。",
+      "translation": "進行了執行。",
+      "firstSeen": "2026-08-06",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
+    {
+      "word": "創作",
+      "reading": "そうさく",
+      "meaning": "創作",
+      "example": "創作をしました。",
+      "translation": "進行了創作。",
+      "firstSeen": "2026-08-06",
+      "pos": "suru",
+      "level": "N3",
+      "tier": "daily_n3"
+    },
     {
       "word": "規則",
       "reading": "きそく",
