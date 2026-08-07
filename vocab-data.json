@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-08-06T11:01:58Z",
-    "sourceCount": 371,
-    "includedCount": 363
+    "updatedAt": "2026-08-07T11:01:41Z",
+    "sourceCount": 374,
+    "includedCount": 366
   },
   "words": [
+    {
+      "word": "hurt",
+      "meaning": "弄傷；受傷",
+      "example": "Mia hurt her knee while she was running yesterday.",
+      "translation": "米亞昨天跑步時弄傷了膝蓋。",
+      "firstSeen": "2026-08-07",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "chance",
+      "meaning": "機會；可能性",
+      "example": "Mia has a chance to win the game tomorrow.",
+      "translation": "米亞明天有機會贏得比賽。",
+      "firstSeen": "2026-08-07",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "step",
+      "meaning": "腳步；步驟",
+      "example": "Mia takes one step forward before the race begins.",
+      "translation": "米亞在比賽開始前向前走了一步。",
+      "firstSeen": "2026-08-07",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "mail",
       "meaning": "郵件；信件",
