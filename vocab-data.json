@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-08-08T11:01:42Z",
-    "sourceCount": 377,
-    "includedCount": 369
+    "updatedAt": "2026-08-09T11:02:10Z",
+    "sourceCount": 380,
+    "includedCount": 372
   },
   "words": [
+    {
+      "word": "nurse",
+      "meaning": "護士；護理師",
+      "example": "The nurse checks Mia's temperature every morning.",
+      "translation": "護理師每天早上替米亞量體溫。",
+      "firstSeen": "2026-08-09",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "weak",
+      "meaning": "虛弱的；無力的",
+      "example": "Mia felt weak after she had a fever yesterday.",
+      "translation": "米亞昨天發燒後覺得很虛弱。",
+      "firstSeen": "2026-08-09",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "space",
+      "meaning": "空間；太空",
+      "example": "There is enough space for your books on this shelf.",
+      "translation": "這個架子上有足夠的空間放你的書。",
+      "firstSeen": "2026-08-09",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "elementary",
       "meaning": "小學的；初級的",
