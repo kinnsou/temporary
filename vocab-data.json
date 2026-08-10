@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-08-09T11:02:10Z",
-    "sourceCount": 380,
-    "includedCount": 372
+    "updatedAt": "2026-08-10T11:01:29Z",
+    "sourceCount": 383,
+    "includedCount": 375
   },
   "words": [
+    {
+      "word": "note",
+      "meaning": "筆記；便條",
+      "example": "Mia wrote a note for her teacher.",
+      "translation": "米亞寫了一張便條給老師。",
+      "firstSeen": "2026-08-10",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "earring",
+      "meaning": "耳環",
+      "example": "Mia is wearing silver earrings today.",
+      "translation": "米亞今天戴著銀色耳環。",
+      "firstSeen": "2026-08-10",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "lose",
+      "meaning": "遺失；失去；輸掉",
+      "example": "Leo lost his keys yesterday.",
+      "translation": "里歐昨天弄丟了鑰匙。",
+      "firstSeen": "2026-08-10",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "nurse",
       "meaning": "護士；護理師",
