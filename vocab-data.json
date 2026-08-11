@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-08-10T11:01:29Z",
-    "sourceCount": 383,
-    "includedCount": 375
+    "updatedAt": "2026-08-11T11:01:48Z",
+    "sourceCount": 386,
+    "includedCount": 378
   },
   "words": [
+    {
+      "word": "recently",
+      "meaning": "最近；不久前",
+      "example": "Mia has recently started riding her bike to school.",
+      "translation": "米亞最近開始騎腳踏車去上學。",
+      "firstSeen": "2026-08-11",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "tired",
+      "meaning": "疲倦的；累的",
+      "example": "Mia felt tired after she practiced soccer yesterday.",
+      "translation": "米亞昨天練完足球後覺得很累。",
+      "firstSeen": "2026-08-11",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "field",
+      "meaning": "田地；場地",
+      "example": "The children played soccer on the field after school.",
+      "translation": "孩子們放學後在場地上踢足球。",
+      "firstSeen": "2026-08-11",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "note",
       "meaning": "筆記；便條",
