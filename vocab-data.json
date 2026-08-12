@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-08-11T11:01:48Z",
-    "sourceCount": 386,
-    "includedCount": 378
+    "updatedAt": "2026-08-12T11:02:07Z",
+    "sourceCount": 389,
+    "includedCount": 381
   },
   "words": [
+    {
+      "word": "honestly",
+      "meaning": "老實說；坦白說",
+      "example": "Honestly, I forgot to do my homework yesterday.",
+      "translation": "老實說，我昨天忘了寫作業。",
+      "firstSeen": "2026-08-12",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "palace",
+      "meaning": "宮殿；皇宮",
+      "example": "The king lives in a large palace.",
+      "translation": "國王住在一座很大的宮殿裡。",
+      "firstSeen": "2026-08-12",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "head",
+      "meaning": "頭；頭部；前往",
+      "example": "Mia heads to the library after school.",
+      "translation": "米亞放學後前往圖書館。",
+      "firstSeen": "2026-08-12",
+      "pos": [
+        "n",
+        "v"
+      ]
+    },
     {
       "word": "recently",
       "meaning": "最近；不久前",
