@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-08-12T11:02:07Z",
-    "sourceCount": 389,
-    "includedCount": 381
+    "updatedAt": "2026-08-13T11:01:54Z",
+    "sourceCount": 392,
+    "includedCount": 384
   },
   "words": [
+    {
+      "word": "know",
+      "meaning": "知道；了解",
+      "example": "I know the answer.",
+      "translation": "我知道答案。",
+      "firstSeen": "2026-08-13",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "handsome",
+      "meaning": "英俊的；帥氣的",
+      "example": "My dad is handsome.",
+      "translation": "我爸爸很帥。",
+      "firstSeen": "2026-08-13",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "purple",
+      "meaning": "紫色的",
+      "example": "She has a purple bag.",
+      "translation": "她有一個紫色的包包。",
+      "firstSeen": "2026-08-13",
+      "pos": [
+        "adj"
+      ]
+    },
     {
       "word": "honestly",
       "meaning": "老實說；坦白說",
