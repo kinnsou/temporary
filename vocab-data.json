@@ -1,10 +1,42 @@
 {
   "meta": {
-    "updatedAt": "2026-08-13T11:01:54Z",
-    "sourceCount": 392,
-    "includedCount": 384
+    "updatedAt": "2026-08-14T11:01:32Z",
+    "sourceCount": 395,
+    "includedCount": 387
   },
   "words": [
+    {
+      "word": "fair",
+      "meaning": "公平的；合理的",
+      "example": "The teacher is fair to every student.",
+      "translation": "老師對每位學生都很公平。",
+      "firstSeen": "2026-08-14",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "rise",
+      "meaning": "上升；升起；漲幅",
+      "example": "The sun rises early in summer.",
+      "translation": "夏天太陽升得很早。",
+      "firstSeen": "2026-08-14",
+      "pos": [
+        "v",
+        "n"
+      ]
+    },
+    {
+      "word": "fix",
+      "meaning": "修理；解決；固定",
+      "example": "Dad fixed my bike yesterday.",
+      "translation": "爸爸昨天修好了我的腳踏車。",
+      "firstSeen": "2026-08-14",
+      "pos": [
+        "v",
+        "n"
+      ]
+    },
     {
       "word": "know",
       "meaning": "知道；了解",
