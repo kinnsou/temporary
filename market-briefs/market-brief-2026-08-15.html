@@ -1,0 +1,1754 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>今日早報｜2026-08-15</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@400;600;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #F2EDE1;
+    --paper-2: #ECE6D6;
+    --paper-3: #E5DECA;
+    --ink: #16110C;
+    --ink-2: #3E372E;
+    --ink-3: #6F665B;
+    --ink-4: #A9A095;
+    --rule: rgba(22,17,12,0.16);
+    --rule-2: rgba(22,17,12,0.08);
+    --accent: #D24322;
+    --accent-deep: #A8331A;
+    --sage: #4E6B45;
+    --display-tc: "Noto Serif TC", "Songti TC", serif;
+    --display-en: "Instrument Serif", "Times New Roman", serif;
+    --body-tc: "Noto Sans TC", -apple-system, system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  }
+
+  * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    background-image:
+      radial-gradient(circle at 80% -5%, rgba(210,67,34,0.05), transparent 45%),
+      radial-gradient(circle at -5% 110%, rgba(78,107,69,0.05), transparent 45%);
+    font-family: var(--body-tc);
+    color: var(--ink);
+    min-height: 100vh;
+    position: relative;
+  }
+
+  /* paper grain */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.09  0 0 0 0 0.07  0 0 0 0 0.05  0 0 0 0.03 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    z-index: 200;
+    opacity: 0.55;
+  }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 56px;
+    position: relative;
+  }
+
+  /* ─── Top bar ───────────────────────────────────────── */
+  .topbar {
+    border-bottom: 1px solid var(--ink);
+    padding: 18px 0 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .topbar .left, .topbar .right { display: flex; gap: 22px; }
+  .topbar b { color: var(--ink); font-weight: 700; }
+  .topbar .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--accent);
+    display: inline-block;
+    margin-right: 8px;
+    box-shadow: 0 0 8px var(--accent);
+    animation: pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+  }
+
+  /* ─── Masthead ──────────────────────────────────────── */
+  .masthead {
+    padding: 48px 0 30px;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 60px;
+    align-items: end;
+    border-bottom: 4px double var(--ink);
+  }
+  .masthead h1 {
+    font-family: var(--display-tc);
+    font-weight: 700;
+    font-size: 140px;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    margin: 0;
+    color: var(--ink);
+  }
+  .masthead .en-line {
+    font-family: var(--display-en);
+    font-style: italic;
+    font-size: 52px;
+    color: var(--accent);
+    line-height: 1;
+    margin-top: 10px;
+    letter-spacing: -0.01em;
+  }
+  .masthead .en-line .amp { color: var(--ink-3); }
+
+  .masthead-meta {
+    padding-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .masthead-meta .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .masthead-meta .row:last-child { border: none; padding-bottom: 0; }
+  .masthead-meta .label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .masthead-meta .val {
+    font-family: var(--display-en);
+    font-style: italic;
+    font-size: 22px;
+    color: var(--ink);
+  }
+  .masthead-meta .val.tc {
+    font-family: var(--display-tc);
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+  }
+
+  /* ─── Pulse ticker ──────────────────────────────────── */
+  .pulse {
+    background: var(--ink);
+    color: var(--paper);
+    margin-top: 0;
+  }
+  .pulse-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 14px 56px;
+    display: flex;
+    gap: 44px;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .pulse-item { display: inline-flex; gap: 10px; align-items: baseline; }
+  .pulse-item .lbl { color: rgba(242,237,225,0.5); text-transform: uppercase; font-size: 10px; letter-spacing: 0.16em; }
+  .pulse-item .val { color: var(--paper); font-weight: 700; font-size: 14px; }
+  .pulse-item .chg.up { color: #94C589; }
+  .pulse-item .chg.down { color: #E88A75; }
+  .pulse-divider {
+    width: 1px;
+    height: 16px;
+    background: rgba(242,237,225,0.2);
+  }
+  .pulse-tag {
+    font-family: var(--display-en);
+    font-style: italic;
+    color: rgba(242,237,225,0.6);
+    font-size: 14px;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+
+  /* ─── Section header (shared) ──────────────────────── */
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--ink);
+  }
+  .section-head .left { display: flex; flex-direction: column; gap: 6px; }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .section-title {
+    font-family: var(--display-tc);
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: -0.015em;
+  }
+  .section-title .en {
+    font-family: var(--display-en);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 24px;
+    color: var(--ink-3);
+    margin-left: 12px;
+    letter-spacing: 0;
+  }
+  .section-head .count {
+    font-family: var(--display-en);
+    font-style: italic;
+    font-size: 50px;
+    line-height: 0.9;
+    color: var(--accent);
+  }
+  .section-head .count sup {
+    font-family: var(--mono);
+    font-style: normal;
+    font-size: 11px;
+    color: var(--ink-3);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-left: 6px;
+    vertical-align: 30px;
+  }
+
+  /* ─── Hero strip: Market Focus ─────────────────────── */
+  .hero {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: 1.65fr 1fr;
+    gap: 32px;
+  }
+
+  .focus-card {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 24px;
+    padding: 44px 48px 36px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 320px;
+  }
+  .focus-card .qmark {
+    position: absolute;
+    top: -10px;
+    right: 32px;
+    font-family: var(--display-en);
+    font-style: italic;
+    font-size: 220px;
+    line-height: 1;
+    color: var(--accent);
+    opacity: 0.85;
+  }
+  .focus-card .label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(242,237,225,0.55);
+    margin-bottom: 18px;
+  }
+  .focus-card .takeaway {
+    font-family: var(--display-tc);
+    font-weight: 600;
+    font-size: 38px;
+    line-height: 1.35;
+    letter-spacing: 0.01em;
+    text-wrap: balance;
+    position: relative;
+    z-index: 1;
+  }
+  .focus-card .takeaway b {
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .focus-card .lead-body {
+    margin-top: 22px;
+    font-family: var(--body-tc);
+    font-size: 15px;
+    line-height: 1.75;
+    color: rgba(242,237,225,0.78);
+    max-width: 540px;
+    position: relative;
+    z-index: 1;
+  }
+  .focus-card .lead-body::before {
+    content: "";
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: rgba(242,237,225,0.3);
+    margin-bottom: 14px;
+  }
+  .focus-card .by-line {
+    margin-top: 28px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(242,237,225,0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: rgba(242,237,225,0.55);
+    text-transform: uppercase;
+  }
+
+  .hero-side {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .hero-stat {
+    background: var(--paper-3);
+    border-radius: 18px;
+    padding: 22px 24px 20px;
+    position: relative;
+  }
+  .hero-stat .lbl {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .hero-stat .num {
+    font-family: var(--display-tc);
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 1;
+    color: var(--ink);
+    margin-top: 10px;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+  .hero-stat .num .delta {
+    font-family: var(--display-en);
+    font-style: italic;
+    font-size: 28px;
+    color: var(--sage);
+    margin-left: 6px;
+    font-weight: 400;
+  }
+  .hero-stat .num .delta.down { color: var(--accent); }
+  .hero-stat .desc {
+    margin-top: 10px;
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: var(--ink-2);
+  }
+
+  /* ─── News grid ─────────────────────────────────────── */
+  .news-grid {
+    margin-top: 64px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 56px;
+  }
+  .news-col h2 { margin: 0; }
+
+  .news-col.world .news-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 36px;
+  }
+  .news-item {
+    padding: 22px 0;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 16px;
+  }
+  .news-item .num {
+    font-family: var(--display-en);
+    font-style: italic;
+    font-size: 40px;
+    line-height: 0.95;
+    color: var(--ink);
+  }
+  .news-item .num.accent { color: var(--accent); }
+  .news-item .body {
+    font-family: var(--body-tc);
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: var(--ink-2);
+    text-wrap: pretty;
+  }
+  .news-item .body b {
+    color: var(--ink);
+    font-weight: 700;
+  }
+  .news-item .tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-top: 10px;
+    border-top: 1px solid var(--rule);
+    padding-top: 8px;
+  }
+
+  /* lead news item styling removed — the lead now lives in the hero card */
+
+  /* ─── Social row ────────────────────────────────────── */
+  .social {
+    margin-top: 80px;
+  }
+  .tweet-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .tweet-card {
+    background: var(--paper-3);
+    border-radius: 18px;
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: relative;
+  }
+  .tweet-card .head { display: flex; gap: 12px; align-items: center; }
+  .tweet-card .avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--paper);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--display-en);
+    font-style: italic;
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+  .tweet-card .avatar.musk { background: linear-gradient(135deg, #2A2A2A, #555); }
+  .tweet-card .avatar.trump { background: linear-gradient(135deg, #B68A2E, #8C6517); }
+  .tweet-card .avatar.saylor { background: linear-gradient(135deg, #D24322, #6B2010); }
+  .tweet-card .name-line {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .tweet-card .name {
+    font-family: var(--body-tc);
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .tweet-card .verified {
+    width: 14px; height: 14px;
+    color: var(--accent);
+  }
+  .tweet-card .handle {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--ink-3);
+  }
+  .tweet-card .time {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-3);
+  }
+  .tweet-card .content {
+    font-family: var(--body-tc);
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-2);
+    text-wrap: pretty;
+    flex: 1;
+  }
+  .tweet-card .content b { color: var(--ink); font-weight: 700; }
+  .tweet-card .actions {
+    display: flex;
+    gap: 24px;
+    color: var(--ink-3);
+    font-family: var(--mono);
+    font-size: 11px;
+    border-top: 1px solid var(--rule);
+    padding-top: 14px;
+  }
+  .tweet-card .actions span {
+    display: inline-flex;
+    gap: 5px;
+    align-items: center;
+  }
+  .tweet-card .actions svg { width: 13px; height: 13px; }
+
+  /* ─── Dividend section ──────────────────────────────── */
+  .dividend {
+    margin-top: 80px;
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    background: var(--rule);
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    margin-bottom: 36px;
+  }
+  .stat {
+    background: var(--paper);
+    padding: 28px 28px 26px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-right: 1px solid var(--rule);
+  }
+  .stat:last-child { border-right: none; }
+  .stat .lbl {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .stat .num {
+    font-family: var(--display-tc);
+    font-weight: 700;
+    font-size: 76px;
+    line-height: 0.95;
+    color: var(--ink);
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .stat .num.accent { color: var(--accent); }
+  .stat .num small {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--ink-3);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+  }
+  .stat .desc {
+    font-family: var(--body-tc);
+    font-size: 12.5px;
+    color: var(--ink-3);
+    line-height: 1.5;
+  }
+
+  .first-look {
+    margin-bottom: 36px;
+    padding: 14px 18px;
+    background: var(--paper-3);
+    border-radius: 10px;
+    font-family: var(--body-tc);
+    font-size: 13px;
+    color: var(--ink-3);
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  .first-look::before {
+    content: "→";
+    font-family: var(--mono);
+    color: var(--accent);
+    font-size: 16px;
+  }
+  .first-look b { color: var(--ink); font-weight: 700; }
+
+  /* Two tables side by side */
+  .tables-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+  .table-block .table-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .table-block .table-sub {
+    font-family: var(--display-tc);
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+  .table-block .table-sub .en {
+    font-family: var(--display-en);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--ink-3);
+    margin-left: 8px;
+  }
+
+  table.div-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--body-tc);
+    font-size: 13px;
+    color: var(--ink-2);
+  }
+  table.div-table thead th {
+    text-align: left;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    padding: 0 0 10px;
+    border-bottom: 1px solid var(--ink);
+    font-weight: 500;
+  }
+  table.div-table tbody td {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--rule-2);
+    vertical-align: middle;
+  }
+  table.div-table tbody tr.day-break td {
+    border-top: 1px solid var(--rule);
+    padding-top: 18px;
+  }
+  table.div-table .date {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink);
+    font-weight: 700;
+    width: 50px;
+    letter-spacing: 0.02em;
+  }
+  table.div-table .ticker {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    display: inline-block;
+    margin-right: 8px;
+  }
+  table.div-table .name {
+    color: var(--ink);
+    font-weight: 500;
+    font-size: 14px;
+  }
+  table.div-table .name-cell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  table.div-table .otc {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--ink-3);
+    letter-spacing: 0.14em;
+  }
+  table.div-table .amt {
+    font-family: var(--mono);
+    font-weight: 700;
+    color: var(--ink);
+    text-align: right;
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+  table.div-table .amt small {
+    color: var(--ink-3);
+    font-weight: 400;
+    font-size: 9.5px;
+    letter-spacing: 0.08em;
+    margin-left: 2px;
+  }
+  /* tier 2 — amount ≥ 3 */
+  table.div-table .amt.tier-2 {
+    font-size: 19px;
+    color: var(--ink);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  /* tier 3 — amount ≥ 5 (same size as tier-2, accent color only) */
+  table.div-table .amt.tier-3 {
+    font-size: 19px;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1;
+  }
+  table.div-table .amt.tier-3 small { color: var(--accent); opacity: 0.7; }
+
+  table.div-table .close {
+    text-align: right;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--ink);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    width: 70px;
+  }
+  table.div-table .type-pill {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 9.5px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 3px;
+    background: var(--ink);
+    color: var(--paper);
+    line-height: 1;
+    vertical-align: middle;
+  }
+  table.div-table .type-pill.權 { background: var(--accent); }
+
+  .table-note {
+    margin-top: 16px;
+    font-family: var(--body-tc);
+    font-size: 12px;
+    color: var(--ink-3);
+    padding: 12px 14px;
+    background: var(--paper-3);
+    border-radius: 8px;
+    line-height: 1.5;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .table-note::before {
+    content: "→";
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+  .table-note b { color: var(--ink); font-weight: 700; }
+
+  /* ─── Footer ───────────────────────────────────────── */
+  .footer {
+    margin-top: 120px;
+    padding: 48px 0 64px;
+    text-align: center;
+    border-top: 4px double var(--ink);
+  }
+  .footer .end-mark {
+    font-family: var(--display-en);
+    font-style: italic;
+    font-size: 42px;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .footer .source {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-top: 16px;
+  }
+  .footer .colophon {
+    font-family: var(--display-en);
+    font-style: italic;
+    font-size: 17px;
+    color: var(--ink-3);
+    margin-top: 8px;
+  }
+
+  /* ─── Ornament ─────────────────────────────────────── */
+  .ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 64px 0 0;
+    color: var(--ink-3);
+  }
+  .ornament .line { flex: 1; height: 1px; background: var(--rule); max-width: 380px; }
+  .ornament .glyph {
+    font-family: var(--display-en);
+    font-style: italic;
+    font-size: 28px;
+    color: var(--accent);
+  }
+
+
+
+  /* Unified responsive production layer */
+  a { color: var(--accent-deep); font-weight: 700; text-decoration-thickness: 1px; text-underline-offset: 3px; overflow-wrap: anywhere; }
+  .source-line { margin-top: 8px; font-family: var(--mono); font-size: 9.5px; letter-spacing: .08em; color: var(--ink-3); line-height: 1.45; }
+  .source-line a { font-weight: 700; }
+  .quality-note { margin-top: 18px; font-family: var(--mono); font-size: 10px; letter-spacing: .12em; color: rgba(242,237,225,.58); text-transform: uppercase; }
+  .no-fill { color: var(--ink-3); font-style: italic; }
+  .hero-stat.primary { background: var(--ink); color: var(--paper); }
+  .hero-stat.primary .lbl, .hero-stat.primary .desc { color: rgba(242,237,225,.68); }
+  .hero-stat.primary .num { color: var(--paper); }
+  .hero-stat.primary .num .delta { color: #94C589; }
+  .hero-stat.primary .source-line { color: rgba(242,237,225,.55); }
+  .hero-stat.primary a { color: #F2C078; }
+  .news-item .body .impact { color: var(--accent-deep); font-weight: 700; }
+  .tweet-card .content .warn { color: var(--ink-3); font-style: italic; }
+  @media (max-width: 980px) {
+    .container { max-width: 100%; padding: 0 22px; }
+    .topbar { gap: 12px; align-items: flex-start; }
+    .topbar, .topbar .left, .topbar .right { flex-direction: column; }
+    .masthead { grid-template-columns: 1fr; gap: 22px; padding: 32px 0 22px; }
+    .masthead h1 { font-size: clamp(58px, 18vw, 86px); }
+    .masthead .en-line { font-size: 34px; }
+    .pulse-inner { padding: 12px 22px; overflow-x: auto; gap: 18px; }
+    .pulse-divider, .pulse-tag { display: none; }
+    .hero { grid-template-columns: 1fr; margin-top: 30px; gap: 18px; }
+    .focus-card { min-height: auto; padding: 30px 26px; border-radius: 20px; }
+    .focus-card .qmark { font-size: 130px; right: 18px; opacity: .45; }
+    .focus-card .takeaway { font-size: 29px; }
+    .focus-card .lead-body { font-size: 17px; line-height: 1.95; }
+    .hero-stat .num { font-size: 42px; }
+    .hero-stat .desc { font-size: 14.5px; line-height: 1.85; }
+    .news-grid { grid-template-columns: 1fr; gap: 36px; margin-top: 44px; }
+    .news-col.world .news-items { grid-template-columns: 1fr; }
+    .news-item .body { font-size: 16.5px; line-height: 2; }
+    .section-head { align-items: flex-start; gap: 14px; }
+    .section-title { font-size: 34px; }
+    .section-head .count { font-size: 38px; }
+    .tweet-row { grid-template-columns: 1fr; }
+    .tweet-card .content { font-size: 16.5px; line-height: 1.95; }
+    .social, .dividend { margin-top: 56px; }
+    .stats { grid-template-columns: 1fr; }
+    .stat { border-right: none; border-bottom: 1px solid var(--rule); padding: 22px; }
+    .stat:last-child { border-bottom: none; }
+    .stat .num { font-size: 54px; }
+    .tables-row { grid-template-columns: 1fr; gap: 36px; }
+    .table-block { overflow-x: auto; }
+    .first-look, .table-note { font-size: 14px; }
+    table.div-table { min-width: 520px; font-size: 15px; }
+    table.div-table .name { font-size: 16px; }
+    table.div-table .amt, table.div-table .close { font-size: 15px; }
+    .footer { margin-top: 70px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <div class="left">
+      <span><span class="dot"></span>Morning · 07:00 TPE</span>
+      <span>Official market brief</span>
+    </div>
+    <div class="right">
+      <span>2026-08-15</span>
+      <span><b>TWSE / TPEx</b></span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <header class="masthead">
+    <div>
+      <h1>新聞摘要</h1>
+      <p class="en-line">Market <span class="amp">&amp;</span> Brief</p>
+    </div>
+    <div class="masthead-meta">
+      <div class="row"><span class="label">Date</span><span class="val">Saturday, 15 August 2026</span></div>
+      <div class="row"><span class="label">中文日期</span><span class="val tc">二〇二六年八月十五日　星期六</span></div>
+      <div class="row"><span class="label">Edition</span><span class="val">Daily Express</span></div>
+    </div>
+  </header>
+</div>
+
+<section class="pulse">
+  <div class="pulse-inner">
+    <span class="pulse-item"><span class="lbl">World</span><span class="val">6則</span></span>
+    <span class="pulse-divider"></span>
+    <span class="pulse-item"><span class="lbl">Taiwan</span><span class="val">3則</span></span>
+    <span class="pulse-divider"></span>
+    <span class="pulse-item"><span class="lbl">TX Night 05:00</span><span class="val">45727</span></span>
+    <span class="pulse-divider"></span>
+    <span class="pulse-item"><span class="lbl">Dividend 7D</span><span class="val">49檔</span></span>
+    <span class="pulse-tag">台股早報</span>
+  </div>
+</section>
+
+<div class="container">
+  <section class="hero">
+    <div class="focus-card">
+      <div class="qmark">&quot;</div>
+      <div>
+        <div class="label">Lead · 早報主結論</div>
+        <div class="takeaway">日本破紀錄暴雨奪8命，首都交通與供電受衝擊</div>
+        <div class="lead-body">日本遭遇罕見豪雨，至少8人死亡、逾2萬戶停電，成田機場一度有約7,000名旅客受困；這起極端天候事件凸顯都會與航空樞紐在短時強降雨下的脆弱性。救援與交通復原仍在進行，也考驗區域防災調度、基礎設施與供應鏈的備援能力；保險業、旅運業與地方政府的災損評估和復建速度，將成為下一階段觀察焦點</div>
+      </div>
+      <div class="by-line"><span>Associated Press，2026-08-14 / BBC News，2026-08-14 / Focus Taiwan，2026-08-14</span><span>Morning · 01 / 03</span></div>
+    </div>
+    <div class="hero-side">
+      <div class="hero-stat primary">
+        <div class="lbl">TX Night · 昨夜盤 05:00</div>
+        <div class="num">45727<span class="delta">▼-85 / ▼-0.19%</span></div>
+        <div class="desc">TAIFEX 盤後即時報價最後成交價，資料日 2026-08-14 04:59:54，▼-85 / ▼-0.19%，成交量 24726 口。</div>
+        <div class="source-line">SOURCE · <a href="https://mis.taifex.com.tw/futures/">TAIFEX MIS</a></div>
+      </div>
+      <div class="hero-stat">
+        <div class="lbl">Dividend · 一週內除權息</div>
+        <div class="num">49<span class="delta">檔</span></div>
+        <div class="desc">08/15–08/22 一週內個股全數展開。</div>
+        <div class="source-line">SOURCE · TWSE / TPEx official API</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="container">
+  <section class="news-grid">
+    <div class="news-col world">
+      <div class="section-head"><div class="left"><div class="eyebrow">World · Headlines</div><div class="section-title">國際<span class="en">World</span></div></div><div class="count">6<sup>則</sup></div></div>
+      <div class="news-items">        <article class="news-item">
+          <div class="num accent">01</div>
+          <div>
+            <div class="body"><b>阿聯兩艘油輪在荷姆茲海峽遭無人機攻擊。</b>兩艘阿拉伯聯合大公國油輪通過荷姆茲海峽時遭無人機攻擊；葉門港口同日亦傳出空襲。戰時船舶與基礎設施遇襲，持續升高這條關鍵能源航道的運輸風險。</div>
+            <div class="tag">Middle East · Energy</div>
+            <div class="source-line">SOURCE · <a href="https://apnews.com/article/iran-uae-us-strait-hormuz-august-14-2026-e8565c608ac5283ec8103c85df924b13">Associated Press，2026-08-14</a></div>
+          </div>
+        </article>        <article class="news-item">
+          <div class="num">02</div>
+          <div>
+            <div class="body"><b>法國憲法委員會擋下15歲以下社群媒體禁令。</b>法國憲法委員會認定禁令侵害言論自由，阻止政府對15歲以下使用社群媒體的限制。馬克宏表示將準備新版草案，歐洲未成年人網路監管的立法界線再受關注。</div>
+            <div class="tag">BBC News，2026-08-14</div>
+            <div class="source-line">SOURCE · <a href="https://www.bbc.com/news/articles/cx2vj433xqlo">BBC News，2026-08-14</a></div>
+          </div>
+        </article>        <article class="news-item">
+          <div class="num">03</div>
+          <div>
+            <div class="body"><b>克羅埃西亞歷來嚴重野火釀數十傷、數千人撤離。</b>靠近歐米什港的野火造成數十人受傷、數千人撤離，官員形容為該國史上最嚴重火災之一。火勢對沿海社區、旅遊旺季與緊急應變資源帶來即時壓力。</div>
+            <div class="tag">Health · Disaster</div>
+            <div class="source-line">SOURCE · <a href="https://www.bbc.com/news/articles/c9342wn2x27o">BBC News，2026-08-14</a></div>
+          </div>
+        </article>        <article class="news-item">
+          <div class="num">04</div>
+          <div>
+            <div class="body"><b>法拉吉贏回英國下議院席位，政治獻金調查重啟。</b>英國改革黨領袖奈傑爾・法拉吉在補選勝出、重返下議院；主要政黨抵制該場選戰。其先前涉未申報500萬英鎊海外加密貨幣富豪贈禮的調查已恢復，席位前景仍有變數。</div>
+            <div class="tag">Associated Press，2026-08-14</div>
+            <div class="source-line">SOURCE · <a href="https://apnews.com/article/britain-politics-farage-binface-clacton-election-reform-uk-16f5c7deff9de672c1c9b1950513b52f">Associated Press，2026-08-14</a></div>
+          </div>
+        </article>        <article class="news-item">
+          <div class="num">05</div>
+          <div>
+            <div class="body"><b>陪審團判Instagram與YouTube須賠…。</b>加州陪審團認定Meta與YouTube的產品設計傷害年輕使用者，判賠原告300萬美元，並建議再加300萬美元懲罰性賠償。這項首例判決可能影響數千件類似訴訟及平台風險定價。</div>
+            <div class="tag">Rates · Commodities</div>
+            <div class="source-line">SOURCE · <a href="https://apnews.com/article/social-media-addiction-trial-la-5e54075023d837ccdc76c4ca512e925d">Associated Press，2026-08-14</a></div>
+          </div>
+        </article>        <article class="news-item">
+          <div class="num">06</div>
+          <div>
+            <div class="body"><b>庫許納與艾格擬以125億美元估值收購湖人。</b>創投家喬許・庫許納與前迪士尼執行長鮑勃・艾格達成收購洛杉磯湖人的協議，交易估值125億美元，創職業球隊出售新高。體育資產、娛樂媒體與私募資本的估值競逐因而升溫。</div>
+            <div class="tag">Rates · Commodities</div>
+            <div class="source-line">SOURCE · <a href="https://apnews.com/article/lakers-sale-josh-kushner-bob-iger-fb1f1110add821fd5a2f94b3d3aad1e6">Associated Press，2026-08-14</a></div>
+          </div>
+        </article></div>
+    </div>
+    <div class="news-col local">
+      <div class="section-head"><div class="left"><div class="eyebrow">Taiwan · Headlines</div><div class="section-title">台灣<span class="en">Taiwan</span></div></div><div class="count">3<sup>則</sup></div></div>
+      <div class="news-items">        <article class="news-item">
+          <div class="num accent">01</div>
+          <div>
+            <div class="body"><b>漢光10天軍演結束，國防部要求檢討強化戰備。</b>台灣完成年度漢光演習，國防部長顧立雄肯定官兵投入，並要求部隊針對演練發現的問題檢討，以持續提升戰備與應變能力。</div>
+            <div class="tag">Taiwan · Security</div>
+            <div class="source-line">SOURCE · <a href="https://focustaiwan.tw/politics/202608140027">Focus Taiwan，2026-08-14</a></div>
+          </div>
+        </article>        <article class="news-item">
+          <div class="num">02</div>
+          <div>
+            <div class="body"><b>立院通過三項在野黨公投提案。</b>立法院通過國民黨與民眾黨提出的四項公投案中的三項，相關公投可能與11月28日地方選舉合併舉行。提案進度使年底地方政治動員與議題攻防提前升溫。</div>
+            <div class="tag">Focus Taiwan，2026-08-14</div>
+            <div class="source-line">SOURCE · <a href="https://focustaiwan.tw/politics/202608140019">Focus Taiwan，2026-08-14</a></div>
+          </div>
+        </article>        <article class="news-item">
+          <div class="num">03</div>
+          <div>
+            <div class="body"><b>台股收跌0.46%，收在45,811.01點。</b>台股週五下跌210.47點、跌幅0.46%，以45,811.01點作收，成交值為新台幣1.06兆元。市場在技術壓力與獲利了結下轉趨觀望，台積電早盤漲幅未能守住。</div>
+            <div class="tag">Taiwan · Markets</div>
+            <div class="source-line">SOURCE · <a href="https://focustaiwan.tw/business/202608140005">Focus Taiwan，2026-08-14</a></div>
+          </div>
+        </article></div>
+    </div>
+  </section>
+</div>
+
+<div class="container">
+  <section class="social">
+    <div class="section-head"><div class="left"><div class="eyebrow">Social · Topic Voices</div><div class="section-title">話題人物<span class="en">Voices</span></div></div><div class="count">3<sup>位</sup></div></div>
+    <div class="tweet-row">      <article class="tweet-card">
+        <div class="head">
+          <div class="avatar saylor">S</div>
+          <div class="name-line"><span class="name">Michael Saylor</span><span class="handle">@saylor</span></div>
+          <span class="time">08/15 05:09</span>
+        </div>
+        <div class="content"><b>以「工作量證明」玩味語言與比特幣敘事：</b>Saylor寫道「說粵語也需要工作量證明」，把比特幣的PoW概念帶入語言玩笑；未揭露持倉或交易行動，但延續其以PoW敘事連結比特幣社群的發言風格，對市場屬情緒性訊號。</div>
+        <div class="source-line">FIRST PARTY · <a href="https://x.com/saylor/status/2088372400794591643">X @saylor，2026-08-15</a></div>
+      </article>      <article class="tweet-card">
+        <div class="head">
+          <div class="avatar musk">E</div>
+          <div class="name-line"><span class="name">Elon Musk</span><span class="handle">@elonmusk</span></div>
+          <span class="time">08/15 04:20</span>
+        </div>
+        <div class="content"><b>以日文短帖「とても」發文：</b>Musk僅貼出日文「とても」（意為「非常」），沒有產品、政策或公司營運的新增資訊。此原帖反映其持續在X維持高關注度，但對科技或加密資產投資人的基本面判讀沒有直接新增訊號。</div>
+        <div class="source-line">FIRST PARTY · <a href="https://x.com/elonmusk/status/2088360140562899180">X @elonmusk，2026-08-15</a></div>
+      </article>      <article class="tweet-card">
+        <div class="head">
+          <div class="avatar saylor">R</div>
+          <div class="name-line"><span class="name">Raoul Pal</span><span class="handle">@RaoulGMI</span></div>
+          <span class="time">08/15 01:59</span>
+        </div>
+        <div class="content"><b>看好穩定幣與RWA推動金融全面上鏈：</b>Raoul Pal稱穩定幣、實體資產代幣化與金融系統正轉向加密資產軌道，並主張持有支撐該系統的L1可分享成長。這是對鏈上金融與AI代理交易前景的投資論述，直接牽動加密產業情緒。</div>
+        <div class="source-line">FIRST PARTY · <a href="https://x.com/RaoulGMI/status/2088324736388657526">X @RaoulGMI，2026-08-15</a></div>
+      </article></div>
+  </section>
+</div>
+
+<div class="container"><div class="ornament"><div class="line"></div><div class="glyph">§</div><div class="line"></div></div></div>
+
+<div class="container">
+  <section class="dividend">
+    <div class="section-head"><div class="left"><div class="eyebrow">Dividend · Official data</div><div class="section-title">除權息<span class="en">Radar</span></div></div><div class="count" style="font-size:22px;color:var(--ink-3);font-style:italic;">TWSE / TPEx</div></div>
+    <div class="stats">
+      <div class="stat"><div class="lbl">MOPS Announcements</div><div class="num">60<small>件</small></div><div class="desc">昨日交易所原始公告</div></div>
+      <div class="stat"><div class="lbl">Next 7 Days</div><div class="num accent">49<small>檔</small></div><div class="desc">08/15–08/22 一週內個股全數展開</div></div>
+      <div class="stat"><div class="lbl">1–2 Months</div><div class="num">7<small>檔</small></div><div class="desc">09/15–10/15 已排程個股</div></div>
+    </div>
+    <div class="table-block" style="margin-bottom:42px;"><div class="table-title">First Look</div><div class="table-sub">MOPS 原始公告追蹤</div><table class="div-table"><thead><tr><th style="width:50px;">除權息日</th><th>代號 / 名稱</th><th style="text-align:right;">配息 / 配股</th><th style="text-align:right;">昨日收盤價</th></tr></thead><tbody>
+            <tr class="">
+              <td class="date">09/01</td>
+              <td><span class="name-cell"><span class="ticker">3416</span><span class="name">融程電</span><span class="type-pill">權</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">196</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">09/03</td>
+              <td><span class="name-cell"><span class="ticker">6126</span><span class="name">信音</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">30.75</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">09/09</td>
+              <td><span class="name-cell"><span class="ticker">4160</span><span class="name">訊聯基因</span><span class="type-pill">權</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">40.4</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">09/01</td>
+              <td><span class="name-cell"><span class="ticker">9941</span><span class="name">裕融</span><span class="type-pill">權息</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">85.2</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">9941</span><span class="name">裕融</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">85.2</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">08/27</td>
+              <td><span class="name-cell"><span class="ticker">3558</span><span class="name">神準</span><span class="type-pill">息</span></span></td>
+              <td class="amt tier-2">3 <small>元</small></td>
+              <td class="close">130</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">08/24</td>
+              <td><span class="name-cell"><span class="ticker">6977</span><span class="name">聯純</span><span class="type-pill">權息</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">—</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">09/03</td>
+              <td><span class="name-cell"><span class="ticker">2732</span><span class="name">六角</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">64.4</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">08/31</td>
+              <td><span class="name-cell"><span class="ticker">2751</span><span class="name">王座</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">53.1</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">08/25</td>
+              <td><span class="name-cell"><span class="ticker">5863</span><span class="name">瑞興銀</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">—</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">08/24</td>
+              <td><span class="name-cell"><span class="ticker">2249</span><span class="name">湧盛</span><span class="type-pill">權</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">—</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">08/25</td>
+              <td><span class="name-cell"><span class="ticker">6784</span><span class="name">天凱科技</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">—</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">08/27</td>
+              <td><span class="name-cell"><span class="ticker">6261</span><span class="name">久元</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">2.5 <small>元</small></td>
+              <td class="close">78.5</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">09/03</td>
+              <td><span class="name-cell"><span class="ticker">6874</span><span class="name">倍力</span><span class="type-pill">權</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">79.8</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">09/02</td>
+              <td><span class="name-cell"><span class="ticker">6669</span><span class="name">緯穎</span><span class="type-pill">權</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">6010</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">08/27</td>
+              <td><span class="name-cell"><span class="ticker">4706</span><span class="name">大恭</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">0.3 <small>元</small></td>
+              <td class="close">31.75</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">09/10</td>
+              <td><span class="name-cell"><span class="ticker">9802</span><span class="name">鈺齊-KY</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">74.9</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">09/08</td>
+              <td><span class="name-cell"><span class="ticker">2706</span><span class="name">第一店</span><span class="type-pill">權息</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">12.5</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">09/02</td>
+              <td><span class="name-cell"><span class="ticker">1240</span><span class="name">茂生農經</span><span class="type-pill">權</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">55.8</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">08/27</td>
+              <td><span class="name-cell"><span class="ticker">3236</span><span class="name">千如</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">0.5 <small>元</small></td>
+              <td class="close">45.2</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">09/07</td>
+              <td><span class="name-cell"><span class="ticker">1466</span><span class="name">聚隆</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">16.6</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">12/21</td>
+              <td><span class="name-cell"><span class="ticker">5306</span><span class="name">桂盟</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">97.8</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">09/08</td>
+              <td><span class="name-cell"><span class="ticker">9933</span><span class="name">中鼎</span><span class="type-pill">權息</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">42</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">09/09</td>
+              <td><span class="name-cell"><span class="ticker">3706</span><span class="name">神達</span><span class="type-pill">權息</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">92.4</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">12/10</td>
+              <td><span class="name-cell"><span class="ticker">2330</span><span class="name">台積電</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">2415</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">08/31</td>
+              <td><span class="name-cell"><span class="ticker">1437</span><span class="name">勤益控</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">31.5</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">09/08</td>
+              <td><span class="name-cell"><span class="ticker">8473</span><span class="name">山林水</span><span class="type-pill">權息</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">45.55</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">08/19</td>
+              <td><span class="name-cell"><span class="ticker">4961</span><span class="name">天鈺</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">168.5</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">09/01</td>
+              <td><span class="name-cell"><span class="ticker">7857</span><span class="name">合水先進</span><span class="type-pill">權</span></span></td>
+              <td class="amt ">0.204752 <small>股</small></td>
+              <td class="close">—</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">08/28</td>
+              <td><span class="name-cell"><span class="ticker">7730</span><span class="name">暉盛-創</span><span class="type-pill">權息</span></span></td>
+              <td class="amt ">1.00 <small>元</small></td>
+              <td class="close">168</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">08/31</td>
+              <td><span class="name-cell"><span class="ticker">7584</span><span class="name">樂意</span><span class="type-pill">權息</span></span></td>
+              <td class="amt ">0.04 <small>元</small></td>
+              <td class="close">26.75</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">11/12</td>
+              <td><span class="name-cell"><span class="ticker">3680</span><span class="name">家登</span><span class="type-pill">息</span></span></td>
+              <td class="amt tier-3">6 <small>元</small></td>
+              <td class="close">463.5</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">08/31</td>
+              <td><span class="name-cell"><span class="ticker">5013</span><span class="name">強新</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">0.7 <small>元</small></td>
+              <td class="close">27.55</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">1531</span><span class="name">高林股</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">1.0 <small>元</small></td>
+              <td class="close">12.95</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">09/03</td>
+              <td><span class="name-cell"><span class="ticker">1203</span><span class="name">味王</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">1 <small>元</small></td>
+              <td class="close">44.45</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">08/28</td>
+              <td><span class="name-cell"><span class="ticker">7562</span><span class="name">博來科技</span><span class="type-pill">權息</span></span></td>
+              <td class="amt ">2.5 <small>元</small></td>
+              <td class="close">—</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">09/10</td>
+              <td><span class="name-cell"><span class="ticker">5906</span><span class="name">台南-KY</span><span class="type-pill">權息</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">—</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">08/28</td>
+              <td><span class="name-cell"><span class="ticker">3492</span><span class="name">長盛</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">1.1 <small>元</small></td>
+              <td class="close">21.25</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">09/10</td>
+              <td><span class="name-cell"><span class="ticker">9906</span><span class="name">欣巴巴</span><span class="type-pill">權</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">39.35</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">08/28</td>
+              <td><span class="name-cell"><span class="ticker">8932</span><span class="name">智通*</span><span class="type-pill">權息</span></span></td>
+              <td class="amt ">0.7207 <small>元</small></td>
+              <td class="close">108</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">09/18</td>
+              <td><span class="name-cell"><span class="ticker">7943</span><span class="name">鴻璟科技</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">—</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">10/22</td>
+              <td><span class="name-cell"><span class="ticker">8102</span><span class="name">傑霖科技</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">0.9 <small>元</small></td>
+              <td class="close">71.4</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">09/17</td>
+              <td><span class="name-cell"><span class="ticker">6707</span><span class="name">富基電通</span><span class="type-pill">權息</span></span></td>
+              <td class="amt ">0.500 <small>元</small></td>
+              <td class="close">—</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">09/10</td>
+              <td><span class="name-cell"><span class="ticker">2062</span><span class="name">橋椿</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">1 <small>元</small></td>
+              <td class="close">18.75</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">08/28</td>
+              <td><span class="name-cell"><span class="ticker">7896</span><span class="name">喬越</span><span class="type-pill">息</span></span></td>
+              <td class="amt tier-2">3 <small>元</small></td>
+              <td class="close">—</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">08/31</td>
+              <td><span class="name-cell"><span class="ticker">9917</span><span class="name">中保科</span><span class="type-pill">權</span></span></td>
+              <td class="amt ">0.05 <small>股</small></td>
+              <td class="close">107.5</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">5392</span><span class="name">能率</span><span class="type-pill">權息</span></span></td>
+              <td class="amt ">0.20 <small>元</small></td>
+              <td class="close">45.2</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">09/09</td>
+              <td><span class="name-cell"><span class="ticker">1438</span><span class="name">三地開發</span><span class="type-pill">權息</span></span></td>
+              <td class="amt ">0.2 <small>元</small></td>
+              <td class="close">22.2</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">10/01</td>
+              <td><span class="name-cell"><span class="ticker">2323</span><span class="name">中環</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">0.2 <small>元</small></td>
+              <td class="close">11.3</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">08/28</td>
+              <td><span class="name-cell"><span class="ticker">2101</span><span class="name">南港</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">0.6 <small>元</small></td>
+              <td class="close">31.55</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">08/31</td>
+              <td><span class="name-cell"><span class="ticker">1795</span><span class="name">美時</span><span class="type-pill">權息</span></span></td>
+              <td class="amt ">2.56531681 <small>元</small></td>
+              <td class="close">180.5</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">09/14</td>
+              <td><span class="name-cell"><span class="ticker">5243</span><span class="name">乙盛-KY</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">2.2 <small>元</small></td>
+              <td class="close">89.5</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">09/03</td>
+              <td><span class="name-cell"><span class="ticker">6146</span><span class="name">耕興</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">194</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">3661</span><span class="name">世芯-KY</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">4210</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">08/31</td>
+              <td><span class="name-cell"><span class="ticker">2905</span><span class="name">三商</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">0.3 <small>元</small></td>
+              <td class="close">17.1</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">09/03</td>
+              <td><span class="name-cell"><span class="ticker">7780</span><span class="name">大研生醫*</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">0.11658854 <small>元</small></td>
+              <td class="close">16.6</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">09/02</td>
+              <td><span class="name-cell"><span class="ticker">6426</span><span class="name">統新</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">219</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">8076</span><span class="name">伍豐</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">23.6</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">09/03</td>
+              <td><span class="name-cell"><span class="ticker">7882</span><span class="name">倍利創投</span><span class="type-pill">權息</span></span></td>
+              <td class="amt ">1.4 <small>元</small></td>
+              <td class="close">—</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">09/02</td>
+              <td><span class="name-cell"><span class="ticker">2845</span><span class="name">遠東銀</span><span class="type-pill">權息</span></span></td>
+              <td class="amt ">0.5140 <small>元</small></td>
+              <td class="close">13.2</td>
+            </tr></tbody></table><div class="table-note"><div><b>資料來源 ·</b> 公開資訊觀測站 MOPS；週一補查週六、週日公告，其餘日只查上一日。公告先列入，配息／配股金額待補時保留，補齊當日顯示完整數值，隔日自動移除。</div></div></div>
+    <div class="tables-row">
+      <div class="table-block"><div class="table-title">One Week · 一週內</div><div class="table-sub">本週除權息<span class="en">08/15–08/22</span></div><table class="div-table"><thead><tr><th style="width:50px;">日期</th><th>代號 / 名稱</th><th style="text-align:right;">配息 / 配股</th><th style="text-align:right;">昨日收盤價</th></tr></thead><tbody>
+            <tr class="">
+              <td class="date">08/17</td>
+              <td><span class="name-cell"><span class="ticker">1477</span><span class="name">聚陽</span><span class="type-pill">息</span></span></td>
+              <td class="amt tier-3">6 <small>元</small></td>
+              <td class="close">218</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">1618</span><span class="name">合機</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">1.7 <small>元</small></td>
+              <td class="close">41.7</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">2231</span><span class="name">為升</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">0.5 <small>元</small></td>
+              <td class="close">102</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">4967</span><span class="name">十銓</span><span class="type-pill">息</span></span></td>
+              <td class="amt tier-3">8.619904 <small>元</small></td>
+              <td class="close">275</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">6282</span><span class="name">康舒</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">0.799933 <small>元</small></td>
+              <td class="close">47.8</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">6698</span><span class="name">旭暉應材</span><span class="type-pill">權</span></span></td>
+              <td class="amt ">增資 0.07600198 / 25.5元 <small></small></td>
+              <td class="close">31.45</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">4123</span><span class="name">晟德</span><span class="type-pill">權息</span><span class="otc">OTC</span></span></td>
+              <td class="amt ">1.74669389 <small>元</small></td>
+              <td class="close">34.3</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">4162</span><span class="name">智擎</span><span class="type-pill">息</span><span class="otc">OTC</span></span></td>
+              <td class="amt ">2 <small>元</small></td>
+              <td class="close">62.1</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">4432</span><span class="name">銘旺實</span><span class="type-pill">息</span><span class="otc">OTC</span></span></td>
+              <td class="amt ">0.4 <small>元</small></td>
+              <td class="close">16.55</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">8049</span><span class="name">晶采</span><span class="type-pill">息</span><span class="otc">OTC</span></span></td>
+              <td class="amt ">1.4 <small>元</small></td>
+              <td class="close">26.45</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">08/18</td>
+              <td><span class="name-cell"><span class="ticker">2885</span><span class="name">元大金</span><span class="type-pill">權</span></span></td>
+              <td class="amt ">0.04 <small>股</small></td>
+              <td class="close">69.7</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">3022</span><span class="name">威強電</span><span class="type-pill">息</span></span></td>
+              <td class="amt tier-2">3.5 <small>元</small></td>
+              <td class="close">94.2</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">6225</span><span class="name">天瀚</span><span class="type-pill">權</span></span></td>
+              <td class="amt ">增資 1.15827338 / 17.65元 <small></small></td>
+              <td class="close">40.4</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">6799</span><span class="name">來頡</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">2.501141 <small>元</small></td>
+              <td class="close">84.6</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">6432</span><span class="name">今展科</span><span class="type-pill">息</span><span class="otc">OTC</span></span></td>
+              <td class="amt ">0.99906019 <small>元</small></td>
+              <td class="close">71.8</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">6986</span><span class="name">和迅</span><span class="type-pill">息</span><span class="otc">OTC</span></span></td>
+              <td class="amt ">0.19411516 <small>元</small></td>
+              <td class="close">43.1</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">7714</span><span class="name">創泓科技</span><span class="type-pill">息</span><span class="otc">OTC</span></span></td>
+              <td class="amt ">2 <small>元</small></td>
+              <td class="close">172.5</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">8928</span><span class="name">鉅明</span><span class="type-pill">息</span><span class="otc">OTC</span></span></td>
+              <td class="amt ">0.8 <small>元</small></td>
+              <td class="close">23.6</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">08/19</td>
+              <td><span class="name-cell"><span class="ticker">1537</span><span class="name">廣隆</span><span class="type-pill">息</span></span></td>
+              <td class="amt tier-3">7.2 <small>元</small></td>
+              <td class="close">127</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">2301</span><span class="name">光寶科</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">2.5 <small>元</small></td>
+              <td class="close">267</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">2363</span><span class="name">矽統</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">0.605882 <small>元</small></td>
+              <td class="close">53.4</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">2374</span><span class="name">佳能</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">1.991664 <small>元</small></td>
+              <td class="close">70.5</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">2496</span><span class="name">卓越</span><span class="type-pill">權息</span></span></td>
+              <td class="amt ">1.5 <small>元</small></td>
+              <td class="close">59</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">3017</span><span class="name">奇鋐</span><span class="type-pill">息</span></span></td>
+              <td class="amt tier-3">20.881604 <small>元</small></td>
+              <td class="close">3235</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">5489</span><span class="name">彩富</span><span class="type-pill">息</span><span class="otc">OTC</span></span></td>
+              <td class="amt ">1.51523284 <small>元</small></td>
+              <td class="close">42.25</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">6574</span><span class="name">霈方</span><span class="type-pill">息</span><span class="otc">OTC</span></span></td>
+              <td class="amt tier-2">3 <small>元</small></td>
+              <td class="close">125.5</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">8043</span><span class="name">蜜望實</span><span class="type-pill">息</span><span class="otc">OTC</span></span></td>
+              <td class="amt ">0.9 <small>元</small></td>
+              <td class="close">146</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">08/20</td>
+              <td><span class="name-cell"><span class="ticker">1597</span><span class="name">直得</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">0.7 <small>元</small></td>
+              <td class="close">143.5</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">1714</span><span class="name">和桐</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">0.18 <small>元</small></td>
+              <td class="close">16.4</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">2377</span><span class="name">微星</span><span class="type-pill">息</span></span></td>
+              <td class="amt tier-2">4.2 <small>元</small></td>
+              <td class="close">159</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">2472</span><span class="name">立隆電</span><span class="type-pill">息</span></span></td>
+              <td class="amt tier-2">3.5 <small>元</small></td>
+              <td class="close">245</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">2505</span><span class="name">國揚</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">1 <small>元</small></td>
+              <td class="close">18.1</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">2539</span><span class="name">櫻花建</span><span class="type-pill">權息</span></span></td>
+              <td class="amt ">0.6 <small>元</small></td>
+              <td class="close">41.3</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">4441</span><span class="name">振大環球</span><span class="type-pill">息</span></span></td>
+              <td class="amt tier-3">10.8 <small>元</small></td>
+              <td class="close">200</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">4764</span><span class="name">雙鍵</span><span class="type-pill">權</span></span></td>
+              <td class="amt ">增資 0.07014093 / 169元 <small></small></td>
+              <td class="close">232</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">5222</span><span class="name">全訊</span><span class="type-pill">權</span></span></td>
+              <td class="amt ">0.09996664 <small>股</small></td>
+              <td class="close">123</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">6177</span><span class="name">達麗</span><span class="type-pill">息</span></span></td>
+              <td class="amt tier-2">3 <small>元</small></td>
+              <td class="close">47.75</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">6666</span><span class="name">羅麗芬-KY</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">2 <small>元</small></td>
+              <td class="close">43</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">6691</span><span class="name">洋基工程</span><span class="type-pill">權息</span></span></td>
+              <td class="amt tier-3">21 <small>元</small></td>
+              <td class="close">728</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">6805</span><span class="name">富世達</span><span class="type-pill">息</span></span></td>
+              <td class="amt tier-3">12.5 <small>元</small></td>
+              <td class="close">1805</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">4908</span><span class="name">前鼎</span><span class="type-pill">息</span><span class="otc">OTC</span></span></td>
+              <td class="amt ">1 <small>元</small></td>
+              <td class="close">155</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">4966</span><span class="name">譜瑞-KY</span><span class="type-pill">息</span><span class="otc">OTC</span></span></td>
+              <td class="amt tier-3">8.8817731 <small>元</small></td>
+              <td class="close">570</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">5206</span><span class="name">坤悅</span><span class="type-pill">權</span><span class="otc">OTC</span></span></td>
+              <td class="amt ">增資 0.11660618 / 20元 <small></small></td>
+              <td class="close">22.45</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">8077</span><span class="name">洛碁</span><span class="type-pill">息</span><span class="otc">OTC</span></span></td>
+              <td class="amt ">2 <small>元</small></td>
+              <td class="close">44.3</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">08/21</td>
+              <td><span class="name-cell"><span class="ticker">2458</span><span class="name">義隆</span><span class="type-pill">息</span></span></td>
+              <td class="amt tier-2">4.426 <small>元</small></td>
+              <td class="close">144.5</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">2066</span><span class="name">世德</span><span class="type-pill">息</span><span class="otc">OTC</span></span></td>
+              <td class="amt ">2.15 <small>元</small></td>
+              <td class="close">58.4</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">3147</span><span class="name">大綜</span><span class="type-pill">息</span><span class="otc">OTC</span></span></td>
+              <td class="amt tier-3">6.5 <small>元</small></td>
+              <td class="close">232</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">4430</span><span class="name">耀億</span><span class="type-pill">息</span><span class="otc">OTC</span></span></td>
+              <td class="amt ">0.5 <small>元</small></td>
+              <td class="close">17.9</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">7547</span><span class="name">碩網</span><span class="type-pill">息</span><span class="otc">OTC</span></span></td>
+              <td class="amt ">1.77800547 <small>元</small></td>
+              <td class="close">52.2</td>
+            </tr></tbody></table></div>
+      <div class="table-block"><div class="table-title">1-2 個月內 遠期除權息</div><div class="table-sub">遠期除權息<span class="en">09/15–10/15</span></div><table class="div-table"><thead><tr><th style="width:50px;">日期</th><th>代號 / 名稱</th><th style="text-align:right;">配息 / 配股</th><th style="text-align:right;">昨日收盤價</th></tr></thead><tbody>
+            <tr class="">
+              <td class="date">09/15</td>
+              <td><span class="name-cell"><span class="ticker">5426</span><span class="name">振發</span><span class="type-pill">息</span><span class="otc">OTC</span></span></td>
+              <td class="amt ">0.3 <small>元</small></td>
+              <td class="close">28</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">09/23</td>
+              <td><span class="name-cell"><span class="ticker">1808</span><span class="name">潤隆</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">1.5 <small>元</small></td>
+              <td class="close">32.65</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">2542</span><span class="name">興富發</span><span class="type-pill">息</span></span></td>
+              <td class="amt tier-2">4 <small>元</small></td>
+              <td class="close">46.2</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">10/01</td>
+              <td><span class="name-cell"><span class="ticker">9927</span><span class="name">泰銘</span><span class="type-pill">息</span></span></td>
+              <td class="amt tier-3">5 <small>元</small></td>
+              <td class="close">69.3</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">10/06</td>
+              <td><span class="name-cell"><span class="ticker">2614</span><span class="name">東森</span><span class="type-pill">權息</span></span></td>
+              <td class="amt ">0.4 <small>元</small></td>
+              <td class="close">18.05</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">10/07</td>
+              <td><span class="name-cell"><span class="ticker">6108</span><span class="name">競國</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">1 <small>元</small></td>
+              <td class="close">22.1</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">10/12</td>
+              <td><span class="name-cell"><span class="ticker">1565</span><span class="name">精華</span><span class="type-pill">息</span><span class="otc">OTC</span></span></td>
+              <td class="amt tier-3">5.8 <small>元</small></td>
+              <td class="close">94.6</td>
+            </tr></tbody></table><div class="table-note"><div><b>資料來源 ·</b> TWSE / TPEx OpenAPI；昨日收盤價使用官方最近收盤資料，不可得則顯示 —。</div></div></div>
+    </div>
+  </section>
+</div>
+
+<div class="container"><footer class="footer"><div class="end-mark">END OF BRIEF</div><div class="source">資料：TWSE · TAIFEX · TPEx · 各新聞來源與人物原文</div><div class="colophon">2026/08/15 · 台股早報</div></footer></div>
+</body>
+</html>
