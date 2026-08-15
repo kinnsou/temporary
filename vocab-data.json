@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-08-14T11:01:32Z",
-    "sourceCount": 395,
-    "includedCount": 387
+    "updatedAt": "2026-08-15T11:01:31Z",
+    "sourceCount": 398,
+    "includedCount": 390
   },
   "words": [
+    {
+      "word": "couch",
+      "meaning": "沙發",
+      "example": "The cat sleeps on the couch every afternoon.",
+      "translation": "那隻貓每天下午都睡在沙發上。",
+      "firstSeen": "2026-08-15",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "wrong",
+      "meaning": "錯的；不對的",
+      "example": "My answer was wrong, so I tried again.",
+      "translation": "我的答案錯了，所以我再試一次。",
+      "firstSeen": "2026-08-15",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "church",
+      "meaning": "教堂",
+      "example": "We visited the old church on Sunday.",
+      "translation": "我們星期天參觀了那座老教堂。",
+      "firstSeen": "2026-08-15",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "fair",
       "meaning": "公平的；合理的",
