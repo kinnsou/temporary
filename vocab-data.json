@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-08-15T11:01:31Z",
-    "sourceCount": 398,
-    "includedCount": 390
+    "updatedAt": "2026-08-16T11:02:28Z",
+    "sourceCount": 401,
+    "includedCount": 393
   },
   "words": [
+    {
+      "word": "prize",
+      "meaning": "獎品；獎項",
+      "example": "I won a prize in the drawing.",
+      "translation": "我在抽獎中贏得了一個獎品。",
+      "firstSeen": "2026-08-16",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "continue",
+      "meaning": "繼續",
+      "example": "We will continue our game after dinner.",
+      "translation": "我們晚餐後會繼續玩遊戲。",
+      "firstSeen": "2026-08-16",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "eraser",
+      "meaning": "橡皮擦",
+      "example": "My eraser is under the desk.",
+      "translation": "我的橡皮擦在桌子下面。",
+      "firstSeen": "2026-08-16",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "couch",
       "meaning": "沙發",
