@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-08-16T11:02:28Z",
-    "sourceCount": 401,
-    "includedCount": 393
+    "updatedAt": "2026-08-17T11:01:21Z",
+    "sourceCount": 404,
+    "includedCount": 396
   },
   "words": [
+    {
+      "word": "decide",
+      "meaning": "決定；下定決心",
+      "example": "I decided to wear my blue shirt today.",
+      "translation": "我今天決定穿藍色襯衫。",
+      "firstSeen": "2026-08-17",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "cheap",
+      "meaning": "便宜的；價格低的",
+      "example": "This pencil is cheap but useful.",
+      "translation": "這支鉛筆很便宜，但很好用。",
+      "firstSeen": "2026-08-17",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "size",
+      "meaning": "尺寸；大小",
+      "example": "What size shoes do you wear?",
+      "translation": "你穿幾號的鞋子？",
+      "firstSeen": "2026-08-17",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "prize",
       "meaning": "獎品；獎項",
