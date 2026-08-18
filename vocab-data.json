@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-08-17T11:01:21Z",
-    "sourceCount": 404,
-    "includedCount": 396
+    "updatedAt": "2026-08-18T11:01:58Z",
+    "sourceCount": 407,
+    "includedCount": 399
   },
   "words": [
+    {
+      "word": "knee",
+      "meaning": "膝蓋",
+      "example": "I hurt my knee when I fell.",
+      "translation": "我跌倒時弄傷了膝蓋。",
+      "firstSeen": "2026-08-18",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "find",
+      "meaning": "找到；發現",
+      "example": "Mia found her keys under the chair.",
+      "translation": "米亞在椅子下找到了她的鑰匙。",
+      "firstSeen": "2026-08-18",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "wing",
+      "meaning": "翅膀；機翼",
+      "example": "The bird has a hurt wing.",
+      "translation": "那隻鳥有一隻受傷的翅膀。",
+      "firstSeen": "2026-08-18",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "decide",
       "meaning": "決定；下定決心",
