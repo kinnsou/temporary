@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>第17課・周六：約瑟與弟兄相認</title>
+  <meta name="description" content="學習約瑟用智慧、忍耐和寬廣的心接納弟兄。" />
+  <style>
+    :root {
+      --bg: #f6f1e8;
+      --paper: #fffaf2;
+      --ink: #2f2a25;
+      --muted: #6f6559;
+      --line: #e6d7bf;
+      --gold: #c29045;
+      --gold-deep: #966b2f;
+      --olive: #6f7d55;
+      --rose: #b56a59;
+      --shadow: 0 16px 40px rgba(88, 63, 30, 0.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.9;
+      background:
+        radial-gradient(1000px 480px at 110% -10%, rgba(194, 144, 69, 0.16), transparent 55%),
+        radial-gradient(900px 420px at -10% 100%, rgba(111, 125, 85, 0.16), transparent 55%),
+        var(--bg);
+    }
+    .grain::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.05;
+      background-image: radial-gradient(rgba(68, 48, 24, 0.28) 0.7px, transparent 0.7px);
+      background-size: 4px 4px;
+      z-index: 0;
+    }
+    .wrap { position: relative; z-index: 1; width: min(1020px, 92vw); margin: 28px auto 56px; }
+    .hero { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 28px; padding: clamp(26px, 5vw, 48px); background: linear-gradient(140deg, #fffdf8 0%, #fff5e7 100%); box-shadow: var(--shadow); }
+    .hero::after { content: ""; position: absolute; right: -120px; top: -120px; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(194, 144, 69, 0.28) 0%, rgba(194, 144, 69, 0) 70%); }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; border: 1px solid #ebd6b0; background: #fff7e8; color: var(--gold-deep); font-size: 13px; font-weight: 700; letter-spacing: 0.02em; }
+    h1 { margin: 0 0 12px; font-family: "Noto Serif TC", "PMingLiU", serif; font-size: clamp(34px, 6vw, 58px); line-height: 1.15; color: #2d2419; }
+    .lead { margin: 0; max-width: 66ch; color: var(--muted); font-size: clamp(16px, 2.1vw, 19px); }
+    .hero-actions { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 12px; }
+    .button { display: inline-block; padding: 12px 18px; border-radius: 14px; text-decoration: none; font-weight: 700; transition: transform .18s ease, box-shadow .18s ease; }
+    .button.primary { color: white; background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%); box-shadow: 0 10px 20px rgba(150, 107, 47, 0.28); }
+    .button.secondary { color: var(--ink); background: rgba(255,255,255,0.74); border: 1px solid var(--line); }
+    .button:hover { transform: translateY(-1px); }
+    .intro-grid, .content-grid, .summary-grid { display: grid; gap: 18px; margin-top: 22px; }
+    .intro-grid { grid-template-columns: 1.15fr 0.95fr; }
+    .content-grid { grid-template-columns: 1fr 1fr; }
+    .summary-grid { grid-template-columns: 1fr 1fr; }
+    .card { border: 1px solid var(--line); border-radius: 22px; background: var(--paper); padding: 22px; box-shadow: 0 10px 24px rgba(88, 63, 30, 0.08); }
+    .card h2, .card h3 { margin: 0 0 12px; font-family: "Noto Serif TC", serif; color: #352a1e; line-height: 1.45; }
+    .eyebrow { margin: 0 0 8px; color: var(--gold-deep); font-size: 13px; text-transform: uppercase; letter-spacing: .09em; font-weight: 700; }
+    .section-tag { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 12px; padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 700; color: #fff; }
+    .wednesday { background: linear-gradient(180deg, #6f7d55 0%, #53613e 100%); }
+    .thursday { background: linear-gradient(180deg, #b56a59 0%, #8f4d40 100%); }
+    p { margin: 0 0 14px; }
+    ul, ol { margin: 0; padding-left: 22px; }
+    li + li { margin-top: 8px; }
+    .focus-box { background: linear-gradient(180deg, #fffdf9 0%, #f7efe2 100%); }
+    .scripture { border-left: 4px solid var(--gold); background: #fff3df; border-radius: 12px; padding: 14px 16px; color: #5f4b31; margin-top: 14px; }
+    .prayer { background: #fdf6ee; border: 1px dashed #d4a070; border-radius: 14px; padding: 16px; }
+    .footer-note { margin-top: 22px; text-align: center; color: #8a7a66; font-size: 13px; }
+    @media (max-width: 920px) { .intro-grid, .content-grid, .summary-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 560px) { .wrap { margin-top: 18px; } .hero, .card { border-radius: 18px; } .button { width: 100%; text-align: center; } }
+  </style>
+</head>
+<body class="grain">
+  <main class="wrap">
+    <section class="hero">
+      <div class="badge-row">
+        <span class="badge">📖 主日帶讀</span>
+        <span class="badge">第十七課 · 2026 八月第三週</span>
+        <span class="badge">來源段落：周六</span>
+        <span class="badge">主題：約瑟看見神的手</span>
+      </div>
+      <h1>第17課・周六：約瑟與弟兄相認</h1>
+      <p class="lead">約瑟雖然曾被哥哥們傷害，卻沒有一直記著他們的過錯；他看見神在一切事上都有祂的安排。</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#reading">開始閱讀</a>
+        <a class="button secondary" href="#discussion">看主日重點</a>
+      </div>
+    </section>
+
+    <section class="intro-grid" aria-label="overview">
+      <article class="card">
+        <p class="eyebrow">Overview</p>
+        <h2>這一篇在提醒什麼？</h2>
+            <p>雅各的兒子們從埃及買糧回家後，發現銀子還在口袋裡，心裡非常害怕。後來糧食吃完了，他們只好再去埃及買糧，這次也帶著最小的弟弟便雅憫同行。</p>
+            <p>約瑟看見便雅憫來了，就為弟兄們預備筵席，也讓西緬回到他們中間。之後，約瑟藉著銀杯試驗哥哥們，確定他們已經學會顧念父親和弟弟，最後便向他們表明自己的身分。</p>
+      </article>
+
+      <aside class="card focus-box">
+        <p class="eyebrow">Sunday Focus</p>
+        <h2>主日可以先抓三句話</h2>
+        <ul>
+          <li>約瑟有忍耐，不急著照自己的情感行事。</li>
+          <li>約瑟有智慧，知道如何幫助哥哥們看見並學習功課。</li>
+          <li>約瑟有寬廣的心，沒有定罪弟兄，反而看見神主宰的安排。</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="reading" class="content-grid" aria-label="reading-content">
+      <article class="card">
+        <span class="section-tag wednesday">周六｜正文帶讀</span>
+        <h2>約瑟看見神的手</h2>
+            <p>約瑟的哥哥們再次來到埃及，站在約瑟面前，卻仍不知道眼前這位埃及的宰相就是約瑟。約瑟見到便雅憫，心裡很受感動，但他沒有立刻說出自己的身分。</p>
+            <p>約瑟安排弟兄們按著長幼次序坐席，弟兄們覺得很希奇。約瑟也特別照顧便雅憫，卻繼續觀察哥哥們的情形。</p>
+            <p>後來，約瑟把銀杯放在便雅憫的口袋裡，藉此試驗哥哥們。猶大為了父親和便雅憫，懇切地向約瑟說話，願意承擔責任。這使約瑟知道，哥哥們不再像從前那樣只顧自己。</p>
+            <p>約瑟終於忍不住哭了，支開旁邊的人，對哥哥們說：「我是約瑟。」他沒有責怪哥哥們賣了他，反而告訴他們，是神差他先到埃及，為要保全許多人的性命。</p>
+            <p>約瑟與弟兄們相抱哭泣，又吩咐他們快回去接父親雅各到埃及來。原本充滿害怕和虧欠的家人，因著約瑟的饒恕，再次能彼此說話、彼此親近。</p>
+      </article>
+
+      <article class="card">
+        <span class="section-tag thursday">主日｜補充提醒與操練</span>
+        <h2>在召會生活中學習約瑟</h2>
+            <p>當別人說錯話、做錯事，或使我們感到難過時，我們很容易立刻責怪對方。約瑟提醒我們，先不要讓情緒作主，而要學習在主面前安靜，求主給我們智慧和忍耐。</p>
+            <p>接納軟弱的人，不表示說錯誤沒有關係；乃是用愛扶持人、幫助人回到正確的路上。像猶大一樣，願意顧念別人、承擔責任，也能叫人得著安慰。</p>
+            <p>我們可以學習不一直記住別人的過錯，而是相信神能使用各種環境作成祂的美意。當我們有寬廣的心，就更能在召會中扶持軟弱的人，活出主的生命。</p>
+        <div class="scripture"><strong>可帶的一句提醒</strong><br />以寬廣的心，接納軟弱的人，饒恕別人的過錯。</div>
+      </article>
+    </section>
+
+    <section id="discussion" class="summary-grid" aria-label="discussion-guide">
+      <article class="card focus-box">
+        <p class="eyebrow">Lead the Group</p>
+        <h3>這篇可以帶出的三件事</h3>
+        <ol>
+          <li>遇到難處時，先尋求主的智慧，不讓情緒帶領我們。</li>
+          <li>不要定罪軟弱的人，要用愛扶持並接納他們。</li>
+          <li>相信神在每件事上都有主宰，能使人得益處。</li>
+        </ol>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Discussion</p>
+        <h3>可直接帶的三個問題</h3>
+        <ul>
+          <li>約瑟為什麼沒有立刻向哥哥們表明身分？</li>
+          <li>猶大的說話怎樣顯出他對父親和便雅憫的顧念？</li>
+          <li>當有人得罪我時，我可以怎樣學習約瑟的寬廣和饒恕？</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="summary-grid" aria-label="verse-prayer">
+      <article class="card">
+        <p class="eyebrow">Verse</p>
+        <h3>今天的經文</h3>
+        <div class="scripture">這樣看來，差我到這裡來的不是你們，乃是神，祂又使我如法老的父，作他全家的主，並埃及全地的宰相。<br />創世記四十五章8節</div>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Prayer</p>
+        <h3>一起禱告</h3>
+        <div class="prayer">主耶穌，謝謝你給我們約瑟的榜樣。求你賜給我們智慧和忍耐，使我們不被自己的情緒管治。<br /><br />主阿，求你擴大我們的心，使我們能接納軟弱的人，饒恕得罪我們的人，並在召會生活中用愛扶持人。</div>
+      </article>
+    </section>
+
+    <p class="footer-note">聖經之旅 第一冊 · 第十七課 · 202608w3</p>
+  </main>
+</body>
+</html>
