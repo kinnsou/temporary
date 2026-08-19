@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-08-18T11:01:58Z",
-    "sourceCount": 407,
-    "includedCount": 399
+    "updatedAt": "2026-08-19T11:01:31Z",
+    "sourceCount": 410,
+    "includedCount": 402
   },
   "words": [
+    {
+      "word": "bookstore",
+      "meaning": "書店",
+      "example": "We bought a book at the bookstore yesterday.",
+      "translation": "我們昨天在書店買了一本書。",
+      "firstSeen": "2026-08-19",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "too",
+      "meaning": "也；太",
+      "example": "I want to read that book too.",
+      "translation": "我也想讀那本書。",
+      "firstSeen": "2026-08-19",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "role",
+      "meaning": "角色；職責",
+      "example": "Mia played the role of the queen in the school play.",
+      "translation": "米亞在學校的戲劇表演中演皇后這個角色。",
+      "firstSeen": "2026-08-19",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "knee",
       "meaning": "膝蓋",
