@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-08-19T11:01:31Z",
-    "sourceCount": 410,
-    "includedCount": 402
+    "updatedAt": "2026-08-20T11:01:40Z",
+    "sourceCount": 413,
+    "includedCount": 405
   },
   "words": [
+    {
+      "word": "proud",
+      "meaning": "驕傲的；自豪的",
+      "example": "Mia was proud of her drawing.",
+      "translation": "米亞為她的畫感到自豪。",
+      "firstSeen": "2026-08-20",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "knife",
+      "meaning": "刀；小刀",
+      "example": "Dad used a knife to cut the apple.",
+      "translation": "爸爸用一把刀切蘋果。",
+      "firstSeen": "2026-08-20",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "cow",
+      "meaning": "乳牛；母牛",
+      "example": "The cow is eating grass in the field.",
+      "translation": "那頭乳牛正在田裡吃草。",
+      "firstSeen": "2026-08-20",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "bookstore",
       "meaning": "書店",
