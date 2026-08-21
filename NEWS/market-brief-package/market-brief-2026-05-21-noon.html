@@ -327,14 +327,14 @@
   }
 
   .hero-side {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 16px;
   }
   .hero-stat {
     background: var(--paper-3);
     border-radius: 18px;
-    padding: 22px 24px 20px;
+    padding: 18px 18px 16px;
     position: relative;
   }
   .hero-stat .lbl {
@@ -347,7 +347,7 @@
   .hero-stat .num {
     font-family: var(--display-tc);
     font-weight: 700;
-    font-size: 56px;
+    font-size: 34px;
     line-height: 1;
     color: var(--ink);
     margin-top: 10px;
@@ -357,18 +357,21 @@
   .hero-stat .num .delta {
     font-family: var(--display-en);
     font-style: italic;
-    font-size: 28px;
+    font-size: 18px;
     color: var(--sage);
     margin-left: 6px;
     font-weight: 400;
   }
   .hero-stat .num .delta.down { color: var(--accent); }
   .hero-stat .desc {
-    margin-top: 10px;
-    font-size: 12.5px;
+    margin-top: 8px;
+    font-size: 11.5px;
     line-height: 1.55;
     color: var(--ink-2);
   }
+  .hero-stat .source-line { margin-top: 8px; font-size: 9px; letter-spacing: 0.08em; }
+  .hero-stat .supplemental-link { margin-top: 6px; font-size: 10px; line-height: 1.35; }
+  .hero-stat .supplemental-link a { color: var(--ink-2); text-decoration: underline; text-underline-offset: 2px; }
 
   /* ─── News grid ─────────────────────────────────────── */
   .news-grid {
@@ -830,6 +833,7 @@
     .pulse-inner { padding: 12px 22px; overflow-x: auto; gap: 18px; }
     .pulse-divider, .pulse-tag { display: none; }
     .hero { grid-template-columns: 1fr; margin-top: 30px; gap: 18px; }
+    .hero-side { gap: 12px; }
     .focus-card { min-height: auto; padding: 30px 26px; border-radius: 20px; }
     .focus-card .qmark { font-size: 130px; right: 18px; opacity: .45; }
     .focus-card .takeaway { font-size: 29px; }
