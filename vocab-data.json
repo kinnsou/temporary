@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-08-20T11:01:40Z",
-    "sourceCount": 413,
-    "includedCount": 405
+    "updatedAt": "2026-08-21T11:02:08Z",
+    "sourceCount": 416,
+    "includedCount": 408
   },
   "words": [
+    {
+      "word": "traditional",
+      "meaning": "傳統的；依照傳統的",
+      "example": "We eat traditional food during the festival.",
+      "translation": "我們在節慶時吃傳統食物。",
+      "firstSeen": "2026-08-21",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "city",
+      "meaning": "城市；都市",
+      "example": "Taipei is a busy city.",
+      "translation": "台北是一座熱鬧的城市。",
+      "firstSeen": "2026-08-21",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "cold",
+      "meaning": "冷的；寒冷的",
+      "example": "The water was cold this morning.",
+      "translation": "今天早上的水很冰冷。",
+      "firstSeen": "2026-08-21",
+      "pos": [
+        "adj"
+      ]
+    },
     {
       "word": "proud",
       "meaning": "驕傲的；自豪的",
