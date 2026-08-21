@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-21T17:29:06+08:00",
+  "updated_at": "2026-08-21T17:45:39+08:00",
   "rows": [
     {
       "market": "MOPS",
@@ -482,7 +482,7 @@
       "announcement_date": "115/08/20",
       "announcement_time": "13:34:01",
       "announcement_at": "2026-08-20T13:34:01+08:00",
-      "fetched_at": "2026-08-21T17:29:06+08:00",
+      "fetched_at": "2026-08-21T17:45:39+08:00",
       "last_close": "22.25",
       "last_close_date": "2026-08-21",
       "amount_pending": "false",
@@ -505,7 +505,7 @@
       "announcement_date": "115/08/20",
       "announcement_time": "13:45:39",
       "announcement_at": "2026-08-20T13:45:39+08:00",
-      "fetched_at": "2026-08-21T17:29:06+08:00",
+      "fetched_at": "2026-08-21T17:45:39+08:00",
       "last_close": "180",
       "last_close_date": "2026-08-21",
       "amount_pending": "false",
@@ -528,7 +528,7 @@
       "announcement_date": "115/08/20",
       "announcement_time": "18:39:02",
       "announcement_at": "2026-08-20T18:39:02+08:00",
-      "fetched_at": "2026-08-21T17:29:06+08:00",
+      "fetched_at": "2026-08-21T17:45:39+08:00",
       "last_close": "38.45",
       "last_close_date": "2026-08-21",
       "amount_pending": "true"
@@ -550,7 +550,7 @@
       "announcement_date": "115/08/20",
       "announcement_time": "19:45:20",
       "announcement_at": "2026-08-20T19:45:20+08:00",
-      "fetched_at": "2026-08-21T17:29:06+08:00",
+      "fetched_at": "2026-08-21T17:45:39+08:00",
       "last_close": "39.4",
       "last_close_date": "2026-08-20",
       "amount_pending": "true"
