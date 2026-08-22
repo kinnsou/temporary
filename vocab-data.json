@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-08-21T11:02:08Z",
-    "sourceCount": 416,
-    "includedCount": 408
+    "updatedAt": "2026-08-22T11:01:23Z",
+    "sourceCount": 419,
+    "includedCount": 411
   },
   "words": [
+    {
+      "word": "record",
+      "meaning": "記錄；錄製",
+      "example": "We record our science experiment in a notebook.",
+      "translation": "我們把自然實驗記錄在筆記本裡。",
+      "firstSeen": "2026-08-22",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "silver",
+      "meaning": "銀；銀色",
+      "example": "Her necklace is made of silver.",
+      "translation": "她的項鍊是銀製的。",
+      "firstSeen": "2026-08-22",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "perhaps",
+      "meaning": "也許；可能",
+      "example": "Perhaps we can visit the park after lunch.",
+      "translation": "也許我們午餐後可以去公園。",
+      "firstSeen": "2026-08-22",
+      "pos": [
+        "adv"
+      ]
+    },
     {
       "word": "traditional",
       "meaning": "傳統的；依照傳統的",
