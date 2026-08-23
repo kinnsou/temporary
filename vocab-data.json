@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-08-22T11:01:23Z",
-    "sourceCount": 419,
-    "includedCount": 411
+    "updatedAt": "2026-08-23T11:01:17Z",
+    "sourceCount": 422,
+    "includedCount": 414
   },
   "words": [
+    {
+      "word": "winter",
+      "meaning": "冬天；冬季",
+      "example": "Winter begins in December.",
+      "translation": "冬天從十二月開始。",
+      "firstSeen": "2026-08-23",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "police",
+      "meaning": "警察；警方",
+      "example": "The police help people stay safe.",
+      "translation": "警方幫助大家維持安全。",
+      "firstSeen": "2026-08-23",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "because",
+      "meaning": "因為",
+      "example": "We stayed inside because it was raining.",
+      "translation": "因為正在下雨，我們待在室內。",
+      "firstSeen": "2026-08-23",
+      "pos": [
+        "conj"
+      ]
+    },
     {
       "word": "record",
       "meaning": "記錄；錄製",
