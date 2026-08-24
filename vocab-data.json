@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-08-23T11:01:17Z",
-    "sourceCount": 422,
-    "includedCount": 414
+    "updatedAt": "2026-08-24T11:01:37Z",
+    "sourceCount": 425,
+    "includedCount": 417
   },
   "words": [
+    {
+      "word": "simply",
+      "meaning": "簡單地；只是",
+      "example": "I simply want to help you.",
+      "translation": "我只是想幫你。",
+      "firstSeen": "2026-08-24",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "twice",
+      "meaning": "兩次；兩倍",
+      "example": "He checked his answer twice.",
+      "translation": "他檢查了自己的答案兩次。",
+      "firstSeen": "2026-08-24",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "correct",
+      "meaning": "正確的；改正",
+      "example": "The teacher will correct my answer tomorrow.",
+      "translation": "老師明天會改正我的答案。",
+      "firstSeen": "2026-08-24",
+      "pos": [
+        "adj",
+        "v"
+      ]
+    },
     {
       "word": "winter",
       "meaning": "冬天；冬季",
