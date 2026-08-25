@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-08-24T11:01:37Z",
-    "sourceCount": 425,
-    "includedCount": 417
+    "updatedAt": "2026-08-25T11:01:38Z",
+    "sourceCount": 428,
+    "includedCount": 420
   },
   "words": [
+    {
+      "word": "plan",
+      "meaning": "計畫；規劃",
+      "example": "Mia plans to clean her room tomorrow.",
+      "translation": "米亞計畫明天整理房間。",
+      "firstSeen": "2026-08-25",
+      "pos": [
+        "n",
+        "v"
+      ]
+    },
+    {
+      "word": "wonderful",
+      "meaning": "很棒的；極好的",
+      "example": "We had a wonderful time at the zoo yesterday.",
+      "translation": "我們昨天在動物園玩得很開心。",
+      "firstSeen": "2026-08-25",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "apple",
+      "meaning": "蘋果",
+      "example": "Dad cut an apple for my lunch.",
+      "translation": "爸爸為我的午餐切了一顆蘋果。",
+      "firstSeen": "2026-08-25",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "simply",
       "meaning": "簡單地；只是",
