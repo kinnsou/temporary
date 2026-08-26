@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-08-25T11:01:38Z",
-    "sourceCount": 428,
-    "includedCount": 420
+    "updatedAt": "2026-08-26T11:01:54Z",
+    "sourceCount": 431,
+    "includedCount": 423
   },
   "words": [
+    {
+      "word": "duck",
+      "meaning": "鴨子",
+      "example": "The duck swims in the pond.",
+      "translation": "那隻鴨子在池塘裡游泳。",
+      "firstSeen": "2026-08-26",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "paper",
+      "meaning": "紙",
+      "example": "I wrote my name on the paper.",
+      "translation": "我把名字寫在那張紙上。",
+      "firstSeen": "2026-08-26",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "way",
+      "meaning": "方法；道路",
+      "example": "This is the best way to learn new words.",
+      "translation": "這是學習新單字最好的方法。",
+      "firstSeen": "2026-08-26",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "plan",
       "meaning": "計畫；規劃",
