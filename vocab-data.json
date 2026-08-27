@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-08-26T11:01:54Z",
-    "sourceCount": 431,
-    "includedCount": 423
+    "updatedAt": "2026-08-27T11:01:32Z",
+    "sourceCount": 434,
+    "includedCount": 426
   },
   "words": [
+    {
+      "word": "welcome",
+      "meaning": "歡迎；迎接",
+      "example": "We welcomed our new teacher yesterday.",
+      "translation": "我們昨天歡迎新老師。",
+      "firstSeen": "2026-08-27",
+      "pos": [
+        "interj",
+        "v"
+      ]
+    },
+    {
+      "word": "basket",
+      "meaning": "籃子；提籃",
+      "example": "Mia put the apples in the basket.",
+      "translation": "米亞把蘋果放進籃子裡。",
+      "firstSeen": "2026-08-27",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "room",
+      "meaning": "房間；空間",
+      "example": "There is a small room next to the kitchen.",
+      "translation": "廚房旁邊有一間小房間。",
+      "firstSeen": "2026-08-27",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "duck",
       "meaning": "鴨子",
