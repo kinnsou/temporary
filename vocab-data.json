@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-08-27T11:01:32Z",
-    "sourceCount": 434,
-    "includedCount": 426
+    "updatedAt": "2026-08-28T11:01:20Z",
+    "sourceCount": 437,
+    "includedCount": 429
   },
   "words": [
+    {
+      "word": "dig",
+      "meaning": "挖；挖掘",
+      "example": "The dog dug a hole in the garden yesterday.",
+      "translation": "那隻狗昨天在花園裡挖了一個洞。",
+      "firstSeen": "2026-08-28",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "touch",
+      "meaning": "碰；觸摸",
+      "example": "Mia touched the wet paint yesterday.",
+      "translation": "米亞昨天碰了還沒乾的油漆。",
+      "firstSeen": "2026-08-28",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "money",
+      "meaning": "錢；金錢",
+      "example": "Dad put the money in his wallet.",
+      "translation": "爸爸把錢放進他的錢包裡。",
+      "firstSeen": "2026-08-28",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "welcome",
       "meaning": "歡迎；迎接",
