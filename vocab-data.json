@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-08-28T11:01:20Z",
-    "sourceCount": 437,
-    "includedCount": 429
+    "updatedAt": "2026-08-29T11:01:11Z",
+    "sourceCount": 440,
+    "includedCount": 432
   },
   "words": [
+    {
+      "word": "want",
+      "meaning": "想要；希望",
+      "example": "I wanted a new bike for my birthday.",
+      "translation": "我生日的時候想要一輛新腳踏車。",
+      "firstSeen": "2026-08-29",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "department",
+      "meaning": "部門；系",
+      "example": "My aunt works in the sales department.",
+      "translation": "我阿姨在業務部門工作。",
+      "firstSeen": "2026-08-29",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "fail",
+      "meaning": "失敗；未能做到",
+      "example": "Leo failed the test because he did not study.",
+      "translation": "里歐因為沒有讀書，所以考試不及格。",
+      "firstSeen": "2026-08-29",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "dig",
       "meaning": "挖；挖掘",
