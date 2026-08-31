@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-08-30T11:01:34Z",
-    "sourceCount": 443,
-    "includedCount": 435
+    "updatedAt": "2026-08-31T11:01:20Z",
+    "sourceCount": 446,
+    "includedCount": 438
   },
   "words": [
+    {
+      "word": "earthquake",
+      "meaning": "地震",
+      "example": "The earthquake shook the windows last night.",
+      "translation": "昨晚的地震震得窗戶搖晃。",
+      "firstSeen": "2026-08-31",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "perfect",
+      "meaning": "完美的；極好的",
+      "example": "Her drawing is perfect.",
+      "translation": "她的畫很完美。",
+      "firstSeen": "2026-08-31",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "dentist",
+      "meaning": "牙醫師",
+      "example": "The dentist checked my teeth this morning.",
+      "translation": "牙醫師今天早上檢查了我的牙齒。",
+      "firstSeen": "2026-08-31",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "team",
       "meaning": "團隊；隊伍",

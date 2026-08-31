@@ -8,6 +8,11 @@
 
 ## 已教單字列表
 
+### 2026-08-31
+- earthquake（地震）
+- perfect（完美的；極好的）
+- dentist（牙醫師）
+
 ### 2026-08-30
 - team（團隊；隊伍）
 - government（政府）
