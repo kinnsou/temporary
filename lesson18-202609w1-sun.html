@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>第18課・周一｜雅各的成熟</title>
+  <meta name="description" content="看見神如何藉著一生的帶領與變化，使雅各成為成熟、滿有恩惠的人。" />
+  <style>
+    :root {
+      --bg: #f6f1e8;
+      --paper: #fffaf2;
+      --ink: #2f2a25;
+      --muted: #6f6559;
+      --line: #e6d7bf;
+      --gold: #c29045;
+      --gold-deep: #966b2f;
+      --olive: #6f7d55;
+      --rose: #b56a59;
+      --shadow: 0 16px 40px rgba(88, 63, 30, 0.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.9;
+      background:
+        radial-gradient(1000px 480px at 110% -10%, rgba(194, 144, 69, 0.16), transparent 55%),
+        radial-gradient(900px 420px at -10% 100%, rgba(111, 125, 85, 0.16), transparent 55%),
+        var(--bg);
+    }
+    .grain::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.05;
+      background-image: radial-gradient(rgba(68, 48, 24, 0.28) 0.7px, transparent 0.7px);
+      background-size: 4px 4px;
+      z-index: 0;
+    }
+    .wrap { position: relative; z-index: 1; width: min(1020px, 92vw); margin: 28px auto 56px; }
+    .hero { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 28px; padding: clamp(26px, 5vw, 48px); background: linear-gradient(140deg, #fffdf8 0%, #fff5e7 100%); box-shadow: var(--shadow); }
+    .hero::after { content: ""; position: absolute; right: -120px; top: -120px; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(194, 144, 69, 0.28) 0%, rgba(194, 144, 69, 0) 70%); }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; border: 1px solid #ebd6b0; background: #fff7e8; color: var(--gold-deep); font-size: 13px; font-weight: 700; letter-spacing: 0.02em; }
+    h1 { margin: 0 0 12px; font-family: "Noto Serif TC", "PMingLiU", serif; font-size: clamp(34px, 6vw, 58px); line-height: 1.15; color: #2d2419; }
+    .lead { margin: 0; max-width: 66ch; color: var(--muted); font-size: clamp(16px, 2.1vw, 19px); }
+    .hero-actions { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 12px; }
+    .button { display: inline-block; padding: 12px 18px; border-radius: 14px; text-decoration: none; font-weight: 700; transition: transform .18s ease, box-shadow .18s ease; }
+    .button.primary { color: white; background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%); box-shadow: 0 10px 20px rgba(150, 107, 47, 0.28); }
+    .button.secondary { color: var(--ink); background: rgba(255,255,255,0.74); border: 1px solid var(--line); }
+    .button:hover { transform: translateY(-1px); }
+    .intro-grid, .content-grid, .summary-grid { display: grid; gap: 18px; margin-top: 22px; }
+    .intro-grid { grid-template-columns: 1.15fr 0.95fr; }
+    .content-grid { grid-template-columns: 1fr 1fr; }
+    .summary-grid { grid-template-columns: 1fr 1fr; }
+    .card { border: 1px solid var(--line); border-radius: 22px; background: var(--paper); padding: 22px; box-shadow: 0 10px 24px rgba(88, 63, 30, 0.08); }
+    .card h2, .card h3 { margin: 0 0 12px; font-family: "Noto Serif TC", serif; color: #352a1e; line-height: 1.45; }
+    .eyebrow { margin: 0 0 8px; color: var(--gold-deep); font-size: 13px; text-transform: uppercase; letter-spacing: .09em; font-weight: 700; }
+    .section-tag { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 12px; padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 700; color: #fff; }
+    .wednesday { background: linear-gradient(180deg, #6f7d55 0%, #53613e 100%); }
+    .thursday { background: linear-gradient(180deg, #b56a59 0%, #8f4d40 100%); }
+    p { margin: 0 0 14px; }
+    ul, ol { margin: 0; padding-left: 22px; }
+    li + li { margin-top: 8px; }
+    .focus-box { background: linear-gradient(180deg, #fffdf9 0%, #f7efe2 100%); }
+    .scripture { border-left: 4px solid var(--gold); background: #fff3df; border-radius: 12px; padding: 14px 16px; color: #5f4b31; margin-top: 14px; }
+    .prayer { background: #fdf6ee; border: 1px dashed #d4a070; border-radius: 14px; padding: 16px; }
+    .footer-note { margin-top: 22px; text-align: center; color: #8a7a66; font-size: 13px; }
+    @media (max-width: 920px) { .intro-grid, .content-grid, .summary-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 560px) { .wrap { margin-top: 18px; } .hero, .card { border-radius: 18px; } .button { width: 100%; text-align: center; } }
+  </style>
+</head>
+<body class="grain">
+  <main class="wrap">
+    <section class="hero">
+      <div class="badge-row">
+        <span class="badge">📖 主日帶讀</span>
+        <span class="badge">第十八課 · 2026 九月第一週</span>
+        <span class="badge">來源段落：周一</span>
+        <span class="badge">主題：從抓奪到成熟</span>
+      </div>
+      <h1>第18課・周一｜雅各的成熟</h1>
+      <p class="lead">神不只看我們現在的光景，祂更看見祂要在我們身上完成的美好工作。</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#reading">開始閱讀</a>
+        <a class="button secondary" href="#discussion">看主日重點</a>
+      </div>
+    </section>
+
+    <section class="intro-grid" aria-label="overview">
+      <article class="card">
+        <p class="eyebrow">Overview</p>
+        <h2>這一篇在提醒什麼？</h2>
+            <p>雅各一生起初常憑自己抓奪。他抓住哥哥的腳跟，又想得著長子的名分和父親的祝福；這顯出他天然的性格，是急著靠自己得著想要的事物。</p>
+            <p>神沒有放棄雅各，反而在不同的環境中帶領、管教並變化他。到了晚年，雅各成為一個滿有恩惠和愛心的人；他的生命像黎明的光，越照越明。</p>
+      </article>
+
+      <aside class="card focus-box">
+        <p class="eyebrow">Sunday Focus</p>
+        <h2>主日可以先抓三句話</h2>
+        <ul>
+          <li>神知道我們天然性情中的難處，也願意耐心地變化我們。</li>
+          <li>神所安排的環境，常是為了對付我們的天然生命，使我們更像祂。</li>
+          <li>我們只要積極與神配合，人生就能越過越明亮。</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="reading" class="content-grid" aria-label="reading-content">
+      <article class="card">
+        <span class="section-tag wednesday">周一｜正文帶讀</span>
+        <h2>從抓奪到成熟</h2>
+            <p>雅各的歷史可以分成幾段。起初，他顯出抓奪的性格，常想用自己的方法得著祝福。他的天然生命很強，也帶來許多難處。</p>
+            <p>後來，雅各在巴旦亞蘭生活多年，經過許多試煉和管教。神藉著人、事和環境，使他學習不再只倚靠自己的聰明與能力。</p>
+            <p>雅各回到迦南地後，又遇見不少痛苦的事。這些經歷雖然不容易，卻使神更深地摸著他、對付他天然的生命，也在他裡面作變化的工作。</p>
+            <p>從約瑟的故事開始，我們看見雅各晚年的光景。他不再只是那個抓奪的人，反而成為滿有恩惠和愛心的人。他在神面前一天過一天更明亮，直到離世。</p>
+            <p>雅各的改變告訴我們，沒有一個人是神不能變化的。即使我們有軟弱、失敗或不好的一面，只要把自己交在神手中，祂能完成祂在我們身上的定旨。</p>
+      </article>
+
+      <article class="card">
+        <span class="section-tag thursday">主日｜補充提醒與操練</span>
+        <h2>把自己交給神的手</h2>
+            <p>當我們發現自己很急、很固執，或總想照自己的方法處理事情時，可以先停下來，向主承認：「主，我不願只憑自己。」</p>
+            <p>遇到不順利的環境時，不必只抱怨或灰心。可以問主，祂要我們學習什麼；也許祂正在使我們更柔軟、更有愛，並更會信靠祂。</p>
+            <p>每天都可以簡單與主配合：讀一點聖經、向祂禱告、接受祂的光照，並在一件小事上順從祂。這樣，我們的生命會漸漸越照越明。</p>
+        <div class="scripture"><strong>可帶的一句提醒</strong><br />積極與神配合，將自己交在祂變化的手中，過一個最光明的人生。</div>
+      </article>
+    </section>
+
+    <section id="discussion" class="summary-grid" aria-label="discussion-guide">
+      <article class="card focus-box">
+        <p class="eyebrow">Lead the Group</p>
+        <h3>這篇可以帶出的三件事</h3>
+        <ol>
+          <li>神不放棄任何一個祂所揀選並救贖的人。</li>
+          <li>神藉著環境變化我們，使我們不再只憑天然性情生活。</li>
+          <li>與神配合的人生，會像黎明的光越照越明。</li>
+        </ol>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Discussion</p>
+        <h3>可直接帶的三個問題</h3>
+        <ul>
+          <li>雅各起初有哪些憑自己抓奪的表現？</li>
+          <li>神如何藉著雅各所經過的環境變化他？</li>
+          <li>今天我可以在哪一件事上不憑自己，而與神配合？</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="summary-grid" aria-label="verse-prayer">
+      <article class="card">
+        <p class="eyebrow">Verse</p>
+        <h3>今天的經文</h3>
+        <div class="scripture">義人的路，好像黎明的光，越照越明，直到日午。<br />箴言四章18節</div>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Prayer</p>
+        <h3>一起禱告</h3>
+        <div class="prayer">主阿，謝謝你不因我的軟弱和天然性情就放棄我。求你使我願意接受你的光照和帶領。<br /><br />主阿，我願把自己交在你變化的手中。使我的生命天天更明亮，也成為滿有恩惠和愛心的人。</div>
+      </article>
+    </section>
+
+    <p class="footer-note">聖經之旅 第一冊 · 第十八課 · 202609w1</p>
+  </main>
+</body>
+</html>
