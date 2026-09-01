@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-08-31T11:01:20Z",
-    "sourceCount": 446,
-    "includedCount": 438
+    "updatedAt": "2026-09-01T11:01:39Z",
+    "sourceCount": 449,
+    "includedCount": 441
   },
   "words": [
+    {
+      "word": "speak",
+      "meaning": "說；講話",
+      "example": "Mia speaks English with her teacher every day.",
+      "translation": "米亞每天和老師說英文。",
+      "firstSeen": "2026-09-01",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "fast",
+      "meaning": "快速的；快地",
+      "example": "The rabbit runs fast.",
+      "translation": "那隻兔子跑得很快。",
+      "firstSeen": "2026-09-01",
+      "pos": [
+        "adj",
+        "adv"
+      ]
+    },
+    {
+      "word": "happen",
+      "meaning": "發生",
+      "example": "The accident happened yesterday afternoon.",
+      "translation": "那起意外昨天下午發生了。",
+      "firstSeen": "2026-09-01",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "earthquake",
       "meaning": "地震",
