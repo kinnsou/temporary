@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-09-01T11:01:39Z",
-    "sourceCount": 449,
-    "includedCount": 441
+    "updatedAt": "2026-09-02T11:01:24Z",
+    "sourceCount": 452,
+    "includedCount": 444
   },
   "words": [
+    {
+      "word": "visit",
+      "meaning": "拜訪；參觀",
+      "example": "We visited Grandma last Sunday.",
+      "translation": "我們上星期天去拜訪奶奶。",
+      "firstSeen": "2026-09-02",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "seat",
+      "meaning": "座位",
+      "example": "The teacher gave Mia a seat near the window.",
+      "translation": "老師給米亞一個靠窗的座位。",
+      "firstSeen": "2026-09-02",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "family",
+      "meaning": "家人；家庭",
+      "example": "My family eats dinner together on weekends.",
+      "translation": "我的家人週末會一起吃晚餐。",
+      "firstSeen": "2026-09-02",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "speak",
       "meaning": "說；講話",
