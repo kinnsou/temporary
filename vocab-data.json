@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-09-02T11:01:24Z",
-    "sourceCount": 452,
-    "includedCount": 444
+    "updatedAt": "2026-09-03T11:01:52Z",
+    "sourceCount": 455,
+    "includedCount": 447
   },
   "words": [
+    {
+      "word": "birthday",
+      "meaning": "生日",
+      "example": "My birthday is in May.",
+      "translation": "我的生日在五月。",
+      "firstSeen": "2026-09-03",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "fall",
+      "meaning": "落下；跌倒；秋天",
+      "example": "The leaves fall in autumn.",
+      "translation": "樹葉在秋天落下。",
+      "firstSeen": "2026-09-03",
+      "pos": [
+        "v",
+        "n"
+      ]
+    },
+    {
+      "word": "unless",
+      "meaning": "除非",
+      "example": "We will stay inside unless the rain stops.",
+      "translation": "除非雨停了，否則我們會待在室內。",
+      "firstSeen": "2026-09-03",
+      "pos": [
+        "conj"
+      ]
+    },
     {
       "word": "visit",
       "meaning": "拜訪；參觀",
