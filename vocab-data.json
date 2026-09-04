@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-09-03T11:01:52Z",
-    "sourceCount": 455,
-    "includedCount": 447
+    "updatedAt": "2026-09-04T11:01:52Z",
+    "sourceCount": 458,
+    "includedCount": 450
   },
   "words": [
+    {
+      "word": "across",
+      "meaning": "穿過；在……另一邊",
+      "example": "Mia walked across the street with her dad yesterday.",
+      "translation": "米亞昨天和爸爸穿越馬路。",
+      "firstSeen": "2026-09-04",
+      "pos": [
+        "prep"
+      ]
+    },
+    {
+      "word": "warm",
+      "meaning": "溫暖的；暖和的",
+      "example": "The soup is warm now.",
+      "translation": "這碗湯現在是溫熱的。",
+      "firstSeen": "2026-09-04",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "lamp",
+      "meaning": "燈；檯燈",
+      "example": "Dad turned on the lamp before we read last night.",
+      "translation": "昨晚我們閱讀前，爸爸打開了檯燈。",
+      "firstSeen": "2026-09-04",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "birthday",
       "meaning": "生日",
