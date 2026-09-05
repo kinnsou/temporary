@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-09-04T11:01:52Z",
-    "sourceCount": 458,
-    "includedCount": 450
+    "updatedAt": "2026-09-05T11:01:38Z",
+    "sourceCount": 461,
+    "includedCount": 453
   },
   "words": [
+    {
+      "word": "hamburger",
+      "meaning": "漢堡",
+      "example": "I ate a hamburger for lunch yesterday.",
+      "translation": "我昨天午餐吃了一個漢堡。",
+      "firstSeen": "2026-09-05",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "part",
+      "meaning": "部分；零件",
+      "example": "This part of the puzzle is hard.",
+      "translation": "拼圖的這個部分很難。",
+      "firstSeen": "2026-09-05",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "allow",
+      "meaning": "允許；讓",
+      "example": "Mom allowed me to watch TV after I finished my homework.",
+      "translation": "我寫完功課後，媽媽讓我看電視。",
+      "firstSeen": "2026-09-05",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "across",
       "meaning": "穿過；在……另一邊",
