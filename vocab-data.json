@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-09-05T11:01:38Z",
-    "sourceCount": 461,
-    "includedCount": 453
+    "updatedAt": "2026-09-06T11:01:39Z",
+    "sourceCount": 464,
+    "includedCount": 456
   },
   "words": [
+    {
+      "word": "cartoon",
+      "meaning": "卡通；動畫片",
+      "example": "We watched a cartoon after dinner.",
+      "translation": "我們晚餐後看了一部卡通。",
+      "firstSeen": "2026-09-06",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "plain",
+      "meaning": "簡單的；樸素的",
+      "example": "She wore a plain white shirt.",
+      "translation": "她穿了一件素白襯衫。",
+      "firstSeen": "2026-09-06",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "wake",
+      "meaning": "醒來；叫醒",
+      "example": "I wake up at seven every school day.",
+      "translation": "我每天上學日都在七點醒來。",
+      "firstSeen": "2026-09-06",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "hamburger",
       "meaning": "漢堡",
