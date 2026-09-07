@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-09-06T11:01:39Z",
-    "sourceCount": 464,
-    "includedCount": 456
+    "updatedAt": "2026-09-07T11:01:36Z",
+    "sourceCount": 467,
+    "includedCount": 459
   },
   "words": [
+    {
+      "word": "park",
+      "meaning": "公園",
+      "example": "We play in the park after school.",
+      "translation": "我們放學後在公園玩。",
+      "firstSeen": "2026-09-07",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "public",
+      "meaning": "公共的；公眾的",
+      "example": "The public library is open on Saturday.",
+      "translation": "這間公共圖書館星期六有開放。",
+      "firstSeen": "2026-09-07",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "snow",
+      "meaning": "雪；下雪",
+      "example": "It snowed all morning yesterday.",
+      "translation": "昨天早上下了一整個早上的雪。",
+      "firstSeen": "2026-09-07",
+      "pos": [
+        "n",
+        "v"
+      ]
+    },
     {
       "word": "cartoon",
       "meaning": "卡通；動畫片",
