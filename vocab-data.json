@@ -1,10 +1,42 @@
 {
   "meta": {
-    "updatedAt": "2026-09-07T11:01:36Z",
-    "sourceCount": 467,
-    "includedCount": 459
+    "updatedAt": "2026-09-08T11:01:19Z",
+    "sourceCount": 470,
+    "includedCount": 462
   },
   "words": [
+    {
+      "word": "break",
+      "meaning": "打破；弄壞；休息",
+      "example": "I broke my pencil yesterday.",
+      "translation": "我昨天把鉛筆弄斷了。",
+      "firstSeen": "2026-09-08",
+      "pos": [
+        "v",
+        "n"
+      ]
+    },
+    {
+      "word": "dance",
+      "meaning": "跳舞；舞蹈",
+      "example": "Mia danced at the school show yesterday.",
+      "translation": "米亞昨天在學校表演時跳舞。",
+      "firstSeen": "2026-09-08",
+      "pos": [
+        "v",
+        "n"
+      ]
+    },
+    {
+      "word": "sell",
+      "meaning": "賣；販售",
+      "example": "Dad sold his old bike last weekend.",
+      "translation": "爸爸上週末賣掉了他的舊腳踏車。",
+      "firstSeen": "2026-09-08",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "park",
       "meaning": "公園",
