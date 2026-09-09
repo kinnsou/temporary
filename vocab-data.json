@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-09-08T11:01:19Z",
-    "sourceCount": 470,
-    "includedCount": 462
+    "updatedAt": "2026-09-09T11:01:45Z",
+    "sourceCount": 473,
+    "includedCount": 465
   },
   "words": [
+    {
+      "word": "tiny",
+      "meaning": "極小的；很小的",
+      "example": "The tiny bird sat on the fence.",
+      "translation": "那隻小小的鳥停在柵欄上。",
+      "firstSeen": "2026-09-09",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "remember",
+      "meaning": "記得；想起",
+      "example": "I remembered to bring my book today.",
+      "translation": "我今天記得帶書來。",
+      "firstSeen": "2026-09-09",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "video",
+      "meaning": "影片；視訊",
+      "example": "We watched a video about space in class.",
+      "translation": "我們在課堂上看了一部關於太空的影片。",
+      "firstSeen": "2026-09-09",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "break",
       "meaning": "打破；弄壞；休息",
