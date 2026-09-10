@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-09-09T11:01:45Z",
-    "sourceCount": 473,
-    "includedCount": 465
+    "updatedAt": "2026-09-10T11:01:47Z",
+    "sourceCount": 476,
+    "includedCount": 468
   },
   "words": [
+    {
+      "word": "girl",
+      "meaning": "女孩；女生",
+      "example": "The girl reads a book after school.",
+      "translation": "那個女孩放學後讀書。",
+      "firstSeen": "2026-09-10",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "dolphin",
+      "meaning": "海豚",
+      "example": "The dolphin jumped out of the water.",
+      "translation": "那隻海豚跳出水面。",
+      "firstSeen": "2026-09-10",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "do",
+      "meaning": "做；進行",
+      "example": "Mia did her homework after dinner.",
+      "translation": "米亞晚餐後做了功課。",
+      "firstSeen": "2026-09-10",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "tiny",
       "meaning": "極小的；很小的",
