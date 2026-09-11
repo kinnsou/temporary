@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-09-10T11:01:47Z",
-    "sourceCount": 476,
-    "includedCount": 468
+    "updatedAt": "2026-09-11T11:01:39Z",
+    "sourceCount": 479,
+    "includedCount": 471
   },
   "words": [
+    {
+      "word": "difficult",
+      "meaning": "困難的；不容易的",
+      "example": "The math problem was difficult yesterday.",
+      "translation": "那題數學題昨天很困難。",
+      "firstSeen": "2026-09-11",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "minute",
+      "meaning": "分鐘",
+      "example": "We waited for five minutes before class.",
+      "translation": "上課前我們等了五分鐘。",
+      "firstSeen": "2026-09-11",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "dictionary",
+      "meaning": "字典",
+      "example": "I used a dictionary to find the word.",
+      "translation": "我用字典查這個單字。",
+      "firstSeen": "2026-09-11",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "girl",
       "meaning": "女孩；女生",
