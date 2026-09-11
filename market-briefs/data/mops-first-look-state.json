@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-10T07:10:00+08:00",
+  "updated_at": "2026-09-11T12:03:32+08:00",
   "rows": [
     {
       "market": "MOPS",
@@ -99,7 +99,7 @@
       "code": "1595",
       "name": "川寶",
       "event": "息",
-      "cash_dividend": "未公告",
+      "cash_dividend": "0.46744739",
       "stock_dividend_ratio": "未公告",
       "subscription_ratio": "未公告",
       "subscription_price": "未公告",
@@ -114,7 +114,8 @@
       "last_close": "63.2",
       "last_close_date": "2026-08-25",
       "mops_rechecked_on": "2026-08-26",
-      "amount_pending": "true"
+      "amount_pending": "false",
+      "amount_completed_on": "2026-09-11"
     },
     {
       "market": "MOPS",
@@ -156,10 +157,34 @@
       "announcement_date": "115/09/09",
       "announcement_time": "16:37:24",
       "announcement_at": "2026-09-09T16:37:24+08:00",
-      "fetched_at": "2026-09-10T07:10:00+08:00",
-      "last_close": "17.35",
-      "last_close_date": "2026-09-09",
+      "fetched_at": "2026-09-11T12:03:32+08:00",
+      "last_close": "17.4",
+      "last_close_date": "2026-09-10",
+      "mops_rechecked_on": "2026-09-11",
       "amount_pending": "true"
+    },
+    {
+      "market": "MOPS",
+      "date": "2026-10-22",
+      "code": "8936",
+      "name": "國統",
+      "event": "息",
+      "cash_dividend": "3",
+      "stock_dividend_ratio": "未公告",
+      "subscription_ratio": "未公告",
+      "subscription_price": "未公告",
+      "stock_holding_ratio": "未公告",
+      "source": "MOPS",
+      "source_url": "https://mops.twse.com.tw/mops/web/t05st02",
+      "source_title": "公告本公司除息基準日相關事宜",
+      "announcement_date": "115/09/10",
+      "announcement_time": "18:04:57",
+      "announcement_at": "2026-09-10T18:04:57+08:00",
+      "fetched_at": "2026-09-11T12:03:32+08:00",
+      "last_close": "51.1",
+      "last_close_date": "2026-09-10",
+      "amount_pending": "false",
+      "amount_completed_on": "2026-09-11"
     }
   ]
 }
