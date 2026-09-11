@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>第18課・滿了愛心並被神充滿的雅各</title>
+  <meta name="description" content="從雅各對兒子們的關心和失去約瑟的經歷，看見神如何使人學習愛、同情，並向祂敞開。" />
+  <style>
+    :root {
+      --bg: #f6f1e8;
+      --paper: #fffaf2;
+      --ink: #2f2a25;
+      --muted: #6f6559;
+      --line: #e6d7bf;
+      --gold: #c29045;
+      --gold-deep: #966b2f;
+      --olive: #6f7d55;
+      --rose: #b56a59;
+      --shadow: 0 16px 40px rgba(88, 63, 30, 0.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.9;
+      background:
+        radial-gradient(1000px 480px at 110% -10%, rgba(194, 144, 69, 0.16), transparent 55%),
+        radial-gradient(900px 420px at -10% 100%, rgba(111, 125, 85, 0.16), transparent 55%),
+        var(--bg);
+    }
+    .grain::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.05;
+      background-image: radial-gradient(rgba(68, 48, 24, 0.28) 0.7px, transparent 0.7px);
+      background-size: 4px 4px;
+      z-index: 0;
+    }
+    .wrap { position: relative; z-index: 1; width: min(1020px, 92vw); margin: 28px auto 56px; }
+    .hero { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 28px; padding: clamp(26px, 5vw, 48px); background: linear-gradient(140deg, #fffdf8 0%, #fff5e7 100%); box-shadow: var(--shadow); }
+    .hero::after { content: ""; position: absolute; right: -120px; top: -120px; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(194, 144, 69, 0.28) 0%, rgba(194, 144, 69, 0) 70%); }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; border: 1px solid #ebd6b0; background: #fff7e8; color: var(--gold-deep); font-size: 13px; font-weight: 700; letter-spacing: 0.02em; }
+    h1 { margin: 0 0 12px; font-family: "Noto Serif TC", "PMingLiU", serif; font-size: clamp(34px, 6vw, 58px); line-height: 1.15; color: #2d2419; }
+    .lead { margin: 0; max-width: 66ch; color: var(--muted); font-size: clamp(16px, 2.1vw, 19px); }
+    .hero-actions { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 12px; }
+    .button { display: inline-block; padding: 12px 18px; border-radius: 14px; text-decoration: none; font-weight: 700; transition: transform .18s ease, box-shadow .18s ease; }
+    .button.primary { color: white; background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%); box-shadow: 0 10px 20px rgba(150, 107, 47, 0.28); }
+    .button.secondary { color: var(--ink); background: rgba(255,255,255,0.74); border: 1px solid var(--line); }
+    .button:hover { transform: translateY(-1px); }
+    .intro-grid, .content-grid, .summary-grid { display: grid; gap: 18px; margin-top: 22px; }
+    .intro-grid { grid-template-columns: 1.15fr 0.95fr; }
+    .content-grid { grid-template-columns: 1fr 1fr; }
+    .summary-grid { grid-template-columns: 1fr 1fr; }
+    .card { border: 1px solid var(--line); border-radius: 22px; background: var(--paper); padding: 22px; box-shadow: 0 10px 24px rgba(88, 63, 30, 0.08); }
+    .card h2, .card h3 { margin: 0 0 12px; font-family: "Noto Serif TC", serif; color: #352a1e; line-height: 1.45; }
+    .eyebrow { margin: 0 0 8px; color: var(--gold-deep); font-size: 13px; text-transform: uppercase; letter-spacing: .09em; font-weight: 700; }
+    .section-tag { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 12px; padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 700; color: #fff; }
+    .wednesday { background: linear-gradient(180deg, #6f7d55 0%, #53613e 100%); }
+    .thursday { background: linear-gradient(180deg, #b56a59 0%, #8f4d40 100%); }
+    p { margin: 0 0 14px; }
+    ul, ol { margin: 0; padding-left: 22px; }
+    li + li { margin-top: 8px; }
+    .focus-box { background: linear-gradient(180deg, #fffdf9 0%, #f7efe2 100%); }
+    .scripture { border-left: 4px solid var(--gold); background: #fff3df; border-radius: 12px; padding: 14px 16px; color: #5f4b31; margin-top: 14px; }
+    .prayer { background: #fdf6ee; border: 1px dashed #d4a070; border-radius: 14px; padding: 16px; }
+    .footer-note { margin-top: 22px; text-align: center; color: #8a7a66; font-size: 13px; }
+    @media (max-width: 920px) { .intro-grid, .content-grid, .summary-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 560px) { .wrap { margin-top: 18px; } .hero, .card { border-radius: 18px; } .button { width: 100%; text-align: center; } }
+  </style>
+</head>
+<body class="grain">
+  <main class="wrap">
+    <section class="hero">
+      <div class="badge-row">
+        <span class="badge">📖 主日帶讀</span>
+        <span class="badge">第十八課 · 2026 九月第二週</span>
+        <span class="badge">來源段落：周三</span>
+        <span class="badge">主題：在神手中學習愛</span>
+      </div>
+      <h1>第18課・滿了愛心並被神充滿的雅各</h1>
+      <p class="lead">神不只要我們得著祂的祝福，也要我們在祂的生命裡長大，成為能關心人、體貼人的人。</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#reading">開始閱讀</a>
+        <a class="button secondary" href="#discussion">看主日重點</a>
+      </div>
+    </section>
+
+    <section class="intro-grid" aria-label="overview">
+      <article class="card">
+        <p class="eyebrow">Overview</p>
+        <h2>這一篇在提醒什麼？</h2>
+            <p>雅各差約瑟去看望在外牧羊的哥哥們，顯出他關心兒子們的情形，也盼望他們平安。這是一個父親出於愛的照顧。</p>
+            <p>後來雅各以為約瑟遇害，心裡非常悲傷。這件事雖然痛苦，卻也成為神在雅各身上的工作，使他不再憑自己抓取，反而更多向神敞開。</p>
+      </article>
+
+      <aside class="card focus-box">
+        <p class="eyebrow">Sunday Focus</p>
+        <h2>主日可以先抓三句話</h2>
+        <ul>
+          <li>愛會關心人的情形，也願意付出行動。</li>
+          <li>神有時藉著困難和失去，使我們學習同情並倚靠祂。</li>
+          <li>向主敞開的人，能被神的生命和愛更多充滿。</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="reading" class="content-grid" aria-label="reading-content">
+      <article class="card">
+        <span class="section-tag wednesday">周三｜正文帶讀</span>
+        <h2>在神手中學習愛</h2>
+            <p>雅各知道兒子們在外面牧羊，就差約瑟去看望他們。他不是只顧自己的事，乃是關心兒子們是否平安。愛不只是心裡想一想，也會關心並看望人。</p>
+            <p>約瑟去了以後，卻被哥哥們賣掉。哥哥們把約瑟的彩衣染了血，拿給雅各看，使雅各以為約瑟已經被惡獸害死了。雅各看見彩衣，心裡極其傷痛，為約瑟哀哭許多日。</p>
+            <p>從前的雅各常想憑自己的方法得著所要的事物；但這一次，他面對失去約瑟的痛苦，不能靠自己的能力解決。他只能在神面前憂傷，也在神手中受管教和磨煉。</p>
+            <p>神不是要雅各一直停留在悲傷裡，乃是要使他成為更有愛心、更能同情人的人。雅各漸漸像一個向神敞開的器皿，不再讓自己的計畫和抓取攔阻神。</p>
+            <p>當雅各向神敞開，神的生命就能更多充滿他。今天我們也能把心向主打開，讓祂的愛、忍耐和恩慈作到我們裡面。</p>
+      </article>
+
+      <article class="card">
+        <span class="section-tag thursday">主日｜補充提醒與操練</span>
+        <h2>天天向神敞開</h2>
+            <p>當我們關心家人、同伴或召會中的弟兄姊妹時，可以不只說關心的話，也用實際行動問候、幫助和代禱。</p>
+            <p>遇到不明白的事、失望的事或難過的事時，不必急著靠自己抓住答案；我們可以先向主禱告，把心裡的感覺告訴祂。</p>
+            <p>每天讀主的話、禱告並呼求主名，就是向神敞開。神有機會充滿我們，我們就能更有愛、更能包容人。</p>
+        <div class="scripture"><strong>可帶的一句提醒</strong><br />天天向神敞開，讓神有機會更多充滿我們。</div>
+      </article>
+    </section>
+
+    <section id="discussion" class="summary-grid" aria-label="discussion-guide">
+      <article class="card focus-box">
+        <p class="eyebrow">Lead the Group</p>
+        <h3>這篇可以帶出的三件事</h3>
+        <ol>
+          <li>愛會主動關心人，也照顧人的需要。</li>
+          <li>困難能使我們學習不靠自己，更多倚靠神。</li>
+          <li>向主敞開，讓祂的生命和愛天天充滿我們。</li>
+        </ol>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Discussion</p>
+        <h3>可直接帶的三個問題</h3>
+        <ul>
+          <li>雅各差約瑟去看望哥哥們，顯出他有怎樣的心？</li>
+          <li>當雅各失去約瑟時，神可能要他學習甚麼？</li>
+          <li>今天你可以怎樣向主敞開，讓祂充滿你？</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="summary-grid" aria-label="verse-prayer">
+      <article class="card">
+        <p class="eyebrow">Verse</p>
+        <h3>今天的經文</h3>
+        <div class="scripture">愛是恆久忍耐，又有恩慈；愛是不嫉妒；愛是不自誇，不張狂，不作不合宜的事，不求自己的益處，不輕易發怒，不計算人的惡，…凡事包容，凡事相信，凡事盼望，凡事忍耐。<br />林前十三4～7</div>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Prayer</p>
+        <h3>一起禱告</h3>
+        <div class="prayer">主耶穌，謝謝你關心我，也愛我。求你使我有愛人的心，不只顧自己，也能關心家人、同伴和召會中的弟兄姊妹。<br /><br />主啊，當我遇到難過或不明白的事時，求你使我向你敞開，不憑自己抓取。願你的生命、忍耐和恩慈更多充滿我。</div>
+      </article>
+    </section>
+
+    <p class="footer-note">聖經之旅 第一冊 · 第十八課 · 202609w2</p>
+  </main>
+</body>
+</html>
