@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-09-11T11:01:39Z",
-    "sourceCount": 479,
-    "includedCount": 471
+    "updatedAt": "2026-09-12T11:01:23Z",
+    "sourceCount": 482,
+    "includedCount": 474
   },
   "words": [
+    {
+      "word": "ball",
+      "meaning": "球",
+      "example": "The ball rolled under the table.",
+      "translation": "那顆球滾到桌子下面。",
+      "firstSeen": "2026-09-12",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "win",
+      "meaning": "贏；獲勝",
+      "example": "Mia won the game yesterday.",
+      "translation": "米亞昨天贏了比賽。",
+      "firstSeen": "2026-09-12",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "page",
+      "meaning": "頁；頁面",
+      "example": "Please read page ten before class.",
+      "translation": "上課前請讀第十頁。",
+      "firstSeen": "2026-09-12",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "difficult",
       "meaning": "困難的；不容易的",
