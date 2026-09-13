@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-09-12T11:01:23Z",
-    "sourceCount": 482,
-    "includedCount": 474
+    "updatedAt": "2026-09-13T11:01:58Z",
+    "sourceCount": 485,
+    "includedCount": 477
   },
   "words": [
+    {
+      "word": "roll",
+      "meaning": "滾動；捲起來",
+      "example": "Leo rolled the ball to his friend yesterday.",
+      "translation": "里歐昨天把球滾給他的朋友。",
+      "firstSeen": "2026-09-13",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "group",
+      "meaning": "一群；一組",
+      "example": "Our group finished the poster before lunch.",
+      "translation": "我們這組在午餐前完成了海報。",
+      "firstSeen": "2026-09-13",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "pour",
+      "meaning": "倒；傾倒",
+      "example": "Mia poured the milk into her cup this morning.",
+      "translation": "米亞今天早上把牛奶倒進她的杯子裡。",
+      "firstSeen": "2026-09-13",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "ball",
       "meaning": "球",
