@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-09-13T11:01:58Z",
-    "sourceCount": 485,
-    "includedCount": 477
+    "updatedAt": "2026-09-14T11:02:02Z",
+    "sourceCount": 488,
+    "includedCount": 480
   },
   "words": [
+    {
+      "word": "alone",
+      "meaning": "獨自；單獨的",
+      "example": "Mia was alone in her room last night.",
+      "translation": "米亞昨晚獨自在房間裡。",
+      "firstSeen": "2026-09-14",
+      "pos": [
+        "adj",
+        "adv"
+      ]
+    },
+    {
+      "word": "drawer",
+      "meaning": "抽屜",
+      "example": "The pencils are in the top drawer.",
+      "translation": "鉛筆在最上層的抽屜裡。",
+      "firstSeen": "2026-09-14",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "play",
+      "meaning": "玩；進行比賽",
+      "example": "We played soccer after school yesterday.",
+      "translation": "我們昨天下課後踢足球。",
+      "firstSeen": "2026-09-14",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "roll",
       "meaning": "滾動；捲起來",
