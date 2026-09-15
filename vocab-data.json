@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-09-14T11:02:02Z",
-    "sourceCount": 488,
-    "includedCount": 480
+    "updatedAt": "2026-09-15T11:01:24Z",
+    "sourceCount": 491,
+    "includedCount": 483
   },
   "words": [
+    {
+      "word": "hill",
+      "meaning": "小山；丘陵",
+      "example": "We walked up the hill after school.",
+      "translation": "我們放學後走上那座小山。",
+      "firstSeen": "2026-09-15",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "coat",
+      "meaning": "外套；大衣",
+      "example": "Mia wore her coat because it was cold.",
+      "translation": "因為天氣很冷，米亞穿了她的外套。",
+      "firstSeen": "2026-09-15",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "roof",
+      "meaning": "屋頂",
+      "example": "The rain hit the roof all night.",
+      "translation": "雨整晚打在屋頂上。",
+      "firstSeen": "2026-09-15",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "alone",
       "meaning": "獨自；單獨的",
