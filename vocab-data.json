@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-09-15T11:01:24Z",
-    "sourceCount": 491,
-    "includedCount": 483
+    "updatedAt": "2026-09-16T11:01:20Z",
+    "sourceCount": 494,
+    "includedCount": 486
   },
   "words": [
+    {
+      "word": "normally",
+      "meaning": "通常；平常",
+      "example": "I normally walk to school with my sister.",
+      "translation": "我通常和姊姊一起走路去上學。",
+      "firstSeen": "2026-09-16",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "useful",
+      "meaning": "有用的；實用的",
+      "example": "This map is useful when we visit a new place.",
+      "translation": "我們去新的地方時，這張地圖很有用。",
+      "firstSeen": "2026-09-16",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "small",
+      "meaning": "小的；少的",
+      "example": "The kitten was small when it was born.",
+      "translation": "那隻小貓剛出生時很小。",
+      "firstSeen": "2026-09-16",
+      "pos": [
+        "adj"
+      ]
+    },
     {
       "word": "hill",
       "meaning": "小山；丘陵",
