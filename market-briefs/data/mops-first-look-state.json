@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-16T10:36:03+08:00",
+  "updated_at": "2026-09-17T07:10:00+08:00",
   "rows": [
     {
       "market": "MOPS",
@@ -92,6 +92,51 @@
       "last_close_date": "2026-08-21",
       "mops_rechecked_on": "2026-08-22",
       "amount_pending": "true"
+    },
+    {
+      "market": "MOPS",
+      "date": "2026-10-05",
+      "code": "5512",
+      "name": "力麒",
+      "event": "息",
+      "cash_dividend": "未公告",
+      "stock_dividend_ratio": "未公告",
+      "subscription_ratio": "未公告",
+      "subscription_price": "未公告",
+      "stock_holding_ratio": "未公告",
+      "source": "MOPS",
+      "source_url": "https://mops.twse.com.tw/mops/web/t05st02",
+      "source_title": "公告本公司決議除息基準日",
+      "announcement_date": "115/09/16",
+      "announcement_time": "15:17:36",
+      "announcement_at": "2026-09-16T15:17:36+08:00",
+      "fetched_at": "2026-09-17T07:10:00+08:00",
+      "last_close": "7.68",
+      "last_close_date": "2026-09-16",
+      "amount_pending": "true"
+    },
+    {
+      "market": "MOPS",
+      "date": "2026-10-16",
+      "code": "7944",
+      "name": "睿禾金碳",
+      "event": "權",
+      "cash_dividend": "未公告",
+      "stock_dividend_ratio": "0.02669",
+      "subscription_ratio": "未公告",
+      "subscription_price": "未公告",
+      "stock_holding_ratio": "未公告",
+      "source": "MOPS",
+      "source_url": "https://mops.twse.com.tw/mops/web/t05st02",
+      "source_title": "公告本公司董事會決議除權基準日相關事宜",
+      "announcement_date": "115/09/16",
+      "announcement_time": "16:36:38",
+      "announcement_at": "2026-09-16T16:36:38+08:00",
+      "fetched_at": "2026-09-17T07:10:00+08:00",
+      "last_close": "—",
+      "last_close_date": "",
+      "amount_pending": "false",
+      "amount_completed_on": "2026-09-17"
     }
   ]
 }
