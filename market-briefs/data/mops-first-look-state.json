@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-15T07:10:00+08:00",
+  "updated_at": "2026-09-16T10:36:03+08:00",
   "rows": [
     {
       "market": "MOPS",
@@ -92,29 +92,6 @@
       "last_close_date": "2026-08-21",
       "mops_rechecked_on": "2026-08-22",
       "amount_pending": "true"
-    },
-    {
-      "market": "MOPS",
-      "date": "2026-08-20",
-      "code": "2539",
-      "name": "櫻花建",
-      "event": "權息",
-      "cash_dividend": "2.2",
-      "stock_dividend_ratio": "未公告",
-      "subscription_ratio": "未公告",
-      "subscription_price": "未公告",
-      "stock_holding_ratio": "未公告",
-      "source": "MOPS",
-      "source_url": "https://mops.twse.com.tw/mops/web/t05st02",
-      "source_title": "公告本公司董事長訂定除權息基準日及相關事宜 （補充說明）",
-      "announcement_date": "115/09/14",
-      "announcement_time": "16:32:59",
-      "announcement_at": "2026-09-14T16:32:59+08:00",
-      "fetched_at": "2026-09-15T07:10:00+08:00",
-      "last_close": "34.6",
-      "last_close_date": "2026-09-14",
-      "amount_pending": "false",
-      "amount_completed_on": "2026-09-15"
     }
   ]
 }
