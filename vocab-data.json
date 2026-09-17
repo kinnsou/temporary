@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-09-16T11:01:20Z",
-    "sourceCount": 494,
-    "includedCount": 486
+    "updatedAt": "2026-09-17T11:01:43Z",
+    "sourceCount": 497,
+    "includedCount": 489
   },
   "words": [
+    {
+      "word": "take",
+      "meaning": "拿；帶走",
+      "example": "Mia takes her lunch to school every day.",
+      "translation": "米亞每天都帶午餐去學校。",
+      "firstSeen": "2026-09-17",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "teeth",
+      "meaning": "牙齒（tooth 的複數）",
+      "example": "The child brushes her teeth before bed.",
+      "translation": "那個孩子睡前會刷牙。",
+      "firstSeen": "2026-09-17",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "late",
+      "meaning": "晚的；遲到的",
+      "example": "Ben is late for school today.",
+      "translation": "班今天上學遲到了。",
+      "firstSeen": "2026-09-17",
+      "pos": [
+        "adj"
+      ]
+    },
     {
       "word": "normally",
       "meaning": "通常；平常",
