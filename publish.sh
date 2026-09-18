@@ -33,6 +33,16 @@ fi
 
 # 4) Commit + push (only if there are changes); key configured via core.sshCommand
 git add -A
-if git diff --cached --quiet; then echo "publish: no page changes"; exit 0; fi
+if git diff --cached --quiet; then
+  # A prior push can fail after its commit was created. Retry that commit even
+  # when the allowlist sync produced no new staged changes on this run.
+  if git rev-parse --verify '@{u}' >/dev/null 2>&1 \
+    && [ "$(git rev-list --count '@{u}..HEAD')" -gt 0 ]; then
+    git push origin main && echo "publish: retried pending commit ($(git rev-parse --short HEAD))"
+    exit $?
+  fi
+  echo "publish: no page changes"
+  exit 0
+fi
 git commit -q -m "pages update $(date '+%F %H:%M')"
 git push origin main && echo "publish: ok ($(git rev-parse --short HEAD))"
