@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-09-17T11:01:43Z",
-    "sourceCount": 497,
-    "includedCount": 489
+    "updatedAt": "2026-09-18T11:02:02Z",
+    "sourceCount": 500,
+    "includedCount": 492
   },
   "words": [
+    {
+      "word": "instead",
+      "meaning": "反而；代替地",
+      "example": "I wanted juice instead of milk.",
+      "translation": "我想喝果汁，不想喝牛奶。",
+      "firstSeen": "2026-09-18",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "soft",
+      "meaning": "柔軟的；輕柔的",
+      "example": "The pillow feels soft.",
+      "translation": "這個枕頭摸起來很柔軟。",
+      "firstSeen": "2026-09-18",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "honest",
+      "meaning": "誠實的；坦率的",
+      "example": "Mia was honest about her mistake yesterday.",
+      "translation": "米亞昨天坦白承認了她的錯誤。",
+      "firstSeen": "2026-09-18",
+      "pos": [
+        "adj"
+      ]
+    },
     {
       "word": "take",
       "meaning": "拿；帶走",
