@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-09-18T11:02:02Z",
-    "sourceCount": 500,
-    "includedCount": 492
+    "updatedAt": "2026-09-19T11:01:30Z",
+    "sourceCount": 503,
+    "includedCount": 495
   },
   "words": [
+    {
+      "word": "tea",
+      "meaning": "茶；茶飲",
+      "example": "I drink tea with breakfast every morning.",
+      "translation": "我每天早上吃早餐時喝茶。",
+      "firstSeen": "2026-09-19",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "tree",
+      "meaning": "樹；樹木",
+      "example": "The tall tree grows behind our house.",
+      "translation": "那棵高大的樹長在我們家後面。",
+      "firstSeen": "2026-09-19",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "foreign",
+      "meaning": "外國的；外來的",
+      "example": "My foreign friend speaks English and Chinese.",
+      "translation": "我的外國朋友會說英文和中文。",
+      "firstSeen": "2026-09-19",
+      "pos": [
+        "adj"
+      ]
+    },
     {
       "word": "instead",
       "meaning": "反而；代替地",
