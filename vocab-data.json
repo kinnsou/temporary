@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-09-19T11:01:30Z",
-    "sourceCount": 503,
-    "includedCount": 495
+    "updatedAt": "2026-09-20T11:02:22Z",
+    "sourceCount": 506,
+    "includedCount": 498
   },
   "words": [
+    {
+      "word": "reach",
+      "meaning": "到達；伸手拿到",
+      "example": "Mia reaches school at eight every morning.",
+      "translation": "米亞每天早上八點到學校。",
+      "firstSeen": "2026-09-20",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "soap",
+      "meaning": "肥皂",
+      "example": "Ben washes his hands with soap before dinner.",
+      "translation": "班晚餐前會用肥皂洗手。",
+      "firstSeen": "2026-09-20",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "egg",
+      "meaning": "蛋；雞蛋",
+      "example": "The egg is in the bowl.",
+      "translation": "那顆蛋在碗裡。",
+      "firstSeen": "2026-09-20",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "tea",
       "meaning": "茶；茶飲",
