@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-09-20T11:02:22Z",
-    "sourceCount": 506,
-    "includedCount": 498
+    "updatedAt": "2026-09-21T11:02:50Z",
+    "sourceCount": 509,
+    "includedCount": 501
   },
   "words": [
+    {
+      "word": "shoulder",
+      "meaning": "肩膀",
+      "example": "She carried her bag on her shoulder.",
+      "translation": "她把書包背在肩上。",
+      "firstSeen": "2026-09-21",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "town",
+      "meaning": "城鎮；小鎮",
+      "example": "The town has a park near the library.",
+      "translation": "這個小鎮在圖書館附近有一座公園。",
+      "firstSeen": "2026-09-21",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "school",
+      "meaning": "學校",
+      "example": "Mia walks to school every morning.",
+      "translation": "米亞每天早上走路去上學。",
+      "firstSeen": "2026-09-21",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "reach",
       "meaning": "到達；伸手拿到",
