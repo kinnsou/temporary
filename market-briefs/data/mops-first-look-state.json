@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-22T11:56:43+08:00",
+  "updated_at": "2026-09-23T07:10:00+08:00",
   "rows": [
     {
       "market": "MOPS",
@@ -110,9 +110,10 @@
       "announcement_date": "115/09/21",
       "announcement_time": "16:47:21",
       "announcement_at": "2026-09-21T16:47:21+08:00",
-      "fetched_at": "2026-09-22T11:56:43+08:00",
-      "last_close": "61.5",
-      "last_close_date": "2026-09-21",
+      "fetched_at": "2026-09-23T07:10:00+08:00",
+      "last_close": "61.9",
+      "last_close_date": "2026-09-22",
+      "mops_rechecked_on": "2026-09-23",
       "amount_pending": "true"
     },
     {
@@ -122,7 +123,7 @@
       "name": "佳和",
       "event": "權",
       "cash_dividend": "未公告",
-      "stock_dividend_ratio": "未公告",
+      "stock_dividend_ratio": "0.00999999",
       "subscription_ratio": "未公告",
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
@@ -132,10 +133,35 @@
       "announcement_date": "115/09/21",
       "announcement_time": "17:14:31",
       "announcement_at": "2026-09-21T17:14:31+08:00",
-      "fetched_at": "2026-09-22T11:56:43+08:00",
-      "last_close": "12.55",
-      "last_close_date": "2026-09-21",
-      "amount_pending": "true"
+      "fetched_at": "2026-09-23T07:10:00+08:00",
+      "last_close": "12.35",
+      "last_close_date": "2026-09-22",
+      "mops_rechecked_on": "2026-09-23",
+      "amount_pending": "false",
+      "amount_completed_on": "2026-09-23"
+    },
+    {
+      "market": "MOPS",
+      "date": "2026-10-14",
+      "code": "4903",
+      "name": "聯光通",
+      "event": "息",
+      "cash_dividend": "0.30",
+      "stock_dividend_ratio": "未公告",
+      "subscription_ratio": "未公告",
+      "subscription_price": "未公告",
+      "stock_holding_ratio": "未公告",
+      "source": "MOPS",
+      "source_url": "https://mops.twse.com.tw/mops/web/t05st02",
+      "source_title": "公告本公司訂定除息基準日相關事宜",
+      "announcement_date": "115/09/22",
+      "announcement_time": "16:03:55",
+      "announcement_at": "2026-09-22T16:03:55+08:00",
+      "fetched_at": "2026-09-23T07:10:00+08:00",
+      "last_close": "42.05",
+      "last_close_date": "2026-09-22",
+      "amount_pending": "false",
+      "amount_completed_on": "2026-09-23"
     }
   ]
 }

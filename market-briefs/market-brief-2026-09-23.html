@@ -1,0 +1,1188 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>今日早報｜2026-09-23</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@400;600;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #F2EDE1;
+    --paper-2: #ECE6D6;
+    --paper-3: #E5DECA;
+    --ink: #16110C;
+    --ink-2: #3E372E;
+    --ink-3: #6F665B;
+    --ink-4: #A9A095;
+    --rule: rgba(22,17,12,0.16);
+    --rule-2: rgba(22,17,12,0.08);
+    --accent: #D24322;
+    --accent-deep: #A8331A;
+    --sage: #4E6B45;
+    --display-tc: "Noto Serif TC", "Songti TC", serif;
+    --display-en: "Instrument Serif", "Times New Roman", serif;
+    --body-tc: "Noto Sans TC", -apple-system, system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  }
+
+  * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    background-image:
+      radial-gradient(circle at 80% -5%, rgba(210,67,34,0.05), transparent 45%),
+      radial-gradient(circle at -5% 110%, rgba(78,107,69,0.05), transparent 45%);
+    font-family: var(--body-tc);
+    color: var(--ink);
+    min-height: 100vh;
+    position: relative;
+  }
+
+  /* paper grain */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.09  0 0 0 0 0.07  0 0 0 0 0.05  0 0 0 0.03 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    z-index: 200;
+    opacity: 0.55;
+  }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 56px;
+    position: relative;
+  }
+
+  /* ─── Top bar ───────────────────────────────────────── */
+  .topbar {
+    border-bottom: 1px solid var(--ink);
+    padding: 18px 0 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .topbar .left, .topbar .right { display: flex; gap: 22px; }
+  .topbar b { color: var(--ink); font-weight: 700; }
+  .topbar .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--accent);
+    display: inline-block;
+    margin-right: 8px;
+    box-shadow: 0 0 8px var(--accent);
+    animation: pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+  }
+
+  /* ─── Masthead ──────────────────────────────────────── */
+  .masthead {
+    padding: 48px 0 30px;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 60px;
+    align-items: end;
+    border-bottom: 4px double var(--ink);
+  }
+  .masthead h1 {
+    font-family: var(--display-tc);
+    font-weight: 700;
+    font-size: 140px;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    margin: 0;
+    color: var(--ink);
+  }
+  .masthead .en-line {
+    font-family: var(--display-en);
+    font-style: italic;
+    font-size: 52px;
+    color: var(--accent);
+    line-height: 1;
+    margin-top: 10px;
+    letter-spacing: -0.01em;
+  }
+  .masthead .en-line .amp { color: var(--ink-3); }
+
+  .masthead-meta {
+    padding-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .masthead-meta .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .masthead-meta .row:last-child { border: none; padding-bottom: 0; }
+  .masthead-meta .label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .masthead-meta .val {
+    font-family: var(--display-en);
+    font-style: italic;
+    font-size: 22px;
+    color: var(--ink);
+  }
+  .masthead-meta .val.tc {
+    font-family: var(--display-tc);
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+  }
+
+  /* ─── Pulse ticker ──────────────────────────────────── */
+  .pulse {
+    background: var(--ink);
+    color: var(--paper);
+    margin-top: 0;
+  }
+  .pulse-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 14px 56px;
+    display: flex;
+    gap: 44px;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .pulse-item { display: inline-flex; gap: 10px; align-items: baseline; }
+  .pulse-item .lbl { color: rgba(242,237,225,0.5); text-transform: uppercase; font-size: 10px; letter-spacing: 0.16em; }
+  .pulse-item .val { color: var(--paper); font-weight: 700; font-size: 14px; }
+  .pulse-item .chg.up { color: #94C589; }
+  .pulse-item .chg.down { color: #E88A75; }
+  .pulse-divider {
+    width: 1px;
+    height: 16px;
+    background: rgba(242,237,225,0.2);
+  }
+  .pulse-tag {
+    font-family: var(--display-en);
+    font-style: italic;
+    color: rgba(242,237,225,0.6);
+    font-size: 14px;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+
+  /* ─── Section header (shared) ──────────────────────── */
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--ink);
+  }
+  .section-head .left { display: flex; flex-direction: column; gap: 6px; }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .section-title {
+    font-family: var(--display-tc);
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: -0.015em;
+  }
+  .section-title .en {
+    font-family: var(--display-en);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 24px;
+    color: var(--ink-3);
+    margin-left: 12px;
+    letter-spacing: 0;
+  }
+  .section-head .count {
+    font-family: var(--display-en);
+    font-style: italic;
+    font-size: 50px;
+    line-height: 0.9;
+    color: var(--accent);
+  }
+  .section-head .count sup {
+    font-family: var(--mono);
+    font-style: normal;
+    font-size: 11px;
+    color: var(--ink-3);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-left: 6px;
+    vertical-align: 30px;
+  }
+
+  /* ─── Hero strip: Market Focus ─────────────────────── */
+  .hero {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: 1.65fr 1fr;
+    gap: 32px;
+  }
+
+  .focus-card {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 24px;
+    padding: 44px 48px 36px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 320px;
+  }
+  .focus-card .qmark {
+    position: absolute;
+    top: -10px;
+    right: 32px;
+    font-family: var(--display-en);
+    font-style: italic;
+    font-size: 220px;
+    line-height: 1;
+    color: var(--accent);
+    opacity: 0.85;
+  }
+  .focus-card .label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(242,237,225,0.55);
+    margin-bottom: 18px;
+  }
+  .focus-card .takeaway {
+    font-family: var(--display-tc);
+    font-weight: 600;
+    font-size: 38px;
+    line-height: 1.35;
+    letter-spacing: 0.01em;
+    text-wrap: balance;
+    position: relative;
+    z-index: 1;
+  }
+  .focus-card .takeaway b {
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .focus-card .lead-body {
+    margin-top: 22px;
+    font-family: var(--body-tc);
+    font-size: 15px;
+    line-height: 1.75;
+    color: rgba(242,237,225,0.78);
+    max-width: 540px;
+    position: relative;
+    z-index: 1;
+  }
+  .focus-card .lead-body::before {
+    content: "";
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: rgba(242,237,225,0.3);
+    margin-bottom: 14px;
+  }
+  .focus-card .by-line {
+    margin-top: 28px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(242,237,225,0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: rgba(242,237,225,0.55);
+    text-transform: uppercase;
+  }
+
+  .hero-side {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .hero-stat {
+    background: var(--paper-3);
+    border-radius: 18px;
+    padding: 18px 18px 16px;
+    position: relative;
+  }
+  .hero-stat .lbl {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .hero-stat .num {
+    font-family: var(--display-tc);
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1;
+    color: var(--ink);
+    margin-top: 10px;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+  .hero-stat .num .delta {
+    font-family: var(--display-en);
+    font-style: italic;
+    font-size: 18px;
+    color: var(--sage);
+    margin-left: 6px;
+    font-weight: 400;
+  }
+  .hero-stat .num .delta.down { color: var(--accent); }
+  .hero-stat .desc {
+    margin-top: 8px;
+    font-size: 11.5px;
+    line-height: 1.55;
+    color: var(--ink-2);
+  }
+  .hero-stat .source-line { margin-top: 8px; font-size: 9px; letter-spacing: 0.08em; }
+  .hero-stat .supplemental-link { margin-top: 6px; font-size: 10px; line-height: 1.35; color: var(--ink-2); }
+
+  /* ─── News grid ─────────────────────────────────────── */
+  .news-grid {
+    margin-top: 64px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 56px;
+  }
+  .news-col h2 { margin: 0; }
+
+  .news-col.world .news-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 36px;
+  }
+  .news-item {
+    padding: 22px 0;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 16px;
+  }
+  .news-item .num {
+    font-family: var(--display-en);
+    font-style: italic;
+    font-size: 40px;
+    line-height: 0.95;
+    color: var(--ink);
+  }
+  .news-item .num.accent { color: var(--accent); }
+  .news-item .body {
+    font-family: var(--body-tc);
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: var(--ink-2);
+    text-wrap: pretty;
+  }
+  .news-item .body b {
+    color: var(--ink);
+    font-weight: 700;
+  }
+  .news-item .tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-top: 10px;
+    border-top: 1px solid var(--rule);
+    padding-top: 8px;
+  }
+
+  /* lead news item styling removed — the lead now lives in the hero card */
+
+  /* ─── Social row ────────────────────────────────────── */
+  .social {
+    margin-top: 80px;
+  }
+  .tweet-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .tweet-card {
+    background: var(--paper-3);
+    border-radius: 18px;
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: relative;
+  }
+  .tweet-card .head { display: flex; gap: 12px; align-items: center; }
+  .tweet-card .avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--paper);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--display-en);
+    font-style: italic;
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+  .tweet-card .avatar.musk { background: linear-gradient(135deg, #2A2A2A, #555); }
+  .tweet-card .avatar.trump { background: linear-gradient(135deg, #B68A2E, #8C6517); }
+  .tweet-card .avatar.saylor { background: linear-gradient(135deg, #D24322, #6B2010); }
+  .tweet-card .name-line {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .tweet-card .name {
+    font-family: var(--body-tc);
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .tweet-card .verified {
+    width: 14px; height: 14px;
+    color: var(--accent);
+  }
+  .tweet-card .handle {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--ink-3);
+  }
+  .tweet-card .time {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-3);
+  }
+  .tweet-card .content {
+    font-family: var(--body-tc);
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-2);
+    text-wrap: pretty;
+    flex: 1;
+  }
+  .tweet-card .content b { color: var(--ink); font-weight: 700; }
+  .tweet-card .actions {
+    display: flex;
+    gap: 24px;
+    color: var(--ink-3);
+    font-family: var(--mono);
+    font-size: 11px;
+    border-top: 1px solid var(--rule);
+    padding-top: 14px;
+  }
+  .tweet-card .actions span {
+    display: inline-flex;
+    gap: 5px;
+    align-items: center;
+  }
+  .tweet-card .actions svg { width: 13px; height: 13px; }
+
+  /* ─── Dividend section ──────────────────────────────── */
+  .dividend {
+    margin-top: 80px;
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    background: var(--rule);
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    margin-bottom: 36px;
+  }
+  .stat {
+    background: var(--paper);
+    padding: 28px 28px 26px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-right: 1px solid var(--rule);
+  }
+  .stat:last-child { border-right: none; }
+  .stat .lbl {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .stat .num {
+    font-family: var(--display-tc);
+    font-weight: 700;
+    font-size: 76px;
+    line-height: 0.95;
+    color: var(--ink);
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .stat .num.accent { color: var(--accent); }
+  .stat .num small {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--ink-3);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+  }
+  .stat .desc {
+    font-family: var(--body-tc);
+    font-size: 12.5px;
+    color: var(--ink-3);
+    line-height: 1.5;
+  }
+
+  .first-look {
+    margin-bottom: 36px;
+    padding: 14px 18px;
+    background: var(--paper-3);
+    border-radius: 10px;
+    font-family: var(--body-tc);
+    font-size: 13px;
+    color: var(--ink-3);
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  .first-look::before {
+    content: "→";
+    font-family: var(--mono);
+    color: var(--accent);
+    font-size: 16px;
+  }
+  .first-look b { color: var(--ink); font-weight: 700; }
+
+  /* Two tables side by side */
+  .tables-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+  .table-block .table-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .table-block .table-sub {
+    font-family: var(--display-tc);
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+  .table-block .table-sub .en {
+    font-family: var(--display-en);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--ink-3);
+    margin-left: 8px;
+  }
+
+  table.div-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--body-tc);
+    font-size: 13px;
+    color: var(--ink-2);
+  }
+  table.div-table thead th {
+    text-align: left;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    padding: 0 0 10px;
+    border-bottom: 1px solid var(--ink);
+    font-weight: 500;
+  }
+  table.div-table tbody td {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--rule-2);
+    vertical-align: middle;
+  }
+  table.div-table tbody tr.day-break td {
+    border-top: 1px solid var(--rule);
+    padding-top: 18px;
+  }
+  table.div-table .date {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink);
+    font-weight: 700;
+    width: 50px;
+    letter-spacing: 0.02em;
+  }
+  table.div-table .ticker {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    display: inline-block;
+    margin-right: 8px;
+  }
+  table.div-table .name {
+    color: var(--ink);
+    font-weight: 500;
+    font-size: 14px;
+  }
+  table.div-table .name-cell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  table.div-table .otc {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--ink-3);
+    letter-spacing: 0.14em;
+  }
+  table.div-table .amt {
+    font-family: var(--mono);
+    font-weight: 700;
+    color: var(--ink);
+    text-align: right;
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+  table.div-table .amt small {
+    color: var(--ink-3);
+    font-weight: 400;
+    font-size: 9.5px;
+    letter-spacing: 0.08em;
+    margin-left: 2px;
+  }
+  /* tier 2 — amount ≥ 3 */
+  table.div-table .amt.tier-2 {
+    font-size: 19px;
+    color: var(--ink);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  /* tier 3 — amount ≥ 5 (same size as tier-2, accent color only) */
+  table.div-table .amt.tier-3 {
+    font-size: 19px;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1;
+  }
+  table.div-table .amt.tier-3 small { color: var(--accent); opacity: 0.7; }
+
+  table.div-table .close {
+    text-align: right;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--ink);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    width: 70px;
+  }
+  table.div-table .type-pill {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 9.5px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 3px;
+    background: var(--ink);
+    color: var(--paper);
+    line-height: 1;
+    vertical-align: middle;
+  }
+  table.div-table .type-pill.權 { background: var(--accent); }
+
+  .table-note {
+    margin-top: 16px;
+    font-family: var(--body-tc);
+    font-size: 12px;
+    color: var(--ink-3);
+    padding: 12px 14px;
+    background: var(--paper-3);
+    border-radius: 8px;
+    line-height: 1.5;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .table-note::before {
+    content: "→";
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+  .table-note b { color: var(--ink); font-weight: 700; }
+
+  /* ─── Footer ───────────────────────────────────────── */
+  .footer {
+    margin-top: 120px;
+    padding: 48px 0 64px;
+    text-align: center;
+    border-top: 4px double var(--ink);
+  }
+  .footer .end-mark {
+    font-family: var(--display-en);
+    font-style: italic;
+    font-size: 42px;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .footer .source {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-top: 16px;
+  }
+  .footer .colophon {
+    font-family: var(--display-en);
+    font-style: italic;
+    font-size: 17px;
+    color: var(--ink-3);
+    margin-top: 8px;
+  }
+
+  /* ─── Ornament ─────────────────────────────────────── */
+  .ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 64px 0 0;
+    color: var(--ink-3);
+  }
+  .ornament .line { flex: 1; height: 1px; background: var(--rule); max-width: 380px; }
+  .ornament .glyph {
+    font-family: var(--display-en);
+    font-style: italic;
+    font-size: 28px;
+    color: var(--accent);
+  }
+
+
+
+  /* Unified responsive production layer */
+  a { color: var(--accent-deep); font-weight: 700; text-decoration-thickness: 1px; text-underline-offset: 3px; overflow-wrap: anywhere; }
+  .source-line { margin-top: 8px; font-family: var(--mono); font-size: 9.5px; letter-spacing: .08em; color: var(--ink-3); line-height: 1.45; }
+  .source-line a { font-weight: 700; }
+  .quality-note { margin-top: 18px; font-family: var(--mono); font-size: 10px; letter-spacing: .12em; color: rgba(242,237,225,.58); text-transform: uppercase; }
+  .no-fill { color: var(--ink-3); font-style: italic; }
+  .hero-stat.primary { background: var(--ink); color: var(--paper); }
+  .hero-stat.primary .lbl, .hero-stat.primary .desc { color: rgba(242,237,225,.68); }
+  .hero-stat.primary .num { color: var(--paper); }
+  .hero-stat.primary .num .delta { color: #94C589; }
+  .hero-stat.primary .source-line { color: rgba(242,237,225,.55); }
+  .hero-stat.primary a { color: #F2C078; }
+  .news-item .body .impact { color: var(--accent-deep); font-weight: 700; }
+  .tweet-card .content .warn { color: var(--ink-3); font-style: italic; }
+  @media (max-width: 980px) {
+    .container { max-width: 100%; padding: 0 22px; }
+    .topbar { gap: 12px; align-items: flex-start; }
+    .topbar, .topbar .left, .topbar .right { flex-direction: column; }
+    .masthead { grid-template-columns: 1fr; gap: 22px; padding: 32px 0 22px; }
+    .masthead h1 { font-size: clamp(58px, 18vw, 86px); }
+    .masthead .en-line { font-size: 34px; }
+    .pulse-inner { padding: 12px 22px; overflow-x: auto; gap: 18px; }
+    .pulse-divider, .pulse-tag { display: none; }
+    .hero { grid-template-columns: 1fr; margin-top: 30px; gap: 18px; }
+    .hero-side { grid-template-columns: 1fr; gap: 12px; }
+    .focus-card { min-height: auto; padding: 30px 26px; border-radius: 20px; }
+    .focus-card .qmark { font-size: 130px; right: 18px; opacity: .45; }
+    .focus-card .takeaway { font-size: 29px; }
+    .focus-card .lead-body { font-size: 17px; line-height: 1.95; }
+    .hero-stat .num { font-size: 42px; }
+    .hero-stat .desc { font-size: 14.5px; line-height: 1.85; }
+    .news-grid { grid-template-columns: 1fr; gap: 36px; margin-top: 44px; }
+    .news-col.world .news-items { grid-template-columns: 1fr; }
+    .news-item .body { font-size: 16.5px; line-height: 2; }
+    .section-head { align-items: flex-start; gap: 14px; }
+    .section-title { font-size: 34px; }
+    .section-head .count { font-size: 38px; }
+    .tweet-row { grid-template-columns: 1fr; }
+    .tweet-card .content { font-size: 16.5px; line-height: 1.95; }
+    .social, .dividend { margin-top: 56px; }
+    .stats { grid-template-columns: 1fr; }
+    .stat { border-right: none; border-bottom: 1px solid var(--rule); padding: 22px; }
+    .stat:last-child { border-bottom: none; }
+    .stat .num { font-size: 54px; }
+    .tables-row { grid-template-columns: 1fr; gap: 36px; }
+    .table-block { overflow-x: auto; }
+    .first-look, .table-note { font-size: 14px; }
+    table.div-table { min-width: 520px; font-size: 15px; }
+    table.div-table .name { font-size: 16px; }
+    table.div-table .amt, table.div-table .close { font-size: 15px; }
+    .footer { margin-top: 70px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <div class="left">
+      <span><span class="dot"></span>Morning · 07:00 TPE</span>
+      <span>Official market brief</span>
+    </div>
+    <div class="right">
+      <span>2026-09-23</span>
+      <span><b>TWSE / TPEx</b></span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <header class="masthead">
+    <div>
+      <h1>新聞摘要</h1>
+      <p class="en-line">Market <span class="amp">&amp;</span> Brief</p>
+    </div>
+    <div class="masthead-meta">
+      <div class="row"><span class="label">Date</span><span class="val">Wednesday, 23 September 2026</span></div>
+      <div class="row"><span class="label">中文日期</span><span class="val tc">二〇二六年九月二十三日　星期三</span></div>
+      <div class="row"><span class="label">Edition</span><span class="val">Daily Express</span></div>
+    </div>
+  </header>
+</div>
+
+<section class="pulse">
+  <div class="pulse-inner">
+    <span class="pulse-item"><span class="lbl">World</span><span class="val">6則</span></span>
+    <span class="pulse-divider"></span>
+    <span class="pulse-item"><span class="lbl">Taiwan</span><span class="val">3則</span></span>
+    <span class="pulse-divider"></span>
+    <span class="pulse-item"><span class="lbl">TX Night 05:00</span><span class="val">48497</span></span>
+    <span class="pulse-divider"></span>
+    <span class="pulse-item"><span class="lbl">BTC</span><span class="val">US$86,374</span></span>
+    <span class="pulse-tag">台股早報</span>
+  </div>
+</section>
+
+<div class="container">
+  <section class="hero">
+    <div class="focus-card">
+      <div class="qmark">&quot;</div>
+      <div>
+        <div class="label">Lead · 早報主結論</div>
+        <div class="takeaway">台灣捐贈巡防艦交付菲律賓，低調強化海上執法協作</div>
+        <div class="lead-body">台灣海巡署捐贈、已除役的500噸級「金門」號巡防艦，已在西菲律賓海基金會安排下交付菲律賓海岸防衛隊，並以民用海事用途接管。這艘船可支援漁民、航員與沿岸社群的搜救及執法需求，也顯示雙方在敏感海域擴大合作時，正以兼顧能力建置與外交法律風險的方式推進</div>
+      </div>
+      <div class="by-line"><span>BBC News，2026-09-23 / Focus Taiwan，2026-09-22</span><span>Morning · 01 / 03</span></div>
+    </div>
+    <div class="hero-side">
+      <div class="hero-stat primary">
+        <div class="lbl">TX Night · 昨夜盤 05:00</div>
+        <div class="num">48497<span class="delta">▲272 / ▲0.56%</span></div>
+        <div class="desc">TX 202610 盤後交易最後成交價，▲272 / ▲0.56%，成交量 31121 口。</div>
+        <div class="source-line">SOURCE · <a href="https://www.taifex.com.tw/cht/3/futDailyMarketReport?queryType=2&amp;marketCode=2&amp;commodity_id=TX&amp;queryDate=2026/09/23">TAIFEX</a></div>
+        
+      </div><div class="hero-stat">
+        <div class="lbl">BTC · 早報製作時</div>
+        <div class="num">US$86,374</div>
+        <div class="desc">擷取時間 07:10 TPE</div>
+        <div class="source-line">SOURCE · <a href="https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&amp;vs_currencies=usd">CoinGecko</a></div>
+        
+      </div><div class="hero-stat">
+        <div class="lbl">Gold · 現貨金</div>
+        <div class="num">US$4,363.90</div>
+        <div class="desc">現貨金／美元每盎司</div>
+        <div class="source-line">SOURCE · <a href="https://api.gold-api.com/price/XAU">Gold API</a></div>
+        
+      </div><div class="hero-stat">
+        <div class="lbl">WTI · 原油</div>
+        <div class="num">US$107.02</div>
+        <div class="desc">美元每桶 · 最近資料日 2026-09-15</div>
+        <div class="source-line">SOURCE · <a href="https://www.eia.gov/dnav/pet/hist/rwtcD.htm">U.S. EIA</a></div>
+        <div class="supplemental-link">IMF PortWatch · 09/20：1 艘</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="container">
+  <section class="news-grid">
+    <div class="news-col world">
+      <div class="section-head"><div class="left"><div class="eyebrow">World · Headlines</div><div class="section-title">國際<span class="en">World</span></div></div><div class="count">6<sup>則</sup></div></div>
+      <div class="news-items">        <article class="news-item">
+          <div class="num accent">01</div>
+          <div>
+            <div class="body"><b>美、丹、格陵蘭簽防務協議，美將增建兩座北極基地。</b>美國、丹麥與格陵蘭在聯大簽署更新版防務協議，允許美方在納沙爾蘇瓦克及梅斯特斯維格增設防區，並確認丹麥主權與格陵蘭自決權。協議同時限制非北約國家在島上建立常設軍事設施，為先前圍繞領土與安全的緊張關係劃出新框架。</div>
+            <div class="tag">BBC News，2026-09-23</div>
+            <div class="source-line">SOURCE · <a href="https://www.bbc.com/news/articles/c9dr74g32g8go">BBC News，2026-09-23</a></div>
+          </div>
+        </article>        <article class="news-item">
+          <div class="num">02</div>
+          <div>
+            <div class="body"><b>斯里蘭卡復活節爆炸案15人遭判重刑。</b>斯里蘭卡高等法院判定15人策劃2019年復活節連環爆炸案罪成；該案造成270人死亡、逾500人受傷。被告各獲200至260年徒刑並遭沒收資產，判決也令情報失靈與後續責任追究再受關注。</div>
+            <div class="tag">BBC News，2026-09-23</div>
+            <div class="source-line">SOURCE · <a href="https://www.bbc.com/news/articles/cqy7z275yx65o">BBC News，2026-09-23</a></div>
+          </div>
+        </article>        <article class="news-item">
+          <div class="num">03</div>
+          <div>
+            <div class="body"><b>發展中聖嬰現象創紀錄，太平洋海溫高出常態3.0…。</b>科學家指出，中東太平洋關鍵海域9月19日的日均海表溫度比常態高3.05°C，已超越2015年強聖嬰紀錄，峰值仍可能在今年稍後到來。印度季風降雨已較常態少15%，各地旱災、野火、洪水與糧食風險都須提高警覺。</div>
+            <div class="tag">Middle East · Energy</div>
+            <div class="source-line">SOURCE · <a href="https://www.bbc.com/weather/articles/cmvgy4nv9d62o">BBC News，2026-09-22</a></div>
+          </div>
+        </article>        <article class="news-item">
+          <div class="num">04</div>
+          <div>
+            <div class="body"><b>歐盟擬解除兩名俄國富豪制裁，烏克蘭強烈反彈。</b>報導指歐盟將把烏茲別克裔俄國富豪烏斯馬諾夫與俄以商人弗里德曼移出制裁名單，同時把近3,000名其他個人與實體的制裁延長三年。烏方批評這會向莫斯科釋出錯誤訊號；法國、盧森堡與拉脫維亞的協商也凸顯歐盟內部歧見。</div>
+            <div class="tag">War · Security</div>
+            <div class="source-line">SOURCE · <a href="https://www.bbc.com/news/articles/c6dj4k98107do">BBC News，2026-09-23</a></div>
+          </div>
+        </article>        <article class="news-item">
+          <div class="num">05</div>
+          <div>
+            <div class="body"><b>Google因定位資料處理遭愛爾蘭裁罰4.03…。</b>愛爾蘭資料保護委員會認定Google處理定位資料未符合法、正當與透明原則，開出4.03億歐元罰單，並要求6個月內完成改善。罰款聚焦2018至2020年的歷史做法，但高額成本再度凸顯大型平台在歐盟個資監管下的合規壓力。</div>
+            <div class="tag">BBC News，2026-09-22</div>
+            <div class="source-line">SOURCE · <a href="https://www.bbc.com/news/articles/ck1e52v16ngxo">BBC News，2026-09-22</a></div>
+          </div>
+        </article>        <article class="news-item">
+          <div class="num">06</div>
+          <div>
+            <div class="body"><b>Paramount與12州和解，1,100億美…。</b>Paramount Skydance與以加州為首的12州就訴訟和解，為1,100億美元併購華納兄弟探索案清除重要障礙。協議要求每年至少製作30部電影、設置新聞編輯獨立委員會，未達產量承諾還可能被要求處分資產，將重塑好萊塢競爭格局。</div>
+            <div class="tag">Rates · Commodities</div>
+            <div class="source-line">SOURCE · <a href="https://www.bbc.com/news/articles/cm4gjr1qepr8o">BBC News，2026-09-22</a></div>
+          </div>
+        </article></div>
+    </div>
+    <div class="news-col local">
+      <div class="section-head"><div class="left"><div class="eyebrow">Taiwan · Headlines</div><div class="section-title">台灣<span class="en">Taiwan</span></div></div><div class="count">3<sup>則</sup></div></div>
+      <div class="news-items">        <article class="news-item">
+          <div class="num accent">01</div>
+          <div>
+            <div class="body"><b>陸軍展示刺針飛彈模擬器，強化反無人機訓練。</b>陸軍砲兵訓練指揮部展示單兵與雙聯裝刺針飛彈模擬器，可依天候、地形與目標設定訓練，並練習追蹤、鎖定無人機及位置共享。系統能降低實彈訓練成本，為後續實彈演訓建立反空中目標作戰熟悉度。</div>
+            <div class="tag">War · Security</div>
+            <div class="source-line">SOURCE · <a href="https://focustaiwan.tw/politics/202609220023">Focus Taiwan，2026-09-22</a></div>
+          </div>
+        </article>        <article class="news-item">
+          <div class="num">02</div>
+          <div>
+            <div class="body"><b>洪申翰稱赴南京APEC會議未遭矮化，享同等權利。</b>勞動部長洪申翰表示，赴南京參加APEC人力資源部長會議期間，台灣依規則獲得與其他會員相同權利，未遭所謂矮化。他是賴政府首位赴中國大陸的部會首長，行程採邀請函入境而未申請或使用台胞證。</div>
+            <div class="tag">China · Policy</div>
+            <div class="source-line">SOURCE · <a href="https://focustaiwan.tw/politics/202609220022">Focus Taiwan，2026-09-22</a></div>
+          </div>
+        </article>        <article class="news-item">
+          <div class="num">03</div>
+          <div>
+            <div class="body"><b>台股盤中刷新高後收漲81點，成交逾1兆元。</b>加權指數盤中一度衝上48,601.53點新高，終場上漲81.33點、收47,800.17點，成交值達新台幣1.02兆元。電子權值股早盤帶動上攻，但獲利了結使漲幅收斂；外資當日仍買超新台幣447.3億元。</div>
+            <div class="tag">Taiwan · Markets</div>
+            <div class="source-line">SOURCE · <a href="https://focustaiwan.tw/business/202609220017">Focus Taiwan，2026-09-22</a></div>
+          </div>
+        </article></div>
+    </div>
+  </section>
+</div>
+
+<div class="container">
+  <section class="social">
+    <div class="section-head"><div class="left"><div class="eyebrow">Social · Topic Voices</div><div class="section-title">話題人物<span class="en">Voices</span></div></div><div class="count">3<sup>位</sup></div></div>
+    <div class="tweet-row">      <article class="tweet-card">
+        <div class="head">
+          <div class="avatar saylor">A</div>
+          <div class="name-line"><span class="name">Arthur Hayes</span><span class="handle">@CryptoHayes</span></div>
+          <span class="time">09/22 09:16</span>
+        </div>
+        <div class="content"><b>以成本與需求質疑AI安全放緩說法：</b>Hayes在貼文連結新文章，認為部分業者以AI安全為由放緩AGI開發，背後可能是當前定價下的企業需求與推論成本壓力。他點名可從Anthropic可能的IPO文件檢視營收、服務成本與可獲利客戶比重，將爭論連回AI商業化與資本市場。</div>
+        <div class="source-line">FIRST PARTY · <a href="https://x.com/CryptoHayes/status/2102205416549831064">X @CryptoHayes，2026-09-22</a></div>
+      </article>      <article class="tweet-card">
+        <div class="head">
+          <div class="avatar saylor">V</div>
+          <div class="name-line"><span class="name">Vivek Ramaswamy</span><span class="handle">@VivekGRamaswamy</span></div>
+          <span class="time">09/22 07:10</span>
+        </div>
+        <div class="content"><b>提出俄亥俄燃油稅90天暫停方案：</b>Ramaswamy稱將與州議員推動燃油稅紓困計畫，主張汽油每加侖38.5美分、柴油每加侖47美分的州稅暫停90天，並以交通資金調度及打擊醫療補助詐欺的節省額補足。方案直接牽動燃料價格、州財政與道路建設資金。</div>
+        <div class="source-line">FIRST PARTY · <a href="https://x.com/VivekGRamaswamy/status/2102173746920354177">X @VivekGRamaswamy，2026-09-22</a></div>
+      </article>      <article class="tweet-card">
+        <div class="head">
+          <div class="avatar saylor">W</div>
+          <div class="name-line"><span class="name">Watcher.Guru</span><span class="handle">@WatcherGuru</span></div>
+          <span class="time">09/22 09:21</span>
+        </div>
+        <div class="content"><b>加密市場單日清算逾10億美元：</b>Watcher.Guru貼文指出，當日加密貨幣市場清算金額超過10億美元，其中空頭約8.5億美元、長倉約2億美元。數據顯示短線價格劇烈變動下，槓桿部位承受的雙向強制平倉風險快速升高。</div>
+        <div class="source-line">FIRST PARTY · <a href="https://x.com/WatcherGuru/status/2102206649188458932">X @WatcherGuru，2026-09-22</a></div>
+      </article></div>
+  </section>
+</div>
+
+<div class="container"><div class="ornament"><div class="line"></div><div class="glyph">§</div><div class="line"></div></div></div>
+
+<div class="container">
+  <section class="dividend">
+    <div class="section-head"><div class="left"><div class="eyebrow">Dividend · Official data</div><div class="section-title">除權息<span class="en">Radar</span></div></div><div class="count" style="font-size:22px;color:var(--ink-3);font-style:italic;">TWSE / TPEx</div></div>
+    <div class="stats">
+      <div class="stat"><div class="lbl">MOPS Announcements</div><div class="num">7<small>件</small></div><div class="desc">昨日交易所原始公告</div></div>
+      <div class="stat"><div class="lbl">Next 7 Days</div><div class="num accent">10<small>檔</small></div><div class="desc">09/23–09/30 一週內個股全數展開</div></div>
+      <div class="stat"><div class="lbl">1–2 Months</div><div class="num">2<small>檔</small></div><div class="desc">10/23–11/23 已排程個股</div></div>
+    </div>
+    <div class="table-block" style="margin-bottom:42px;"><div class="table-title">First Look</div><div class="table-sub">MOPS 原始公告追蹤</div><table class="div-table"><thead><tr><th style="width:50px;">除權息日</th><th>代號 / 名稱</th><th style="text-align:right;">配息 / 配股</th><th style="text-align:right;">昨日收盤價</th></tr></thead><tbody>
+            <tr class="">
+              <td class="date">12/21</td>
+              <td><span class="name-cell"><span class="ticker">5306</span><span class="name">桂盟</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">97.8</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">12/10</td>
+              <td><span class="name-cell"><span class="ticker">2330</span><span class="name">台積電</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">2415</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">12/17</td>
+              <td><span class="name-cell"><span class="ticker">6021</span><span class="name">美好證</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">38.45</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">09/24</td>
+              <td><span class="name-cell"><span class="ticker">2611</span><span class="name">志信</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">14.4</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">10/29</td>
+              <td><span class="name-cell"><span class="ticker">5522</span><span class="name">遠雄</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">待補 <small></small></td>
+              <td class="close">61.9</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">10/12</td>
+              <td><span class="name-cell"><span class="ticker">1449</span><span class="name">佳和</span><span class="type-pill">權</span></span></td>
+              <td class="amt ">0.00999999 <small>股</small></td>
+              <td class="close">12.35</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">10/14</td>
+              <td><span class="name-cell"><span class="ticker">4903</span><span class="name">聯光通</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">0.30 <small>元</small></td>
+              <td class="close">42.05</td>
+            </tr></tbody></table><div class="table-note"><div><b>資料來源 ·</b> 公開資訊觀測站 MOPS；週一補查週六、週日公告，其餘日只查上一日。公告先列入，配息／配股金額待補時保留，補齊當日顯示完整數值，隔日自動移除。</div></div></div>
+    <div class="tables-row">
+      <div class="table-block"><div class="table-title">One Week · 一週內</div><div class="table-sub">本週除權息<span class="en">09/23–09/30</span></div><table class="div-table"><thead><tr><th style="width:50px;">日期</th><th>代號 / 名稱</th><th style="text-align:right;">配息 / 配股</th><th style="text-align:right;">昨日收盤價</th></tr></thead><tbody>
+            <tr class="">
+              <td class="date">09/23</td>
+              <td><span class="name-cell"><span class="ticker">1442</span><span class="name">名軒</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">2.4 <small>元</small></td>
+              <td class="close">31.15</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">1808</span><span class="name">潤隆</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">1.5 <small>元</small></td>
+              <td class="close">35</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">2542</span><span class="name">興富發</span><span class="type-pill">息</span></span></td>
+              <td class="amt tier-2">4 <small>元</small></td>
+              <td class="close">45.45</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">5258</span><span class="name">虹堡</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">1.007326 <small>元</small></td>
+              <td class="close">42.4</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">1595</span><span class="name">川寶</span><span class="type-pill">息</span><span class="otc">OTC</span></span></td>
+              <td class="amt ">0.46744739 <small>元</small></td>
+              <td class="close">74.6</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">4109</span><span class="name">加捷生醫</span><span class="type-pill">息</span><span class="otc">OTC</span></span></td>
+              <td class="amt ">0.2 <small>元</small></td>
+              <td class="close">11.1</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">09/24</td>
+              <td><span class="name-cell"><span class="ticker">1235</span><span class="name">興泰</span><span class="type-pill">權息</span></span></td>
+              <td class="amt ">0.5 <small>元</small></td>
+              <td class="close">37.45</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">09/29</td>
+              <td><span class="name-cell"><span class="ticker">2109</span><span class="name">華豐</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">0.5 <small>元</small></td>
+              <td class="close">14.8</td>
+            </tr>
+            <tr class="">
+              <td class="date"></td>
+              <td><span class="name-cell"><span class="ticker">7631</span><span class="name">聚賢研發-創</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">0.8 <small>元</small></td>
+              <td class="close">138.5</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">09/30</td>
+              <td><span class="name-cell"><span class="ticker">8440</span><span class="name">綠電</span><span class="type-pill">息</span><span class="otc">OTC</span></span></td>
+              <td class="amt ">0.35 <small>元</small></td>
+              <td class="close">20.05</td>
+            </tr></tbody></table></div>
+      <div class="table-block"><div class="table-title">1-2 個月內 遠期除權息</div><div class="table-sub">遠期除權息<span class="en">10/23–11/23</span></div><table class="div-table"><thead><tr><th style="width:50px;">日期</th><th>代號 / 名稱</th><th style="text-align:right;">配息 / 配股</th><th style="text-align:right;">昨日收盤價</th></tr></thead><tbody>
+            <tr class="">
+              <td class="date">10/28</td>
+              <td><span class="name-cell"><span class="ticker">4552</span><span class="name">力達-KY</span><span class="type-pill">息</span></span></td>
+              <td class="amt ">0.6 <small>元</small></td>
+              <td class="close">15.9</td>
+            </tr>
+            <tr class="day-break">
+              <td class="date">11/05</td>
+              <td><span class="name-cell"><span class="ticker">5523</span><span class="name">豐謙</span><span class="type-pill">息</span><span class="otc">OTC</span></span></td>
+              <td class="amt ">0.5 <small>元</small></td>
+              <td class="close">30.35</td>
+            </tr></tbody></table><div class="table-note"><div><b>資料來源 ·</b> TWSE / TPEx OpenAPI；昨日收盤價使用官方最近收盤資料，不可得則顯示 —。</div></div></div>
+    </div>
+  </section>
+</div>
+
+<div class="container"><footer class="footer"><div class="end-mark">END OF BRIEF</div><div class="source">資料：TWSE · TAIFEX · TPEx · 各新聞來源與人物原文</div><div class="colophon">2026/09/23 · 台股早報</div></footer></div>
+</body>
+</html>
