@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-09-21T11:02:50Z",
-    "sourceCount": 509,
-    "includedCount": 501
+    "updatedAt": "2026-09-22T11:01:15Z",
+    "sourceCount": 512,
+    "includedCount": 504
   },
   "words": [
+    {
+      "word": "call",
+      "meaning": "打電話給；呼叫",
+      "example": "Mia called her dad after school.",
+      "translation": "米亞放學後打電話給爸爸。",
+      "firstSeen": "2026-09-22",
+      "pos": [
+        "v",
+        "n"
+      ]
+    },
+    {
+      "word": "grow",
+      "meaning": "成長；種植",
+      "example": "The plants grew quickly after the rain.",
+      "translation": "下過雨後，植物長得很快。",
+      "firstSeen": "2026-09-22",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "night",
+      "meaning": "夜晚；晚上",
+      "example": "We saw many stars at night.",
+      "translation": "我們在晚上看見好多星星。",
+      "firstSeen": "2026-09-22",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "shoulder",
       "meaning": "肩膀",
