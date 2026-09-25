@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-09-24T11:00:47Z",
-    "sourceCount": 518,
-    "includedCount": 510
+    "updatedAt": "2026-09-25T11:01:05Z",
+    "sourceCount": 521,
+    "includedCount": 513
   },
   "words": [
+    {
+      "word": "letter",
+      "meaning": "信；字母",
+      "example": "Mia wrote a letter to her grandma yesterday.",
+      "translation": "米亞昨天寫了一封信給奶奶。",
+      "firstSeen": "2026-09-25",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "stand",
+      "meaning": "站立；站著",
+      "example": "Ben stood near the door after class.",
+      "translation": "班下課後站在門邊。",
+      "firstSeen": "2026-09-25",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "seriously",
+      "meaning": "認真地；嚴肅地",
+      "example": "Mia listened seriously to the teacher.",
+      "translation": "米亞很認真地聽老師說話。",
+      "firstSeen": "2026-09-25",
+      "pos": [
+        "adv"
+      ]
+    },
     {
       "word": "create",
       "meaning": "創造；建立",
