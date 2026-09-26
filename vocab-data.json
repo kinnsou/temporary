@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-09-25T11:01:05Z",
-    "sourceCount": 521,
-    "includedCount": 513
+    "updatedAt": "2026-09-26T11:01:01Z",
+    "sourceCount": 524,
+    "includedCount": 516
   },
   "words": [
+    {
+      "word": "beach",
+      "meaning": "海灘；海邊",
+      "example": "We played on the beach after lunch.",
+      "translation": "午餐後，我們在海灘上玩。",
+      "firstSeen": "2026-09-26",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "month",
+      "meaning": "月份；一個月",
+      "example": "There are twelve months in a year.",
+      "translation": "一年有十二個月。",
+      "firstSeen": "2026-09-26",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "narrow",
+      "meaning": "狹窄的；窄的",
+      "example": "The path is narrow, so we walk slowly.",
+      "translation": "這條小路很窄，所以我們慢慢走。",
+      "firstSeen": "2026-09-26",
+      "pos": [
+        "adj"
+      ]
+    },
     {
       "word": "letter",
       "meaning": "信；字母",
