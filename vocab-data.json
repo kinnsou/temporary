@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-09-26T11:01:01Z",
-    "sourceCount": 524,
-    "includedCount": 516
+    "updatedAt": "2026-09-27T11:00:54Z",
+    "sourceCount": 527,
+    "includedCount": 519
   },
   "words": [
+    {
+      "word": "throw",
+      "meaning": "丟；投擲",
+      "example": "Mia threw the ball to her brother yesterday.",
+      "translation": "米亞昨天把球丟給她的哥哥。",
+      "firstSeen": "2026-09-27",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "old",
+      "meaning": "老的；舊的",
+      "example": "My grandfather has an old bicycle.",
+      "translation": "我爺爺有一輛舊腳踏車。",
+      "firstSeen": "2026-09-27",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "sock",
+      "meaning": "襪子",
+      "example": "I put on clean socks before school.",
+      "translation": "我上學前穿上乾淨的襪子。",
+      "firstSeen": "2026-09-27",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "beach",
       "meaning": "海灘；海邊",
