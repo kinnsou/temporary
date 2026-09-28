@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-09-27T11:00:54Z",
-    "sourceCount": 527,
-    "includedCount": 519
+    "updatedAt": "2026-09-28T11:01:23Z",
+    "sourceCount": 530,
+    "includedCount": 522
   },
   "words": [
+    {
+      "word": "main",
+      "meaning": "主要的；最重要的",
+      "example": "The main road is busy in the morning.",
+      "translation": "這條主要道路早上很忙碌。",
+      "firstSeen": "2026-09-28",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "line",
+      "meaning": "線；一行",
+      "example": "My name is on the first line.",
+      "translation": "我的名字在第一行。",
+      "firstSeen": "2026-09-28",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "courage",
+      "meaning": "勇氣",
+      "example": "She had the courage to speak in front of the class.",
+      "translation": "她有勇氣在全班面前說話。",
+      "firstSeen": "2026-09-28",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "throw",
       "meaning": "丟；投擲",
