@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-09-28T11:01:23Z",
-    "sourceCount": 530,
-    "includedCount": 522
+    "updatedAt": "2026-09-29T11:01:19Z",
+    "sourceCount": 533,
+    "includedCount": 525
   },
   "words": [
+    {
+      "word": "sadly",
+      "meaning": "遺憾地；難過地",
+      "example": "Sadly, Mia missed the bus this morning.",
+      "translation": "很遺憾地，米亞今天早上錯過公車。",
+      "firstSeen": "2026-09-29",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "raise",
+      "meaning": "舉起；提高",
+      "example": "Ben raised his hand before he answered the question.",
+      "translation": "班回答問題前舉起了手。",
+      "firstSeen": "2026-09-29",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "tall",
+      "meaning": "高的",
+      "example": "The tall boy can reach the top shelf.",
+      "translation": "那個高個子男孩拿得到最上層的架子。",
+      "firstSeen": "2026-09-29",
+      "pos": [
+        "adj"
+      ]
+    },
     {
       "word": "main",
       "meaning": "主要的；最重要的",
