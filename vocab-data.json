@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-09-29T11:01:19Z",
-    "sourceCount": 533,
-    "includedCount": 525
+    "updatedAt": "2026-09-30T11:01:25Z",
+    "sourceCount": 536,
+    "includedCount": 528
   },
   "words": [
+    {
+      "word": "girlfriend",
+      "meaning": "女朋友",
+      "example": "My girlfriend studies English after dinner.",
+      "translation": "我的女朋友晚餐後讀英文。",
+      "firstSeen": "2026-09-30",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "design",
+      "meaning": "設計；設計圖案",
+      "example": "Mia designed a poster for the school fair yesterday.",
+      "translation": "米亞昨天為學校園遊會設計了一張海報。",
+      "firstSeen": "2026-09-30",
+      "pos": [
+        "n",
+        "v"
+      ]
+    },
+    {
+      "word": "gate",
+      "meaning": "大門；柵門",
+      "example": "We waited at the school gate before class.",
+      "translation": "上課前，我們在校門口等候。",
+      "firstSeen": "2026-09-30",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "sadly",
       "meaning": "遺憾地；難過地",
