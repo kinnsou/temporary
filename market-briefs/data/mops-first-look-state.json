@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-01T07:10:00+08:00",
+  "updated_at": "2026-10-02T07:10:00+08:00",
   "rows": [
     {
       "market": "MOPS",
@@ -115,52 +115,6 @@
       "last_close_date": "",
       "mops_rechecked_on": "2026-10-01",
       "amount_pending": "true"
-    },
-    {
-      "market": "MOPS",
-      "date": "2026-10-19",
-      "code": "2071",
-      "name": "震南鐵",
-      "event": "息",
-      "cash_dividend": "1.2",
-      "stock_dividend_ratio": "未公告",
-      "subscription_ratio": "未公告",
-      "subscription_price": "未公告",
-      "stock_holding_ratio": "未公告",
-      "source": "MOPS",
-      "source_url": "https://mops.twse.com.tw/mops/web/t05st02",
-      "source_title": "公告本公司除息基準日相關事宜",
-      "announcement_date": "115/09/30",
-      "announcement_time": "15:11:27",
-      "announcement_at": "2026-09-30T15:11:27+08:00",
-      "fetched_at": "2026-10-01T07:10:00+08:00",
-      "last_close": "—",
-      "last_close_date": "",
-      "amount_pending": "false",
-      "amount_completed_on": "2026-10-01"
-    },
-    {
-      "market": "MOPS",
-      "date": "2026-10-20",
-      "code": "4155",
-      "name": "訊映",
-      "event": "息",
-      "cash_dividend": "0.3",
-      "stock_dividend_ratio": "未公告",
-      "subscription_ratio": "未公告",
-      "subscription_price": "未公告",
-      "stock_holding_ratio": "未公告",
-      "source": "MOPS",
-      "source_url": "https://mops.twse.com.tw/mops/web/t05st02",
-      "source_title": "本公司董事會授權董事長訂定現金股利除息基準日及發放日 等相關事宜",
-      "announcement_date": "115/09/30",
-      "announcement_time": "17:18:53",
-      "announcement_at": "2026-09-30T17:18:53+08:00",
-      "fetched_at": "2026-10-01T07:10:00+08:00",
-      "last_close": "14.65",
-      "last_close_date": "2026-09-30",
-      "amount_pending": "false",
-      "amount_completed_on": "2026-10-01"
     }
   ]
 }
