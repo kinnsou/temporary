@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-09-30T11:01:25Z",
-    "sourceCount": 536,
-    "includedCount": 528
+    "updatedAt": "2026-10-01T11:00:56Z",
+    "sourceCount": 539,
+    "includedCount": 531
   },
   "words": [
+    {
+      "word": "wall",
+      "meaning": "牆；牆壁",
+      "example": "There is a clock on the wall.",
+      "translation": "牆上有一個時鐘。",
+      "firstSeen": "2026-10-01",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "not",
+      "meaning": "不；不是",
+      "example": "Mia is not tired today.",
+      "translation": "米亞今天不累。",
+      "firstSeen": "2026-10-01",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "star",
+      "meaning": "星星；明星",
+      "example": "I can see a bright star in the sky.",
+      "translation": "我看得到天空中一顆明亮的星星。",
+      "firstSeen": "2026-10-01",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "girlfriend",
       "meaning": "女朋友",
