@@ -110,6 +110,7 @@ ignore judge light manage matter measure mention own pick point press pretend pr
 reduce refuse regret rely remove request require respect roll rub separate solve sound suffer suggest
 suppose support switch tend tire translate treat view vote weigh welcome whisper wrap lock bake kiss hug
 jog skip chat shop step trip tap beg rob plan stop drop
+book reserve interrupt hike camp apologize schedule submit
 `;
   const DOUBLING = new Set(['stop', 'plan', 'drop', 'shop', 'chat', 'hug', 'jog', 'skip', 'step', 'trip', 'tap', 'beg', 'rob', 'travel', 'cancel']);
   // 英式雙寫 → 這裡統一用美式（travel→traveled、cancel→canceled），normalize 會把英式拼法轉成美式

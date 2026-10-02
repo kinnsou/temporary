@@ -161,7 +161,7 @@
     const pat = content.patternById[pid];
     if (!pat) { a.go('#/admin'); return h('div'); }
     const root = h('div');
-    UI.add(root, back('#/admin', '教材管理'), title(pat.label, 'P' + String(pat.order).padStart(2, '0') + ' · ' + pat.title + (isSeedPattern(pid) ? '' : '（自訂）')));
+    UI.add(root, back('#/admin', '教材管理'), title(pat.label, pat.id + ' · ' + pat.title + (isSeedPattern(pid) ? '' : '（自訂）')));
 
     // ----- 基本資料 -----
     const d = { mother: pat.mother, zh: pat.zh, template: pat.template, explain: pat.explain, title: pat.title, label: pat.label, short: pat.short, order: pat.order, active: pat.active !== false,
@@ -251,8 +251,12 @@
   /* ------------------------------------------------------------------ 新增句型 */
   function newPatternScreen() {
     const a = A(), content = a.content;
+    /* 自訂句型用 U01、U02…編號、排在所有內建句型之後（內建教材會一章一章增加，不能和自訂的撞號） */
     const maxOrder = Math.max.apply(null, content.allPatterns.map((p) => p.order));
-    const id = 'P' + String(maxOrder + 1).padStart(2, '0');
+    const order = Math.max(1000, maxOrder + 1);
+    let un = content.allPatterns.filter((p) => p.source === 'user').length + 1;
+    while (content.patternById['U' + String(un).padStart(2, '0')]) un++;
+    const id = 'U' + String(un).padStart(2, '0');
     const d = { mother: '', zh: '', template: '', explain: '', title: '', short: '' };
     const issues = h('div');
     const root = h('div');
@@ -270,7 +274,7 @@
           ['mother', 'zh', 'template', 'title', 'short'].forEach((k) => { if (!d[k].trim()) errs.push('「' + ({ mother: '母句', zh: '中文翻譯', template: '句型模板', title: '主題名稱', short: '短名稱' })[k] + '」不能是空的'); });
           if (errs.length) { UI.clear(issues); errs.forEach((e) => issues.append(h('div', { class: 'banner' }, e))); return; }
           const ov = Store.loadOverlay();
-          ov.newPatterns.push({ id, order: maxOrder + 1, title: d.title.trim(), label: d.short.trim().replace(/\s*…?\s*$/, '…'), short: d.short.trim(), mother: d.mother.trim(), zh: d.zh.trim(), template: d.template.trim(), explain: d.explain.trim(), active: true, source: 'user' });
+          ov.newPatterns.push({ id, order, title: d.title.trim(), label: d.short.trim().replace(/\s*…?\s*$/, '…'), short: d.short.trim(), mother: d.mother.trim(), zh: d.zh.trim(), template: d.template.trim(), explain: d.explain.trim(), active: true, source: 'user' });
           commit(ov); UI.toast('已新增 ' + id); a.go('#/admin/p/' + id);
         } }, '新增')));
     return root;

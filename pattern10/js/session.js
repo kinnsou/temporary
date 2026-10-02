@@ -309,14 +309,27 @@
 
   /* ------------------------------------------------------------------ 能力檢測（Probe）
    * 每個句型 1 題「從來沒練過」的保留題，不給即時回饋，也不影響熟練度。
-   * 用來回答最重要的問題：沒背過的新句子，現在答得對嗎？（規格 §40-B、§41） */
+   * 用來回答最重要的問題：沒背過的新句子，現在答得對嗎？（規格 §40-B、§41）
+   * 句型多了以後最多抽 PROBE_MAX 個：已經開始學的句型優先；不夠就用接下來的句型補滿（起點測驗）；超過就依「第幾次檢測」固定抽樣。 */
+  Sess.PROBE_MAX = 10;
+  Sess.probePatterns = function (state, content) {
+    const round = state.probes.length;
+    const cand = content.patterns.filter((pt) => content.byPattern[pt.id].holdout.length);
+    const started = cand.filter((pt) => S.getProgress(state, pt.id).unlocked);
+    let pool = started.slice();
+    for (let i = 0; i < cand.length && pool.length < Sess.PROBE_MAX; i++) if (pool.indexOf(cand[i]) < 0) pool.push(cand[i]);
+    if (pool.length > Sess.PROBE_MAX) {
+      const rng = U.rng('probe:' + round);
+      pool = pool.map((pt) => [rng(), pt]).sort((x, y) => x[0] - y[0]).slice(0, Sess.PROBE_MAX).map((x) => x[1]);
+    }
+    return pool.sort((x, y) => x.order - y.order);
+  };
   Sess.startProbe = function (state, content, now) {
     const round = state.probes.length;
     const queue = [];
     const sess = { id: 'p' + now.toString(36), kind: 'probe', started_at: now, queue, idx: 0, counter: 0, results: [], repairCount: {}, sttRetry: {}, retry: {}, askedEx: [] };
-    content.patterns.forEach((pt) => {
+    Sess.probePatterns(state, content).forEach((pt) => {
       const hold = content.byPattern[pt.id].holdout;
-      if (!hold.length) return;
       const ex = hold[round % hold.length];
       queue.push({ uid: nextUid(sess), type: 'PROBE', pid: pt.id, ex: ex.id, origin: 'probe' });
     });

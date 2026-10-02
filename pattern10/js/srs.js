@@ -170,6 +170,16 @@
     return newly;
   };
 
+  /* 想先學後面的句型：使用者自己決定提早解鎖（不受「前一個要先練到能暗誦」限制）。
+   * 人在場的選擇，不加程式閘；只提醒「同時學太多會互相干擾」。回傳 true＝這次真的解鎖了 */
+  S.manualUnlock = function (state, pid) {
+    const p = S.getProgress(state, pid);
+    if (p.unlocked) return false;
+    p.unlocked = true;
+    p.manual_unlock = true;
+    return true;
+  };
+
   S.learningCount = (state, patterns) => patterns.filter((x) => { const q = state.patterns[x.id]; return q && q.unlocked && q.mastery < 60; }).length;
 
   if (typeof module !== 'undefined' && module.exports) module.exports = P10;

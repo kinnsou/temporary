@@ -7,6 +7,7 @@
   const P10 = (g.P10 = g.P10 || {});
   const V = P10.verbs, E = P10.engine;
 
+  /* 第 2 章（日常開口說）新增的字，接在最後一行 */
   const WORDS = `
 a an the this that these those my your his her its our their me him us them i you he she it we they myself yourself himself herself itself ourselves themselves
 what who which where when why how whose whom some any no not all each every both few many much more most other another such own same only just also very too so than then there here now ever never always usually often sometimes already still yet again once twice
@@ -23,6 +24,9 @@ rather forward used never wish took reason whether
 tv lot plane vegetable rarely far front bookstore price compare moment result decision noodle cash credit elevator battery rent asleep kilogram kilo lock cancel attend oversleep overslept
 away back together anymore either else instead enough early ago alone almost really quite maybe perhaps probably
 email okay everyone everybody someone somebody anyone nobody nothing something anything everything somewhere anywhere nowhere
+pass pen document airport upstairs menu bowl receipt juice package ticket homework
+hike camp marry married wedding daughter son wife husband invitation care interrupt break taxi cab grandma grandmother grandfather grandpa
+supermarket restroom nearby cinema pool company hotel hospital window station table fruit swim swimming
 `;
   const SET = new Set(WORDS.trim().split(/\s+/));
 

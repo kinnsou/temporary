@@ -43,7 +43,7 @@
     WORD_MISSING: '少了字', WORD_ORDER: '字的順序', TENSE: '時態', SUBJECT_VERB: '主詞和動詞配合', ARTICLE: '冠詞（a / the）',
     PREPOSITION: '介系詞', GERUND_INFINITIVE: '動詞形式（原形／-ing）', CONDITIONAL: 'if 條件句', WISH_REALITY: 'wish 要用過去式',
     AUXILIARY: '助動詞', PLURAL: '單複數', PRONOUN: '代名詞', PATTERN_NOT_USED: '沒有用到這個句型', MEANING_CHANGED: '意思改變了',
-    STT_UNCERTAIN: '語音沒聽清楚', OTHER: '其他', WORD_EXTRA: '多了字', CONJUNCTION: '連接詞', SPELLING: '拼字'
+    STT_UNCERTAIN: '語音沒聽清楚', OTHER: '其他', WORD_EXTRA: '多了字', CONJUNCTION: '連接詞', SPELLING: '拼字', COMPARATIVE: '比較級（-er / more … than）'
   };
   /* 不開「回馬槍」的標籤（不是句型本身的問題） */
   E.NON_REPAIRABLE = new Set(['MEANING_CHANGED', 'STT_UNCERTAIN', 'OTHER', 'SPELLING', 'WORD_EXTRA']);
@@ -379,13 +379,13 @@
   /* ------------------------------------------------------------------ 語音容錯（STT） */
   const HOMOPHONES = [['to', 'too', 'two'], ['for', 'four', 'fore'], ['there', 'their', 'theyre'], ['its', 'itis'], ['no', 'know'], ['right', 'write'],
     ['by', 'buy', 'bye'], ['hear', 'here'], ['see', 'sea'], ['week', 'weak'], ['whether', 'weather'], ['which', 'witch'], ['one', 'won'], ['our', 'hour'],
-    ['new', 'knew'], ['would', 'wood'], ['been', 'bean'], ['wait', 'weight'], ['wish', 'which'], ['had', 'ad'], ['lived', 'live'], ['i', 'eye', 'aye']];
+    ['new', 'knew'], ['would', 'wood'], ['been', 'bean'], ['wait', 'weight'], ['wish', 'which'], ['had', 'ad'], ['lived', 'live'], ['i', 'eye', 'aye'], ['than', 'then'], ['thank', 'think'], ['could', 'good'], ['cheap', 'chip']];
   const HOMO = {};
   HOMOPHONES.forEach((grp) => grp.forEach((w) => { HOMO[w] = (HOMO[w] || []).concat(grp); }));
   const isHomo = (a, b) => a === b || (HOMO[a] && HOMO[a].indexOf(b) >= 0);
 
   /* ------------------------------------------------------------------ judge */
-  const PRIORITY = ['WISH_REALITY', 'CONDITIONAL', 'WORD_ORDER', 'TENSE', 'SUBJECT_VERB', 'GERUND_INFINITIVE', 'CONJUNCTION', 'AUXILIARY', 'PREPOSITION',
+  const PRIORITY = ['WISH_REALITY', 'CONDITIONAL', 'COMPARATIVE', 'WORD_ORDER', 'TENSE', 'SUBJECT_VERB', 'GERUND_INFINITIVE', 'CONJUNCTION', 'AUXILIARY', 'PREPOSITION',
     'ARTICLE', 'PLURAL', 'PRONOUN', 'WORD_MISSING', 'WORD_EXTRA', 'MEANING_CHANGED', 'SPELLING', 'PATTERN_NOT_USED', 'OTHER'];
   /* 專屬規則命中某個標籤時，哪些「籠統的逐字差異標籤」就不再重複列出 */
   const SPECIALIZES = {
@@ -397,7 +397,8 @@
     CONJUNCTION: ['AUXILIARY', 'WORD_MISSING', 'WORD_EXTRA', 'SUBJECT_VERB'],
     PREPOSITION: ['WORD_MISSING', 'WORD_EXTRA', 'GERUND_INFINITIVE', 'SUBJECT_VERB'],
     AUXILIARY: ['SUBJECT_VERB', 'TENSE', 'WORD_EXTRA', 'WORD_MISSING'],
-    MEANING_CHANGED: ['AUXILIARY', 'WORD_EXTRA']
+    MEANING_CHANGED: ['AUXILIARY', 'WORD_EXTRA'],
+    COMPARATIVE: ['MEANING_CHANGED', 'WORD_EXTRA', 'WORD_MISSING']
   };
 
   function rulesFor(pattern) {
@@ -412,7 +413,7 @@
   }
 
   function makeCtx(full, target) {
-    return { tokens: full.tokens, str: full.tokens.join(' '), words: full.words, target: target ? target.tokens : null, V };
+    return { tokens: full.tokens, str: full.tokens.join(' '), words: full.words, src: full.src, target: target ? target.tokens : null, V };
   }
 
   function emptyResult(status, extra) {

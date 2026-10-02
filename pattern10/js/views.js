@@ -15,6 +15,24 @@
   const chip = (t, cls) => h('span', { class: 'chip ' + (cls || '') }, t);
   const pageTitle = (t, sub) => h('div', { style: { margin: '4px 4px 18px' } }, h('h1', { class: 'h-page' }, t), sub ? h('p', { class: 'muted mt4' }, sub) : null);
 
+  /* 把句型依「章」分組：內建句型各屬於一章；自己加的句型放最後一組 */
+  function chapterGroups(content) {
+    const groups = [];
+    (P10.chapters || []).forEach((c) => {
+      const ps = content.patterns.filter((p) => p.chapter === c.id);
+      if (ps.length) groups.push({ id: c.id, title: '第 ' + c.id + ' 章　' + c.title, blurb: c.blurb, patterns: ps });
+    });
+    const rest = content.patterns.filter((p) => !p.chapter);
+    if (rest.length) groups.push({ id: 0, title: '我自己加的句型', blurb: '', patterns: rest });
+    return groups;
+  }
+  const numOf = (p) => String(p.id).replace(/^P/, '');
+  const chapHead = (gr) => {
+    const learnedN = gr.patterns.filter((p) => progOf(p.id).lesson_done).length;
+    return [h('div', { class: 'chap-head' }, h('h2', { class: 'h-sec' }, gr.title), h('span', { class: 'tiny' }, learnedN + ' / ' + gr.patterns.length + ' 學過')),
+      gr.blurb ? h('p', { class: 'tiny chap-blurb' }, gr.blurb) : null];
+  };
+
   function startSession(opts) {
     const a = A();
     Sess.start(a.state, a.content, U.now(), opts || {});
@@ -148,7 +166,7 @@
         h('button', { class: 'btn mt16', onclick: () => startSession({ lessonPid: cur.id }) }, inProgress ? '繼續學這個句型' : '開始學這個句型'),
         !inProgress ? h('p', { class: 'tiny mt8' }, '每天的「今日訓練」會自動排一個新句型；想多學也可以現在開始。') : null));
     } else if (pats.every((p) => progOf(p.id).lesson_done)) {
-      UI.add(root, h('div', { class: 'card' }, chip('✓ 10 個句型都學過了', 'good'), h('p', { class: 'mt12' }, '接下來就是每天的複習和變形，讓它們變成反射。')));
+      UI.add(root, h('div', { class: 'card' }, chip('✓ ' + pats.length + ' 個句型都學過了', 'good'), h('p', { class: 'mt12' }, '接下來就是每天的複習和變形，讓它們變成反射。')));
     } else {
       const lockedFirst = pats.find((p) => !progOf(p.id).unlocked);
       UI.add(root, h('div', { class: 'card' }, chip('先把手上的句型練穩', 'amber'), h('p', { class: 'mt12' }, '同時學太多會互相干擾。把「學習中」的句型練到能暗誦，下一個' + (lockedFirst ? '（' + lockedFirst.label + '）' : '') + '就會自動解鎖。')));
@@ -166,8 +184,10 @@
     }
     const locked = pats.filter((p) => !progOf(p.id).unlocked);
     if (locked.length) {
+      const show = locked.slice(0, 3);
       UI.add(root, h('h2', { class: 'h-sec' }, '尚未解鎖'),
-        h('div', { class: 'list' }, locked.map((p) => h('div', { class: 'row locked' }, h('span', { class: 'num' }, String(p.order).padStart(2, '0')), h('div', { class: 'grow' }, h('div', { class: 't' }, p.label), h('div', { class: 's' }, '前一個句型練到「能暗誦」就會解鎖')), UI.icon('lock')))));
+        h('div', { class: 'list' }, show.map((p) => h('a', { class: 'row locked', href: '#/patterns/' + p.id }, h('span', { class: 'num' }, numOf(p)), h('div', { class: 'grow' }, h('div', { class: 't' }, p.label), h('div', { class: 's' }, '前一個句型練到「能暗誦」就會解鎖')), UI.icon('lock')))),
+        h('p', { class: 'tiny mt8', style: { margin: '8px 4px 0' } }, (locked.length > show.length ? '後面還有 ' + (locked.length - show.length) + ' 個句型，依序解鎖。' : '') + '想先學哪一個，到「Patterns」點進去，可以提早解鎖。'));
     }
     return root;
   };
@@ -181,16 +201,20 @@
 
   /* ================================================================== Patterns */
   Views.patterns = function () {
-    const a = A(), content = a.content, now = U.now();
+    const a = A(), content = a.content;
     const root = h('div');
-    UI.add(root, pageTitle('Patterns', '10 個核心句型。點進去看母句、解釋和你的狀況。'));
-    UI.add(root, h('div', { class: 'list' }, content.patterns.map((p) => {
-      const q = progOf(p.id);
-      const body = h('div', { class: 'grow' },
-        h('div', { class: 't' }, p.label),
-        q.unlocked ? UI.masteryBar(q) : h('div', { class: 's' }, '尚未解鎖'));
-      return h('a', { class: 'row' + (q.unlocked ? '' : ' locked'), href: '#/patterns/' + p.id }, h('span', { class: 'num' }, String(p.order).padStart(2, '0')), body, q.unlocked ? UI.icon('chevron') : UI.icon('lock'));
-    })));
+    const groups = chapterGroups(content);
+    UI.add(root, pageTitle('Patterns', content.patterns.length + ' 個句型' + (groups.length > 1 ? '，分成 ' + groups.length + ' 組' : '') + '。點進去看母句、解釋和你的狀況。'));
+    groups.forEach((gr) => {
+      UI.add(root, chapHead(gr));
+      UI.add(root, h('div', { class: 'list' }, gr.patterns.map((p) => {
+        const q = progOf(p.id);
+        const body = h('div', { class: 'grow' },
+          h('div', { class: 't' }, p.label),
+          q.unlocked ? UI.masteryBar(q) : h('div', { class: 's' }, '尚未解鎖'));
+        return h('a', { class: 'row' + (q.unlocked ? '' : ' locked'), href: '#/patterns/' + p.id }, h('span', { class: 'num' }, numOf(p)), body, q.unlocked ? UI.icon('chevron') : UI.icon('lock'));
+      })));
+    });
     return root;
   };
 
@@ -205,7 +229,7 @@
     const root = h('div', { class: 'stack' });
     UI.add(root, h('a', { class: 'link', href: '#/patterns', style: { display: 'inline-flex', alignItems: 'center', gap: '2px', marginLeft: '-6px' } }, UI.icon('back'), 'Patterns'));
     UI.add(root, h('div', { class: 'card' },
-      chip('P' + String(pat.order).padStart(2, '0') + ' · ' + pat.title, 'accent'),
+      chip(pat.id + ' · ' + pat.title, 'accent'),
       h('div', { class: 'sentence mt12' }, pat.mother),
       h('div', { class: 'zh-line' }, pat.zh),
       h('div', { class: 'template' }, pat.template),
@@ -237,7 +261,10 @@
         ? h('button', { class: 'btn', onclick: () => startSession({ onlyPid: pid, size: 8 }) }, '只練這個句型（8 題）')
         : h('button', { class: 'btn', onclick: () => startSession({ lessonPid: pid }) }, q.stage > 0 ? '繼續學這個句型' : '開始學這個句型'));
     } else {
-      UI.add(root, h('div', { class: 'card soft flat' }, h('div', { class: 'row-flex' }, UI.icon('lock'), h('p', { class: 'muted' }, '把前一個句型練到「能暗誦」，這個就會解鎖。'))));
+      UI.add(root, h('div', { class: 'card soft flat' },
+        h('div', { class: 'row-flex' }, UI.icon('lock'), h('p', { class: 'muted' }, '把前一個句型練到「能暗誦」，這個就會解鎖。')),
+        h('p', { class: 'tiny mt8' }, '想先學這個？可以提早解鎖。同時學太多句型會互相干擾，手上的建議先練穩。'),
+        h('button', { class: 'btn secondary mt12', id: 'manual-unlock', onclick: () => { S.manualUnlock(state, pid); a.save(); UI.toast('已解鎖，可以開始學了'); a.render(); } }, '我想先學這個')));
     }
     return root;
   };
@@ -283,12 +310,15 @@
     if (sp) UI.add(root, h('div', { class: 'card flat' }, h('div', { class: 'tiny', style: { fontWeight: 600 } }, '反應時間（答對的母句，由舊到新）'), sp, h('div', { class: 'tiny' }, '線往下走 = 越來越快開口')));
 
     // 句型熟練度
-    UI.add(root, h('h2', { class: 'h-sec' }, '每個句型的熟練度'),
-      h('div', { class: 'list' }, content.patterns.map((p) => {
+    UI.add(root, h('h2', { class: 'h-sec' }, '每個句型的熟練度'));
+    chapterGroups(content).forEach((gr) => {
+      if (chapterGroups(content).length > 1) UI.add(root, h('p', { class: 'tiny chap-sub' }, gr.title));
+      UI.add(root, h('div', { class: 'list' }, gr.patterns.map((p) => {
         const q = progOf(p.id);
         return h('a', { class: 'row' + (q.unlocked ? '' : ' locked'), href: '#/patterns/' + p.id },
           h('div', { class: 'grow' }, h('div', { class: 't' }, p.label), q.unlocked ? UI.masteryBar(q) : h('div', { class: 's' }, '尚未解鎖')), UI.icon('chevron'));
       })));
+    });
 
     // 錯誤
     UI.add(root, h('h2', { class: 'h-sec' }, '錯誤記憶'),
@@ -304,7 +334,7 @@
     const probes = state.probes;
     UI.add(root, h('h2', { class: 'h-sec' }, '能力檢測'),
       h('div', { class: 'card' },
-        h('p', null, '10 題，全部是你沒練過的新句子，不給即時答案。用來看看：練過的句型，能不能用在沒背過的句子上。'),
+        h('p', null, '最多 ' + Sess.PROBE_MAX + ' 題，全部是你沒練過的新句子，不給即時答案。用來看看：練過的句型，能不能用在沒背過的句子上。'),
         probes.length ? h('div', { class: 'mt12' }, probes.slice(-5).reverse().map((p, i) => h('div', { class: 'kv' },
           h('span', { class: 'k' }, '第 ' + (probes.length - i) + ' 次　' + U.fmtDate(p.t)), h('span', { class: 'v' }, p.ok + ' / ' + p.n + (p.avg_rt ? '　· ' + (p.avg_rt / 1000).toFixed(1) + ' 秒' : ''))))) : null,
         h('p', { class: 'tiny mt8' }, probes.length ? '建議每 1～2 週做一次，看分數有沒有往上。' : '建議在開始訓練前先做一次，當作起點。'),
@@ -414,7 +444,7 @@
           h('button', { class: 'btn secondary', onclick: () => importBackup() }, UI.icon('upload'), '匯入備份')),
         h('button', { class: 'btn danger mt12', onclick: () => UI.confirm('清除所有進度？', '會刪掉你的進度、作答紀錄和錯誤記憶，無法復原。建議先匯出備份。教材修改不受影響。', '清除', () => { Store.reset(); a.reload(); }, 'danger') }, '清除所有進度')));
 
-    UI.add(root, h('p', { class: 'tiny center mt24' }, 'Pattern 10 · MVP v0.1 · 方法來自「暗記暗誦」的學習思想；教材為自行編寫。'));
+    UI.add(root, h('p', { class: 'tiny center mt24' }, 'Pattern 10 · v0.2 · 方法來自「暗記暗誦」的學習思想；教材為自行編寫。'));
     return root;
   };
 
@@ -455,7 +485,7 @@
         h('div', { class: 'grow' },
           h('div', { class: 'eyebrow' }, 'Pattern 10'),
           h('h1', { class: 'big' }, '這不是背單字 App。'),
-          h('p', { class: 'muted', style: { fontSize: '19px', lineHeight: 1.7 } }, '你會先把 10 個英文句型練成反射，再學會自己變形。'),
+          h('p', { class: 'muted', style: { fontSize: '19px', lineHeight: 1.7 } }, '你會把一個個英文句型練成反射，再學會自己變形。'),
           h('p', { class: 'muted', style: { fontSize: '16px' } }, '每天約 5 分鐘。每一題都在問：沒看到答案，你說得出來嗎？'),
           h('p', { class: 'tiny' }, '你的進度只存在這台裝置的瀏覽器裡，不會上傳到任何地方。')),
         h('button', { class: 'btn', onclick: step2 }, '開始')]);

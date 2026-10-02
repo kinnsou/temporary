@@ -68,6 +68,10 @@ svg.ic { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-wid
 .eyebrow { font-size: 13px; color: var(--ink-3); letter-spacing: .04em; }
 .h-greet { font-family: var(--font-en); font-size: 30px; line-height: 1.15; font-weight: 600; letter-spacing: -.01em; }
 .h-page { font-size: 26px; font-weight: 700; letter-spacing: -.01em; line-height: 1.25; }
+.chap-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin: 28px 4px 4px; }
+.chap-head .h-sec { margin: 0; }
+.chap-blurb { margin: 0 4px 10px; line-height: 1.5; }
+.chap-sub { margin: 14px 4px 6px; font-weight: 600; }
 .h-sec { font-size: 13px; font-weight: 600; color: var(--ink-3); letter-spacing: .06em; margin: 28px 4px 10px; }
 .muted { color: var(--ink-2); }
 .small { font-size: 14px; }
@@ -136,7 +140,7 @@ svg.ic { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-wid
 .row { display: flex; align-items: center; gap: 14px; padding: 15px 16px; border-bottom: 1px solid var(--line); text-decoration: none; color: inherit; background: none; border-left: 0; border-right: 0; border-top: 0; width: 100%; text-align: left; }
 .row:last-child { border-bottom: 0; }
 a.row:active, button.row:active { background: var(--surface-2); }
-.row .num { font-family: var(--font-en); font-size: 15px; color: var(--ink-3); width: 26px; flex: none; }
+.row .num { font-family: var(--font-en); font-size: 15px; color: var(--ink-3); min-width: 26px; flex: none; }
 .row .t { font-family: var(--font-en); font-size: 19px; font-weight: 600; line-height: 1.25; }
 .row .s { font-size: 13.5px; color: var(--ink-3); margin-top: 1px; }
 .row.locked { opacity: .55; }

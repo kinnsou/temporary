@@ -1,9 +1,9 @@
 /* Pattern 10 — Service Worker：離線可用（先給快取、背景更新）
  * 改了程式之後，把 VERSION 加一，使用者重新整理兩次就會換成新版。 */
-const VERSION = 'p10-v3';
+const VERSION = 'p10-v4';
 const ASSETS = [
   './', 'index.html', 'manifest.webmanifest', 'css/app.css',
-  'js/util.js', 'js/verbs.js', 'js/engine.js', 'js/rules.js', 'js/content.js', 'js/vocab.js', 'js/srs.js', 'js/session.js', 'js/store.js',
+  'js/util.js', 'js/verbs.js', 'js/engine.js', 'js/rules.js', 'js/rules_ch1.js', 'js/rules_ch2.js', 'js/content.js', 'js/content_ch1.js', 'js/content_ch2.js', 'js/vocab.js', 'js/srs.js', 'js/session.js', 'js/store.js',
   'js/stats.js', 'js/speech.js', 'js/ui.js', 'js/runner.js', 'js/views.js', 'js/admin.js', 'js/app.js',
   'icons/icon.svg', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/icon-maskable-512.png'
 ];
