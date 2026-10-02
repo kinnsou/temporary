@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-10-01T11:00:56Z",
-    "sourceCount": 539,
-    "includedCount": 531
+    "updatedAt": "2026-10-02T11:01:21Z",
+    "sourceCount": 542,
+    "includedCount": 534
   },
   "words": [
+    {
+      "word": "people",
+      "meaning": "人們",
+      "example": "Many people are waiting at the bus stop.",
+      "translation": "很多人正在公車站等車。",
+      "firstSeen": "2026-10-02",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "train",
+      "meaning": "火車；訓練",
+      "example": "We train for the race every Saturday.",
+      "translation": "我們每個星期六都為比賽做訓練。",
+      "firstSeen": "2026-10-02",
+      "pos": [
+        "n",
+        "v"
+      ]
+    },
+    {
+      "word": "wet",
+      "meaning": "濕的",
+      "example": "My shoes are wet after the rain.",
+      "translation": "下雨後，我的鞋子濕了。",
+      "firstSeen": "2026-10-02",
+      "pos": [
+        "adj"
+      ]
+    },
     {
       "word": "wall",
       "meaning": "牆；牆壁",
