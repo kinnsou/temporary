@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-10-02T11:01:21Z",
-    "sourceCount": 542,
-    "includedCount": 534
+    "updatedAt": "2026-10-03T11:01:04Z",
+    "sourceCount": 545,
+    "includedCount": 537
   },
   "words": [
+    {
+      "word": "favorite",
+      "meaning": "最喜歡的；最喜愛的人或事物",
+      "example": "Blue is my favorite color.",
+      "translation": "藍色是我最喜歡的顏色。",
+      "firstSeen": "2026-10-03",
+      "pos": [
+        "adj",
+        "n"
+      ]
+    },
+    {
+      "word": "enjoy",
+      "meaning": "喜歡；享受",
+      "example": "I enjoy reading after school every day.",
+      "translation": "我每天放學後都很喜歡看書。",
+      "firstSeen": "2026-10-03",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "pass",
+      "meaning": "通過；經過；傳遞",
+      "example": "Mia passed the English test yesterday.",
+      "translation": "米亞昨天通過了英文考試。",
+      "firstSeen": "2026-10-03",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "people",
       "meaning": "人們",
