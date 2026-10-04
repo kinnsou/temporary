@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-10-03T11:01:04Z",
-    "sourceCount": 545,
-    "includedCount": 537
+    "updatedAt": "2026-10-04T11:00:53Z",
+    "sourceCount": 548,
+    "includedCount": 540
   },
   "words": [
+    {
+      "word": "again",
+      "meaning": "再一次；又",
+      "example": "Please read the sentence again.",
+      "translation": "請再讀一次這個句子。",
+      "firstSeen": "2026-10-04",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "home",
+      "meaning": "家；回家；在家",
+      "example": "We go home after school every day.",
+      "translation": "我們每天放學後回家。",
+      "firstSeen": "2026-10-04",
+      "pos": [
+        "n",
+        "adv"
+      ]
+    },
+    {
+      "word": "rose",
+      "meaning": "玫瑰；玫瑰花",
+      "example": "There is a red rose in the garden.",
+      "translation": "花園裡有一朵紅玫瑰。",
+      "firstSeen": "2026-10-04",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "favorite",
       "meaning": "最喜歡的；最喜愛的人或事物",
