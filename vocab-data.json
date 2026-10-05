@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-10-04T11:00:53Z",
-    "sourceCount": 548,
-    "includedCount": 540
+    "updatedAt": "2026-10-05T11:01:20Z",
+    "sourceCount": 551,
+    "includedCount": 543
   },
   "words": [
+    {
+      "word": "miss",
+      "meaning": "想念；錯過",
+      "example": "Mia missed the school bus yesterday.",
+      "translation": "米亞昨天錯過了校車。",
+      "firstSeen": "2026-10-05",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "future",
+      "meaning": "未來；將來",
+      "example": "I want to be a teacher in the future.",
+      "translation": "我將來想當老師。",
+      "firstSeen": "2026-10-05",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "oil",
+      "meaning": "油；石油",
+      "example": "Dad put some oil in the pan.",
+      "translation": "爸爸在平底鍋裡放了一些油。",
+      "firstSeen": "2026-10-05",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "again",
       "meaning": "再一次；又",
