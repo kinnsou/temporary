@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-10-05T11:01:20Z",
-    "sourceCount": 551,
-    "includedCount": 543
+    "updatedAt": "2026-10-06T11:00:49Z",
+    "sourceCount": 554,
+    "includedCount": 546
   },
   "words": [
+    {
+      "word": "answer",
+      "meaning": "回答；答案",
+      "example": "Mia answered the question in class yesterday.",
+      "translation": "米亞昨天在課堂上回答了這個問題。",
+      "firstSeen": "2026-10-06",
+      "pos": [
+        "v",
+        "n"
+      ]
+    },
+    {
+      "word": "above",
+      "meaning": "在……上方；高於",
+      "example": "The clock is above the door.",
+      "translation": "時鐘在門的上方。",
+      "firstSeen": "2026-10-06",
+      "pos": [
+        "prep"
+      ]
+    },
+    {
+      "word": "understand",
+      "meaning": "了解；理解",
+      "example": "I understand the story now.",
+      "translation": "我現在看懂這個故事了。",
+      "firstSeen": "2026-10-06",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "miss",
       "meaning": "想念；錯過",
