@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>第18課｜雅各超特的離世</title>
+  <meta name="description" content="從雅各晚年的祝福、預言與離世，看見生命成熟的人如何信靠神、敬拜神並完成神的心意。" />
+  <style>
+    :root {
+      --bg: #f6f1e8;
+      --paper: #fffaf2;
+      --ink: #2f2a25;
+      --muted: #6f6559;
+      --line: #e6d7bf;
+      --gold: #c29045;
+      --gold-deep: #966b2f;
+      --olive: #6f7d55;
+      --rose: #b56a59;
+      --shadow: 0 16px 40px rgba(88, 63, 30, 0.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.9;
+      background:
+        radial-gradient(1000px 480px at 110% -10%, rgba(194, 144, 69, 0.16), transparent 55%),
+        radial-gradient(900px 420px at -10% 100%, rgba(111, 125, 85, 0.16), transparent 55%),
+        var(--bg);
+    }
+    .grain::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.05;
+      background-image: radial-gradient(rgba(68, 48, 24, 0.28) 0.7px, transparent 0.7px);
+      background-size: 4px 4px;
+      z-index: 0;
+    }
+    .wrap { position: relative; z-index: 1; width: min(1020px, 92vw); margin: 28px auto 56px; }
+    .hero { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 28px; padding: clamp(26px, 5vw, 48px); background: linear-gradient(140deg, #fffdf8 0%, #fff5e7 100%); box-shadow: var(--shadow); }
+    .hero::after { content: ""; position: absolute; right: -120px; top: -120px; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(194, 144, 69, 0.28) 0%, rgba(194, 144, 69, 0) 70%); }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; border: 1px solid #ebd6b0; background: #fff7e8; color: var(--gold-deep); font-size: 13px; font-weight: 700; letter-spacing: 0.02em; }
+    h1 { margin: 0 0 12px; font-family: "Noto Serif TC", "PMingLiU", serif; font-size: clamp(34px, 6vw, 58px); line-height: 1.15; color: #2d2419; }
+    .lead { margin: 0; max-width: 66ch; color: var(--muted); font-size: clamp(16px, 2.1vw, 19px); }
+    .hero-actions { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 12px; }
+    .button { display: inline-block; padding: 12px 18px; border-radius: 14px; text-decoration: none; font-weight: 700; transition: transform .18s ease, box-shadow .18s ease; }
+    .button.primary { color: white; background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%); box-shadow: 0 10px 20px rgba(150, 107, 47, 0.28); }
+    .button.secondary { color: var(--ink); background: rgba(255,255,255,0.74); border: 1px solid var(--line); }
+    .button:hover { transform: translateY(-1px); }
+    .intro-grid, .content-grid, .summary-grid { display: grid; gap: 18px; margin-top: 22px; }
+    .intro-grid { grid-template-columns: 1.15fr 0.95fr; }
+    .content-grid { grid-template-columns: 1fr 1fr; }
+    .summary-grid { grid-template-columns: 1fr 1fr; }
+    .card { border: 1px solid var(--line); border-radius: 22px; background: var(--paper); padding: 22px; box-shadow: 0 10px 24px rgba(88, 63, 30, 0.08); }
+    .card h2, .card h3 { margin: 0 0 12px; font-family: "Noto Serif TC", serif; color: #352a1e; line-height: 1.45; }
+    .eyebrow { margin: 0 0 8px; color: var(--gold-deep); font-size: 13px; text-transform: uppercase; letter-spacing: .09em; font-weight: 700; }
+    .section-tag { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 12px; padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 700; color: #fff; }
+    .wednesday { background: linear-gradient(180deg, #6f7d55 0%, #53613e 100%); }
+    .thursday { background: linear-gradient(180deg, #b56a59 0%, #8f4d40 100%); }
+    p { margin: 0 0 14px; }
+    ul, ol { margin: 0; padding-left: 22px; }
+    li + li { margin-top: 8px; }
+    .focus-box { background: linear-gradient(180deg, #fffdf9 0%, #f7efe2 100%); }
+    .scripture { border-left: 4px solid var(--gold); background: #fff3df; border-radius: 12px; padding: 14px 16px; color: #5f4b31; margin-top: 14px; }
+    .prayer { background: #fdf6ee; border: 1px dashed #d4a070; border-radius: 14px; padding: 16px; }
+    .footer-note { margin-top: 22px; text-align: center; color: #8a7a66; font-size: 13px; }
+    @media (max-width: 920px) { .intro-grid, .content-grid, .summary-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 560px) { .wrap { margin-top: 18px; } .hero, .card { border-radius: 18px; } .button { width: 100%; text-align: center; } }
+  </style>
+</head>
+<body class="grain">
+  <main class="wrap">
+    <section class="hero">
+      <div class="badge-row">
+        <span class="badge">📖 主日帶讀</span>
+        <span class="badge">第十八課 · 2026 十月第一週</span>
+        <span class="badge">來源段落：主日</span>
+        <span class="badge">主題：在成熟的生命裡敬拜神</span>
+      </div>
+      <h1>第18課｜雅各超特的離世</h1>
+      <p class="lead">雅各的一生經過許多神的製作；到他離世前，他顯出成熟、清明的靈和對神堅定的信靠。</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#reading">開始閱讀</a>
+        <a class="button secondary" href="#discussion">看主日重點</a>
+      </div>
+    </section>
+
+    <section class="intro-grid" aria-label="overview">
+      <article class="card">
+        <p class="eyebrow">Overview</p>
+        <h2>這一篇在提醒什麼？</h2>
+            <p>雅各在埃及寄居多年，知道埃及不是神子民永遠安息之地。因此，他請約瑟起誓，不要把他葬在埃及，乃要帶他回到列祖安葬之地。雅各扶著杖頭敬拜神，表明他信靠神恩典的手，也相信神必完成祂的應許。</p>
+            <p>雅各晚年雖然身體衰弱，靈裡卻很清楚。他為約瑟的兩個兒子祝福，又向十二個兒子說預言。神藉著雅各得著十二支派作祂的子民，使地上的萬族能因他們得福；這也是神今天在召會身上所要成就的心意。</p>
+      </article>
+
+      <aside class="card focus-box">
+        <p class="eyebrow">Sunday Focus</p>
+        <h2>主日可以先抓三句話</h2>
+        <ul>
+          <li>信靠神的恩典，不把眼光只放在眼前的環境。</li>
+          <li>讓靈保持清明，學習尋求並認識神的心意。</li>
+          <li>接受神生命的製作，成為祂合用的器皿。</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="reading" class="content-grid" aria-label="reading-content">
+      <article class="card">
+        <span class="section-tag wednesday">主日｜正文帶讀</span>
+        <h2>在成熟的生命裡敬拜神</h2>
+            <p>雅各知道自己的日子不多了，就請約瑟答應一件重要的事：不要把他葬在埃及，要把他帶回列祖安葬的地方。這不是雅各輕看埃及，而是他記得神的應許，知道神所賜之地才是神子民該歸向的地方。</p>
+            <p>雅各請約瑟把手放在他大腿底下。大腿是雅各曾被神摸著、使他瘸腿的地方。這提醒我們，雅各不再信靠自己的力量，乃是完全信靠神恩典的手。當約瑟答應後，雅各扶著杖頭敬拜神。</p>
+            <p>後來雅各為約瑟的兩個兒子祝福。他把右手按在次子以法蓮頭上，把左手按在長子瑪拿西頭上。雖然他的眼睛昏花，靈裡卻十分清楚；他知道神要使以法蓮居首位。</p>
+            <p>雅各又告訴家人，埃及只是寄居之地，神必與祂的子民同在，也必領他們回到迦南地。接著，他為十二個兒子說預言，啟示神要藉十二支派完成祂的目的。</p>
+            <p>雅各的安葬滿了尊榮，因為他是在生命成熟中離世。他的一生證明：人經過神的製作，就能從倚靠自己，變成倚靠神；從只顧自己的需要，變成關心神的目的。</p>
+      </article>
+
+      <article class="card">
+        <span class="section-tag thursday">主日｜補充提醒與操練</span>
+        <h2>今天的操練</h2>
+            <p>我們遇到不順利或不明白的事時，可以不急著憑自己想辦法，先轉向主，向祂禱告，求祂帶我們認識祂的心意。</p>
+            <p>身體疲累、心情不穩或環境困難時，仍可操練呼求主名、讀一節經文、向主說真實的話，使我們的靈再次得著復興。</p>
+            <p>神不只要我們作好人，更要我們接受祂生命的變化。當我們願意順服主、愛召會、顧到神的家，就能漸漸成為祂合用的器皿。</p>
+        <div class="scripture"><strong>可帶的一句提醒</strong><br />眼睛雖會昏花，靈卻能因著親近神而清明。</div>
+      </article>
+    </section>
+
+    <section id="discussion" class="summary-grid" aria-label="discussion-guide">
+      <article class="card focus-box">
+        <p class="eyebrow">Lead the Group</p>
+        <h3>這篇可以帶出的三件事</h3>
+        <ol>
+          <li>神的應許比眼前的環境更可靠。</li>
+          <li>生命成熟的人學會信靠神並敬拜神。</li>
+          <li>神要得著祂的子民與召會，完成祂祝福人的目的。</li>
+        </ol>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Discussion</p>
+        <h3>可直接帶的三個問題</h3>
+        <ul>
+          <li>雅各為甚麼不要葬在埃及？這給你甚麼提醒？</li>
+          <li>雅各眼睛昏花，靈裡卻清楚，這說出他有甚麼樣的光景？</li>
+          <li>你可以如何在每天的生活中操練靈，更多尋求神的心意？</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="summary-grid" aria-label="verse-prayer">
+      <article class="card">
+        <p class="eyebrow">Verse</p>
+        <h3>今天的經文</h3>
+        <div class="scripture">雅各因著信，臨死的時候，給約瑟的兩個兒子各自祝福，並且扶著杖頭敬拜神。<br />希伯來書十一章21節</div>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Prayer</p>
+        <h3>一起禱告</h3>
+        <div class="prayer">主耶穌，謝謝你一直在我們身上作生命的工作。求你使我們不只看見眼前的事，也能相信你的應許，信靠你恩典的手。<br /><br />主，求你使我們的靈常常清明、向你敞開。願我們更多經歷你，接受你的變化，成為你在召會中合用的器皿，完成你的心意。</div>
+      </article>
+    </section>
+
+    <p class="footer-note">聖經之旅 第一冊 · 第十八課 · 202610w1</p>
+  </main>
+</body>
+</html>
