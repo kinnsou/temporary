@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-10-06T11:00:49Z",
-    "sourceCount": 554,
-    "includedCount": 546
+    "updatedAt": "2026-10-07T11:00:58Z",
+    "sourceCount": 557,
+    "includedCount": 549
   },
   "words": [
+    {
+      "word": "keep",
+      "meaning": "保留；保持",
+      "example": "I keep my room clean every day.",
+      "translation": "我每天都讓房間保持乾淨。",
+      "firstSeen": "2026-10-07",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "weather",
+      "meaning": "天氣",
+      "example": "The weather is warm and sunny today.",
+      "translation": "今天天氣溫暖，陽光普照。",
+      "firstSeen": "2026-10-07",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "camp",
+      "meaning": "露營；營地",
+      "example": "We camp by the lake every summer.",
+      "translation": "我們每年夏天都在湖邊露營。",
+      "firstSeen": "2026-10-07",
+      "pos": [
+        "v",
+        "n"
+      ]
+    },
     {
       "word": "answer",
       "meaning": "回答；答案",
