@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-10-07T11:00:58Z",
-    "sourceCount": 557,
-    "includedCount": 549
+    "updatedAt": "2026-10-08T11:00:53Z",
+    "sourceCount": 560,
+    "includedCount": 552
   },
   "words": [
+    {
+      "word": "test",
+      "meaning": "測試；考試",
+      "example": "We test the new game after school every Friday.",
+      "translation": "我們每週五放學後都會測試這款新遊戲。",
+      "firstSeen": "2026-10-08",
+      "pos": [
+        "v",
+        "n"
+      ]
+    },
+    {
+      "word": "gently",
+      "meaning": "輕輕地；溫柔地",
+      "example": "She gently holds the baby.",
+      "translation": "她輕輕地抱著寶寶。",
+      "firstSeen": "2026-10-08",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "dog",
+      "meaning": "狗",
+      "example": "My dog likes to play in the park.",
+      "translation": "我的狗喜歡在公園裡玩。",
+      "firstSeen": "2026-10-08",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "keep",
       "meaning": "保留；保持",
