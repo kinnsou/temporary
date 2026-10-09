@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-10-08T11:00:53Z",
-    "sourceCount": 560,
-    "includedCount": 552
+    "updatedAt": "2026-10-09T11:00:47Z",
+    "sourceCount": 563,
+    "includedCount": 555
   },
   "words": [
+    {
+      "word": "hear",
+      "meaning": "聽見；聽到",
+      "example": "Mia heard a bird outside her window this morning.",
+      "translation": "米亞今天早上聽見窗外有鳥叫聲。",
+      "firstSeen": "2026-10-09",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "foreigner",
+      "meaning": "外國人",
+      "example": "The foreigner asks for directions to the station.",
+      "translation": "那位外國人詢問去車站的路。",
+      "firstSeen": "2026-10-09",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "tail",
+      "meaning": "尾巴",
+      "example": "The dog has a long tail.",
+      "translation": "那隻狗有一條長尾巴。",
+      "firstSeen": "2026-10-09",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "test",
       "meaning": "測試；考試",
