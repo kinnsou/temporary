@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-10-09T11:00:47Z",
-    "sourceCount": 563,
-    "includedCount": 555
+    "updatedAt": "2026-10-10T11:01:40Z",
+    "sourceCount": 566,
+    "includedCount": 558
   },
   "words": [
+    {
+      "word": "long",
+      "meaning": "長的",
+      "example": "The long line moves slowly.",
+      "translation": "排得很長的隊伍慢慢前進。",
+      "firstSeen": "2026-10-10",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "fat",
+      "meaning": "胖的；肥的",
+      "example": "The fat cat sleeps on the sofa.",
+      "translation": "那隻胖貓在沙發上睡覺。",
+      "firstSeen": "2026-10-10",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "push",
+      "meaning": "推",
+      "example": "Mia pushed the door open yesterday.",
+      "translation": "米亞昨天把門推開了。",
+      "firstSeen": "2026-10-10",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "hear",
       "meaning": "聽見；聽到",
