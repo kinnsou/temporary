@@ -1,10 +1,42 @@
 {
   "meta": {
-    "updatedAt": "2026-10-10T11:01:40Z",
-    "sourceCount": 566,
-    "includedCount": 558
+    "updatedAt": "2026-10-11T11:00:32Z",
+    "sourceCount": 569,
+    "includedCount": 561
   },
   "words": [
+    {
+      "word": "exercise",
+      "meaning": "運動；練習",
+      "example": "I exercise with my sister after school.",
+      "translation": "我放學後和姊姊一起運動。",
+      "firstSeen": "2026-10-11",
+      "pos": [
+        "n",
+        "v"
+      ]
+    },
+    {
+      "word": "plant",
+      "meaning": "植物；種植",
+      "example": "Mia plants flowers in the garden.",
+      "translation": "米亞在花園裡種花。",
+      "firstSeen": "2026-10-11",
+      "pos": [
+        "n",
+        "v"
+      ]
+    },
+    {
+      "word": "hard",
+      "meaning": "困難的；硬的",
+      "example": "This math problem is hard.",
+      "translation": "這題數學題很難。",
+      "firstSeen": "2026-10-11",
+      "pos": [
+        "adj"
+      ]
+    },
     {
       "word": "long",
       "meaning": "長的",
