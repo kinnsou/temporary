@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-10-11T11:00:32Z",
-    "sourceCount": 569,
-    "includedCount": 561
+    "updatedAt": "2026-10-12T11:00:59Z",
+    "sourceCount": 572,
+    "includedCount": 564
   },
   "words": [
+    {
+      "word": "deep",
+      "meaning": "深的",
+      "example": "The water in this lake is deep.",
+      "translation": "這座湖的水很深。",
+      "firstSeen": "2026-10-12",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "often",
+      "meaning": "經常；常常",
+      "example": "I often read books after dinner.",
+      "translation": "我常常在晚餐後看書。",
+      "firstSeen": "2026-10-12",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "need",
+      "meaning": "需要",
+      "example": "Mia needed a pencil for the test yesterday.",
+      "translation": "米亞昨天考試時需要一支鉛筆。",
+      "firstSeen": "2026-10-12",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "exercise",
       "meaning": "運動；練習",
