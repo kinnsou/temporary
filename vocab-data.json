@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-10-12T11:00:59Z",
-    "sourceCount": 572,
-    "includedCount": 564
+    "updatedAt": "2026-10-13T11:00:49Z",
+    "sourceCount": 575,
+    "includedCount": 567
   },
   "words": [
+    {
+      "word": "scared",
+      "meaning": "害怕的；受驚的",
+      "example": "Mia was scared of the loud noise last night.",
+      "translation": "米亞昨晚被巨大的聲響嚇到了。",
+      "firstSeen": "2026-10-13",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "evening",
+      "meaning": "傍晚；晚上",
+      "example": "We eat dinner together every evening.",
+      "translation": "我們每天晚上一起吃晚餐。",
+      "firstSeen": "2026-10-13",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "shop",
+      "meaning": "商店；購物",
+      "example": "I shop with my mom every Saturday.",
+      "translation": "我每個星期六都和媽媽一起購物。",
+      "firstSeen": "2026-10-13",
+      "pos": [
+        "n",
+        "v"
+      ]
+    },
     {
       "word": "deep",
       "meaning": "深的",
