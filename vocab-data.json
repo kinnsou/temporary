@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-10-13T11:00:49Z",
-    "sourceCount": 575,
-    "includedCount": 567
+    "updatedAt": "2026-10-14T11:00:52Z",
+    "sourceCount": 578,
+    "includedCount": 570
   },
   "words": [
+    {
+      "word": "member",
+      "meaning": "成員；會員",
+      "example": "Mia is a member of the school band.",
+      "translation": "米亞是學校樂團的成員。",
+      "firstSeen": "2026-10-14",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "modern",
+      "meaning": "現代的",
+      "example": "This modern library has many computers.",
+      "translation": "這座現代化的圖書館有很多電腦。",
+      "firstSeen": "2026-10-14",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "milk",
+      "meaning": "牛奶",
+      "example": "I drink milk every morning.",
+      "translation": "我每天早上喝牛奶。",
+      "firstSeen": "2026-10-14",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "scared",
       "meaning": "害怕的；受驚的",
