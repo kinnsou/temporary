@@ -4,9 +4,9 @@
 - 每日 19:00，Asia/Taipei，下一個日曆日，不自動跳到下一個上課日。
 - 來源：https://sites.google.com/view/xinglong501/電子聯絡本
 - 目標：LINE SWEET HOME，`C9f96037238840fdea144e4be8676d63e`（已用群組 session 名稱及 directory ID 核對）。
-- Automation：`c905360d-6ba8-43bd-bfb5-7b8ee4be6e63`；agentTurn payload，工具僅 exec/message；無 Windows 桌面／X 登入依賴。
+- Automation：`c905360d-6ba8-43bd-bfb5-7b8ee4be6e63`；headless script payload，工具僅 exec/process/message；不啟動模型，無 Windows 桌面／X 登入依賴。
 - 設定：`memory/contact-book-task.json`；紀錄：`memory/contact-book-state.json`。
-- 提示詞：`prompts/contact-book-cron-prompt.txt`。執行腳本只擷取並鎖定，發送由原生 message 工具執行，不用 CLI 或直接 LINE API。
+- 排程程式：`scripts/contact_book_automation.js`。Python 腳本擷取並鎖定，headless JavaScript 直接把完整 media 值交給原生 message 工具；不經模型文字，不用 CLI 或直接 LINE API 外發。舊 `prompts/contact-book-cron-prompt.txt` 已停用。
 
 ## 日期與發送
 
@@ -26,6 +26,14 @@ python3 scripts/contact_book_daily.py --dry-run --date 2026-10-08 --preview /tmp
 ```
 
 更動後至少驗證：正確日期、舊圖、錯誤星期/年份、多日期歧義、作業內日期、跨年，以及成功/中斷後重跑防重複。2026-10-14 設定時 13 項檢查通過；原圖實際抓取與 CLI LINE dry-run 通過，沒有向家庭群測試發送。10/15 當時尚未發布（星期四仍是 10/8）。
+
+### 臨時網址與排程測試
+
+2026-10-14 19:00 實際任務已抓到 10/15，但 agentTurn 收到的匯出網址遭工具文字輸出遮蔽，因此沒有呼叫圖片發送並標記 delivery_unknown。不要修改、停用遮蔽規則，也不要讓模型猜測或重建網址。改用 headless 程式內的 exec 回傳值直接交給原生 message，模型與排程 state 僅接觸日期、狀態、回執。
+
+同一正式 JavaScript 只替換 `DIAGNOSTIC_DATE` 成已存在日期，在停用的診斷 automation `dae6859a-0120-40f7-bd74-f5444c3fc3e9` 執行：Python 使用 `--dry-run --wire-output --date YYYY-MM-DD` 不建立 claim；message 使用 dryRun=true 不外發。2026-10-15 已在真實排程環境驗證 `native_send_dry_run_passed`、完整 PNG 網址、固定群組、外發 0 則；另 5 項原生回執/去重/錯群/慢程序測試通過。
+
+正式程式 `DIAGNOSTIC_DATE=null`，每日只在 19:00～19:19 準備明日圖，並在原生 sent 回執後落盤。失敗由 scheduler 通知 Mark 的 Telegram（首次失敗即通知，冷卻 24 小時）；沒有新版仍安靜跳過。完整 dry-run 與非時段主排程測試不等於今晚已實際投遞。
 
 另依 Mark 指示暫停兩個第一冊經文排程：`61249a29-bd03-4c70-bf1e-0b6fd0c0ce39`（製作）及 `72d8819a-1eda-49bb-b354-f7b7765d8f3d`（發連結）。第一冊 18 課已完成，未授權改接第二冊。
 
