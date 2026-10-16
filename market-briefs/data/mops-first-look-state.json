@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-16T07:10:00+08:00",
+  "updated_at": "2026-10-17T07:10:00+08:00",
   "rows": [
     {
       "market": "MOPS",
@@ -72,29 +72,6 @@
     },
     {
       "market": "MOPS",
-      "date": "2026-10-16",
-      "code": "7909",
-      "name": "鈺祥",
-      "event": "息",
-      "cash_dividend": "未公告",
-      "stock_dividend_ratio": "未公告",
-      "subscription_ratio": "未公告",
-      "subscription_price": "未公告",
-      "stock_holding_ratio": "未公告",
-      "source": "MOPS",
-      "source_url": "https://mops.twse.com.tw/mops/web/t05st02",
-      "source_title": "公告本公司董事長訂定除息基準日相關事宜",
-      "announcement_date": "115/09/29",
-      "announcement_time": "18:42:39",
-      "announcement_at": "2026-09-29T18:42:39+08:00",
-      "fetched_at": "2026-10-01T07:10:00+08:00",
-      "last_close": "—",
-      "last_close_date": "",
-      "mops_rechecked_on": "2026-10-01",
-      "amount_pending": "true"
-    },
-    {
-      "market": "MOPS",
       "date": "2026-10-21",
       "code": "7798",
       "name": "將捷",
@@ -115,29 +92,6 @@
       "last_close_date": "",
       "mops_rechecked_on": "2026-10-15",
       "amount_pending": "true"
-    },
-    {
-      "market": "MOPS",
-      "date": "2026-11-02",
-      "code": "6165",
-      "name": "浪凡",
-      "event": "息",
-      "cash_dividend": "5",
-      "stock_dividend_ratio": "未公告",
-      "subscription_ratio": "未公告",
-      "subscription_price": "未公告",
-      "stock_holding_ratio": "未公告",
-      "source": "MOPS",
-      "source_url": "https://mops.twse.com.tw/mops/web/t05st02",
-      "source_title": "公告本公司訂定除息基準日",
-      "announcement_date": "115/10/15",
-      "announcement_time": "14:28:54",
-      "announcement_at": "2026-10-15T14:28:54+08:00",
-      "fetched_at": "2026-10-16T07:10:00+08:00",
-      "last_close": "47.05",
-      "last_close_date": "2026-10-15",
-      "amount_pending": "false",
-      "amount_completed_on": "2026-10-16"
     }
   ]
 }
