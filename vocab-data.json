@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-10-14T11:00:52Z",
-    "sourceCount": 578,
-    "includedCount": 570
+    "updatedAt": "2026-10-16T11:00:32Z",
+    "sourceCount": 581,
+    "includedCount": 573
   },
   "words": [
+    {
+      "word": "piece",
+      "meaning": "一片；一塊",
+      "example": "I ate a piece of cake after lunch.",
+      "translation": "我午餐後吃了一塊蛋糕。",
+      "firstSeen": "2026-10-16",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "worried",
+      "meaning": "擔心的；憂心的",
+      "example": "I am worried about the test tomorrow.",
+      "translation": "我很擔心明天的考試。",
+      "firstSeen": "2026-10-16",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "village",
+      "meaning": "村莊",
+      "example": "My grandparents live in a small village.",
+      "translation": "我的祖父母住在一個小村莊裡。",
+      "firstSeen": "2026-10-16",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "member",
       "meaning": "成員；會員",
