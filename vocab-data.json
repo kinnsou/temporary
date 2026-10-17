@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-10-16T11:00:32Z",
-    "sourceCount": 581,
-    "includedCount": 573
+    "updatedAt": "2026-10-17T11:00:30Z",
+    "sourceCount": 584,
+    "includedCount": 576
   },
   "words": [
+    {
+      "word": "after",
+      "meaning": "在……之後",
+      "example": "I do my homework after dinner.",
+      "translation": "我晚餐後做功課。",
+      "firstSeen": "2026-10-17",
+      "pos": [
+        "prep"
+      ]
+    },
+    {
+      "word": "crazy",
+      "meaning": "瘋狂的",
+      "example": "That sounds like a crazy idea.",
+      "translation": "那聽起來是個瘋狂的點子。",
+      "firstSeen": "2026-10-17",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "pink",
+      "meaning": "粉紅色的",
+      "example": "My sister has a pink bag.",
+      "translation": "我妹妹有一個粉紅色的包包。",
+      "firstSeen": "2026-10-17",
+      "pos": [
+        "adj"
+      ]
+    },
     {
       "word": "piece",
       "meaning": "一片；一塊",
