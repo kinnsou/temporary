@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-10-17T11:00:30Z",
-    "sourceCount": 584,
-    "includedCount": 576
+    "updatedAt": "2026-10-18T11:00:31Z",
+    "sourceCount": 587,
+    "includedCount": 579
   },
   "words": [
+    {
+      "word": "seldom",
+      "meaning": "很少；不常",
+      "example": "I seldom watch TV on school days.",
+      "translation": "我上學的日子很少看電視。",
+      "firstSeen": "2026-10-18",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "song",
+      "meaning": "歌曲",
+      "example": "This song makes me happy.",
+      "translation": "這首歌讓我很開心。",
+      "firstSeen": "2026-10-18",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "natural",
+      "meaning": "自然的；天然的",
+      "example": "This juice has a natural sweet taste.",
+      "translation": "這杯果汁有天然的甜味。",
+      "firstSeen": "2026-10-18",
+      "pos": [
+        "adj"
+      ]
+    },
     {
       "word": "after",
       "meaning": "在……之後",
