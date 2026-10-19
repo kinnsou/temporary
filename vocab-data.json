@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-10-18T11:00:31Z",
-    "sourceCount": 587,
-    "includedCount": 579
+    "updatedAt": "2026-10-19T11:07:14Z",
+    "sourceCount": 590,
+    "includedCount": 582
   },
   "words": [
+    {
+      "word": "country",
+      "meaning": "國家",
+      "example": "Japan is a country in Asia.",
+      "translation": "日本是亞洲的一個國家。",
+      "firstSeen": "2026-10-19",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "great",
+      "meaning": "很棒的；偉大的",
+      "example": "We had a great time at the park yesterday.",
+      "translation": "我們昨天在公園玩得很開心。",
+      "firstSeen": "2026-10-19",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "week",
+      "meaning": "星期；一週",
+      "example": "I visit my grandma every week.",
+      "translation": "我每週都會去看阿嬤。",
+      "firstSeen": "2026-10-19",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "seldom",
       "meaning": "很少；不常",
