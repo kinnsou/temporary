@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-10-19T11:07:14Z",
-    "sourceCount": 590,
-    "includedCount": 582
+    "updatedAt": "2026-10-21T11:00:48Z",
+    "sourceCount": 593,
+    "includedCount": 585
   },
   "words": [
+    {
+      "word": "up",
+      "meaning": "向上；往上",
+      "example": "The balloon went up into the sky.",
+      "translation": "氣球往上飄到天空中。",
+      "firstSeen": "2026-10-21",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "dead",
+      "meaning": "死的；死去的",
+      "example": "There is a dead bug on the floor.",
+      "translation": "地板上有一隻死掉的蟲。",
+      "firstSeen": "2026-10-21",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "move",
+      "meaning": "移動；搬家",
+      "example": "We move the chairs before class every morning.",
+      "translation": "我們每天早上上課前都會搬動椅子。",
+      "firstSeen": "2026-10-21",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "country",
       "meaning": "國家",
