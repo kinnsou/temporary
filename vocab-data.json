@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-10-21T11:00:48Z",
-    "sourceCount": 593,
-    "includedCount": 585
+    "updatedAt": "2026-10-22T11:00:31Z",
+    "sourceCount": 596,
+    "includedCount": 588
   },
   "words": [
+    {
+      "word": "sleep",
+      "meaning": "睡覺",
+      "example": "I sleep for eight hours every night.",
+      "translation": "我每天晚上睡八個小時。",
+      "firstSeen": "2026-10-22",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "enough",
+      "meaning": "足夠的；足夠地",
+      "example": "We have enough time to finish our homework.",
+      "translation": "我們有足夠的時間完成功課。",
+      "firstSeen": "2026-10-22",
+      "pos": [
+        "det",
+        "adv"
+      ]
+    },
+    {
+      "word": "story",
+      "meaning": "故事",
+      "example": "My dad reads me a story every night.",
+      "translation": "爸爸每天晚上都會讀一個故事給我聽。",
+      "firstSeen": "2026-10-22",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "up",
       "meaning": "向上；往上",
