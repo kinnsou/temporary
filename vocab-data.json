@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-10-22T11:00:31Z",
-    "sourceCount": 596,
-    "includedCount": 588
+    "updatedAt": "2026-10-23T11:00:34Z",
+    "sourceCount": 599,
+    "includedCount": 591
   },
   "words": [
+    {
+      "word": "never",
+      "meaning": "從不；絕不",
+      "example": "I never eat candy before breakfast.",
+      "translation": "我早餐前從不吃糖果。",
+      "firstSeen": "2026-10-23",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "possibly",
+      "meaning": "可能；也許",
+      "example": "We could possibly go to the park tomorrow.",
+      "translation": "我們明天也許可以去公園。",
+      "firstSeen": "2026-10-23",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "rock",
+      "meaning": "岩石；石頭",
+      "example": "There is a large rock near the river.",
+      "translation": "河邊有一塊大石頭。",
+      "firstSeen": "2026-10-23",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "sleep",
       "meaning": "睡覺",
