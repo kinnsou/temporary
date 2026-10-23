@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-23T07:10:00+08:00",
+  "updated_at": "2026-10-24T07:10:00+08:00",
   "rows": [
     {
       "market": "MOPS",
@@ -68,29 +68,6 @@
       "last_close": "38.45",
       "last_close_date": "2026-08-21",
       "mops_rechecked_on": "2026-08-22",
-      "amount_pending": "true"
-    },
-    {
-      "market": "MOPS",
-      "date": "2026-08-21",
-      "code": "2458",
-      "name": "義隆",
-      "event": "息",
-      "cash_dividend": "未公告",
-      "stock_dividend_ratio": "未公告",
-      "subscription_ratio": "未公告",
-      "subscription_price": "未公告",
-      "stock_holding_ratio": "未公告",
-      "source": "MOPS",
-      "source_url": "https://mops.twse.com.tw/mops/web/t05st02",
-      "source_title": "(更正停止過戶截止日期)公告董事長訂定115年上半年度現金 股利配息基準日",
-      "announcement_date": "115/10/21",
-      "announcement_time": "17:14:33",
-      "announcement_at": "2026-10-21T17:14:33+08:00",
-      "fetched_at": "2026-10-23T07:10:00+08:00",
-      "last_close": "130",
-      "last_close_date": "2026-10-22",
-      "mops_rechecked_on": "2026-10-23",
       "amount_pending": "true"
     }
   ]
