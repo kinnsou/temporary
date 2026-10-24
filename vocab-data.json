@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-10-23T11:00:34Z",
-    "sourceCount": 599,
-    "includedCount": 591
+    "updatedAt": "2026-10-24T11:00:39Z",
+    "sourceCount": 602,
+    "includedCount": 594
   },
   "words": [
+    {
+      "word": "pick",
+      "meaning": "挑選；採摘",
+      "example": "Mia picks flowers in the garden every Sunday.",
+      "translation": "米亞每個星期天都在花園裡採花。",
+      "firstSeen": "2026-10-24",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "either",
+      "meaning": "兩者中的任何一個",
+      "example": "You can choose either book.",
+      "translation": "這兩本書，你可以任選一本。",
+      "firstSeen": "2026-10-24",
+      "pos": [
+        "det"
+      ]
+    },
+    {
+      "word": "face",
+      "meaning": "臉；面對",
+      "example": "I face a new challenge at school every week.",
+      "translation": "我每週都在學校面對新的挑戰。",
+      "firstSeen": "2026-10-24",
+      "pos": [
+        "n",
+        "v"
+      ]
+    },
     {
       "word": "never",
       "meaning": "從不；絕不",
