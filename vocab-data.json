@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-10-25T11:00:32Z",
-    "sourceCount": 605,
-    "includedCount": 597
+    "updatedAt": "2026-10-26T11:00:29Z",
+    "sourceCount": 608,
+    "includedCount": 600
   },
   "words": [
+    {
+      "word": "date",
+      "meaning": "日期；約會",
+      "example": "What is the date today?",
+      "translation": "今天是幾月幾日？",
+      "firstSeen": "2026-10-26",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "somewhere",
+      "meaning": "某個地方；在某處",
+      "example": "I left my bag somewhere in the classroom.",
+      "translation": "我把書包忘在教室的某個地方了。",
+      "firstSeen": "2026-10-26",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "door",
+      "meaning": "門",
+      "example": "Please close the door before you leave.",
+      "translation": "離開前請把門關上。",
+      "firstSeen": "2026-10-26",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "giant",
       "meaning": "巨人；巨大的",
