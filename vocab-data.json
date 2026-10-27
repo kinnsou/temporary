@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-10-26T11:00:29Z",
-    "sourceCount": 608,
-    "includedCount": 600
+    "updatedAt": "2026-10-27T11:00:43Z",
+    "sourceCount": 611,
+    "includedCount": 603
   },
   "words": [
+    {
+      "word": "draw",
+      "meaning": "畫；畫圖",
+      "example": "I draw a picture every afternoon.",
+      "translation": "我每天下午畫一張圖。",
+      "firstSeen": "2026-10-27",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "elevator",
+      "meaning": "電梯",
+      "example": "We take the elevator to the third floor.",
+      "translation": "我們搭電梯到三樓。",
+      "firstSeen": "2026-10-27",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "fly",
+      "meaning": "飛；飛行",
+      "example": "Birds fly over the park every morning.",
+      "translation": "鳥兒每天早上飛過公園。",
+      "firstSeen": "2026-10-27",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "date",
       "meaning": "日期；約會",
