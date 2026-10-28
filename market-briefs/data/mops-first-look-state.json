@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-28T07:10:00+08:00",
+  "updated_at": "2026-10-29T07:12:31+08:00",
   "rows": [
     {
       "market": "MOPS",
@@ -69,6 +69,51 @@
       "last_close_date": "2026-08-21",
       "mops_rechecked_on": "2026-08-22",
       "amount_pending": "true"
+    },
+    {
+      "market": "MOPS",
+      "date": "2027-01-06",
+      "code": "6561",
+      "name": "是方",
+      "event": "息",
+      "cash_dividend": "未公告",
+      "stock_dividend_ratio": "未公告",
+      "subscription_ratio": "未公告",
+      "subscription_price": "未公告",
+      "stock_holding_ratio": "未公告",
+      "source": "MOPS",
+      "source_url": "https://mops.twse.com.tw/mops/web/t05st02",
+      "source_title": "公告本公司115年上半年度之現金股利除息基準日",
+      "announcement_date": "115/10/28",
+      "announcement_time": "13:38:50",
+      "announcement_at": "2026-10-28T13:38:50+08:00",
+      "fetched_at": "2026-10-29T07:12:31+08:00",
+      "last_close": "318",
+      "last_close_date": "2026-10-28",
+      "amount_pending": "true"
+    },
+    {
+      "market": "MOPS",
+      "date": "2027-04-01",
+      "code": "4966",
+      "name": "譜瑞-KY",
+      "event": "息",
+      "cash_dividend": "7.30",
+      "stock_dividend_ratio": "未公告",
+      "subscription_ratio": "未公告",
+      "subscription_price": "未公告",
+      "stock_holding_ratio": "未公告",
+      "source": "MOPS",
+      "source_url": "https://mops.twse.com.tw/mops/web/t05st02",
+      "source_title": "公告本公司董事會決議民國115年上半年度股利之除息基準日",
+      "announcement_date": "115/10/28",
+      "announcement_time": "14:53:18",
+      "announcement_at": "2026-10-28T14:53:18+08:00",
+      "fetched_at": "2026-10-29T07:12:31+08:00",
+      "last_close": "525",
+      "last_close_date": "2026-10-28",
+      "amount_pending": "false",
+      "amount_completed_on": "2026-10-29"
     }
   ]
 }
