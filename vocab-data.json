@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-10-27T11:00:43Z",
-    "sourceCount": 611,
-    "includedCount": 603
+    "updatedAt": "2026-10-28T11:00:37Z",
+    "sourceCount": 614,
+    "includedCount": 606
   },
   "words": [
+    {
+      "word": "taste",
+      "meaning": "品嚐；嚐味道",
+      "example": "I taste the soup before dinner every day.",
+      "translation": "我每天晚餐前都會嚐一下湯的味道。",
+      "firstSeen": "2026-10-28",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "mouse",
+      "meaning": "老鼠；滑鼠",
+      "example": "A small mouse is under the table.",
+      "translation": "一隻小老鼠在桌子底下。",
+      "firstSeen": "2026-10-28",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "sing",
+      "meaning": "唱歌",
+      "example": "We sing English songs after school every Friday.",
+      "translation": "我們每個星期五放學後都會唱英文歌。",
+      "firstSeen": "2026-10-28",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "draw",
       "meaning": "畫；畫圖",
