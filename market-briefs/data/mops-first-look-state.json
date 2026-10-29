@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-29T07:12:31+08:00",
+  "updated_at": "2026-10-30T07:10:00+08:00",
   "rows": [
     {
       "market": "MOPS",
@@ -87,9 +87,10 @@
       "announcement_date": "115/10/28",
       "announcement_time": "13:38:50",
       "announcement_at": "2026-10-28T13:38:50+08:00",
-      "fetched_at": "2026-10-29T07:12:31+08:00",
-      "last_close": "318",
-      "last_close_date": "2026-10-28",
+      "fetched_at": "2026-10-30T07:10:00+08:00",
+      "last_close": "341",
+      "last_close_date": "2026-10-29",
+      "mops_rechecked_on": "2026-10-30",
       "amount_pending": "true"
     },
     {
@@ -109,11 +110,12 @@
       "announcement_date": "115/10/28",
       "announcement_time": "14:53:18",
       "announcement_at": "2026-10-28T14:53:18+08:00",
-      "fetched_at": "2026-10-29T07:12:31+08:00",
-      "last_close": "525",
-      "last_close_date": "2026-10-28",
+      "fetched_at": "2026-10-30T07:10:00+08:00",
+      "last_close": "490.5",
+      "last_close_date": "2026-10-29",
+      "mops_rechecked_on": "2026-10-30",
       "amount_pending": "false",
-      "amount_completed_on": "2026-10-29"
+      "amount_completed_on": "2026-10-30"
     }
   ]
 }
