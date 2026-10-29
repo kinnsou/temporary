@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-10-28T11:00:37Z",
-    "sourceCount": 614,
-    "includedCount": 606
+    "updatedAt": "2026-10-29T11:00:36Z",
+    "sourceCount": 617,
+    "includedCount": 609
   },
   "words": [
+    {
+      "word": "electricity",
+      "meaning": "電；電力",
+      "example": "We use electricity to turn on the lights.",
+      "translation": "我們用電來開燈。",
+      "firstSeen": "2026-10-29",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "high",
+      "meaning": "高的",
+      "example": "The bird is in a high tree.",
+      "translation": "那隻鳥在一棵高高的樹上。",
+      "firstSeen": "2026-10-29",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "there",
+      "meaning": "在那裡；往那裡",
+      "example": "My schoolbag is over there.",
+      "translation": "我的書包在那邊。",
+      "firstSeen": "2026-10-29",
+      "pos": [
+        "adv"
+      ]
+    },
     {
       "word": "taste",
       "meaning": "品嚐；嚐味道",
