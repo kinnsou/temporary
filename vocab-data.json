@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-10-29T11:00:36Z",
-    "sourceCount": 617,
-    "includedCount": 609
+    "updatedAt": "2026-10-30T11:00:28Z",
+    "sourceCount": 620,
+    "includedCount": 612
   },
   "words": [
+    {
+      "word": "happily",
+      "meaning": "開心地；快樂地",
+      "example": "The children play happily in the park.",
+      "translation": "孩子們在公園裡開心地玩耍。",
+      "firstSeen": "2026-10-30",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "outside",
+      "meaning": "在外面；到外面",
+      "example": "We play outside after school.",
+      "translation": "我們放學後在外面玩。",
+      "firstSeen": "2026-10-30",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "think",
+      "meaning": "想；認為",
+      "example": "I think about my homework every evening.",
+      "translation": "我每天晚上都會想一想我的作業。",
+      "firstSeen": "2026-10-30",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "electricity",
       "meaning": "電；電力",
