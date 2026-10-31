@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-10-30T11:00:28Z",
-    "sourceCount": 620,
-    "includedCount": 612
+    "updatedAt": "2026-10-31T11:00:38Z",
+    "sourceCount": 623,
+    "includedCount": 615
   },
   "words": [
+    {
+      "word": "learn",
+      "meaning": "學習；學會",
+      "example": "I learn three new words every day.",
+      "translation": "我每天學三個新單字。",
+      "firstSeen": "2026-10-31",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "talk",
+      "meaning": "說話；交談",
+      "example": "We talk about our day after dinner every evening.",
+      "translation": "我們每天晚餐後都會聊聊當天的生活。",
+      "firstSeen": "2026-10-31",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "lesson",
+      "meaning": "課；課程",
+      "example": "We have an English lesson every Monday.",
+      "translation": "我們每個星期一都有一堂英文課。",
+      "firstSeen": "2026-10-31",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "happily",
       "meaning": "開心地；快樂地",
