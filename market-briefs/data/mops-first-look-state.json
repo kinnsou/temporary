@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-31T07:10:00+08:00",
+  "updated_at": "2026-11-02T07:10:00+08:00",
   "rows": [
     {
       "market": "MOPS",
@@ -110,9 +110,10 @@
       "announcement_date": "115/10/30",
       "announcement_time": "17:08:16",
       "announcement_at": "2026-10-30T17:08:16+08:00",
-      "fetched_at": "2026-10-31T07:10:00+08:00",
+      "fetched_at": "2026-11-02T07:10:00+08:00",
       "last_close": "3915",
       "last_close_date": "2026-10-30",
+      "mops_rechecked_on": "2026-11-02",
       "amount_pending": "true"
     }
   ]
