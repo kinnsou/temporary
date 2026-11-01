@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-10-31T11:00:38Z",
-    "sourceCount": 623,
-    "includedCount": 615
+    "updatedAt": "2026-11-01T11:00:38Z",
+    "sourceCount": 626,
+    "includedCount": 618
   },
   "words": [
+    {
+      "word": "queen",
+      "meaning": "女王；王后",
+      "example": "The queen lives in a large castle.",
+      "translation": "女王住在一座大城堡裡。",
+      "firstSeen": "2026-11-01",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "even",
+      "meaning": "甚至；連……也",
+      "example": "Even my little brother can read this book.",
+      "translation": "連我弟弟都看得懂這本書。",
+      "firstSeen": "2026-11-01",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "skill",
+      "meaning": "技能；技巧",
+      "example": "Cooking is a useful skill.",
+      "translation": "烹飪是一項實用的技能。",
+      "firstSeen": "2026-11-01",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "learn",
       "meaning": "學習；學會",
