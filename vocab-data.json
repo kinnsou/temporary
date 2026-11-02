@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-11-01T11:00:38Z",
-    "sourceCount": 626,
-    "includedCount": 618
+    "updatedAt": "2026-11-02T11:00:39Z",
+    "sourceCount": 629,
+    "includedCount": 621
   },
   "words": [
+    {
+      "word": "normal",
+      "meaning": "正常的；平常的",
+      "example": "It is normal to feel nervous before a test.",
+      "translation": "考試前感到緊張是正常的。",
+      "firstSeen": "2026-11-02",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "escape",
+      "meaning": "逃走；逃脫",
+      "example": "The rabbit escaped from its cage yesterday.",
+      "translation": "那隻兔子昨天從籠子裡逃走了。",
+      "firstSeen": "2026-11-02",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "let",
+      "meaning": "讓；允許",
+      "example": "My mom lets me play outside after school.",
+      "translation": "我媽媽讓我放學後到外面玩。",
+      "firstSeen": "2026-11-02",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "queen",
       "meaning": "女王；王后",
