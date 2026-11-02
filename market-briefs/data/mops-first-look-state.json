@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-02T07:10:00+08:00",
+  "updated_at": "2026-11-03T07:10:00+08:00",
   "rows": [
     {
       "market": "MOPS",
@@ -114,6 +114,28 @@
       "last_close": "3915",
       "last_close_date": "2026-10-30",
       "mops_rechecked_on": "2026-11-02",
+      "amount_pending": "true"
+    },
+    {
+      "market": "MOPS",
+      "date": "2026-11-03",
+      "code": "2247",
+      "name": "汎德永業",
+      "event": "息",
+      "cash_dividend": "未公告",
+      "stock_dividend_ratio": "未公告",
+      "subscription_ratio": "未公告",
+      "subscription_price": "未公告",
+      "stock_holding_ratio": "未公告",
+      "source": "MOPS",
+      "source_url": "https://mops.twse.com.tw/mops/web/t05st02",
+      "source_title": "代重要子公司捷立汽車股份有限公司公告現金股利配發基準日",
+      "announcement_date": "115/11/02",
+      "announcement_time": "19:05:00",
+      "announcement_at": "2026-11-02T19:05:00+08:00",
+      "fetched_at": "2026-11-03T07:10:00+08:00",
+      "last_close": "217.5",
+      "last_close_date": "2026-11-02",
       "amount_pending": "true"
     }
   ]
