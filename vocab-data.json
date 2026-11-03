@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-11-02T11:00:39Z",
-    "sourceCount": 629,
-    "includedCount": 621
+    "updatedAt": "2026-11-03T11:00:40Z",
+    "sourceCount": 632,
+    "includedCount": 624
   },
   "words": [
+    {
+      "word": "hold",
+      "meaning": "握住；拿著",
+      "example": "Mia holds her little brother’s hand on the way to school every day.",
+      "translation": "米亞每天上學途中都牽著弟弟的手。",
+      "firstSeen": "2026-11-03",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "heart",
+      "meaning": "心臟；心",
+      "example": "My heart beats fast after I run.",
+      "translation": "跑步後，我的心跳很快。",
+      "firstSeen": "2026-11-03",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "expect",
+      "meaning": "預期；期待",
+      "example": "Mia expects a letter from her friend next week.",
+      "translation": "米亞期待下週收到朋友的信。",
+      "firstSeen": "2026-11-03",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "normal",
       "meaning": "正常的；平常的",
