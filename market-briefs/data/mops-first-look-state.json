@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-04T07:10:00+08:00",
+  "updated_at": "2026-11-05T07:10:00+08:00",
   "rows": [
     {
       "market": "MOPS",
@@ -118,34 +118,11 @@
     },
     {
       "market": "MOPS",
-      "date": "2026-11-03",
-      "code": "2247",
-      "name": "汎德永業",
-      "event": "息",
-      "cash_dividend": "未公告",
-      "stock_dividend_ratio": "未公告",
-      "subscription_ratio": "未公告",
-      "subscription_price": "未公告",
-      "stock_holding_ratio": "未公告",
-      "source": "MOPS",
-      "source_url": "https://mops.twse.com.tw/mops/web/t05st02",
-      "source_title": "代重要子公司捷立汽車股份有限公司公告現金股利配發基準日",
-      "announcement_date": "115/11/02",
-      "announcement_time": "19:05:00",
-      "announcement_at": "2026-11-02T19:05:00+08:00",
-      "fetched_at": "2026-11-04T07:10:00+08:00",
-      "last_close": "216",
-      "last_close_date": "2026-11-03",
-      "mops_rechecked_on": "2026-11-04",
-      "amount_pending": "true"
-    },
-    {
-      "market": "MOPS",
       "date": "2026-12-29",
       "code": "6488",
       "name": "環球晶",
       "event": "息",
-      "cash_dividend": "未公告",
+      "cash_dividend": "6",
       "stock_dividend_ratio": "未公告",
       "subscription_ratio": "未公告",
       "subscription_price": "未公告",
@@ -156,10 +133,12 @@
       "announcement_date": "115/11/03",
       "announcement_time": "14:19:21",
       "announcement_at": "2026-11-03T14:19:21+08:00",
-      "fetched_at": "2026-11-04T07:10:00+08:00",
-      "last_close": "685",
-      "last_close_date": "2026-11-03",
-      "amount_pending": "true"
+      "fetched_at": "2026-11-05T07:10:00+08:00",
+      "last_close": "619",
+      "last_close_date": "2026-11-04",
+      "mops_rechecked_on": "2026-11-05",
+      "amount_pending": "false",
+      "amount_completed_on": "2026-11-05"
     },
     {
       "market": "MOPS",
@@ -167,7 +146,7 @@
       "code": "2344",
       "name": "華邦電",
       "event": "息",
-      "cash_dividend": "未公告",
+      "cash_dividend": "2",
       "stock_dividend_ratio": "未公告",
       "subscription_ratio": "未公告",
       "subscription_price": "未公告",
@@ -178,10 +157,12 @@
       "announcement_date": "115/11/03",
       "announcement_time": "15:01:26",
       "announcement_at": "2026-11-03T15:01:26+08:00",
-      "fetched_at": "2026-11-04T07:10:00+08:00",
-      "last_close": "—",
-      "last_close_date": "",
-      "amount_pending": "true"
+      "fetched_at": "2026-11-05T07:10:00+08:00",
+      "last_close": "141.5",
+      "last_close_date": "2026-11-04",
+      "mops_rechecked_on": "2026-11-05",
+      "amount_pending": "false",
+      "amount_completed_on": "2026-11-05"
     }
   ]
 }
