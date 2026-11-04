@@ -1,10 +1,42 @@
 {
   "meta": {
-    "updatedAt": "2026-11-03T11:00:40Z",
-    "sourceCount": 632,
-    "includedCount": 624
+    "updatedAt": "2026-11-04T11:00:42Z",
+    "sourceCount": 635,
+    "includedCount": 627
   },
   "words": [
+    {
+      "word": "zoo",
+      "meaning": "動物園",
+      "example": "We saw three lions at the zoo yesterday.",
+      "translation": "我們昨天在動物園看到了三隻獅子。",
+      "firstSeen": "2026-11-04",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "come",
+      "meaning": "來；來到",
+      "example": "Mia comes to my house every Sunday.",
+      "translation": "米亞每個星期日都來我家。",
+      "firstSeen": "2026-11-04",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "before",
+      "meaning": "在……之前；以前",
+      "example": "I wash my hands before dinner.",
+      "translation": "我吃晚餐前會洗手。",
+      "firstSeen": "2026-11-04",
+      "pos": [
+        "prep",
+        "conj",
+        "adv"
+      ]
+    },
     {
       "word": "hold",
       "meaning": "握住；拿著",
