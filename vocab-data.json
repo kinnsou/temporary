@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-11-04T11:00:42Z",
-    "sourceCount": 635,
-    "includedCount": 627
+    "updatedAt": "2026-11-05T11:00:40Z",
+    "sourceCount": 638,
+    "includedCount": 630
   },
   "words": [
+    {
+      "word": "prefer",
+      "meaning": "比較喜歡；偏好",
+      "example": "Mia prefers tea to coffee every morning.",
+      "translation": "米亞每天早上都比較喜歡喝茶，而不是咖啡。",
+      "firstSeen": "2026-11-05",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "bright",
+      "meaning": "明亮的；鮮豔的",
+      "example": "The room is bright in the morning.",
+      "translation": "這個房間早上很明亮。",
+      "firstSeen": "2026-11-05",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "low",
+      "meaning": "低的；矮的",
+      "example": "The children sit on a low wall.",
+      "translation": "孩子們坐在一面矮牆上。",
+      "firstSeen": "2026-11-05",
+      "pos": [
+        "adj"
+      ]
+    },
     {
       "word": "zoo",
       "meaning": "動物園",
