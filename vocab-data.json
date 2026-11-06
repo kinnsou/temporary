@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-11-05T11:00:40Z",
-    "sourceCount": 638,
-    "includedCount": 630
+    "updatedAt": "2026-11-06T11:00:45Z",
+    "sourceCount": 641,
+    "includedCount": 633
   },
   "words": [
+    {
+      "word": "own",
+      "meaning": "擁有",
+      "example": "My grandparents own a small shop.",
+      "translation": "我的祖父母擁有一間小店。",
+      "firstSeen": "2026-11-06",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "green",
+      "meaning": "綠色的",
+      "example": "The leaves are green in summer.",
+      "translation": "夏天的樹葉是綠色的。",
+      "firstSeen": "2026-11-06",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "season",
+      "meaning": "季節",
+      "example": "Spring is my favorite season.",
+      "translation": "春天是我最喜歡的季節。",
+      "firstSeen": "2026-11-06",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "prefer",
       "meaning": "比較喜歡；偏好",
