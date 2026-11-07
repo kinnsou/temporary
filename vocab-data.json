@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-11-06T11:00:45Z",
-    "sourceCount": 641,
-    "includedCount": 633
+    "updatedAt": "2026-11-07T11:00:42Z",
+    "sourceCount": 644,
+    "includedCount": 636
   },
   "words": [
+    {
+      "word": "blanket",
+      "meaning": "毯子；毛毯",
+      "example": "I put a warm blanket on my bed.",
+      "translation": "我在床上放了一條溫暖的毯子。",
+      "firstSeen": "2026-11-07",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "greatly",
+      "meaning": "大大地；非常",
+      "example": "Your help greatly improved my English.",
+      "translation": "你的幫助讓我的英文進步了很多。",
+      "firstSeen": "2026-11-07",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "photo",
+      "meaning": "照片",
+      "example": "This is a photo of my family.",
+      "translation": "這是我的家人合照。",
+      "firstSeen": "2026-11-07",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "own",
       "meaning": "擁有",
