@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-11-07T11:00:42Z",
-    "sourceCount": 644,
-    "includedCount": 636
+    "updatedAt": "2026-11-08T11:00:44Z",
+    "sourceCount": 647,
+    "includedCount": 639
   },
   "words": [
+    {
+      "word": "neck",
+      "meaning": "脖子",
+      "example": "I wear a scarf around my neck in winter.",
+      "translation": "冬天時，我會在脖子上圍圍巾。",
+      "firstSeen": "2026-11-08",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "uniform",
+      "meaning": "制服",
+      "example": "We wear school uniforms every Monday.",
+      "translation": "我們每個星期一都穿學校制服。",
+      "firstSeen": "2026-11-08",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "able",
+      "meaning": "有能力的；能夠的",
+      "example": "Mia is able to swim across the pool.",
+      "translation": "米亞能夠從游泳池的一端游到另一端。",
+      "firstSeen": "2026-11-08",
+      "pos": [
+        "adj"
+      ]
+    },
     {
       "word": "blanket",
       "meaning": "毯子；毛毯",
