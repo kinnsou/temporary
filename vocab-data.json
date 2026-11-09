@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-11-08T11:00:44Z",
-    "sourceCount": 647,
-    "includedCount": 639
+    "updatedAt": "2026-11-09T11:00:36Z",
+    "sourceCount": 650,
+    "includedCount": 642
   },
   "words": [
+    {
+      "word": "sure",
+      "meaning": "確定的；有把握的",
+      "example": "I am sure this is the right answer.",
+      "translation": "我確定這是正確答案。",
+      "firstSeen": "2026-11-09",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "ahead",
+      "meaning": "在前方；向前",
+      "example": "The bus stop is just ahead.",
+      "translation": "公車站就在前方。",
+      "firstSeen": "2026-11-09",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "collect",
+      "meaning": "收集；蒐集",
+      "example": "Mia collects stamps after school every Friday.",
+      "translation": "米亞每週五放學後收集郵票。",
+      "firstSeen": "2026-11-09",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "neck",
       "meaning": "脖子",
