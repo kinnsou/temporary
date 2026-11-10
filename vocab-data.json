@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-11-09T11:00:36Z",
-    "sourceCount": 650,
-    "includedCount": 642
+    "updatedAt": "2026-11-10T11:00:39Z",
+    "sourceCount": 653,
+    "includedCount": 645
   },
   "words": [
+    {
+      "word": "year",
+      "meaning": "年；一年",
+      "example": "My sister is ten years old this year.",
+      "translation": "我妹妹今年十歲。",
+      "firstSeen": "2026-11-10",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "sick",
+      "meaning": "生病的；不舒服的",
+      "example": "Ben is sick today, so he stays home.",
+      "translation": "班今天生病了，所以他待在家裡。",
+      "firstSeen": "2026-11-10",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "near",
+      "meaning": "在……附近；靠近",
+      "example": "My school is near the park.",
+      "translation": "我的學校在公園附近。",
+      "firstSeen": "2026-11-10",
+      "pos": [
+        "prep"
+      ]
+    },
     {
       "word": "sure",
       "meaning": "確定的；有把握的",
