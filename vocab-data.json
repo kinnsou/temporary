@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-11-10T11:00:39Z",
-    "sourceCount": 653,
-    "includedCount": 645
+    "updatedAt": "2026-11-11T11:00:55Z",
+    "sourceCount": 656,
+    "includedCount": 648
   },
   "words": [
+    {
+      "word": "flower",
+      "meaning": "花；花朵",
+      "example": "There is a yellow flower in the garden.",
+      "translation": "花園裡有一朵黃色的花。",
+      "firstSeen": "2026-11-11",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "poor",
+      "meaning": "貧窮的；可憐的",
+      "example": "The poor family needs food and warm clothes.",
+      "translation": "這個貧困的家庭需要食物和保暖的衣服。",
+      "firstSeen": "2026-11-11",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "pencil",
+      "meaning": "鉛筆",
+      "example": "I write my name with a pencil.",
+      "translation": "我用鉛筆寫下自己的名字。",
+      "firstSeen": "2026-11-11",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "year",
       "meaning": "年；一年",
