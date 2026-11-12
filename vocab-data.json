@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-11-11T11:00:55Z",
-    "sourceCount": 656,
-    "includedCount": 648
+    "updatedAt": "2026-11-12T11:00:40Z",
+    "sourceCount": 659,
+    "includedCount": 651
   },
   "words": [
+    {
+      "word": "strange",
+      "meaning": "奇怪的；陌生的",
+      "example": "I heard a strange noise last night.",
+      "translation": "我昨晚聽到一個奇怪的聲音。",
+      "firstSeen": "2026-11-12",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "doughnut",
+      "meaning": "甜甜圈",
+      "example": "Mia bought a doughnut after school yesterday.",
+      "translation": "米亞昨天放學後買了一個甜甜圈。",
+      "firstSeen": "2026-11-12",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "usually",
+      "meaning": "通常；平常",
+      "example": "I usually walk to school with my sister.",
+      "translation": "我通常和姊姊一起走路上學。",
+      "firstSeen": "2026-11-12",
+      "pos": [
+        "adv"
+      ]
+    },
     {
       "word": "flower",
       "meaning": "花；花朵",
