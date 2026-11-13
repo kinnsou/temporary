@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-11-12T11:00:40Z",
-    "sourceCount": 659,
-    "includedCount": 651
+    "updatedAt": "2026-11-13T11:00:40Z",
+    "sourceCount": 662,
+    "includedCount": 654
   },
   "words": [
+    {
+      "word": "grocery",
+      "meaning": "雜貨店；食品雜貨",
+      "example": "My mom buys milk at the grocery store every Sunday.",
+      "translation": "我媽媽每個星期日都會到雜貨店買牛奶。",
+      "firstSeen": "2026-11-13",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "surprised",
+      "meaning": "驚訝的；吃驚的",
+      "example": "Mia was surprised to see her friend at the park yesterday.",
+      "translation": "米亞昨天在公園看到朋友時感到很驚訝。",
+      "firstSeen": "2026-11-13",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "grass",
+      "meaning": "草；草地",
+      "example": "The children sit on the grass in the park.",
+      "translation": "孩子們坐在公園的草地上。",
+      "firstSeen": "2026-11-13",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "strange",
       "meaning": "奇怪的；陌生的",
