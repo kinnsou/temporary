@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-11-14T11:00:39Z",
-    "sourceCount": 665,
-    "includedCount": 657
+    "updatedAt": "2026-11-15T11:00:42Z",
+    "sourceCount": 668,
+    "includedCount": 660
   },
   "words": [
+    {
+      "word": "simple",
+      "meaning": "簡單的；容易的",
+      "example": "This game has simple rules.",
+      "translation": "這個遊戲的規則很簡單。",
+      "firstSeen": "2026-11-15",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "table",
+      "meaning": "桌子",
+      "example": "My book is on the table.",
+      "translation": "我的書在桌上。",
+      "firstSeen": "2026-11-15",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "foot",
+      "meaning": "腳；足部",
+      "example": "My left foot hurts.",
+      "translation": "我的左腳會痛。",
+      "firstSeen": "2026-11-15",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "time",
       "meaning": "時間；時刻",
