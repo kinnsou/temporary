@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-11-15T11:00:42Z",
-    "sourceCount": 668,
-    "includedCount": 660
+    "updatedAt": "2026-11-16T11:00:42Z",
+    "sourceCount": 671,
+    "includedCount": 663
   },
   "words": [
+    {
+      "word": "also",
+      "meaning": "也；同樣",
+      "example": "I also like to read books after school.",
+      "translation": "我放學後也喜歡看書。",
+      "firstSeen": "2026-11-16",
+      "pos": [
+        "adv"
+      ]
+    },
+    {
+      "word": "bread",
+      "meaning": "麵包",
+      "example": "I eat bread and eggs for breakfast.",
+      "translation": "我早餐吃麵包和雞蛋。",
+      "firstSeen": "2026-11-16",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "stay",
+      "meaning": "待；停留",
+      "example": "Mia stays at home every Sunday.",
+      "translation": "米亞每個星期日都待在家裡。",
+      "firstSeen": "2026-11-16",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "simple",
       "meaning": "簡單的；容易的",
