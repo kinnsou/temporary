@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-11-16T11:00:42Z",
-    "sourceCount": 671,
-    "includedCount": 663
+    "updatedAt": "2026-11-17T11:00:42Z",
+    "sourceCount": 674,
+    "includedCount": 666
   },
   "words": [
+    {
+      "word": "young",
+      "meaning": "年輕的；年幼的",
+      "example": "My young brother likes to draw animals.",
+      "translation": "我年幼的弟弟喜歡畫動物。",
+      "firstSeen": "2026-11-17",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "pig",
+      "meaning": "豬",
+      "example": "The pig is sleeping under a tree.",
+      "translation": "那隻豬正在樹下睡覺。",
+      "firstSeen": "2026-11-17",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "computer",
+      "meaning": "電腦",
+      "example": "I use my computer to do homework after school.",
+      "translation": "我放學後用電腦寫作業。",
+      "firstSeen": "2026-11-17",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "also",
       "meaning": "也；同樣",
