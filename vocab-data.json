@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-11-17T11:00:42Z",
-    "sourceCount": 674,
-    "includedCount": 666
+    "updatedAt": "2026-11-18T11:00:30Z",
+    "sourceCount": 677,
+    "includedCount": 669
   },
   "words": [
+    {
+      "word": "necessary",
+      "meaning": "必要的；必需的",
+      "example": "Water is necessary for life.",
+      "translation": "水是生命不可或缺的。",
+      "firstSeen": "2026-11-18",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "bird",
+      "meaning": "鳥",
+      "example": "A bird is singing in the tree.",
+      "translation": "一隻鳥正在樹上唱歌。",
+      "firstSeen": "2026-11-18",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "true",
+      "meaning": "真的；真實的",
+      "example": "This story is true.",
+      "translation": "這個故事是真的。",
+      "firstSeen": "2026-11-18",
+      "pos": [
+        "adj"
+      ]
+    },
     {
       "word": "young",
       "meaning": "年輕的；年幼的",
