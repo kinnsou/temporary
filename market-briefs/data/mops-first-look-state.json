@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-17T07:10:00+08:00",
+  "updated_at": "2026-11-18T09:25:27+08:00",
   "rows": [
     {
       "market": "MOPS",
@@ -279,26 +279,48 @@
     },
     {
       "market": "MOPS",
-      "date": "2026-12-01",
-      "code": "4735",
-      "name": "豪展",
+      "date": "2026-12-15",
+      "code": "8299",
+      "name": "群聯",
       "event": "息",
-      "cash_dividend": "0.50",
+      "cash_dividend": "未公告",
       "stock_dividend_ratio": "未公告",
       "subscription_ratio": "未公告",
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "MOPS",
       "source_url": "https://mops.twse.com.tw/mops/web/t05st02",
-      "source_title": "公告本公司董事長訂定民國115年第3季盈餘之除息基準日",
-      "announcement_date": "115/11/16",
-      "announcement_time": "21:13:02",
-      "announcement_at": "2026-11-16T21:13:02+08:00",
-      "fetched_at": "2026-11-17T07:10:00+08:00",
-      "last_close": "34.5",
-      "last_close_date": "2026-11-16",
+      "source_title": "公告本公司115年上半年度股東現金股利除息基準日及 發放日期相關事宜",
+      "announcement_date": "115/11/17",
+      "announcement_time": "13:36:13",
+      "announcement_at": "2026-11-17T13:36:13+08:00",
+      "fetched_at": "2026-11-18T09:25:27+08:00",
+      "last_close": "1535",
+      "last_close_date": "2026-11-17",
+      "amount_pending": "true"
+    },
+    {
+      "market": "MOPS",
+      "date": "2026-12-21",
+      "code": "1817",
+      "name": "凱撒衛",
+      "event": "息",
+      "cash_dividend": "1.8",
+      "stock_dividend_ratio": "未公告",
+      "subscription_ratio": "未公告",
+      "subscription_price": "未公告",
+      "stock_holding_ratio": "未公告",
+      "source": "MOPS",
+      "source_url": "https://mops.twse.com.tw/mops/web/t05st02",
+      "source_title": "公告本公司115年上半年度現金股利除息基準日",
+      "announcement_date": "115/11/17",
+      "announcement_time": "15:04:09",
+      "announcement_at": "2026-11-17T15:04:09+08:00",
+      "fetched_at": "2026-11-18T09:25:27+08:00",
+      "last_close": "40.7",
+      "last_close_date": "2026-11-17",
       "amount_pending": "false",
-      "amount_completed_on": "2026-11-17"
+      "amount_completed_on": "2026-11-18"
     }
   ]
 }
