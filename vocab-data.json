@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-11-18T11:00:30Z",
-    "sourceCount": 677,
-    "includedCount": 669
+    "updatedAt": "2026-11-19T11:00:39Z",
+    "sourceCount": 680,
+    "includedCount": 672
   },
   "words": [
+    {
+      "word": "diary",
+      "meaning": "日記",
+      "example": "I write in my diary every night.",
+      "translation": "我每天晚上都會寫日記。",
+      "firstSeen": "2026-11-19",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "curtain",
+      "meaning": "窗簾",
+      "example": "The curtain is blue.",
+      "translation": "這片窗簾是藍色的。",
+      "firstSeen": "2026-11-19",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "power",
+      "meaning": "力量；電力",
+      "example": "The storm knocked out the power last night.",
+      "translation": "昨晚的暴風雨造成停電。",
+      "firstSeen": "2026-11-19",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "necessary",
       "meaning": "必要的；必需的",
