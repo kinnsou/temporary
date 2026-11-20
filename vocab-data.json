@@ -1,10 +1,41 @@
 {
   "meta": {
-    "updatedAt": "2026-11-19T11:00:39Z",
-    "sourceCount": 680,
-    "includedCount": 672
+    "updatedAt": "2026-11-20T11:00:48Z",
+    "sourceCount": 683,
+    "includedCount": 675
   },
   "words": [
+    {
+      "word": "word",
+      "meaning": "單字；字詞",
+      "example": "I learned a new word yesterday.",
+      "translation": "我昨天學了一個新單字。",
+      "firstSeen": "2026-11-20",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "smell",
+      "meaning": "聞；聞起來；氣味",
+      "example": "Mia smells the flowers every morning.",
+      "translation": "米亞每天早上都會聞花香。",
+      "firstSeen": "2026-11-20",
+      "pos": [
+        "v",
+        "n"
+      ]
+    },
+    {
+      "word": "event",
+      "meaning": "活動；事件",
+      "example": "Our school has a sports event next Friday.",
+      "translation": "我們學校下星期五有一場體育活動。",
+      "firstSeen": "2026-11-20",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "diary",
       "meaning": "日記",
