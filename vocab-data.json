@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-11-20T11:00:48Z",
-    "sourceCount": 683,
-    "includedCount": 675
+    "updatedAt": "2026-11-21T11:00:49Z",
+    "sourceCount": 686,
+    "includedCount": 678
   },
   "words": [
+    {
+      "word": "culture",
+      "meaning": "文化",
+      "example": "We learn about different cultures at school.",
+      "translation": "我們在學校認識不同的文化。",
+      "firstSeen": "2026-11-21",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "spend",
+      "meaning": "花費（金錢或時間）",
+      "example": "I spend thirty minutes reading every evening.",
+      "translation": "我每天晚上花三十分鐘閱讀。",
+      "firstSeen": "2026-11-21",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "cellphone",
+      "meaning": "手機",
+      "example": "My cellphone is on the desk.",
+      "translation": "我的手機在書桌上。",
+      "firstSeen": "2026-11-21",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "word",
       "meaning": "單字；字詞",
