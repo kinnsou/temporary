@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-11-21T11:00:49Z",
-    "sourceCount": 686,
-    "includedCount": 678
+    "updatedAt": "2026-11-22T11:00:42Z",
+    "sourceCount": 689,
+    "includedCount": 681
   },
   "words": [
+    {
+      "word": "music",
+      "meaning": "音樂",
+      "example": "I listen to music after school.",
+      "translation": "我放學後會聽音樂。",
+      "firstSeen": "2026-11-22",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "forget",
+      "meaning": "忘記",
+      "example": "I sometimes forget my keys.",
+      "translation": "我有時候會忘記帶鑰匙。",
+      "firstSeen": "2026-11-22",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "flashlight",
+      "meaning": "手電筒",
+      "example": "I use a flashlight to see in the dark.",
+      "translation": "我用手電筒在黑暗中照明。",
+      "firstSeen": "2026-11-22",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "culture",
       "meaning": "文化",
