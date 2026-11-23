@@ -1,10 +1,42 @@
 {
   "meta": {
-    "updatedAt": "2026-11-22T11:00:42Z",
-    "sourceCount": 689,
-    "includedCount": 681
+    "updatedAt": "2026-11-23T11:00:34Z",
+    "sourceCount": 692,
+    "includedCount": 684
   },
   "words": [
+    {
+      "word": "farm",
+      "meaning": "農場",
+      "example": "We visited a farm last Sunday.",
+      "translation": "我們上星期日參觀了一座農場。",
+      "firstSeen": "2026-11-23",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "dream",
+      "meaning": "夢；夢想；做夢",
+      "example": "I dream about flying every night.",
+      "translation": "我每天晚上都夢到自己在飛。",
+      "firstSeen": "2026-11-23",
+      "pos": [
+        "n",
+        "v"
+      ]
+    },
+    {
+      "word": "mark",
+      "meaning": "記號；標記",
+      "example": "I mark important dates on my calendar every month.",
+      "translation": "我每個月都在月曆上標記重要日期。",
+      "firstSeen": "2026-11-23",
+      "pos": [
+        "n",
+        "v"
+      ]
+    },
     {
       "word": "music",
       "meaning": "音樂",
