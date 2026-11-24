@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-11-23T11:00:34Z",
-    "sourceCount": 692,
-    "includedCount": 684
+    "updatedAt": "2026-11-24T11:00:41Z",
+    "sourceCount": 695,
+    "includedCount": 687
   },
   "words": [
+    {
+      "word": "enter",
+      "meaning": "進入",
+      "example": "We entered the classroom at eight yesterday.",
+      "translation": "我們昨天八點走進教室。",
+      "firstSeen": "2026-11-24",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "job",
+      "meaning": "工作；職業",
+      "example": "My mother has a new job at a hospital.",
+      "translation": "我媽媽在一間醫院找到一份新工作。",
+      "firstSeen": "2026-11-24",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "rice",
+      "meaning": "米；白飯",
+      "example": "I eat rice with vegetables for lunch.",
+      "translation": "我午餐吃白飯配蔬菜。",
+      "firstSeen": "2026-11-24",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "farm",
       "meaning": "農場",
