@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-25T07:10:00+08:00",
+  "updated_at": "2026-11-26T07:10:00+08:00",
   "rows": [
     {
       "market": "MOPS",
@@ -325,26 +325,49 @@
     },
     {
       "market": "MOPS",
-      "date": "2026-12-11",
-      "code": "6994",
-      "name": "富威電力",
+      "date": "2026-12-23",
+      "code": "2753",
+      "name": "八方雲集",
       "event": "息",
-      "cash_dividend": "0.6067",
+      "cash_dividend": "5.2",
       "stock_dividend_ratio": "未公告",
       "subscription_ratio": "未公告",
       "subscription_price": "未公告",
       "stock_holding_ratio": "未公告",
       "source": "MOPS",
       "source_url": "https://mops.twse.com.tw/mops/web/t05st02",
-      "source_title": "公告本公司114年度普通股現金股利配發基準日",
-      "announcement_date": "115/11/24",
-      "announcement_time": "20:18:33",
-      "announcement_at": "2026-11-24T20:18:33+08:00",
-      "fetched_at": "2026-11-25T07:10:00+08:00",
-      "last_close": "15.3",
-      "last_close_date": "2026-11-24",
+      "source_title": "公告本公司董事長訂定除息基準日及調整現金股利配息率",
+      "announcement_date": "115/11/25",
+      "announcement_time": "14:04:18",
+      "announcement_at": "2026-11-25T14:04:18+08:00",
+      "fetched_at": "2026-11-26T07:10:00+08:00",
+      "last_close": "172",
+      "last_close_date": "2026-11-25",
       "amount_pending": "false",
-      "amount_completed_on": "2026-11-25"
+      "amount_completed_on": "2026-11-26"
+    },
+    {
+      "market": "MOPS",
+      "date": "2026-12-10",
+      "code": "7951",
+      "name": "大易橙",
+      "event": "息",
+      "cash_dividend": "4",
+      "stock_dividend_ratio": "未公告",
+      "subscription_ratio": "未公告",
+      "subscription_price": "未公告",
+      "stock_holding_ratio": "未公告",
+      "source": "MOPS",
+      "source_url": "https://mops.twse.com.tw/mops/web/t05st02",
+      "source_title": "公告本公司資本公積除息基準日相關事宜",
+      "announcement_date": "115/11/25",
+      "announcement_time": "15:59:05",
+      "announcement_at": "2026-11-25T15:59:05+08:00",
+      "fetched_at": "2026-11-26T07:10:00+08:00",
+      "last_close": "—",
+      "last_close_date": "",
+      "amount_pending": "false",
+      "amount_completed_on": "2026-11-26"
     }
   ]
 }
