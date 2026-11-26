@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-11-24T11:00:41Z",
-    "sourceCount": 695,
-    "includedCount": 687
+    "updatedAt": "2026-11-26T11:00:45Z",
+    "sourceCount": 698,
+    "includedCount": 690
   },
   "words": [
+    {
+      "word": "circle",
+      "meaning": "圓形",
+      "example": "Draw a circle on the paper.",
+      "translation": "在紙上畫一個圓。",
+      "firstSeen": "2026-11-26",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "blue",
+      "meaning": "藍色的",
+      "example": "My backpack is blue.",
+      "translation": "我的背包是藍色的。",
+      "firstSeen": "2026-11-26",
+      "pos": [
+        "adj"
+      ]
+    },
+    {
+      "word": "summer",
+      "meaning": "夏天",
+      "example": "We go swimming every summer.",
+      "translation": "我們每年夏天都會去游泳。",
+      "firstSeen": "2026-11-26",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "enter",
       "meaning": "進入",
