@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-27T07:10:00+08:00",
+  "updated_at": "2026-11-28T07:10:00+08:00",
   "rows": [
     {
       "market": "MOPS",
@@ -23,30 +23,6 @@
       "last_close_date": "2026-08-12",
       "mops_rechecked_on": "2026-08-13",
       "amount_pending": "true"
-    },
-    {
-      "market": "MOPS",
-      "date": "2026-12-10",
-      "code": "2330",
-      "name": "台積電",
-      "event": "息",
-      "cash_dividend": "7.000001",
-      "stock_dividend_ratio": "未公告",
-      "subscription_ratio": "未公告",
-      "subscription_price": "未公告",
-      "stock_holding_ratio": "未公告",
-      "source": "MOPS",
-      "source_url": "https://mops.twse.com.tw/mops/web/t05st02",
-      "source_title": "本公司訂定民國115年第二季之現金股利除息交易日",
-      "announcement_date": "115/08/11",
-      "announcement_time": "19:01:29",
-      "announcement_at": "2026-08-11T19:01:29+08:00",
-      "fetched_at": "2026-08-13T07:10:00+08:00",
-      "last_close": "2415",
-      "last_close_date": "2026-08-12",
-      "mops_rechecked_on": "2026-08-13",
-      "amount_pending": "false",
-      "amount_completed_on": "2026-11-27"
     },
     {
       "market": "MOPS",
@@ -323,29 +299,6 @@
       "last_close_date": "2026-11-24",
       "mops_rechecked_on": "2026-11-25",
       "amount_pending": "true"
-    },
-    {
-      "market": "MOPS",
-      "date": "2026-12-28",
-      "code": "6629",
-      "name": "泰金-KY",
-      "event": "息",
-      "cash_dividend": "4.8",
-      "stock_dividend_ratio": "未公告",
-      "subscription_ratio": "未公告",
-      "subscription_price": "未公告",
-      "stock_holding_ratio": "未公告",
-      "source": "MOPS",
-      "source_url": "https://mops.twse.com.tw/mops/web/t05st02",
-      "source_title": "公告本公司115年上半年度股東現金股利 除息基準日及發放日期相關事宜",
-      "announcement_date": "115/11/26",
-      "announcement_time": "16:12:11",
-      "announcement_at": "2026-11-26T16:12:11+08:00",
-      "fetched_at": "2026-11-27T07:10:00+08:00",
-      "last_close": "97.1",
-      "last_close_date": "2026-11-26",
-      "amount_pending": "false",
-      "amount_completed_on": "2026-11-27"
     }
   ]
 }
