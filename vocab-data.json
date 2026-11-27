@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-11-26T11:00:45Z",
-    "sourceCount": 698,
-    "includedCount": 690
+    "updatedAt": "2026-11-27T11:00:42Z",
+    "sourceCount": 701,
+    "includedCount": 693
   },
   "words": [
+    {
+      "word": "airport",
+      "meaning": "機場",
+      "example": "We got to the airport early.",
+      "translation": "我們很早就到了機場。",
+      "firstSeen": "2026-11-27",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "goal",
+      "meaning": "目標；進球",
+      "example": "My goal is to read one book a week.",
+      "translation": "我的目標是每週讀一本書。",
+      "firstSeen": "2026-11-27",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "costume",
+      "meaning": "戲服；變裝服",
+      "example": "She wore a cat costume to the party.",
+      "translation": "她穿著貓咪裝去參加派對。",
+      "firstSeen": "2026-11-27",
+      "pos": [
+        "n"
+      ]
+    },
     {
       "word": "circle",
       "meaning": "圓形",
