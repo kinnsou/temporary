@@ -332,17 +332,29 @@
     gap: 16px;
   }
   .hero-stat {
+    --quote-meta: #51473F;
+    --quote-link: #873625;
     background: var(--paper-3);
     border-radius: 18px;
     padding: 18px 18px 16px;
     position: relative;
+  }
+  .hero-stat.quote-up {
+    background: #E7CECA;
+    --quote-meta: #60433F;
+    --quote-link: #783B35;
+  }
+  .hero-stat.quote-down {
+    background: #D4DFCF;
+    --quote-meta: #40553E;
+    --quote-link: #30563B;
   }
   .hero-stat .lbl {
     font-family: var(--mono);
     font-size: 10px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--ink-3);
+    color: var(--quote-meta);
   }
   .hero-stat .num {
     font-family: var(--display-tc);
@@ -358,18 +370,18 @@
     font-family: var(--display-en);
     font-style: italic;
     font-size: 18px;
-    color: var(--sage);
+    color: var(--ink-2);
     margin-left: 6px;
     font-weight: 400;
   }
-  .hero-stat .num .delta.down { color: var(--accent); }
   .hero-stat .desc {
     margin-top: 8px;
     font-size: 11.5px;
     line-height: 1.55;
     color: var(--ink-2);
   }
-  .hero-stat .source-line { margin-top: 8px; font-size: 9px; letter-spacing: 0.08em; }
+  .hero-stat .source-line { margin-top: 8px; font-size: 9px; letter-spacing: 0.08em; color: var(--quote-meta); }
+  .hero-stat .source-line a { color: var(--quote-link); }
   .hero-stat .supplemental-link { margin-top: 6px; font-size: 10px; line-height: 1.35; color: var(--ink-2); }
 
   /* ─── News grid ─────────────────────────────────────── */
@@ -814,12 +826,6 @@
   .source-line a { font-weight: 700; }
   .quality-note { margin-top: 18px; font-family: var(--mono); font-size: 10px; letter-spacing: .12em; color: rgba(242,237,225,.58); text-transform: uppercase; }
   .no-fill { color: var(--ink-3); font-style: italic; }
-  .hero-stat.primary { background: var(--ink); color: var(--paper); }
-  .hero-stat.primary .lbl, .hero-stat.primary .desc { color: rgba(242,237,225,.68); }
-  .hero-stat.primary .num { color: var(--paper); }
-  .hero-stat.primary .num .delta { color: #94C589; }
-  .hero-stat.primary .source-line { color: rgba(242,237,225,.55); }
-  .hero-stat.primary a { color: #F2C078; }
   .news-item .body .impact { color: var(--accent-deep); font-weight: 700; }
   .tweet-card .content .warn { color: var(--ink-3); font-style: italic; }
   @media (max-width: 980px) {
@@ -915,25 +921,25 @@
       <div class="by-line"><span>The FINANCIAL，2026-11-27 / 美聯社（Newsday 刊載），2026-11-27 / 中央社（Focus Taiwan），2026-11-27</span><span>Morning · 01 / 03</span></div>
     </div>
     <div class="hero-side">
-      <div class="hero-stat primary">
+      <div class="hero-stat quote-down" role="group" title="TX Night · 昨夜盤 05:00，較 2026-11-27 早報下跌；數字旁為期交所公布的漲跌">
         <div class="lbl">TX Night · 昨夜盤 05:00</div>
         <div class="num">39153<span class="delta">▼-197 / ▼-0.5%</span></div>
         <div class="desc">TAIFEX 盤後即時報價最後成交價，資料日 2026-11-27 04:59:59，▼-197 / ▼-0.5%，成交量 45927 口。</div>
         <div class="source-line">SOURCE · <a href="https://mis.taifex.com.tw/futures/">TAIFEX MIS</a></div>
         
-      </div><div class="hero-stat">
+      </div><div class="hero-stat quote-down" role="group" title="BTC · 早報製作時，較 2026-11-27 早報下跌">
         <div class="lbl">BTC · 早報製作時</div>
         <div class="num">US$59,819</div>
         <div class="desc">擷取時間 07:10 TPE</div>
         <div class="source-line">SOURCE · <a href="https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&amp;vs_currencies=usd">CoinGecko</a></div>
         
-      </div><div class="hero-stat">
+      </div><div class="hero-stat quote-up" role="group" title="Gold · 現貨金，較 2026-11-27 早報上漲">
         <div class="lbl">Gold · 現貨金</div>
         <div class="num">US$3,650.00</div>
         <div class="desc">現貨金／美元每盎司</div>
         <div class="source-line">SOURCE · <a href="https://api.gold-api.com/price/XAU">Gold API</a></div>
         
-      </div><div class="hero-stat">
+      </div><div class="hero-stat quote-down" role="group" title="WTI · 原油，較 2026-11-27 早報下跌">
         <div class="lbl">WTI · 原油</div>
         <div class="num">US$82.24</div>
         <div class="desc">美元每桶 · 最近資料日 2026-11-24</div>
