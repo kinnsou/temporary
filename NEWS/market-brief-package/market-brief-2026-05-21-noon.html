@@ -332,17 +332,29 @@
     gap: 16px;
   }
   .hero-stat {
+    --quote-meta: #51473F;
+    --quote-link: #873625;
     background: var(--paper-3);
     border-radius: 18px;
     padding: 18px 18px 16px;
     position: relative;
+  }
+  .hero-stat.quote-up {
+    background: #E7CECA;
+    --quote-meta: #60433F;
+    --quote-link: #783B35;
+  }
+  .hero-stat.quote-down {
+    background: #D4DFCF;
+    --quote-meta: #40553E;
+    --quote-link: #30563B;
   }
   .hero-stat .lbl {
     font-family: var(--mono);
     font-size: 10px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--ink-3);
+    color: var(--quote-meta);
   }
   .hero-stat .num {
     font-family: var(--display-tc);
@@ -358,18 +370,18 @@
     font-family: var(--display-en);
     font-style: italic;
     font-size: 18px;
-    color: var(--sage);
+    color: var(--ink-2);
     margin-left: 6px;
     font-weight: 400;
   }
-  .hero-stat .num .delta.down { color: var(--accent); }
   .hero-stat .desc {
     margin-top: 8px;
     font-size: 11.5px;
     line-height: 1.55;
     color: var(--ink-2);
   }
-  .hero-stat .source-line { margin-top: 8px; font-size: 9px; letter-spacing: 0.08em; }
+  .hero-stat .source-line { margin-top: 8px; font-size: 9px; letter-spacing: 0.08em; color: var(--quote-meta); }
+  .hero-stat .source-line a { color: var(--quote-link); }
   .hero-stat .supplemental-link { margin-top: 6px; font-size: 10px; line-height: 1.35; color: var(--ink-2); }
 
   /* ─── News grid ─────────────────────────────────────── */
@@ -814,12 +826,6 @@
   .source-line a { font-weight: 700; }
   .quality-note { margin-top: 18px; font-family: var(--mono); font-size: 10px; letter-spacing: .12em; color: rgba(242,237,225,.58); text-transform: uppercase; }
   .no-fill { color: var(--ink-3); font-style: italic; }
-  .hero-stat.primary { background: var(--ink); color: var(--paper); }
-  .hero-stat.primary .lbl, .hero-stat.primary .desc { color: rgba(242,237,225,.68); }
-  .hero-stat.primary .num { color: var(--paper); }
-  .hero-stat.primary .num .delta { color: #94C589; }
-  .hero-stat.primary .source-line { color: rgba(242,237,225,.55); }
-  .hero-stat.primary a { color: #F2C078; }
   .news-item .body .impact { color: var(--accent-deep); font-weight: 700; }
   .tweet-card .content .warn { color: var(--ink-3); font-style: italic; }
   @media (max-width: 980px) {
@@ -917,7 +923,7 @@
     </div>
 
     <div class="hero-side">
-      <div class="hero-stat primary">
+      <div class="hero-stat">
         <div class="lbl">TX Night · 昨夜盤 05:00</div>
         <div class="num">40990<span class="delta">+866</span></div>
         <div class="desc">TX 202606 盤後交易最後成交價，+2.16%，成交量 49228 口。</div>
