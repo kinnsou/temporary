@@ -1,10 +1,40 @@
 {
   "meta": {
-    "updatedAt": "2026-11-27T11:00:42Z",
-    "sourceCount": 701,
-    "includedCount": 693
+    "updatedAt": "2026-11-28T11:00:40Z",
+    "sourceCount": 704,
+    "includedCount": 696
   },
   "words": [
+    {
+      "word": "open",
+      "meaning": "打開",
+      "example": "I open the window every morning.",
+      "translation": "我每天早上都會打開窗戶。",
+      "firstSeen": "2026-11-28",
+      "pos": [
+        "v"
+      ]
+    },
+    {
+      "word": "dinner",
+      "meaning": "晚餐",
+      "example": "We eat dinner together every Sunday.",
+      "translation": "我們每個星期天都一起吃晚餐。",
+      "firstSeen": "2026-11-28",
+      "pos": [
+        "n"
+      ]
+    },
+    {
+      "word": "wash",
+      "meaning": "洗；清洗",
+      "example": "I wash my hands before every meal.",
+      "translation": "我每餐飯前都會洗手。",
+      "firstSeen": "2026-11-28",
+      "pos": [
+        "v"
+      ]
+    },
     {
       "word": "airport",
       "meaning": "機場",
